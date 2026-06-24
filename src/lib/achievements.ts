@@ -24,7 +24,7 @@ export const BADGES: BadgeDefinition[] = [
   // Contribution badges
   {
     type: 'PREMIERE_LUMIERE',
-    name: 'Premiere CINEGEN',
+    name: 'Premiere CINEGENY',
     description: 'Completer sa premiere tache',
     icon: '💡',
     category: 'contribution',

@@ -19,7 +19,7 @@ import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
 
-export const metadata: Metadata = { title: 'Mes Revenus — CINEGEN' }
+export const metadata: Metadata = { title: 'Mes Revenus — CINEGENY' }
 
 export default async function EarningsPage() {
   const session = await auth()

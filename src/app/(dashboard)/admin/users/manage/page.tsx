@@ -10,7 +10,7 @@ import {
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
-export const metadata: Metadata = { title: 'User Management — Admin CINEGEN' }
+export const metadata: Metadata = { title: 'User Management — Admin CINEGENY' }
 
 const ROLE_CONFIG: Record<string, { label: string; color: string; bg: string }> = {
   ADMIN: { label: 'Admin', color: 'text-red-400', bg: 'bg-red-500/10' },

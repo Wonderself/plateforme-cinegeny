@@ -3,8 +3,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Abonnements — CINEGEN',
-  description: 'Choisissez votre plan CINEGEN. Gratuit, Premium ou Premium+. Regardez des films IA en streaming.',
+  title: 'Abonnements — CINEGENY',
+  description: 'Choisissez votre plan CINEGENY. Gratuit, Premium ou Premium+. Regardez des films IA en streaming.',
 }
 
 const PLANS = [

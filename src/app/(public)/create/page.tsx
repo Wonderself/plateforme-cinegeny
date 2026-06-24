@@ -57,7 +57,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'What happens after I complete all 7 steps?',
-    a: 'Your film is assembled automatically. You can preview it, make final adjustments, and publish it to the CINEGEN platform for the world to see.',
+    a: 'Your film is assembled automatically. You can preview it, make final adjustments, and publish it to the CINEGENY platform for the world to see.',
   },
   {
     q: 'Can I work on multiple films at once?',

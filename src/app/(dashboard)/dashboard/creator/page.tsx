@@ -12,7 +12,7 @@ import type { Metadata } from 'next'
 import { GenerateVideoForm } from './generate-video-form'
 
 export const dynamic = 'force-dynamic'
-export const metadata: Metadata = { title: 'Espace Cr\u00e9ateur \u2014 CINEGEN' }
+export const metadata: Metadata = { title: 'Espace Cr\u00e9ateur \u2014 CINEGENY' }
 
 export default async function CreatorDashboardPage() {
   const session = await auth()

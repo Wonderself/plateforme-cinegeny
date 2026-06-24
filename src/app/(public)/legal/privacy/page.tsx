@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Politique de Confidentialité',
-  description: 'Politique de confidentialité et protection des données personnelles de la plateforme CINEGEN — conforme au RGPD.',
+  description: 'Politique de confidentialité et protection des données personnelles de la plateforme CINEGENY — conforme au RGPD.',
 }
 
 export default function PrivacyPage() {
@@ -31,9 +31,9 @@ export default function PrivacyPage() {
           <section>
             <p className="text-white/70 leading-relaxed">
               La présente Politique de Confidentialité décrit comment la société
-              CINEGEN Studio (ci-après « CINEGEN », « nous », « notre ») collecte,
+              CINEGENY Studio (ci-après « CINEGENY », « nous », « notre ») collecte,
               utilise, stocke et protège vos données personnelles dans le cadre de
-              l&apos;utilisation de la plateforme <strong className="text-[#C9A227]">CINEGEN</strong>{' '}
+              l&apos;utilisation de la plateforme <strong className="text-[#C9A227]">CINEGENY</strong>{' '}
               (ci-après « la Plateforme »), conformément au Règlement (UE) 2016/679 du
               27 avril 2016 relatif à la protection des données (RGPD) et à la loi n° 78-17
               du 6 janvier 1978 modifiée (loi Informatique et Libertés).
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
             </p>
             <div className="mt-3 p-4 rounded-xl border border-white/10 bg-white/[0.02]">
               <p className="text-white/70 leading-relaxed">
-                <strong className="text-white/90">CINEGEN Studio</strong><br />
+                <strong className="text-white/90">CINEGENY Studio</strong><br />
                 SAS au capital de 10 000 &euro;<br />
                 RCS Paris : [à compléter]<br />
                 Siège social : [adresse à compléter], 75000 Paris, France<br />
@@ -219,7 +219,7 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc list-inside text-white/70 leading-relaxed mt-2 space-y-2 ml-4">
               <li>
-                <strong className="text-white/90">Personnel habilité</strong> de CINEGEN Studio
+                <strong className="text-white/90">Personnel habilité</strong> de CINEGENY Studio
                 Pictures (équipe technique, modération, support client) ;
               </li>
               <li>
@@ -372,16 +372,16 @@ export default function PrivacyPage() {
               8. Délégué à la Protection des Données (DPO)
             </h2>
             <p className="text-white/70 leading-relaxed">
-              CINEGEN Studio a désigné un Délégué à la Protection des Données que
+              CINEGENY Studio a désigné un Délégué à la Protection des Données que
               vous pouvez contacter pour toute question relative à la protection de vos données
               personnelles :
             </p>
             <div className="mt-3 p-4 rounded-xl border border-white/10 bg-white/[0.02]">
               <p className="text-white/70 leading-relaxed">
                 <strong className="text-white/90">Délégué à la Protection des Données</strong><br />
-                CINEGEN Studio<br />
+                CINEGENY Studio<br />
                 Email : <span className="text-[#C9A227]">dpo@cinegen.studio</span><br />
-                Courrier : DPO — CINEGEN Studio, [adresse à compléter], 75000 Paris
+                Courrier : DPO — CINEGENY Studio, [adresse à compléter], 75000 Paris
               </p>
             </div>
           </section>

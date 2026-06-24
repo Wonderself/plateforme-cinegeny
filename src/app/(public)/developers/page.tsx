@@ -3,8 +3,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'API Developers — CINEGEN',
-  description: 'Documentation de l\'API publique CINEGEN. Integrez films, contributeurs et statistiques dans vos applications.',
+  title: 'API Developers — CINEGENY',
+  description: 'Documentation de l\'API publique CINEGENY. Integrez films, contributeurs et statistiques dans vos applications.',
 }
 
 type Endpoint = {
@@ -170,7 +170,7 @@ export default function DevelopersPage() {
             <span className="text-shimmer">Developers</span>
           </h1>
           <p className="text-white/40 text-base sm:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-            Integrez les donnees de CINEGEN dans vos applications.
+            Integrez les donnees de CINEGENY dans vos applications.
             API publique, sans authentification requise, JSON standard.
           </p>
 

@@ -11,7 +11,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
-export const metadata: Metadata = { title: 'User Detail — Admin CINEGEN' }
+export const metadata: Metadata = { title: 'User Detail — Admin CINEGENY' }
 
 export default async function UserDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await auth()

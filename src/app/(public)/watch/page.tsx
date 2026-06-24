@@ -511,7 +511,7 @@ function SplitHero() {
             </span>
           </h1>
           <p className="text-gray-400 text-sm md:text-base max-w-md mx-auto">
-            Cinema and Television, together. Scroll endlessly through the CINEGEN universe.
+            Cinema and Television, together. Scroll endlessly through the CINEGENY universe.
           </p>
         </div>
       </div>

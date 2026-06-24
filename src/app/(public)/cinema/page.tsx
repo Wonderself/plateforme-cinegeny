@@ -140,7 +140,7 @@ export default async function CinemaPage() {
         <div className="absolute inset-0 -z-10">
           <Image
             src="/images/cinema-clapperboard-clouds-hero.webp"
-            alt="CINEGEN Studio - Le studio de demain"
+            alt="CINEGENY Studio - Le studio de demain"
             fill
             className="object-cover opacity-15"
             priority
@@ -238,7 +238,7 @@ export default async function CinemaPage() {
                 <span className="text-shimmer">C&apos;est l&apos;upgrader.</span>
               </h2>
               <p className="text-white/45 text-base sm:text-lg leading-relaxed mb-5">
-                CINEGEN Studio fusionne l&apos;expertise Prime Time de TF1 et Lagardere
+                CINEGENY Studio fusionne l&apos;expertise Prime Time de TF1 et Lagardere
                 avec la puissance de l&apos;IA de nouvelle generation. Nous ne promptons pas.
                 Nous dirigeons l&apos;IA.
               </p>
@@ -257,7 +257,7 @@ export default async function CinemaPage() {
               <div className="relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden ring-1 ring-white/5">
                 <Image
                   src="/images/human-meets-ai-creative-collision.webp"
-                  alt="L'humain rencontre l'IA - Vision creative CINEGEN Studio"
+                  alt="L'humain rencontre l'IA - Vision creative CINEGENY Studio"
                   fill
                   className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -397,7 +397,7 @@ export default async function CinemaPage() {
                   <div className="group rounded-2xl sm:rounded-3xl border border-white/[0.06] bg-white/[0.02] overflow-hidden hover:border-[#C9A227]/15 transition-all duration-500 hover-lift">
                     <div className="relative h-48 sm:h-56 bg-gradient-to-br from-[#C9A227]/[0.06] to-purple-900/[0.1]">
                       {film.coverImageUrl ? (
-                        <Image src={film.coverImageUrl} alt={`Film IA ${film.title} - CINEGEN Studio`} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 100vw, 33vw" />
+                        <Image src={film.coverImageUrl} alt={`Film IA ${film.title} - CINEGENY Studio`} fill className="object-cover group-hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 100vw, 33vw" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
                           <Film className="h-16 w-16 text-[#C9A227]/20" />
@@ -474,7 +474,7 @@ export default async function CinemaPage() {
               <div className="relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden ring-1 ring-white/5">
                 <Image
                   src="/images/studio-workflow-maison-desk.webp"
-                  alt="Workflow Maison - Studio de production IA CINEGEN Studio"
+                  alt="Workflow Maison - Studio de production IA CINEGENY Studio"
                   fill
                   className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -493,7 +493,7 @@ export default async function CinemaPage() {
           <div className="text-center mb-14 sm:mb-18">
             <p className="text-[#C9A227] text-xs sm:text-sm font-medium uppercase tracking-[0.25em] mb-4">Pourquoi Nous</p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 font-playfair">
-              L&apos;Avantage <span className="text-shimmer">CINEGEN</span>
+              L&apos;Avantage <span className="text-shimmer">CINEGENY</span>
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 stagger-children">
@@ -519,7 +519,7 @@ export default async function CinemaPage() {
               <div className="relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden ring-1 ring-white/5">
                 <Image
                   src="/images/editions-ruppin-library-partnership.webp"
-                  alt="Editions Ruppin - Partenariat book-to-screen CINEGEN Studio"
+                  alt="Editions Ruppin - Partenariat book-to-screen CINEGENY Studio"
                   fill
                   className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -618,7 +618,7 @@ export default async function CinemaPage() {
           <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-7 leading-[1.05] font-playfair">
             Pret a Entrer dans la
             <br />
-            <span className="text-shimmer">CINEGEN ?</span>
+            <span className="text-shimmer">CINEGENY ?</span>
           </h2>
           <p className="text-lg sm:text-xl text-white/35 mb-12 sm:mb-14 leading-relaxed max-w-lg mx-auto">
             Rejoignez la communaute des createurs qui faconnent le cinema de demain.

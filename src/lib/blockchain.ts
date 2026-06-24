@@ -1,7 +1,7 @@
 /**
  * Blockchain Service Layer
  *
- * Abstracts on-chain operations for the CINEGEN platform.
+ * Abstracts on-chain operations for the CINEGENY platform.
  * Currently uses a hash-based proof system (storing SHA-256 hashes as proof-of-record).
  * Ready to integrate with Ethereum smart contracts when deployed.
  *

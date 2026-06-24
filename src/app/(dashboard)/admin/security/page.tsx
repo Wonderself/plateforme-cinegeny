@@ -6,7 +6,7 @@ import { TwoFactorSetup } from './two-factor-setup'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
-export const metadata: Metadata = { title: 'Sécurité — Admin CINEGEN' }
+export const metadata: Metadata = { title: 'Sécurité — Admin CINEGENY' }
 
 export default async function SecurityPage() {
   const session = await auth()

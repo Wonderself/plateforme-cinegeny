@@ -11,7 +11,7 @@ function getResend(): Resend | null {
   return _resend
 }
 
-const FROM = process.env.RESEND_FROM_EMAIL || 'CINEGEN <noreply@cinegen.studio>'
+const FROM = process.env.RESEND_FROM_EMAIL || 'CINEGENY <noreply@cinegen.studio>'
 
 // ─── Generic send (logs in dev, sends in prod) ──────────────
 async function send(to: string, subject: string, html: string): Promise<boolean> {
@@ -38,7 +38,7 @@ function layout(title: string, body: string): string {
   <div style="max-width:600px;margin:0 auto;padding:40px 20px;">
     <!-- Logo -->
     <div style="text-align:center;margin-bottom:32px;">
-      <span style="font-size:28px;font-weight:700;color:#C9A227;letter-spacing:1px;">CINEGEN</span>
+      <span style="font-size:28px;font-weight:700;color:#C9A227;letter-spacing:1px;">CINEGENY</span>
       <span style="font-size:12px;display:block;color:#ffffff60;margin-top:2px;">STUDIO</span>
     </div>
     <!-- Content -->
@@ -47,7 +47,7 @@ function layout(title: string, body: string): string {
     </div>
     <!-- Footer -->
     <div style="text-align:center;color:#ffffff30;font-size:12px;line-height:1.5;">
-      <p>CINEGEN Studio SAS — Paris, France</p>
+      <p>CINEGENY Studio SAS — Paris, France</p>
       <p><a href="https://cinegen.studio" style="color:#C9A227;text-decoration:none;">cinegen.studio</a></p>
     </div>
   </div>
@@ -74,10 +74,10 @@ export async function sendWelcomeEmail(to: string, displayName: string, verifica
     </p>`
     : ''
 
-  const html = layout('Bienvenue sur CINEGEN', `
+  const html = layout('Bienvenue sur CINEGENY', `
     <h1 style="font-size:24px;margin:0 0 16px;color:#C9A227;">Bienvenue, ${displayName} !</h1>
     <p style="color:#ffffffcc;line-height:1.6;margin:0 0 16px;">
-      Vous faites maintenant partie de la communauté CINEGEN — le premier studio de cinéma collaboratif propulsé par l'IA.
+      Vous faites maintenant partie de la communauté CINEGENY — le premier studio de cinéma collaboratif propulsé par l'IA.
     </p>
     ${verifySection}
     <p style="color:#ffffffcc;line-height:1.6;margin:0 0 24px;">
@@ -92,7 +92,7 @@ export async function sendWelcomeEmail(to: string, displayName: string, verifica
       </p>
     </div>
   `)
-  return send(to, 'Bienvenue sur CINEGEN', html)
+  return send(to, 'Bienvenue sur CINEGENY', html)
 }
 
 /** Password reset email */
@@ -111,7 +111,7 @@ export async function sendPasswordResetEmail(to: string, token: string): Promise
       Ce lien expire dans <strong>1 heure</strong>. Si vous n'avez pas fait cette demande, ignorez cet email.
     </p>
   `)
-  return send(to, 'Réinitialiser votre mot de passe — CINEGEN', html)
+  return send(to, 'Réinitialiser votre mot de passe — CINEGENY', html)
 }
 
 /** Task validated — payment coming */
@@ -200,7 +200,7 @@ export async function sendWeeklyDigest(
   stats: { tasksCompleted: number; lumensEarned: number; newFilms: number }
 ): Promise<boolean> {
   const html = layout('Résumé de la semaine', `
-    <h1 style="font-size:24px;margin:0 0 16px;color:#C9A227;">Cette semaine sur CINEGEN</h1>
+    <h1 style="font-size:24px;margin:0 0 16px;color:#C9A227;">Cette semaine sur CINEGENY</h1>
     <p style="color:#ffffffcc;line-height:1.6;margin:0 0 24px;">
       Bonjour ${displayName}, voici votre résumé d'activité.
     </p>
@@ -222,5 +222,5 @@ export async function sendWeeklyDigest(
       ${goldButton('Voir le Dashboard', 'https://cinegen.studio/dashboard')}
     </div>
   `)
-  return send(to, `Votre semaine CINEGEN — ${stats.tasksCompleted} tâches, ${stats.lumensEarned} Lumens`, html)
+  return send(to, `Votre semaine CINEGENY — ${stats.tasksCompleted} tâches, ${stats.lumensEarned} Lumens`, html)
 }

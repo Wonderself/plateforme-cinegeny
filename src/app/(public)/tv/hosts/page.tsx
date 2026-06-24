@@ -192,7 +192,7 @@ export default function TVHostsPage() {
             </span>
           </h1>
           <p className="text-base sm:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed mb-8">
-            Discover the talented hosts and presenters who bring CINEGEN TV to life.
+            Discover the talented hosts and presenters who bring CINEGENY TV to life.
             From late night comedy to culinary adventures, meet the faces of our universe.
           </p>
 
@@ -419,7 +419,7 @@ export default function TVHostsPage() {
             Become a TV Host
           </h2>
           <p className="text-white/50 mb-6 text-sm max-w-md mx-auto">
-            Have what it takes to host a CINEGEN TV show? Submit your audition
+            Have what it takes to host a CINEGENY TV show? Submit your audition
             and join our growing roster of talented presenters.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">

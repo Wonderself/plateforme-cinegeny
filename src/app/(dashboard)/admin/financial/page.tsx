@@ -10,7 +10,7 @@ import {
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
-export const metadata: Metadata = { title: 'Financial — Admin CINEGEN' }
+export const metadata: Metadata = { title: 'Financial — Admin CINEGENY' }
 
 export default async function FinancialPage() {
   const session = await auth()

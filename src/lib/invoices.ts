@@ -2,7 +2,7 @@
  * Invoice generation for contributor payments.
  *
  * Legal notes:
- * - As CINEGEN Studio SAS (France), we issue invoices for contractor payments
+ * - As CINEGENY Studio SAS (France), we issue invoices for contractor payments
  * - Contributors are considered as independent contractors (auto-entrepreneurs or freelancers)
  * - Under €5000/year per contributor: simplified invoice (note d'honoraires)
  * - VAT: Platform is intermediary, reverse charge may apply for EU contributors
@@ -75,7 +75,7 @@ TVA Intracommunautaire : ${data.platformVat}
 
 **${data.contributorName}**
 Email : ${data.contributorEmail}
-ID CINEGEN : ${data.contributorId}
+ID CINEGENY : ${data.contributorId}
 
 ---
 
@@ -115,7 +115,7 @@ ID CINEGEN : ${data.contributorId}
  * Platform constants for invoice generation
  */
 export const PLATFORM_INFO = {
-  name: 'CINEGEN Studio SAS',
+  name: 'CINEGENY Studio SAS',
   address: 'Paris, France',
   siret: '000 000 000 00000', // À remplir avec le vrai SIRET
   vat: 'FR00000000000', // À remplir avec le vrai numéro TVA

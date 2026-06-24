@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'CINEGEN — Maintenance',
+  title: 'CINEGENY — Maintenance',
   description: 'La plateforme est temporairement en maintenance.',
 }
 
@@ -24,7 +24,7 @@ export default function MaintenancePage() {
           <h1
             className="text-4xl font-bold text-white mb-2"
           >
-            CINEGEN
+            CINEGENY
           </h1>
         </div>
 
@@ -40,7 +40,7 @@ export default function MaintenancePage() {
           </h2>
 
           <p className="text-white/50 text-sm leading-relaxed">
-            La plateforme CINEGEN est actuellement en maintenance pour une mise à jour importante.
+            La plateforme CINEGENY est actuellement en maintenance pour une mise à jour importante.
             Nous serons de retour très bientôt avec de nouvelles fonctionnalités.
           </p>
 

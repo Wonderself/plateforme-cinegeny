@@ -358,7 +358,7 @@ export function NetflixHome({ data }: { data: HomeData }) {
                 Vote for the Next Film.
               </h2>
               <p className="text-sm md:text-base text-white/40 max-w-lg mb-8 leading-relaxed">
-                Every film on CINEGEN is shaped by its community. Submit your stories, vote on scripts, and help decide what gets produced next.
+                Every film on CINEGENY is shaped by its community. Submit your stories, vote on scripts, and help decide what gets produced next.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">

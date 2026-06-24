@@ -69,7 +69,7 @@ const steps = [
   { num: '1', title: 'Submit your show concept', desc: 'Upload your series bible, pilot script, or pitch deck to the platform.', icon: FileText },
   { num: '2', title: 'Set funding goal per season', desc: 'Define your per-season budget and timeline. Smart contracts lock the terms.', icon: Target },
   { num: '3', title: 'Community invests', desc: 'Backers purchase production shares on Ethereum. Funds held in escrow until milestones are met.', icon: Handshake },
-  { num: '4', title: 'First episode airs on CINEGEN TV', desc: 'Once funded, your show enters the AI-powered production pipeline and airs on the network.', icon: Rocket },
+  { num: '4', title: 'First episode airs on CINEGENY TV', desc: 'Once funded, your show enters the AI-powered production pipeline and airs on the network.', icon: Rocket },
 ]
 
 /* ── Revenue sharing breakdown ── */
@@ -124,7 +124,7 @@ export default function TvProducePage() {
 
           <p className="text-lg sm:text-xl text-white/45 max-w-3xl mx-auto leading-relaxed mb-10">
             Turn your TV concept into reality. Launch and crowdfund your show
-            with the power of community on CINEGEN TV.
+            with the power of community on CINEGENY TV.
           </p>
 
           <Link
@@ -457,9 +457,9 @@ export default function TvProducePage() {
           <div className="grid sm:grid-cols-2 gap-5">
             <div className="p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.03] text-center">
               <p className="text-4xl font-black text-emerald-400">25%</p>
-              <p className="text-sm font-bold text-white mt-2">Exclusive to CINEGEN TV</p>
+              <p className="text-sm font-bold text-white mt-2">Exclusive to CINEGENY TV</p>
               <p className="text-xs text-white/40 mt-2 leading-relaxed">
-                Your show is only available on CINEGEN TV. You keep 75% of all revenue.
+                Your show is only available on CINEGENY TV. You keep 75% of all revenue.
                 Verified by our AI monitoring agent.
               </p>
             </div>
@@ -467,7 +467,7 @@ export default function TvProducePage() {
               <p className="text-4xl font-black text-amber-400">33%</p>
               <p className="text-sm font-bold text-white mt-2">Distributed Elsewhere Too</p>
               <p className="text-xs text-white/40 mt-2 leading-relaxed">
-                Your show is also distributed on other platforms. You keep 67% of CINEGEN revenue.
+                Your show is also distributed on other platforms. You keep 67% of CINEGENY revenue.
                 AI agent verifies external distribution automatically.
               </p>
             </div>
@@ -544,7 +544,7 @@ export default function TvProducePage() {
           </h2>
           <p className="text-white/40 leading-relaxed mb-10 max-w-xl mx-auto">
             Your show concept deserves to be seen. Launch your TV project today and let the
-            CINEGEN community bring it to life.
+            CINEGENY community bring it to life.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

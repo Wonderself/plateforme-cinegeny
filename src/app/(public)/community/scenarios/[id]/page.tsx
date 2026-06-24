@@ -32,11 +32,11 @@ export async function generateMetadata(
   })
   if (!scenario) return { title: 'Scénario introuvable' }
   return {
-    title: `${scenario.title} — Scénarios CINEGEN`,
-    description: scenario.logline || 'Proposition de scénario sur la plateforme CINEGEN.',
+    title: `${scenario.title} — Scénarios CINEGENY`,
+    description: scenario.logline || 'Proposition de scénario sur la plateforme CINEGENY.',
     openGraph: {
-      title: `${scenario.title} — Scénarios CINEGEN`,
-      description: scenario.logline || 'Proposition de scénario sur la plateforme CINEGEN.',
+      title: `${scenario.title} — Scénarios CINEGENY`,
+      description: scenario.logline || 'Proposition de scénario sur la plateforme CINEGENY.',
     },
   }
 }

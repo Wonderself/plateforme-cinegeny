@@ -67,7 +67,7 @@ const HOSTS_DATA: HostData[] = [
   {
     name: 'Luna Bright',
     slug: 'luna-bright',
-    bio: 'A globe-trotting variety show host who brings the energy of every city she visits to the screen. Luna\'s infectious enthusiasm and genuine connection with local performers have made Night Owls one of the longest-running shows on CINEGEN TV.',
+    bio: 'A globe-trotting variety show host who brings the energy of every city she visits to the screen. Luna\'s infectious enthusiasm and genuine connection with local performers have made Night Owls one of the longest-running shows on CINEGENY TV.',
     specialty: 'Late Night Host',
     category: 'Talk Show',
     shows: [{ title: 'Night Owls', slug: 'night-owls', role: 'Host' }],

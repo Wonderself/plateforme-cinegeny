@@ -516,9 +516,9 @@ export default function ProducePage() {
           <div className="grid sm:grid-cols-2 gap-5">
             <div className="p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.03] text-center">
               <p className="text-4xl font-black text-emerald-400">25%</p>
-              <p className="text-sm font-bold text-white mt-2">Exclusive to CINEGEN</p>
+              <p className="text-sm font-bold text-white mt-2">Exclusive to CINEGENY</p>
               <p className="text-xs text-white/40 mt-2 leading-relaxed">
-                Your film is only available on CINEGEN. You keep 75% of all revenue.
+                Your film is only available on CINEGENY. You keep 75% of all revenue.
                 Verified by our AI monitoring agent.
               </p>
             </div>
@@ -526,7 +526,7 @@ export default function ProducePage() {
               <p className="text-4xl font-black text-amber-400">33%</p>
               <p className="text-sm font-bold text-white mt-2">Sold Elsewhere Too</p>
               <p className="text-xs text-white/40 mt-2 leading-relaxed">
-                Your film is also distributed on other platforms. You keep 67% of CINEGEN revenue.
+                Your film is also distributed on other platforms. You keep 67% of CINEGENY revenue.
                 AI agent verifies external distribution automatically.
               </p>
             </div>
@@ -603,7 +603,7 @@ export default function ProducePage() {
           </h2>
           <p className="text-white/40 leading-relaxed mb-10 max-w-xl mx-auto">
             Your story deserves to be told. Launch your film project today and let the
-            CINEGEN community bring it to life.
+            CINEGENY community bring it to life.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

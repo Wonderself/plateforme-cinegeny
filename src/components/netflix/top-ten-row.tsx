@@ -63,7 +63,7 @@ export function TopTenRow({ films }: { films: FilmCard[] }) {
           >
             Top 10 Projects
           </h2>
-          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C9A227]/50 ml-1">CINEGEN</span>
+          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C9A227]/50 ml-1">CINEGENY</span>
         </div>
       </div>
 

@@ -205,7 +205,7 @@ export default function TvShowDetailPage() {
   /* ── Document title ── */
   useEffect(() => {
     if (!show) return
-    document.title = `${show.title} — CINEGEN TV`
+    document.title = `${show.title} — CINEGENY TV`
   }, [show?.title])
 
   /* ── Not found ── */
@@ -247,7 +247,7 @@ export default function TvShowDetailPage() {
     numberOfEpisodes: show.episodeCount,
     productionCompany: {
       '@type': 'Organization',
-      name: 'CINEGEN Studio',
+      name: 'CINEGENY Studio',
       url: 'https://cinegen.studio',
     },
   }
@@ -263,7 +263,7 @@ export default function TvShowDetailPage() {
          ════════════════════════════════════════════════════════════ */}
       <nav className="sticky top-0 z-50 bg-[#050A15]/90 backdrop-blur-md border-b border-white/[0.04]">
         <div className="container mx-auto max-w-6xl px-6 sm:px-10 md:px-16 py-3 flex items-center gap-2 text-xs text-white/40">
-          <Link href="/tv" className="hover:text-[#2563EB] transition-colors">CINEGEN TV</Link>
+          <Link href="/tv" className="hover:text-[#2563EB] transition-colors">CINEGENY TV</Link>
           <ChevronRight className="h-3 w-3" />
           <Link href="/tv/shows" className="hover:text-[#2563EB] transition-colors">Shows</Link>
           <ChevronRight className="h-3 w-3" />
@@ -392,7 +392,7 @@ export default function TvShowDetailPage() {
               />
             </div>
             <p className="text-[11px] text-white/20 mt-3 text-center">
-              Demo player — full episode streaming available with CINEGEN subscription
+              Demo player — full episode streaming available with CINEGENY subscription
             </p>
           </div>
         </div>
@@ -649,7 +649,7 @@ export default function TvShowDetailPage() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-white">Unlock all bonus content</p>
-                    <p className="text-xs text-white/35">Subscribe to CINEGEN TV for unlimited access to every show&apos;s bonus library.</p>
+                    <p className="text-xs text-white/35">Subscribe to CINEGENY TV for unlimited access to every show&apos;s bonus library.</p>
                   </div>
                 </div>
                 <Link
@@ -980,7 +980,7 @@ export default function TvShowDetailPage() {
               <div>
                 <h3 className="text-base font-bold text-emerald-400 mb-2">Smart Contract Secured</h3>
                 <p className="text-sm text-white/50 leading-relaxed">
-                  All show tokens are deployed on Ethereum. These are utility tokens that grant voting rights and revenue sharing access. Tokens are non-transferable and tied to your CINEGEN account.
+                  All show tokens are deployed on Ethereum. These are utility tokens that grant voting rights and revenue sharing access. Tokens are non-transferable and tied to your CINEGENY account.
                 </p>
               </div>
             </div>
@@ -1031,7 +1031,7 @@ export default function TvShowDetailPage() {
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-white group-hover/nav:text-emerald-400 transition-colors">Work</h4>
-                <p className="text-[10px] text-white/30">Join the CINEGEN team</p>
+                <p className="text-[10px] text-white/30">Join the CINEGENY team</p>
               </div>
               <ChevronRight className="h-4 w-4 text-white/20 ml-auto group-hover/nav:text-emerald-400 transition-colors" />
             </div>

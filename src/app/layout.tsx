@@ -23,11 +23,11 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://cinegen.studio'),
   title: {
-    template: '%s | CINEGEN',
-    default: 'CINEGEN — The AI Cinema Studio',
+    template: '%s | CINEGENY',
+    default: 'CINEGENY — The AI Cinema Studio',
   },
   description:
-    "CINEGEN: collaborative AI film production, creative micro-tasks, streaming, trailers, community governance. Create. Fund. Stream Your Films.",
+    "CINEGENY: collaborative AI film production, creative micro-tasks, streaming, trailers, community governance. Create. Fund. Stream Your Films.",
   keywords: [
     'AI cinema',
     'AI film production',
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
     'micro-tasks cinema',
     'AI streaming',
     'AI trailers',
-    'CINEGEN Studio',
+    'CINEGENY Studio',
     'AI cinema studio',
   ],
-  authors: [{ name: 'CINEGEN Studio' }],
+  authors: [{ name: 'CINEGENY Studio' }],
   manifest: '/manifest.json',
   icons: {
     icon: '/favicon.svg',
@@ -47,19 +47,19 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'CINEGEN',
+    title: 'CINEGENY',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'CINEGEN',
-    title: 'CINEGEN — The AI Cinema Studio',
+    siteName: 'CINEGENY',
+    title: 'CINEGENY — The AI Cinema Studio',
     description: "Collaborative AI film production, creative micro-tasks, worldwide streaming.",
     url: 'https://cinegen.studio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CINEGEN — The AI Cinema Studio',
+    title: 'CINEGENY — The AI Cinema Studio',
     description: "Collaborative AI film production, creative micro-tasks, worldwide streaming.",
   },
 }

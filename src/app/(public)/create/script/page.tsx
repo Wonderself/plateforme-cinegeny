@@ -894,7 +894,7 @@ export default function ScriptPage() {
             </div>
             <p className="text-xs text-white/40 leading-relaxed mb-5">
               Submit your script for community review. If approved, your project may receive
-              funding and collaborative support from the CINEGEN community. Great scripts
+              funding and collaborative support from the CINEGENY community. Great scripts
               get visibility and resources.
             </p>
             <div className="flex items-center justify-between">

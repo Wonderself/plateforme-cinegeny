@@ -37,7 +37,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <div className="relative z-10 px-4 sm:px-8 pb-14">
         <div className="h-px bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
         <p className="text-center text-xs text-white/20 mt-6">
-          &copy; {new Date().getFullYear()} CINEGEN Studio
+          &copy; {new Date().getFullYear()} CINEGENY Studio
         </p>
       </div>
     </div>

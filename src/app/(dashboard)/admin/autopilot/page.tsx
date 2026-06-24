@@ -12,7 +12,7 @@ import type { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Autopilot & Gouvernance — Admin CINEGEN',
+  title: 'Autopilot & Gouvernance — Admin CINEGENY',
   description: 'Tableau de bord de gouvernance autonome avec validation Telegram',
 }
 

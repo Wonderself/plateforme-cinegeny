@@ -5,7 +5,7 @@ import { RegisterForm } from './register-form'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Inscription — CINEGEN',
+  title: 'Inscription — CINEGENY',
   description: 'Créez votre compte et rejoignez le studio de cinéma collaboratif propulsé par l\'IA.',
 }
 

@@ -72,7 +72,7 @@ function buildReviewPrompt(
     ? `Tache: "${context.title}" (type: ${context.type})\nInstructions: ${context.instructions || 'Aucune instruction specifique'}\n\n`
     : ''
 
-  return `Tu es un evaluateur qualite pour un studio de cinema collaboratif appele CINEGEN.
+  return `Tu es un evaluateur qualite pour un studio de cinema collaboratif appele CINEGENY.
 Evalue cette soumission et reponds UNIQUEMENT au format JSON suivant (rien d'autre):
 {"score": <number 0-100>, "feedback": "<string en francais>", "verdict": "<AI_APPROVED ou AI_FLAGGED>"}
 
@@ -130,7 +130,7 @@ export async function analyzeScenario(
       messages: [
         {
           role: 'user',
-          content: `Tu es un lecteur de scenario professionnel pour le studio CINEGEN.
+          content: `Tu es un lecteur de scenario professionnel pour le studio CINEGENY.
 Analyse ce scenario et reponds UNIQUEMENT au format JSON:
 {"score": <0-100>, "analysis": "<analyse en francais, 2-3 phrases>", "suggestions": ["<suggestion 1>", "<suggestion 2>", "<suggestion 3>"]}
 
@@ -177,7 +177,7 @@ export async function generateSynopsis(
       messages: [
         {
           role: 'user',
-          content: `Tu es un scenariste professionnel pour le studio CINEGEN.
+          content: `Tu es un scenariste professionnel pour le studio CINEGENY.
 Genere un concept de film et reponds UNIQUEMENT au format JSON:
 {"logline": "<1 phrase accrocheuse>", "synopsis": "<3 paragraphes, style cinematographique>", "genres": ["<genre1>", "<genre2>", "<genre3>"]}
 

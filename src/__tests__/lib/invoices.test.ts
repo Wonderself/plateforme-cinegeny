@@ -27,7 +27,7 @@ describe('generateInvoice', () => {
   const sampleData = {
     invoiceNumber: 'LB-2026-0225-ABC123',
     date: '2026-02-25',
-    platformName: 'CINEGEN Studio SAS',
+    platformName: 'CINEGENY Studio SAS',
     platformAddress: 'Paris, France',
     platformSiret: '000 000 000 00000',
     platformVat: 'FR00000000000',
@@ -55,7 +55,7 @@ describe('generateInvoice', () => {
 
   it('includes platform info', () => {
     const invoice = generateInvoice(sampleData)
-    expect(invoice).toContain('CINEGEN Studio SAS')
+    expect(invoice).toContain('CINEGENY Studio SAS')
     expect(invoice).toContain('Paris, France')
   })
 
@@ -134,7 +134,7 @@ describe('buildInvoiceData', () => {
 
 describe('PLATFORM_INFO', () => {
   it('has required fields', () => {
-    expect(PLATFORM_INFO.name).toBe('CINEGEN Studio SAS')
+    expect(PLATFORM_INFO.name).toBe('CINEGENY Studio SAS')
     expect(PLATFORM_INFO.address).toBeDefined()
     expect(PLATFORM_INFO.siret).toBeDefined()
     expect(PLATFORM_INFO.vat).toBeDefined()

@@ -11,7 +11,7 @@ import {
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
-export const metadata: Metadata = { title: 'Control Panel — Admin CINEGEN' }
+export const metadata: Metadata = { title: 'Control Panel — Admin CINEGENY' }
 
 type PageStatus = 'functional' | 'partial' | 'stub'
 

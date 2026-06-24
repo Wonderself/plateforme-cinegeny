@@ -1135,7 +1135,7 @@ export default function ActPage() {
           <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">My Portfolio</h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              Your generated appearances across CINEGEN films.
+              Your generated appearances across CINEGENY films.
             </p>
           </div>
 
@@ -1189,7 +1189,7 @@ export default function ActPage() {
                 Your appearance in this film is recorded on-chain. You retain full rights to your
                 likeness. Every AI-generated scene that includes your face is cryptographically
                 signed and traceable, ensuring you always have provable ownership and control over
-                how your image is used across the CINEGEN ecosystem.
+                how your image is used across the CINEGENY ecosystem.
               </p>
             </div>
           </div>
@@ -1232,7 +1232,7 @@ export default function ActPage() {
               <div className="px-8 pb-8 space-y-6 border-t border-white/[0.06] pt-6">
                 <div className="space-y-4 text-sm text-white/50 leading-relaxed">
                   <p>
-                    When you upload your photo or voice recording to CINEGEN, our AI processes your
+                    When you upload your photo or voice recording to CINEGENY, our AI processes your
                     likeness to generate a digital character based on your appearance. Here is what
                     you should know:
                   </p>
@@ -1270,7 +1270,7 @@ export default function ActPage() {
                     {consentChecked && <Check className="h-3 w-3 text-white" />}
                   </button>
                   <span className="text-sm text-white/60 leading-relaxed">
-                    I consent to AI generation of my likeness for CINEGEN productions. I understand
+                    I consent to AI generation of my likeness for CINEGENY productions. I understand
                     that I may revoke this consent at any time.
                   </span>
                 </label>

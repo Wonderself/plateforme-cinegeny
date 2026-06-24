@@ -115,7 +115,7 @@ export default function TvShowsCatalogPage() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20 text-[#2563EB] text-sm mb-8">
             <MonitorPlay className="h-4 w-4" />
-            <span className="font-medium">CINEGEN TV Shows</span>
+            <span className="font-medium">CINEGENY TV Shows</span>
           </div>
 
           {/* Title */}

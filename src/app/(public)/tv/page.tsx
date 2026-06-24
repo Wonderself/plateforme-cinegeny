@@ -260,7 +260,7 @@ export default function TvHomePage() {
       <div className="relative z-10">
 
         {/* ═══════════════════════════════════════════
-            B. CINEGEN TV LIVE BANNER
+            B. CINEGENY TV LIVE BANNER
             ═══════════════════════════════════════════ */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#1D4ED8] via-[#2563EB] to-[#1D4ED8]" />
@@ -279,7 +279,7 @@ export default function TvHomePage() {
               </div>
               <div>
                 <p className="text-sm md:text-base font-bold text-white">
-                  {liveShow ? liveShow.title : 'CINEGEN TV'} — <span className="text-white/70">Live Now</span>
+                  {liveShow ? liveShow.title : 'CINEGENY TV'} — <span className="text-white/70">Live Now</span>
                 </p>
                 <p className="text-[10px] text-white/50">{viewerCount !== null ? viewerCount.toLocaleString() : '---'} watching now</p>
               </div>
@@ -426,7 +426,7 @@ export default function TvHomePage() {
             <div className="max-w-4xl mx-auto">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/10 mb-5 animate-[subtlePulse_3s_ease-in-out_infinite]">
                 <Tv className="h-3.5 w-3.5 text-[#2563EB]" />
-                <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-wider">CINEGEN TV Studios</span>
+                <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-wider">CINEGENY TV Studios</span>
               </div>
 
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-3 tracking-tight leading-[1.1]">
@@ -441,7 +441,7 @@ export default function TvHomePage() {
                   {
                     icon: Sparkles,
                     title: 'CREATE',
-                    desc: 'Write, direct, and produce your own original series on CINEGEN TV.',
+                    desc: 'Write, direct, and produce your own original series on CINEGENY TV.',
                     href: '/tv/create',
                     accent: '#2563EB',
                     image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=400&h=500&q=80',
@@ -512,7 +512,7 @@ export default function TvHomePage() {
         })}
 
         {/* ═══════════════════════════════════════════
-            F. TRENDING on CINEGEN TV — Top 10
+            F. TRENDING on CINEGENY TV — Top 10
             ═══════════════════════════════════════════ */}
         <section className="relative py-8 md:py-12">
           <div className="h-px bg-gradient-to-r from-transparent via-[#2563EB]/10 to-transparent" />
@@ -525,7 +525,7 @@ export default function TvHomePage() {
               </span>
             </div>
             <h2 className="text-base md:text-lg lg:text-xl font-black text-white/90 tracking-tight">
-              Trending on CINEGEN TV
+              Trending on CINEGENY TV
             </h2>
             <p className="text-[11px] text-white/30 mt-1">The most-watched shows right now</p>
           </div>
@@ -679,13 +679,13 @@ export default function TvHomePage() {
         </section>
 
         {/* ═══════════════════════════════════════════
-            H. EXPLORE CINEGEN TV — Quick-links
+            H. EXPLORE CINEGENY TV — Quick-links
             ═══════════════════════════════════════════ */}
         <section className="relative py-10 md:py-14">
           <div className="h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
           <div className="px-4 sm:px-8 md:px-16 lg:px-20 mt-8">
             <h2 className="text-base md:text-lg font-black text-white/90 tracking-tight mb-6">
-              Explore CINEGEN TV
+              Explore CINEGENY TV
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
               {[

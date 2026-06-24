@@ -1,5 +1,5 @@
 /**
- * Shared TV show data for CINEGEN TV — 80 shows across 10 genres.
+ * Shared TV show data for CINEGENY TV — 80 shows across 10 genres.
  * Unified interface supporting all consuming pages.
  */
 
@@ -1514,7 +1514,7 @@ export const ALL_TV_SHOWS: TvShowData[] = [
     genre: 'Game Show',
     host: 'Chip Spinner',
     cast: ['Chip Spinner', 'Puzzle Bot Patty', 'Prize Vault AI'],
-    synopsis: 'Spin the wheel, solve AI puzzles, win crypto tokens. The most addictive game show on CINEGEN TV.',
+    synopsis: 'Spin the wheel, solve AI puzzles, win crypto tokens. The most addictive game show on CINEGENY TV.',
     episodeCount: 35,
     duration: 30,
     seasons: 2,

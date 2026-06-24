@@ -141,7 +141,7 @@ export default async function SubmitFilmPage() {
                   <label className="flex items-start gap-3 cursor-pointer">
                     <input type="checkbox" name="exclusivity" value="true" className="mt-1 accent-[#C9A227]" />
                     <div>
-                      <p className="text-white font-medium">CINEGEN Exclusive</p>
+                      <p className="text-white font-medium">CINEGENY Exclusive</p>
                       <p className="text-white/40 text-sm">Ne pas diffuser sur d&apos;autres plateformes → +10% de revenus</p>
                     </div>
                   </label>

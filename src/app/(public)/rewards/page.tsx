@@ -24,7 +24,7 @@ export default function RewardsPage() {
   const xpProgress = getXPProgress(userXP)
   const streakMulti = getStreakMultiplier(streak)
   const dailyChallenges = getDailyChallenges(3)
-  const referralCode = 'CINEGEN-ABC123'
+  const referralCode = 'CINEGENY-ABC123'
 
   async function copyReferral() {
     await navigator.clipboard.writeText(`https://cinegen.com/register?ref=${referralCode}`)

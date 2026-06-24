@@ -10,7 +10,7 @@ export function HeroManifesto() {
         <div className="absolute inset-0">
           <Image
             src="/images/cinegen-studio-hero.jpg"
-            alt="CINEGEN Studio"
+            alt="CINEGENY Studio"
             fill
             className="object-cover object-center"
             sizes="100vw"

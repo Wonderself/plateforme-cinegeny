@@ -3,8 +3,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Roadmap — CINEGEN',
-  description: 'Plan de développement de CINEGEN — du studio IA au streaming mondial. Chaque étape nous rapproche du futur du cinéma.',
+  title: 'Roadmap — CINEGENY',
+  description: 'Plan de développement de CINEGENY — du studio IA au streaming mondial. Chaque étape nous rapproche du futur du cinéma.',
 }
 
 type RoadmapItem = {
@@ -105,7 +105,7 @@ const roadmap: Phase[] = [
     emoji: '🏆',
     items: [
       { id: 'v5-1', title: 'Points & niveaux automatiques', description: 'ROOKIE → PRO → EXPERT → VIP, barre de progression visuelle', status: 'done', difficulty: 'easy', note: 'LevelProgress component + profil + dashboard' },
-      { id: 'v5-2', title: 'Badges & achievements', description: '13 badges : Première CINEGEN, Marathonien, Perfectionniste...', status: 'done', difficulty: 'easy', note: 'achievements.ts + BadgeShowcase + auto-award' },
+      { id: 'v5-2', title: 'Badges & achievements', description: '13 badges : Première CINEGENY, Marathonien, Perfectionniste...', status: 'done', difficulty: 'easy', note: 'achievements.ts + BadgeShowcase + auto-award' },
       { id: 'v5-3', title: 'Profils publics', description: 'Page publique createur avec stats, badges, niveau, contributions', status: 'done', difficulty: 'easy', note: '/users/[id] avec badges + level progress' },
       { id: 'v5-4', title: 'Concours mensuels', description: 'Thèmes, votes communautaires, récompenses automatiques', status: 'done', difficulty: 'medium', note: '12 themes mensuels + createMonthlyContestAction' },
       { id: 'v5-5', title: 'Parrainage', description: 'Liens uniques, bonus 30+10 Lumens, page dashboard', status: 'done', difficulty: 'easy', note: 'referral.ts + /dashboard/referral' },
@@ -292,7 +292,7 @@ export default function RoadmapPage() {
           >
             Roadmap{' '}
             <span className="text-shimmer">
-              CINEGEN
+              CINEGENY
             </span>
           </h1>
           <p className="text-white/40 text-base sm:text-lg mb-12 max-w-2xl mx-auto leading-relaxed">

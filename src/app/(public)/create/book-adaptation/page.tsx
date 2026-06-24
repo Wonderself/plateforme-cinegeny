@@ -90,7 +90,7 @@ export default function BookAdaptationPage() {
   const [showOutline, setShowOutline] = useState(false)
 
   useEffect(() => {
-    document.title = 'Adapter un Livre — CINEGEN'
+    document.title = 'Adapter un Livre — CINEGENY'
   }, [])
 
   if (state?.success && state.analysis) {
@@ -472,7 +472,7 @@ export default function BookAdaptationPage() {
 
         {/* Footer note */}
         <p className="text-center text-white/25 text-xs mt-8 leading-relaxed">
-          En soumettant ce livre, vous autorisez CINEGEN à générer un outline d&apos;adaptation à titre d&apos;analyse.
+          En soumettant ce livre, vous autorisez CINEGENY à générer un outline d&apos;adaptation à titre d&apos;analyse.
           Les droits d&apos;auteur restent la propriété de leurs détenteurs respectifs.
         </p>
       </div>

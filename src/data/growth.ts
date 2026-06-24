@@ -48,7 +48,7 @@ export const PROMO_TYPES: Record<PromoType, { label: string; icon: string; color
 export const SAMPLE_PROMO_CODES: PromoCodeConfig[] = [
   { code: 'WELCOME2026', type: 'credits', value: 5_000_000, maxUses: 1000, usedCount: 47, expiresAt: '2026-12-31', isActive: true, onePerUser: true, description: 'Bienvenue — 5 crédits offerts', createdAt: '2026-03-01', createdBy: 'admin' },
   { code: 'CINEMA50', type: 'discount', value: 50, maxUses: 100, usedCount: 12, expiresAt: '2026-06-30', isActive: true, onePerUser: true, description: '50% de réduction sur le premier pack', createdAt: '2026-03-10', createdBy: 'admin' },
-  { code: 'TRYCINEGEN', type: 'trial', value: 14, maxUses: 500, usedCount: 89, expiresAt: null, isActive: true, onePerUser: true, description: '14 jours d\'essai Premium', createdAt: '2026-01-15', createdBy: 'admin' },
+  { code: 'TRYCINEGENY', type: 'trial', value: 14, maxUses: 500, usedCount: 89, expiresAt: null, isActive: true, onePerUser: true, description: '14 jours d\'essai Premium', createdAt: '2026-01-15', createdBy: 'admin' },
   { code: 'XPBOOST', type: 'bonus_xp', value: 500, maxUses: 200, usedCount: 34, expiresAt: '2026-04-30', isActive: true, onePerUser: true, description: '+500 XP bonus', createdAt: '2026-03-15', createdBy: 'admin' },
 ]
 

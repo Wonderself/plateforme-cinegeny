@@ -201,7 +201,7 @@ export default function TvConceptPage() {
           </div>
 
           <p className="text-base sm:text-lg text-white/50 max-w-2xl leading-relaxed">
-            Every great TV show starts with a powerful concept. Define your format, audience, tone, and pitch to lay the foundation for your CINEGEN TV universe.
+            Every great TV show starts with a powerful concept. Define your format, audience, tone, and pitch to lay the foundation for your CINEGENY TV universe.
           </p>
         </div>
       </section>

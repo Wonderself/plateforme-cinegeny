@@ -353,7 +353,7 @@ export default function ScreenplayNewPage() {
                 />
                 <span className="text-sm text-white/50 group-hover:text-white/70 transition-colors">
                   Je certifie etre l&#39;auteur original de ce scenario et j&#39;accepte les conditions
-                  de soumission de CINEGEN, incluant l&#39;evaluation automatique par IA et le partage
+                  de soumission de CINEGENY, incluant l&#39;evaluation automatique par IA et le partage
                   des revenus tel que defini ci-dessus.
                 </span>
               </label>

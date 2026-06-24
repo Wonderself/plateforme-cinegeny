@@ -13,7 +13,7 @@ import type { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Studio Bande-Annonce — CINEGEN',
+  title: 'Studio Bande-Annonce — CINEGENY',
   description: 'Créez des bandes-annonces cinématographiques avec l\'IA',
 }
 

@@ -18,9 +18,9 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Investisseurs — CINEGEN',
+  title: 'Investisseurs — CINEGENY',
   description:
-    'Investissez dans le cinema de demain. CINEGEN : studio IA, micro-taches collaboratives, tokenisation blockchain.',
+    'Investissez dans le cinema de demain. CINEGENY : studio IA, micro-taches collaboratives, tokenisation blockchain.',
 }
 
 const highlights = [
@@ -89,7 +89,7 @@ export default function InvestPage() {
             <span className="text-shimmer">Cinema de Demain</span>
           </h1>
           <p className="text-lg sm:text-xl text-white/45 max-w-3xl mx-auto leading-relaxed mb-10">
-            CINEGEN reinvents film production with AI,
+            CINEGENY reinvents film production with AI,
             la blockchain et une communaute mondiale de createurs.
           </p>
 
@@ -211,7 +211,7 @@ export default function InvestPage() {
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight"
             >
-              CINEGEN vs The <span className="text-gold-gradient">Market</span>
+              CINEGENY vs The <span className="text-gold-gradient">Market</span>
             </h2>
           </div>
 
@@ -222,7 +222,7 @@ export default function InvestPage() {
                   <th className="text-left p-4 text-white/40 font-medium" />
                   <th className="p-4 text-white/40 font-medium text-center">Hollywood</th>
                   <th className="p-4 text-white/40 font-medium text-center">Netflix</th>
-                  <th className="p-4 text-center font-bold text-[#C9A227] bg-[#C9A227]/[0.05]">CINEGEN</th>
+                  <th className="p-4 text-center font-bold text-[#C9A227] bg-[#C9A227]/[0.05]">CINEGENY</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/[0.04]">
@@ -327,7 +327,7 @@ export default function InvestPage() {
             {[
               { q: 'Quel est le montant minimum pour investir ?', a: 'Vous pouvez investir a partir de 10\u20AC en achetant des tokens de co-production. Chaque token represente une part du film.' },
               { q: 'Comment sont distribues les revenus ?', a: 'Les revenus sont partages proportionnellement au nombre de tokens detenus. Les distributions sont effectuees apres chaque exploitation (streaming, ventes, festivals).' },
-              { q: 'Quel est le cadre juridique ?', a: 'CINEGEN is an Israeli Ltd with a planned Delaware C-Corp for US market. Investments are governed by Israeli securities law with blockchain traceability on Ethereum.' },
+              { q: 'Quel est le cadre juridique ?', a: 'CINEGENY is an Israeli Ltd with a planned Delaware C-Corp for US market. Investments are governed by Israeli securities law with blockchain traceability on Ethereum.' },
               { q: 'Quand vais-je recevoir des retours ?', a: 'Les premiers retours arrivent generalement 12 a 18 mois apres la fin de production, lors de la phase d\'exploitation commerciale.' },
               { q: 'Puis-je revendre mes tokens ?', a: 'Oui, les tokens seront echangeables sur notre marketplace des l\'ouverture de la phase de tokenisation (voir roadmap).' },
               { q: 'Mon investissement est-il garanti ?', a: 'Comme tout investissement dans la creation, il comporte des risques. Cependant, notre modele de production IA reduit les couts de 95% par rapport a Hollywood, limitant significativement le risque.' },

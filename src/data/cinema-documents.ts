@@ -31,7 +31,7 @@ export interface DocField {
 // ─── Common Fields ──────────────────────────────────────────────────
 
 const PARTY_FIELDS: DocField[] = [
-  { key: 'partyAName', label: 'Partie A (Nom complet)', type: 'text', placeholder: 'CINEGEN SAS', required: true },
+  { key: 'partyAName', label: 'Partie A (Nom complet)', type: 'text', placeholder: 'CINEGENY SAS', required: true },
   { key: 'partyAAddress', label: 'Adresse Partie A', type: 'text', placeholder: '123 rue du Cinéma, Paris', required: true },
   { key: 'partyBName', label: 'Partie B (Nom complet)', type: 'text', placeholder: 'Nom du co-contractant', required: true },
   { key: 'partyBAddress', label: 'Adresse Partie B', type: 'text', placeholder: 'Adresse complète', required: true },

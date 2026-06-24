@@ -1040,7 +1040,7 @@ export default function TvActPage() {
               <div className="px-8 pb-8 space-y-6 border-t border-white/[0.06] pt-6">
                 <div className="space-y-4 text-sm text-white/50 leading-relaxed">
                   <p>
-                    When you upload your photo or voice recording to CINEGEN TV, our AI processes your
+                    When you upload your photo or voice recording to CINEGENY TV, our AI processes your
                     likeness to generate a digital character. Here is what you should know:
                   </p>
                   <ul className="list-disc list-inside space-y-2 pl-2">
@@ -1065,7 +1065,7 @@ export default function TvActPage() {
                     {consentChecked && <Check className="h-3 w-3 text-white" />}
                   </button>
                   <span className="text-sm text-white/60 leading-relaxed">
-                    I consent to AI generation of my likeness for CINEGEN TV productions. I understand
+                    I consent to AI generation of my likeness for CINEGENY TV productions. I understand
                     that I may revoke this consent at any time.
                   </span>
                 </label>

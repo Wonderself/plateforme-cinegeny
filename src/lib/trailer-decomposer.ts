@@ -92,7 +92,7 @@ export interface TrailerDecomposeConfig {
   duration: TrailerDuration
   /** Visual style (cinematic, anime, noir, documentary, etc.) */
   style: string
-  /** Whether this is an internal CINEGEN production (adds automation tasks) */
+  /** Whether this is an internal CINEGENY production (adds automation tasks) */
   isInternal: boolean
   /** Whether the trailer includes voiceover narration */
   hasVoiceover: boolean
@@ -1021,7 +1021,7 @@ Cartons a generer :
 1. Titre principal du film — animation d'apparition (2-3 secondes)
 2. 2-3 cartons de transition ("De la part du createur de...", "Cet ete...", etc.)
 3. Tagline — animation subtile
-4. Date de sortie + "Bientot au cinema" / "Exclusivement sur CINEGEN"
+4. Date de sortie + "Bientot au cinema" / "Exclusivement sur CINEGENY"
 5. Logos de production (animation simple)
 
 Specifications :
@@ -1398,7 +1398,7 @@ Finitions :
    - Compression et limiting (loudness broadcast : -14 LUFS)
 3. Etalonnage final : derniers ajustements de couleur
 4. Verification frame par frame des transitions
-5. Ajout du logo CINEGEN en fin
+5. Ajout du logo CINEGENY en fin
 6. Verification de la duree exacte
 7. Dernier visionnage complet en conditions reelles
 
@@ -1465,7 +1465,7 @@ Formats d'export :
    - ProRes 422 HQ, 1920x1080, 24fps (archive)
    - WAV audio master stereo
 
-2. WEB (streaming CINEGEN)
+2. WEB (streaming CINEGENY)
    - H.264, 1920x1080, 24fps, CRF 18 (haute qualite)
    - H.264, 1280x720, 24fps, CRF 20 (mobile)
    - H.265/HEVC, 1920x1080, 24fps (navigateurs compatibles)
@@ -1491,7 +1491,7 @@ Pour chaque export : verifier la qualite, les sous-titres, l'audio.`,
   )
 
   // ─────────────────────────────────────────────
-  // INTERNAL CINEGEN AUTOMATION TASKS
+  // INTERNAL CINEGENY AUTOMATION TASKS
   // ─────────────────────────────────────────────
 
   if (config.isInternal) {
@@ -1499,8 +1499,8 @@ Pour chaque export : verifier la qualite, les sous-titres, l'audio.`,
       'CONCEPT_BRIEF',
       'CONCEPT',
       'Auto-generation du brief par le pipeline interne',
-      'Le pipeline interne CINEGEN genere automatiquement le brief a partir des metadata du film et de la base de donnees projet.',
-      `[PIPELINE INTERNE CINEGEN]
+      'Le pipeline interne CINEGENY genere automatiquement le brief a partir des metadata du film et de la base de donnees projet.',
+      `[PIPELINE INTERNE CINEGENY]
 Genere automatiquement le brief conceptuel en interrogeant :
 1. La base de donnees du film (synopsis, genre, casting)
 2. Les metadata marketing (audience cible, positionnement)

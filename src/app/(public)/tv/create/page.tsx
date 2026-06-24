@@ -104,7 +104,7 @@ const TV_STEPS: TvStep[] = [
     id: 'broadcast',
     number: 7,
     title: 'Broadcast',
-    description: 'Schedule, publish, and go live on CINEGEN TV. Reach your audience worldwide.',
+    description: 'Schedule, publish, and go live on CINEGENY TV. Reach your audience worldwide.',
     href: '/tv/create/broadcast',
     icon: Radio,
     unsplashImage: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&h=500&q=80',
@@ -146,12 +146,12 @@ const FAQ_ITEMS = [
     a: 'We support sitcoms (22min), dramas (45min), late night shows (60min), short-form content (10min), and custom formats. Each comes with tailored templates.',
   },
   {
-    q: 'Can my show go live on CINEGEN TV?',
-    a: 'Yes! After completing all 7 steps, submit your show for community review. Approved shows are scheduled for broadcast on the CINEGEN TV network.',
+    q: 'Can my show go live on CINEGENY TV?',
+    a: 'Yes! After completing all 7 steps, submit your show for community review. Approved shows are scheduled for broadcast on the CINEGENY TV network.',
   },
   {
     q: 'How much does it cost?',
-    a: 'All AI generation tools are included with your subscription. Broadcasting on CINEGEN TV is free for approved shows. Premium time slots are available for a fee.',
+    a: 'All AI generation tools are included with your subscription. Broadcasting on CINEGENY TV is free for approved shows. Premium time slots are available for a fee.',
   },
 ]
 
@@ -566,13 +566,13 @@ export default function TvCreatePage() {
               {
                 icon: Vote,
                 title: 'Submit to Vote',
-                description: 'Submit your completed show to the CINEGEN community for review and approval.',
+                description: 'Submit your completed show to the CINEGENY community for review and approval.',
                 step: '02',
               },
               {
                 icon: Play,
                 title: 'Go Live',
-                description: 'Approved shows are scheduled for broadcast on CINEGEN TV. Reach audiences worldwide.',
+                description: 'Approved shows are scheduled for broadcast on CINEGENY TV. Reach audiences worldwide.',
                 step: '03',
               },
             ].map((item) => (

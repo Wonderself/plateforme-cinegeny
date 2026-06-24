@@ -347,7 +347,7 @@ export default function FilmCategories() {
                 backgroundClip: 'text',
               }}
             >
-              CINEGEN
+              CINEGENY
             </span>
           </h2>
           <p className="text-white/50 max-w-xl mx-auto text-sm">

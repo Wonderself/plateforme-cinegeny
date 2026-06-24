@@ -126,7 +126,7 @@ ${estimatedBudget === 'HIGH' ? '\n- **Budget VFX** : prévoir un budget signific
 - ${estimatedBudget === 'HIGH' ? '2-3 designers concept art' : '1 designer concept art'}
 - 1 directeur artistique
 
-*Outline généré automatiquement par le Pipeline CINEGEN Studio.*
+*Outline généré automatiquement par le Pipeline CINEGENY Studio.*
 `
 
   return {

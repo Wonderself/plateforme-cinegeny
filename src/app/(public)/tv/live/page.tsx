@@ -86,7 +86,7 @@ const SIMULATED_CHAT: ChatMessage[] = [
   { id: 1, username: 'PixelFan42', message: 'This episode is incredible!', timestamp: '2 min ago', color: CHAT_COLORS[0] },
   { id: 2, username: 'AIMovieBuff', message: 'The production quality keeps getting better', timestamp: '2 min ago', color: CHAT_COLORS[1] },
   { id: 3, username: 'NeuralNerd', message: 'Anyone know if they are dropping a new season?', timestamp: '1 min ago', color: CHAT_COLORS[2] },
-  { id: 4, username: 'CineBot3000', message: 'CINEGEN TV >>> everything else', timestamp: '1 min ago', color: CHAT_COLORS[3] },
+  { id: 4, username: 'CineBot3000', message: 'CINEGENY TV >>> everything else', timestamp: '1 min ago', color: CHAT_COLORS[3] },
   { id: 5, username: 'StreamQueen', message: 'That plot twist though...', timestamp: '1 min ago', color: CHAT_COLORS[4] },
   { id: 6, username: 'TokenHolder', message: 'Glad I invested in this platform', timestamp: '45s ago', color: CHAT_COLORS[5] },
   { id: 7, username: 'RenderWolf', message: 'The AI acting has gotten so natural', timestamp: '30s ago', color: CHAT_COLORS[6] },
@@ -225,7 +225,7 @@ export default function TvLivePage() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#2563EB]/[0.08] via-transparent to-transparent" />
                 <div className="relative text-center">
                   <Tv className="h-20 w-20 text-[#2563EB]/30 mx-auto mb-4" />
-                  <p className="text-white/20 text-lg">CINEGEN TV — Live Stream</p>
+                  <p className="text-white/20 text-lg">CINEGENY TV — Live Stream</p>
                 </div>
               </div>
 
@@ -247,7 +247,7 @@ export default function TvLivePage() {
               {/* Channel badge */}
               <div className="absolute top-4 right-4 z-10">
                 <div className="px-3 py-1.5 rounded-lg bg-[#2563EB]/20 backdrop-blur-sm border border-[#2563EB]/30">
-                  <span className="text-[#2563EB] font-bold text-sm">CINEGEN TV</span>
+                  <span className="text-[#2563EB] font-bold text-sm">CINEGENY TV</span>
                 </div>
               </div>
 
@@ -490,7 +490,7 @@ export default function TvLivePage() {
         {/* ─── E. WEEKLY SCHEDULE PREVIEW ─── */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6 font-[family-name:var(--font-playfair)]">
-            This Week on CINEGEN TV
+            This Week on CINEGENY TV
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
             {WEEKLY_PRIME_TIME.map(({ day, showIndex }) => {
@@ -523,15 +523,15 @@ export default function TvLivePage() {
           </div>
         </section>
 
-        {/* ─── ABOUT CINEGEN TV ─── */}
+        {/* ─── ABOUT CINEGENY TV ─── */}
         <section className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 mb-12">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-white mb-3 font-[family-name:var(--font-playfair)]">
-                About CINEGEN TV
+                About CINEGENY TV
               </h2>
               <p className="text-white/50 leading-relaxed max-w-2xl">
-                CINEGEN TV is the world&apos;s first 24/7 AI-generated television channel. From talk shows
+                CINEGENY TV is the world&apos;s first 24/7 AI-generated television channel. From talk shows
                 to dramas, game shows to late-night comedy — every frame is created by artificial intelligence.
                 Tune in live or catch up on replay.
               </p>

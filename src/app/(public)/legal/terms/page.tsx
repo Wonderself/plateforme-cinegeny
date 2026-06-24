@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Conditions Générales d\'Utilisation',
-  description: 'Conditions générales d\'utilisation de la plateforme CINEGEN — micro-tâches collaboratives pour la production de films IA.',
+  description: 'Conditions générales d\'utilisation de la plateforme CINEGENY — micro-tâches collaboratives pour la production de films IA.',
 }
 
 export default function TermsPage() {
@@ -31,8 +31,8 @@ export default function TermsPage() {
           <section>
             <p className="text-white/70 leading-relaxed">
               Les présentes Conditions Générales d&apos;Utilisation (ci-après « CGU ») régissent
-              l&apos;accès et l&apos;utilisation de la plateforme <strong className="text-[#C9A227]">CINEGEN</strong> (ci-après
-              « la Plateforme »), éditée par la société CINEGEN Studio, SAS au capital
+              l&apos;accès et l&apos;utilisation de la plateforme <strong className="text-[#C9A227]">CINEGENY</strong> (ci-après
+              « la Plateforme »), éditée par la société CINEGENY Studio, SAS au capital
               de 10 000 €, immatriculée au RCS de Paris sous le numéro [à compléter], dont le
               siège social est situé à [adresse à compléter], Paris, France.
             </p>
@@ -51,7 +51,7 @@ export default function TermsPage() {
               Article 1 — Objet du service
             </h2>
             <p className="text-white/70 leading-relaxed">
-              La Plateforme CINEGEN est un service en ligne de micro-tâches collaboratives
+              La Plateforme CINEGENY est un service en ligne de micro-tâches collaboratives
               dédié à la production de films générés par intelligence artificielle. Elle met en
               relation des contributeurs (artistes, techniciens, créatifs) avec des projets
               cinématographiques nécessitant des interventions humaines ponctuelles et
@@ -103,7 +103,7 @@ export default function TermsPage() {
               L&apos;utilisateur est seul responsable de la confidentialité de ses identifiants de
               connexion. Toute activité réalisée depuis son compte est réputée effectuée par lui.
               En cas de suspicion d&apos;utilisation frauduleuse, l&apos;utilisateur doit en informer
-              CINEGEN sans délai à l&apos;adresse{' '}
+              CINEGENY sans délai à l&apos;adresse{' '}
               <span className="text-[#C9A227]">security@cinegen.studio</span>.
             </p>
           </section>
@@ -167,14 +167,14 @@ export default function TermsPage() {
             <h3 className="text-lg font-semibold text-white/90 mb-2">4.1. Contenus de la Plateforme</h3>
             <p className="text-white/70 leading-relaxed">
               L&apos;ensemble des éléments constituant la Plateforme (design, code, textes, logos,
-              marques) est la propriété exclusive de CINEGEN Studio et est protégé
+              marques) est la propriété exclusive de CINEGENY Studio et est protégé
               par le droit de la propriété intellectuelle français et international.
             </p>
 
             <h3 className="text-lg font-semibold text-white/90 mb-2 mt-4">4.2. Soumissions des contributeurs</h3>
             <p className="text-white/70 leading-relaxed">
               En soumettant un contenu (texte, image, vidéo, audio ou tout autre fichier) dans
-              le cadre d&apos;une tâche, le contributeur concède à CINEGEN Studio une
+              le cadre d&apos;une tâche, le contributeur concède à CINEGENY Studio une
               licence mondiale, non exclusive, cessible et sous-licenciable pour une durée de
               70 ans, aux fins d&apos;intégration dans le film concerné et de son exploitation
               commerciale sur tous supports.
@@ -196,7 +196,7 @@ export default function TermsPage() {
             <h3 className="text-lg font-semibold text-white/90 mb-2 mt-4">4.4. Contenus générés par IA</h3>
             <p className="text-white/70 leading-relaxed">
               Les contenus générés par intelligence artificielle dans le cadre de la production
-              des films sont la propriété de CINEGEN Studio. Le contributeur qui
+              des films sont la propriété de CINEGENY Studio. Le contributeur qui
               intervient sur un contenu IA (retouche, correction, adaptation) acquiert un droit
               de co-création sur sa contribution spécifique.
             </p>
@@ -238,7 +238,7 @@ export default function TermsPage() {
             </h2>
             <h3 className="text-lg font-semibold text-white/90 mb-2">6.1. Obligation de moyens</h3>
             <p className="text-white/70 leading-relaxed">
-              CINEGEN Studio s&apos;engage à mettre en œuvre tous les moyens
+              CINEGENY Studio s&apos;engage à mettre en œuvre tous les moyens
               raisonnables pour assurer le bon fonctionnement et la disponibilité de la
               Plateforme. Cette obligation est une obligation de moyens et non de résultat.
             </p>
@@ -286,7 +286,7 @@ export default function TermsPage() {
             <h3 className="text-lg font-semibold text-white/90 mb-2 mt-4">7.3. Fiscalité</h3>
             <p className="text-white/70 leading-relaxed">
               Les revenus perçus via la Plateforme sont imposables conformément à la
-              législation fiscale applicable au pays de résidence du contributeur. CINEGEN
+              législation fiscale applicable au pays de résidence du contributeur. CINEGENY
               Brothers Pictures délivre les documents fiscaux nécessaires (récapitulatif annuel)
               pour les contributeurs résidant en France. Le contributeur reste seul responsable
               de ses déclarations fiscales.
@@ -294,7 +294,7 @@ export default function TermsPage() {
 
             <h3 className="text-lg font-semibold text-white/90 mb-2 mt-4">7.4. Commission</h3>
             <p className="text-white/70 leading-relaxed">
-              CINEGEN Studio prélève une commission de 15 % sur chaque transaction
+              CINEGENY Studio prélève une commission de 15 % sur chaque transaction
               entre producteur et contributeur. Cette commission couvre les frais de
               fonctionnement de la Plateforme, la maintenance du système de validation IA et
               les coûts d&apos;infrastructure.
@@ -327,7 +327,7 @@ export default function TermsPage() {
               Article 9 — Modification des CGU
             </h2>
             <p className="text-white/70 leading-relaxed">
-              CINEGEN Studio se réserve le droit de modifier les présentes CGU à
+              CINEGENY Studio se réserve le droit de modifier les présentes CGU à
               tout moment. Les utilisateurs seront informés de toute modification substantielle
               par email et/ou par notification sur la Plateforme au moins trente (30) jours avant
               leur entrée en vigueur.
@@ -355,7 +355,7 @@ export default function TermsPage() {
               la conversion des Lumens restants.
             </p>
             <p className="text-white/70 leading-relaxed mt-3">
-              CINEGEN Studio peut suspendre ou résilier un compte en cas de
+              CINEGENY Studio peut suspendre ou résilier un compte en cas de
               manquement aux présentes CGU, après mise en demeure restée infructueuse pendant
               15 jours, sauf en cas de manquement grave justifiant une suspension immédiate.
             </p>
@@ -377,7 +377,7 @@ export default function TermsPage() {
             <p className="text-white/70 leading-relaxed mt-3">
               Conformément aux articles L. 611-1 et suivants du Code de la consommation,
               en cas de litige non résolu, le consommateur peut recourir gratuitement au
-              médiateur de la consommation dont relève CINEGEN Studio. Les
+              médiateur de la consommation dont relève CINEGENY Studio. Les
               coordonnées du médiateur seront communiquées sur demande.
             </p>
           </section>
@@ -394,7 +394,7 @@ export default function TermsPage() {
             </p>
             <ul className="text-white/70 leading-relaxed mt-3 space-y-1 ml-4">
               <li>Par email : <span className="text-[#C9A227]">legal@cinegen.studio</span></li>
-              <li>Par courrier : CINEGEN Studio — [adresse à compléter], 75000 Paris, France</li>
+              <li>Par courrier : CINEGENY Studio — [adresse à compléter], 75000 Paris, France</li>
             </ul>
           </section>
 

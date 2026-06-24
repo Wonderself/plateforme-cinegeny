@@ -109,10 +109,10 @@ export default function TvReplayPage() {
         <div className="relative px-4 sm:px-8 md:px-16 lg:px-20 py-20 sm:py-28 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20 mb-6">
             <Tv className="h-4 w-4 text-[#2563EB]" />
-            <span className="text-[#2563EB] text-sm font-medium">CINEGEN TV Replay</span>
+            <span className="text-[#2563EB] text-sm font-medium">CINEGENY TV Replay</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 font-[family-name:var(--font-playfair)]">
-            Replay — Catch Up on CINEGEN TV
+            Replay — Catch Up on CINEGENY TV
           </h1>
           <p className="text-white/50 text-lg max-w-xl mx-auto">
             Missed a show? Watch it here within 7 days of airing.
@@ -342,7 +342,7 @@ export default function TvReplayPage() {
               </div>
               <p className="text-white/50 leading-relaxed max-w-lg">
                 Free users get access to the last 3 episodes of each show. Upgrade to Premium
-                for the complete replay archive with every episode ever aired on CINEGEN TV.
+                for the complete replay archive with every episode ever aired on CINEGENY TV.
               </p>
             </div>
             <Link

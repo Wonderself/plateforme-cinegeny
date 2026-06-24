@@ -137,7 +137,7 @@ export function HeroBanner({ films }: { films: HeroFilm[] }) {
             {/* Synopsis with frosted glass background */}
             <div className="mb-10 md:mb-12">
               <p className="text-sm md:text-[15px] lg:text-base text-white/55 line-clamp-3 leading-[1.7] max-w-lg">
-                {film.synopsis || 'Decouvrez ce projet sur CINEGEN.'}
+                {film.synopsis || 'Decouvrez ce projet sur CINEGENY.'}
               </p>
             </div>
 

@@ -5,8 +5,8 @@ import { LoginForm } from './login-form'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Sign In — CINEGEN',
-  description: 'Sign in to your CINEGEN account.',
+  title: 'Sign In — CINEGENY',
+  description: 'Sign in to your CINEGENY account.',
 }
 
 export default function LoginPage() {

@@ -11,7 +11,7 @@ import type { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Billing & Revenus — Admin CINEGEN',
+  title: 'Billing & Revenus — Admin CINEGENY',
   description: 'Dashboard administrateur des revenus et de la facturation IA',
 }
 

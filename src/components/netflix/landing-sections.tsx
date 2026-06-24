@@ -179,7 +179,7 @@ export function PipelineVisual() {
           De l&apos;idee au <span className="text-[#C9A227]">grand ecran</span>
         </h2>
         <p className="text-sm md:text-base text-white/30 max-w-lg mx-auto">
-          Le parcours d&apos;un film CINEGEN, du premier mot a la premiere projection
+          Le parcours d&apos;un film CINEGENY, du premier mot a la premiere projection
         </p>
       </motion.div>
 
@@ -276,7 +276,7 @@ export function ComparisonTable() {
         <h2
           className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6"
         >
-          Pourquoi <span className="text-[#C9A227]">CINEGEN</span>
+          Pourquoi <span className="text-[#C9A227]">CINEGENY</span>
         </h2>
         <p className="text-sm md:text-base text-white/30 max-w-lg mx-auto">
           La comparaison parle d&apos;elle-meme
@@ -299,7 +299,7 @@ export function ComparisonTable() {
             <p className="text-[11px] font-bold text-white/25 uppercase tracking-wider">Netflix</p>
           </div>
           <div className="p-6 md:p-7 text-center border-l border-[#C9A227]/10 bg-[#C9A227]/[0.03]">
-            <p className="text-[11px] font-black text-[#C9A227] uppercase tracking-wider">CINEGEN</p>
+            <p className="text-[11px] font-black text-[#C9A227] uppercase tracking-wider">CINEGENY</p>
           </div>
         </div>
 

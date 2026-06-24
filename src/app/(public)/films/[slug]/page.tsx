@@ -25,10 +25,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const film = await prisma.film.findUnique({ where: { slug } })
   if (film) {
     return {
-      title: `${film.title} — CINEGEN`,
-      description: film.description || film.synopsis || `${film.title} on CINEGEN`,
+      title: `${film.title} — CINEGENY`,
+      description: film.description || film.synopsis || `${film.title} on CINEGENY`,
       openGraph: {
-        title: `${film.title} — CINEGEN`,
+        title: `${film.title} — CINEGENY`,
         description: film.description || film.synopsis || undefined,
         images: film.coverImageUrl ? [film.coverImageUrl] : undefined,
       },
@@ -38,15 +38,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const fake = FILMS_BY_SLUG[slug] || ARCHIVED_FILMS_BY_SLUG[slug]
   if (fake) {
     return {
-      title: `${fake.title} — CINEGEN`,
-      description: fake.synopsis || `${fake.title} on CINEGEN`,
+      title: `${fake.title} — CINEGENY`,
+      description: fake.synopsis || `${fake.title} on CINEGENY`,
       openGraph: {
-        title: `${fake.title} — CINEGEN`,
+        title: `${fake.title} — CINEGENY`,
         description: fake.synopsis || undefined,
       },
     }
   }
-  return { title: 'Film Not Found — CINEGEN' }
+  return { title: 'Film Not Found — CINEGENY' }
 }
 
 export default async function FilmDetailPage({ params }: Props) {
@@ -104,7 +104,7 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
     url: `https://cinegen.studio/films/${film.slug}`,
     productionCompany: {
       '@type': 'Organization',
-      name: 'CINEGEN Studio',
+      name: 'CINEGENY Studio',
       url: 'https://cinegen.studio',
     },
     dateCreated: film.createdAt.toISOString(),
@@ -143,7 +143,7 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
               <div className="mt-3">
                 <SocialShare
                   url={`https://cinegen.studio/films/${film.slug}`}
-                  title={`${film.title} — Film en Production | CINEGEN`}
+                  title={`${film.title} — Film en Production | CINEGENY`}
                   description={film.synopsis || film.description || undefined}
                 />
               </div>
@@ -333,7 +333,7 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
     dateCreated: `${film.year}-01-01`,
     productionCompany: {
       '@type': 'Organization',
-      name: 'CINEGEN Studio',
+      name: 'CINEGENY Studio',
       url: 'https://cinegen.studio',
     },
   }
@@ -375,7 +375,7 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
               <div className="mt-3">
                 <SocialShare
                   url={`https://cinegen.studio/films/${film.slug}`}
-                  title={`${film.title} — ${film.genre} | CINEGEN`}
+                  title={`${film.title} — ${film.genre} | CINEGENY`}
                   description={film.synopsis}
                 />
               </div>

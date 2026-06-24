@@ -22,8 +22,8 @@ import {
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Mes Commandes — CINEGEN',
-  description: 'Suivez l\'état de vos commandes vidéo sur CINEGEN.',
+  title: 'Mes Commandes — CINEGENY',
+  description: 'Suivez l\'état de vos commandes vidéo sur CINEGENY.',
 }
 
 type OrderStatus =
@@ -196,7 +196,7 @@ export default async function DashboardOrdersPage() {
             Aucune commande pour l&apos;instant
           </h2>
           <p className="text-white/50 text-sm max-w-sm mx-auto mb-8 leading-relaxed">
-            Passez votre première commande vidéo pour collaborer avec des créateurs CINEGEN.
+            Passez votre première commande vidéo pour collaborer avec des créateurs CINEGENY.
           </p>
           <Link
             href="/collabs/orders"

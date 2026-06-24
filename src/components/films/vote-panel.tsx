@@ -166,7 +166,7 @@ export function VotePanel({
 
       <p className="text-sm text-white/50 mb-6">
         Pensez-vous que <span className="text-white/80 font-medium">{filmTitle}</span> devrait
-        etre produit par CINEGEN ?
+        etre produit par CINEGENY ?
       </p>
 
       {/* Vote buttons */}

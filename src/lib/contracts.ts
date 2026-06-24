@@ -14,7 +14,7 @@ export function generateFilmContract(params: {
   const { creatorName, filmTitle, revenueSharePct, exclusivity, exclusivityBonus, signDate } = params
   const totalShare = exclusivity ? revenueSharePct + exclusivityBonus : revenueSharePct
 
-  return `# CONTRAT DE DISTRIBUTION — CINEGEN STUDIO
+  return `# CONTRAT DE DISTRIBUTION — CINEGENY STUDIO
 
 **Date :** ${signDate}
 
@@ -24,13 +24,13 @@ export function generateFilmContract(params: {
 
 **Le Créateur :** ${creatorName}
 
-**La Plateforme :** CINEGEN Studio SAS (ci-après "LB")
+**La Plateforme :** CINEGENY Studio SAS (ci-après "LB")
 
 ---
 
 ## ARTICLE 1 — OBJET
 
-Le présent contrat porte sur la distribution du film **"${filmTitle}"** (ci-après "l'Œuvre") sur la plateforme CINEGEN.
+Le présent contrat porte sur la distribution du film **"${filmTitle}"** (ci-après "l'Œuvre") sur la plateforme CINEGENY.
 
 ## ARTICLE 2 — DROITS CONCÉDÉS
 
@@ -51,7 +51,7 @@ ${exclusivity ? `  - Part de base : ${revenueSharePct}% + Bonus exclusivité : $
 
 Le Créateur s'engage à :
 - Partager le lien de l'Œuvre sur ses réseaux sociaux **au minimum 1 fois par mois**
-- Mentionner "Disponible sur CINEGEN" dans ses communications relatives à l'Œuvre
+- Mentionner "Disponible sur CINEGENY" dans ses communications relatives à l'Œuvre
 - Ne pas dénigrer la plateforme publiquement
 
 ## ARTICLE 5 — GARANTIES DU CRÉATEUR
@@ -82,7 +82,7 @@ Le présent contrat est régi par le droit français. Tout litige sera soumis au
 
 **Signature électronique :** En cliquant "J'accepte", le Créateur reconnaît avoir lu et accepté l'ensemble des termes du présent contrat.
 
-*Document généré automatiquement par CINEGEN Studio le ${signDate}.*
+*Document généré automatiquement par CINEGENY Studio le ${signDate}.*
 `
 }
 
@@ -112,7 +112,7 @@ export function generateScreenplayDeal(params: {
       ? `Scénario co-écrit par ${writerName}`
       : `D'après une histoire de ${writerName}`
 
-  return `# CONTRAT D'ACQUISITION DE SCÉNARIO — CINEGEN STUDIO
+  return `# CONTRAT D'ACQUISITION DE SCÉNARIO — CINEGENY STUDIO
 
 **Date :** ${signDate}
 **Référence :** DEAL-${Date.now().toString(36).toUpperCase()}
@@ -123,7 +123,7 @@ export function generateScreenplayDeal(params: {
 
 **L'Auteur :** ${writerName}
 
-**Le Producteur :** CINEGEN Studio SAS (ci-après "LB")
+**Le Producteur :** CINEGENY Studio SAS (ci-après "LB")
 
 ---
 
@@ -196,6 +196,6 @@ Le présent contrat est régi par le droit français. Tout litige sera soumis au
 
 **Signature électronique :** En acceptant ce deal, l'Auteur reconnaît avoir lu et accepté l'ensemble des termes du présent contrat.
 
-*Contrat généré automatiquement par CINEGEN Studio le ${signDate}.*
+*Contrat généré automatiquement par CINEGENY Studio le ${signDate}.*
 `
 }

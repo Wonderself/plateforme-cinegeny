@@ -37,7 +37,7 @@ const DISCUSSIONS: Discussion[] = [
   { id: 8, title: 'Creator House alumni: where are they now?', author: 'RealityCheck', category: 'Creator Spotlight', replies: 67, upvotes: 540, timeAgo: '16h ago', showTag: 'Creator House' },
   { id: 9, title: 'Plot Twist S3E18 - I screamed at the bad descriptions', author: 'ComedyLover', category: 'Episode Review', replies: 112, upvotes: 830, timeAgo: '18h ago', showTag: 'Plot Twist' },
   { id: 10, title: 'Street Eats Mexico City episode was a masterpiece', author: 'Wanderlust', category: 'Episode Review', replies: 78, upvotes: 620, timeAgo: '20h ago', showTag: 'Street Eats' },
-  { id: 11, title: 'Hidden connections between all CINEGEN TV shows', author: 'EasterEggHunter', category: 'Fan Theory', replies: 256, upvotes: 2100, timeAgo: '1d ago', hot: true },
+  { id: 11, title: 'Hidden connections between all CINEGENY TV shows', author: 'EasterEggHunter', category: 'Fan Theory', replies: 256, upvotes: 2100, timeAgo: '1d ago', hot: true },
   { id: 12, title: 'Sierra Greenlight\'s pitch advice changed my career', author: 'IndieFilmmaker', category: 'Creator Spotlight', replies: 45, upvotes: 670, timeAgo: '1d ago', showTag: 'Pitch Perfect' },
   { id: 13, title: 'Signal Noise viral monologue - dissecting the genius', author: 'PopCultureNerd', category: 'Show Discussion', replies: 134, upvotes: 980, timeAgo: '1d ago', showTag: 'Signal Noise' },
   { id: 14, title: 'The Studio vs Network: which drama series is better?', author: 'DramaCritic', category: 'Show Discussion', replies: 189, upvotes: 1340, timeAgo: '2d ago' },
@@ -91,10 +91,10 @@ const BADGE_COLORS: Record<string, string> = {
    ──────────────────────────────────────────────── */
 
 const CONTESTS = [
-  { title: 'Best Episode of 2026', description: 'Vote for the most memorable episode across all CINEGEN TV shows this year.', entries: 1240, deadline: 'Mar 31, 2026', icon: Trophy, active: true },
-  { title: 'Best TV Host', description: 'Who deserves the crown? Vote for your favorite CINEGEN TV host.', entries: 3480, deadline: 'Apr 15, 2026', icon: Crown, active: true },
-  { title: 'Fan Art Contest', description: 'Create fan art inspired by any CINEGEN TV show. Top 10 get featured on-air.', entries: 567, deadline: 'May 1, 2026', icon: PenTool, active: true },
-  { title: 'Best Fan Theory', description: 'Submit and vote on the most creative fan theories about CINEGEN TV shows.', entries: 890, deadline: 'Apr 30, 2026', icon: Lightbulb, active: true },
+  { title: 'Best Episode of 2026', description: 'Vote for the most memorable episode across all CINEGENY TV shows this year.', entries: 1240, deadline: 'Mar 31, 2026', icon: Trophy, active: true },
+  { title: 'Best TV Host', description: 'Who deserves the crown? Vote for your favorite CINEGENY TV host.', entries: 3480, deadline: 'Apr 15, 2026', icon: Crown, active: true },
+  { title: 'Fan Art Contest', description: 'Create fan art inspired by any CINEGENY TV show. Top 10 get featured on-air.', entries: 567, deadline: 'May 1, 2026', icon: PenTool, active: true },
+  { title: 'Best Fan Theory', description: 'Submit and vote on the most creative fan theories about CINEGENY TV shows.', entries: 890, deadline: 'Apr 30, 2026', icon: Lightbulb, active: true },
 ]
 
 /* ────────────────────────────────────────────────
@@ -137,7 +137,7 @@ export default function TVCommunityPage() {
             </span>
           </h1>
           <p className="text-base sm:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed mb-8">
-            Join thousands of fans discussing shows, sharing theories, reviewing episodes, and celebrating the creators behind CINEGEN TV.
+            Join thousands of fans discussing shows, sharing theories, reviewing episodes, and celebrating the creators behind CINEGENY TV.
           </p>
 
           {/* Quick nav */}
@@ -414,13 +414,13 @@ export default function TVCommunityPage() {
         <section>
           <h2 className="text-xl font-bold text-white mb-5 flex items-center gap-2">
             <Globe className="h-5 w-5 text-[#2563EB]" />
-            Explore CINEGEN TV
+            Explore CINEGENY TV
           </h2>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { title: 'Browse Shows', description: 'Explore 80+ original TV shows across 10 genres', href: '/tv/shows', icon: Tv },
               { title: 'Meet the Hosts', description: 'Discover the presenters behind your favorite shows', href: '/tv/hosts', icon: Mic2 },
-              { title: 'Create a Show', description: 'Submit your own TV show concept to CINEGEN', href: '/tv/create', icon: Zap },
+              { title: 'Create a Show', description: 'Submit your own TV show concept to CINEGENY', href: '/tv/create', icon: Zap },
             ].map((link) => (
               <Link
                 key={link.href}
@@ -451,7 +451,7 @@ export default function TVCommunityPage() {
             Submit Your Show Idea
           </h2>
           <p className="text-white/50 mb-6 text-sm max-w-lg mx-auto">
-            Have a concept for the next big TV show? The CINEGEN community votes on the best ideas.
+            Have a concept for the next big TV show? The CINEGENY community votes on the best ideas.
             Your show could be greenlit by thousands of fans.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">

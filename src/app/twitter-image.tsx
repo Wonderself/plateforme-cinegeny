@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'nodejs'
-export const alt = 'CINEGEN Studio - Le Studio de Cinema du Futur'
+export const alt = 'CINEGENY Studio - Le Studio de Cinema du Futur'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -97,7 +97,7 @@ export default async function TwitterImage() {
             textAlign: 'center',
           }}
         >
-          CINEGEN
+          CINEGENY
         </div>
 
         {/* Gold accent divider */}

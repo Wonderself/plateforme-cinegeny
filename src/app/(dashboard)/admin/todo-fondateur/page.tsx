@@ -175,7 +175,7 @@ const sections: TodoSection[] = [
         difficulty: 'easy',
       },
       {
-        label: 'INPI — Depot marque "CINEGEN"',
+        label: 'INPI — Depot marque "CINEGENY"',
         done: false,
         note: 'inpi.fr → Depot en ligne ~210 EUR. Classes 9, 35, 41. Claude prepare la description. Delai: 5 mois.',
         icon: Shield,
@@ -401,7 +401,7 @@ export default async function AdminTodoFondateurPage() {
           <ListTodo className="h-7 w-7 text-[#C9A227]" /> TODO Fondateur
         </h1>
         <p className="text-white/50 mt-1">
-          Check-list complete pour le lancement de CINEGEN. Chaque etape est faisable et guidee.
+          Check-list complete pour le lancement de CINEGENY. Chaque etape est faisable et guidee.
         </p>
       </div>
 

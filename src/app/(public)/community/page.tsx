@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     'Participez a la creation collective de films IA. Votez pour les meilleurs scenarios, bandes-annonces et propositions creatives.',
   openGraph: {
-    title: 'Communaute — Votez et Creez Ensemble | CINEGEN',
+    title: 'Communaute — Votez et Creez Ensemble | CINEGENY',
     description: 'Participez a la creation collective de films IA. Votez pour les meilleurs scenarios.',
   },
 }
@@ -404,7 +404,7 @@ export default async function CommunityPage() {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-[#C9A227]/30 text-[#C9A227] font-semibold hover:bg-[#C9A227]/[0.06] transition-all duration-300 min-h-[44px]"
             >
               <Star className="h-4 w-4" />
-              Rejoindre CINEGEN
+              Rejoindre CINEGENY
             </Link>
           </div>
         </div>

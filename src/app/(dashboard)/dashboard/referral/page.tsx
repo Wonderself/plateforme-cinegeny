@@ -59,7 +59,7 @@ export default function ReferralPage() {
         <div className="grid sm:grid-cols-3 gap-4">
           {[
             { step: '1', title: 'Partagez votre lien', desc: 'Envoyez votre lien unique a vos amis', icon: Share2 },
-            { step: '2', title: 'Ils s\'inscrivent', desc: 'Votre filleul cree son compte CINEGEN', icon: Users },
+            { step: '2', title: 'Ils s\'inscrivent', desc: 'Votre filleul cree son compte CINEGENY', icon: Users },
             { step: '3', title: 'Bonus pour tous', desc: '+30 Lumens pour vous, +10 pour eux', icon: TrendingUp },
           ].map((item) => (
             <div key={item.step} className="flex items-start gap-3">

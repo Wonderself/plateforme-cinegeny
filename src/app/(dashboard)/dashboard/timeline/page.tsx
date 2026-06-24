@@ -8,7 +8,7 @@ import {
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
-export const metadata: Metadata = { title: 'Timeline — CINEGEN' }
+export const metadata: Metadata = { title: 'Timeline — CINEGENY' }
 
 export default async function TimelinePage() {
   const session = await auth()

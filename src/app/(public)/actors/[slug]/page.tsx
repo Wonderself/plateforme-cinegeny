@@ -28,11 +28,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const actor = await prisma.aIActor.findUnique({ where: { slug } })
   if (!actor) return { title: 'Acteur introuvable' }
   return {
-    title: `${actor.name} — Acteur IA CINEGEN`,
-    description: actor.bio || `Decouvrez ${actor.name}, acteur IA sur la plateforme CINEGEN.`,
+    title: `${actor.name} — Acteur IA CINEGENY`,
+    description: actor.bio || `Decouvrez ${actor.name}, acteur IA sur la plateforme CINEGENY.`,
     openGraph: {
-      title: `${actor.name} — Acteur IA CINEGEN`,
-      description: actor.bio || `Decouvrez ${actor.name}, acteur IA sur la plateforme CINEGEN.`,
+      title: `${actor.name} — Acteur IA CINEGENY`,
+      description: actor.bio || `Decouvrez ${actor.name}, acteur IA sur la plateforme CINEGENY.`,
       images: actor.avatarUrl ? [actor.avatarUrl] : undefined,
     },
   }

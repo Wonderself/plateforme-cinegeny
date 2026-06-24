@@ -142,7 +142,7 @@ export default function TvInvestPage() {
             </span>
           </h1>
           <p className="text-lg sm:text-xl text-white/45 max-w-3xl mx-auto leading-relaxed mb-10">
-            CINEGEN TV reinvents television production with AI,
+            CINEGENY TV reinvents television production with AI,
             blockchain and a worldwide community of creators.
           </p>
 
@@ -278,7 +278,7 @@ export default function TvInvestPage() {
             {[
               { label: 'Creators', pct: '25%', color: '#2563EB', icon: Cpu, desc: 'Directors, writers, showrunners' },
               { label: 'Investors', pct: '25%', color: '#60A5FA', icon: TrendingUp, desc: 'Token holders and backers' },
-              { label: 'Platform', pct: '25%', color: '#8B5CF6', icon: Tv, desc: 'CINEGEN infrastructure & ops' },
+              { label: 'Platform', pct: '25%', color: '#8B5CF6', icon: Tv, desc: 'CINEGENY infrastructure & ops' },
               { label: 'Workers', pct: '25%', color: '#10B981', icon: Users, desc: 'Task contributors and crew' },
             ].map((slice) => (
               <div key={slice.label} className="text-center p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
@@ -339,7 +339,7 @@ export default function TvInvestPage() {
               Comparison
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              CINEGEN TV vs The{' '}
+              CINEGENY TV vs The{' '}
               <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
                 Market
               </span>
@@ -353,7 +353,7 @@ export default function TvInvestPage() {
                   <th className="text-left p-4 text-white/40 font-medium" />
                   <th className="p-4 text-white/40 font-medium text-center">Traditional TV</th>
                   <th className="p-4 text-white/40 font-medium text-center">Netflix</th>
-                  <th className="p-4 text-center font-bold text-[#60A5FA] bg-[#2563EB]/[0.05]">CINEGEN TV</th>
+                  <th className="p-4 text-center font-bold text-[#60A5FA] bg-[#2563EB]/[0.05]">CINEGENY TV</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/[0.04]">
@@ -483,9 +483,9 @@ export default function TvInvestPage() {
             {[
               { q: 'What is the minimum investment?', a: 'You can invest from just €10 by purchasing co-production tokens. Each token represents a share of the show.' },
               { q: 'How are revenues distributed?', a: 'Revenues are shared proportionally to tokens held: 25% creators, 25% investors, 25% platform, 25% workers. Distributions occur after each exploitation cycle (streaming, ads, licensing).' },
-              { q: 'What is the legal framework?', a: 'CINEGEN is an Israeli Ltd with a planned Delaware C-Corp for the US market. Investments are governed by Israeli securities law with blockchain traceability on Ethereum mainnet + Arbitrum L2.' },
+              { q: 'What is the legal framework?', a: 'CINEGENY is an Israeli Ltd with a planned Delaware C-Corp for the US market. Investments are governed by Israeli securities law with blockchain traceability on Ethereum mainnet + Arbitrum L2.' },
               { q: 'When will I receive returns?', a: 'First returns typically arrive 6 to 12 months after production completion, during the commercial exploitation phase (streaming, advertising, syndication).' },
-              { q: 'Can I resell my tokens?', a: 'Tokens are non-transferable utility tokens. CINEGEN offers a platform buyback mechanism. No secondary market trading. This structure ensures regulatory compliance.' },
+              { q: 'Can I resell my tokens?', a: 'Tokens are non-transferable utility tokens. CINEGENY offers a platform buyback mechanism. No secondary market trading. This structure ensures regulatory compliance.' },
               { q: 'Is my investment guaranteed?', a: 'Like all creative investments, there are risks. However, our AI production model reduces costs by 95% vs traditional TV, significantly limiting downside risk.' },
             ].map((faq, i) => (
               <details key={i} className="group rounded-xl border border-white/[0.06] bg-white/[0.02] overflow-hidden">
@@ -619,7 +619,7 @@ export default function TvInvestPage() {
               href="/tv"
               className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all duration-300 text-sm font-medium"
             >
-              Back to CINEGEN TV
+              Back to CINEGENY TV
             </Link>
           </div>
           <p className="mt-8 text-xs text-white/20">

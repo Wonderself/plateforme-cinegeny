@@ -233,7 +233,7 @@ const ROADMAP_PHASES = [
       'Levée Family & Friends (50K€)',
       'Candidatures BPI / Tnufa',
       'Production court-métrage Carnaval',
-      'MVP plateforme CINEGEN',
+      'MVP plateforme CINEGENY',
     ],
     color: COLORS.gold,
   },
@@ -279,7 +279,7 @@ const ROADMAP_PHASES = [
 ]
 
 const COMPETITIVE_TABLE = {
-  headers: ['Critère', 'CINEGEN', 'Hollywood', 'Netflix', 'Studio Traditionnel'],
+  headers: ['Critère', 'CINEGENY', 'Hollywood', 'Netflix', 'Studio Traditionnel'],
   rows: [
     ['Budget moyen / film', '50K-200K€', '50-200M€', '10-30M€', '1-5M€'],
     ['Délai de production', '3-6 mois', '18-36 mois', '12-24 mois', '12-18 mois'],
@@ -470,7 +470,7 @@ export default function InvestorsPage() {
     script.textContent = JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'Lumière Brothers Pictures / CINEGEN',
+      name: 'Lumière Brothers Pictures / CINEGENY',
       description: 'Premier Studio AI-Native — Tech Company qui produit des films',
       url: 'https://cinegen.studio',
       email: 'invest@cinegen.studio',
@@ -865,7 +865,7 @@ export default function InvestorsPage() {
                   {
                     icon: '⭐',
                     title: 'Accès Premium',
-                    desc: 'Fonctionnalités exclusives de la plateforme CINEGEN pour les holders.',
+                    desc: 'Fonctionnalités exclusives de la plateforme CINEGENY pour les holders.',
                   },
                   {
                     icon: '📈',
@@ -1341,7 +1341,7 @@ export default function InvestorsPage() {
       <section id="competitive" className="px-4 py-16 md:py-24 max-w-7xl mx-auto">
         <SectionTitle
           badge="AVANTAGE COMPÉTITIF"
-          title="Pourquoi CINEGEN gagne"
+          title="Pourquoi CINEGENY gagne"
           subtitle="Comparaison avec les acteurs traditionnels de l'industrie."
         />
 
@@ -1473,7 +1473,7 @@ export default function InvestorsPage() {
               name: 'Eric Haldezos',
               role: 'Co-Founder & Managing Director',
               focus: 'IA & Production',
-              bio: 'Expert en IA générative et pipeline de production cinématographique. Architecture logicielle, développement de la plateforme CINEGEN, supervision créative. Pionnier de l\'utilisation de l\'IA dans la production audiovisuelle.',
+              bio: 'Expert en IA générative et pipeline de production cinématographique. Architecture logicielle, développement de la plateforme CINEGENY, supervision créative. Pionnier de l\'utilisation de l\'IA dans la production audiovisuelle.',
               color: COLORS.red,
               initials: 'É',
             },
@@ -1606,7 +1606,7 @@ export default function InvestorsPage() {
             <div className="space-y-4 text-sm text-white/50 leading-relaxed">
               <p>
                 <strong className="text-white/70">Risque de perte en capital :</strong> L&apos;investissement dans
-                Lumière Brothers Pictures / CINEGEN est un investissement à haut risque. Le capital investi peut être
+                Lumière Brothers Pictures / CINEGENY est un investissement à haut risque. Le capital investi peut être
                 partiellement ou totalement perdu. Les performances passées ne préjugent pas des performances futures.
               </p>
               <p>
@@ -1722,7 +1722,7 @@ export default function InvestorsPage() {
 
         {/* Very bottom */}
         <div className="text-center mt-12 text-xs text-white/20">
-          <p>&copy; {new Date().getFullYear()} Lumière Brothers Pictures / CINEGEN. Tous droits réservés.</p>
+          <p>&copy; {new Date().getFullYear()} Lumière Brothers Pictures / CINEGENY. Tous droits réservés.</p>
           <p className="mt-1">Ce document est confidentiel et destiné aux investisseurs potentiels uniquement.</p>
         </div>
       </section>

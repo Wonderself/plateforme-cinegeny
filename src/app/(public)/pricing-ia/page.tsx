@@ -4,7 +4,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Tarifs IA Transparents — CINEGEN',
+  title: 'Tarifs IA Transparents — CINEGENY',
   description: 'Découvrez nos tarifs IA transparents. 0% de commission — vous ne payez que le coût réel des tokens.',
 }
 

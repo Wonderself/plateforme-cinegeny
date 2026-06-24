@@ -9,7 +9,7 @@ import {
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Marketplace Agents IA — CINEGEN',
+  title: 'Marketplace Agents IA — CINEGENY',
   description: 'Templates d\'agents IA pré-configurés pour le cinéma : festivals, box-office, pitch deck et plus.',
 }
 

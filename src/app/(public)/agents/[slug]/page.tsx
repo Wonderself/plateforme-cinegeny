@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const agent = ALL_AGENTS.find(a => a.slug === slug)
   return {
-    title: agent ? `${agent.name} — Agent IA CINEGEN` : 'Agent IA — CINEGEN',
+    title: agent ? `${agent.name} — Agent IA CINEGENY` : 'Agent IA — CINEGENY',
     description: agent?.description || 'Agent IA spécialisé cinéma',
   }
 }

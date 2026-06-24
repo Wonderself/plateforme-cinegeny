@@ -32,11 +32,11 @@ export async function generateMetadata(
   })
   if (!contest) return { title: 'Concours introuvable' }
   return {
-    title: `${contest.title} — Concours CINEGEN`,
-    description: contest.description || 'Concours de trailers CINEGEN — Participez et votez.',
+    title: `${contest.title} — Concours CINEGENY`,
+    description: contest.description || 'Concours de trailers CINEGENY — Participez et votez.',
     openGraph: {
-      title: `${contest.title} — Concours CINEGEN`,
-      description: contest.description || 'Concours de trailers CINEGEN — Participez et votez.',
+      title: `${contest.title} — Concours CINEGENY`,
+      description: contest.description || 'Concours de trailers CINEGENY — Participez et votez.',
     },
   }
 }
@@ -304,7 +304,7 @@ export default async function ContestDetailPage({
               {isVoting ? 'Connectez-vous pour voter' : 'Participez a ce concours'}
             </h3>
             <p className="text-white/40 text-sm mb-4">
-              Rejoignez la communaute CINEGEN pour participer et voter.
+              Rejoignez la communaute CINEGENY pour participer et voter.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <Link

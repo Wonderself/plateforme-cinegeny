@@ -10,7 +10,7 @@ import {
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
-export const metadata: Metadata = { title: 'Analytics — CINEGEN' }
+export const metadata: Metadata = { title: 'Analytics — CINEGENY' }
 
 export default async function PersonalAnalyticsPage() {
   const session = await auth()

@@ -1,5 +1,5 @@
 /**
- * Shared film data for the CINEGEN slate.
+ * Shared film data for the CINEGENY slate.
  * Used by the homepage (netflix-home), film detail fallback, and any page
  * that needs to reference the catalog when the DB has no entries.
  */
@@ -48,7 +48,7 @@ function toSlug(title: string): string {
   return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 }
 
-/* ── The CINEGEN slate ── */
+/* ── The CINEGENY slate ── */
 
 const SLATE: Omit<FilmData, 'id' | 'slug' | 'coverImageUrl'>[] = [
   {
