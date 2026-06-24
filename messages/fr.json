@@ -31,7 +31,17 @@
     "about": "A propos",
     "roadmap": "Roadmap",
     "pricing": "Tarifs",
-    "developers": "API"
+    "developers": "API",
+    "participate": "Participer",
+    "replay": "Replay",
+    "start_film": "Démarrer un film",
+    "act_in_film": "Jouer dans un film",
+    "missions": "Missions",
+    "produce": "Produire",
+    "trailer_studio": "Studio Bande-Annonce",
+    "submit_scenario": "Proposer un scénario",
+    "coproduce": "Co-produire un film",
+    "investor_space": "Espace investisseurs"
   },
   "home": {
     "hero_badge": "Studio de Cinema IA",

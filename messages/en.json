@@ -31,7 +31,17 @@
     "about": "About",
     "roadmap": "Roadmap",
     "pricing": "Pricing",
-    "developers": "API"
+    "developers": "API",
+    "participate": "Participate",
+    "replay": "Replay",
+    "start_film": "Start a Film",
+    "act_in_film": "Act in a Film",
+    "missions": "Missions",
+    "produce": "Produce",
+    "trailer_studio": "Trailer Studio",
+    "submit_scenario": "Submit a Scenario",
+    "coproduce": "Co-Produce a Film",
+    "investor_space": "Investor Space"
   },
   "home": {
     "hero_badge": "AI Cinema Studio",

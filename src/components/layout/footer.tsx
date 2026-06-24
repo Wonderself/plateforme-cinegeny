@@ -1,21 +1,75 @@
 'use client'
 
 import Link from 'next/link'
-import { Film, Tv, Users, Award, Pen, BarChart3, MapPin, Code2, Tag, Star, Clapperboard, Briefcase, Coins, Radio, Play } from 'lucide-react'
+import {
+  Film, Tv, Play, Radio, Clapperboard, Star, Briefcase, Sparkles, FileText,
+  MessageSquare, Trophy, Users, DollarSign, TrendingUp, Tag, MapPin, Code2, Info,
+} from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Logo } from '@/components/layout/logo'
 
+/**
+ * Footer — mirrors the header information architecture so users keep a
+ * single, consistent mental model: Regarder · Participer · Communauté · Studio.
+ */
 export function Footer() {
   const t = useTranslations('footer')
+  const n = useTranslations('nav')
+
+  const columns: {
+    title: string
+    links: { href: string; label: string; icon: React.ElementType }[]
+  }[] = [
+    {
+      title: n('watch'),
+      links: [
+        { href: '/films', label: n('films'), icon: Film },
+        { href: '/watch', label: n('streaming'), icon: Play },
+        { href: '/tv', label: n('tv'), icon: Tv },
+        { href: '/tv/live', label: n('live_tv'), icon: Radio },
+        { href: '/tv/replay', label: n('replay'), icon: Play },
+      ],
+    },
+    {
+      title: n('participate'),
+      links: [
+        { href: '/create', label: n('start_film'), icon: Clapperboard },
+        { href: '/act', label: n('act_in_film'), icon: Star },
+        { href: '/work', label: n('missions'), icon: Briefcase },
+        { href: '/produce', label: n('produce'), icon: Film },
+        { href: '/trailer-studio', label: n('trailer_studio'), icon: Sparkles },
+        { href: '/community/scenarios/new', label: n('submit_scenario'), icon: FileText },
+      ],
+    },
+    {
+      title: n('community'),
+      links: [
+        { href: '/community', label: n('community'), icon: MessageSquare },
+        { href: '/leaderboard', label: n('leaderboard'), icon: Trophy },
+        { href: '/actors', label: n('actors'), icon: Users },
+        { href: '/invest', label: n('coproduce'), icon: DollarSign },
+        { href: '/investors', label: n('investor_space'), icon: TrendingUp },
+      ],
+    },
+    {
+      title: 'CINEGENY',
+      links: [
+        { href: '/about', label: n('about'), icon: Info },
+        { href: '/pricing', label: n('pricing'), icon: Tag },
+        { href: '/roadmap', label: n('roadmap'), icon: MapPin },
+        { href: '/developers', label: n('developers'), icon: Code2 },
+      ],
+    },
+  ]
 
   return (
     <footer className="relative border-t border-white/[0.04] bg-[#060606] pt-20 md:pt-24 pb-12 md:pb-16 mt-16">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
 
       <div className="mx-auto max-w-[1400px] px-8 md:px-16 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-14">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-12 lg:gap-14">
           {/* Brand */}
-          <div className="lg:col-span-4 space-y-5">
+          <div className="col-span-2 md:col-span-3 lg:col-span-4 space-y-5">
             <Logo height={52} />
             <p className="text-[13px] text-white/30 leading-[1.8] max-w-sm">
               {t('tagline')}
@@ -27,67 +81,38 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Platform */}
-          <div className="lg:col-span-2 space-y-5">
-            <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">{t('section_platform')}</h4>
-            <ul className="space-y-3.5">
-              <li><Link href="/films" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Film className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_films')}</Link></li>
-              <li><Link href="/streaming" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Tv className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_streaming')}</Link></li>
-              <li><Link href="/community" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Users className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_community')}</Link></li>
-              <li><Link href="/leaderboard" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><BarChart3 className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_leaderboard')}</Link></li>
-              <li><Link href="/roadmap" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><MapPin className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_roadmap')}</Link></li>
-              <li><Link href="/pricing" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Tag className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_pricing')}</Link></li>
-              <li><Link href="/developers" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Code2 className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_developer_api')}</Link></li>
-              <li><Link href="/tv" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#2563EB] transition-colors"><Tv className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_tv_home')}</Link></li>
-              <li><Link href="/tv/live" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#2563EB] transition-colors"><Radio className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_live_tv')}</Link></li>
-              <li><Link href="/tv/replay" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#2563EB] transition-colors"><Tv className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_replay')}</Link></li>
-              <li><Link href="/tv/shows" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#2563EB] transition-colors"><Film className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_tv_shows')}</Link></li>
-              <li><Link href="/watch" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#2563EB] transition-colors"><Play className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_watch_all')}</Link></li>
-              <li><Link href="/tv/hosts" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#2563EB] transition-colors"><Users className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_tv_hosts')}</Link></li>
-              <li><Link href="/tv/community" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#2563EB] transition-colors"><Users className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_tv_community')}</Link></li>
-            </ul>
-          </div>
-
-          {/* Create */}
-          <div className="lg:col-span-3 space-y-5">
-            <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">{t('section_create')}</h4>
-            <ul className="space-y-3.5">
-              <li><Link href="/register" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Users className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_create_account')}</Link></li>
-              <li><Link href="/register?role=SCREENWRITER" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Pen className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_submit_screenplay')}</Link></li>
-              <li><Link href="/tasks" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Award className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_tasks')}</Link></li>
-              <li><Link href="/actors" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Users className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_actors')}</Link></li>
-              <li><Link href="/act" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Star className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_act')}</Link></li>
-              <li><Link href="/produce" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Clapperboard className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_produce')}</Link></li>
-              <li><Link href="/work" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-[#C9A227] transition-colors"><Briefcase className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_work')}</Link></li>
-              <li><Link href="/points" className="group flex items-center gap-2 text-[13px] text-white/25 hover:text-amber-400 transition-colors"><Coins className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />{t('link_points')}</Link></li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div className="lg:col-span-3 space-y-5">
-            <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">{t('section_legal')}</h4>
-            <ul className="space-y-3.5">
-              <li><Link href="/legal/terms" className="text-[13px] text-white/25 hover:text-white/50 transition-colors">{t('link_terms')}</Link></li>
-              <li><Link href="/legal/privacy" className="text-[13px] text-white/25 hover:text-white/50 transition-colors">{t('link_privacy')}</Link></li>
-              <li><Link href="/legal/cookies" className="text-[13px] text-white/25 hover:text-white/50 transition-colors">{t('link_cookies')}</Link></li>
-              <li><Link href="/about" className="text-[13px] text-white/25 hover:text-white/50 transition-colors">{t('link_about')}</Link></li>
-              <li><Link href="/invest" className="text-[13px] text-white/25 hover:text-[#C9A227] transition-colors font-medium">{t('link_investors')}</Link></li>
-            </ul>
-          </div>
+          {/* Link columns — one per universe */}
+          {columns.map((col) => (
+            <div key={col.title} className="lg:col-span-2 space-y-5">
+              <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">{col.title}</h4>
+              <ul className="space-y-3.5">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="group flex items-center gap-2 text-[13px] text-white/25 transition-colors hover:text-[#C9A227]"
+                    >
+                      <link.icon className="h-3.5 w-3.5 opacity-40 transition-opacity group-hover:opacity-100" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-10 border-t border-white/[0.04] flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-16 pt-10 border-t border-white/[0.04] flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <p className="text-[11px] text-white/15">
             &copy; {new Date().getFullYear()} {t('copyright')}
           </p>
-          <div className="flex items-center gap-3">
-            <span className="text-[10px] text-white/10 tracking-wider">{t('powered_by')}</span>
-            <span className="text-[10px] text-white/20 font-medium">Next.js</span>
+          <div className="flex flex-wrap items-center gap-3">
+            <Link href="/legal/terms" className="text-[11px] text-white/20 transition-colors hover:text-white/50">{t('link_terms')}</Link>
             <span className="text-[10px] text-white/10">&middot;</span>
-            <span className="text-[10px] text-white/20 font-medium">Claude AI</span>
+            <Link href="/legal/privacy" className="text-[11px] text-white/20 transition-colors hover:text-white/50">{t('link_privacy')}</Link>
             <span className="text-[10px] text-white/10">&middot;</span>
-            <span className="text-[10px] text-white/20 font-medium">Blockchain</span>
+            <Link href="/legal/cookies" className="text-[11px] text-white/20 transition-colors hover:text-white/50">{t('link_cookies')}</Link>
           </div>
         </div>
       </div>

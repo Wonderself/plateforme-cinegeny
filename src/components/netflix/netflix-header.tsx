@@ -26,18 +26,11 @@ import {
   FileText,
   ChevronDown,
   Sparkles,
-  Info,
-  MapPin,
-  Tag,
-  Code2,
   TrendingUp,
-  Users,
   Film,
   Clapperboard,
   DollarSign,
   MessageSquare,
-  Trophy,
-  UserCircle,
   Star,
   Briefcase,
   Tv,
@@ -56,10 +49,12 @@ function NavDropdown({
   label,
   items,
   isActive,
+  badge,
 }: {
   label: string
-  items: { href: string; label: string; icon: React.ElementType }[]
+  items: { href: string; label: string; icon: React.ElementType; desc?: string; badge?: string }[]
   isActive: boolean
+  badge?: string
 }) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -78,36 +73,56 @@ function NavDropdown({
         onClick={() => setOpen(!open)}
         onMouseEnter={() => setOpen(true)}
         className={cn(
-          'flex items-center gap-1 text-[11px] px-2.5 py-1.5 rounded transition-all duration-300',
-          isActive
-            ? 'text-white/90'
-            : 'text-white/40 hover:text-white/80'
+          'flex items-center gap-1 text-[12.5px] tracking-wide px-3 py-1.5 rounded-md transition-all duration-300',
+          isActive ? 'text-white' : 'text-white/55 hover:text-white'
         )}
       >
         {label}
-        <ChevronDown className={cn('h-3 w-3 transition-transform duration-200', open && 'rotate-180')} />
+        {badge && (
+          <span className="ml-0.5 rounded bg-[#C9A227]/15 px-1 py-0 text-[8px] font-bold uppercase tracking-wider text-[#E8C766] ring-1 ring-[#C9A227]/30">
+            {badge}
+          </span>
+        )}
+        <ChevronDown className={cn('h-3 w-3 opacity-50 transition-transform duration-200', open && 'rotate-180')} />
       </button>
       <AnimatePresence>
         {open && (
           <MotionDiv
-            initial={{ opacity: 0, y: -4 }}
+            initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.15 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.16 }}
             onMouseLeave={() => setOpen(false)}
-            className="absolute top-full left-0 mt-1 min-w-[200px] bg-[#111]/98 backdrop-blur-xl border border-white/10 rounded-lg shadow-2xl overflow-hidden z-50"
+            className="absolute top-full left-0 mt-2 min-w-[290px] overflow-hidden rounded-xl border border-white/10 bg-[#0C0B09]/98 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.85)] backdrop-blur-2xl z-50"
           >
-            {items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-2.5 px-4 py-2.5 text-[12px] text-white/60 hover:text-white hover:bg-white/5 transition-all"
-              >
-                <item.icon className="h-3.5 w-3.5 text-white/30" />
-                {item.label}
-              </Link>
-            ))}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/40 to-transparent" />
+            <div className="p-1.5">
+              {items.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="group/item flex items-start gap-3 rounded-lg px-3 py-2.5 transition-all hover:bg-white/[0.06]"
+                >
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.03] text-white/40 transition-colors group-hover/item:border-[#C9A227]/30 group-hover/item:text-[#C9A227]">
+                    <item.icon className="h-3.5 w-3.5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="flex items-center gap-1.5 text-[13px] font-medium text-white/85 group-hover/item:text-white">
+                      {item.label}
+                      {item.badge && (
+                        <span className="rounded bg-[#C9A227]/15 px-1 text-[8px] font-bold uppercase tracking-wider text-[#E8C766]">
+                          {item.badge}
+                        </span>
+                      )}
+                    </span>
+                    {item.desc && (
+                      <span className="mt-0.5 block truncate text-[11px] text-white/35">{item.desc}</span>
+                    )}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </MotionDiv>
         )}
       </AnimatePresence>
@@ -131,44 +146,51 @@ export function NetflixHeader() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  /* ── Menu structure ── */
-  const createItems = [
-    { href: '/create', label: 'Start a Film', icon: Clapperboard },
-    { href: '/act', label: 'Act In Your Movie', icon: Star },
-    { href: '/community/scenarios/new', label: 'Submit a Scenario', icon: FileText },
-    { href: '/tv/create', label: 'Create TV Show', icon: Tv },
+  /* ──────────────────────────────────────────────────────────
+     Navigation — 4 univers clairs : Regarder · Participer · Investir
+     (+ Films en accès direct, Communauté en lien direct).
+     Chaque intention utilisateur a UNE place évidente.
+     ────────────────────────────────────────────────────────── */
+  const watchItems = [
+    { href: '/watch', label: t('streaming'), icon: Play, desc: 'Tous les films en streaming' },
+    { href: '/tv', label: t('tv'), icon: Tv, desc: 'Chaînes & émissions' },
+    { href: '/tv/live', label: t('live_tv'), icon: Radio, desc: 'Diffusion en direct' },
+    { href: '/tv/replay', label: t('replay'), icon: Play, desc: 'Rediffusions à la demande' },
   ]
 
-  const exploreItems = [
-    { href: '/films', label: t('films'), icon: Film },
-    { href: '/actors', label: t('actors'), icon: UserCircle },
-    { href: '/trailer-studio', label: 'Trailer Studio', icon: Sparkles },
-    { href: '/leaderboard', label: t('leaderboard'), icon: Trophy },
+  const participateItems = [
+    { href: '/create', label: t('start_film'), icon: Clapperboard, desc: 'Lancez votre propre projet' },
+    { href: '/act', label: t('act_in_film'), icon: Star, desc: 'Jouez dans un film IA' },
+    { href: '/work', label: t('missions'), icon: Briefcase, desc: 'Micro-tâches rémunérées' },
+    { href: '/produce', label: t('produce'), icon: Film, desc: 'Co-produisez la slate' },
+    { href: '/trailer-studio', label: t('trailer_studio'), icon: Sparkles, desc: 'Créez une bande-annonce', badge: 'NEW' },
+    { href: '/community/scenarios/new', label: t('submit_scenario'), icon: FileText, desc: 'Proposez votre scénario' },
   ]
 
-  const mobileLinks = [
-    { href: '/', label: t('home'), icon: Film },
-    { href: '/films', label: t('films'), icon: Clapperboard },
-    { href: '/act', label: 'Act', icon: Star },
-    { href: '/produce', label: 'Produce', icon: Clapperboard },
-    { href: '/work', label: 'Work', icon: Users },
-    { href: '/invest', label: t('invest'), icon: DollarSign },
-    { href: '/investors', label: 'Investors', icon: TrendingUp },
-    { href: '/community', label: t('community'), icon: MessageSquare },
-    { href: '/tv', label: t('tv'), icon: Tv },
-    { href: '/watch', label: t('watch'), icon: Play },
-    { href: '/tv/live', label: t('live_tv'), icon: Radio },
+  const investItems = [
+    { href: '/invest', label: t('coproduce'), icon: DollarSign, desc: 'Financez un film, gagnez des parts' },
+    { href: '/investors', label: t('investor_space'), icon: TrendingUp, desc: 'Tokenisation & opportunités', badge: 'OPEN' },
   ]
 
-  const moreItems = [
-    { href: '/act', label: 'Act', icon: Star },
-    { href: '/produce', label: 'Produce', icon: Clapperboard },
-    { href: '/work', label: 'Work', icon: Briefcase },
+  const mobileSections = [
+    {
+      title: t('watch'),
+      links: [
+        { href: '/films', label: t('films'), icon: Film },
+        ...watchItems.map(({ href, label, icon }) => ({ href, label, icon })),
+      ],
+    },
+    { title: t('participate'), links: participateItems.map(({ href, label, icon }) => ({ href, label, icon })) },
+    { title: t('invest'), links: investItems.map(({ href, label, icon }) => ({ href, label, icon })) },
+    { title: t('community'), links: [{ href: '/community', label: t('community'), icon: MessageSquare }] },
   ]
 
-  const isCreateActive = pathname.startsWith('/create') || pathname.startsWith('/act')
-  const isExploreActive = pathname.startsWith('/films') || pathname.startsWith('/actors') || pathname.startsWith('/trailer-studio') || pathname.startsWith('/leaderboard')
-  const isMoreActive = pathname.startsWith('/act') || pathname.startsWith('/produce') || pathname.startsWith('/work')
+  const isWatchActive =
+    pathname.startsWith('/watch') || pathname.startsWith('/tv') || pathname.startsWith('/streaming')
+  const isParticipateActive =
+    pathname.startsWith('/create') || pathname.startsWith('/act') || pathname.startsWith('/work') ||
+    pathname.startsWith('/produce') || pathname.startsWith('/trailer-studio') || pathname.startsWith('/community/scenarios')
+  const isInvestActive = pathname.startsWith('/invest')
 
   return (
     <header
@@ -183,78 +205,29 @@ export function NetflixHeader() {
         {/* Left: Logo */}
         <Logo height={46} priority />
 
-        {/* Center: Desktop nav with dropdowns */}
-        <nav className="hidden lg:flex items-center gap-1">
+        {/* Center: Desktop nav — 5 repères clairs */}
+        <nav className="hidden lg:flex items-center gap-0.5">
           <Link
             href="/films"
             className={cn(
-              'text-[11px] px-2.5 py-1.5 rounded transition-all duration-300',
-              pathname.startsWith('/films') ? 'text-white/90' : 'text-white/40 hover:text-white/80'
+              'text-[12.5px] tracking-wide px-3 py-1.5 rounded-md transition-all duration-300',
+              pathname.startsWith('/films') ? 'text-white' : 'text-white/55 hover:text-white'
             )}
           >
             {t('films')}
           </Link>
-          <Link
-            href="/invest"
-            className={cn(
-              'text-[11px] px-2.5 py-1.5 rounded transition-all duration-300',
-              pathname.startsWith('/invest') ? 'text-white/90' : 'text-white/40 hover:text-white/80'
-            )}
-          >
-            {t('invest')}
-          </Link>
-          <Link
-            href="/investors"
-            className={cn(
-              'flex items-center gap-1 text-[11px] px-2.5 py-1.5 rounded transition-all duration-300 font-semibold',
-              pathname.startsWith('/investors')
-                ? 'text-amber-400'
-                : 'text-amber-400/70 hover:text-amber-400'
-            )}
-          >
-            <TrendingUp className="h-3 w-3" />
-            Investors
-            <span className="ml-0.5 px-1 py-0 text-[9px] font-bold rounded bg-amber-400/15 text-amber-400 border border-amber-400/25">OPEN</span>
-          </Link>
+          <NavDropdown label={t('watch')} items={watchItems} isActive={isWatchActive} />
+          <NavDropdown label={t('participate')} items={participateItems} isActive={isParticipateActive} />
+          <NavDropdown label={t('invest')} items={investItems} isActive={isInvestActive} badge="OPEN" />
           <Link
             href="/community"
             className={cn(
-              'text-[11px] px-2.5 py-1.5 rounded transition-all duration-300',
-              pathname.startsWith('/community') ? 'text-white/90' : 'text-white/40 hover:text-white/80'
+              'text-[12.5px] tracking-wide px-3 py-1.5 rounded-md transition-all duration-300',
+              pathname.startsWith('/community') ? 'text-white' : 'text-white/55 hover:text-white'
             )}
           >
             {t('community')}
           </Link>
-          <Link
-            href="/tv"
-            className={cn(
-              'text-[11px] px-2.5 py-1.5 rounded transition-all duration-300',
-              pathname.startsWith('/tv') ? 'text-white/90' : 'text-white/40 hover:text-white/80'
-            )}
-          >
-            {t('tv')}
-          </Link>
-          <Link
-            href="/watch"
-            className={cn(
-              'text-[11px] px-2.5 py-1.5 rounded transition-all duration-300',
-              pathname.startsWith('/watch') ? 'text-white/90' : 'text-white/40 hover:text-white/80'
-            )}
-          >
-            {t('watch')}
-          </Link>
-          <Link
-            href="/tv/live"
-            className={cn(
-              'text-[11px] px-2.5 py-1.5 rounded transition-all duration-300',
-              pathname === '/tv/live' ? 'text-white/90' : 'text-white/40 hover:text-white/80'
-            )}
-          >
-            {t('live_tv')}
-          </Link>
-          <NavDropdown label={t('create')} items={createItems} isActive={isCreateActive} />
-          <NavDropdown label={t('explore')} items={exploreItems} isActive={isExploreActive} />
-          <NavDropdown label={t('more')} items={moreItems} isActive={isMoreActive} />
         </nav>
 
         {/* Right: Search + Lang + Profile + Hamburger */}
@@ -372,22 +345,29 @@ export function NetflixHeader() {
             transition={{ duration: 0.2 }}
             className="lg:hidden bg-[#0A0A0A]/98 backdrop-blur-xl overflow-hidden border-t border-white/5"
           >
-            <div className="px-5 py-4 space-y-1 max-h-[80vh] overflow-y-auto">
-              {mobileLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={cn(
-                    'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all',
-                    (link.href === '/' ? pathname === '/' : pathname.startsWith(link.href))
-                      ? 'text-[#C9A227] bg-[#C9A227]/10'
-                      : 'text-white/60 hover:text-white hover:bg-white/5'
-                  )}
-                >
-                  <link.icon className="h-4 w-4" />
-                  {link.label}
-                </Link>
+            <div className="px-5 py-4 space-y-4 max-h-[80vh] overflow-y-auto">
+              {mobileSections.map((section) => (
+                <div key={section.title} className="space-y-0.5">
+                  <p className="px-3 pb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/30">
+                    {section.title}
+                  </p>
+                  {section.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={cn(
+                        'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all',
+                        pathname.startsWith(link.href) && link.href !== '/'
+                          ? 'text-[#C9A227] bg-[#C9A227]/10'
+                          : 'text-white/60 hover:text-white hover:bg-white/5'
+                      )}
+                    >
+                      <link.icon className="h-4 w-4 text-white/40" />
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               ))}
 
               <div className="h-px bg-white/5 my-2" />
