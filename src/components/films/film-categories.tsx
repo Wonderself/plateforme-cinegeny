@@ -68,7 +68,7 @@ function categorizeFilms(films: FilmData[]) {
 
 function GenreBadge({ genre }: { genre: string }) {
   return (
-    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-[#C9A227]/20 text-[#C9A227] border border-[#C9A227]/30">
+    <span className="inline-flex items-center rounded-full border border-[#C9A227]/30 bg-[#0A0908]/70 px-2.5 py-0.5 text-[10px] font-medium text-[#E8C766] backdrop-blur-md ring-1 ring-inset ring-white/5">
       {genre}
     </span>
   )
@@ -79,13 +79,15 @@ function FundingBar({ pct }: { pct: number }) {
     <div className="space-y-1.5">
       <div className="flex justify-between text-[11px]">
         <span className="text-white/40">Funding</span>
-        <span className="text-[#C9A227] font-medium">{Math.round(pct)}%</span>
+        <span className="font-medium text-[#C9A227]">{Math.round(pct)}%</span>
       </div>
-      <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
+      <div className="relative h-1 overflow-hidden rounded-full bg-white/[0.06]">
         <div
-          className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all"
+          className="relative h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700 ease-out"
           style={{ width: `${Math.min(pct, 100)}%` }}
-        />
+        >
+          <div className="absolute inset-0 animate-[shimmerSweep_2.6s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+        </div>
       </div>
     </div>
   )
@@ -96,13 +98,15 @@ function ProgressBar({ pct, label }: { pct: number; label?: string }) {
     <div className="space-y-1.5">
       <div className="flex justify-between text-[11px]">
         <span className="text-white/40">{label ?? 'Progress'}</span>
-        <span className="text-[#C9A227] font-medium">{Math.round(pct)}%</span>
+        <span className="font-medium text-[#C9A227]">{Math.round(pct)}%</span>
       </div>
-      <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
+      <div className="relative h-1 overflow-hidden rounded-full bg-white/[0.06]">
         <div
-          className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all"
+          className="relative h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700 ease-out"
           style={{ width: `${Math.min(pct, 100)}%` }}
-        />
+        >
+          <div className="absolute inset-0 animate-[shimmerSweep_2.6s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+        </div>
       </div>
     </div>
   )
@@ -113,41 +117,49 @@ function ProgressBar({ pct, label }: { pct: number; label?: string }) {
 function StandardCard({ film }: { film: FilmData }) {
   const poster = getPoster(film)
   return (
-    <Link href={`/films/${film.slug}`}>
-      <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-[#C9A227]/30 transition-all duration-500 h-full flex flex-col">
+    <Link href={`/films/${film.slug}`} className="block h-full">
+      <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-[#C9A227]/40 hover:shadow-[0_24px_60px_-16px_rgba(0,0,0,0.8),0_0_0_1px_rgba(201,162,39,0.18)]">
+        {/* Gold top accent — reveals on hover */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px scale-x-0 bg-gradient-to-r from-transparent via-[#E8C766] to-transparent opacity-0 transition-all duration-500 group-hover:scale-x-100 group-hover:opacity-100" />
+
         {/* Poster */}
-        <div className="relative aspect-[2/3] bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03] shrink-0">
+        <div className="relative aspect-[2/3] shrink-0 overflow-hidden bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03]">
           {poster ? (
             <Image
               src={poster}
               alt={film.title}
               fill
               unoptimized={isUnsplash(poster)}
-              className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
+              className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center">
+            <div className="flex h-full w-full items-center justify-center">
               <Film className="h-14 w-14 text-[#C9A227]/20" />
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
-          <div className="absolute top-3 left-3">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/10 to-transparent" />
+          {/* Sweeping light sheen on hover */}
+          <div className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-full" />
+          <div className="absolute left-3 top-3 z-10">
             <GenreBadge genre={film.genre} />
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-5 flex flex-col flex-1">
-          <h3 className="font-semibold text-sm mb-2 text-white group-hover:text-[#C9A227] transition-colors line-clamp-2">
+        <div className="flex flex-1 flex-col p-5">
+          <h3 className="mb-2 line-clamp-2 text-sm font-semibold text-white transition-colors group-hover:text-[#E8C766]">
             {film.title}
           </h3>
-          <p className="text-[11px] text-white/50 mb-4 line-clamp-2 flex-1">{film.synopsis}</p>
+          <p className="mb-4 line-clamp-2 flex-1 text-[11px] leading-relaxed text-white/50">{film.synopsis}</p>
           <ProgressBar pct={film.progressPct} />
           {film.fundingPct < 100 && <div className="mt-2"><FundingBar pct={film.fundingPct} /></div>}
-          <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/[0.06]">
+          <div className="mt-3 flex items-center justify-between border-t border-white/[0.06] pt-3">
             <span className="text-[11px] text-white/40">{film.director}</span>
-            <ChevronRight className="h-4 w-4 text-[#C9A227]/50 group-hover:text-[#C9A227] transition-colors" />
+            <span className="inline-flex items-center gap-1 text-[11px] font-medium text-[#C9A227]/0 transition-all duration-300 group-hover:text-[#C9A227]">
+              Voir la fiche
+              <ChevronRight className="h-4 w-4 -translate-x-1 text-[#C9A227]/50 transition-all duration-300 group-hover:translate-x-0 group-hover:text-[#C9A227]" />
+            </span>
           </div>
         </div>
       </div>
