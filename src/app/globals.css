@@ -687,6 +687,41 @@
   transform: translateY(-4px);
 }
 
+/* ========================================
+   PREMIUM BUTTON SHEEN — animated light sweep on hover.
+   Slot-safe (pure CSS pseudo-element, no extra DOM).
+   ======================================== */
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-sheen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    110deg,
+    transparent 28%,
+    rgba(255, 255, 255, 0.45) 48%,
+    rgba(255, 255, 255, 0.1) 56%,
+    transparent 72%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.btn-sheen:hover::before,
+.btn-sheen:focus-visible::before {
+  transform: translateX(130%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-sheen::before { display: none; }
+  .hover-lift { transition: none; }
+}
+
 /* Smooth gradient text shimmer for Instagram palette */
 .text-ig-shimmer {
   background: linear-gradient(

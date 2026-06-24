@@ -3,6 +3,7 @@ import { getCached } from '@/lib/redis'
 import FilmCategories from '@/components/films/film-categories'
 import { ALL_FILMS } from '@/data/films'
 import { prisma } from '@/lib/prisma'
+import { MotionCard } from '@/components/ui/motion'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
@@ -77,12 +78,13 @@ export default async function FilmsPage() {
 
           {/* Stats row */}
           <div className="mx-auto grid max-w-2xl grid-cols-3 gap-3 sm:gap-6 md:gap-10">
-            {stats.map((stat) => (
-              <div
+            {stats.map((stat, i) => (
+              <MotionCard
                 key={stat.label}
-                className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5 text-center transition-all duration-500 hover:border-[#C9A227]/20 sm:rounded-3xl sm:p-6"
+                delay={i * 0.12}
+                className="group hover-lift rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5 text-center transition-colors duration-500 hover:border-[#C9A227]/30 hover:bg-white/[0.05] sm:rounded-3xl sm:p-6"
               >
-                <div className="mx-auto mb-2 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/10">
+                <div className="mx-auto mb-2 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/10 transition-all duration-500 group-hover:scale-110 group-hover:border-[#C9A227]/50 group-hover:shadow-[0_0_20px_rgba(201,162,39,0.25)]">
                   <stat.icon className="h-4 w-4 text-[#C9A227]" />
                 </div>
                 <div className="text-2xl font-bold text-[#E8C766] sm:text-3xl">
@@ -91,7 +93,7 @@ export default async function FilmsPage() {
                 <div className="mt-1 text-[10px] font-medium uppercase tracking-wider text-white/40 sm:text-xs">
                   {stat.label}
                 </div>
-              </div>
+              </MotionCard>
             ))}
           </div>
         </div>
