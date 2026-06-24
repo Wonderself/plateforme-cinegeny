@@ -24,8 +24,8 @@ import { Progress } from '@/components/ui/progress'
 
 const COLORS = {
   bg: '#0A0A0A',
-  red: '#E50914',
-  redLight: '#FF2D2D',
+  red: '#C9A227',
+  redLight: '#E8C766',
   gold: '#D4AF37',
   goldLight: '#F4D35E',
   white: '#FFFFFF',
@@ -155,7 +155,7 @@ const PIPELINE_PROJECTS = [
     status: 'PRÊT À PRODUIRE',
     financing: 'Autofinancement + CNC court-métrage',
     pitch: 'Démo technologique VFX — script verrouillé, équipe confirmée.',
-    color: '#E50914',
+    color: '#C9A227',
   },
   {
     num: 7,
@@ -299,9 +299,9 @@ const COMPETITIVE_TABLE = {
 function SectionDivider() {
   return (
     <div className="w-full flex items-center justify-center py-8 md:py-12">
-      <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#E50914]/50" />
-      <div className="mx-4 w-2 h-2 rotate-45 bg-[#E50914]/60" />
-      <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#E50914]/50" />
+      <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#C9A227]/50" />
+      <div className="mx-4 w-2 h-2 rotate-45 bg-[#C9A227]/60" />
+      <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#C9A227]/50" />
     </div>
   )
 }
@@ -343,7 +343,7 @@ function GlowCard({ children, className = '', gold = false, delay = 0 }: { child
         <div className={`absolute inset-0 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-500 ${
           gold
             ? 'bg-gradient-to-br from-[#D4AF37]/[0.06] to-transparent'
-            : 'bg-gradient-to-br from-[#E50914]/[0.04] to-transparent'
+            : 'bg-gradient-to-br from-[#C9A227]/[0.04] to-transparent'
         }`} />
         <div className="relative z-10">{children}</div>
       </div>
@@ -501,7 +501,7 @@ export default function InvestorsPage() {
           <a
             key={id}
             href={`#${id}`}
-            className="w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-[#E50914] transition-colors duration-300 block"
+            className="w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-[#C9A227] transition-colors duration-300 block"
             title={id}
           />
         ))}
@@ -513,7 +513,7 @@ export default function InvestorsPage() {
       <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 py-20">
         {/* Background effects */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#E50914]/[0.04] rounded-full blur-[200px]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#C9A227]/[0.04] rounded-full blur-[200px]" />
           <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/[0.03] rounded-full blur-[180px]" />
           <div className="absolute inset-0" style={{
             backgroundImage: 'radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)',
@@ -542,7 +542,7 @@ export default function InvestorsPage() {
               Investissez dans le
             </span>
             <br />
-            <span className="bg-gradient-to-r from-[#E50914] via-[#FF2D2D] to-[#D4AF37] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#C9A227] via-[#E8C766] to-[#D4AF37] bg-clip-text text-transparent">
               Premier Studio AI-Native
             </span>
           </motion.h1>
@@ -981,7 +981,7 @@ export default function InvestorsPage() {
                 <div className="text-sm text-white/40 mb-1">{y.year}</div>
                 <div className="text-2xl font-bold text-white mb-3">{y.total}</div>
                 <div className="flex h-3 rounded-full overflow-hidden gap-0.5">
-                  <div className="bg-[#E50914] rounded-l-full" style={{ width: `${y.films}%` }} />
+                  <div className="bg-[#C9A227] rounded-l-full" style={{ width: `${y.films}%` }} />
                   <div className="bg-[#4A90D9] rounded-r-full" style={{ width: `${y.tech}%` }} />
                 </div>
                 <div className="flex justify-between mt-2 text-xs text-white/40">
@@ -1044,9 +1044,9 @@ export default function InvestorsPage() {
 
               {/* Multiplier */}
               <div className="text-center">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-[#E50914]/10 border border-[#E50914]/25 flex items-center justify-center mx-auto mb-3 rotate-45">
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/25 flex items-center justify-center mx-auto mb-3 rotate-45">
                   <div className="-rotate-45">
-                    <div className="text-xl md:text-2xl font-bold text-[#E50914]">x2.5</div>
+                    <div className="text-xl md:text-2xl font-bold text-[#C9A227]">x2.5</div>
                   </div>
                 </div>
                 <div className="text-xs text-white/40">Levier subventions</div>
@@ -1074,7 +1074,7 @@ export default function InvestorsPage() {
 
               {/* Output */}
               <div className="text-center">
-                <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-[#D4AF37]/20 to-[#E50914]/10 border-2 border-[#D4AF37]/40 flex items-center justify-center mx-auto mb-3">
+                <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-[#D4AF37]/20 to-[#C9A227]/10 border-2 border-[#D4AF37]/40 flex items-center justify-center mx-auto mb-3">
                   <div>
                     <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#F4D35E] bg-clip-text text-transparent">
                       2.5€
@@ -1151,7 +1151,7 @@ export default function InvestorsPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-white mb-0.5 group-hover:text-[#E50914] transition-colors">
+                  <h3 className="text-lg font-bold text-white mb-0.5 group-hover:text-[#C9A227] transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-xs text-white/30 mb-3">{project.subtitle}</p>
@@ -1356,7 +1356,7 @@ export default function InvestorsPage() {
                         key={i}
                         className={`p-4 font-medium border-b border-white/[0.06] ${
                           i === 0 ? 'text-left text-white/50' : 'text-center'
-                        } ${i === 1 ? 'text-[#E50914] font-bold bg-[#E50914]/[0.04]' : 'text-white/60'}`}
+                        } ${i === 1 ? 'text-[#C9A227] font-bold bg-[#C9A227]/[0.04]' : 'text-white/60'}`}
                       >
                         {h}
                       </th>
@@ -1370,7 +1370,7 @@ export default function InvestorsPage() {
                         <td
                           key={ci}
                           className={`p-4 ${ci === 0 ? 'text-left text-white/70 font-medium' : 'text-center'} ${
-                            ci === 1 ? 'text-[#E50914] font-semibold bg-[#E50914]/[0.02]' : 'text-white/40'
+                            ci === 1 ? 'text-[#C9A227] font-semibold bg-[#C9A227]/[0.02]' : 'text-white/40'
                           }`}
                         >
                           {cell}
@@ -1399,7 +1399,7 @@ export default function InvestorsPage() {
 
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-[#D4AF37] via-[#E50914] to-[#4A90D9]" />
+          <div className="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-[#D4AF37] via-[#C9A227] to-[#4A90D9]" />
 
           {ROADMAP_PHASES.map((phase, i) => (
             <MotionCard key={i} delay={i * 0.15}>
@@ -1602,7 +1602,7 @@ export default function InvestorsPage() {
         />
 
         <MotionCard delay={0.15}>
-          <div className="bg-white/[0.02] border border-[#E50914]/10 rounded-xl p-6 md:p-10">
+          <div className="bg-white/[0.02] border border-[#C9A227]/10 rounded-xl p-6 md:p-10">
             <div className="space-y-4 text-sm text-white/50 leading-relaxed">
               <p>
                 <strong className="text-white/70">Risque de perte en capital :</strong> L&apos;investissement dans
@@ -1654,7 +1654,7 @@ export default function InvestorsPage() {
           <MotionCard>
             <div className="relative rounded-2xl overflow-hidden">
               {/* Background gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E50914]/20 via-[#D4AF37]/10 to-[#0A0A0A]" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/20 via-[#D4AF37]/10 to-[#0A0A0A]" />
               <div className="absolute inset-0 bg-[#0A0A0A]/60" />
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
 

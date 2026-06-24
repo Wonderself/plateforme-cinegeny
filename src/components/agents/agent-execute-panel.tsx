@@ -85,7 +85,7 @@ export function AgentExecutePanel({ agentSlug, agentName, agentColor, tier }: Ag
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder={`Décrivez votre demande pour ${agentName}...`}
-            className="w-full h-32 rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none"
+            className="w-full h-32 rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none"
           />
 
           <div className="flex items-center justify-between">
@@ -96,7 +96,7 @@ export function AgentExecutePanel({ agentSlug, agentName, agentColor, tier }: Ag
             <button
               onClick={handleExecute}
               disabled={loading || !prompt.trim()}
-              className="flex items-center gap-2 px-6 py-2.5 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-semibold rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-6 py-2.5 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-semibold rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <>

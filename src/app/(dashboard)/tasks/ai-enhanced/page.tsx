@@ -14,7 +14,7 @@ const TASK_CATEGORIES = [
   { id: 'screenplay', label: 'Write Screenplay', icon: PenTool, color: '#3B82F6', modelCategory: 'llm' as const, taskType: 'BRAINSTORM' },
   { id: 'vfx', label: 'Design & VFX', icon: Palette, color: '#F97316', modelCategory: 'image' as const, taskType: 'CONCEPT_ART' },
   { id: 'music', label: 'Compose Music', icon: Music, color: '#06B6D4', modelCategory: 'music' as const, taskType: 'MUSIC_COMPOSE' },
-  { id: 'directing', label: 'Direct & Produce', icon: Film, color: '#E50914', modelCategory: 'llm' as const, taskType: 'BRAINSTORM' },
+  { id: 'directing', label: 'Direct & Produce', icon: Film, color: '#C9A227', modelCategory: 'llm' as const, taskType: 'BRAINSTORM' },
   { id: 'editing', label: 'Video Editing', icon: Scissors, color: '#EC4899', modelCategory: 'video' as const, taskType: 'VIDEO_SCENE' },
   { id: 'sound', label: 'Sound Design', icon: Volume2, color: '#14B8A6', modelCategory: 'audio' as const, taskType: 'VOICE_ACTING' },
   { id: 'cinematography', label: 'Cinematography', icon: Camera, color: '#8B5CF6', modelCategory: 'image' as const, taskType: 'STORYBOARD' },
@@ -93,7 +93,7 @@ export default function AIEnhancedTasksPage() {
               onChange={e => setContent(e.target.value)}
               placeholder={`Travaillez sur votre ${activeCategory.label}...`}
               rows={10}
-              className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#E50914] focus:outline-none resize-none"
+              className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#C9A227] focus:outline-none resize-none"
             />
             <p className="text-[10px] text-white/50 mt-1">{content.length} caractères</p>
           </div>

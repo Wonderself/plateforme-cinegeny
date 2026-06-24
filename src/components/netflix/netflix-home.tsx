@@ -96,7 +96,7 @@ const TRENDING_FILMS: FilmCard[] = (() => {
    ──────────────────────────────────────────────── */
 
 const GENRE_CONFIG: Record<string, { icon: typeof Flame; color: string; colorLight: string; pattern: string; image: string }> = {
-  'Action':      { icon: Flame,      color: '#E50914', colorLight: '#FF4444', pattern: 'embers',    image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&h=400&q=80' },
+  'Action':      { icon: Flame,      color: '#C9A227', colorLight: '#E8C766', pattern: 'embers',    image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&h=400&q=80' },
   'Comedy':      { icon: Laugh,      color: '#F59E0B', colorLight: '#FCD34D', pattern: 'confetti',  image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&h=400&q=80' },
   'Drama':       { icon: Drama,      color: '#8B5CF6', colorLight: '#C4B5FD', pattern: 'curtain',   image: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&h=400&q=80' },
   'Sci-Fi':      { icon: Microscope, color: '#3B82F6', colorLight: '#93C5FD', pattern: 'scan',      image: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=800&h=400&q=80' },
@@ -178,7 +178,7 @@ export function NetflixHome({ data }: { data: HomeData }) {
               title: 'Créer un Film',
               subtitle: '7 étapes assistées par l\'IA',
               href: '/create',
-              accent: '#E50914',
+              accent: '#C9A227',
             },
             {
               emoji: '💰',
@@ -240,8 +240,8 @@ export function NetflixHome({ data }: { data: HomeData }) {
           <div className="flex items-center gap-4 px-4 sm:px-8 md:px-16 lg:px-20 mb-4">
             <div className="flex items-center gap-1.5">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E50914] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E50914]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C9A227] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C9A227]" />
               </span>
               <span className="text-[10px] text-white/30 font-medium">{voteCount !== null ? voteCount.toLocaleString() : '—'} votes cast</span>
             </div>
@@ -341,17 +341,17 @@ export function NetflixHome({ data }: { data: HomeData }) {
 
         {/* ── Vote CTA Block ── */}
         <section className="relative my-10 md:my-14 mx-4 sm:mx-8 md:mx-16 lg:mx-20 rounded-3xl overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#E50914]/10 via-[#0F0808] to-[#E50914]/5" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/10 via-[#0F0808] to-[#C9A227]/5" />
           <div className="absolute inset-0 bg-[url('/images/cinema-clapperboard-clouds-hero.webp')] bg-cover bg-center opacity-[0.06]" />
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#E50914]/[0.08] rounded-full blur-[100px]" />
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#C9A227]/[0.08] rounded-full blur-[100px]" />
           <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-blue-500/[0.05] rounded-full blur-[80px]" />
           <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/[0.08]" />
 
           <div className="relative z-10 px-8 sm:px-10 md:px-14 py-10 md:py-14">
             <div className="max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#E50914]/20 bg-[#E50914]/10 mb-5 animate-[subtlePulse_3s_ease-in-out_infinite]">
-                <Vote className="h-3.5 w-3.5 text-[#E50914]" />
-                <span className="text-[11px] font-bold text-[#E50914] uppercase tracking-wider">Community Governance</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/10 mb-5 animate-[subtlePulse_3s_ease-in-out_infinite]">
+                <Vote className="h-3.5 w-3.5 text-[#C9A227]" />
+                <span className="text-[11px] font-bold text-[#C9A227] uppercase tracking-wider">Community Governance</span>
               </div>
 
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-3 tracking-tight leading-[1.1] section-title-flash">
@@ -363,7 +363,7 @@ export function NetflixHome({ data }: { data: HomeData }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {[
-                  { icon: MessageSquare, title: 'Submit a Story', desc: 'Propose your screenplay idea', href: '/community/scenarios', accent: '#E50914' },
+                  { icon: MessageSquare, title: 'Submit a Story', desc: 'Propose your screenplay idea', href: '/community/scenarios', accent: '#C9A227' },
                   { icon: Vote, title: 'Vote on Scripts', desc: 'Read and vote for your favorites', href: '/community/vote', accent: '#F59E0B' },
                   { icon: Users, title: 'Join Community', desc: 'Collaborate and earn Lumens', href: '/community', accent: '#3B82F6' },
                 ].map((cta) => (

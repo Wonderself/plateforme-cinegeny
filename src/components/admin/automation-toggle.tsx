@@ -109,7 +109,7 @@ export function AutomationCard({ item, type }: AutomationCardProps) {
             <p className="text-xs text-white/50 mb-2">{item.description}</p>
 
             <details className="group">
-              <summary className="text-[10px] text-[#E50914] cursor-pointer hover:underline list-none">
+              <summary className="text-[10px] text-[#C9A227] cursor-pointer hover:underline list-none">
                 Voir le détail...
               </summary>
               <p className="text-xs text-white/50 mt-2 leading-relaxed">
@@ -119,8 +119,8 @@ export function AutomationCard({ item, type }: AutomationCardProps) {
 
             {item.costSaving > 0 && (
               <div className="flex items-center gap-1 mt-2">
-                <DollarSign className="h-3 w-3 text-[#E50914]" />
-                <span className="text-[10px] text-[#E50914]">
+                <DollarSign className="h-3 w-3 text-[#C9A227]" />
+                <span className="text-[10px] text-[#C9A227]">
                   Économie estimée : {new Intl.NumberFormat('fr-FR').format(item.costSaving)} EUR/mois
                 </span>
               </div>

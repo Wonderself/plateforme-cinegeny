@@ -35,12 +35,12 @@ export function ScreenwriterCTA() {
       <div className="absolute inset-0 bg-[url('/posters/the-rebbe.jpg')] bg-cover bg-center opacity-[0.06]" />
 
       {/* Gold accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#E50914]/40 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#E50914]/20 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C9A227]/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
 
       {/* Corner accents */}
-      <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-[#E50914]/10 to-transparent" />
-      <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-[#E50914]/10 to-transparent" />
+      <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-[#C9A227]/10 to-transparent" />
+      <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-[#C9A227]/10 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 px-6 sm:px-10 md:px-14 lg:px-18 py-12 sm:py-14 md:py-20">
@@ -52,10 +52,10 @@ export function ScreenwriterCTA() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#E50914]/20 bg-[#E50914]/5 mb-8"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/5 mb-8"
             >
-              <Star className="h-3.5 w-3.5 text-[#E50914]" />
-              <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#E50914]">
+              <Star className="h-3.5 w-3.5 text-[#C9A227]" />
+              <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#C9A227]">
                 Appel a candidatures
               </span>
             </motion.div>
@@ -68,7 +68,7 @@ export function ScreenwriterCTA() {
               className="text-3xl md:text-4xl lg:text-[2.75rem] font-black text-white leading-[1.1] tracking-tight mb-7"
             >
               100 Scenaristes.<br />
-              <span className="text-[#E50914]">Un Film.</span>
+              <span className="text-[#C9A227]">Un Film.</span>
             </motion.h2>
 
             <motion.p
@@ -92,8 +92,8 @@ export function ScreenwriterCTA() {
             >
               <Link
                 href="/register?role=SCREENWRITER"
-                className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl text-sm font-bold text-white transition-all duration-300 hover:shadow-[0_0_50px_rgba(229,9,20,0.4)] hover:scale-[1.03] active:scale-[0.97]"
-                style={{ background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 50%, #E50914 100%)' }}
+                className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl text-sm font-bold text-white transition-all duration-300 hover:shadow-[0_0_50px_rgba(201,162,39,0.4)] hover:scale-[1.03] active:scale-[0.97]"
+                style={{ background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 50%, #C9A227 100%)' }}
               >
                 <Pen className="h-4 w-4" />
                 Candidater maintenant
@@ -101,7 +101,7 @@ export function ScreenwriterCTA() {
               </Link>
               <Link
                 href="/community/scenarios"
-                className="text-sm text-white/40 hover:text-[#E50914] transition-colors font-medium"
+                className="text-sm text-white/40 hover:text-[#C9A227] transition-colors font-medium"
               >
                 Voir les scenarios soumis
               </Link>
@@ -119,9 +119,9 @@ export function ScreenwriterCTA() {
             {benefits.map((benefit, idx) => (
               <div
                 key={benefit.label}
-                className="group p-5 md:p-6 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-[#E50914]/20 hover:bg-white/[0.05] transition-all duration-300"
+                className="group p-5 md:p-6 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-[#C9A227]/20 hover:bg-white/[0.05] transition-all duration-300"
               >
-                <benefit.icon className="h-5 w-5 text-[#E50914]/70 mb-3.5 group-hover:text-[#E50914] transition-colors" />
+                <benefit.icon className="h-5 w-5 text-[#C9A227]/70 mb-3.5 group-hover:text-[#C9A227] transition-colors" />
                 <p className="text-[13px] font-bold text-white/80 mb-1">{benefit.label}</p>
                 <p className="text-[10px] text-white/30 leading-relaxed">{benefit.description}</p>
               </div>
@@ -138,7 +138,7 @@ export function ScreenwriterCTA() {
           className="flex flex-wrap items-center gap-6 sm:gap-10 mt-12 pt-10 border-t border-white/[0.05]"
         >
           <div>
-            <p className="text-2xl md:text-3xl font-black text-[#E50914] font-playfair">100</p>
+            <p className="text-2xl md:text-3xl font-black text-[#C9A227] font-playfair">100</p>
             <p className="text-[10px] text-white/30 uppercase tracking-wider mt-0.5">Places</p>
           </div>
           <div className="h-8 w-[1px] bg-white/[0.06]" />

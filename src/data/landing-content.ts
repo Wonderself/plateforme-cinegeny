@@ -8,7 +8,7 @@ export interface ContentAgent {
 }
 
 export const CONTENT_AGENTS: ContentAgent[] = [
-  { slug: 'cg-landing-optimizer', name: 'Landing Optimizer', role: 'Optimisation conversion', description: 'Optimise la landing page : copywriting, CTA, social proof, A/B testing mental.', icon: 'layout', color: '#E50914' },
+  { slug: 'cg-landing-optimizer', name: 'Landing Optimizer', role: 'Optimisation conversion', description: 'Optimise la landing page : copywriting, CTA, social proof, A/B testing mental.', icon: 'layout', color: '#C9A227' },
   { slug: 'cg-faq-manager', name: 'FAQ Manager', role: 'FAQ & support', description: 'Gère les FAQ par catégorie, identifie les questions fréquentes, rédige des réponses claires.', icon: 'help-circle', color: '#3B82F6' },
   { slug: 'cg-demo-designer', name: 'Demo Designer', role: 'Démos interactives', description: 'Conçoit des scénarios de démo testables sans inscription pour convertir les visiteurs.', icon: 'play', color: '#10B981' },
   { slug: 'cg-blog-writer', name: 'Blog Writer', role: 'Rédaction articles', description: 'Rédige des articles sur le cinéma participatif, l\'IA dans le cinéma, les tendances du secteur.', icon: 'pen-tool', color: '#8B5CF6' },
@@ -34,7 +34,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
     { q: 'Quel est le retour sur investissement ?', a: 'Le ROI dépend du succès du film. Notre agent Investment Strategist analyse chaque projet et fournit des estimations basées sur le genre, le budget et les comparables.' },
     { q: 'Mon investissement est-il sécurisé ?', a: 'Les smart contracts Ethereum garantissent la transparence. Les fonds sont bloqués jusqu\'à ce que les conditions soient remplies.' },
   ]},
-  { id: 'creation', label: 'Création', icon: 'film', color: '#E50914', items: [
+  { id: 'creation', label: 'Création', icon: 'film', color: '#C9A227', items: [
     { q: 'Comment créer un film sur CineGen ?', a: 'Suivez les 7 étapes guidées : Script → Storyboard → Casting → Setups → Stills → Vidéos → Musique. Chaque étape est assistée par un agent IA dédié.' },
     { q: 'Puis-je collaborer avec d\'autres créateurs ?', a: 'Oui ! Le Team Workspace permet d\'inviter des collaborateurs avec 7 rôles différents (réalisateur, scénariste, artiste, etc.).' },
     { q: 'Qu\'est-ce que la Mémoire Film ?', a: 'Chaque film a sa propre base de connaissances (personnages, univers, style) qui garantit la cohérence de toutes les contributions IA.' },
@@ -60,7 +60,7 @@ export const TRUST_BADGES = [
   { label: 'PII Masking', icon: 'eye-off', color: '#8B5CF6', detail: '7 patterns de masquage' },
   { label: 'Smart Contracts', icon: 'file-check', color: '#F59E0B', detail: 'Ethereum transparent' },
   { label: 'RGPD Compliant', icon: 'shield-check', color: '#EC4899', detail: 'Cleanup mensuel auto' },
-  { label: '113 Agents IA', icon: 'bot', color: '#E50914', detail: 'Cinéma spécialisé' },
+  { label: '113 Agents IA', icon: 'bot', color: '#C9A227', detail: 'Cinéma spécialisé' },
 ]
 
 // ─── Demo Scenarios ─────────────────────────────────────────────────
@@ -71,7 +71,7 @@ export interface DemoScenario {
 
 export const DEMO_SCENARIOS: DemoScenario[] = [
   { id: 'script-analysis', title: 'Analysez un script', description: 'Soumettez une idée de scénario et recevez une analyse IA complète.', icon: 'pen-tool', color: '#3B82F6', steps: ['Décrivez votre idée de film', 'L\'agent Scénariste analyse la structure', 'Recevez un feedback détaillé'], agentUsed: 'cg-scenariste' },
-  { id: 'poster-generate', title: 'Créez une affiche', description: 'Générez une affiche de film professionnelle en 30 secondes.', icon: 'image', color: '#E50914', steps: ['Choisissez un titre et un genre', 'Sélectionnez un style visuel', 'L\'IA génère votre affiche'], agentUsed: 'cg-studio-poster' },
+  { id: 'poster-generate', title: 'Créez une affiche', description: 'Générez une affiche de film professionnelle en 30 secondes.', icon: 'image', color: '#C9A227', steps: ['Choisissez un titre et un genre', 'Sélectionnez un style visuel', 'L\'IA génère votre affiche'], agentUsed: 'cg-studio-poster' },
   { id: 'investment-analysis', title: 'Évaluez un investissement', description: 'Analysez le potentiel ROI d\'un projet de film.', icon: 'trending-up', color: '#10B981', steps: ['Entrez le genre et le budget', 'L\'agent analyse les comparables', 'Recevez une évaluation de ROI'], agentUsed: 'cg-investment-strategist' },
 ]
 

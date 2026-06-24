@@ -130,7 +130,7 @@ export default function ScreenplayNewPage() {
                 disabled={index > currentStep}
                 className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium transition-all duration-500 w-full ${
                   isActive
-                    ? 'bg-[#E50914]/15 text-[#E50914] border border-[#E50914]/20'
+                    ? 'bg-[#C9A227]/15 text-[#C9A227] border border-[#C9A227]/20'
                     : isCompleted
                     ? 'bg-green-500/10 text-green-600 border border-green-500/20 cursor-pointer'
                     : 'bg-white/[0.03] text-white/30 border border-white/5'
@@ -263,7 +263,7 @@ export default function ScreenplayNewPage() {
 
               <div className="space-y-6">
                 <div className="text-center">
-                  <span className="text-5xl font-bold text-[#E50914]">
+                  <span className="text-5xl font-bold text-[#C9A227]">
                     {modificationTolerance[0]}%
                   </span>
                 </div>
@@ -282,9 +282,9 @@ export default function ScreenplayNewPage() {
                 </div>
               </div>
 
-              <div className="rounded-xl bg-[#E50914]/5 border border-[#E50914]/15 p-4">
+              <div className="rounded-xl bg-[#C9A227]/5 border border-[#C9A227]/15 p-4">
                 <div className="flex items-start gap-3">
-                  <Info className="h-4 w-4 text-[#E50914] mt-0.5 shrink-0" />
+                  <Info className="h-4 w-4 text-[#C9A227] mt-0.5 shrink-0" />
                   <div className="text-sm text-white/50">
                     <p className="mb-1">
                       <strong className="text-white/70">0%</strong> : Votre scenario sera utilise tel quel.
@@ -314,7 +314,7 @@ export default function ScreenplayNewPage() {
 
               <div className="space-y-6">
                 <div className="text-center">
-                  <span className="text-5xl font-bold text-[#E50914]">
+                  <span className="text-5xl font-bold text-[#C9A227]">
                     {revenueSharePct[0]}%
                   </span>
                 </div>
@@ -349,7 +349,7 @@ export default function ScreenplayNewPage() {
                   type="checkbox"
                   checked={legalAck}
                   onChange={(e) => setLegalAck(e.target.checked)}
-                  className="mt-1 h-4 w-4 rounded border-white/20 bg-white/5 text-[#E50914] focus:ring-[#E50914]/50 accent-[#E50914]"
+                  className="mt-1 h-4 w-4 rounded border-white/20 bg-white/5 text-[#C9A227] focus:ring-[#C9A227]/50 accent-[#C9A227]"
                 />
                 <span className="text-sm text-white/50 group-hover:text-white/70 transition-colors">
                   Je certifie etre l&#39;auteur original de ce scenario et j&#39;accepte les conditions
@@ -401,13 +401,13 @@ export default function ScreenplayNewPage() {
                   <div className="h-px bg-white/5" />
                   <div className="flex justify-between">
                     <span className="text-sm text-white/40">Tolerance IA</span>
-                    <span className="text-sm font-medium text-[#E50914]">
+                    <span className="text-sm font-medium text-[#C9A227]">
                       {modificationTolerance[0]}%
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-white/40">Revenue share</span>
-                    <span className="text-sm font-medium text-[#E50914]">
+                    <span className="text-sm font-medium text-[#C9A227]">
                       {revenueSharePct[0]}%
                     </span>
                   </div>

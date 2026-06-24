@@ -50,7 +50,7 @@ export function VideoGenerator({ filmProjectId, onGenerated }: VideoGeneratorPro
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-5">
       <div className="flex items-center gap-2">
-        <Video className="h-5 w-5 text-[#E50914]" />
+        <Video className="h-5 w-5 text-[#C9A227]" />
         <h3 className="text-sm font-semibold text-[#1A1A2E]">Génération Vidéo IA</h3>
       </div>
 
@@ -65,16 +65,16 @@ export function VideoGenerator({ filmProjectId, onGenerated }: VideoGeneratorPro
               <button
                 key={config.modelId}
                 onClick={() => setSelectedProvider(config.modelId)}
-                className={`text-left rounded-xl border p-3 transition-colors ${isSelected ? 'border-[#E50914] bg-red-50' : 'border-white/10 hover:border-gray-300'}`}
+                className={`text-left rounded-xl border p-3 transition-colors ${isSelected ? 'border-[#C9A227] bg-red-50' : 'border-white/10 hover:border-gray-300'}`}
               >
                 <div className="flex items-center gap-1.5 mb-1">
                   <span className="text-sm">{m?.icon || '🎬'}</span>
                   <span className="text-xs font-medium text-[#1A1A2E] truncate">{m?.name || config.provider}</span>
-                  {isSelected && <Check className="h-3 w-3 text-[#E50914] ml-auto shrink-0" />}
+                  {isSelected && <Check className="h-3 w-3 text-[#C9A227] ml-auto shrink-0" />}
                 </div>
                 <div className="flex items-center justify-between text-[10px] text-gray-400">
                   <span>≤{config.maxDuration}s</span>
-                  <span className="font-medium text-[#E50914]">~{microToCredits(config.estimatedCost).toFixed(0)} cr</span>
+                  <span className="font-medium text-[#C9A227]">~{microToCredits(config.estimatedCost).toFixed(0)} cr</span>
                 </div>
                 <span className="text-[10px] text-orange-500 flex items-center gap-0.5 mt-0.5">
                   <AlertTriangle className="h-2.5 w-2.5" /> Bientôt
@@ -87,30 +87,30 @@ export function VideoGenerator({ filmProjectId, onGenerated }: VideoGeneratorPro
 
       {/* Input Type */}
       <div className="flex gap-2">
-        <button onClick={() => setInputType('text')} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs ${inputType === 'text' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>
+        <button onClick={() => setInputType('text')} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs ${inputType === 'text' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>
           <FileText className="h-3.5 w-3.5" /> Texte → Vidéo
         </button>
-        <button onClick={() => setInputType('image')} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs ${inputType === 'image' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>
+        <button onClick={() => setInputType('image')} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs ${inputType === 'image' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>
           <Image className="h-3.5 w-3.5" /> Image → Vidéo
         </button>
       </div>
 
       {/* Prompt */}
-      <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez la scène vidéo en détail (mouvement caméra, action, ambiance)..." rows={3} className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#E50914] focus:outline-none resize-none" />
+      <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez la scène vidéo en détail (mouvement caméra, action, ambiance)..." rows={3} className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#C9A227] focus:outline-none resize-none" />
 
       {inputType === 'image' && (
-        <input value={imageUrl} onChange={e => setImageUrl(e.target.value)} placeholder="URL de l'image source..." className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
+        <input value={imageUrl} onChange={e => setImageUrl(e.target.value)} placeholder="URL de l'image source..." className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
       )}
 
       {/* Info */}
       <div className="flex items-center justify-between text-[10px] text-gray-400">
         <span>Max {activeConfig.maxDuration}s · {activeConfig.maxResolution}</span>
         <span>~{activeConfig.estimatedTime}s de génération</span>
-        <span className="font-medium text-[#E50914]">~{microToCredits(activeConfig.estimatedCost).toFixed(1)} crédits</span>
+        <span className="font-medium text-[#C9A227]">~{microToCredits(activeConfig.estimatedCost).toFixed(1)} crédits</span>
       </div>
 
       {/* Generate */}
-      <button onClick={generate} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+      <button onClick={generate} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
         {generating ? (
           <>
             <Loader2 className="h-5 w-5 animate-spin" />
@@ -127,7 +127,7 @@ export function VideoGenerator({ filmProjectId, onGenerated }: VideoGeneratorPro
       {/* Progress Bar */}
       {generating && (
         <div className="w-full h-2 bg-white/[0.05] rounded-full overflow-hidden">
-          <div className="h-full bg-[#E50914] rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
+          <div className="h-full bg-[#C9A227] rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
         </div>
       )}
 

@@ -129,7 +129,7 @@ export default async function InterventionsPage() {
   // ============================
 
   const rateLimits = [
-    { name: 'Claude API (Opus)', used: 72, max: 100, color: '#E50914' },
+    { name: 'Claude API (Opus)', used: 72, max: 100, color: '#C9A227' },
     { name: 'ElevenLabs TTS', used: 45, max: 100, color: '#3b82f6' },
     { name: 'Runway Gen-3', used: 23, max: 100, color: '#a855f7' },
     { name: 'Stripe Payouts', used: 8, max: 100, color: '#22c55e' },
@@ -256,7 +256,7 @@ export default async function InterventionsPage() {
           <div className="flex items-center gap-3">
             <SeverityBadge level={validationSeverity} count={lowScoreSubmissions} />
             <Link href="/admin/reviews">
-              <button className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border border-[#E50914]/30 bg-[#E50914]/10 text-[#E50914] hover:bg-[#E50914]/20 transition-colors">
+              <button className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border border-[#C9A227]/30 bg-[#C9A227]/10 text-[#C9A227] hover:bg-[#C9A227]/20 transition-colors">
                 Reviewer <ChevronRight className="h-3 w-3" />
               </button>
             </Link>
@@ -289,7 +289,7 @@ export default async function InterventionsPage() {
                   <p className="text-sm truncate">{sub.user.displayName} &rarr; {sub.task.title}</p>
                   <p className="text-[10px] text-white/30">Score IA: {sub.aiScore ?? 'N/A'}/100</p>
                 </div>
-                <span className="text-xs text-[#E50914] shrink-0">{sub.task.priceEuros}EUR</span>
+                <span className="text-xs text-[#C9A227] shrink-0">{sub.task.priceEuros}EUR</span>
               </div>
             ))}
           </div>
@@ -479,7 +479,7 @@ export default async function InterventionsPage() {
           { icon: Shield, label: 'Parametres', href: '/admin/settings', color: 'text-green-600' },
         ].map((action) => (
           <Link key={action.label} href={action.href}>
-            <div className="group p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#E50914]/20 transition-all text-center">
+            <div className="group p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#C9A227]/20 transition-all text-center">
               <action.icon className={`h-5 w-5 ${action.color} mx-auto mb-2`} />
               <p className="text-sm font-medium">{action.label}</p>
             </div>

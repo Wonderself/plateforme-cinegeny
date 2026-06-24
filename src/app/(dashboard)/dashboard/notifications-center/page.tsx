@@ -85,7 +85,7 @@ export default function NotificationsCenterPage() {
           <p className="text-sm text-white/50 mt-1">{unreadCount} non lue{unreadCount > 1 ? 's' : ''}</p>
         </div>
         <div className="flex gap-2">
-          <button onClick={() => setFilter(filter === 'all' ? 'unread' : 'all')} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium ${filter === 'unread' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>
+          <button onClick={() => setFilter(filter === 'all' ? 'unread' : 'all')} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium ${filter === 'unread' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>
             <Filter className="h-3.5 w-3.5" /> {filter === 'unread' ? 'Non lues' : 'Toutes'}
           </button>
           {unreadCount > 0 && (

@@ -458,7 +458,7 @@ export default function PilotagePage() {
       {/* Header */}
       <div>
         <h1 className="text-2xl lg:text-3xl font-bold flex items-center gap-3 font-playfair">
-          <Landmark className="h-7 w-7 text-[#E50914]" />
+          <Landmark className="h-7 w-7 text-[#C9A227]" />
           Pilotage &amp; Subventions
         </h1>
         <p className="text-white/50 text-sm mt-1">
@@ -482,7 +482,7 @@ export default function PilotagePage() {
         </div>
         <div className="bg-white/5 border border-white/10 rounded-xl p-3">
           <p className="text-[10px] text-white/50 uppercase tracking-wider">Subventions</p>
-          <p className="text-xl font-bold text-[#E50914]">{totalSubsidyPotential}</p>
+          <p className="text-xl font-bold text-[#C9A227]">{totalSubsidyPotential}</p>
         </div>
         <div className="bg-white/5 border border-white/10 rounded-xl p-3">
           <p className="text-[10px] text-white/50 uppercase tracking-wider">Israel</p>
@@ -502,7 +502,7 @@ export default function PilotagePage() {
             onClick={() => { setTab(t.id); setCatFilter('ALL') }}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all flex-1 justify-center ${
               tab === t.id
-                ? 'bg-[#E50914]/10 text-[#E50914] shadow-[0_2px_8px_rgba(0,0,0,0.3)]'
+                ? 'bg-[#C9A227]/10 text-[#C9A227] shadow-[0_2px_8px_rgba(0,0,0,0.3)]'
                 : 'text-white/50 hover:text-white/80 hover:bg-white/[0.05]'
             }`}
           >
@@ -521,7 +521,7 @@ export default function PilotagePage() {
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Rechercher..."
-            className="w-full pl-10 pr-4 py-2.5 bg-white/[0.03] border border-white/10 rounded-xl text-sm text-white/80 placeholder:text-white/40 focus:outline-none focus:border-[#E50914]/30 transition-colors"
+            className="w-full pl-10 pr-4 py-2.5 bg-white/[0.03] border border-white/10 rounded-xl text-sm text-white/80 placeholder:text-white/40 focus:outline-none focus:border-[#C9A227]/30 transition-colors"
           />
         </div>
         {(tab === 'structure' || tab === 'subsidies') && (
@@ -530,7 +530,7 @@ export default function PilotagePage() {
             <select
               value={entityFilter}
               onChange={e => setEntityFilter(e.target.value)}
-              className="pl-10 pr-8 py-2.5 bg-white/[0.03] border border-white/10 rounded-xl text-sm text-white/60 appearance-none cursor-pointer focus:outline-none focus:border-[#E50914]/30"
+              className="pl-10 pr-8 py-2.5 bg-white/[0.03] border border-white/10 rounded-xl text-sm text-white/60 appearance-none cursor-pointer focus:outline-none focus:border-[#C9A227]/30"
             >
               <option value="ALL">Tous pays</option>
               <option value="IL">Israel</option>
@@ -544,7 +544,7 @@ export default function PilotagePage() {
           <select
             value={catFilter}
             onChange={e => setCatFilter(e.target.value)}
-            className="pl-4 pr-8 py-2.5 bg-white/[0.03] border border-white/10 rounded-xl text-sm text-white/60 appearance-none cursor-pointer focus:outline-none focus:border-[#E50914]/30 min-w-[160px]"
+            className="pl-4 pr-8 py-2.5 bg-white/[0.03] border border-white/10 rounded-xl text-sm text-white/60 appearance-none cursor-pointer focus:outline-none focus:border-[#C9A227]/30 min-w-[160px]"
           >
             {catOptions.map(c => (
               <option key={c} value={c}>{c === 'ALL' ? 'Toutes catégories' : c}</option>
@@ -597,8 +597,8 @@ export default function PilotagePage() {
                       <p className="text-[10px] font-medium text-white/50 uppercase mb-1">Description</p>
                       <p className="text-sm text-white/50">{issue.desc}</p>
                     </div>
-                    <div className="bg-[#E50914]/[0.04] border border-[#E50914]/10 rounded-lg p-3">
-                      <p className="text-[10px] font-medium text-[#E50914]/60 uppercase mb-1">Action requise</p>
+                    <div className="bg-[#C9A227]/[0.04] border border-[#C9A227]/10 rounded-lg p-3">
+                      <p className="text-[10px] font-medium text-[#C9A227]/60 uppercase mb-1">Action requise</p>
                       <p className="text-sm text-white/60">{issue.action}</p>
                     </div>
                   </div>
@@ -643,14 +643,14 @@ export default function PilotagePage() {
                     </div>
                     <h3 className="font-medium text-sm text-white">{sub.name}</h3>
                     <div className="flex items-center gap-3 mt-1">
-                      <span className="text-xs text-[#E50914] font-medium">{sub.amount}</span>
+                      <span className="text-xs text-[#C9A227] font-medium">{sub.amount}</span>
                       {sub.tasks.length > 0 && (
                         <span className="text-[10px] text-white/50">{completedTasks}/{sub.tasks.length} tâches</span>
                       )}
                     </div>
                     {sub.tasks.length > 0 && (
                       <div className="mt-2 h-1 bg-white/[0.05] rounded-full overflow-hidden w-full max-w-[200px]">
-                        <div className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] transition-all" style={{ width: `${progressPct}%` }} />
+                        <div className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] transition-all" style={{ width: `${progressPct}%` }} />
                       </div>
                     )}
                   </div>
@@ -692,7 +692,7 @@ export default function PilotagePage() {
                         {sub.tasks.map((task, idx) => (
                           <div key={idx} className="flex items-start gap-2.5">
                             <span className={`mt-0.5 w-4 h-4 rounded border shrink-0 flex items-center justify-center text-[10px] ${
-                              task.done ? 'bg-[#E50914] border-[#E50914] text-white' : 'border-white/15'
+                              task.done ? 'bg-[#C9A227] border-[#C9A227] text-white' : 'border-white/15'
                             }`}>
                               {task.done && <CheckCircle className="h-3 w-3" />}
                             </span>
@@ -716,7 +716,7 @@ export default function PilotagePage() {
                     )}
 
                     {sub.url && (
-                      <a href={sub.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-[#E50914] hover:underline">
+                      <a href={sub.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-[#C9A227] hover:underline">
                         <ExternalLink className="h-3 w-3" /> Site officiel
                       </a>
                     )}
@@ -757,7 +757,7 @@ export default function PilotagePage() {
                     </div>
                     <h3 className="font-medium text-sm text-white">{inst.name}</h3>
                     <div className="flex items-center gap-3 mt-1">
-                      <span className="text-xs text-[#E50914] font-medium">{inst.ticket}</span>
+                      <span className="text-xs text-[#C9A227] font-medium">{inst.ticket}</span>
                       <span className="text-xs text-white/50">{inst.stage}</span>
                     </div>
                   </div>
@@ -771,8 +771,8 @@ export default function PilotagePage() {
                       <p className="text-sm text-white/50">{inst.focus}</p>
                     </div>
 
-                    <div className="bg-[#E50914]/[0.04] border border-[#E50914]/10 rounded-lg p-3">
-                      <p className="text-[10px] font-medium text-[#E50914]/60 uppercase mb-1">Pourquoi c&apos;est pertinent</p>
+                    <div className="bg-[#C9A227]/[0.04] border border-[#C9A227]/10 rounded-lg p-3">
+                      <p className="text-[10px] font-medium text-[#C9A227]/60 uppercase mb-1">Pourquoi c&apos;est pertinent</p>
                       <p className="text-sm text-white/60">{inst.why}</p>
                     </div>
 
@@ -788,7 +788,7 @@ export default function PilotagePage() {
                     </div>
 
                     {inst.url && (
-                      <a href={inst.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-[#E50914] hover:underline">
+                      <a href={inst.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-[#C9A227] hover:underline">
                         <ExternalLink className="h-3 w-3" /> Site web
                       </a>
                     )}

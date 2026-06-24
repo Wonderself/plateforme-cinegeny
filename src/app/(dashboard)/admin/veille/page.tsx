@@ -65,7 +65,7 @@ export default function VeillePage() {
           { key: 'sources' as const, label: 'Sources', icon: Globe },
         ].map(t => {
           const TIcon = t.icon
-          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}><TIcon className="h-4 w-4" />{t.label}</button>
+          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}><TIcon className="h-4 w-4" />{t.label}</button>
         })}
       </div>
 
@@ -75,12 +75,12 @@ export default function VeillePage() {
           <div className="flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/50" />
-              <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher..." className="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 text-sm focus:border-[#E50914] focus:outline-none" />
+              <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher..." className="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 text-sm focus:border-[#C9A227] focus:outline-none" />
             </div>
             <div className="flex gap-1 flex-wrap">
-              <button onClick={() => setFilterCat('all')} className={`px-3 py-1.5 rounded-lg text-xs ${filterCat === 'all' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>Tous</button>
+              <button onClick={() => setFilterCat('all')} className={`px-3 py-1.5 rounded-lg text-xs ${filterCat === 'all' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>Tous</button>
               {VEILLE_CATEGORIES.map(cat => (
-                <button key={cat.id} onClick={() => setFilterCat(cat.id)} className={`px-3 py-1.5 rounded-lg text-xs flex items-center gap-1 ${filterCat === cat.id ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>
+                <button key={cat.id} onClick={() => setFilterCat(cat.id)} className={`px-3 py-1.5 rounded-lg text-xs flex items-center gap-1 ${filterCat === cat.id ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>
                   <span>{cat.icon}</span>{cat.label}
                 </button>
               ))}

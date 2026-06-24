@@ -41,9 +41,9 @@ export default async function SubmitFilmPage() {
 
         {/* Revenue Info */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <Card className="bg-[#E50914]/5 border-[#E50914]/20 backdrop-blur-sm">
+          <Card className="bg-[#C9A227]/5 border-[#C9A227]/20 backdrop-blur-sm">
             <CardContent className="p-4 text-center">
-              <p className="text-[#E50914] text-2xl font-bold">50%</p>
+              <p className="text-[#C9A227] text-2xl font-bold">50%</p>
               <p className="text-white/50 text-sm">Part créateur par défaut</p>
             </CardContent>
           </Card>
@@ -61,7 +61,7 @@ export default async function SubmitFilmPage() {
           </Card>
         </div>
 
-        <div className="h-px bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent mb-8" />
+        <div className="h-px bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent mb-8" />
 
         <form action={async (formData: FormData) => {
           'use server'
@@ -73,7 +73,7 @@ export default async function SubmitFilmPage() {
               <Card className="bg-white/[0.03] border-white/[0.08] backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
-                    <Film className="h-5 w-5 text-[#E50914]" /> Informations du film
+                    <Film className="h-5 w-5 text-[#C9A227]" /> Informations du film
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -111,7 +111,7 @@ export default async function SubmitFilmPage() {
               <Card className="bg-white/[0.03] border-white/[0.08] backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
-                    <Upload className="h-5 w-5 text-[#E50914]" /> Fichiers
+                    <Upload className="h-5 w-5 text-[#C9A227]" /> Fichiers
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -134,19 +134,19 @@ export default async function SubmitFilmPage() {
               <Card className="bg-white/[0.03] border-white/[0.08] backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-[#E50914]" /> Options
+                    <Shield className="h-5 w-5 text-[#C9A227]" /> Options
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <label className="flex items-start gap-3 cursor-pointer">
-                    <input type="checkbox" name="exclusivity" value="true" className="mt-1 accent-[#E50914]" />
+                    <input type="checkbox" name="exclusivity" value="true" className="mt-1 accent-[#C9A227]" />
                     <div>
                       <p className="text-white font-medium">CINEGEN Exclusive</p>
                       <p className="text-white/40 text-sm">Ne pas diffuser sur d&apos;autres plateformes → +10% de revenus</p>
                     </div>
                   </label>
                   <label className="flex items-start gap-3 cursor-pointer">
-                    <input type="checkbox" name="isContest" value="true" className="mt-1 accent-[#E50914]" />
+                    <input type="checkbox" name="isContest" value="true" className="mt-1 accent-[#C9A227]" />
                     <div>
                       <p className="text-white font-medium">Participer au concours mensuel</p>
                       <p className="text-white/40 text-sm">Votre film sera visible dans la section concours</p>
@@ -161,7 +161,7 @@ export default async function SubmitFilmPage() {
               <Card className="bg-white/[0.03] border-white/[0.08] backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-[#E50914]" /> Contrat de distribution
+                    <FileText className="h-5 w-5 text-[#C9A227]" /> Contrat de distribution
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -171,10 +171,10 @@ export default async function SubmitFilmPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-[#E50914]/5 border-[#E50914]/20 backdrop-blur-sm">
+              <Card className="bg-[#C9A227]/5 border-[#C9A227]/20 backdrop-blur-sm">
                 <CardContent className="p-5">
                   <label className="flex items-start gap-3 cursor-pointer">
-                    <input type="checkbox" name="acceptTerms" value="true" required className="mt-1 accent-[#E50914]" />
+                    <input type="checkbox" name="acceptTerms" value="true" required className="mt-1 accent-[#C9A227]" />
                     <p className="text-white/70 text-sm">
                       J&apos;ai lu et j&apos;accepte les conditions du contrat de distribution.
                       Je certifie être le titulaire des droits sur cette œuvre.
@@ -185,7 +185,7 @@ export default async function SubmitFilmPage() {
 
               <button
                 type="submit"
-                className="w-full py-3 bg-[#E50914] text-white font-bold rounded-lg hover:bg-[#FF2D2D] transition-colors duration-300 text-lg"
+                className="w-full py-3 bg-[#C9A227] text-white font-bold rounded-lg hover:bg-[#E8C766] transition-colors duration-300 text-lg"
               >
                 Soumettre mon film
               </button>

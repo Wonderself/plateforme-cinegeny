@@ -47,7 +47,7 @@ export default async function TimelinePage() {
 
   const entries: TimelineEntry[] = [
     // Account creation
-    ...(user ? [{ date: user.createdAt, type: 'milestone', title: 'Inscription', detail: `Bienvenue ${user.displayName || ''}!`, icon: Users, color: '#E50914' }] : []),
+    ...(user ? [{ date: user.createdAt, type: 'milestone', title: 'Inscription', detail: `Bienvenue ${user.displayName || ''}!`, icon: Users, color: '#C9A227' }] : []),
     // Agent executions
     ...executions.map(e => ({ date: e.createdAt, type: 'agent', title: `Agent: ${e.agent?.name}`, detail: e.prompt.substring(0, 60), icon: Bot, color: e.agent?.color || '#8B5CF6' })),
     // Deposits

@@ -32,7 +32,7 @@ export default function ReferralPage() {
             <span className="text-sm font-medium text-cyan-400">Programme de Parrainage</span>
           </div>
           <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-3">
-            Invitez, <span className="text-[#E50914]">Gagnez</span>
+            Invitez, <span className="text-[#C9A227]">Gagnez</span>
           </h1>
           <p className="text-gray-400 max-w-lg mx-auto">
             Parrainez vos amis et gagnez des crédits IA + XP. Plus vous parrainez, plus les récompenses augmentent.
@@ -44,7 +44,7 @@ export default function ReferralPage() {
           <p className="text-xs text-gray-400 mb-3">Votre code de parrainage</p>
           <div className="rounded-xl border border-gray-700 bg-gray-800/50 p-4 max-w-sm mx-auto flex items-center gap-3 mb-4">
             <code className="flex-1 text-xl font-mono font-bold text-white tracking-wider">{referralCode}</code>
-            <button onClick={copyLink} className="px-4 py-2 rounded-lg bg-[#E50914] text-white text-sm font-medium hover:bg-[#FF2D2D]">
+            <button onClick={copyLink} className="px-4 py-2 rounded-lg bg-[#C9A227] text-white text-sm font-medium hover:bg-[#E8C766]">
               {copied ? <><Check className="inline h-4 w-4 mr-1" />Copié</> : <><Copy className="inline h-4 w-4 mr-1" />Copier le lien</>}
             </button>
           </div>

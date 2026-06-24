@@ -24,14 +24,14 @@ export function SubmitEntryForm({ contestId }: SubmitEntryFormProps) {
   }, [state?.success])
 
   return (
-    <div className="rounded-2xl border border-[#E50914]/20 bg-amber-50/30 overflow-hidden">
+    <div className="rounded-2xl border border-[#C9A227]/20 bg-amber-50/30 overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-5 hover:bg-amber-50/50 transition-colors cursor-pointer"
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center">
-            <Upload className="h-5 w-5 text-[#E50914]" />
+            <Upload className="h-5 w-5 text-[#C9A227]" />
           </div>
           <div className="text-left">
             <h3 className="font-semibold text-gray-900">Participer au concours</h3>
@@ -80,7 +80,7 @@ export function SubmitEntryForm({ contestId }: SubmitEntryFormProps) {
                   name="title"
                   required
                   placeholder="Ex: CINEGEN Awakens — Teaser"
-                  className="bg-white border-gray-200 focus:border-[#E50914]/40"
+                  className="bg-white border-gray-200 focus:border-[#C9A227]/40"
                 />
               </div>
 
@@ -92,7 +92,7 @@ export function SubmitEntryForm({ contestId }: SubmitEntryFormProps) {
                   name="videoUrl"
                   type="url"
                   placeholder="https://youtube.com/watch?v=..."
-                  className="bg-white border-gray-200 focus:border-[#E50914]/40"
+                  className="bg-white border-gray-200 focus:border-[#C9A227]/40"
                 />
               </div>
 
@@ -104,7 +104,7 @@ export function SubmitEntryForm({ contestId }: SubmitEntryFormProps) {
                   name="thumbnailUrl"
                   type="url"
                   placeholder="https://..."
-                  className="bg-white border-gray-200 focus:border-[#E50914]/40"
+                  className="bg-white border-gray-200 focus:border-[#C9A227]/40"
                 />
               </div>
 

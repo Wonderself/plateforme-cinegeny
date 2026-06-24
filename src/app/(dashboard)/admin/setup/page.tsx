@@ -95,11 +95,11 @@ export default async function SetupPage() {
       <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
         <div className="flex items-center justify-between mb-3">
           <span className="text-sm font-semibold text-white">{doneCount}/{totalCount} étapes complétées</span>
-          <span className="text-sm font-bold text-[#E50914]">{progressPct}%</span>
+          <span className="text-sm font-bold text-[#C9A227]">{progressPct}%</span>
         </div>
         <div className="w-full h-3 bg-white/[0.05] rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-[#E50914] to-[#FF6B35] rounded-full transition-all duration-500"
+            className="h-full bg-gradient-to-r from-[#C9A227] to-[#FF6B35] rounded-full transition-all duration-500"
             style={{ width: `${progressPct}%` }}
           />
         </div>

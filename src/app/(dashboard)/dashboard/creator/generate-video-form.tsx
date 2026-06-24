@@ -23,7 +23,7 @@ export function GenerateVideoForm() {
           name="title"
           required
           placeholder="Mon incroyable film IA..."
-          className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white focus:border-[#E50914] focus:outline-none"
+          className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white focus:border-[#C9A227] focus:outline-none"
         />
       </div>
       <div>
@@ -32,7 +32,7 @@ export function GenerateVideoForm() {
           name="script"
           rows={3}
           placeholder="Décrivez la scène ou collez votre script..."
-          className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white focus:border-[#E50914] focus:outline-none resize-none"
+          className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white focus:border-[#C9A227] focus:outline-none resize-none"
         />
       </div>
       <div>
@@ -40,7 +40,7 @@ export function GenerateVideoForm() {
         <div className="flex flex-wrap gap-2">
           {PLATFORMS.map(p => (
             <label key={p} className="flex items-center gap-1.5 cursor-pointer">
-              <input type="checkbox" name="platforms" value={p} className="accent-[#E50914]" defaultChecked={p === 'TikTok'} />
+              <input type="checkbox" name="platforms" value={p} className="accent-[#C9A227]" defaultChecked={p === 'TikTok'} />
               <span className="text-xs text-white/70">{p}</span>
             </label>
           ))}
@@ -52,7 +52,7 @@ export function GenerateVideoForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="flex items-center gap-2 px-5 py-2.5 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-medium rounded-xl disabled:opacity-50 transition-colors"
+        className="flex items-center gap-2 px-5 py-2.5 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-medium rounded-xl disabled:opacity-50 transition-colors"
       >
         {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Zap className="h-4 w-4" />}
         Générer la vidéo (10 tokens)

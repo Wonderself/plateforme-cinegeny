@@ -90,7 +90,7 @@ export function SearchOverlay() {
           {/* Input */}
           <div className="flex items-center gap-3 px-5 py-4 border-b border-white/5">
             {isPending ? (
-              <Loader2 className="h-5 w-5 text-[#E50914] animate-spin shrink-0" />
+              <Loader2 className="h-5 w-5 text-[#C9A227] animate-spin shrink-0" />
             ) : (
               <Search className="h-5 w-5 text-white/30 shrink-0" />
             )}
@@ -126,8 +126,8 @@ export function SearchOverlay() {
                       onClick={() => navigate(`/films/${film.slug}`)}
                       className="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg hover:bg-white/5 transition-colors text-left"
                     >
-                      <div className="h-8 w-8 rounded-lg bg-[#E50914]/10 flex items-center justify-center shrink-0">
-                        <Film className="h-4 w-4 text-[#E50914]" />
+                      <div className="h-8 w-8 rounded-lg bg-[#C9A227]/10 flex items-center justify-center shrink-0">
+                        <Film className="h-4 w-4 text-[#C9A227]" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm text-white/80 truncate">{film.title}</p>

@@ -97,7 +97,7 @@ export const RSS_SOURCES: RSSSource[] = [
 
 export const VEILLE_CATEGORIES = [
   { id: 'industry', label: 'Industrie', icon: '📰', color: '#3B82F6' },
-  { id: 'critique', label: 'Critique', icon: '🎬', color: '#E50914' },
+  { id: 'critique', label: 'Critique', icon: '🎬', color: '#C9A227' },
   { id: 'tech', label: 'Tech & IA', icon: '🤖', color: '#8B5CF6' },
   { id: 'box-office', label: 'Box-Office', icon: '💰', color: '#10B981' },
   { id: 'festivals', label: 'Festivals', icon: '🏆', color: '#F59E0B' },

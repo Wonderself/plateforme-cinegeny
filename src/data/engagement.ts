@@ -93,7 +93,7 @@ export const USER_LEVELS: UserLevel[] = [
   { level: 4, title: 'Scénariste', titleEn: 'Screenwriter', minXP: 1500, maxXP: 3500, icon: '✍️', color: '#8B5CF6', perks: ['Soumission scénarios', 'Agents L1'], creditBonus: 2_000_000 },
   { level: 5, title: 'Réalisateur', titleEn: 'Director', minXP: 3500, maxXP: 7000, icon: '🎥', color: '#F59E0B', perks: ['Projets illimités', 'Agents L2'], creditBonus: 3_000_000 },
   { level: 6, title: 'Producteur', titleEn: 'Producer', minXP: 7000, maxXP: 15000, icon: '💼', color: '#10B981', perks: ['Crowdfunding', 'Analytics avancés'], creditBonus: 5_000_000 },
-  { level: 7, title: 'Mogul', titleEn: 'Mogul', minXP: 15000, maxXP: 30000, icon: '👑', color: '#E50914', perks: ['Agents L3', 'Governance', 'Badge exclusif'], creditBonus: 10_000_000 },
+  { level: 7, title: 'Mogul', titleEn: 'Mogul', minXP: 15000, maxXP: 30000, icon: '👑', color: '#C9A227', perks: ['Agents L3', 'Governance', 'Badge exclusif'], creditBonus: 10_000_000 },
   { level: 8, title: 'Légende', titleEn: 'Legend', minXP: 30000, maxXP: Infinity, icon: '⭐', color: '#FFD700', perks: ['Tout débloqué', 'Titre spécial', 'Mentor'], creditBonus: 20_000_000 },
 ]
 

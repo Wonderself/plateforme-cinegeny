@@ -190,7 +190,7 @@ export function CreateContestForm({ films }: { films: { id: string; title: strin
       ) : (
         <div className="p-5 rounded-xl border border-gray-200 bg-white">
           <h3 className="text-sm font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <Trophy className="h-4 w-4 text-[#E50914]" />
+            <Trophy className="h-4 w-4 text-[#C9A227]" />
             Creer un concours
           </h3>
 
@@ -205,7 +205,7 @@ export function CreateContestForm({ films }: { films: { id: string; title: strin
             <Textarea name="description" rows={2} placeholder="Description (optionnel)" className="text-sm" />
             <select
               name="filmId"
-              className="flex h-9 w-full rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+              className="flex h-9 w-full rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
             >
               <option value="">Film associe (optionnel)</option>
               {films.map((f) => (

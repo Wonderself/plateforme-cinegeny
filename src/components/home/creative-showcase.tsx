@@ -9,12 +9,12 @@ export function CreativeShowcase() {
       <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#E50914]/20 bg-[#E50914]/[0.06] text-xs text-[#E50914] mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/[0.06] text-xs text-[#C9A227] mb-4">
             <Sparkles className="h-3.5 w-3.5" />
             Coup de cœur
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-            Créez en <span className="text-[#E50914]">30 secondes</span>
+            Créez en <span className="text-[#C9A227]">30 secondes</span>
           </h2>
           <p className="text-sm text-white/40 max-w-md mx-auto">
             Inventez un film, l&apos;IA fait le reste. Bande-annonce et affiche professionnelle, avec votre visage en option.
@@ -26,7 +26,7 @@ export function CreativeShowcase() {
           {/* Trailer Maker */}
           <Link
             href="/trailer-maker"
-            className="group relative rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.03] to-transparent overflow-hidden hover:border-[#E50914]/30 transition-all duration-500"
+            className="group relative rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.03] to-transparent overflow-hidden hover:border-[#C9A227]/30 transition-all duration-500"
           >
             {/* Background image */}
             <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
@@ -40,11 +40,11 @@ export function CreativeShowcase() {
 
             <div className="relative p-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 rounded-xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center">
-                  <Film className="h-5 w-5 text-[#E50914]" />
+                <div className="h-10 w-10 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center">
+                  <Film className="h-5 w-5 text-[#C9A227]" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white group-hover:text-[#E50914] transition-colors">
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#C9A227] transition-colors">
                     Trailer Maker
                   </h3>
                   <p className="text-[10px] text-white/30">Bande-annonce IA</p>
@@ -67,7 +67,7 @@ export function CreativeShowcase() {
                 </span>
               </div>
 
-              <div className="flex items-center gap-2 text-sm text-[#E50914] font-medium group-hover:gap-3 transition-all">
+              <div className="flex items-center gap-2 text-sm text-[#C9A227] font-medium group-hover:gap-3 transition-all">
                 Créer ma bande-annonce
                 <ArrowRight className="h-4 w-4" />
               </div>
@@ -77,7 +77,7 @@ export function CreativeShowcase() {
           {/* Poster Maker */}
           <Link
             href="/poster-maker"
-            className="group relative rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.03] to-transparent overflow-hidden hover:border-[#E50914]/30 transition-all duration-500"
+            className="group relative rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.03] to-transparent overflow-hidden hover:border-[#C9A227]/30 transition-all duration-500"
           >
             <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
               <img

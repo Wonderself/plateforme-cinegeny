@@ -43,7 +43,7 @@ export default function RewardsPage() {
             <span className="text-sm font-medium text-yellow-400">Récompenses & Progression</span>
           </div>
           <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-3">
-            Votre <span className="text-[#E50914]">Parcours</span> Cinéma
+            Votre <span className="text-[#C9A227]">Parcours</span> Cinéma
           </h1>
           <p className="text-gray-400 max-w-lg mx-auto">
             Gagnez de l&apos;XP, débloquez des badges cinéma, maintenez votre streak et relevez des défis quotidiens.
@@ -87,7 +87,7 @@ export default function RewardsPage() {
             { key: 'referral' as const, label: 'Parrainage', icon: Users },
           ].map(t => {
             const TIcon = t.icon
-            return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}><TIcon className="h-4 w-4" />{t.label}</button>
+            return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}><TIcon className="h-4 w-4" />{t.label}</button>
           })}
         </div>
 
@@ -206,7 +206,7 @@ export default function RewardsPage() {
                       </div>
                       <p className="text-xs text-gray-400">{challenge.description}</p>
                       <div className="w-full h-2 bg-gray-800 rounded-full mt-3 overflow-hidden">
-                        <div className="h-full bg-[#E50914] rounded-full" style={{ width: '0%' }} />
+                        <div className="h-full bg-[#C9A227] rounded-full" style={{ width: '0%' }} />
                       </div>
                       <p className="text-[10px] text-gray-600 mt-1">0/{challenge.target}</p>
                     </div>
@@ -233,7 +233,7 @@ export default function RewardsPage() {
 
               <div className="rounded-xl border border-gray-700 bg-gray-800/50 p-4 max-w-sm mx-auto flex items-center gap-3">
                 <code className="flex-1 text-sm font-mono text-white">{referralCode}</code>
-                <button onClick={copyReferral} className="px-3 py-1.5 rounded-lg text-xs bg-[#E50914] text-white hover:bg-[#FF2D2D]">
+                <button onClick={copyReferral} className="px-3 py-1.5 rounded-lg text-xs bg-[#C9A227] text-white hover:bg-[#E8C766]">
                   {copied ? <Check className="inline h-3.5 w-3.5" /> : <Copy className="inline h-3.5 w-3.5" />}
                   {copied ? ' Copié' : ' Copier'}
                 </button>

@@ -50,7 +50,7 @@ export default function PromoCodesPage() {
           <h1 className="text-2xl font-bold text-white font-[family-name:var(--font-playfair)]">Codes Promo</h1>
           <p className="text-sm text-white/50 mt-1">{codes.length} codes · {activeCount} actifs · {totalUsed} utilisations</p>
         </div>
-        <button onClick={() => setShowCreate(!showCreate)} className="flex items-center gap-1.5 px-4 py-2 bg-[#E50914] text-white text-xs font-medium rounded-lg hover:bg-[#FF2D2D]"><Plus className="h-4 w-4" />Nouveau code</button>
+        <button onClick={() => setShowCreate(!showCreate)} className="flex items-center gap-1.5 px-4 py-2 bg-[#C9A227] text-white text-xs font-medium rounded-lg hover:bg-[#E8C766]"><Plus className="h-4 w-4" />Nouveau code</button>
       </div>
 
       {/* Agent */}
@@ -80,16 +80,16 @@ export default function PromoCodesPage() {
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
           <h2 className="text-sm font-semibold text-white">Nouveau code promo</h2>
           <div className="grid grid-cols-2 gap-3">
-            <input value={newCode.code} onChange={e => setNewCode(p => ({ ...p, code: e.target.value.toUpperCase() }))} placeholder="CODE (ex: CINEMA50)" className="rounded-lg border border-white/10 px-3 py-2 text-sm font-mono uppercase focus:border-[#E50914] focus:outline-none" />
+            <input value={newCode.code} onChange={e => setNewCode(p => ({ ...p, code: e.target.value.toUpperCase() }))} placeholder="CODE (ex: CINEMA50)" className="rounded-lg border border-white/10 px-3 py-2 text-sm font-mono uppercase focus:border-[#C9A227] focus:outline-none" />
             <select value={newCode.type} onChange={e => setNewCode(p => ({ ...p, type: e.target.value as PromoType }))} className="rounded-lg border border-white/10 px-3 py-2 text-sm">{Object.entries(PROMO_TYPES).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}</select>
             <input type="number" value={newCode.value || ''} onChange={e => setNewCode(p => ({ ...p, value: parseInt(e.target.value) || 0 }))} placeholder={`Valeur (${PROMO_TYPES[newCode.type].unit})`} className="rounded-lg border border-white/10 px-3 py-2 text-sm focus:outline-none" />
             <input type="number" value={newCode.maxUses || ''} onChange={e => setNewCode(p => ({ ...p, maxUses: parseInt(e.target.value) || 0 }))} placeholder="Max utilisations (0=illimité)" className="rounded-lg border border-white/10 px-3 py-2 text-sm focus:outline-none" />
             <input type="date" value={newCode.expiresAt} onChange={e => setNewCode(p => ({ ...p, expiresAt: e.target.value }))} className="rounded-lg border border-white/10 px-3 py-2 text-sm" />
             <input value={newCode.description} onChange={e => setNewCode(p => ({ ...p, description: e.target.value }))} placeholder="Description" className="rounded-lg border border-white/10 px-3 py-2 text-sm focus:outline-none" />
           </div>
-          <label className="flex items-center gap-2 text-xs text-white/60"><input type="checkbox" checked={newCode.onePerUser} onChange={e => setNewCode(p => ({ ...p, onePerUser: e.target.checked }))} className="accent-[#E50914]" />Un seul usage par utilisateur</label>
+          <label className="flex items-center gap-2 text-xs text-white/60"><input type="checkbox" checked={newCode.onePerUser} onChange={e => setNewCode(p => ({ ...p, onePerUser: e.target.checked }))} className="accent-[#C9A227]" />Un seul usage par utilisateur</label>
           <div className="flex gap-2">
-            <button onClick={createCode} className="px-4 py-2 bg-[#E50914] text-white text-xs rounded-lg">Créer</button>
+            <button onClick={createCode} className="px-4 py-2 bg-[#C9A227] text-white text-xs rounded-lg">Créer</button>
             <button onClick={() => setShowCreate(false)} className="px-4 py-2 bg-white/[0.05] text-white/60 text-xs rounded-lg">Annuler</button>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function PromoCodesPage() {
       {/* Search */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/50" />
-        <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher un code..." className="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 text-sm focus:border-[#E50914] focus:outline-none" />
+        <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher un code..." className="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 text-sm focus:border-[#C9A227] focus:outline-none" />
       </div>
 
       {/* Codes Table */}

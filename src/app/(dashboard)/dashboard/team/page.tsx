@@ -59,7 +59,7 @@ export default function TeamPage() {
           { key: 'widget' as const, label: 'Widget', icon: Code },
         ].map(t => {
           const TIcon = t.icon
-          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
+          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
         })}
       </div>
 
@@ -107,11 +107,11 @@ export default function TeamPage() {
         <div className="space-y-6 max-w-lg">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
             <h3 className="text-sm font-semibold text-white">Inviter par email</h3>
-            <input value={inviteEmail} onChange={e => setInviteEmail(e.target.value)} placeholder="email@example.com" className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
+            <input value={inviteEmail} onChange={e => setInviteEmail(e.target.value)} placeholder="email@example.com" className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
             <select value={inviteRole} onChange={e => setInviteRole(e.target.value)} className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm">
               {TEAM_ROLES.filter(r => r.id !== 'owner').map(r => <option key={r.id} value={r.id}>{r.label} — {r.permissions.join(', ')}</option>)}
             </select>
-            <button onClick={sendInvite} className="w-full py-3 bg-[#E50914] text-white font-semibold rounded-xl hover:bg-[#FF2D2D]"><Mail className="inline h-4 w-4 mr-2" />Envoyer l&apos;invitation</button>
+            <button onClick={sendInvite} className="w-full py-3 bg-[#C9A227] text-white font-semibold rounded-xl hover:bg-[#E8C766]"><Mail className="inline h-4 w-4 mr-2" />Envoyer l&apos;invitation</button>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <h3 className="text-sm font-semibold text-white mb-3">Lien d&apos;invitation</h3>

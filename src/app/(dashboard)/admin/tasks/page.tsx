@@ -57,7 +57,7 @@ export default async function AdminTasksPage() {
             <div key={task.id} className="flex items-center gap-4 p-4 sm:rounded-2xl rounded-xl border border-white/5 bg-white/[0.02] hover:border-white/10 hover:shadow-md hover:-translate-y-[1px] transition-all duration-500">
               <div className={`w-2 h-10 rounded-full shrink-0 ${
                 task.status === 'AVAILABLE' ? 'bg-green-500' :
-                task.status === 'VALIDATED' ? 'bg-[#E50914]' :
+                task.status === 'VALIDATED' ? 'bg-[#C9A227]' :
                 task.status === 'CLAIMED' ? 'bg-blue-500' :
                 task.status === 'LOCKED' ? 'bg-white/10' :
                 'bg-yellow-500'
@@ -82,7 +82,7 @@ export default async function AdminTasksPage() {
                 </span>
               </div>
 
-              <div className="text-sm font-bold text-[#E50914] shrink-0">
+              <div className="text-sm font-bold text-[#C9A227] shrink-0">
                 {formatPrice(task.priceEuros)}
               </div>
 

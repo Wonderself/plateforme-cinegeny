@@ -63,11 +63,11 @@ export default function ImageBankPage() {
       <div className="space-y-3">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
-          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher des images (ex: neon city night)..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-white/10 text-sm focus:border-[#E50914] focus:outline-none" />
+          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher des images (ex: neon city night)..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-white/10 text-sm focus:border-[#C9A227] focus:outline-none" />
         </div>
         <div className="flex gap-2 overflow-x-auto pb-2">
           {UNSPLASH_CATEGORIES.map(cat => (
-            <button key={cat.id} onClick={() => setCategory(cat.id)} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap ${category === cat.id ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>
+            <button key={cat.id} onClick={() => setCategory(cat.id)} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap ${category === cat.id ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>
               <span>{cat.icon}</span>{cat.label}
             </button>
           ))}
@@ -100,7 +100,7 @@ export default function ImageBankPage() {
       {moodboard.length > 0 && (
         <div>
           <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <Grid3X3 className="h-5 w-5 text-[#E50914]" /> Mon Moodboard ({moodboard.length})
+            <Grid3X3 className="h-5 w-5 text-[#C9A227]" /> Mon Moodboard ({moodboard.length})
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-2">
             {moodboard.map(img => (
@@ -120,7 +120,7 @@ export default function ImageBankPage() {
             <img src={preview.url} alt={preview.alt} className="w-full rounded-xl" />
             <div className="flex items-center justify-between mt-3 px-2">
               <p className="text-sm text-white">{preview.alt} — 📷 {preview.photographer}</p>
-              <button onClick={() => { addToMoodboard(preview); setPreview(null) }} className="px-3 py-1.5 rounded-lg bg-[#E50914] text-white text-xs">Ajouter au moodboard</button>
+              <button onClick={() => { addToMoodboard(preview); setPreview(null) }} className="px-3 py-1.5 rounded-lg bg-[#C9A227] text-white text-xs">Ajouter au moodboard</button>
             </div>
             <button onClick={() => setPreview(null)} className="mt-3 w-full py-2 bg-white/[0.08] text-white/60 rounded-xl text-sm">Fermer</button>
           </div>

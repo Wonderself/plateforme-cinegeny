@@ -68,19 +68,19 @@ export function ModelSelector({ taskType, category, onSelect, selectedModel }: M
               disabled={!isUserChoice && !isSelected}
               className={`text-left rounded-xl border p-4 transition-colors ${
                 isSelected
-                  ? 'border-[#E50914] bg-red-50'
+                  ? 'border-[#C9A227] bg-red-50'
                   : 'border-white/10 hover:border-gray-300'
               } ${!isUserChoice && !isSelected ? 'opacity-40 cursor-not-allowed' : ''}`}
             >
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-lg">{model.icon}</span>
                 <span className="text-sm font-medium text-[#1A1A2E]">{model.name}</span>
-                {isSelected && <Check className="h-4 w-4 text-[#E50914] ml-auto" />}
+                {isSelected && <Check className="h-4 w-4 text-[#C9A227] ml-auto" />}
               </div>
               <p className="text-[10px] text-gray-400 mb-2">{model.description}</p>
               <div className="flex items-center justify-between">
                 <span className="text-[10px] text-white/50">{model.provider}</span>
-                <span className="text-xs font-semibold text-[#E50914]">
+                <span className="text-xs font-semibold text-[#C9A227]">
                   ~{microToCredits(cost).toFixed(2)} cr
                 </span>
               </div>

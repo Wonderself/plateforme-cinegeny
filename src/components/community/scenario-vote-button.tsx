@@ -54,17 +54,17 @@ export function ScenarioVoteButton({
             <span className="tabular-nums font-bold">{votes}</span>
           </button>
           {/* Premium tooltip */}
-          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 rounded-lg bg-white border border-[#E50914]/20 shadow-lg text-xs text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 rounded-lg bg-white border border-[#C9A227]/20 shadow-lg text-xs text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
             <div className="flex items-center gap-1.5">
-              <Crown className="h-3 w-3 text-[#E50914]" />
+              <Crown className="h-3 w-3 text-[#C9A227]" />
               <span>Vote Premium (Starter+)</span>
             </div>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#E50914]/20" />
+            <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#C9A227]/20" />
           </div>
         </div>
         <a
           href="/dashboard/subscription"
-          className="text-[10px] text-[#E50914]/60 hover:text-[#E50914] transition-colors"
+          className="text-[10px] text-[#C9A227]/60 hover:text-[#C9A227] transition-colors"
         >
           Passer Premium
         </a>
@@ -76,11 +76,11 @@ export function ScenarioVoteButton({
   if (hasVoted) {
     return (
       <div className="flex flex-col items-center gap-1">
-        <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-[#E50914]/10 text-[#E50914] border border-[#E50914]/30">
-          <CheckCircle className="h-4 w-4 fill-[#E50914]/30" />
+        <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30">
+          <CheckCircle className="h-4 w-4 fill-[#C9A227]/30" />
           <span className="tabular-nums font-bold">{votes}</span>
         </div>
-        <span className="text-[10px] text-[#E50914]/50">Vote enregistre</span>
+        <span className="text-[10px] text-[#C9A227]/50">Vote enregistre</span>
       </div>
     )
   }
@@ -94,7 +94,7 @@ export function ScenarioVoteButton({
         className={cn(
           'group flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer',
           'bg-gray-50 text-gray-500 border border-gray-200',
-          'hover:border-[#E50914]/40 hover:text-[#E50914] hover:bg-[#E50914]/5',
+          'hover:border-[#C9A227]/40 hover:text-[#C9A227] hover:bg-[#C9A227]/5',
           'hover:shadow-sm',
           isPending && 'opacity-60 pointer-events-none'
         )}

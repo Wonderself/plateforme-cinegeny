@@ -43,7 +43,7 @@ function TokenizationNav({ active }: { active: string }) {
           href={tab.href}
           className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 min-h-[44px] ${
             active === tab.key
-              ? 'bg-[#E50914]/15 text-[#E50914] border border-[#E50914]/20 shadow-[0_0_12px_rgba(229,9,20,0.1)]'
+              ? 'bg-[#C9A227]/15 text-[#C9A227] border border-[#C9A227]/20 shadow-[0_0_12px_rgba(201,162,39,0.1)]'
               : 'text-white/50 hover:text-white/70'
           }`}
         >
@@ -161,7 +161,7 @@ export default async function GovernancePage() {
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10">
-            <Scale className="h-4 w-4 text-[#E50914]" />
+            <Scale className="h-4 w-4 text-[#C9A227]" />
             <span className="text-white text-sm font-semibold">{totalVotingPower}</span>
             <span className="text-white/30 text-xs">pouvoir de vote</span>
           </div>
@@ -224,7 +224,7 @@ export default async function GovernancePage() {
                         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                           <div className="space-y-1 flex-1">
                             <div className="flex flex-wrap items-center gap-2">
-                              <Link href={`/tokenization/${proposal.offering.filmId}`} className="text-[#E50914] text-xs hover:underline flex items-center gap-1">
+                              <Link href={`/tokenization/${proposal.offering.filmId}`} className="text-[#C9A227] text-xs hover:underline flex items-center gap-1">
                                 <Film className="h-3 w-3" />
                                 {proposal.offering.film.title}
                               </Link>
@@ -299,7 +299,7 @@ export default async function GovernancePage() {
                         {/* Vote Buttons */}
                         {hasVoted ? (
                           <div className="flex items-center gap-2 p-3 rounded-lg bg-white/[0.02] border border-white/5">
-                            <CheckCircle2 className="h-4 w-4 text-[#E50914]" />
+                            <CheckCircle2 className="h-4 w-4 text-[#C9A227]" />
                             <span className="text-white/50 text-sm">
                               Vous avez voté : <strong className={
                                 userVote === 'FOR' ? 'text-green-600' :
@@ -313,7 +313,7 @@ export default async function GovernancePage() {
                         ) : (
                           <div className="space-y-2">
                             <p className="text-white/30 text-xs">
-                              Votre pouvoir de vote : <strong className="text-[#E50914]">{userTokenWeight} token(s)</strong>
+                              Votre pouvoir de vote : <strong className="text-[#C9A227]">{userTokenWeight} token(s)</strong>
                             </p>
                             <div className="flex gap-2">
                               <form action={async (fd: FormData) => { 'use server'; await voteOnProposalAction(fd) }} className="flex-1">
@@ -425,7 +425,7 @@ export default async function GovernancePage() {
                       <select
                         name="offeringId"
                         required
-                        className="flex h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 focus:border-[#E50914]/50 transition-all duration-200"
+                        className="flex h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227]/50 transition-all duration-200"
                       >
                         <option value="" className="bg-[#111]">Sélectionner un film</option>
                         {userOfferings.map((o) => (
@@ -442,7 +442,7 @@ export default async function GovernancePage() {
                       <select
                         name="type"
                         required
-                        className="flex h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 focus:border-[#E50914]/50 transition-all duration-200"
+                        className="flex h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227]/50 transition-all duration-200"
                       >
                         <option value="" className="bg-[#111]">Sélectionner un type</option>
                         {Object.entries(PROPOSAL_TYPE_LABELS).map(([key, label]) => (
@@ -461,7 +461,7 @@ export default async function GovernancePage() {
                         minLength={5}
                         maxLength={200}
                         placeholder="Titre de votre proposition..."
-                        className="flex h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 focus:border-[#E50914]/50 transition-all duration-200"
+                        className="flex h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227]/50 transition-all duration-200"
                       />
                     </div>
 
@@ -474,7 +474,7 @@ export default async function GovernancePage() {
                         minLength={20}
                         rows={4}
                         placeholder="Décrivez votre proposition en détail..."
-                        className="flex min-h-[100px] w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 focus:border-[#E50914]/50 transition-all duration-200 resize-vertical"
+                        className="flex min-h-[100px] w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227]/50 transition-all duration-200 resize-vertical"
                       />
                     </div>
 
@@ -487,7 +487,7 @@ export default async function GovernancePage() {
                         min={1}
                         max={30}
                         defaultValue={7}
-                        className="flex h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 focus:border-[#E50914]/50 transition-all duration-200"
+                        className="flex h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227]/50 transition-all duration-200"
                       />
                     </div>
 

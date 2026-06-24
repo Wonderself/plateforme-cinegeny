@@ -12,7 +12,7 @@ export default function PrivacyPage() {
       <div className="container mx-auto max-w-4xl">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 text-[#E50914] text-xs font-medium tracking-wider uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 text-[#C9A227] text-xs font-medium tracking-wider uppercase mb-6">
             Protection des Données
           </div>
           <h1
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
               La présente Politique de Confidentialité décrit comment la société
               CINEGEN Studio (ci-après « CINEGEN », « nous », « notre ») collecte,
               utilise, stocke et protège vos données personnelles dans le cadre de
-              l&apos;utilisation de la plateforme <strong className="text-[#E50914]">CINEGEN</strong>{' '}
+              l&apos;utilisation de la plateforme <strong className="text-[#C9A227]">CINEGEN</strong>{' '}
               (ci-après « la Plateforme »), conformément au Règlement (UE) 2016/679 du
               27 avril 2016 relatif à la protection des données (RGPD) et à la loi n° 78-17
               du 6 janvier 1978 modifiée (loi Informatique et Libertés).
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
           {/* Article 1 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               1. Responsable du traitement
             </h2>
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
                 SAS au capital de 10 000 &euro;<br />
                 RCS Paris : [à compléter]<br />
                 Siège social : [adresse à compléter], 75000 Paris, France<br />
-                Email : <span className="text-[#E50914]">dpo@cinegen.studio</span><br />
+                Email : <span className="text-[#C9A227]">dpo@cinegen.studio</span><br />
                 Téléphone : [à compléter]
               </p>
             </div>
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
           {/* Article 2 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               2. Données collectées
             </h2>
@@ -118,7 +118,7 @@ export default function PrivacyPage() {
               <li>Système d&apos;exploitation ;</li>
               <li>Pages visitées, durée de consultation ;</li>
               <li>Données de cookies (voir notre{' '}
-                <Link href="/legal/cookies" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors">
+                <Link href="/legal/cookies" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors">
                   Politique Cookies
                 </Link>).</li>
             </ul>
@@ -127,7 +127,7 @@ export default function PrivacyPage() {
           {/* Article 3 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               3. Bases légales du traitement
             </h2>
@@ -184,7 +184,7 @@ export default function PrivacyPage() {
           {/* Article 4 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               4. Finalités du traitement
             </h2>
@@ -209,7 +209,7 @@ export default function PrivacyPage() {
           {/* Article 5 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               5. Destinataires des données
             </h2>
@@ -247,7 +247,7 @@ export default function PrivacyPage() {
           {/* Article 6 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               6. Durée de conservation
             </h2>
@@ -300,7 +300,7 @@ export default function PrivacyPage() {
           {/* Article 7 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               7. Vos droits (Articles 15 à 22 du RGPD)
             </h2>
@@ -347,11 +347,11 @@ export default function PrivacyPage() {
               </li>
             </ul>
 
-            <div className="mt-6 p-4 rounded-xl border border-[#E50914]/20 bg-[#E50914]/5">
+            <div className="mt-6 p-4 rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/5">
               <p className="text-white/80 leading-relaxed">
-                <strong className="text-[#E50914]">Comment exercer vos droits ?</strong><br />
+                <strong className="text-[#C9A227]">Comment exercer vos droits ?</strong><br />
                 Envoyez votre demande accompagnée d&apos;un justificatif d&apos;identité à :<br />
-                <span className="text-[#E50914]">dpo@cinegen.studio</span><br />
+                <span className="text-[#C9A227]">dpo@cinegen.studio</span><br />
                 Nous nous engageons à répondre dans un délai de 30 jours.
               </p>
             </div>
@@ -360,14 +360,14 @@ export default function PrivacyPage() {
               En cas de réponse insatisfaisante, vous avez le droit d&apos;introduire une
               réclamation auprès de la Commission Nationale de l&apos;Informatique et des
               Libertés (CNIL) :{' '}
-              <span className="text-[#E50914]">www.cnil.fr</span>.
+              <span className="text-[#C9A227]">www.cnil.fr</span>.
             </p>
           </section>
 
           {/* Article 8 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               8. Délégué à la Protection des Données (DPO)
             </h2>
@@ -380,7 +380,7 @@ export default function PrivacyPage() {
               <p className="text-white/70 leading-relaxed">
                 <strong className="text-white/90">Délégué à la Protection des Données</strong><br />
                 CINEGEN Studio<br />
-                Email : <span className="text-[#E50914]">dpo@cinegen.studio</span><br />
+                Email : <span className="text-[#C9A227]">dpo@cinegen.studio</span><br />
                 Courrier : DPO — CINEGEN Studio, [adresse à compléter], 75000 Paris
               </p>
             </div>
@@ -389,7 +389,7 @@ export default function PrivacyPage() {
           {/* Article 9 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               9. Cookies
             </h2>
@@ -398,7 +398,7 @@ export default function PrivacyPage() {
               améliorer votre expérience. Pour une information détaillée sur les cookies
               utilisés, leur finalité et la gestion de vos préférences, veuillez consulter
               notre{' '}
-              <Link href="/legal/cookies" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors">
+              <Link href="/legal/cookies" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors">
                 Politique Cookies
               </Link>.
             </p>
@@ -407,7 +407,7 @@ export default function PrivacyPage() {
           {/* Article 10 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               10. Transferts de données hors Union européenne
             </h2>
@@ -435,14 +435,14 @@ export default function PrivacyPage() {
             </ul>
             <p className="text-white/70 leading-relaxed mt-4">
               Vous pouvez obtenir une copie des garanties mises en place en contactant notre
-              DPO à l&apos;adresse <span className="text-[#E50914]">dpo@cinegen.studio</span>.
+              DPO à l&apos;adresse <span className="text-[#C9A227]">dpo@cinegen.studio</span>.
             </p>
           </section>
 
           {/* Article 11 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               11. Sécurité des données
             </h2>
@@ -464,7 +464,7 @@ export default function PrivacyPage() {
           {/* Article 12 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               12. Modification de la politique
             </h2>
@@ -492,10 +492,10 @@ export default function PrivacyPage() {
 
         {/* Navigation */}
         <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm">
-          <Link href="/legal/terms" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors">
+          <Link href="/legal/terms" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors">
             Conditions Générales d&apos;Utilisation
           </Link>
-          <Link href="/legal/cookies" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors">
+          <Link href="/legal/cookies" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors">
             Politique Cookies
           </Link>
         </div>

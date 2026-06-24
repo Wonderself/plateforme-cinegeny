@@ -117,8 +117,8 @@ export function HeroBanner({ films }: { films: HeroFilm[] }) {
           >
             {/* Genre badge with line */}
             <div className="flex items-center gap-3 mb-7">
-              <div className="h-[2px] w-10 bg-gradient-to-r from-[#E50914] to-[#E50914]/0" />
-              <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-[#E50914]">
+              <div className="h-[2px] w-10 bg-gradient-to-r from-[#C9A227] to-[#C9A227]/0" />
+              <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-[#C9A227]">
                 {film.genre || 'Film'}
               </span>
               <div className="h-1 w-1 rounded-full bg-white/20" />
@@ -145,8 +145,8 @@ export function HeroBanner({ films }: { films: HeroFilm[] }) {
             <div className="flex items-center gap-5 sm:gap-6">
               <Link
                 href={href}
-                className="group inline-flex items-center gap-2.5 px-6 sm:px-8 md:px-10 py-3.5 md:py-4 rounded-xl text-sm md:text-[15px] font-bold text-black transition-all duration-300 hover:shadow-[0_0_50px_rgba(229,9,20,0.45)] hover:scale-[1.03] active:scale-[0.97]"
-                style={{ background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 50%, #E50914 100%)' }}
+                className="group inline-flex items-center gap-2.5 px-6 sm:px-8 md:px-10 py-3.5 md:py-4 rounded-xl text-sm md:text-[15px] font-bold text-black transition-all duration-300 hover:shadow-[0_0_50px_rgba(201,162,39,0.45)] hover:scale-[1.03] active:scale-[0.97]"
+                style={{ background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 50%, #C9A227 100%)' }}
               >
                 <Play className="h-5 w-5 fill-black" />
                 {film.status === 'RELEASED' || film.status === 'LIVE' ? 'Regarder' : 'Decouvrir'}
@@ -168,13 +168,13 @@ export function HeroBanner({ films }: { films: HeroFilm[] }) {
         <>
           <button
             onClick={prev}
-            className="absolute left-2 sm:left-3 md:left-6 top-1/2 -translate-y-1/2 h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-black/30 backdrop-blur-md border border-white/8 flex items-center justify-center opacity-40 sm:opacity-0 hover:opacity-100 focus:opacity-100 transition-all duration-300 hover:bg-black/50 hover:border-[#E50914]/30 hover:scale-110 group"
+            className="absolute left-2 sm:left-3 md:left-6 top-1/2 -translate-y-1/2 h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-black/30 backdrop-blur-md border border-white/8 flex items-center justify-center opacity-40 sm:opacity-0 hover:opacity-100 focus:opacity-100 transition-all duration-300 hover:bg-black/50 hover:border-[#C9A227]/30 hover:scale-110 group"
           >
             <ChevronLeft className="h-5 w-5 text-white/70 group-hover:text-white" />
           </button>
           <button
             onClick={next}
-            className="absolute right-2 sm:right-3 md:right-6 top-1/2 -translate-y-1/2 h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-black/30 backdrop-blur-md border border-white/8 flex items-center justify-center opacity-40 sm:opacity-0 hover:opacity-100 focus:opacity-100 transition-all duration-300 hover:bg-black/50 hover:border-[#E50914]/30 hover:scale-110 group"
+            className="absolute right-2 sm:right-3 md:right-6 top-1/2 -translate-y-1/2 h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-black/30 backdrop-blur-md border border-white/8 flex items-center justify-center opacity-40 sm:opacity-0 hover:opacity-100 focus:opacity-100 transition-all duration-300 hover:bg-black/50 hover:border-[#C9A227]/30 hover:scale-110 group"
           >
             <ChevronRight className="h-5 w-5 text-white/70 group-hover:text-white" />
           </button>
@@ -200,13 +200,13 @@ export function HeroBanner({ films }: { films: HeroFilm[] }) {
                 {/* Active fill with animation */}
                 {idx === current && (
                   <div
-                    className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D]"
+                    className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766]"
                     style={{ width: `${progress}%`, transition: 'width 100ms linear' }}
                   />
                 )}
                 {/* Completed segments */}
                 {idx < current && (
-                  <div className="absolute inset-0 rounded-full bg-[#E50914]/50" />
+                  <div className="absolute inset-0 rounded-full bg-[#C9A227]/50" />
                 )}
               </div>
             </button>

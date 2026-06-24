@@ -92,7 +92,7 @@ export function TwoFactorSetup() {
           {!totpSecret ? (
             <button
               onClick={setupTOTP}
-              className="px-4 py-2.5 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-medium rounded-lg transition-colors"
+              className="px-4 py-2.5 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-medium rounded-lg transition-colors"
             >
               Générer un secret TOTP
             </button>
@@ -116,11 +116,11 @@ export function TwoFactorSetup() {
               <div>
                 <label className="text-xs text-white/50 mb-1.5 block">Code actuel ({timeLeft}s)</label>
                 <div className="flex items-center gap-3">
-                  <code className="text-3xl font-mono font-bold text-[#E50914] tracking-widest">{totpCode}</code>
+                  <code className="text-3xl font-mono font-bold text-[#C9A227] tracking-widest">{totpCode}</code>
                   <div className="w-8 h-8 relative">
                     <svg className="w-8 h-8 -rotate-90" viewBox="0 0 36 36">
                       <circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
-                      <circle cx="18" cy="18" r="15" fill="none" stroke="#E50914" strokeWidth="3"
+                      <circle cx="18" cy="18" r="15" fill="none" stroke="#C9A227" strokeWidth="3"
                         strokeDasharray={`${(timeLeft / 30) * 94.2} 94.2`}
                         strokeLinecap="round" />
                     </svg>
@@ -136,7 +136,7 @@ export function TwoFactorSetup() {
                     onChange={e => setVerifyCode(e.target.value)}
                     placeholder="000000"
                     maxLength={6}
-                    className="w-40 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/10 text-white text-center text-lg font-mono tracking-widest focus:border-[#E50914] focus:outline-none"
+                    className="w-40 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/10 text-white text-center text-lg font-mono tracking-widest focus:border-[#C9A227] focus:outline-none"
                   />
                   <button
                     onClick={verifyTOTP}

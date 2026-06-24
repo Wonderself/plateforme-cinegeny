@@ -44,7 +44,7 @@ export function WithdrawForm({ currentBalance }: { currentBalance: number }) {
                 placeholder="10"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="w-full h-12 rounded-lg bg-white/5 border border-white/10 px-4 text-white placeholder-white/30 text-lg focus:outline-none focus:border-[#E50914]/50 focus:ring-1 focus:ring-[#E50914]/30 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className="w-full h-12 rounded-lg bg-white/5 border border-white/10 px-4 text-white placeholder-white/30 text-lg focus:outline-none focus:border-[#C9A227]/50 focus:ring-1 focus:ring-[#C9A227]/30 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-white/30">
                 Lumens
@@ -95,7 +95,7 @@ export function WithdrawForm({ currentBalance }: { currentBalance: number }) {
               <div className="text-white/20 mx-4">=</div>
               <div className="space-y-1">
                 <div className="text-xs text-white/40">Virement</div>
-                <div className="text-sm font-semibold text-[#E50914]">
+                <div className="text-sm font-semibold text-[#C9A227]">
                   {parsedAmount > 0 && parsedAmount <= currentBalance
                     ? `${parsedAmount.toFixed(2).replace('.', ',')} EUR`
                     : '—'

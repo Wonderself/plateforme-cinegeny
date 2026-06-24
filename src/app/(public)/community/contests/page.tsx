@@ -53,7 +53,7 @@ const STATUS_CONFIG: Record<string, {
     label: 'En Vote',
     variant: 'default',
     sectionTitle: 'En Vote',
-    sectionIcon: <Sparkles className="h-5 w-5 text-[#E50914]" />,
+    sectionIcon: <Sparkles className="h-5 w-5 text-[#C9A227]" />,
     cardVariant: 'gold',
   },
   OPEN: {
@@ -104,7 +104,7 @@ export default async function ContestsPage() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Trophy className="h-10 w-10 text-[#E50914]" />
+            <Trophy className="h-10 w-10 text-[#C9A227]" />
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-playfair">
               Concours
             </h1>
@@ -114,7 +114,7 @@ export default async function ContestsPage() {
           </p>
           <Link
             href="/community"
-            className="inline-flex items-center gap-1 text-sm text-[#E50914] mt-4 hover:text-[#C4A030] transition-colors duration-300"
+            className="inline-flex items-center gap-1 text-sm text-[#C9A227] mt-4 hover:text-[#C4A030] transition-colors duration-300"
           >
             &larr; Retour a la communaute
           </Link>
@@ -148,7 +148,7 @@ export default async function ContestsPage() {
 
                       return (
                         <Link key={contest.id} href={`/community/contests/${contest.id}`}>
-                          <Card variant={config.cardVariant} className="h-full group cursor-pointer border-white/[0.06] bg-[#0A0A0A] hover:shadow-[#E50914]/5 hover:-translate-y-[1px] transition-all duration-500">
+                          <Card variant={config.cardVariant} className="h-full group cursor-pointer border-white/[0.06] bg-[#0A0A0A] hover:shadow-[#C9A227]/5 hover:-translate-y-[1px] transition-all duration-500">
                             <CardContent className="p-6">
                               {/* Top row */}
                               <div className="flex items-start justify-between mb-4">
@@ -162,7 +162,7 @@ export default async function ContestsPage() {
                               </div>
 
                               {/* Title & description */}
-                              <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-[#E50914] transition-colors duration-300">
+                              <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-[#C9A227] transition-colors duration-300">
                                 {contest.title}
                               </h3>
                               {contest.description && (
@@ -173,7 +173,7 @@ export default async function ContestsPage() {
 
                               {/* Prize */}
                               {contest.prizeDescription && (
-                                <div className="flex items-center gap-2 text-xs text-[#E50914] mb-3 p-2 rounded-lg bg-[#E50914]/[0.04] border border-[#E50914]/10">
+                                <div className="flex items-center gap-2 text-xs text-[#C9A227] mb-3 p-2 rounded-lg bg-[#C9A227]/[0.04] border border-[#C9A227]/10">
                                   <Gift className="h-3.5 w-3.5 shrink-0" />
                                   <span className="truncate">{contest.prizeDescription}</span>
                                 </div>
@@ -201,7 +201,7 @@ export default async function ContestsPage() {
 
                               {/* Winner badge for closed contests */}
                               {status === 'CLOSED' && contest.entries[0] && (
-                                <div className="mt-3 flex items-center gap-2 text-xs text-[#E50914] p-2 rounded-lg bg-[#E50914]/[0.04] border border-[#E50914]/10">
+                                <div className="mt-3 flex items-center gap-2 text-xs text-[#C9A227] p-2 rounded-lg bg-[#C9A227]/[0.04] border border-[#C9A227]/10">
                                   <Trophy className="h-3.5 w-3.5 shrink-0" />
                                   <span>Gagnant : <strong>{contest.entries[0].user.displayName}</strong> — {contest.entries[0].title}</span>
                                 </div>
@@ -209,7 +209,7 @@ export default async function ContestsPage() {
 
                               {/* CTA arrow */}
                               <div className="flex justify-end mt-3">
-                                <ArrowRight className="h-4 w-4 text-white/30 group-hover:text-[#E50914] transition-colors duration-300" />
+                                <ArrowRight className="h-4 w-4 text-white/30 group-hover:text-[#C9A227] transition-colors duration-300" />
                               </div>
                             </CardContent>
                           </Card>

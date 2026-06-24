@@ -26,7 +26,7 @@ const LEVEL_COLORS: Record<string, string> = {
   ROOKIE: 'bg-gray-500/20 text-gray-300',
   PRO: 'bg-blue-500/20 text-blue-400',
   EXPERT: 'bg-purple-500/20 text-purple-400',
-  VIP: 'bg-[#E50914]/20 text-[#E50914]',
+  VIP: 'bg-[#C9A227]/20 text-[#C9A227]',
 }
 
 const ROLE_LABELS: Record<string, string> = {
@@ -117,9 +117,9 @@ export default async function PublicUserProfilePage({ params }: Props) {
         {/* Profile Header */}
         <div className="relative p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] mb-8">
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-            <Avatar className="h-24 w-24 rounded-2xl border-2 border-[#E50914]/30">
+            <Avatar className="h-24 w-24 rounded-2xl border-2 border-[#C9A227]/30">
               {user.avatarUrl && <AvatarImage src={user.avatarUrl} alt={name} />}
-              <AvatarFallback className="text-2xl rounded-2xl bg-[#E50914]/15 text-[#E50914]">
+              <AvatarFallback className="text-2xl rounded-2xl bg-[#C9A227]/15 text-[#C9A227]">
                 {getInitials(name)}
               </AvatarFallback>
             </Avatar>
@@ -142,7 +142,7 @@ export default async function PublicUserProfilePage({ params }: Props) {
                   {ROLE_LABELS[user.role] || user.role}
                 </span>
                 {user.reputationBadge && (
-                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-[#E50914]/10 text-[#E50914]">
+                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-[#C9A227]/10 text-[#C9A227]">
                     {user.reputationBadge}
                   </span>
                 )}
@@ -155,7 +155,7 @@ export default async function PublicUserProfilePage({ params }: Props) {
               <div className="flex flex-wrap items-center gap-4 mt-4 text-xs text-white/30">
                 <span>Membre depuis {new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric' }).format(user.createdAt)}</span>
                 {user.portfolioUrl && (
-                  <a href={user.portfolioUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[#E50914] hover:underline">
+                  <a href={user.portfolioUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[#C9A227] hover:underline">
                     <ExternalLink className="h-3 w-3" /> Portfolio
                   </a>
                 )}
@@ -169,7 +169,7 @@ export default async function PublicUserProfilePage({ params }: Props) {
           {[
             { label: 'Points', value: user.points, icon: Star, color: 'text-purple-400' },
             { label: 'Taches Validees', value: user.tasksValidated, icon: CheckCircle, color: 'text-green-400' },
-            { label: 'Reputation', value: user.reputationScore, icon: Trophy, color: 'text-[#E50914]' },
+            { label: 'Reputation', value: user.reputationScore, icon: Trophy, color: 'text-[#C9A227]' },
             { label: 'Taches Faites', value: user.tasksCompleted, icon: Sparkles, color: 'text-blue-400' },
           ].map((stat) => (
             <div key={stat.label} className="p-5 rounded-xl border border-white/[0.06] bg-white/[0.02] text-center">
@@ -200,7 +200,7 @@ export default async function PublicUserProfilePage({ params }: Props) {
                 <h3 className="text-sm font-semibold text-white/60 mb-3 uppercase tracking-wider">Competences</h3>
                 <div className="flex flex-wrap gap-2">
                   {user.skills.map((skill) => (
-                    <span key={skill} className="px-3 py-1.5 rounded-full text-xs bg-[#E50914]/10 text-[#E50914] border border-[#E50914]/20">
+                    <span key={skill} className="px-3 py-1.5 rounded-full text-xs bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/20">
                       {skill}
                     </span>
                   ))}
@@ -231,7 +231,7 @@ export default async function PublicUserProfilePage({ params }: Props) {
             <div className="grid sm:grid-cols-2 gap-3">
               {recentTasks.map((task) => (
                 <Link key={task.id} href={`/tasks/${task.id}`}>
-                  <div className="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:border-[#E50914]/20 transition-all">
+                  <div className="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:border-[#C9A227]/20 transition-all">
                     <p className="text-sm font-medium text-white/80 mb-1 line-clamp-1">{task.title}</p>
                     <div className="flex items-center gap-2 text-xs text-white/30">
                       <Film className="h-3 w-3" />
@@ -255,7 +255,7 @@ export default async function PublicUserProfilePage({ params }: Props) {
             <div className="space-y-3">
               {scenarios.map((s) => (
                 <Link key={s.id} href={`/community/scenarios/${s.id}`}>
-                  <div className="flex items-center justify-between p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:border-[#E50914]/20 transition-all">
+                  <div className="flex items-center justify-between p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:border-[#C9A227]/20 transition-all">
                     <div>
                       <p className="text-sm font-medium text-white/80">{s.title}</p>
                       <div className="flex items-center gap-2 text-xs text-white/30 mt-1">

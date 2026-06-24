@@ -51,7 +51,7 @@ export default function KnowledgeAdminPage() {
           { key: 'config' as const, label: 'Configuration', icon: Cpu },
         ].map(t => {
           const TIcon = t.icon
-          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium shrink-0 ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
+          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium shrink-0 ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
         })}
       </div>
 
@@ -110,8 +110,8 @@ export default function KnowledgeAdminPage() {
           <div className="bg-white/5 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)] border border-white/10 p-4 sm:p-6">
             <h3 className="text-sm font-semibold text-white mb-3">Recherche sémantique (cosine similarity)</h3>
             <div className="flex gap-2">
-              <input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Recherchez dans la base de connaissances..." className="flex-1 rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" onKeyDown={e => { if (e.key === 'Enter') performSearch() }} />
-              <button onClick={performSearch} disabled={searching} className="px-4 py-2 bg-[#E50914] text-white text-sm rounded-xl disabled:opacity-50">
+              <input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Recherchez dans la base de connaissances..." className="flex-1 rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" onKeyDown={e => { if (e.key === 'Enter') performSearch() }} />
+              <button onClick={performSearch} disabled={searching} className="px-4 py-2 bg-[#C9A227] text-white text-sm rounded-xl disabled:opacity-50">
                 {searching ? '...' : 'Rechercher'}
               </button>
             </div>

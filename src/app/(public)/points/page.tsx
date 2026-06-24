@@ -103,7 +103,7 @@ export default function PointsPage() {
         {/* Ambient glow */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-20 left-1/4 w-96 h-96 bg-amber-500/[0.04] rounded-full blur-[120px]" />
-          <div className="absolute top-10 right-1/3 w-80 h-80 bg-[#E50914]/[0.03] rounded-full blur-[100px]" />
+          <div className="absolute top-10 right-1/3 w-80 h-80 bg-[#C9A227]/[0.03] rounded-full blur-[100px]" />
         </div>
 
         <div className="relative container mx-auto max-w-5xl text-center">
@@ -218,8 +218,8 @@ export default function PointsPage() {
                   key={method.label}
                   className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 flex items-start gap-4 transition-all duration-500 hover:border-white/[0.12]"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center shrink-0">
-                    <Icon className="h-4 w-4 text-[#E50914]" />
+                  <div className="w-9 h-9 rounded-lg bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center shrink-0">
+                    <Icon className="h-4 w-4 text-[#C9A227]" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-white/80 mb-1">{method.label}</p>

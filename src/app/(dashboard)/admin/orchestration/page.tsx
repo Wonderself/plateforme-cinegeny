@@ -61,7 +61,7 @@ export default function OrchestrationPage() {
           { key: 'reports' as const, label: 'Reports', icon: FileBarChart },
         ].map(t => {
           const TIcon = t.icon
-          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium shrink-0 ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
+          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium shrink-0 ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
         })}
       </div>
 
@@ -243,7 +243,7 @@ export default function OrchestrationPage() {
                 const SIcon = item.icon
                 return (
                   <div key={item.step} className="flex items-center gap-3 px-4 py-3 rounded-lg border border-white/10">
-                    <span className="h-6 w-6 rounded-full bg-[#E50914]/10 text-[#E50914] flex items-center justify-center text-[10px] font-bold">{item.step}</span>
+                    <span className="h-6 w-6 rounded-full bg-[#C9A227]/10 text-[#C9A227] flex items-center justify-center text-[10px] font-bold">{item.step}</span>
                     <SIcon className="h-4 w-4 text-white/50" />
                     <div className="flex-1"><p className="text-xs font-medium text-white">{item.label}</p><p className="text-[10px] text-white/50">{item.desc}</p></div>
                   </div>
@@ -261,7 +261,7 @@ export default function OrchestrationPage() {
             <div key={report.id} className="bg-white/5 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)] border border-white/10 p-4 sm:p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <FileBarChart className="h-5 w-5 text-[#E50914]" />
+                  <FileBarChart className="h-5 w-5 text-[#C9A227]" />
                   <div>
                     <h3 className="text-sm font-semibold text-white">{report.label}</h3>
                     <p className="text-[10px] text-white/50">{report.schedule} · via {report.channel}</p>

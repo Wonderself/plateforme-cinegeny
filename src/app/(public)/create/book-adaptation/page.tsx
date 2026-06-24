@@ -78,7 +78,7 @@ const BUDGET_COLORS = {
   LOW: 'text-green-400 bg-green-400/10 border-green-400/20',
   MEDIUM: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
   HIGH: 'text-orange-400 bg-orange-400/10 border-orange-400/20',
-  BLOCKBUSTER: 'text-[#E50914] bg-[#E50914]/10 border-[#E50914]/20',
+  BLOCKBUSTER: 'text-[#C9A227] bg-[#C9A227]/10 border-[#C9A227]/20',
 }
 
 export default function BookAdaptationPage() {
@@ -120,7 +120,7 @@ export default function BookAdaptationPage() {
 
           {/* Score Card */}
           <div className="relative mb-6">
-            <div className="absolute -inset-1 bg-gradient-to-b from-[#E50914]/10 via-transparent to-[#E50914]/5 rounded-3xl blur-xl opacity-60" />
+            <div className="absolute -inset-1 bg-gradient-to-b from-[#C9A227]/10 via-transparent to-[#C9A227]/5 rounded-3xl blur-xl opacity-60" />
             <div className="relative rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm p-8 shadow-2xl shadow-black/20">
               <div className="flex items-center justify-between mb-8">
                 <div>
@@ -142,7 +142,7 @@ export default function BookAdaptationPage() {
                 ].map((item) => (
                   <div key={item.label} className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
                     <div className="flex items-center gap-2 mb-3">
-                      <item.icon className="h-3.5 w-3.5 text-[#E50914]/70" />
+                      <item.icon className="h-3.5 w-3.5 text-[#C9A227]/70" />
                       <span className="text-white/50 text-xs">{item.label}</span>
                     </div>
                     <div className="flex items-end gap-2">
@@ -151,7 +151,7 @@ export default function BookAdaptationPage() {
                     </div>
                     <div className="mt-2 h-1 rounded-full bg-white/[0.06]">
                       <div
-                        className="h-1 rounded-full bg-[#E50914]"
+                        className="h-1 rounded-full bg-[#C9A227]"
                         style={{ width: `${item.value}%` }}
                       />
                     </div>
@@ -160,8 +160,8 @@ export default function BookAdaptationPage() {
               </div>
 
               {/* Format Suggestion */}
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-[#E50914]/[0.06] border border-[#E50914]/15 mb-6">
-                <Clock className="h-4 w-4 text-[#E50914] shrink-0" />
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-[#C9A227]/[0.06] border border-[#C9A227]/15 mb-6">
+                <Clock className="h-4 w-4 text-[#C9A227] shrink-0" />
                 <div>
                   <p className="text-white/50 text-xs">Format recommandé</p>
                   <p className="text-white font-semibold text-sm">{FORMAT_LABELS[analysis.suggestedFormat]}</p>
@@ -179,10 +179,10 @@ export default function BookAdaptationPage() {
           <div className="mb-8">
             <button
               onClick={() => setShowOutline(!showOutline)}
-              className="w-full flex items-center justify-between p-5 rounded-xl border border-white/[0.08] bg-white/[0.03] hover:border-[#E50914]/20 transition-all duration-300"
+              className="w-full flex items-center justify-between p-5 rounded-xl border border-white/[0.08] bg-white/[0.03] hover:border-[#C9A227]/20 transition-all duration-300"
             >
               <div className="flex items-center gap-3">
-                <FileText className="h-4 w-4 text-[#E50914]" />
+                <FileText className="h-4 w-4 text-[#C9A227]" />
                 <span className="text-white/80 font-medium text-sm">Voir l&apos;outline d&apos;adaptation</span>
               </div>
               <ChevronRight className={`h-4 w-4 text-white/40 transition-transform duration-300 ${showOutline ? 'rotate-90' : ''}`} />
@@ -200,7 +200,7 @@ export default function BookAdaptationPage() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/screenplays"
-              className="flex-1 flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold text-sm transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-[#E50914]/20"
+              className="flex-1 flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold text-sm transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-[#C9A227]/20"
             >
               Voir mes scénarios
               <ChevronRight className="h-4 w-4" />
@@ -221,7 +221,7 @@ export default function BookAdaptationPage() {
     <div className="min-h-screen py-16 px-4">
       {/* Background glow */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#E50914]/[0.03] blur-[200px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#C9A227]/[0.03] blur-[200px]" />
       </div>
 
       <div className="container mx-auto max-w-2xl relative">
@@ -236,10 +236,10 @@ export default function BookAdaptationPage() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-            <BookOpen className="h-8 w-8 text-[#E50914]" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+            <BookOpen className="h-8 w-8 text-[#C9A227]" />
           </div>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#E50914]/15 bg-[#E50914]/[0.06] text-[#E50914] text-xs font-medium mb-5">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C9A227]/15 bg-[#C9A227]/[0.06] text-[#C9A227] text-xs font-medium mb-5">
             <Sparkles className="h-3 w-3" />
             Pipeline Book-to-Screen
           </div>
@@ -253,7 +253,7 @@ export default function BookAdaptationPage() {
 
         {/* Form Card */}
         <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-b from-[#E50914]/10 via-transparent to-[#E50914]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="absolute -inset-1 bg-gradient-to-b from-[#C9A227]/10 via-transparent to-[#C9A227]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
           <div className="relative rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm p-8 sm:p-10 shadow-2xl shadow-black/20">
             <form action={action} className="space-y-6">
@@ -267,7 +267,7 @@ export default function BookAdaptationPage() {
               {/* Book Title */}
               <div className="space-y-2">
                 <label htmlFor="title" className="block text-white/70 text-sm font-medium">
-                  Titre du livre <span className="text-[#E50914]">*</span>
+                  Titre du livre <span className="text-[#C9A227]">*</span>
                 </label>
                 <div className="relative">
                   <BookOpen className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/25" />
@@ -277,7 +277,7 @@ export default function BookAdaptationPage() {
                     type="text"
                     placeholder="Ex : L'Étranger"
                     required
-                    className="w-full pl-11 pr-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all duration-300 text-sm"
+                    className="w-full pl-11 pr-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all duration-300 text-sm"
                   />
                 </div>
               </div>
@@ -285,7 +285,7 @@ export default function BookAdaptationPage() {
               {/* Author */}
               <div className="space-y-2">
                 <label htmlFor="author" className="block text-white/70 text-sm font-medium">
-                  Auteur <span className="text-[#E50914]">*</span>
+                  Auteur <span className="text-[#C9A227]">*</span>
                 </label>
                 <div className="relative">
                   <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/25" />
@@ -295,7 +295,7 @@ export default function BookAdaptationPage() {
                     type="text"
                     placeholder="Ex : Albert Camus"
                     required
-                    className="w-full pl-11 pr-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all duration-300 text-sm"
+                    className="w-full pl-11 pr-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all duration-300 text-sm"
                   />
                 </div>
               </div>
@@ -313,7 +313,7 @@ export default function BookAdaptationPage() {
                       name="publisher"
                       type="text"
                       placeholder="Ex : Gallimard"
-                      className="w-full pl-11 pr-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all duration-300 text-sm"
+                      className="w-full pl-11 pr-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all duration-300 text-sm"
                     />
                   </div>
                 </div>
@@ -328,7 +328,7 @@ export default function BookAdaptationPage() {
                       name="isbn"
                       type="text"
                       placeholder="978-2-07-036024-5"
-                      className="w-full pl-11 pr-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all duration-300 text-sm"
+                      className="w-full pl-11 pr-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all duration-300 text-sm"
                     />
                   </div>
                 </div>
@@ -337,7 +337,7 @@ export default function BookAdaptationPage() {
               {/* Genre */}
               <div className="space-y-2">
                 <label htmlFor="genre" className="block text-white/70 text-sm font-medium">
-                  Genre <span className="text-[#E50914]">*</span>
+                  Genre <span className="text-[#C9A227]">*</span>
                 </label>
                 <div className="relative">
                   <Film className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/25 pointer-events-none" />
@@ -346,7 +346,7 @@ export default function BookAdaptationPage() {
                     name="genre"
                     required
                     defaultValue=""
-                    className="w-full pl-11 pr-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all duration-300 text-sm appearance-none"
+                    className="w-full pl-11 pr-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all duration-300 text-sm appearance-none"
                   >
                     <option value="" disabled className="bg-[#0A0A0A] text-white/50">Choisir un genre...</option>
                     {GENRES.map((g) => (
@@ -359,7 +359,7 @@ export default function BookAdaptationPage() {
               {/* Synopsis */}
               <div className="space-y-2">
                 <label htmlFor="synopsis" className="block text-white/70 text-sm font-medium">
-                  Synopsis <span className="text-[#E50914]">*</span>
+                  Synopsis <span className="text-[#C9A227]">*</span>
                 </label>
                 <div className="relative">
                   <FileText className="absolute left-3.5 top-3.5 h-4 w-4 text-white/25" />
@@ -369,7 +369,7 @@ export default function BookAdaptationPage() {
                     rows={5}
                     required
                     placeholder="Résumez l'histoire en quelques phrases ou paragraphes. Plus le synopsis est détaillé, meilleure sera l'analyse d'adaptation..."
-                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all duration-300 text-sm resize-none"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all duration-300 text-sm resize-none"
                   />
                 </div>
                 <p className="text-white/25 text-xs">Un synopsis de 50+ mots améliore la précision de l&apos;analyse.</p>
@@ -387,7 +387,7 @@ export default function BookAdaptationPage() {
                     name="whyAdapt"
                     rows={3}
                     placeholder="Quels éléments rendent ce livre particulièrement cinématographique ? (personnages forts, univers visuel, thèmes universels...)"
-                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all duration-300 text-sm resize-none"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all duration-300 text-sm resize-none"
                   />
                 </div>
               </div>
@@ -406,7 +406,7 @@ export default function BookAdaptationPage() {
                     max="2000"
                     placeholder="Ex : 320"
                     defaultValue="200"
-                    className="w-full px-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all duration-300 text-sm"
+                    className="w-full px-4 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all duration-300 text-sm"
                   />
                 </div>
                 <div className="space-y-2">
@@ -421,7 +421,7 @@ export default function BookAdaptationPage() {
                         value="true"
                         checked={hasDialogue === true}
                         onChange={() => setHasDialogue(true)}
-                        className="accent-[#E50914]"
+                        className="accent-[#C9A227]"
                       />
                       <span className="text-white/70 text-sm">Oui</span>
                     </label>
@@ -432,7 +432,7 @@ export default function BookAdaptationPage() {
                         value="false"
                         checked={hasDialogue === false}
                         onChange={() => setHasDialogue(false)}
-                        className="accent-[#E50914]"
+                        className="accent-[#C9A227]"
                       />
                       <span className="text-white/70 text-sm">Non / Peu</span>
                     </label>
@@ -441,8 +441,8 @@ export default function BookAdaptationPage() {
               </div>
 
               {/* Info Box */}
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-[#E50914]/[0.04] border border-[#E50914]/10">
-                <Sparkles className="h-4 w-4 text-[#E50914] shrink-0 mt-0.5" />
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-[#C9A227]/[0.04] border border-[#C9A227]/10">
+                <Sparkles className="h-4 w-4 text-[#C9A227] shrink-0 mt-0.5" />
                 <p className="text-white/50 text-xs leading-relaxed">
                   L&apos;analyse IA évalue le potentiel visuel, la densité dramatique et l&apos;attrait marché pour générer un score d&apos;adaptation et un outline de scénario personnalisé.
                 </p>
@@ -452,7 +452,7 @@ export default function BookAdaptationPage() {
               <button
                 type="submit"
                 disabled={isPending}
-                className="w-full h-12 rounded-xl bg-[#E50914] hover:bg-[#FF2D2D] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm shadow-lg shadow-[#E50914]/20 hover:shadow-[#E50914]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5"
+                className="w-full h-12 rounded-xl bg-[#C9A227] hover:bg-[#E8C766] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm shadow-lg shadow-[#C9A227]/20 hover:shadow-[#C9A227]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5"
               >
                 {isPending ? (
                   <>

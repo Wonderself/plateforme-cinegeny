@@ -49,7 +49,7 @@ function AgentCard({ agent }: { agent: typeof ALL_AGENTS[0] }) {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <h3 className="text-sm font-bold text-white group-hover:text-[#E50914] transition-colors">
+            <h3 className="text-sm font-bold text-white group-hover:text-[#C9A227] transition-colors">
               {agent.name}
             </h3>
             <span
@@ -73,7 +73,7 @@ function AgentCard({ agent }: { agent: typeof ALL_AGENTS[0] }) {
             )}
           </div>
         </div>
-        <ChevronRight className="h-5 w-5 text-gray-600 group-hover:text-[#E50914] transition-colors shrink-0 mt-1" />
+        <ChevronRight className="h-5 w-5 text-gray-600 group-hover:text-[#C9A227] transition-colors shrink-0 mt-1" />
       </div>
     </Link>
   )
@@ -117,12 +117,12 @@ export default function AgentsPage() {
       <div className="max-w-7xl mx-auto px-4 py-16">
         {/* Hero */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-            <Bot className="h-4 w-4 text-[#E50914]" />
-            <span className="text-sm font-medium text-[#E50914]">{ALL_AGENTS.length} agents spécialisés</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+            <Bot className="h-4 w-4 text-[#C9A227]" />
+            <span className="text-sm font-medium text-[#C9A227]">{ALL_AGENTS.length} agents spécialisés</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white font-[family-name:var(--font-playfair)] mb-4">
-            Agents IA <span className="text-[#E50914]">Cinéma</span>
+            Agents IA <span className="text-[#C9A227]">Cinéma</span>
           </h1>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Une équipe complète d&apos;experts IA spécialisés dans chaque métier du cinéma.
@@ -194,7 +194,7 @@ export default function AgentsPage() {
         <div className="text-center mt-12">
           <Link
             href="/agents/marketplace"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl transition-colors"
           >
             <Store className="h-5 w-5" />
             Explorer la Marketplace

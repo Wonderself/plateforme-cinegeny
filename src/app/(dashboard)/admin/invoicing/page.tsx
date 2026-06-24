@@ -66,7 +66,7 @@ export default function InvoicingPage() {
           <h1 className="text-2xl font-bold text-white font-[family-name:var(--font-playfair)]">Facturation</h1>
           <p className="text-sm text-white/50 mt-1">Devis, factures, TVA automatique, suivi paiements</p>
         </div>
-        <button onClick={() => setView(view === 'list' ? 'create' : 'list')} className="flex items-center gap-1.5 px-4 py-2 bg-[#E50914] text-white text-xs font-medium rounded-lg hover:bg-[#FF2D2D]">
+        <button onClick={() => setView(view === 'list' ? 'create' : 'list')} className="flex items-center gap-1.5 px-4 py-2 bg-[#C9A227] text-white text-xs font-medium rounded-lg hover:bg-[#E8C766]">
           {view === 'list' ? <><Plus className="h-4 w-4" />Nouvelle facture</> : 'Retour à la liste'}
         </button>
       </div>
@@ -83,8 +83,8 @@ export default function InvoicingPage() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
             <h2 className="text-sm font-semibold text-white">Informations client</h2>
             <div className="grid grid-cols-2 gap-3">
-              <input value={clientName} onChange={e => setClientName(e.target.value)} placeholder="Nom / Société *" className="rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none" />
-              <input value={clientEmail} onChange={e => setClientEmail(e.target.value)} placeholder="Email" className="rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none" />
+              <input value={clientName} onChange={e => setClientName(e.target.value)} placeholder="Nom / Société *" className="rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none" />
+              <input value={clientEmail} onChange={e => setClientEmail(e.target.value)} placeholder="Email" className="rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none" />
             </div>
           </div>
 
@@ -92,14 +92,14 @@ export default function InvoicingPage() {
             <h2 className="text-sm font-semibold text-white">Lignes</h2>
             {lines.map((line, i) => (
               <div key={i} className="flex gap-2 items-end">
-                <div className="flex-1"><input value={line.description} onChange={e => updateLine(i, 'description', e.target.value)} placeholder="Description" className="w-full rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none" /></div>
+                <div className="flex-1"><input value={line.description} onChange={e => updateLine(i, 'description', e.target.value)} placeholder="Description" className="w-full rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none" /></div>
                 <div className="w-20"><input type="number" value={line.quantity} onChange={e => updateLine(i, 'quantity', parseInt(e.target.value) || 1)} className="w-full rounded-lg border border-white/10 px-3 py-2 text-sm text-center focus:outline-none" /></div>
                 <div className="w-28"><input type="number" value={line.unitPrice} onChange={e => updateLine(i, 'unitPrice', parseFloat(e.target.value) || 0)} placeholder="Prix €" className="w-full rounded-lg border border-white/10 px-3 py-2 text-sm text-right focus:outline-none" /></div>
                 <p className="w-24 text-sm font-medium text-right text-white">{(line.quantity * line.unitPrice).toFixed(2)} €</p>
                 {lines.length > 1 && <button onClick={() => removeLine(i)} className="text-white/50 hover:text-red-400"><Trash2 className="h-4 w-4" /></button>}
               </div>
             ))}
-            <button onClick={addLine} className="text-xs text-[#E50914] hover:underline flex items-center gap-1"><Plus className="h-3.5 w-3.5" />Ajouter une ligne</button>
+            <button onClick={addLine} className="text-xs text-[#C9A227] hover:underline flex items-center gap-1"><Plus className="h-3.5 w-3.5" />Ajouter une ligne</button>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
@@ -113,10 +113,10 @@ export default function InvoicingPage() {
               <div className="text-right space-y-1">
                 <p className="text-xs text-white/50">Sous-total: <span className="font-medium text-white">{subtotal.toFixed(2)} €</span></p>
                 <p className="text-xs text-white/50">TVA ({vatConfig.rate}%): <span className="font-medium text-white">{vatAmount.toFixed(2)} €</span></p>
-                <p className="text-lg font-bold text-[#E50914]">{total.toFixed(2)} €</p>
+                <p className="text-lg font-bold text-[#C9A227]">{total.toFixed(2)} €</p>
               </div>
             </div>
-            <button onClick={createInvoice} disabled={generating} className="w-full flex items-center justify-center gap-2 py-3 bg-[#E50914] text-white font-semibold rounded-xl disabled:opacity-50">
+            <button onClick={createInvoice} disabled={generating} className="w-full flex items-center justify-center gap-2 py-3 bg-[#C9A227] text-white font-semibold rounded-xl disabled:opacity-50">
               {generating ? <Loader2 className="h-5 w-5 animate-spin" /> : <Calculator className="h-5 w-5" />}
               {generating ? 'Création...' : `Créer la facture (${total.toFixed(2)} €)`}
             </button>
@@ -140,7 +140,7 @@ export default function InvoicingPage() {
                   const invTotal = inv.lines.reduce((s, l) => s + l.quantity * l.unitPrice, 0) * (1 + inv.vatRate / 100)
                   return (
                     <div key={inv.id} className="flex items-center gap-4 px-5 py-4 hover:bg-white/[0.03]">
-                      <FileText className="h-5 w-5 text-[#E50914]" />
+                      <FileText className="h-5 w-5 text-[#C9A227]" />
                       <div className="flex-1">
                         <p className="text-sm font-medium text-white">{inv.number}</p>
                         <p className="text-[10px] text-white/50">{inv.clientName} · {inv.date}</p>

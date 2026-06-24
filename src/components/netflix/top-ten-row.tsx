@@ -57,13 +57,13 @@ export function TopTenRow({ films }: { films: FilmCard[] }) {
       {/* Section title */}
       <div className="px-6 sm:px-10 md:px-16 lg:px-20 mb-8">
         <div className="flex items-center gap-3">
-          <div className="h-7 w-1.5 rounded-full bg-gradient-to-b from-[#E50914] to-[#9B0000]" />
+          <div className="h-7 w-1.5 rounded-full bg-gradient-to-b from-[#C9A227] to-[#8A6A12]" />
           <h2
             className="text-lg md:text-xl lg:text-2xl font-bold text-white/90 tracking-tight"
           >
             Top 10 Projects
           </h2>
-          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#E50914]/50 ml-1">CINEGEN</span>
+          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C9A227]/50 ml-1">CINEGEN</span>
         </div>
       </div>
 
@@ -106,9 +106,9 @@ export function TopTenRow({ films }: { films: FilmCard[] }) {
               <div
                 className="text-[70px] sm:text-[90px] md:text-[130px] lg:text-[150px] font-black leading-none select-none z-10 transition-all duration-500 group-hover/card:scale-105 font-playfair"
                 style={{
-                  WebkitTextStroke: '2px rgba(229, 9, 20, 0.25)',
+                  WebkitTextStroke: '2px rgba(201, 162, 39, 0.25)',
                   color: 'transparent',
-                  filter: 'drop-shadow(0 0 30px rgba(229, 9, 20, 0.06))',
+                  filter: 'drop-shadow(0 0 30px rgba(201, 162, 39, 0.06))',
                   marginRight: '-12px',
                 }}
               >
@@ -116,7 +116,7 @@ export function TopTenRow({ films }: { films: FilmCard[] }) {
               </div>
 
               {/* Poster */}
-              <div className="relative w-[105px] sm:w-[125px] md:w-[145px] lg:w-[158px] aspect-[2/3] rounded-xl overflow-hidden transition-all duration-300 group-hover/card:scale-105 ring-1 ring-white/5 group-hover/card:ring-[#E50914]/30 group-hover/card:shadow-[0_8px_40px_rgba(229,9,20,0.15)]">
+              <div className="relative w-[105px] sm:w-[125px] md:w-[145px] lg:w-[158px] aspect-[2/3] rounded-xl overflow-hidden transition-all duration-300 group-hover/card:scale-105 ring-1 ring-white/5 group-hover/card:ring-[#C9A227]/30 group-hover/card:shadow-[0_8px_40px_rgba(201,162,39,0.15)]">
                 <Image
                   src={film.coverImageUrl || FALLBACK_IMAGES[idx % FALLBACK_IMAGES.length]}
                   alt={film.title}
@@ -128,7 +128,7 @@ export function TopTenRow({ films }: { films: FilmCard[] }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
                   {/* Play icon */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover/card:opacity-100 transition-all duration-300 scale-75 group-hover/card:scale-100">
-                    <div className="h-10 w-10 rounded-full flex items-center justify-center shadow-[0_0_25px_rgba(229,9,20,0.4)]" style={{ background: 'linear-gradient(135deg, #E50914, #FF2D2D)' }}>
+                    <div className="h-10 w-10 rounded-full flex items-center justify-center shadow-[0_0_25px_rgba(201,162,39,0.4)]" style={{ background: 'linear-gradient(135deg, #C9A227, #E8C766)' }}>
                       <Play className="h-4 w-4 text-black fill-black ml-0.5" />
                     </div>
                   </div>

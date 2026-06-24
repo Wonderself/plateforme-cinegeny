@@ -37,7 +37,7 @@ export const REPUTATION_LEVELS = [
   { min: 20, label: 'Contributeur', color: '#3B82F6', badge: '⭐' },
   { min: 40, label: 'Créateur Confirmé', color: '#8B5CF6', badge: '🎬' },
   { min: 60, label: 'Expert', color: '#F59E0B', badge: '🏆' },
-  { min: 80, label: 'Maître', color: '#E50914', badge: '👑' },
+  { min: 80, label: 'Maître', color: '#C9A227', badge: '👑' },
   { min: 95, label: 'Légende', color: '#FFD700', badge: '💎' },
 ]
 
@@ -64,7 +64,7 @@ export interface CollabType {
 
 export const COLLAB_TYPES: CollabType[] = [
   { id: 'co-write', label: 'Co-écriture', description: 'Écrire un scénario à plusieurs', icon: 'pen-tool', color: '#3B82F6' },
-  { id: 'co-direct', label: 'Co-réalisation', description: 'Partager la direction artistique', icon: 'film', color: '#E50914' },
+  { id: 'co-direct', label: 'Co-réalisation', description: 'Partager la direction artistique', icon: 'film', color: '#C9A227' },
   { id: 'co-produce', label: 'Co-production', description: 'Partager les coûts et les revenus', icon: 'briefcase', color: '#10B981' },
   { id: 'skill-trade', label: 'Échange de compétences', description: 'VFX contre musique, montage contre scénario...', icon: 'refresh-cw', color: '#8B5CF6' },
   { id: 'mentoring', label: 'Mentorat', description: 'Guider un créateur moins expérimenté', icon: 'heart', color: '#EC4899' },
@@ -79,7 +79,7 @@ export interface TeamRole {
 
 export const TEAM_ROLES: TeamRole[] = [
   { id: 'owner', label: 'Propriétaire', permissions: ['all'], icon: 'crown', color: '#FFD700' },
-  { id: 'director', label: 'Réalisateur', permissions: ['edit_all', 'approve', 'invite', 'manage_agents'], icon: 'clapperboard', color: '#E50914' },
+  { id: 'director', label: 'Réalisateur', permissions: ['edit_all', 'approve', 'invite', 'manage_agents'], icon: 'clapperboard', color: '#C9A227' },
   { id: 'producer', label: 'Producteur', permissions: ['edit_budget', 'approve', 'invite', 'manage_team'], icon: 'briefcase', color: '#10B981' },
   { id: 'writer', label: 'Scénariste', permissions: ['edit_script', 'comment'], icon: 'pen-tool', color: '#3B82F6' },
   { id: 'artist', label: 'Artiste', permissions: ['edit_visual', 'upload', 'comment'], icon: 'palette', color: '#8B5CF6' },
@@ -118,7 +118,7 @@ export const AGENT_BUILDER_FIELDS: CustomAgentField[] = [
 // ─── Activity Feed Types ────────────────────────────────────────────
 
 export const FEED_EVENT_TYPES = [
-  { type: 'film_created', label: 'a créé un film', icon: 'film', color: '#E50914' },
+  { type: 'film_created', label: 'a créé un film', icon: 'film', color: '#C9A227' },
   { type: 'task_completed', label: 'a complété une tâche', icon: 'check-circle', color: '#10B981' },
   { type: 'vote_cast', label: 'a voté', icon: 'star', color: '#F59E0B' },
   { type: 'comment_posted', label: 'a commenté', icon: 'message-circle', color: '#3B82F6' },

@@ -77,7 +77,7 @@ export default async function AdminFundingPage() {
 
   const stats = [
     { label: 'Montant potentiel', value: formatPrice(totalPotential), icon: Banknote, color: 'text-green-600' },
-    { label: 'Montant obtenu', value: formatPrice(totalObtained), icon: CheckCircle, color: 'text-[#E50914]' },
+    { label: 'Montant obtenu', value: formatPrice(totalObtained), icon: CheckCircle, color: 'text-[#C9A227]' },
     { label: 'Dossiers en cours', value: inProgress.length.toString(), icon: Clock, color: 'text-blue-600' },
     { label: 'Progression globale', value: totalSteps > 0 ? `${Math.round((completedSteps / totalSteps) * 100)}%` : '0%', icon: FileText, color: 'text-purple-600' },
   ]
@@ -105,7 +105,7 @@ export default async function AdminFundingPage() {
                 {f.maxAmount && (
                   <>
                     <span>·</span>
-                    <span className="text-[#E50914] font-medium">Jusqu&apos;à {formatPrice(f.maxAmount)}</span>
+                    <span className="text-[#C9A227] font-medium">Jusqu&apos;à {formatPrice(f.maxAmount)}</span>
                   </>
                 )}
               </div>
@@ -150,7 +150,7 @@ export default async function AdminFundingPage() {
               </Badge>
             )}
             {f.applicationUrl && (
-              <a href={f.applicationUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[10px] text-[#E50914] hover:underline">
+              <a href={f.applicationUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[10px] text-[#C9A227] hover:underline">
                 <ExternalLink className="h-3 w-3" /> Site officiel
               </a>
             )}
@@ -165,7 +165,7 @@ export default async function AdminFundingPage() {
               </div>
               <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] transition-all duration-500"
+                  className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] transition-all duration-500"
                   style={{ width: `${progressPct}%` }}
                 />
               </div>
@@ -182,7 +182,7 @@ export default async function AdminFundingPage() {
                     type="submit"
                     className={`mt-0.5 w-4 h-4 rounded border shrink-0 flex items-center justify-center transition-all ${
                       step.completed
-                        ? 'bg-[#E50914] border-[#E50914] text-white'
+                        ? 'bg-[#C9A227] border-[#C9A227] text-white'
                         : 'border-white/20 hover:border-white/40'
                     }`}
                   >
@@ -228,7 +228,7 @@ export default async function AdminFundingPage() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold flex items-center gap-3 font-playfair">
-          <Landmark className="h-7 w-7 text-[#E50914]" /> Aides Publiques
+          <Landmark className="h-7 w-7 text-[#C9A227]" /> Aides Publiques
         </h1>
         <p className="text-white/50">Suivi des aides BPI, CNC, RIAM, CIR et autres financements publics.</p>
       </div>

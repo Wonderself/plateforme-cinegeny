@@ -92,7 +92,7 @@ export default async function AdminContestsPage() {
         </div>
         <Link
           href="/community"
-          className="text-sm text-[#E50914] hover:text-[#FF2D2D] transition-colors flex items-center gap-1"
+          className="text-sm text-[#C9A227] hover:text-[#E8C766] transition-colors flex items-center gap-1"
         >
           Voir la page publique <ArrowRight className="h-3.5 w-3.5" />
         </Link>
@@ -103,7 +103,7 @@ export default async function AdminContestsPage() {
       {/* ============================================ */}
       <section>
         <div className="flex items-center gap-3 mb-6">
-          <Trophy className="h-6 w-6 text-[#E50914]" />
+          <Trophy className="h-6 w-6 text-[#C9A227]" />
           <h2 className="text-xl font-bold">Concours de Trailers</h2>
         </div>
 
@@ -111,7 +111,7 @@ export default async function AdminContestsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           <Card>
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-[#E50914]">{contestStats.total}</div>
+              <div className="text-2xl font-bold text-[#C9A227]">{contestStats.total}</div>
               <div className="text-xs text-white/50">Total concours</div>
             </CardContent>
           </Card>
@@ -164,7 +164,7 @@ export default async function AdminContestsPage() {
                           )}
                         </div>
                         <Link href={`/community/contests/${contest.id}`}>
-                          <h3 className="font-semibold hover:text-[#E50914] transition-colors">
+                          <h3 className="font-semibold hover:text-[#C9A227] transition-colors">
                             {contest.title}
                           </h3>
                         </Link>
@@ -181,7 +181,7 @@ export default async function AdminContestsPage() {
                             </span>
                           )}
                           {contest.status === 'CLOSED' && winner && (
-                            <span className="flex items-center gap-1 text-[#E50914]">
+                            <span className="flex items-center gap-1 text-[#C9A227]">
                               <Crown className="h-3 w-3" />
                               {winner.user.displayName} — {winner.title}
                             </span>
@@ -210,7 +210,7 @@ export default async function AdminContestsPage() {
       {/* ============================================ */}
       <section>
         <div className="flex items-center gap-3 mb-6">
-          <PenTool className="h-6 w-6 text-[#E50914]" />
+          <PenTool className="h-6 w-6 text-[#C9A227]" />
           <h2 className="text-xl font-bold">Propositions de Scenarios</h2>
         </div>
 
@@ -224,7 +224,7 @@ export default async function AdminContestsPage() {
           </Card>
           <Card>
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-[#E50914]">{scenarioStats.voting}</div>
+              <div className="text-2xl font-bold text-[#C9A227]">{scenarioStats.voting}</div>
               <div className="text-xs text-white/50">En vote</div>
             </CardContent>
           </Card>
@@ -239,7 +239,7 @@ export default async function AdminContestsPage() {
         {/* Shortlist action for SUBMITTED */}
         {submittedIds.length > 0 && (
           <div className="mb-6 flex items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.02]">
-            <Sparkles className="h-5 w-5 text-[#E50914] shrink-0" />
+            <Sparkles className="h-5 w-5 text-[#C9A227] shrink-0" />
             <div className="flex-1">
               <p className="text-sm font-medium">{submittedIds.length} proposition{submittedIds.length > 1 ? 's' : ''} en attente</p>
               <p className="text-xs text-white/40">Mettez les propositions soumises en vote.</p>
@@ -274,7 +274,7 @@ export default async function AdminContestsPage() {
                       {/* Content */}
                       <div className="flex-1 min-w-0">
                         <Link href={`/community/scenarios/${proposal.id}`}>
-                          <h4 className="font-semibold text-sm hover:text-[#E50914] transition-colors truncate">
+                          <h4 className="font-semibold text-sm hover:text-[#C9A227] transition-colors truncate">
                             {proposal.title}
                           </h4>
                         </Link>
@@ -291,8 +291,8 @@ export default async function AdminContestsPage() {
 
                       {/* Votes */}
                       <div className="flex items-center gap-1 text-white/40 shrink-0">
-                        <Heart className={`h-3.5 w-3.5 ${isVoting ? 'text-[#E50914]' : ''}`} />
-                        <span className={`text-sm font-bold tabular-nums ${isVoting ? 'text-[#E50914]' : ''}`}>
+                        <Heart className={`h-3.5 w-3.5 ${isVoting ? 'text-[#C9A227]' : ''}`} />
+                        <span className={`text-sm font-bold tabular-nums ${isVoting ? 'text-[#C9A227]' : ''}`}>
                           {proposal.votesCount}
                         </span>
                       </div>

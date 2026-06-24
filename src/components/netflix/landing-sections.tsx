@@ -26,7 +26,7 @@ export function ManifestoSection() {
     <section id="manifesto" className="relative py-36 md:py-48 overflow-hidden">
       {/* Subtle center glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.04]"
-        style={{ background: 'radial-gradient(circle, #E50914 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #C9A227 0%, transparent 70%)' }}
       />
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-8 text-center">
@@ -44,7 +44,7 @@ export function ManifestoSection() {
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-white/50 leading-[1.6] md:leading-[1.5]"
             >
               {line.normal}{' '}
-              <span className="font-bold text-[#E50914]">{line.gold}</span>
+              <span className="font-bold text-[#C9A227]">{line.gold}</span>
             </motion.p>
           )
         })}
@@ -56,7 +56,7 @@ export function ManifestoSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mt-16 md:mt-24"
         >
-          Bienvenue dans le <span className="text-[#E50914]">futur du cinema.</span>
+          Bienvenue dans le <span className="text-[#C9A227]">futur du cinema.</span>
         </motion.p>
       </div>
     </section>
@@ -71,7 +71,7 @@ const pillars = [
     title: 'MICRO-TACHES',
     description: 'Chaque film = 500 micro-taches a 50\u20AC. Des milliers de createurs participent. Un film complet pour 25 000\u20AC.',
     accent: '100x moins cher qu\'Hollywood.',
-    color: '#E50914',
+    color: '#C9A227',
   },
   {
     icon: Vote,
@@ -176,7 +176,7 @@ export function PipelineVisual() {
         <h2
           className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6"
         >
-          De l&apos;idee au <span className="text-[#E50914]">grand ecran</span>
+          De l&apos;idee au <span className="text-[#C9A227]">grand ecran</span>
         </h2>
         <p className="text-sm md:text-base text-white/30 max-w-lg mx-auto">
           Le parcours d&apos;un film CINEGEN, du premier mot a la premiere projection
@@ -188,7 +188,7 @@ export function PipelineVisual() {
         {/* Desktop: horizontal */}
         <div className="hidden md:flex items-start relative">
           {/* Connection line */}
-          <div className="absolute top-6 left-8 right-8 h-[1px] bg-gradient-to-r from-[#E50914]/30 via-[#E50914]/10 to-[#E50914]/30" />
+          <div className="absolute top-6 left-8 right-8 h-[1px] bg-gradient-to-r from-[#C9A227]/30 via-[#C9A227]/10 to-[#C9A227]/30" />
 
           {pipelineSteps.map((step, idx) => (
             <motion.div
@@ -200,8 +200,8 @@ export function PipelineVisual() {
               className="flex-1 text-center relative"
             >
               {/* Dot */}
-              <div className="relative z-10 mx-auto w-12 h-12 rounded-full border-2 border-[#E50914]/30 bg-[#0A0A0A] flex items-center justify-center mb-6">
-                <span className="text-[11px] font-black text-[#E50914]">{step.num}</span>
+              <div className="relative z-10 mx-auto w-12 h-12 rounded-full border-2 border-[#C9A227]/30 bg-[#0A0A0A] flex items-center justify-center mb-6">
+                <span className="text-[11px] font-black text-[#C9A227]">{step.num}</span>
               </div>
               <p className="text-[12px] font-bold text-white/70 mb-2">{step.label}</p>
               <p className="text-[10px] text-white/25 leading-relaxed px-2">{step.detail}</p>
@@ -222,11 +222,11 @@ export function PipelineVisual() {
             >
               {/* Vertical line */}
               {idx < pipelineSteps.length - 1 && (
-                <div className="absolute top-12 left-[23px] bottom-0 w-[1px] bg-[#E50914]/15" />
+                <div className="absolute top-12 left-[23px] bottom-0 w-[1px] bg-[#C9A227]/15" />
               )}
               {/* Dot */}
-              <div className="relative z-10 shrink-0 w-12 h-12 rounded-full border-2 border-[#E50914]/30 bg-[#0A0A0A] flex items-center justify-center">
-                <span className="text-[11px] font-black text-[#E50914]">{step.num}</span>
+              <div className="relative z-10 shrink-0 w-12 h-12 rounded-full border-2 border-[#C9A227]/30 bg-[#0A0A0A] flex items-center justify-center">
+                <span className="text-[11px] font-black text-[#C9A227]">{step.num}</span>
               </div>
               <div className="pb-9">
                 <p className="text-[13px] font-bold text-white/70 mb-1">{step.label}</p>
@@ -276,7 +276,7 @@ export function ComparisonTable() {
         <h2
           className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6"
         >
-          Pourquoi <span className="text-[#E50914]">CINEGEN</span>
+          Pourquoi <span className="text-[#C9A227]">CINEGEN</span>
         </h2>
         <p className="text-sm md:text-base text-white/30 max-w-lg mx-auto">
           La comparaison parle d&apos;elle-meme
@@ -298,8 +298,8 @@ export function ComparisonTable() {
           <div className="p-6 md:p-7 text-center border-l border-white/[0.04]">
             <p className="text-[11px] font-bold text-white/25 uppercase tracking-wider">Netflix</p>
           </div>
-          <div className="p-6 md:p-7 text-center border-l border-[#E50914]/10 bg-[#E50914]/[0.03]">
-            <p className="text-[11px] font-black text-[#E50914] uppercase tracking-wider">CINEGEN</p>
+          <div className="p-6 md:p-7 text-center border-l border-[#C9A227]/10 bg-[#C9A227]/[0.03]">
+            <p className="text-[11px] font-black text-[#C9A227] uppercase tracking-wider">CINEGEN</p>
           </div>
         </div>
 
@@ -323,9 +323,9 @@ export function ComparisonTable() {
                 <CellIcon value={row.netflix} />
               )}
             </div>
-            <div className="p-6 md:p-7 flex items-center justify-center border-l border-[#E50914]/10 bg-[#E50914]/[0.03]">
+            <div className="p-6 md:p-7 flex items-center justify-center border-l border-[#C9A227]/10 bg-[#C9A227]/[0.03]">
               {row.cinegen ? (
-                <p className={`text-[11px] md:text-[12px] text-center font-bold ${row.cinegenHighlight ? 'text-[#E50914]' : 'text-white/60'}`}>
+                <p className={`text-[11px] md:text-[12px] text-center font-bold ${row.cinegenHighlight ? 'text-[#C9A227]' : 'text-white/60'}`}>
                   {row.cinegen}
                 </p>
               ) : (
@@ -375,7 +375,7 @@ export function SocialProof() {
 
         {/* Quote */}
         <div className="max-w-2xl mx-auto">
-          <div className="h-[1px] w-16 bg-[#E50914]/30 mx-auto mb-12" />
+          <div className="h-[1px] w-16 bg-[#C9A227]/30 mx-auto mb-12" />
           <motion.blockquote
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -403,12 +403,12 @@ export function FinalCTA() {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#0F0808] to-[#0A0A0A]" />
       <div className="absolute inset-0 opacity-[0.03]"
-        style={{ background: 'radial-gradient(ellipse at center, #E50914 0%, transparent 60%)' }}
+        style={{ background: 'radial-gradient(ellipse at center, #C9A227 0%, transparent 60%)' }}
       />
 
       {/* Top/bottom lines */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[1px] bg-gradient-to-r from-transparent via-[#E50914]/20 to-transparent" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[1px] bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[1px] bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[1px] bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-10 text-center">
         <motion.h2
@@ -418,7 +418,7 @@ export function FinalCTA() {
           className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-10 leading-tight"
         >
           Le cinema de demain se construit{' '}
-          <span className="text-[#E50914]">maintenant.</span>
+          <span className="text-[#C9A227]">maintenant.</span>
         </motion.h2>
 
         <motion.p
@@ -442,8 +442,8 @@ export function FinalCTA() {
         >
           <Link
             href="/register"
-            className="group inline-flex items-center gap-3 px-10 py-4 rounded-xl text-[15px] font-bold text-white transition-all duration-300 hover:shadow-[0_0_60px_rgba(229,9,20,0.4)] hover:scale-[1.03] active:scale-[0.97]"
-            style={{ background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 50%, #E50914 100%)' }}
+            className="group inline-flex items-center gap-3 px-10 py-4 rounded-xl text-[15px] font-bold text-white transition-all duration-300 hover:shadow-[0_0_60px_rgba(201,162,39,0.4)] hover:scale-[1.03] active:scale-[0.97]"
+            style={{ background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 50%, #C9A227 100%)' }}
           >
             Creer mon compte gratuitement
             <ArrowRight className="h-4.5 w-4.5 group-hover:translate-x-1 transition-transform" />
@@ -452,7 +452,7 @@ export function FinalCTA() {
 
         <Link
           href="/tasks"
-          className="text-sm text-white/30 hover:text-[#E50914] transition-colors font-medium"
+          className="text-sm text-white/30 hover:text-[#C9A227] transition-colors font-medium"
         >
           Ou decouvrez les micro-taches disponibles &rsaquo;
         </Link>

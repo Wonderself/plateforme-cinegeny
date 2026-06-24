@@ -252,18 +252,18 @@ export default function ActPage() {
         </div>
 
         {/* Glow accents */}
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#E50914]/[0.06] rounded-full blur-[140px]" />
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#C9A227]/[0.06] rounded-full blur-[140px]" />
         <div className="absolute top-40 right-1/4 w-72 h-72 bg-purple-500/[0.08] rounded-full blur-[120px]" />
 
         <div className="relative container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-20 sm:pb-28 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#E50914]/20 bg-[#E50914]/10 text-[#E50914] text-xs sm:text-sm mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/10 text-[#C9A227] text-xs sm:text-sm mb-6">
             <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             <span>AI Actor Studio</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight">
             Act In Your{' '}
-            <span className="bg-gradient-to-r from-[#E50914] to-orange-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#C9A227] to-orange-500 bg-clip-text text-transparent">
               Movie
             </span>
           </h1>
@@ -276,7 +276,7 @@ export default function ActPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => scrollTo('face-scan')}
-              className="group flex items-center gap-2 px-8 py-3.5 rounded-lg bg-[#E50914] hover:bg-[#F6121D] text-white font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(229,9,20,0.3)]"
+              className="group flex items-center gap-2 px-8 py-3.5 rounded-lg bg-[#C9A227] hover:bg-[#F6121D] text-white font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,162,39,0.3)]"
             >
               <Camera className="h-5 w-5" />
               Generate My Character
@@ -310,7 +310,7 @@ export default function ActPage() {
                 title: 'Upload Your Photo',
                 desc: 'Upload a clear headshot. Our AI maps your facial features for realistic rendering.',
                 step: '01',
-                color: 'from-[#E50914] to-red-600',
+                color: 'from-[#C9A227] to-red-600',
               },
               {
                 icon: Film,
@@ -331,7 +331,7 @@ export default function ActPage() {
                 key={card.step}
                 className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]"
               >
-                <span className="absolute top-6 right-6 text-5xl font-black text-white/[0.04] group-hover:text-[#E50914]/10 transition-colors">
+                <span className="absolute top-6 right-6 text-5xl font-black text-white/[0.04] group-hover:text-[#C9A227]/10 transition-colors">
                   {card.step}
                 </span>
                 <div className={cn(
@@ -363,7 +363,7 @@ export default function ActPage() {
 
             {/* ── LEFT: Upload Your Photo ── */}
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 sm:p-10 flex flex-col items-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#E50914]/20 bg-[#E50914]/10 text-[#E50914] text-xs sm:text-sm mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/10 text-[#C9A227] text-xs sm:text-sm mb-6">
                 <Upload className="h-3.5 w-3.5" />
                 <span>Upload Your Photo</span>
               </div>
@@ -378,9 +378,9 @@ export default function ActPage() {
                 >
                   <defs>
                     <linearGradient id="ring-grad-red" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#E50914" stopOpacity="1" />
-                      <stop offset="50%" stopColor="#E50914" stopOpacity="0.3" />
-                      <stop offset="100%" stopColor="#E50914" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#C9A227" stopOpacity="1" />
+                      <stop offset="50%" stopColor="#C9A227" stopOpacity="0.3" />
+                      <stop offset="100%" stopColor="#C9A227" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                   <circle
@@ -398,12 +398,12 @@ export default function ActPage() {
                 <div className="absolute inset-4 rounded-full border border-white/[0.06]" />
                 {/* Center icon / thumbnail */}
                 {uploadedPhoto ? (
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-[#E50914]/40">
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-[#C9A227]/40">
                     <Image src={uploadedPhoto} alt="Your photo" fill className="object-cover" />
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center">
-                    <Upload className="h-10 w-10 text-[#E50914]/60" />
+                    <Upload className="h-10 w-10 text-[#C9A227]/60" />
                   </div>
                 )}
               </div>
@@ -412,7 +412,7 @@ export default function ActPage() {
 
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="px-8 py-3 rounded-xl bg-[#E50914] hover:bg-[#F6121D] text-white font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(229,9,20,0.25)]"
+                className="px-8 py-3 rounded-xl bg-[#C9A227] hover:bg-[#F6121D] text-white font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,162,39,0.25)]"
               >
                 Browse Files
               </button>
@@ -425,7 +425,7 @@ export default function ActPage() {
                 className={cn(
                   'mt-6 w-full rounded-xl border-2 border-dashed p-6 text-center transition-all cursor-pointer',
                   isDragging
-                    ? 'border-[#E50914] bg-[#E50914]/[0.06]'
+                    ? 'border-[#C9A227] bg-[#C9A227]/[0.06]'
                     : 'border-white/[0.08] bg-white/[0.01] hover:border-white/[0.15]'
                 )}
                 onClick={() => fileInputRef.current?.click()}
@@ -548,7 +548,7 @@ export default function ActPage() {
               value={filmSearch}
               onChange={(e) => setFilmSearch(e.target.value)}
               placeholder="Search films by title, genre, or director..."
-              className="w-full pl-12 pr-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.03] text-white placeholder:text-white/30 focus:outline-none focus:border-[#E50914]/40 focus:bg-white/[0.05] transition-all"
+              className="w-full pl-12 pr-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.03] text-white placeholder:text-white/30 focus:outline-none focus:border-[#C9A227]/40 focus:bg-white/[0.05] transition-all"
             />
           </div>
 
@@ -559,7 +559,7 @@ export default function ActPage() {
               className={cn(
                 'px-4 py-1.5 rounded-full text-sm font-medium transition-all',
                 selectedGenre === 'All'
-                  ? 'bg-[#E50914] text-white'
+                  ? 'bg-[#C9A227] text-white'
                   : 'bg-white/[0.04] text-white/50 hover:bg-white/[0.08] hover:text-white/70 border border-white/[0.06]'
               )}
             >
@@ -572,7 +572,7 @@ export default function ActPage() {
                 className={cn(
                   'px-4 py-1.5 rounded-full text-sm font-medium transition-all',
                   selectedGenre === genre
-                    ? 'bg-[#E50914] text-white'
+                    ? 'bg-[#C9A227] text-white'
                     : 'bg-white/[0.04] text-white/50 hover:bg-white/[0.08] hover:text-white/70 border border-white/[0.06]'
                 )}
               >
@@ -593,7 +593,7 @@ export default function ActPage() {
                   className={cn(
                     'group relative rounded-xl overflow-hidden border-2 transition-all duration-300 text-left',
                     isSelected
-                      ? 'border-[#E50914] shadow-[0_0_20px_rgba(229,9,20,0.35)] scale-[1.03]'
+                      ? 'border-[#C9A227] shadow-[0_0_20px_rgba(201,162,39,0.35)] scale-[1.03]'
                       : 'border-transparent hover:border-white/[0.15] hover:scale-[1.02]'
                   )}
                 >
@@ -611,13 +611,13 @@ export default function ActPage() {
                     <div className={cn(
                       'absolute inset-0 transition-all duration-300',
                       isSelected
-                        ? 'bg-gradient-to-t from-[#E50914]/40 via-transparent to-[#E50914]/10'
+                        ? 'bg-gradient-to-t from-[#C9A227]/40 via-transparent to-[#C9A227]/10'
                         : 'bg-gradient-to-t from-black/70 via-transparent to-transparent'
                     )} />
 
                     {/* Selected check */}
                     {isSelected && (
-                      <div className="absolute top-2 right-2 h-6 w-6 rounded-full bg-[#E50914] flex items-center justify-center">
+                      <div className="absolute top-2 right-2 h-6 w-6 rounded-full bg-[#C9A227] flex items-center justify-center">
                         <Check className="h-3.5 w-3.5 text-white" />
                       </div>
                     )}
@@ -685,11 +685,11 @@ export default function ActPage() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="relative">
                     {/* Glow behind photo */}
-                    <div className="absolute -inset-4 bg-[#E50914]/20 rounded-full blur-2xl" />
-                    <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-[#E50914]/50 shadow-[0_0_40px_rgba(229,9,20,0.3)]">
+                    <div className="absolute -inset-4 bg-[#C9A227]/20 rounded-full blur-2xl" />
+                    <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-[#C9A227]/50 shadow-[0_0_40px_rgba(201,162,39,0.3)]">
                       <Image src={uploadedPhoto} alt="You" fill className="object-cover" />
                     </div>
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#E50914] text-xs font-bold whitespace-nowrap">
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#C9A227] text-xs font-bold whitespace-nowrap">
                       YOU
                     </div>
                   </div>
@@ -699,7 +699,7 @@ export default function ActPage() {
               {/* Film info overlay */}
               {selectedFilm && (
                 <div className="absolute bottom-0 inset-x-0 p-6 sm:p-8">
-                  <p className="text-[#E50914] text-xs font-semibold uppercase tracking-wider mb-1">{selectedFilm.genre}</p>
+                  <p className="text-[#C9A227] text-xs font-semibold uppercase tracking-wider mb-1">{selectedFilm.genre}</p>
                   <h3 className="text-xl sm:text-2xl font-bold mb-2">{selectedFilm.title}</h3>
                   <p className="text-white/50 text-sm line-clamp-2 max-w-lg">{selectedFilm.synopsis}</p>
                 </div>
@@ -723,7 +723,7 @@ export default function ActPage() {
       <section id="face-scan" className="py-20 sm:py-28 border-t border-white/[0.04]">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#E50914]/20 bg-[#E50914]/10 text-[#E50914] text-xs sm:text-sm mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/10 text-[#C9A227] text-xs sm:text-sm mb-4">
               <Camera className="h-3.5 w-3.5" />
               <span>Face Scan</span>
             </div>
@@ -747,7 +747,7 @@ export default function ActPage() {
                 className={cn(
                   'relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-12 cursor-pointer transition-all duration-300 min-h-[320px]',
                   isDragging
-                    ? 'border-[#E50914] bg-[#E50914]/[0.06]'
+                    ? 'border-[#C9A227] bg-[#C9A227]/[0.06]'
                     : 'border-white/[0.1] bg-white/[0.02] hover:border-white/[0.2] hover:bg-white/[0.04]'
                 )}
               >
@@ -762,7 +762,7 @@ export default function ActPage() {
                     {isAnalyzing && (
                       <div className="absolute inset-0 bg-[#0A0A0A]/60 rounded-xl flex items-center justify-center">
                         <div className="flex flex-col items-center gap-3">
-                          <div className="h-10 w-10 rounded-full border-2 border-[#E50914] border-t-transparent animate-spin" />
+                          <div className="h-10 w-10 rounded-full border-2 border-[#C9A227] border-t-transparent animate-spin" />
                           <span className="text-sm text-white/70">Analyzing face...</span>
                         </div>
                       </div>
@@ -823,7 +823,7 @@ export default function ActPage() {
                 className={cn(
                   'w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold transition-all duration-300',
                   uploadedPhoto && !isAnalyzing
-                    ? 'bg-[#E50914] hover:bg-[#F6121D] text-white hover:shadow-[0_0_30px_rgba(229,9,20,0.25)] cursor-pointer'
+                    ? 'bg-[#C9A227] hover:bg-[#F6121D] text-white hover:shadow-[0_0_30px_rgba(201,162,39,0.25)] cursor-pointer'
                     : 'bg-white/[0.04] text-white/20 cursor-not-allowed'
                 )}
               >
@@ -851,7 +851,7 @@ export default function ActPage() {
                       </div>
                     </div>
                     {/* After */}
-                    <div className="relative aspect-[3/4] rounded-xl overflow-hidden border border-[#E50914]/20">
+                    <div className="relative aspect-[3/4] rounded-xl overflow-hidden border border-[#C9A227]/20">
                       <Image
                         src={uploadedPhoto!}
                         alt="AI Generated"
@@ -859,9 +859,9 @@ export default function ActPage() {
                         className="object-cover"
                         style={{ filter: 'saturate(1.3) contrast(1.15) brightness(0.95)' }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#E50914]/20 via-transparent to-[#E50914]/[0.05]" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#C9A227]/20 via-transparent to-[#C9A227]/[0.05]" />
                       <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2">
-                        <span className="text-xs font-medium text-[#E50914]">AI Generated</span>
+                        <span className="text-xs font-medium text-[#C9A227]">AI Generated</span>
                       </div>
                     </div>
                   </div>
@@ -905,7 +905,7 @@ export default function ActPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Basic */}
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#E50914]/[0.03] rounded-full blur-[60px]" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A227]/[0.03] rounded-full blur-[60px]" />
               <p className="text-xs text-white/30 uppercase tracking-wider font-semibold mb-2">Basic Insertion</p>
               <div className="flex items-baseline gap-1 mb-4">
                 <span className="text-4xl font-bold text-white">$9</span>
@@ -928,14 +928,14 @@ export default function ActPage() {
             </div>
 
             {/* Premium */}
-            <div className="rounded-2xl border border-[#E50914]/30 bg-gradient-to-b from-[#E50914]/[0.06] to-white/[0.02] p-8 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[#E50914]/[0.06] rounded-full blur-[80px]" />
+            <div className="rounded-2xl border border-[#C9A227]/30 bg-gradient-to-b from-[#C9A227]/[0.06] to-white/[0.02] p-8 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#C9A227]/[0.06] rounded-full blur-[80px]" />
               <div className="absolute top-4 right-4">
-                <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-[#E50914] text-white uppercase tracking-wider">
+                <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-[#C9A227] text-white uppercase tracking-wider">
                   Popular
                 </span>
               </div>
-              <p className="text-xs text-[#E50914] uppercase tracking-wider font-semibold mb-2">Premium Quality</p>
+              <p className="text-xs text-[#C9A227] uppercase tracking-wider font-semibold mb-2">Premium Quality</p>
               <div className="flex items-baseline gap-1 mb-4">
                 <span className="text-4xl font-bold text-white">$29</span>
                 <span className="text-white/40 text-sm">per scene</span>
@@ -953,12 +953,12 @@ export default function ActPage() {
                   'Priority rendering',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2.5 text-sm text-white/60">
-                    <Check className="h-4 w-4 text-[#E50914] flex-shrink-0" />
+                    <Check className="h-4 w-4 text-[#C9A227] flex-shrink-0" />
                     {item}
                   </li>
                 ))}
               </ul>
-              <button className="w-full py-3 rounded-xl bg-[#E50914] hover:bg-[#F6121D] text-white font-semibold transition-all hover:shadow-[0_0_30px_rgba(229,9,20,0.25)]">
+              <button className="w-full py-3 rounded-xl bg-[#C9A227] hover:bg-[#F6121D] text-white font-semibold transition-all hover:shadow-[0_0_30px_rgba(201,162,39,0.25)]">
                 Go Premium
               </button>
             </div>
@@ -999,7 +999,7 @@ export default function ActPage() {
                   className={cn(
                     'w-1.5 rounded-full transition-all',
                     isRecording
-                      ? 'bg-[#E50914]'
+                      ? 'bg-[#C9A227]'
                       : hasRecording
                         ? 'bg-white/20'
                         : 'bg-white/[0.06]'
@@ -1024,7 +1024,7 @@ export default function ActPage() {
                 className={cn(
                   'flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all duration-300',
                   isRecording
-                    ? 'bg-[#E50914] text-white animate-pulse'
+                    ? 'bg-[#C9A227] text-white animate-pulse'
                     : 'bg-white/[0.06] hover:bg-white/[0.1] text-white border border-white/[0.08]'
                 )}
               >
@@ -1087,7 +1087,7 @@ export default function ActPage() {
                   className={cn(
                     'group relative flex flex-col items-center gap-3 rounded-2xl border p-6 transition-all duration-300 text-center',
                     isSelected
-                      ? 'border-[#E50914]/40 bg-[#E50914]/[0.08] shadow-[0_0_30px_rgba(229,9,20,0.1)]'
+                      ? 'border-[#C9A227]/40 bg-[#C9A227]/[0.08] shadow-[0_0_30px_rgba(201,162,39,0.1)]'
                       : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.04]'
                   )}
                 >
@@ -1095,7 +1095,7 @@ export default function ActPage() {
                   <div
                     className={cn(
                       'absolute top-3 right-3 h-4 w-4 rounded-full border-2 transition-all duration-300 flex items-center justify-center',
-                      isSelected ? 'border-[#E50914] bg-[#E50914]' : 'border-white/20'
+                      isSelected ? 'border-[#C9A227] bg-[#C9A227]' : 'border-white/20'
                     )}
                   >
                     {isSelected && <div className="h-1.5 w-1.5 rounded-full bg-white" />}
@@ -1105,7 +1105,7 @@ export default function ActPage() {
                     className={cn(
                       'h-12 w-12 rounded-xl flex items-center justify-center transition-all',
                       isSelected
-                        ? 'bg-[#E50914]/20 text-[#E50914]'
+                        ? 'bg-[#C9A227]/20 text-[#C9A227]'
                         : 'bg-white/[0.04] text-white/40 group-hover:text-white/60'
                     )}
                   >
@@ -1149,7 +1149,7 @@ export default function ActPage() {
                 <div className="relative aspect-video bg-gradient-to-br from-white/[0.03] to-white/[0.01] flex items-center justify-center">
                   <Film className="h-8 w-8 text-white/10" />
                   <div className="absolute top-2 right-2">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#E50914]/20 text-[#E50914] border border-[#E50914]/20">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#C9A227]/20 text-[#C9A227] border border-[#C9A227]/20">
                       {item.role}
                     </span>
                   </div>
@@ -1206,7 +1206,7 @@ export default function ActPage() {
               className="w-full flex items-center justify-between px-8 py-6 text-left hover:bg-white/[0.02] transition-colors"
             >
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl bg-[#E50914]/10 flex items-center justify-center text-[#E50914]">
+                <div className="h-10 w-10 rounded-xl bg-[#C9A227]/10 flex items-center justify-center text-[#C9A227]">
                   <Shield className="h-5 w-5" />
                 </div>
                 <div>
@@ -1263,7 +1263,7 @@ export default function ActPage() {
                     className={cn(
                       'mt-0.5 h-5 w-5 rounded flex-shrink-0 border flex items-center justify-center transition-all duration-300',
                       consentChecked
-                        ? 'bg-[#E50914] border-[#E50914]'
+                        ? 'bg-[#C9A227] border-[#C9A227]'
                         : 'border-white/20 bg-white/[0.03] group-hover:border-white/40'
                     )}
                   >
@@ -1278,7 +1278,7 @@ export default function ActPage() {
                 {/* Terms link */}
                 <Link
                   href="/legal/terms"
-                  className="inline-flex items-center gap-1.5 text-sm text-[#E50914] hover:text-[#F6121D] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-sm text-[#C9A227] hover:text-[#F6121D] transition-colors"
                 >
                   Read full Terms & Conditions
                   <ArrowRight className="h-3.5 w-3.5" />

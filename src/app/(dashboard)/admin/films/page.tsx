@@ -47,12 +47,12 @@ export default async function AdminFilmsPage() {
         <div className="space-y-4">
           {films.map((film) => (
             <div key={film.id} className="flex items-center gap-4 p-4 sm:rounded-2xl rounded-xl border border-white/5 bg-white/[0.02] hover:border-white/10 hover:shadow-md hover:-translate-y-[1px] transition-all duration-500">
-              <div className="h-14 w-20 rounded-xl bg-gradient-to-br from-[#E50914]/10 to-purple-900/20 shrink-0 overflow-hidden">
+              <div className="h-14 w-20 rounded-xl bg-gradient-to-br from-[#C9A227]/10 to-purple-900/20 shrink-0 overflow-hidden">
                 {film.coverImageUrl ? (
                   <img src={film.coverImageUrl} alt={film.title} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <Film className="h-6 w-6 text-[#E50914]/30" />
+                    <Film className="h-6 w-6 text-[#C9A227]/30" />
                   </div>
                 )}
               </div>
@@ -76,7 +76,7 @@ export default async function AdminFilmsPage() {
 
               <div className="h-1.5 w-24 bg-white/10 rounded-full overflow-hidden hidden md:block">
                 <div
-                  className="h-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] rounded-full"
+                  className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full"
                   style={{ width: `${film.progressPct}%` }}
                 />
               </div>

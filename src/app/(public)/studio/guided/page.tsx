@@ -17,7 +17,7 @@ interface CreationType {
 }
 
 const CREATION_TYPES: CreationType[] = [
-  { id: 'poster', label: 'Affiche de Film', description: 'Créez une affiche professionnelle pour votre film', icon: Image, color: '#E50914',
+  { id: 'poster', label: 'Affiche de Film', description: 'Créez une affiche professionnelle pour votre film', icon: Image, color: '#C9A227',
     promptHints: ['Décrivez le personnage principal et son expression', 'Indiquez l\'ambiance (sombre, lumineux, mystérieux)', 'Mentionnez le titre et le genre'], suggestedStyle: 'cinematic', suggestedRatio: '9:16' },
   { id: 'storyboard', label: 'Storyboard', description: 'Dessinez vos scènes plan par plan', icon: Film, color: '#3B82F6',
     promptHints: ['Décrivez l\'action dans le plan', 'Précisez l\'angle de caméra (plongée, contre-plongée, profil)', 'Indiquez le mouvement'], suggestedStyle: 'artistic', suggestedRatio: '16:9' },
@@ -127,10 +127,10 @@ export default function GuidedStudioPage() {
               <span className="text-xs text-gray-700">Mode Guidé</span>
             </div>
             <h1 className="text-2xl font-bold text-white font-[family-name:var(--font-playfair)]">
-              Studio Créatif — <span className="text-[#E50914]">Mode Guidé</span>
+              Studio Créatif — <span className="text-[#C9A227]">Mode Guidé</span>
             </h1>
           </div>
-          <Link href="/studio/pro" className="text-xs text-gray-500 hover:text-[#E50914] flex items-center gap-1">
+          <Link href="/studio/pro" className="text-xs text-gray-500 hover:text-[#C9A227] flex items-center gap-1">
             Mode Pro <ChevronRight className="h-3 w-3" />
           </Link>
         </div>
@@ -140,14 +140,14 @@ export default function GuidedStudioPage() {
           {['Type', 'Description', 'Style', 'Génération', 'Résultat'].map((label, i) => (
             <div key={i} className="flex-1 flex items-center gap-2">
               <div className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
-                i < step ? 'bg-[#E50914] text-white' :
-                i === step ? 'bg-[#E50914]/20 text-[#E50914] border-2 border-[#E50914]' :
+                i < step ? 'bg-[#C9A227] text-white' :
+                i === step ? 'bg-[#C9A227]/20 text-[#C9A227] border-2 border-[#C9A227]' :
                 'bg-gray-800 text-gray-500'
               }`}>
                 {i < step ? <Check className="h-4 w-4" /> : i + 1}
               </div>
               <span className={`text-[10px] hidden sm:block ${i <= step ? 'text-white' : 'text-gray-600'}`}>{label}</span>
-              {i < 4 && <div className={`flex-1 h-0.5 ${i < step ? 'bg-[#E50914]' : 'bg-gray-800'}`} />}
+              {i < 4 && <div className={`flex-1 h-0.5 ${i < step ? 'bg-[#C9A227]' : 'bg-gray-800'}`} />}
             </div>
           ))}
         </div>
@@ -156,7 +156,7 @@ export default function GuidedStudioPage() {
         {step === 0 && (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <Wand2 className="h-10 w-10 text-[#E50914] mx-auto mb-4" />
+              <Wand2 className="h-10 w-10 text-[#C9A227] mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-white mb-2">Que voulez-vous créer ?</h2>
               <p className="text-gray-400">Choisissez le type de visuel et l&apos;IA vous guidera étape par étape.</p>
             </div>
@@ -164,9 +164,9 @@ export default function GuidedStudioPage() {
               {CREATION_TYPES.map(type => {
                 const Icon = type.icon
                 return (
-                  <button key={type.id} onClick={() => selectType(type)} className="group text-left rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900/80 to-gray-900/30 p-8 hover:border-[#E50914]/30 hover:shadow-lg hover:shadow-[#E50914]/5 transition-all">
+                  <button key={type.id} onClick={() => selectType(type)} className="group text-left rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900/80 to-gray-900/30 p-8 hover:border-[#C9A227]/30 hover:shadow-lg hover:shadow-[#C9A227]/5 transition-all">
                     <Icon className="h-10 w-10 mb-4 group-hover:scale-110 transition-transform" style={{ color: type.color }} />
-                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#E50914] transition-colors">{type.label}</h3>
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#C9A227] transition-colors">{type.label}</h3>
                     <p className="text-sm text-gray-500">{type.description}</p>
                   </button>
                 )
@@ -192,7 +192,7 @@ export default function GuidedStudioPage() {
               <ul className="space-y-1.5">
                 {creationType.promptHints.map(hint => (
                   <li key={hint} className="text-xs text-gray-400 flex items-center gap-2">
-                    <ChevronRight className="h-3 w-3 text-[#E50914] shrink-0" />{hint}
+                    <ChevronRight className="h-3 w-3 text-[#C9A227] shrink-0" />{hint}
                   </li>
                 ))}
               </ul>
@@ -201,7 +201,7 @@ export default function GuidedStudioPage() {
             {/* Textarea */}
             <div>
               <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder={`Décrivez votre ${creationType.label.toLowerCase()} en détail...`} rows={5}
-                className="w-full rounded-2xl border border-gray-700 bg-gray-800 px-6 py-4 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none" />
+                className="w-full rounded-2xl border border-gray-700 bg-gray-800 px-6 py-4 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none" />
               <p className="text-[10px] text-gray-600 mt-1 text-right">{prompt.length} caractères</p>
             </div>
 
@@ -220,7 +220,7 @@ export default function GuidedStudioPage() {
             {/* Navigation */}
             <div className="flex justify-between pt-4">
               <button onClick={() => setStep(0)} className="flex items-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-white"><ArrowLeft className="h-4 w-4" />Retour</button>
-              <button onClick={() => setStep(2)} disabled={!prompt.trim()} className="flex items-center gap-2 px-6 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-30 transition-colors">
+              <button onClick={() => setStep(2)} disabled={!prompt.trim()} className="flex items-center gap-2 px-6 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-30 transition-colors">
                 Suivant <ArrowRight className="h-4 w-4" />
               </button>
             </div>
@@ -240,10 +240,10 @@ export default function GuidedStudioPage() {
               <label className="text-xs text-gray-400 mb-3 block">Style visuel</label>
               <div className="grid grid-cols-5 gap-3">
                 {PHOTO_STYLES.map(s => (
-                  <button key={s.id} onClick={() => setStyle(s.id)} className={`rounded-xl border p-4 text-center transition-all ${style === s.id ? 'border-[#E50914] bg-[#E50914]/10 shadow-lg shadow-[#E50914]/5' : 'border-gray-800 hover:border-gray-600'}`}>
+                  <button key={s.id} onClick={() => setStyle(s.id)} className={`rounded-xl border p-4 text-center transition-all ${style === s.id ? 'border-[#C9A227] bg-[#C9A227]/10 shadow-lg shadow-[#C9A227]/5' : 'border-gray-800 hover:border-gray-600'}`}>
                     <p className="text-sm font-medium text-white">{s.label}</p>
                     <p className="text-[10px] text-gray-500 mt-0.5">{s.description}</p>
-                    {style === s.id && <Check className="h-4 w-4 text-[#E50914] mx-auto mt-2" />}
+                    {style === s.id && <Check className="h-4 w-4 text-[#C9A227] mx-auto mt-2" />}
                   </button>
                 ))}
               </div>
@@ -254,7 +254,7 @@ export default function GuidedStudioPage() {
               <label className="text-xs text-gray-400 mb-3 block">Format</label>
               <div className="flex gap-3">
                 {PHOTO_RATIOS.map(r => (
-                  <button key={r.id} onClick={() => setRatio(r.id)} className={`flex-1 rounded-xl border p-4 text-center transition-all ${ratio === r.id ? 'border-[#E50914] bg-[#E50914]/10' : 'border-gray-800 hover:border-gray-600'}`}>
+                  <button key={r.id} onClick={() => setRatio(r.id)} className={`flex-1 rounded-xl border p-4 text-center transition-all ${ratio === r.id ? 'border-[#C9A227] bg-[#C9A227]/10' : 'border-gray-800 hover:border-gray-600'}`}>
                     <p className="text-lg font-bold text-white">{r.label}</p>
                     <p className="text-[10px] text-gray-500">{r.description}</p>
                   </button>
@@ -268,7 +268,7 @@ export default function GuidedStudioPage() {
                 <p className="text-sm font-medium text-white">Qualité HD</p>
                 <p className="text-[10px] text-gray-500">Résolution 1.5x supérieure (coûte ~0.5 crédit de plus)</p>
               </div>
-              <button onClick={() => setHdMode(!hdMode)} className={`relative h-7 w-12 rounded-full transition-colors ${hdMode ? 'bg-[#E50914]' : 'bg-gray-600'}`}>
+              <button onClick={() => setHdMode(!hdMode)} className={`relative h-7 w-12 rounded-full transition-colors ${hdMode ? 'bg-[#C9A227]' : 'bg-gray-600'}`}>
                 <span className={`inline-block h-5 w-5 rounded-full bg-white transition-transform ${hdMode ? 'translate-x-6' : 'translate-x-1'}`} />
               </button>
             </div>
@@ -287,7 +287,7 @@ export default function GuidedStudioPage() {
 
             <div className="flex justify-between pt-4">
               <button onClick={() => setStep(1)} className="flex items-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-white"><ArrowLeft className="h-4 w-4" />Retour</button>
-              <button onClick={() => { setStep(3); setTimeout(generate, 500) }} className="flex items-center gap-2 px-8 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl transition-colors text-lg">
+              <button onClick={() => { setStep(3); setTimeout(generate, 500) }} className="flex items-center gap-2 px-8 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl transition-colors text-lg">
                 <Sparkles className="h-5 w-5" /> Générer
               </button>
             </div>
@@ -297,13 +297,13 @@ export default function GuidedStudioPage() {
         {/* STEP 3: Generating */}
         {step === 3 && (
           <div className="text-center py-16">
-            <Loader2 className="h-16 w-16 text-[#E50914] mx-auto mb-6 animate-spin" />
+            <Loader2 className="h-16 w-16 text-[#C9A227] mx-auto mb-6 animate-spin" />
             <h2 className="text-2xl font-bold text-white mb-3">Création en cours...</h2>
             <p className="text-gray-400 mb-6">L&apos;IA compose votre {creationType?.label.toLowerCase()}</p>
 
             {/* Progress */}
             <div className="w-full max-w-md mx-auto h-3 bg-gray-800 rounded-full overflow-hidden mb-3">
-              <div className="h-full bg-gradient-to-r from-[#E50914] to-[#FF6B35] rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
+              <div className="h-full bg-gradient-to-r from-[#C9A227] to-[#FF6B35] rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
             </div>
             <p className="text-sm text-gray-500">{progress}%</p>
 
@@ -320,7 +320,7 @@ export default function GuidedStudioPage() {
         {step === 4 && result && (
           <div className="space-y-6">
             <div className="text-center mb-4">
-              <Sparkles className="h-8 w-8 text-[#E50914] mx-auto mb-3" />
+              <Sparkles className="h-8 w-8 text-[#C9A227] mx-auto mb-3" />
               <h2 className="text-2xl font-bold text-white mb-2">Votre {creationType?.label} est prêt(e) !</h2>
             </div>
 
@@ -340,7 +340,7 @@ export default function GuidedStudioPage() {
               <button onClick={async () => { await navigator.clipboard.writeText(result!); setCopied(true); setTimeout(() => setCopied(false), 2000) }} className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-700 bg-gray-800/50 text-sm text-gray-300 hover:bg-gray-700 transition-colors">
                 {copied ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4" />} {copied ? 'Copié' : 'Copier URL'}
               </button>
-              <button onClick={() => { setSaved(true); toast.success('Sauvegardé dans votre projet') }} className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm transition-colors ${saved ? 'bg-green-600 text-white' : 'border border-[#E50914] text-[#E50914] hover:bg-[#E50914] hover:text-white'}`}>
+              <button onClick={() => { setSaved(true); toast.success('Sauvegardé dans votre projet') }} className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm transition-colors ${saved ? 'bg-green-600 text-white' : 'border border-[#C9A227] text-[#C9A227] hover:bg-[#C9A227] hover:text-white'}`}>
                 {saved ? <Check className="h-4 w-4" /> : <Save className="h-4 w-4" />} {saved ? 'Sauvé' : 'Sauver'}
               </button>
             </div>
@@ -355,7 +355,7 @@ export default function GuidedStudioPage() {
             {/* Next Actions */}
             <div className="flex gap-3 pt-4">
               <button onClick={() => { setStep(0); setPrompt(''); setResult(null); setSaved(false) }} className="flex-1 py-3 border border-gray-700 text-gray-400 rounded-xl hover:bg-gray-800 text-sm">Créer autre chose</button>
-              <Link href="/studio/pro" className="flex-1 py-3 bg-[#E50914] text-white rounded-xl hover:bg-[#FF2D2D] text-sm font-semibold text-center flex items-center justify-center gap-2">
+              <Link href="/studio/pro" className="flex-1 py-3 bg-[#C9A227] text-white rounded-xl hover:bg-[#E8C766] text-sm font-semibold text-center flex items-center justify-center gap-2">
                 <Zap className="h-4 w-4" /> Passer en mode Pro
               </Link>
             </div>

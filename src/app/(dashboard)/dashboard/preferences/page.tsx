@@ -84,7 +84,7 @@ export default function PreferencesPage() {
           ].map(opt => {
             const OIcon = opt.icon
             return (
-              <button key={opt.value} onClick={() => setTheme(opt.value)} className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border transition-colors ${theme === opt.value ? 'border-[#E50914] bg-[#E50914]/10 text-[#E50914]' : 'border-white/10 text-white/50 hover:border-white/15'}`}>
+              <button key={opt.value} onClick={() => setTheme(opt.value)} className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border transition-colors ${theme === opt.value ? 'border-[#C9A227] bg-[#C9A227]/10 text-[#C9A227]' : 'border-white/10 text-white/50 hover:border-white/15'}`}>
                 <OIcon className="h-4 w-4" /> <span className="text-sm">{opt.label}</span>
               </button>
             )
@@ -95,7 +95,7 @@ export default function PreferencesPage() {
       {/* Language */}
       <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
         <h2 className="text-sm font-semibold text-white mb-4 flex items-center gap-2"><Globe className="h-4 w-4 text-blue-500" /> Langue</h2>
-        <select value={language} onChange={e => setLanguage(e.target.value)} className="w-full rounded-xl border border-white/10 bg-white/5 text-white px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none">
+        <select value={language} onChange={e => setLanguage(e.target.value)} className="w-full rounded-xl border border-white/10 bg-white/5 text-white px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none">
           <option value="fr" className="bg-[#111]">Français</option>
           <option value="en" className="bg-[#111]">English</option>
         </select>
@@ -121,7 +121,7 @@ export default function PreferencesPage() {
                   <p className="text-[10px] text-white/50">{notif.desc}</p>
                 </div>
               </div>
-              <button onClick={() => notif.set(!notif.value)} className={`relative h-6 w-11 rounded-full transition-colors ${notif.value ? 'bg-[#E50914]' : 'bg-white/20'}`}>
+              <button onClick={() => notif.set(!notif.value)} className={`relative h-6 w-11 rounded-full transition-colors ${notif.value ? 'bg-[#C9A227]' : 'bg-white/20'}`}>
                 <span className={`inline-block h-4 w-4 rounded-full bg-white shadow transition-transform ${notif.value ? 'translate-x-6' : 'translate-x-1'}`} />
               </button>
             </div>
@@ -129,7 +129,7 @@ export default function PreferencesPage() {
         })}
       </div>
 
-      <button onClick={savePreferences} disabled={saving} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+      <button onClick={savePreferences} disabled={saving} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
         {saving ? <Loader2 className="h-5 w-5 animate-spin" /> : <Save className="h-5 w-5" />}
         Sauvegarder les préférences
       </button>

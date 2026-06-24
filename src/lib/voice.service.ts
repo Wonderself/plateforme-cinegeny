@@ -77,7 +77,7 @@ const VOICE_PRESETS: VoicePreset[] = [
     accent: 'Français classique',
     sampleText: 'Il était une fois, dans un monde oublié...',
     tags: ['Narration', 'Épique', 'Grave'],
-    color: '#E50914',
+    color: '#C9A227',
   },
   {
     id: 'narratrice',

@@ -256,7 +256,7 @@ export default function ChatPage() {
           <div className="p-4 border-b border-gray-800">
             <button
               onClick={handleNewChat}
-              className="w-full flex items-center gap-2 px-4 py-2.5 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-semibold rounded-xl transition-colors"
+              className="w-full flex items-center gap-2 px-4 py-2.5 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-semibold rounded-xl transition-colors"
             >
               <Plus className="h-4 w-4" />
               Nouveau chat
@@ -431,7 +431,7 @@ export default function ChatPage() {
                   <div
                     className={`max-w-[75%] rounded-2xl px-4 py-3 ${
                       msg.role === 'USER'
-                        ? 'bg-[#E50914] text-white'
+                        ? 'bg-[#C9A227] text-white'
                         : msg.role === 'SYSTEM'
                         ? 'bg-red-500/10 border border-red-500/20 text-red-300'
                         : 'bg-gray-800 text-gray-200'
@@ -517,7 +517,7 @@ export default function ChatPage() {
                 <button
                   onClick={handleSend}
                   disabled={!input.trim()}
-                  className="h-10 w-10 flex items-center justify-center rounded-xl bg-[#E50914] hover:bg-[#FF2D2D] text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
+                  className="h-10 w-10 flex items-center justify-center rounded-xl bg-[#C9A227] hover:bg-[#E8C766] text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
                 >
                   <Send className="h-5 w-5" />
                 </button>

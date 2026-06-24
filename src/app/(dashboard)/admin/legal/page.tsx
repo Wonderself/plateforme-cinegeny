@@ -232,7 +232,7 @@ export default async function AdminLegalPage() {
   const humanTasks = items.filter((i) => (i.responsible === 'HUMAN' || i.responsible === 'BOTH') && i.status !== 'DONE').length
 
   const stats = [
-    { label: 'Progression', value: `${progressPct}%`, sub: `${done}/${total} complétés`, color: 'text-[#E50914]', icon: CheckCircle },
+    { label: 'Progression', value: `${progressPct}%`, sub: `${done}/${total} complétés`, color: 'text-[#C9A227]', icon: CheckCircle },
     { label: 'En cours', value: inProgress.toString(), sub: 'items actifs', color: 'text-yellow-600', icon: Clock },
     { label: 'Bloqués', value: blocked.toString(), sub: 'à débloquer', color: 'text-red-600', icon: Ban },
     { label: 'Priorité haute', value: highPriority.toString(), sub: 'restants', color: 'text-orange-600', icon: AlertTriangle },
@@ -245,7 +245,7 @@ export default async function AdminLegalPage() {
       {/* Header */}
       <div>
         <h1 className="text-2xl sm:text-3xl font-bold font-[family-name:var(--font-playfair)]">
-          <Scale className="inline h-7 w-7 text-[#E50914] mr-2 -mt-1" />
+          <Scale className="inline h-7 w-7 text-[#C9A227] mr-2 -mt-1" />
           Conformité Juridique Israélienne
         </h1>
         <p className="text-white/50 mt-1">
@@ -254,14 +254,14 @@ export default async function AdminLegalPage() {
       </div>
 
       {/* Global progress */}
-      <div className="p-4 rounded-xl border border-[#E50914]/20 bg-[#E50914]/5">
+      <div className="p-4 rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/5">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-[#E50914]">Progression globale</span>
-          <span className="text-sm font-bold text-[#E50914]">{progressPct}%</span>
+          <span className="text-sm font-medium text-[#C9A227]">Progression globale</span>
+          <span className="text-sm font-bold text-[#C9A227]">{progressPct}%</span>
         </div>
         <div className="h-2 bg-white/[0.05] rounded-full overflow-hidden">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] transition-all duration-700"
+            className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] transition-all duration-700"
             style={{ width: `${progressPct}%` }}
           />
         </div>
@@ -325,8 +325,8 @@ export default async function AdminLegalPage() {
             {/* Section header */}
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-[#E50914]/10 mt-0.5">
-                  <SectionIcon className="h-5 w-5 text-[#E50914]" />
+                <div className="p-2 rounded-lg bg-[#C9A227]/10 mt-0.5">
+                  <SectionIcon className="h-5 w-5 text-[#C9A227]" />
                 </div>
                 <div>
                   <h2 className="text-lg font-semibold font-[family-name:var(--font-playfair)]">
@@ -344,7 +344,7 @@ export default async function AdminLegalPage() {
             {catTotal > 0 && (
               <div className="h-1 bg-white/[0.05] rounded-full overflow-hidden ml-0 sm:ml-12">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] transition-all"
+                  className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] transition-all"
                   style={{ width: `${catPct}%` }}
                 />
               </div>
@@ -409,7 +409,7 @@ export default async function AdminLegalPage() {
                               href={item.documentUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-xs text-[#E50914] hover:underline"
+                              className="inline-flex items-center gap-1 text-xs text-[#C9A227] hover:underline"
                             >
                               <ExternalLink className="h-3 w-3" /> Document associé
                             </a>
@@ -466,7 +466,7 @@ export default async function AdminLegalPage() {
       <Card variant="glass">
         <CardContent className="p-6">
           <div className="flex items-start gap-3">
-            <Gavel className="h-5 w-5 text-[#E50914] shrink-0 mt-0.5" />
+            <Gavel className="h-5 w-5 text-[#C9A227] shrink-0 mt-0.5" />
             <div>
               <h3 className="font-semibold text-sm mb-1">Avertissement juridique</h3>
               <p className="text-xs text-white/50 leading-relaxed">

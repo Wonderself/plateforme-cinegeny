@@ -233,7 +233,7 @@ const sections: TodoSection[] = [
   {
     title: 'Phase 4 — Business & Communication',
     icon: Briefcase,
-    color: 'text-[#E50914]',
+    color: 'text-[#C9A227]',
     items: [
       {
         label: 'Pitch Deck — 12 slides',
@@ -398,7 +398,7 @@ export default async function AdminTodoFondateurPage() {
         <h1
           className="text-3xl font-bold flex items-center gap-3"
         >
-          <ListTodo className="h-7 w-7 text-[#E50914]" /> TODO Fondateur
+          <ListTodo className="h-7 w-7 text-[#C9A227]" /> TODO Fondateur
         </h1>
         <p className="text-white/50 mt-1">
           Check-list complete pour le lancement de CINEGEN. Chaque etape est faisable et guidee.
@@ -411,7 +411,7 @@ export default async function AdminTodoFondateurPage() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <div>
               <p className="text-sm text-white/50">Progression globale</p>
-              <p className="text-4xl font-bold text-[#E50914]">{globalPct}%</p>
+              <p className="text-4xl font-bold text-[#C9A227]">{globalPct}%</p>
               <p className="text-xs text-white/50 mt-1">
                 {doneItems}/{totalItems} etapes completees
               </p>
@@ -435,23 +435,23 @@ export default async function AdminTodoFondateurPage() {
           </div>
           <div className="h-3 bg-white/[0.05] rounded-full overflow-hidden">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] transition-all duration-700"
+              className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] transition-all duration-700"
               style={{ width: `${globalPct}%` }}
             />
           </div>
           <p className="text-xs text-white/40 mt-3 flex items-center gap-1.5">
-            <Sparkles className="h-3 w-3 text-[#E50914]" />
+            <Sparkles className="h-3 w-3 text-[#C9A227]" />
             La V1 est deja tres avancee. La plupart des etapes restantes prennent 5-30 min avec Claude.
           </p>
         </CardContent>
       </Card>
 
       {/* Encouragement banner */}
-      <div className="p-6 rounded-2xl border border-[#E50914]/20 bg-[#E50914]/5">
+      <div className="p-6 rounded-2xl border border-[#C9A227]/20 bg-[#C9A227]/5">
         <div className="flex items-start gap-3">
-          <PartyPopper className="h-6 w-6 text-[#E50914] shrink-0 mt-0.5" />
+          <PartyPopper className="h-6 w-6 text-[#C9A227] shrink-0 mt-0.5" />
           <div>
-            <h3 className="font-bold text-[#E50914] mb-1">Excellent travail !</h3>
+            <h3 className="font-bold text-[#C9A227] mb-1">Excellent travail !</h3>
             <p className="text-sm text-white/50 leading-relaxed">
               {doneItems} fonctionnalites sont deja developpees et fonctionnelles. Le site Cinema + Creators est a
               un niveau de demo tres avance. Les prochaines etapes sont principalement des integrations API
@@ -481,7 +481,7 @@ export default async function AdminTodoFondateurPage() {
                     </span>
                     <div className="w-24 h-1.5 bg-white/[0.05] rounded-full overflow-hidden">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D]"
+                        className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766]"
                         style={{ width: `${sectionPct}%` }}
                       />
                     </div>
@@ -566,7 +566,7 @@ export default async function AdminTodoFondateurPage() {
 
       {/* Bottom CTA */}
       <div className="text-center p-8 rounded-2xl border border-white/10 bg-white/[0.03]">
-        <Sparkles className="h-8 w-8 text-[#E50914] mx-auto mb-4" />
+        <Sparkles className="h-8 w-8 text-[#C9A227] mx-auto mb-4" />
         <h3 className="text-xl font-bold mb-2 font-playfair">
           Prochaine etape recommandee
         </h3>
@@ -576,7 +576,7 @@ export default async function AdminTodoFondateurPage() {
         </p>
         <Link
           href="/admin/settings"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#E50914] text-white font-semibold hover:bg-[#FF2D2D] transition-colors"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#C9A227] text-white font-semibold hover:bg-[#E8C766] transition-colors"
         >
           Configurer les APIs <ArrowRight className="h-4 w-4" />
         </Link>

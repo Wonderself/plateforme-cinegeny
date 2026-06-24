@@ -404,16 +404,16 @@ export default function ScriptPage() {
 
         <div className="relative px-6 sm:px-10 py-12 sm:py-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-xs text-white/50 mb-6">
-            <Sparkles className="h-3.5 w-3.5 text-[#E50914]" />
+            <Sparkles className="h-3.5 w-3.5 text-[#C9A227]" />
             Step 1 of {CREATE_STEPS.length}
           </div>
 
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-[#E50914]/15 border border-[#E50914]/30 flex items-center justify-center">
-              <FileText className="h-6 w-6 text-[#E50914]" />
+            <div className="w-12 h-12 rounded-xl bg-[#C9A227]/15 border border-[#C9A227]/30 flex items-center justify-center">
+              <FileText className="h-6 w-6 text-[#C9A227]" />
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-              Write Your <span className="text-[#E50914]">Script</span>
+              Write Your <span className="text-[#C9A227]">Script</span>
             </h1>
           </div>
 
@@ -438,8 +438,8 @@ export default function ScriptPage() {
               className="group relative rounded-xl bg-white/[0.02] border border-white/[0.06] p-6 hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-lg bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center">
-                  <item.icon className="h-5 w-5 text-[#E50914]" />
+                <div className="w-10 h-10 rounded-lg bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center">
+                  <item.icon className="h-5 w-5 text-[#C9A227]" />
                 </div>
                 <span className="text-xs font-bold text-white/20">STEP {i + 1}</span>
               </div>
@@ -462,7 +462,7 @@ export default function ScriptPage() {
               className={cn(
                 'flex items-center gap-2 px-6 py-4 text-sm font-medium transition-all duration-200 border-b-2',
                 activeTab === 'write'
-                  ? 'text-[#E50914] border-[#E50914] bg-[#E50914]/[0.04]'
+                  ? 'text-[#C9A227] border-[#C9A227] bg-[#C9A227]/[0.04]'
                   : 'text-white/40 border-transparent hover:text-white/60 hover:bg-white/[0.02]'
               )}
             >
@@ -474,7 +474,7 @@ export default function ScriptPage() {
               className={cn(
                 'flex items-center gap-2 px-6 py-4 text-sm font-medium transition-all duration-200 border-b-2',
                 activeTab === 'upload'
-                  ? 'text-[#E50914] border-[#E50914] bg-[#E50914]/[0.04]'
+                  ? 'text-[#C9A227] border-[#C9A227] bg-[#C9A227]/[0.04]'
                   : 'text-white/40 border-transparent hover:text-white/60 hover:bg-white/[0.02]'
               )}
             >
@@ -496,7 +496,7 @@ export default function ScriptPage() {
                   value={scriptTitle}
                   onChange={(e) => setScriptTitle(e.target.value)}
                   placeholder="Untitled Screenplay"
-                  className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all"
+                  className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all"
                 />
               </div>
 
@@ -513,12 +513,12 @@ export default function ScriptPage() {
                       if (e.target.value.length <= 200) setLogline(e.target.value)
                     }}
                     placeholder="A one-sentence summary of your story..."
-                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg px-4 py-3 pr-16 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all"
+                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg px-4 py-3 pr-16 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all"
                   />
                   <span
                     className={cn(
                       'absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono',
-                      logline.length >= 200 ? 'text-[#E50914]' : 'text-white/25'
+                      logline.length >= 200 ? 'text-[#C9A227]' : 'text-white/25'
                     )}
                   >
                     {logline.length}/200
@@ -541,7 +541,7 @@ export default function ScriptPage() {
                         className={cn(
                           'px-3.5 py-1.5 rounded-full text-xs font-medium border transition-all duration-200',
                           isSelected
-                            ? 'bg-[#E50914] border-[#E50914] text-white'
+                            ? 'bg-[#C9A227] border-[#C9A227] text-white'
                             : 'bg-white/[0.03] border-white/[0.08] text-white/50 hover:border-white/[0.15] hover:text-white/70'
                         )}
                       >
@@ -576,7 +576,7 @@ export default function ScriptPage() {
                   onChange={(e) => setScriptText(e.target.value)}
                   placeholder={`FADE IN:\n\nEXT. CITY STREET - NIGHT\n\nRain hammers the asphalt. A lone figure emerges from the shadows...\n\n                    CHARACTER\n          (whispering)\n     This is where it all begins.`}
                   rows={18}
-                  className="w-full bg-white/[0.03] border border-white/[0.08] rounded-b-lg px-5 py-4 text-sm text-white/90 font-mono leading-relaxed placeholder:text-white/15 focus:outline-none focus:border-[#E50914]/40 focus:ring-1 focus:ring-[#E50914]/20 transition-all resize-y min-h-[300px]"
+                  className="w-full bg-white/[0.03] border border-white/[0.08] rounded-b-lg px-5 py-4 text-sm text-white/90 font-mono leading-relaxed placeholder:text-white/15 focus:outline-none focus:border-[#C9A227]/40 focus:ring-1 focus:ring-[#C9A227]/20 transition-all resize-y min-h-[300px]"
                 />
               </div>
 
@@ -644,7 +644,7 @@ export default function ScriptPage() {
                 className={cn(
                   'border-2 border-dashed rounded-xl p-12 text-center transition-all duration-300 cursor-pointer',
                   dragOver
-                    ? 'border-[#E50914]/50 bg-[#E50914]/[0.04]'
+                    ? 'border-[#C9A227]/50 bg-[#C9A227]/[0.04]'
                     : 'border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.02]'
                 )}
               >
@@ -669,7 +669,7 @@ export default function ScriptPage() {
               {/* Uploaded file info */}
               {uploadedFile && (
                 <div className="mt-4 flex items-center gap-3 p-3 rounded-lg bg-white/[0.03] border border-white/[0.08]">
-                  <FileText className="h-5 w-5 text-[#E50914]" />
+                  <FileText className="h-5 w-5 text-[#C9A227]" />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm text-white/80 truncate">{uploadedFile.name}</p>
                     <p className="text-xs text-white/30">{(uploadedFile.size / 1024).toFixed(1)} KB</p>
@@ -706,7 +706,7 @@ export default function ScriptPage() {
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <Wand2 className="h-4 w-4 text-[#E50914]" />
+                    <Wand2 className="h-4 w-4 text-[#C9A227]" />
                     <h3 className="text-sm font-semibold text-white/90">Nano Banana AI Analysis</h3>
                   </div>
                   <p className="text-xs text-white/40 leading-relaxed max-w-lg">
@@ -722,10 +722,10 @@ export default function ScriptPage() {
                   className={cn(
                     'inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 shrink-0',
                     isAnalyzing
-                      ? 'bg-[#E50914]/30 text-white/50 cursor-wait'
+                      ? 'bg-[#C9A227]/30 text-white/50 cursor-wait'
                       : scriptText.length < 50
                         ? 'bg-white/5 text-white/20 cursor-not-allowed'
-                        : 'bg-[#E50914] text-white hover:bg-[#FF2D2D] hover:shadow-[0_0_24px_rgba(229,9,20,0.25)] hover:scale-[1.02] active:scale-[0.98]'
+                        : 'bg-[#C9A227] text-white hover:bg-[#E8C766] hover:shadow-[0_0_24px_rgba(201,162,39,0.25)] hover:scale-[1.02] active:scale-[0.98]'
                   )}
                 >
                   {isAnalyzing ? (
@@ -757,7 +757,7 @@ export default function ScriptPage() {
                   </div>
                   <div className="h-2 rounded-full bg-white/[0.06] overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF6B6B] transition-all duration-500 ease-out"
+                      className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#FF6B6B] transition-all duration-500 ease-out"
                       style={{ width: `${analysisProgress}%` }}
                     />
                   </div>
@@ -829,7 +829,7 @@ export default function ScriptPage() {
                         {/* Expandable suggestions */}
                         <button
                           onClick={() => toggleSuggestion(cat.label)}
-                          className="flex items-center gap-1 text-[11px] font-medium text-[#E50914]/80 hover:text-[#E50914] transition-colors"
+                          className="flex items-center gap-1 text-[11px] font-medium text-[#C9A227]/80 hover:text-[#C9A227] transition-colors"
                         >
                           <ChevronDown
                             className={cn(
@@ -846,7 +846,7 @@ export default function ScriptPage() {
                                 key={i}
                                 className="flex items-start gap-2 text-[11px] text-white/40 leading-relaxed"
                               >
-                                <span className="text-[#E50914] mt-0.5 shrink-0">&#8226;</span>
+                                <span className="text-[#C9A227] mt-0.5 shrink-0">&#8226;</span>
                                 {s}
                               </div>
                             ))}
@@ -882,10 +882,10 @@ export default function ScriptPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Path A: Community Vote */}
-          <div className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 hover:border-[#E50914]/30 hover:bg-[#E50914]/[0.02] transition-all duration-300">
+          <div className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 hover:border-[#C9A227]/30 hover:bg-[#C9A227]/[0.02] transition-all duration-300">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-11 h-11 rounded-xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center">
-                <Vote className="h-5 w-5 text-[#E50914]" />
+              <div className="w-11 h-11 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center">
+                <Vote className="h-5 w-5 text-[#C9A227]" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-white/90">Submit to Community Vote</h3>
@@ -902,7 +902,7 @@ export default function ScriptPage() {
                 <AlertCircle className="h-3 w-3" />
                 Submission fee: <strong className="text-white/40">$9</strong>
               </span>
-              <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-[#E50914]/15 text-[#E50914] hover:bg-[#E50914]/25 transition-all duration-200 group-hover:translate-x-0.5">
+              <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-[#C9A227]/15 text-[#C9A227] hover:bg-[#C9A227]/25 transition-all duration-200 group-hover:translate-x-0.5">
                 Submit for Vote
                 <ChevronRight className="h-3.5 w-3.5" />
               </button>
@@ -956,7 +956,7 @@ export default function ScriptPage() {
                 key={i}
                 className="flex gap-4 p-5 hover:bg-white/[0.02] transition-colors duration-200"
               >
-                <div className="shrink-0 w-7 h-7 rounded-lg bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center text-xs font-bold text-[#E50914]">
+                <div className="shrink-0 w-7 h-7 rounded-lg bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center text-xs font-bold text-[#C9A227]">
                   {i + 1}
                 </div>
                 <div>

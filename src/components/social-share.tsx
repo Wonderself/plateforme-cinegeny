@@ -51,12 +51,12 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
       {/* Copy Link */}
       <button
         onClick={handleCopy}
-        className="relative inline-flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] text-white/40 hover:text-[#E50914] hover:border-[#E50914]/30 transition-colors"
+        className="relative inline-flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] text-white/40 hover:text-[#C9A227] hover:border-[#C9A227]/30 transition-colors"
         title="Copier le lien"
       >
         <Link2 style={{ width: 16, height: 16 }} />
         {copied && (
-          <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs bg-[#E50914] text-white px-2 py-1 rounded-md font-medium">
+          <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs bg-[#C9A227] text-white px-2 py-1 rounded-md font-medium">
             Lien copie !
           </span>
         )}
@@ -65,7 +65,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
       {/* X / Twitter */}
       <button
         onClick={() => openShare(shareLinks.twitter)}
-        className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] text-white/40 hover:text-[#E50914] hover:border-[#E50914]/30 transition-colors"
+        className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] text-white/40 hover:text-[#C9A227] hover:border-[#C9A227]/30 transition-colors"
         title="Partager sur X"
       >
         <svg
@@ -81,7 +81,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
       {/* Facebook */}
       <button
         onClick={() => openShare(shareLinks.facebook)}
-        className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] text-white/40 hover:text-[#E50914] hover:border-[#E50914]/30 transition-colors"
+        className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] text-white/40 hover:text-[#C9A227] hover:border-[#C9A227]/30 transition-colors"
         title="Partager sur Facebook"
       >
         <svg
@@ -97,7 +97,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
       {/* WhatsApp */}
       <button
         onClick={() => openShare(shareLinks.whatsapp)}
-        className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] text-white/40 hover:text-[#E50914] hover:border-[#E50914]/30 transition-colors"
+        className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] text-white/40 hover:text-[#C9A227] hover:border-[#C9A227]/30 transition-colors"
         title="Partager sur WhatsApp"
       >
         <svg
@@ -117,7 +117,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
             navigator.share({ title, text: description || title, url })
           }
         }}
-        className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] text-white/40 hover:text-[#E50914] hover:border-[#E50914]/30 transition-colors sm:hidden"
+        className="inline-flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] text-white/40 hover:text-[#C9A227] hover:border-[#C9A227]/30 transition-colors sm:hidden"
         title="Partager"
       >
         <Share2 style={{ width: 16, height: 16 }} />

@@ -105,7 +105,7 @@ export default async function AdminTaskEditPage({ params }: { params: Promise<{ 
                 name="descriptionMd"
                 defaultValue={task.descriptionMd}
                 rows={4}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50 resize-y"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50 resize-y"
                 required
               />
             </div>
@@ -118,7 +118,7 @@ export default async function AdminTaskEditPage({ params }: { params: Promise<{ 
                 name="instructionsMd"
                 defaultValue={task.instructionsMd || ''}
                 rows={4}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50 resize-y"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50 resize-y"
               />
             </div>
 
@@ -203,7 +203,7 @@ export default async function AdminTaskEditPage({ params }: { params: Promise<{ 
                 defaultValue={task.inputFilesUrls.join('\n')}
                 rows={3}
                 placeholder="https://example.com/file1.png&#10;https://example.com/file2.pdf"
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50 resize-y"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50 resize-y"
               />
             </div>
 

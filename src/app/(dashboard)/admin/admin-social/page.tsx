@@ -20,7 +20,7 @@ const PLATFORMS = [
   { id: 'twitter', label: 'Twitter/X', icon: Twitter, color: '#1DA1F2', maxLength: 280 },
   { id: 'linkedin', label: 'LinkedIn', icon: Linkedin, color: '#0A66C2', maxLength: 3000 },
   { id: 'instagram', label: 'Instagram', icon: Instagram, color: '#E4405F', maxLength: 2200 },
-  { id: 'all', label: 'Tous', icon: Globe, color: '#E50914', maxLength: 280 },
+  { id: 'all', label: 'Tous', icon: Globe, color: '#C9A227', maxLength: 280 },
 ]
 
 const POST_TEMPLATES = [
@@ -86,10 +86,10 @@ export default function AdminSocialPage() {
       </div>
 
       <div className="flex gap-2">
-        <button onClick={() => setTab('generator')} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium ${tab === 'generator' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>
+        <button onClick={() => setTab('generator')} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium ${tab === 'generator' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>
           <Megaphone className="h-4 w-4" /> Générateur
         </button>
-        <button onClick={() => setTab('calendar')} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium ${tab === 'calendar' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>
+        <button onClick={() => setTab('calendar')} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium ${tab === 'calendar' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>
           <Calendar className="h-4 w-4" /> Calendrier ({calendar.length})
         </button>
       </div>
@@ -99,7 +99,7 @@ export default function AdminSocialPage() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
             <div>
               <label className="text-xs text-white/50 mb-1.5 block">Sujet du post</label>
-              <input value={topic} onChange={e => setTopic(e.target.value)} placeholder="Ex: Lancement de la fonctionnalité Chat IA..." className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
+              <input value={topic} onChange={e => setTopic(e.target.value)} placeholder="Ex: Lancement de la fonctionnalité Chat IA..." className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
             </div>
             <div className="flex gap-4">
               <div className="flex-1">
@@ -136,7 +136,7 @@ export default function AdminSocialPage() {
               </div>
             </div>
 
-            <button onClick={generatePosts} disabled={generating || !topic.trim()} className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+            <button onClick={generatePosts} disabled={generating || !topic.trim()} className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
               {generating ? <><Loader2 className="h-5 w-5 animate-spin" /> Génération...</> : <><Zap className="h-5 w-5" /> Générer les posts</>}
             </button>
           </div>

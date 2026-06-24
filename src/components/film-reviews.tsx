@@ -18,7 +18,7 @@ function StarRating({ rating, size = 16 }: { rating: number; size?: number }) {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          className={star <= rating ? 'text-[#E50914] fill-[#E50914]' : 'text-white/20'}
+          className={star <= rating ? 'text-[#C9A227] fill-[#C9A227]' : 'text-white/20'}
           style={{ width: size, height: size }}
         />
       ))}
@@ -51,7 +51,7 @@ function StarSelector({
           <Star
             className={
               star <= (hover || value)
-                ? 'text-[#E50914] fill-[#E50914]'
+                ? 'text-[#C9A227] fill-[#C9A227]'
                 : 'text-white/20'
             }
             style={{ width: 28, height: 28 }}
@@ -211,7 +211,7 @@ export function FilmReviews({ filmId }: { filmId: string }) {
         </h2>
         {rating && rating.count > 0 && (
           <div className="flex items-center gap-3">
-            <div className="text-3xl font-bold text-[#E50914] font-playfair">
+            <div className="text-3xl font-bold text-[#C9A227] font-playfair">
               {rating.average}
             </div>
             <div>
@@ -251,7 +251,7 @@ export function FilmReviews({ filmId }: { filmId: string }) {
               placeholder="Partagez votre opinion sur ce film..."
               rows={3}
               maxLength={1000}
-              className="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/50 resize-none transition-colors"
+              className="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/50 resize-none transition-colors"
             />
           </div>
 
@@ -265,7 +265,7 @@ export function FilmReviews({ filmId }: { filmId: string }) {
           <button
             type="submit"
             disabled={submitting || formRating === 0}
-            className="inline-flex items-center gap-2 rounded-lg bg-[#E50914] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#FF2D2D] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#C9A227] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#E8C766] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
             Publier mon avis
@@ -274,7 +274,7 @@ export function FilmReviews({ filmId }: { filmId: string }) {
       ) : (
         <div className="rounded-xl border border-white/5 bg-white/[0.02] p-6 text-center">
           <p className="text-sm text-white/40">
-            <a href="/login" className="text-[#E50914] hover:underline">
+            <a href="/login" className="text-[#C9A227] hover:underline">
               Connectez-vous
             </a>{' '}
             pour laisser un avis.
@@ -285,7 +285,7 @@ export function FilmReviews({ filmId }: { filmId: string }) {
       {/* Reviews List */}
       {loading ? (
         <div className="flex justify-center py-8">
-          <Loader2 className="h-6 w-6 animate-spin text-[#E50914]/50" />
+          <Loader2 className="h-6 w-6 animate-spin text-[#C9A227]/50" />
         </div>
       ) : reviews.length > 0 ? (
         <div className="space-y-3">

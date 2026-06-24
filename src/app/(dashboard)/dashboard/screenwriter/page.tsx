@@ -16,7 +16,7 @@ export const metadata: Metadata = { title: 'Dashboard Scenariste' }
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: typeof Clock }> = {
   SUBMITTED: { label: 'Soumis', color: 'bg-blue-500/10 text-blue-600 border-blue-500/20', icon: Clock },
   SHORTLISTED: { label: 'Preselectione', color: 'bg-purple-500/10 text-purple-600 border-purple-500/20', icon: Star },
-  VOTING: { label: 'En Vote', color: 'bg-[#E50914]/10 text-[#E50914] border-[#E50914]/20', icon: TrendingUp },
+  VOTING: { label: 'En Vote', color: 'bg-[#C9A227]/10 text-[#C9A227] border-[#C9A227]/20', icon: TrendingUp },
   WINNER: { label: 'Gagnant', color: 'bg-green-500/10 text-green-600 border-green-500/20', icon: Trophy },
   ARCHIVED: { label: 'Archive', color: 'bg-white/5 text-white/30 border-white/10', icon: FileText },
 }
@@ -76,7 +76,7 @@ export default async function ScreenwriterDashboardPage() {
         {[
           { label: 'Scenarios', value: stats._count, icon: FileText, color: 'text-blue-600' },
           { label: 'Total Votes', value: stats._sum.votesCount || 0, icon: TrendingUp, color: 'text-purple-600' },
-          { label: 'Score IA Moyen', value: stats._avg.aiScore ? `${Math.round(stats._avg.aiScore)}%` : '—', icon: Sparkles, color: 'text-[#E50914]' },
+          { label: 'Score IA Moyen', value: stats._avg.aiScore ? `${Math.round(stats._avg.aiScore)}%` : '—', icon: Sparkles, color: 'text-[#C9A227]' },
           { label: 'Gagnants', value: winners, icon: Trophy, color: 'text-green-600' },
         ].map((stat) => (
           <div key={stat.label} className="p-5 rounded-xl border border-white/[0.06] bg-white/[0.02]">
@@ -89,10 +89,10 @@ export default async function ScreenwriterDashboardPage() {
 
       {/* Active scenarios (in voting) */}
       {inVoting > 0 && (
-        <div className="p-5 rounded-xl border border-[#E50914]/20 bg-[#E50914]/[0.03]">
+        <div className="p-5 rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/[0.03]">
           <div className="flex items-center gap-2 mb-1">
-            <BarChart3 className="h-4 w-4 text-[#E50914]" />
-            <span className="text-sm font-semibold text-[#E50914]">
+            <BarChart3 className="h-4 w-4 text-[#C9A227]" />
+            <span className="text-sm font-semibold text-[#C9A227]">
               {inVoting} scenario{inVoting > 1 ? 's' : ''} en cours de vote
             </span>
           </div>
@@ -124,7 +124,7 @@ export default async function ScreenwriterDashboardPage() {
               const config = STATUS_CONFIG[s.status] || STATUS_CONFIG.ARCHIVED
               return (
                 <Link key={s.id} href={`/community/scenarios/${s.id}`}>
-                  <div className="flex items-center gap-4 p-5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:border-[#E50914]/15 transition-all group">
+                  <div className="flex items-center gap-4 p-5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:border-[#C9A227]/15 transition-all group">
                     <div className="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
                       <config.icon className={`h-5 w-5 ${config.color.split(' ')[1]}`} />
                     </div>
@@ -139,7 +139,7 @@ export default async function ScreenwriterDashboardPage() {
                         {s.genre && <span>{s.genre}</span>}
                         <span>{s.votesCount} vote{s.votesCount !== 1 ? 's' : ''}</span>
                         {s.aiScore !== null && (
-                          <span className={s.aiScore >= 75 ? 'text-green-600' : s.aiScore >= 50 ? 'text-[#E50914]' : 'text-red-400'}>
+                          <span className={s.aiScore >= 75 ? 'text-green-600' : s.aiScore >= 50 ? 'text-[#C9A227]' : 'text-red-400'}>
                             IA: {s.aiScore}%
                           </span>
                         )}

@@ -33,7 +33,7 @@ export function NotificationBell() {
     >
       <Bell className="h-[18px] w-[18px]" />
       {count > 0 && (
-        <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold text-white bg-[#E50914] rounded-full shadow-[0_0_8px_rgba(229,9,20,0.4)] animate-in fade-in zoom-in duration-200">
+        <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold text-white bg-[#C9A227] rounded-full shadow-[0_0_8px_rgba(201,162,39,0.4)] animate-in fade-in zoom-in duration-200">
           {count > 99 ? '99+' : count}
         </span>
       )}

@@ -235,7 +235,7 @@ export function VideoPlayer({
           className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer"
           onClick={togglePlay}
         >
-          <div className="w-16 h-16 rounded-full bg-[#E50914] flex items-center justify-center shadow-lg shadow-[#E50914]/30 hover:scale-110 transition-transform">
+          <div className="w-16 h-16 rounded-full bg-[#C9A227] flex items-center justify-center shadow-lg shadow-[#C9A227]/30 hover:scale-110 transition-transform">
             <Play className="h-7 w-7 text-black ml-1" />
           </div>
         </div>
@@ -261,14 +261,14 @@ export function VideoPlayer({
           onClick={seek}
         >
           <div className="absolute h-full bg-white/10 rounded-full" style={{ width: `${buffered}%` }} />
-          <div className="relative h-full bg-[#E50914] rounded-full" style={{ width: `${progress}%` }}>
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#E50914] opacity-0 group-hover/bar:opacity-100 transition-opacity shadow-sm" />
+          <div className="relative h-full bg-[#C9A227] rounded-full" style={{ width: `${progress}%` }}>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#C9A227] opacity-0 group-hover/bar:opacity-100 transition-opacity shadow-sm" />
           </div>
         </div>
 
         {/* Buttons */}
         <div className="flex items-center gap-3 px-4 pb-3">
-          <button onClick={togglePlay} className="text-white hover:text-[#E50914] transition-colors">
+          <button onClick={togglePlay} className="text-white hover:text-[#C9A227] transition-colors">
             {playing ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
           </button>
           <button onClick={() => skip(-10)} className="text-white/60 hover:text-white transition-colors">
@@ -297,7 +297,7 @@ export function VideoPlayer({
               step={0.05}
               value={muted ? 0 : volume}
               onChange={handleVolume}
-              className="w-16 h-1 accent-[#E50914] cursor-pointer"
+              className="w-16 h-1 accent-[#C9A227] cursor-pointer"
             />
           </div>
 
@@ -306,7 +306,7 @@ export function VideoPlayer({
             <div className="relative">
               <button
                 onClick={() => setShowCCMenu((prev) => !prev)}
-                className={`text-white/60 hover:text-white transition-colors ${activeSubtitle ? 'text-[#E50914]' : ''}`}
+                className={`text-white/60 hover:text-white transition-colors ${activeSubtitle ? 'text-[#C9A227]' : ''}`}
                 title="Sous-titres"
               >
                 <Subtitles className="h-4 w-4" />
@@ -327,7 +327,7 @@ export function VideoPlayer({
                     onClick={() => selectSubtitle(null)}
                     className={`w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-xs transition-colors ${
                       activeSubtitle === null
-                        ? 'bg-[#E50914]/10 text-[#E50914]'
+                        ? 'bg-[#C9A227]/10 text-[#C9A227]'
                         : 'text-white/50 hover:text-white hover:bg-white/[0.06]'
                     }`}
                   >
@@ -342,7 +342,7 @@ export function VideoPlayer({
                       onClick={() => selectSubtitle(sub.srclang)}
                       className={`w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-xs transition-colors ${
                         activeSubtitle === sub.srclang
-                          ? 'bg-[#E50914]/10 text-[#E50914]'
+                          ? 'bg-[#C9A227]/10 text-[#C9A227]'
                           : 'text-white/50 hover:text-white hover:bg-white/[0.06]'
                       }`}
                     >

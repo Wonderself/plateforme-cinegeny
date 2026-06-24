@@ -188,7 +188,7 @@ export default function DocumentFactoryPage() {
 
         {/* Categories */}
         <div className="flex gap-2">
-          <button onClick={() => setFilterCategory('all')} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${filterCategory === 'all' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>Tous ({CINEMA_DOC_TEMPLATES.length})</button>
+          <button onClick={() => setFilterCategory('all')} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${filterCategory === 'all' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>Tous ({CINEMA_DOC_TEMPLATES.length})</button>
           {DOC_CATEGORIES.map(cat => {
             const CIcon = ICON_MAP[cat.icon] || FileText
             return (
@@ -248,23 +248,23 @@ export default function DocumentFactoryPage() {
           {selectedTemplate.requiredFields.map(field => (
             <div key={field.key}>
               <label className="text-xs text-white/50 mb-1.5 block">
-                {field.label} {field.required && <span className="text-[#E50914]">*</span>}
+                {field.label} {field.required && <span className="text-[#C9A227]">*</span>}
               </label>
               {field.type === 'textarea' ? (
-                <textarea value={fieldValues[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} placeholder={field.placeholder} rows={3} className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none resize-none" />
+                <textarea value={fieldValues[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} placeholder={field.placeholder} rows={3} className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none resize-none" />
               ) : field.type === 'select' ? (
-                <select value={fieldValues[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none">
+                <select value={fieldValues[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none">
                   <option value="">{field.placeholder}</option>
                   {field.options?.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                 </select>
               ) : (
-                <input type={field.type} value={fieldValues[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} placeholder={field.placeholder} className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
+                <input type={field.type} value={fieldValues[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} placeholder={field.placeholder} className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
               )}
             </div>
           ))}
         </div>
 
-        <button onClick={generateDoc} disabled={generating} className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+        <button onClick={generateDoc} disabled={generating} className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
           {generating ? <><Loader2 className="h-5 w-5 animate-spin" />Génération en cours...</> : <><Zap className="h-5 w-5" />Générer le document (~{selectedTemplate.estimatedCredits} crédits)</>}
         </button>
       </div>
@@ -314,7 +314,7 @@ export default function DocumentFactoryPage() {
 
         <div className="flex gap-3">
           <button onClick={() => setView('templates')} className="flex-1 px-4 py-3 border border-white/10 text-white/60 rounded-xl hover:bg-white/[0.03] text-sm font-medium">Nouveau document</button>
-          <button onClick={() => setView('library')} className="flex-1 px-4 py-3 bg-[#E50914] text-white rounded-xl hover:bg-[#FF2D2D] text-sm font-semibold">Voir la bibliothèque</button>
+          <button onClick={() => setView('library')} className="flex-1 px-4 py-3 bg-[#C9A227] text-white rounded-xl hover:bg-[#E8C766] text-sm font-semibold">Voir la bibliothèque</button>
         </div>
       </div>
     )
@@ -329,7 +329,7 @@ export default function DocumentFactoryPage() {
           <h1 className="text-2xl font-bold text-white">Bibliothèque</h1>
           <p className="text-sm text-white/50 mt-1">{savedDocs.length} documents archivés</p>
         </div>
-        <button onClick={() => setView('templates')} className="px-3 py-1.5 rounded-lg text-xs bg-[#E50914] text-white">Nouveau document</button>
+        <button onClick={() => setView('templates')} className="px-3 py-1.5 rounded-lg text-xs bg-[#C9A227] text-white">Nouveau document</button>
       </div>
 
       {savedDocs.length === 0 ? (
@@ -342,7 +342,7 @@ export default function DocumentFactoryPage() {
         <div className="space-y-3">
           {savedDocs.map(doc => (
             <div key={doc.id} className="rounded-xl border border-white/10 bg-white/5 p-5 flex items-center gap-4">
-              <FileText className="h-5 w-5 text-[#E50914] shrink-0" />
+              <FileText className="h-5 w-5 text-[#C9A227] shrink-0" />
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-white">{doc.name}</p>
                 <p className="text-[10px] text-white/50">{doc.date.toLocaleString('fr-FR')} · Score review: {doc.score}/100</p>

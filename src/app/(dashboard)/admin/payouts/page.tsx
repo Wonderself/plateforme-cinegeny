@@ -77,7 +77,7 @@ export default async function AdminPayoutsPage(
       {/* KPIs */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { icon: Calculator, label: 'Total Payouts', value: totalPayouts, color: '#E50914' },
+          { icon: Calculator, label: 'Total Payouts', value: totalPayouts, color: '#C9A227' },
           { icon: Clock, label: 'En attente', value: pendingPayouts, color: '#f59e0b' },
           { icon: CheckCircle, label: 'Payes', value: paidPayouts, color: '#22c55e' },
           { icon: DollarSign, label: 'Total Verse', value: formatPrice(totalPaid), color: '#22c55e' },
@@ -102,8 +102,8 @@ export default async function AdminPayoutsPage(
       )}
 
       {/* Calculation Form */}
-      <div className="rounded-xl border border-[#E50914]/20 bg-[#E50914]/5 p-6">
-        <h2 className="text-sm font-semibold text-[#E50914] mb-4 flex items-center gap-2">
+      <div className="rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/5 p-6">
+        <h2 className="text-sm font-semibold text-[#C9A227] mb-4 flex items-center gap-2">
           <Calculator className="h-4 w-4" />
           Calculer les Payouts Mensuels
         </h2>
@@ -115,7 +115,7 @@ export default async function AdminPayoutsPage(
               name="month"
               defaultValue={currentMonth}
               required
-              className="w-full h-10 rounded-lg border border-[#E50914]/30 bg-black/30 px-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+              className="w-full h-10 rounded-lg border border-[#C9A227]/30 bg-black/30 px-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
             />
           </div>
           <div className="flex-1 min-w-[200px]">
@@ -127,12 +127,12 @@ export default async function AdminPayoutsPage(
               min="0"
               placeholder="ex: 5000"
               required
-              className="w-full h-10 rounded-lg border border-[#E50914]/30 bg-black/30 px-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+              className="w-full h-10 rounded-lg border border-[#C9A227]/30 bg-black/30 px-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
             />
           </div>
           <button
             type="submit"
-            className="h-10 px-6 rounded-lg bg-[#E50914] text-white font-semibold text-sm hover:bg-[#FF2D2D] transition-colors flex items-center gap-2"
+            className="h-10 px-6 rounded-lg bg-[#C9A227] text-white font-semibold text-sm hover:bg-[#E8C766] transition-colors flex items-center gap-2"
           >
             <Calculator className="h-4 w-4" />
             Calculer
@@ -153,7 +153,7 @@ export default async function AdminPayoutsPage(
               href="/admin/payouts"
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 !filterMonth
-                  ? 'bg-[#E50914]/20 text-[#E50914] border border-[#E50914]/30'
+                  ? 'bg-[#C9A227]/20 text-[#C9A227] border border-[#C9A227]/30'
                   : 'text-white/40 hover:text-white/60 border border-transparent'
               }`}
             >
@@ -165,7 +165,7 @@ export default async function AdminPayoutsPage(
                 href={`/admin/payouts?month=${m}`}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   filterMonth === m
-                    ? 'bg-[#E50914]/20 text-[#E50914] border border-[#E50914]/30'
+                    ? 'bg-[#C9A227]/20 text-[#C9A227] border border-[#C9A227]/30'
                     : 'text-white/40 hover:text-white/60 border border-transparent'
                 }`}
               >
@@ -207,8 +207,8 @@ export default async function AdminPayoutsPage(
                         {payout.user.avatarUrl ? (
                           <img src={payout.user.avatarUrl} alt="" className="w-8 h-8 rounded-full object-cover" />
                         ) : (
-                          <div className="w-8 h-8 rounded-full bg-[#E50914]/10 flex items-center justify-center">
-                            <Users className="h-3.5 w-3.5 text-[#E50914]" />
+                          <div className="w-8 h-8 rounded-full bg-[#C9A227]/10 flex items-center justify-center">
+                            <Users className="h-3.5 w-3.5 text-[#C9A227]" />
                           </div>
                         )}
                         <div>
@@ -232,7 +232,7 @@ export default async function AdminPayoutsPage(
                       <div className="text-[10px] text-white/30">/ {payout.platformViews.toLocaleString('fr-FR')}</div>
                     </td>
                     <td className="p-4 text-right">
-                      <span className="text-sm text-[#E50914] font-medium">
+                      <span className="text-sm text-[#C9A227] font-medium">
                         {(payout.ratio * 100).toFixed(2)}%
                       </span>
                     </td>

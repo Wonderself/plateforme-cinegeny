@@ -63,7 +63,7 @@ export default function MyAgentsPage() {
         <div className="flex-1 overflow-y-auto px-4 py-6 space-y-3">
           {messages.map((m, i) => (
             <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm ${m.role === 'user' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/90'}`}>
+              <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm ${m.role === 'user' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/90'}`}>
                 <p className="whitespace-pre-wrap">{m.content}</p>
               </div>
             </div>
@@ -71,8 +71,8 @@ export default function MyAgentsPage() {
           {streaming && <div className="flex gap-1 px-4"><div className="h-2 w-2 rounded-full bg-white/40 animate-bounce" /><div className="h-2 w-2 rounded-full bg-white/40 animate-bounce" style={{ animationDelay: '150ms' }} /><div className="h-2 w-2 rounded-full bg-white/40 animate-bounce" style={{ animationDelay: '300ms' }} /></div>}
         </div>
         <div className="px-4 pb-4 flex gap-2">
-          <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') sendMessage() }} placeholder={`Parlez à ${chatAgent.name}...`} className="flex-1 rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
-          <button onClick={sendMessage} disabled={!input.trim() || streaming} className="h-10 w-10 rounded-xl bg-[#E50914] text-white disabled:opacity-30 flex items-center justify-center"><Send className="h-4 w-4" /></button>
+          <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') sendMessage() }} placeholder={`Parlez à ${chatAgent.name}...`} className="flex-1 rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
+          <button onClick={sendMessage} disabled={!input.trim() || streaming} className="h-10 w-10 rounded-xl bg-[#C9A227] text-white disabled:opacity-30 flex items-center justify-center"><Send className="h-4 w-4" /></button>
         </div>
       </div>
     )
@@ -88,7 +88,7 @@ export default function MyAgentsPage() {
       <div className="flex gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/50" />
-          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher..." className="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 text-sm focus:border-[#E50914] focus:outline-none" />
+          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher..." className="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 text-sm focus:border-[#C9A227] focus:outline-none" />
         </div>
         <select value={filterCat} onChange={e => setFilterCat(e.target.value)} className="rounded-xl border border-white/10 px-3 py-2 text-sm">
           <option value="all">Toutes catégories</option>

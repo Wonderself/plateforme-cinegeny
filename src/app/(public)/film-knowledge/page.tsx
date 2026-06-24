@@ -103,7 +103,7 @@ export default function FilmKnowledgePage() {
 
           {/* CTA */}
           <div className="text-center">
-            <button onClick={() => setView('build')} className="inline-flex items-center gap-2 px-8 py-4 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-2xl transition-colors text-lg">
+            <button onClick={() => setView('build')} className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-2xl transition-colors text-lg">
               <BookOpen className="h-6 w-6" />
               Construire la Mémoire de Mon Film
             </button>
@@ -127,7 +127,7 @@ export default function FilmKnowledgePage() {
           </div>
           <div className="text-right">
             <div className="w-32 h-3 bg-gray-800 rounded-full overflow-hidden">
-              <div className="h-full bg-[#E50914] rounded-full transition-all" style={{ width: `${completeness}%` }} />
+              <div className="h-full bg-[#C9A227] rounded-full transition-all" style={{ width: `${completeness}%` }} />
             </div>
             <p className="text-[10px] text-gray-600 mt-1">{completeness}% complet</p>
           </div>
@@ -136,7 +136,7 @@ export default function FilmKnowledgePage() {
         {/* Film Title */}
         <div className="rounded-xl border border-gray-800 bg-gray-900/50 p-5 mb-6">
           <label className="text-xs text-gray-400 mb-1.5 block">Titre du film</label>
-          <input value={filmTitle} onChange={e => setFilmTitle(e.target.value)} placeholder="Le titre de votre film..." className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+          <input value={filmTitle} onChange={e => setFilmTitle(e.target.value)} placeholder="Le titre de votre film..." className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -153,7 +153,7 @@ export default function FilmKnowledgePage() {
                   <div className="flex-1 min-w-0">
                     <p className={`text-xs font-medium ${isActive ? 'text-white' : 'text-gray-400'}`}>{cat.label}</p>
                   </div>
-                  {count > 0 && <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#E50914]/20 text-[#E50914]">{count}</span>}
+                  {count > 0 && <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-[#C9A227]/20 text-[#C9A227]">{count}</span>}
                   {count === 0 && <span className="text-[10px] text-gray-600">vide</span>}
                 </button>
               )
@@ -190,9 +190,9 @@ export default function FilmKnowledgePage() {
 
                 {/* Add Entry */}
                 <div className="rounded-xl border border-gray-800 bg-gray-900/50 p-5 space-y-3">
-                  <textarea value={newContent} onChange={e => setNewContent(e.target.value)} placeholder="Décrivez en détail... L'IA utilisera cette information pour rester cohérente." rows={4} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none" />
-                  <input value={newTags} onChange={e => setNewTags(e.target.value)} placeholder="Tags (séparés par virgules)" className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
-                  <button onClick={addEntry} disabled={saving || !newContent.trim()} className="w-full flex items-center justify-center gap-2 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+                  <textarea value={newContent} onChange={e => setNewContent(e.target.value)} placeholder="Décrivez en détail... L'IA utilisera cette information pour rester cohérente." rows={4} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none" />
+                  <input value={newTags} onChange={e => setNewTags(e.target.value)} placeholder="Tags (séparés par virgules)" className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
+                  <button onClick={addEntry} disabled={saving || !newContent.trim()} className="w-full flex items-center justify-center gap-2 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
                     {saving ? <Loader2 className="h-5 w-5 animate-spin" /> : <Plus className="h-5 w-5" />}
                     {saving ? 'Indexation...' : 'Ajouter à la mémoire'}
                   </button>

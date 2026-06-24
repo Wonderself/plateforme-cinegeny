@@ -33,7 +33,7 @@ const ALL_FILMS: FilmData[] = GENRE_ORDER.flatMap(
 
 /* ── Task categories ── */
 const TASK_CATEGORIES = [
-  { name: 'Scene Rendering', icon: Palette, desc: 'Image generation tasks', color: '#E50914' },
+  { name: 'Scene Rendering', icon: Palette, desc: 'Image generation tasks', color: '#C9A227' },
   { name: 'Character Animation', icon: Users, desc: 'Character design tasks', color: '#F59E0B' },
   { name: 'Sound Design', icon: Music, desc: 'Audio tasks', color: '#8B5CF6' },
   { name: 'Final Cut', icon: Film, desc: 'Editing tasks', color: '#10B981' },
@@ -108,14 +108,14 @@ export default function WorkPage() {
       {/* ═══ HERO ═══ */}
       <section className="relative py-28 sm:py-36 px-4 sm:px-8 md:px-16 lg:px-20 overflow-hidden">
         <div className="absolute inset-0 gradient-radial-gold opacity-60" />
-        <div className="absolute top-20 right-1/4 w-[500px] h-[500px] rounded-full bg-[#E50914]/[0.03] blur-[200px]" />
+        <div className="absolute top-20 right-1/4 w-[500px] h-[500px] rounded-full bg-[#C9A227]/[0.03] blur-[200px]" />
         <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] rounded-full bg-amber-500/[0.02] blur-[150px]" />
 
         <div className="container mx-auto max-w-6xl relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: text */}
             <div>
-              <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[#E50914]/15 bg-[#E50914]/[0.06] text-[#E50914] text-xs sm:text-sm font-medium mb-8 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[#C9A227]/15 bg-[#C9A227]/[0.06] text-[#C9A227] text-xs sm:text-sm font-medium mb-8 backdrop-blur-sm">
                 <Zap className="h-3.5 w-3.5" />
                 Earn While You Create
               </div>
@@ -131,7 +131,7 @@ export default function WorkPage() {
               </p>
               <Link
                 href="/register"
-                className="golden-border-btn golden-border-always inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold transition-all duration-500 shadow-lg shadow-[#E50914]/20 hover:shadow-[#E50914]/30 hover:scale-[1.02]"
+                className="golden-border-btn golden-border-always inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold transition-all duration-500 shadow-lg shadow-[#C9A227]/20 hover:shadow-[#C9A227]/30 hover:scale-[1.02]"
               >
                 Start Earning Money
                 <ArrowRight className="h-5 w-5" />
@@ -152,7 +152,7 @@ export default function WorkPage() {
                 <Link
                   key={film.slug}
                   href={`/films/${film.slug}`}
-                  className="group relative w-[140px] sm:w-[160px] rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] hover:border-[#E50914]/20 transition-all duration-500"
+                  className="group relative w-[140px] sm:w-[160px] rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] hover:border-[#C9A227]/20 transition-all duration-500"
                 >
                   <div className="relative aspect-[2/3] bg-[#141414]">
                     {film.coverImageUrl && (
@@ -167,13 +167,13 @@ export default function WorkPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                     {/* Progress badge */}
                     <div className="absolute top-2 right-2 px-2 py-1 rounded-lg bg-black/70 backdrop-blur-sm border border-white/10">
-                      <span className="text-[10px] font-bold text-[#E50914]">{film.progressPct}%</span>
+                      <span className="text-[10px] font-bold text-[#C9A227]">{film.progressPct}%</span>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-3">
                       <p className="text-xs font-bold text-white leading-tight line-clamp-2">{film.title}</p>
                       <div className="mt-2 h-1 bg-white/10 rounded-full overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF6B6B]"
+                          className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#FF6B6B]"
                           style={{ width: `${film.progressPct}%` }}
                         />
                       </div>
@@ -197,12 +197,12 @@ export default function WorkPage() {
             ].map((s, i) => (
               <div key={s.step} className="relative text-center p-5 sm:p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm">
                 {i < 2 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 md:-right-6 w-8 md:w-12 h-px bg-gradient-to-r from-[#E50914]/40 to-transparent" />
+                  <div className="hidden md:block absolute top-1/2 -right-4 md:-right-6 w-8 md:w-12 h-px bg-gradient-to-r from-[#C9A227]/40 to-transparent" />
                 )}
-                <div className="w-12 h-12 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center mx-auto mb-4">
-                  <s.icon className="h-5 w-5 text-[#E50914]" />
+                <div className="w-12 h-12 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center mx-auto mb-4">
+                  <s.icon className="h-5 w-5 text-[#C9A227]" />
                 </div>
-                <div className="w-8 h-8 rounded-full bg-[#E50914]/15 border border-[#E50914]/25 flex items-center justify-center mx-auto mb-3 text-[#E50914] font-bold text-sm">
+                <div className="w-8 h-8 rounded-full bg-[#C9A227]/15 border border-[#C9A227]/25 flex items-center justify-center mx-auto mb-3 text-[#C9A227] font-bold text-sm">
                   {s.step}
                 </div>
                 <h3 className="text-sm sm:text-base font-bold text-white mb-1.5">{s.title}</h3>
@@ -252,7 +252,7 @@ export default function WorkPage() {
                 <Link
                   key={film.slug}
                   href={`/films/${film.slug}`}
-                  className="group flex-shrink-0 w-[160px] sm:w-[180px] snap-start rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] hover:border-[#E50914]/20 transition-all duration-300"
+                  className="group flex-shrink-0 w-[160px] sm:w-[180px] snap-start rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] hover:border-[#C9A227]/20 transition-all duration-300"
                 >
                   <div className="relative aspect-[2/3] bg-[#141414]">
                     {film.coverImageUrl && (
@@ -271,7 +271,7 @@ export default function WorkPage() {
                         className={`px-2 py-0.5 rounded-md text-[10px] font-bold border ${
                           isDone
                             ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
-                            : 'bg-[#E50914]/20 text-[#E50914] border-[#E50914]/30'
+                            : 'bg-[#C9A227]/20 text-[#C9A227] border-[#C9A227]/30'
                         }`}
                       >
                         {isDone ? 'DONE' : `${100 - film.progressPct}% REMAIN`}
@@ -282,7 +282,7 @@ export default function WorkPage() {
                       <p className="text-[10px] text-white/40">{film.genre}</p>
                       <div className="mt-2 h-1 bg-white/10 rounded-full overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF6B6B]"
+                          className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#FF6B6B]"
                           style={{ width: `${film.progressPct}%` }}
                         />
                       </div>
@@ -298,13 +298,13 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <div className="h-px bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent" />
 
       {/* ═══ IN PROGRESS PROJECTS ═══ */}
       <section className="py-16 sm:py-24 px-4 sm:px-8 md:px-16 lg:px-20">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <p className="text-[#E50914] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
+            <p className="text-[#C9A227] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
               Active Tasks
             </p>
             <h2 className="section-title-flash text-3xl sm:text-4xl font-bold tracking-tight">
@@ -334,7 +334,7 @@ export default function WorkPage() {
               <Link
                 key={task.id}
                 href="/tasks"
-                className="group p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-[#E50914]/15 transition-all duration-500 backdrop-blur-sm"
+                className="group p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-[#C9A227]/15 transition-all duration-500 backdrop-blur-sm"
               >
                 {/* Category + difficulty */}
                 <div className="flex items-center justify-between mb-4">
@@ -385,7 +385,7 @@ export default function WorkPage() {
         <div className="absolute inset-0 bg-white/[0.01]" />
         <div className="container mx-auto max-w-5xl relative">
           <div className="text-center mb-14">
-            <p className="text-[#E50914] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
+            <p className="text-[#C9A227] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
               Your Choice
             </p>
             <h2 className="section-title-flash text-3xl sm:text-4xl font-bold tracking-tight">
@@ -411,18 +411,18 @@ export default function WorkPage() {
             </div>
 
             {/* Shares */}
-            <div className="group relative p-7 rounded-2xl border border-[#E50914]/20 bg-[#E50914]/[0.03] hover:border-[#E50914]/30 transition-all duration-500 text-center">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#E50914] text-white text-[10px] font-bold">
+            <div className="group relative p-7 rounded-2xl border border-[#C9A227]/20 bg-[#C9A227]/[0.03] hover:border-[#C9A227]/30 transition-all duration-500 text-center">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#C9A227] text-white text-[10px] font-bold">
                 2x VALUE
               </div>
-              <div className="h-14 w-14 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center mx-auto mb-5">
-                <TrendingUp className="h-6 w-6 text-[#E50914]" />
+              <div className="h-14 w-14 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center mx-auto mb-5">
+                <TrendingUp className="h-6 w-6 text-[#C9A227]" />
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">Production Shares</h3>
               <p className="text-xs text-white/40 leading-relaxed mb-4">
                 Get 2x value in production shares. Tokens locked until film release, potential 5-10x return.
               </p>
-              <div className="text-2xl font-bold text-[#E50914] mb-2">$10 — $100</div>
+              <div className="text-2xl font-bold text-[#C9A227] mb-2">$10 — $100</div>
               <p className="text-[10px] text-white/25">in share value per task</p>
             </div>
 
@@ -453,13 +453,13 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <div className="h-px bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent" />
 
       {/* ═══ HOW PAYMENT WORKS ═══ */}
       <section className="py-16 sm:py-24 px-4 sm:px-8 md:px-16 lg:px-20">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <p className="text-[#E50914] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
+            <p className="text-[#C9A227] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
               Comparison
             </p>
             <h2 className="section-title-flash text-3xl sm:text-4xl font-bold tracking-tight">
@@ -500,13 +500,13 @@ export default function WorkPage() {
             </div>
 
             {/* Shares path */}
-            <div className="p-7 rounded-2xl border border-[#E50914]/10 bg-[#E50914]/[0.02]">
+            <div className="p-7 rounded-2xl border border-[#C9A227]/10 bg-[#C9A227]/[0.02]">
               <div className="flex items-center gap-3 mb-6">
-                <div className="h-12 w-12 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center">
-                  <TrendingUp className="h-6 w-6 text-[#E50914]" />
+                <div className="h-12 w-12 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center">
+                  <TrendingUp className="h-6 w-6 text-[#C9A227]" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#E50914]">Production Shares</h3>
+                  <h3 className="text-lg font-bold text-[#C9A227]">Production Shares</h3>
                   <p className="text-xs text-white/30">Higher potential return</p>
                 </div>
               </div>
@@ -518,19 +518,19 @@ export default function WorkPage() {
                   'Locked until film release date',
                 ].map((step, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="h-6 w-6 rounded-full bg-[#E50914]/15 flex items-center justify-center shrink-0">
+                    <div className="h-6 w-6 rounded-full bg-[#C9A227]/15 flex items-center justify-center shrink-0">
                       {i < 3 ? (
-                        <CheckCircle className="h-3.5 w-3.5 text-[#E50914]" />
+                        <CheckCircle className="h-3.5 w-3.5 text-[#C9A227]" />
                       ) : (
-                        <Lock className="h-3.5 w-3.5 text-[#E50914]" />
+                        <Lock className="h-3.5 w-3.5 text-[#C9A227]" />
                       )}
                     </div>
                     <span className="text-sm text-white/50">{step}</span>
                   </div>
                 ))}
               </div>
-              <div className="mt-6 p-4 rounded-xl bg-[#E50914]/[0.05] border border-[#E50914]/10 text-center">
-                <span className="text-xs text-[#E50914] font-medium">Potential 5-10x return on release</span>
+              <div className="mt-6 p-4 rounded-xl bg-[#C9A227]/[0.05] border border-[#C9A227]/10 text-center">
+                <span className="text-xs text-[#C9A227] font-medium">Potential 5-10x return on release</span>
               </div>
             </div>
           </div>
@@ -543,7 +543,7 @@ export default function WorkPage() {
       <section className="py-16 sm:py-24 px-4 sm:px-8 md:px-16 lg:px-20">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-10">
-            <p className="text-[#E50914] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
+            <p className="text-[#C9A227] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
               Pipeline
             </p>
             <h2 className="section-title-flash text-2xl md:text-3xl font-bold text-white font-playfair">
@@ -586,12 +586,12 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <div className="h-px bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent" />
 
       {/* ═══ CTA ═══ */}
       <section className="py-24 sm:py-32 px-4 sm:px-8 md:px-16 lg:px-20 relative">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#E50914]/[0.03] blur-[200px]" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#C9A227]/[0.03] blur-[200px]" />
         </div>
         <div className="container mx-auto max-w-3xl relative text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight">
@@ -605,7 +605,7 @@ export default function WorkPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/register"
-              className="golden-border-btn golden-border-always inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold transition-all duration-500 shadow-lg shadow-[#E50914]/20 hover:shadow-[#E50914]/30 hover:scale-[1.02]"
+              className="golden-border-btn golden-border-always inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold transition-all duration-500 shadow-lg shadow-[#C9A227]/20 hover:shadow-[#C9A227]/30 hover:scale-[1.02]"
             >
               Start Earning
               <ArrowRight className="h-5 w-5" />

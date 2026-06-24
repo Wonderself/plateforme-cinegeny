@@ -126,9 +126,9 @@ export default async function AdminCatalogPage(
             <Clock className="h-3.5 w-3.5 text-yellow-600" />
             <span className="text-yellow-600">{pendingCount} en attente</span>
           </div>
-          <div className="rounded-lg border border-[#E50914]/20 bg-[#E50914]/5 px-3 py-2 flex items-center gap-2">
-            <Star className="h-3.5 w-3.5 text-[#E50914]" />
-            <span className="text-[#E50914]">{featuredCount} en vedette</span>
+          <div className="rounded-lg border border-[#C9A227]/20 bg-[#C9A227]/5 px-3 py-2 flex items-center gap-2">
+            <Star className="h-3.5 w-3.5 text-[#C9A227]" />
+            <span className="text-[#C9A227]">{featuredCount} en vedette</span>
           </div>
         </div>
       </div>
@@ -143,7 +143,7 @@ export default async function AdminCatalogPage(
             >
               <button className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 ${
                 statusFilter === tab.key
-                  ? 'bg-[#E50914]/20 text-[#E50914] border border-[#E50914]/30'
+                  ? 'bg-[#C9A227]/20 text-[#C9A227] border border-[#C9A227]/30'
                   : 'text-white/40 hover:text-white/60 border border-transparent'
               }`}>
                 {tab.label}
@@ -163,7 +163,7 @@ export default async function AdminCatalogPage(
             name="search"
             defaultValue={searchQuery}
             placeholder="Rechercher un film..."
-            className="h-9 pl-9 pr-4 rounded-lg border border-white/10 bg-white/5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50 w-64"
+            className="h-9 pl-9 pr-4 rounded-lg border border-white/10 bg-white/5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50 w-64"
           />
         </form>
       </div>
@@ -224,7 +224,7 @@ export default async function AdminCatalogPage(
                       </div>
                     </td>
                     <td className="p-4 text-right">
-                      <span className="text-sm text-[#E50914] font-medium">{film.revenueSharePct}%</span>
+                      <span className="text-sm text-[#C9A227] font-medium">{film.revenueSharePct}%</span>
                     </td>
                     <td className="p-4 text-right text-xs text-white/40">
                       {formatDate(film.createdAt)}
@@ -237,7 +237,7 @@ export default async function AdminCatalogPage(
                           type="submit"
                           className={`p-1.5 rounded-lg transition-colors ${
                             film.featured
-                              ? 'text-[#E50914] bg-[#E50914]/10 hover:bg-[#E50914]/20'
+                              ? 'text-[#C9A227] bg-[#C9A227]/10 hover:bg-[#C9A227]/20'
                               : 'text-white/20 hover:text-white/40 hover:bg-white/5'
                           }`}
                           title={film.featured ? 'Retirer de la vedette' : 'Mettre en vedette'}

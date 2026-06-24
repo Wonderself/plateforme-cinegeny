@@ -121,7 +121,7 @@ const modules = [
     icon: Coins,
     title: 'Devenez Co-Producteur',
     description: 'Investissez des 10\u20AC dans un film. Recevez des revenus, votez sur les decisions, votre nom au generique.',
-    color: '#E50914',
+    color: '#C9A227',
     colorName: 'gold',
     href: '/tokenization',
     badge: 'Co-Production',
@@ -131,7 +131,7 @@ const modules = [
     icon: Clapperboard,
     title: 'Studio Films',
     description: 'Contribuez aux productions cinematographiques IA. Micro-taches, validation IA, credits au generique.',
-    color: '#E50914',
+    color: '#C9A227',
     colorName: 'gold',
     href: '/films',
     badge: 'Production',
@@ -306,9 +306,9 @@ export default async function HomePage() {
       {/* GLOBAL BACKGROUND — decorative ambient blurs (light mode)       */}
       {/* ================================================================ */}
       <div className="fixed inset-0 pointer-events-none -z-10" aria-hidden="true">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-[#E50914]/[0.04] blur-[180px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-[#C9A227]/[0.04] blur-[180px]" />
         <div className="absolute top-[40%] right-0 w-[500px] h-[500px] rounded-full bg-purple-200/30 blur-[150px]" />
-        <div className="absolute bottom-[20%] left-0 w-[400px] h-[400px] rounded-full bg-[#E50914]/[0.03] blur-[120px]" />
+        <div className="absolute bottom-[20%] left-0 w-[400px] h-[400px] rounded-full bg-[#C9A227]/[0.03] blur-[120px]" />
       </div>
 
       {/* ================================================================ */}
@@ -326,25 +326,25 @@ export default async function HomePage() {
           <div className="absolute top-[20%] left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200/40 to-transparent" />
           <div className="absolute top-[80%] left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200/40 to-transparent" />
           {/* Corner accents */}
-          <div className="absolute top-16 left-8 w-24 h-24 border-l border-t border-[#E50914]/15 rounded-tl-3xl" />
-          <div className="absolute top-16 right-8 w-24 h-24 border-r border-t border-[#E50914]/15 rounded-tr-3xl" />
-          <div className="absolute bottom-16 left-8 w-24 h-24 border-l border-b border-[#E50914]/15 rounded-bl-3xl" />
-          <div className="absolute bottom-16 right-8 w-24 h-24 border-r border-b border-[#E50914]/15 rounded-br-3xl" />
+          <div className="absolute top-16 left-8 w-24 h-24 border-l border-t border-[#C9A227]/15 rounded-tl-3xl" />
+          <div className="absolute top-16 right-8 w-24 h-24 border-r border-t border-[#C9A227]/15 rounded-tr-3xl" />
+          <div className="absolute bottom-16 left-8 w-24 h-24 border-l border-b border-[#C9A227]/15 rounded-bl-3xl" />
+          <div className="absolute bottom-16 right-8 w-24 h-24 border-r border-b border-[#C9A227]/15 rounded-br-3xl" />
           {/* Radial glow behind headline */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-[#E50914]/[0.04] blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-[#C9A227]/[0.04] blur-[100px]" />
           {/* Animated gold particles */}
-          <div className="absolute top-[15%] left-[20%] w-1 h-1 rounded-full bg-[#E50914]/40 animate-pulse" />
-          <div className="absolute top-[25%] right-[25%] w-1.5 h-1.5 rounded-full bg-[#E50914]/30 animate-pulse [animation-delay:0.5s]" />
-          <div className="absolute top-[60%] left-[15%] w-1 h-1 rounded-full bg-[#E50914]/25 animate-pulse [animation-delay:1s]" />
-          <div className="absolute top-[70%] right-[20%] w-1.5 h-1.5 rounded-full bg-[#E50914]/35 animate-pulse [animation-delay:1.5s]" />
-          <div className="absolute top-[45%] left-[40%] w-0.5 h-0.5 rounded-full bg-[#E50914]/20 animate-pulse [animation-delay:2s]" />
-          <div className="absolute top-[35%] right-[35%] w-1 h-1 rounded-full bg-[#E50914]/30 animate-pulse [animation-delay:0.8s]" />
-          <div className="absolute bottom-[30%] left-[50%] w-1 h-1 rounded-full bg-[#E50914]/25 animate-pulse [animation-delay:1.3s]" />
-          <div className="absolute top-[50%] right-[45%] w-0.5 h-0.5 rounded-full bg-[#E50914]/20 animate-pulse [animation-delay:0.3s]" />
+          <div className="absolute top-[15%] left-[20%] w-1 h-1 rounded-full bg-[#C9A227]/40 animate-pulse" />
+          <div className="absolute top-[25%] right-[25%] w-1.5 h-1.5 rounded-full bg-[#C9A227]/30 animate-pulse [animation-delay:0.5s]" />
+          <div className="absolute top-[60%] left-[15%] w-1 h-1 rounded-full bg-[#C9A227]/25 animate-pulse [animation-delay:1s]" />
+          <div className="absolute top-[70%] right-[20%] w-1.5 h-1.5 rounded-full bg-[#C9A227]/35 animate-pulse [animation-delay:1.5s]" />
+          <div className="absolute top-[45%] left-[40%] w-0.5 h-0.5 rounded-full bg-[#C9A227]/20 animate-pulse [animation-delay:2s]" />
+          <div className="absolute top-[35%] right-[35%] w-1 h-1 rounded-full bg-[#C9A227]/30 animate-pulse [animation-delay:0.8s]" />
+          <div className="absolute bottom-[30%] left-[50%] w-1 h-1 rounded-full bg-[#C9A227]/25 animate-pulse [animation-delay:1.3s]" />
+          <div className="absolute top-[50%] right-[45%] w-0.5 h-0.5 rounded-full bg-[#C9A227]/20 animate-pulse [animation-delay:0.3s]" />
         </div>
 
         {/* Badge */}
-        <div className="relative inline-flex items-center gap-2 rounded-full border border-[#E50914]/20 bg-[#E50914]/10 px-5 py-2 text-sm text-[#E50914] mb-4">
+        <div className="relative inline-flex items-center gap-2 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/10 px-5 py-2 text-sm text-[#C9A227] mb-4">
           <Clapperboard className="h-4 w-4" />
           <span className="font-medium">Le Studio de Cinema du Futur</span>
         </div>
@@ -363,7 +363,7 @@ export default async function HomePage() {
             <span
               className="relative inline-block"
               style={{
-                background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 40%, #E50914 70%, #B8960C 100%)',
+                background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 40%, #C9A227 70%, #B8960C 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -376,7 +376,7 @@ export default async function HomePage() {
             de{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 40%, #E50914 70%, #B8960C 100%)',
+                background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 40%, #C9A227 70%, #B8960C 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -396,7 +396,7 @@ export default async function HomePage() {
         {/* CTA Buttons */}
         <div className="relative flex flex-col sm:flex-row gap-4 mb-20 w-full sm:w-auto px-4 sm:px-0">
           <Link href="/tokenization" className="w-full sm:w-auto">
-            <Button size="xl" className="group text-base sm:text-lg px-8 sm:px-12 w-full sm:w-auto bg-[#E50914] text-white hover:bg-[#C4A030] rounded-full">
+            <Button size="xl" className="group text-base sm:text-lg px-8 sm:px-12 w-full sm:w-auto bg-[#C9A227] text-white hover:bg-[#C4A030] rounded-full">
               <Coins className="h-5 w-5" />
               Devenez Producteur
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -420,11 +420,11 @@ export default async function HomePage() {
               { label: 'Investis en Tokens', value: stats.lumensTx > 0 ? `${stats.lumensTx.toLocaleString('fr-FR')}+` : '18,000+', icon: Coins },
             ].map((stat) => (
               <div key={stat.label} className="text-center space-y-2">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#E50914]/10 border border-[#E50914]/20 mx-auto mb-1">
-                  <stat.icon className="h-5 w-5 text-[#E50914]" />
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/20 mx-auto mb-1">
+                  <stat.icon className="h-5 w-5 text-[#C9A227]" />
                 </div>
                 <div
-                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#E50914]"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C9A227]"
                 >
                   {stat.value}
                 </div>
@@ -451,7 +451,7 @@ export default async function HomePage() {
           {/* Section header */}
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm text-gray-500 mb-6 shadow-sm">
-              <Rocket className="h-3.5 w-3.5 text-[#E50914]" />
+              <Rocket className="h-3.5 w-3.5 text-[#C9A227]" />
               Simple & Puissant
             </div>
             <h2
@@ -460,7 +460,7 @@ export default async function HomePage() {
               Comment ca{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 50%, #E50914 100%)',
+                  background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 50%, #C9A227 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -480,9 +480,9 @@ export default async function HomePage() {
               <div key={step.number} className="relative group">
                 {/* Connector line (hidden on last) */}
                 {i < howItWorksSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-12 left-[calc(50%+40px)] w-[calc(100%-40px)] h-px bg-gradient-to-r from-[#E50914]/30 to-transparent z-0" />
+                  <div className="hidden lg:block absolute top-12 left-[calc(50%+40px)] w-[calc(100%-40px)] h-px bg-gradient-to-r from-[#C9A227]/30 to-transparent z-0" />
                 )}
-                <div className="relative rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 hover:border-[#E50914]/30 hover:shadow-md transition-all duration-500 h-full shadow-sm">
+                <div className="relative rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 hover:border-[#C9A227]/30 hover:shadow-md transition-all duration-500 h-full shadow-sm">
                   {/* Step number watermark */}
                   <span
                     className="absolute top-4 right-4 text-6xl font-bold text-gray-100 select-none"
@@ -490,15 +490,15 @@ export default async function HomePage() {
                     {step.number}
                   </span>
                   {/* Icon */}
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-6 group-hover:bg-[#E50914]/20 transition-colors duration-300">
-                    <step.icon className="h-7 w-7 text-[#E50914]" />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6 group-hover:bg-[#C9A227]/20 transition-colors duration-300">
+                    <step.icon className="h-7 w-7 text-[#C9A227]" />
                   </div>
                   {/* Label */}
-                  <div className="text-xs text-[#E50914]/60 uppercase tracking-widest font-medium mb-3">
+                  <div className="text-xs text-[#C9A227]/60 uppercase tracking-widest font-medium mb-3">
                     Etape {step.number}
                   </div>
                   <h3
-                    className="text-xl font-bold mb-3 text-gray-900 group-hover:text-[#E50914] transition-colors duration-300"
+                    className="text-xl font-bold mb-3 text-gray-900 group-hover:text-[#C9A227] transition-colors duration-300"
                   >
                     {step.title}
                   </h3>
@@ -518,7 +518,7 @@ export default async function HomePage() {
           {/* Section header */}
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm text-gray-500 mb-6 shadow-sm">
-              <Sparkles className="h-3.5 w-3.5 text-[#E50914]" />
+              <Sparkles className="h-3.5 w-3.5 text-[#C9A227]" />
               5 Modules Integres
             </div>
             <h2
@@ -527,7 +527,7 @@ export default async function HomePage() {
               Un Ecosysteme{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 50%, #E50914 100%)',
+                  background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 50%, #C9A227 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -546,7 +546,7 @@ export default async function HomePage() {
             {modules.map((mod) => (
               <Link key={mod.title} href={mod.href} className={`group ${mod.featured ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
                 <div
-                  className={`relative rounded-2xl border bg-white p-6 sm:p-8 h-full transition-all duration-500 hover:scale-[1.02] hover:shadow-md shadow-sm ${mod.featured ? 'ring-1 ring-[#E50914]/20 shadow-md' : ''}`}
+                  className={`relative rounded-2xl border bg-white p-6 sm:p-8 h-full transition-all duration-500 hover:scale-[1.02] hover:shadow-md shadow-sm ${mod.featured ? 'ring-1 ring-[#C9A227]/20 shadow-md' : ''}`}
                   style={{
                     borderColor: mod.featured ? `${mod.color}40` : '#f3f4f6',
                   }}
@@ -592,12 +592,12 @@ export default async function HomePage() {
             ))}
 
             {/* 7th card — Producer CTA */}
-            <div className="relative rounded-2xl border border-[#E50914]/20 bg-[#E50914]/[0.04] p-6 sm:p-8 flex flex-col items-center justify-center text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E50914]/15 border border-[#E50914]/20 mb-5">
-                <Crown className="h-7 w-7 text-[#E50914]" />
+            <div className="relative rounded-2xl border border-[#C9A227]/20 bg-[#C9A227]/[0.04] p-6 sm:p-8 flex flex-col items-center justify-center text-center">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C9A227]/15 border border-[#C9A227]/20 mb-5">
+                <Crown className="h-7 w-7 text-[#C9A227]" />
               </div>
               <h3
-                className="text-xl font-bold mb-3 text-[#E50914]"
+                className="text-xl font-bold mb-3 text-[#C9A227]"
               >
                 Votre Nom au Generique
               </h3>
@@ -605,7 +605,7 @@ export default async function HomePage() {
                 Contribuez ou investissez. Chaque participant est credite comme co-producteur du film.
               </p>
               <Link href="/tokenization">
-                <Button variant="outline" size="sm" className="group border-[#E50914]/30 text-[#E50914] hover:bg-[#E50914]/10 rounded-full">
+                <Button variant="outline" size="sm" className="group border-[#C9A227]/30 text-[#C9A227] hover:bg-[#C9A227]/10 rounded-full">
                   Devenez Producteur
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -622,7 +622,7 @@ export default async function HomePage() {
         {/* Decorative bg */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-purple-100/40 blur-[150px]" />
-          <div className="absolute top-1/4 right-0 w-[300px] h-[300px] rounded-full bg-[#E50914]/[0.05] blur-[100px]" />
+          <div className="absolute top-1/4 right-0 w-[300px] h-[300px] rounded-full bg-[#C9A227]/[0.05] blur-[100px]" />
         </div>
 
         <div className="container mx-auto max-w-6xl relative">
@@ -639,7 +639,7 @@ export default async function HomePage() {
                 Mettez Votre{' '}
                 <span
                   style={{
-                    background: 'linear-gradient(135deg, #A855F7 0%, #E50914 100%)',
+                    background: 'linear-gradient(135deg, #A855F7 0%, #C9A227 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -669,7 +669,7 @@ export default async function HomePage() {
               </div>
               <div className="mt-10">
                 <Link href="/register">
-                  <Button size="lg" className="group bg-[#E50914] text-white hover:bg-[#C4A030] rounded-full">
+                  <Button size="lg" className="group bg-[#C9A227] text-white hover:bg-[#C4A030] rounded-full">
                     Etre notifie du lancement
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -682,7 +682,7 @@ export default async function HomePage() {
               {/* Main card */}
               <div className="relative rounded-3xl border border-gray-200 bg-white shadow-lg p-8 sm:p-10">
                 {/* Floating badge */}
-                <div className="absolute -top-3 -right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-purple-600 to-[#E50914] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+                <div className="absolute -top-3 -right-3 sm:top-4 sm:right-4 bg-gradient-to-r from-purple-600 to-[#C9A227] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
                   COMING 2026
                 </div>
                 {/* Film frame mock */}
@@ -690,22 +690,22 @@ export default async function HomePage() {
                   {/* Face placeholder */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="relative">
-                      <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full border-2 border-dashed border-[#E50914]/40 flex items-center justify-center bg-white/50">
-                        <Scan className="h-8 w-8 sm:h-12 sm:w-12 text-[#E50914]/50" />
+                      <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full border-2 border-dashed border-[#C9A227]/40 flex items-center justify-center bg-white/50">
+                        <Scan className="h-8 w-8 sm:h-12 sm:w-12 text-[#C9A227]/50" />
                       </div>
                       {/* Scanning animation rings */}
-                      <div className="absolute inset-0 rounded-full border border-[#E50914]/20 animate-ping" style={{ animationDuration: '2s' }} />
+                      <div className="absolute inset-0 rounded-full border border-[#C9A227]/20 animate-ping" style={{ animationDuration: '2s' }} />
                       <div className="absolute -inset-3 rounded-full border border-purple-300/20 animate-ping" style={{ animationDuration: '3s' }} />
                     </div>
                   </div>
                   {/* Corner brackets */}
-                  <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#E50914]/30 rounded-tl" />
-                  <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-[#E50914]/30 rounded-tr" />
-                  <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-[#E50914]/30 rounded-bl" />
-                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-[#E50914]/30 rounded-br" />
+                  <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#C9A227]/30 rounded-tl" />
+                  <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-[#C9A227]/30 rounded-tr" />
+                  <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-[#C9A227]/30 rounded-bl" />
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-[#C9A227]/30 rounded-br" />
                   {/* Film info overlay */}
                   <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-white/90 to-transparent p-4">
-                    <div className="text-[10px] text-[#E50914] uppercase tracking-widest mb-1">Role : Personnage Principal</div>
+                    <div className="text-[10px] text-[#C9A227] uppercase tracking-widest mb-1">Role : Personnage Principal</div>
                     <div className="text-gray-500 text-xs">Votre visage sera integre ici par l'IA</div>
                   </div>
                 </div>
@@ -723,11 +723,11 @@ export default async function HomePage() {
                 </div>
               </div>
               {/* Floating accent shapes */}
-              <div className="absolute -top-6 -left-6 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-100 to-[#E50914]/10 border border-gray-200 flex items-center justify-center shadow-sm">
+              <div className="absolute -top-6 -left-6 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-100 to-[#C9A227]/10 border border-gray-200 flex items-center justify-center shadow-sm">
                 <Heart className="h-5 w-5 text-purple-400/60" />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-10 h-10 rounded-lg bg-gradient-to-br from-[#E50914]/10 to-purple-100 border border-gray-200 flex items-center justify-center shadow-sm">
-                <Star className="h-4 w-4 text-[#E50914]/60" />
+              <div className="absolute -bottom-4 -right-4 w-10 h-10 rounded-lg bg-gradient-to-br from-[#C9A227]/10 to-purple-100 border border-gray-200 flex items-center justify-center shadow-sm">
+                <Star className="h-4 w-4 text-[#C9A227]/60" />
               </div>
             </div>
           </div>
@@ -743,7 +743,7 @@ export default async function HomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm text-gray-500 mb-6 shadow-sm">
-                <Film className="h-3.5 w-3.5 text-[#E50914]" />
+                <Film className="h-3.5 w-3.5 text-[#C9A227]" />
                 En cours de production
               </div>
               <h2
@@ -752,7 +752,7 @@ export default async function HomePage() {
                 Films en{' '}
                 <span
                   style={{
-                    background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 50%, #E50914 100%)',
+                    background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 50%, #C9A227 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -767,7 +767,7 @@ export default async function HomePage() {
             </div>
             <Link
               href="/films"
-              className="hidden sm:flex items-center gap-2 text-[#E50914] hover:text-[#C4A030] transition-colors text-sm font-medium shrink-0"
+              className="hidden sm:flex items-center gap-2 text-[#C9A227] hover:text-[#C4A030] transition-colors text-sm font-medium shrink-0"
             >
               Voir tous les films <ChevronRight className="h-4 w-4" />
             </Link>
@@ -778,9 +778,9 @@ export default async function HomePage() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {films.map((film) => (
                 <Link key={film.id} href={`/films/${film.slug}`}>
-                  <div className="group rounded-2xl border border-gray-100 bg-white overflow-hidden hover:border-[#E50914]/30 hover:shadow-md transition-all duration-500 h-full shadow-sm">
+                  <div className="group rounded-2xl border border-gray-100 bg-white overflow-hidden hover:border-[#C9A227]/30 hover:shadow-md transition-all duration-500 h-full shadow-sm">
                     {/* Poster */}
-                    <div className="relative h-48 sm:h-52 bg-gradient-to-br from-[#E50914]/[0.06] to-gray-100 overflow-hidden">
+                    <div className="relative h-48 sm:h-52 bg-gradient-to-br from-[#C9A227]/[0.06] to-gray-100 overflow-hidden">
                       {film.coverImageUrl ? (
                         <img
                           src={film.coverImageUrl}
@@ -790,7 +790,7 @@ export default async function HomePage() {
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
                           <div className="relative">
-                            <Film className="h-16 w-16 text-[#E50914]/20" />
+                            <Film className="h-16 w-16 text-[#C9A227]/20" />
                           </div>
                         </div>
                       )}
@@ -804,7 +804,7 @@ export default async function HomePage() {
                     {/* Info */}
                     <div className="p-5">
                       <h3
-                        className="font-bold text-lg mb-2 text-gray-900 group-hover:text-[#E50914] transition-colors duration-300"
+                        className="font-bold text-lg mb-2 text-gray-900 group-hover:text-[#C9A227] transition-colors duration-300"
                       >
                         {film.title}
                       </h3>
@@ -815,11 +815,11 @@ export default async function HomePage() {
                       <div className="space-y-2 mb-4">
                         <div className="flex justify-between text-xs">
                           <span className="text-gray-400">Progression</span>
-                          <span className="text-[#E50914] font-semibold">{Math.round(film.progressPct)}%</span>
+                          <span className="text-[#C9A227] font-semibold">{Math.round(film.progressPct)}%</span>
                         </div>
                         <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] rounded-full transition-all duration-1000"
+                            className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all duration-1000"
                             style={{ width: `${film.progressPct}%` }}
                           />
                         </div>
@@ -827,7 +827,7 @@ export default async function HomePage() {
                       {/* Footer */}
                       <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                         <span className="text-xs text-gray-400">{film._count.tasks} taches</span>
-                        <span className="text-xs text-[#E50914] flex items-center gap-1 group-hover:gap-2 transition-all">
+                        <span className="text-xs text-[#C9A227] flex items-center gap-1 group-hover:gap-2 transition-all">
                           Contribuer <ArrowRight className="h-3 w-3" />
                         </span>
                       </div>
@@ -838,7 +838,7 @@ export default async function HomePage() {
             </div>
           ) : (
             <div className="text-center py-16 rounded-2xl border border-gray-100 bg-gray-50">
-              <Film className="h-16 w-16 text-[#E50914]/20 mx-auto mb-4" />
+              <Film className="h-16 w-16 text-[#C9A227]/20 mx-auto mb-4" />
               <p className="text-gray-500 mb-6">Les films seront bientot disponibles.</p>
               <Link href="/register">
                 <Button variant="outline" size="sm" className="border-gray-200 text-gray-700 hover:bg-gray-100 rounded-full">
@@ -852,7 +852,7 @@ export default async function HomePage() {
           <div className="sm:hidden mt-8 text-center">
             <Link
               href="/films"
-              className="inline-flex items-center gap-2 text-[#E50914] hover:text-[#C4A030] transition-colors text-sm font-medium"
+              className="inline-flex items-center gap-2 text-[#C9A227] hover:text-[#C4A030] transition-colors text-sm font-medium"
             >
               Voir tous les films <ChevronRight className="h-4 w-4" />
             </Link>
@@ -868,7 +868,7 @@ export default async function HomePage() {
           {/* Section header */}
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm text-gray-500 mb-6 shadow-sm">
-              <Shield className="h-3.5 w-3.5 text-[#E50914]" />
+              <Shield className="h-3.5 w-3.5 text-[#C9A227]" />
               Confiance & Resultats
             </div>
             <h2
@@ -877,7 +877,7 @@ export default async function HomePage() {
               Ils nous font{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 50%, #E50914 100%)',
+                  background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 50%, #C9A227 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -898,7 +898,7 @@ export default async function HomePage() {
             ].map((stat) => (
               <div key={stat.label} className="text-center py-6 rounded-2xl border border-gray-100 bg-white shadow-sm">
                 <div
-                  className="text-3xl sm:text-4xl font-bold text-[#E50914] mb-2"
+                  className="text-3xl sm:text-4xl font-bold text-[#C9A227] mb-2"
                 >
                   {stat.value}
                 </div>
@@ -915,11 +915,11 @@ export default async function HomePage() {
                 className="rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 relative shadow-sm hover:shadow-md transition-shadow"
               >
                 {/* Quote icon */}
-                <Quote className="h-8 w-8 text-[#E50914]/10 absolute top-6 right-6" />
+                <Quote className="h-8 w-8 text-[#C9A227]/10 absolute top-6 right-6" />
                 {/* Stars */}
                 <div className="flex gap-1 mb-5">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-[#E50914] text-[#E50914]" />
+                    <Star key={i} className="h-4 w-4 fill-[#C9A227] text-[#C9A227]" />
                   ))}
                 </div>
                 {/* Text */}
@@ -928,7 +928,7 @@ export default async function HomePage() {
                 </p>
                 {/* Author */}
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#E50914]/20 to-purple-200/40 border border-gray-200 flex items-center justify-center text-sm font-bold text-gray-600">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#C9A227]/20 to-purple-200/40 border border-gray-200 flex items-center justify-center text-sm font-bold text-gray-600">
                     {t.name.charAt(0)}
                   </div>
                   <div>
@@ -962,15 +962,15 @@ export default async function HomePage() {
       {/* ================================================================ */}
       <section className="py-24 sm:py-32 px-4 bg-white">
         <div className="container mx-auto max-w-4xl">
-          <div className="relative rounded-3xl border border-[#E50914]/20 bg-gradient-to-br from-[#E50914]/[0.04] via-white to-purple-50/30 p-8 sm:p-12 lg:p-16 overflow-hidden shadow-sm">
+          <div className="relative rounded-3xl border border-[#C9A227]/20 bg-gradient-to-br from-[#C9A227]/[0.04] via-white to-purple-50/30 p-8 sm:p-12 lg:p-16 overflow-hidden shadow-sm">
             {/* Decorative bg elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-[#E50914]/[0.05] blur-[80px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-[#C9A227]/[0.05] blur-[80px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-purple-200/30 blur-[60px] pointer-events-none" />
 
             <div className="relative grid md:grid-cols-2 gap-10 items-center">
               {/* Left text */}
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#E50914]/20 bg-[#E50914]/10 px-4 py-1.5 text-sm text-[#E50914] mb-6">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/10 px-4 py-1.5 text-sm text-[#C9A227] mb-6">
                   <Gift className="h-3.5 w-3.5" />
                   Programme de Parrainage
                 </div>
@@ -978,15 +978,15 @@ export default async function HomePage() {
                   className="text-3xl sm:text-4xl font-bold mb-5 leading-tight text-gray-900"
                 >
                   Invitez vos Amis,{' '}
-                  <span className="text-[#E50914]">Gagnez des Tokens</span>
+                  <span className="text-[#C9A227]">Gagnez des Tokens</span>
                 </h2>
                 <p className="text-gray-500 leading-relaxed mb-8">
                   Pour chaque ami qui rejoint CINEGEN, vous recevez{' '}
-                  <span className="text-[#E50914] font-semibold">30 Lumens</span> et votre ami aussi.
+                  <span className="text-[#C9A227] font-semibold">30 Lumens</span> et votre ami aussi.
                   Doublez vos tokens, construisez votre equipe de createurs.
                 </p>
                 <Link href="/register">
-                  <Button size="lg" className="group bg-[#E50914] text-white hover:bg-[#C4A030] rounded-full">
+                  <Button size="lg" className="group bg-[#C9A227] text-white hover:bg-[#C4A030] rounded-full">
                     <UserPlus className="h-5 w-5" />
                     Obtenir mon Lien de Parrainage
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -997,13 +997,13 @@ export default async function HomePage() {
               {/* Right visual */}
               <div className="flex flex-col gap-4">
                 {/* Reward card 1 */}
-                <div className="rounded-xl border border-[#E50914]/15 bg-white p-5 flex items-center gap-4 shadow-sm">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#E50914]/10 border border-[#E50914]/20">
-                    <Gift className="h-6 w-6 text-[#E50914]" />
+                <div className="rounded-xl border border-[#C9A227]/15 bg-white p-5 flex items-center gap-4 shadow-sm">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/20">
+                    <Gift className="h-6 w-6 text-[#C9A227]" />
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-gray-900 mb-0.5">Vous parrainez</div>
-                    <div className="text-2xl font-bold text-[#E50914] font-playfair">+30 Lumens</div>
+                    <div className="text-2xl font-bold text-[#C9A227] font-playfair">+30 Lumens</div>
                     <div className="text-xs text-gray-400">Credites instantanement</div>
                   </div>
                 </div>
@@ -1021,7 +1021,7 @@ export default async function HomePage() {
                 {/* Bonus info */}
                 <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
                   <p className="text-xs text-gray-400">
-                    <span className="text-[#E50914] font-semibold">Bonus x2</span> — Parrainez 10 amis et recevez un bonus de 100 Lumens supplementaires
+                    <span className="text-[#C9A227] font-semibold">Bonus x2</span> — Parrainez 10 amis et recevez un bonus de 100 Lumens supplementaires
                   </p>
                 </div>
               </div>
@@ -1038,7 +1038,7 @@ export default async function HomePage() {
           {/* Section header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-1.5 text-sm text-gray-500 mb-6 shadow-sm">
-              <Coins className="h-3.5 w-3.5 text-[#E50914]" />
+              <Coins className="h-3.5 w-3.5 text-[#C9A227]" />
               Tarification Simple
             </div>
             <h2
@@ -1047,7 +1047,7 @@ export default async function HomePage() {
               Un Plan pour{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 50%, #E50914 100%)',
+                  background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 50%, #C9A227 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -1068,12 +1068,12 @@ export default async function HomePage() {
                 key={plan.name}
                 className={`relative rounded-2xl border p-6 sm:p-7 flex flex-col h-full transition-all duration-300 ${
                   plan.featured
-                    ? 'border-[#E50914]/40 bg-[#E50914]/[0.04] scale-[1.02] shadow-lg'
+                    ? 'border-[#C9A227]/40 bg-[#C9A227]/[0.04] scale-[1.02] shadow-lg'
                     : 'border-gray-100 bg-white hover:border-gray-200 shadow-sm'
                 }`}
               >
                 {plan.featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-widest font-bold bg-gradient-to-r from-[#E50914] to-[#FF2D2D] text-white px-4 py-1 rounded-full">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-widest font-bold bg-gradient-to-r from-[#C9A227] to-[#E8C766] text-white px-4 py-1 rounded-full">
                     Populaire
                   </div>
                 )}
@@ -1082,7 +1082,7 @@ export default async function HomePage() {
                 {/* Price */}
                 <div className="flex items-baseline gap-1 mb-1">
                   <span
-                    className={`text-4xl sm:text-5xl font-bold font-playfair ${plan.featured ? 'text-[#E50914]' : 'text-gray-900'}`}
+                    className={`text-4xl sm:text-5xl font-bold font-playfair ${plan.featured ? 'text-[#C9A227]' : 'text-gray-900'}`}
                   >
                     {plan.price}&#8364;
                   </span>
@@ -1093,7 +1093,7 @@ export default async function HomePage() {
                 <div className="space-y-3 flex-1 mb-6">
                   {plan.features.map((f) => (
                     <div key={f} className="flex items-start gap-2.5 text-sm">
-                      <Check className="h-4 w-4 text-[#E50914] shrink-0 mt-0.5" />
+                      <Check className="h-4 w-4 text-[#C9A227] shrink-0 mt-0.5" />
                       <span className="text-gray-600">{f}</span>
                     </div>
                   ))}
@@ -1107,7 +1107,7 @@ export default async function HomePage() {
                 {/* CTA */}
                 <Link href="/dashboard/subscription" className="w-full">
                   <Button
-                    className={`w-full rounded-full ${plan.featured ? 'bg-[#E50914] text-white hover:bg-[#C4A030]' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'}`}
+                    className={`w-full rounded-full ${plan.featured ? 'bg-[#C9A227] text-white hover:bg-[#C4A030]' : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'}`}
                     size="lg"
                   >
                     {plan.cta}
@@ -1130,17 +1130,17 @@ export default async function HomePage() {
       <section className="relative py-32 sm:py-40 px-4 overflow-hidden bg-white">
         {/* Soft gradient bg */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#E50914]/[0.04] to-[#E50914]/[0.02]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#E50914]/[0.06] blur-[120px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#C9A227]/[0.04] to-[#C9A227]/[0.02]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#C9A227]/[0.06] blur-[120px]" />
           {/* Decorative lines */}
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#E50914]/20 to-transparent" />
-          <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#E50914]/20 to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
         </div>
 
         <div className="relative container mx-auto max-w-3xl text-center">
           {/* Icon */}
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-8">
-            <Clapperboard className="h-8 w-8 text-[#E50914]" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-8">
+            <Clapperboard className="h-8 w-8 text-[#C9A227]" />
           </div>
 
           <h2
@@ -1149,7 +1149,7 @@ export default async function HomePage() {
             Rejoignez la{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 40%, #E50914 70%, #B8960C 100%)',
+                background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 40%, #C9A227 70%, #B8960C 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -1169,7 +1169,7 @@ export default async function HomePage() {
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 px-4 sm:px-0">
             <Link href="/tokenization" className="w-full sm:w-auto">
-              <Button size="xl" className="group text-base sm:text-lg px-10 sm:px-14 w-full sm:w-auto bg-[#E50914] text-white hover:bg-[#C4A030] rounded-full">
+              <Button size="xl" className="group text-base sm:text-lg px-10 sm:px-14 w-full sm:w-auto bg-[#C9A227] text-white hover:bg-[#C4A030] rounded-full">
                 <Coins className="h-5 w-5" />
                 Devenez Producteur
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />

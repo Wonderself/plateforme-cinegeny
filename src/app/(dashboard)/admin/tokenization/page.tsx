@@ -214,7 +214,7 @@ export default async function AdminTokenizationPage() {
   const pendingRevenue = totalRevenue - distributedRevenue
 
   const stats = [
-    { icon: Coins, label: 'Total levé', value: formatPrice(totalRaised), color: 'text-[#E50914]' },
+    { icon: Coins, label: 'Total levé', value: formatPrice(totalRaised), color: 'text-[#C9A227]' },
     { icon: Play, label: 'Offres actives', value: activeOfferings.toString(), color: 'text-green-600' },
     { icon: Users, label: 'Investisseurs', value: uniqueInvestors.toString(), color: 'text-blue-600' },
     { icon: ShieldCheck, label: 'KYC en attente', value: pendingKyc.toString(), color: pendingKyc > 0 ? 'text-orange-600' : 'text-green-600' },
@@ -232,7 +232,7 @@ export default async function AdminTokenizationPage() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold font-[family-name:var(--font-playfair)]">
-            <Coins className="inline h-7 w-7 text-[#E50914] mr-2 -mt-1" />
+            <Coins className="inline h-7 w-7 text-[#C9A227] mr-2 -mt-1" />
             Gestion des Tokens
           </h1>
           <p className="text-white/50 mt-1">
@@ -263,7 +263,7 @@ export default async function AdminTokenizationPage() {
       <Card>
         <CardHeader>
           <CardTitle className="text-base flex items-center gap-2">
-            <PieChart className="h-4 w-4 text-[#E50914]" />
+            <PieChart className="h-4 w-4 text-[#C9A227]" />
             Offres de Tokenisation
           </CardTitle>
         </CardHeader>
@@ -312,7 +312,7 @@ export default async function AdminTokenizationPage() {
                         </Badge>
                       </div>
                       <div className="flex items-center gap-4 text-sm">
-                        <span className="text-[#E50914] font-bold">
+                        <span className="text-[#C9A227] font-bold">
                           {formatPrice(offering.raised)} / {formatPrice(offering.hardCap)}
                         </span>
                         <span className="text-white/40">{investorCount} investisseurs</span>
@@ -321,7 +321,7 @@ export default async function AdminTokenizationPage() {
                       <div>
                         <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                           <div
-                            className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D]"
+                            className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766]"
                             style={{ width: `${Math.min(progress, 100)}%` }}
                           />
                         </div>
@@ -368,13 +368,13 @@ export default async function AdminTokenizationPage() {
                         </Badge>
                       </div>
                       <div className="col-span-2">
-                        <p className="text-sm font-bold text-[#E50914]">
+                        <p className="text-sm font-bold text-[#C9A227]">
                           {formatPrice(offering.raised)}
                         </p>
                         <div className="flex items-center gap-2 mt-1">
                           <div className="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
                             <div
-                              className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D]"
+                              className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766]"
                               style={{ width: `${Math.min(progress, 100)}%` }}
                             />
                           </div>
@@ -451,7 +451,7 @@ export default async function AdminTokenizationPage() {
         <Card>
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
-              <DollarSign className="h-4 w-4 text-[#E50914]" />
+              <DollarSign className="h-4 w-4 text-[#C9A227]" />
               Distribution de Dividendes
             </CardTitle>
           </CardHeader>
@@ -520,7 +520,7 @@ export default async function AdminTokenizationPage() {
                         <CheckCircle className="h-3 w-3 text-green-600" />
                         <span className="text-white/60">{d.period}</span>
                       </div>
-                      <span className="text-[#E50914] font-medium">{formatPrice(d.amount)}</span>
+                      <span className="text-[#C9A227] font-medium">{formatPrice(d.amount)}</span>
                     </div>
                   ))}
                 </div>
@@ -533,7 +533,7 @@ export default async function AdminTokenizationPage() {
         <Card>
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
-              <TrendingUp className="h-4 w-4 text-[#E50914]" />
+              <TrendingUp className="h-4 w-4 text-[#C9A227]" />
               Ajouter un Revenu
             </CardTitle>
           </CardHeader>
@@ -611,7 +611,7 @@ export default async function AdminTokenizationPage() {
             <div className="mt-6 pt-4 border-t border-white/5 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-white/40">Revenus totaux</span>
-                <span className="text-sm font-bold text-[#E50914]">{formatPrice(totalRevenue)}</span>
+                <span className="text-sm font-bold text-[#C9A227]">{formatPrice(totalRevenue)}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs text-white/40">Distribués</span>
@@ -630,7 +630,7 @@ export default async function AdminTokenizationPage() {
       <Card>
         <CardHeader>
           <CardTitle className="text-base flex items-center gap-2">
-            <ArrowRightLeft className="h-4 w-4 text-[#E50914]" />
+            <ArrowRightLeft className="h-4 w-4 text-[#C9A227]" />
             Marché Secondaire
           </CardTitle>
         </CardHeader>

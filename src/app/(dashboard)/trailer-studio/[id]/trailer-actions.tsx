@@ -126,7 +126,7 @@ export function TrailerActions({
             <Button
               onClick={handleDecompose}
               disabled={isPending}
-              className="bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold"
+              className="bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold"
             >
               {isPending ? (
                 <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -189,7 +189,7 @@ export function TrailerActions({
                     key={option.id}
                     onClick={() => handleChoice(choice.id, option.id)}
                     disabled={isPending || votingChoiceId === choice.id}
-                    className="text-left rounded-xl border border-white/10 bg-white/5 p-3 hover:border-[#E50914] hover:bg-[#E50914]/5 transition-all disabled:opacity-50 cursor-pointer"
+                    className="text-left rounded-xl border border-white/10 bg-white/5 p-3 hover:border-[#C9A227] hover:bg-[#C9A227]/5 transition-all disabled:opacity-50 cursor-pointer"
                   >
                     <p className="text-xs font-medium text-white">{option.label}</p>
                     {option.description && (

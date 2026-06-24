@@ -63,7 +63,7 @@ export default async function AdminPage() {
   const kpis = [
     { icon: Users, label: 'Utilisateurs', value: usersCount, sub: `${pendingUsers} non vérifiés`, href: '/admin/users', color: 'text-blue-400', sparkline: userSparkline, trend: pendingUsers > 0 ? 'up' : 'stable' },
     { icon: Film, label: 'Films', value: filmsCount, sub: 'projets actifs', href: '/admin/films', color: 'text-purple-400', sparkline: [1, 1, 2, 2, 3, 3, filmsCount], trend: 'up' },
-    { icon: Star, label: 'Tâches', value: tasksCount, sub: `${availableTasks} disponibles`, href: '/admin/tasks', color: 'text-[#E50914]', sparkline: taskSparkline, trend: 'up' },
+    { icon: Star, label: 'Tâches', value: tasksCount, sub: `${availableTasks} disponibles`, href: '/admin/tasks', color: 'text-[#C9A227]', sparkline: taskSparkline, trend: 'up' },
     { icon: CreditCard, label: 'Revenus', value: formatPrice(revenue), sub: 'total distribué', href: '/admin/payments', color: 'text-green-400', sparkline: revenueSparkline, trend: revenue > 0 ? 'up' : 'stable' },
     { icon: ClipboardCheck, label: 'Soumissions', value: submissionsTotal, sub: `${pendingReviews} à reviewer`, href: '/admin/reviews', color: 'text-orange-400', sparkline: [0, 1, 2, 3, 2, 4, submissionsTotal], trend: pendingReviews > 0 ? 'alert' : 'stable' },
     { icon: Target, label: 'Taux Complétion', value: `${completionRate}%`, sub: `${validatedTasks}/${tasksCount}`, href: '/admin/analytics', color: 'text-cyan-400', sparkline: [10, 20, 30, 40, 50, 60, completionRate], trend: 'up' },
@@ -111,7 +111,7 @@ export default async function AdminPage() {
               <CardContent className="p-7">
                 <div className="flex items-center justify-between mb-4">
                   <kpi.icon className={`h-5 w-5 ${kpi.color}`} />
-                  <Sparkline data={kpi.sparkline} color={kpi.color === 'text-[#E50914]' ? '#E50914' : undefined} />
+                  <Sparkline data={kpi.sparkline} color={kpi.color === 'text-[#C9A227]' ? '#C9A227' : undefined} />
                 </div>
                 <div className="flex items-end justify-between">
                   <div>
@@ -133,7 +133,7 @@ export default async function AdminPage() {
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <CardTitle className="text-base">TODO List Admin</CardTitle>
-              <Link href="/admin/todo-fondateur" className="text-xs text-[#E50914]">Voir tout →</Link>
+              <Link href="/admin/todo-fondateur" className="text-xs text-[#C9A227]">Voir tout →</Link>
             </div>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -173,14 +173,14 @@ export default async function AdminPage() {
                   <div className={`w-2 h-2 rounded-full shrink-0 ${
                     sub.status === 'AI_APPROVED' ? 'bg-green-400' :
                     sub.status === 'AI_FLAGGED' ? 'bg-yellow-400' :
-                    sub.status === 'HUMAN_APPROVED' ? 'bg-[#E50914]' :
+                    sub.status === 'HUMAN_APPROVED' ? 'bg-[#C9A227]' :
                     'bg-white/30'
                   }`} />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm truncate">{sub.user.displayName} → {sub.task.title}</p>
                     <p className="text-xs text-white/30">{sub.status}{sub.aiScore ? ` (${sub.aiScore}/100)` : ''}</p>
                   </div>
-                  <span className="text-xs text-[#E50914] shrink-0">{formatPrice(sub.task.priceEuros)}</span>
+                  <span className="text-xs text-[#C9A227] shrink-0">{formatPrice(sub.task.priceEuros)}</span>
                 </div>
               ))
             )}
@@ -212,8 +212,8 @@ export default async function AdminPage() {
           { icon: Eye, label: 'Reviews', href: '/admin/reviews' },
         ].map((action) => (
           <Link key={action.label} href={action.href}>
-            <div className="group p-7 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#E50914]/20 transition-all text-center">
-              <action.icon className="h-5 w-5 text-[#E50914] mx-auto mb-5" />
+            <div className="group p-7 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#C9A227]/20 transition-all text-center">
+              <action.icon className="h-5 w-5 text-[#C9A227] mx-auto mb-5" />
               <p className="text-sm font-medium">{action.label}</p>
             </div>
           </Link>

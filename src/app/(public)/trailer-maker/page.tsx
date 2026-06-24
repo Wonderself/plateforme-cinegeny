@@ -64,12 +64,12 @@ export default function TrailerMakerPage() {
       <div className="max-w-4xl mx-auto px-4 py-16">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-            <Film className="h-4 w-4 text-[#E50914]" />
-            <span className="text-sm font-medium text-[#E50914]">Trailer Maker</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+            <Film className="h-4 w-4 text-[#C9A227]" />
+            <span className="text-sm font-medium text-[#C9A227]">Trailer Maker</span>
           </div>
           <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-3">
-            Créez la bande-annonce de <span className="text-[#E50914]">votre film</span>
+            Créez la bande-annonce de <span className="text-[#C9A227]">votre film</span>
           </h1>
           <p className="text-gray-400 max-w-lg mx-auto">
             Inventez un film, choisissez le style, et l&apos;IA génère la bande-annonce complète.
@@ -82,19 +82,19 @@ export default function TrailerMakerPage() {
             <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6 space-y-5">
               <div>
                 <label className="text-xs text-gray-400 mb-1.5 block">Titre du film *</label>
-                <input value={filmTitle} onChange={e => setFilmTitle(e.target.value)} placeholder="Ex: Les Ombres de Minuit" className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+                <input value={filmTitle} onChange={e => setFilmTitle(e.target.value)} placeholder="Ex: Les Ombres de Minuit" className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs text-gray-400 mb-1.5 block">Genre *</label>
                 <div className="flex flex-wrap gap-2">
                   {FILM_GENRES.map(g => (
-                    <button key={g} onClick={() => setGenre(g)} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${genre === g ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}>{g}</button>
+                    <button key={g} onClick={() => setGenre(g)} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${genre === g ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}>{g}</button>
                   ))}
                 </div>
               </div>
               <div>
                 <label className="text-xs text-gray-400 mb-1.5 block">Synopsis *</label>
-                <textarea value={synopsis} onChange={e => setSynopsis(e.target.value)} placeholder="Racontez l'histoire de votre film en quelques phrases..." rows={4} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none" />
+                <textarea value={synopsis} onChange={e => setSynopsis(e.target.value)} placeholder="Racontez l'histoire de votre film en quelques phrases..." rows={4} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none" />
               </div>
             </div>
 
@@ -103,7 +103,7 @@ export default function TrailerMakerPage() {
               <label className="text-xs text-gray-400 mb-2 block">Styles de bande-annonce (multi-sélection)</label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {TRAILER_STYLES.map(s => (
-                  <button key={s.id} onClick={() => toggleStyle(s.id)} className={`text-left rounded-xl border p-4 transition-colors ${selectedStyles.includes(s.id) ? 'border-[#E50914] bg-[#E50914]/10' : 'border-gray-800 hover:border-gray-700'}`}>
+                  <button key={s.id} onClick={() => toggleStyle(s.id)} className={`text-left rounded-xl border p-4 transition-colors ${selectedStyles.includes(s.id) ? 'border-[#C9A227] bg-[#C9A227]/10' : 'border-gray-800 hover:border-gray-700'}`}>
                     <p className="text-sm font-medium text-white">{s.label}</p>
                     <p className="text-[10px] text-gray-500 mt-0.5">{s.description}</p>
                   </button>
@@ -121,16 +121,16 @@ export default function TrailerMakerPage() {
                     <p className="text-[10px] text-gray-500">Devenez le héros de votre film</p>
                   </div>
                 </div>
-                <button onClick={() => setFaceMode(!faceMode)} className={`relative h-6 w-11 rounded-full transition-colors ${faceMode ? 'bg-[#E50914]' : 'bg-gray-600'}`}>
+                <button onClick={() => setFaceMode(!faceMode)} className={`relative h-6 w-11 rounded-full transition-colors ${faceMode ? 'bg-[#C9A227]' : 'bg-gray-600'}`}>
                   <span className={`inline-block h-4 w-4 rounded-full bg-white transition-transform ${faceMode ? 'translate-x-6' : 'translate-x-1'}`} />
                 </button>
               </div>
               {faceMode && (
-                <input value={faceUrl} onChange={e => setFaceUrl(e.target.value)} placeholder="URL de votre photo (portrait face caméra)..." className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+                <input value={faceUrl} onChange={e => setFaceUrl(e.target.value)} placeholder="URL de votre photo (portrait face caméra)..." className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
               )}
             </div>
 
-            <button onClick={generateTrailers} disabled={!filmTitle.trim() || !genre || !synopsis.trim() || selectedStyles.length === 0} className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-2xl disabled:opacity-40 transition-colors text-lg">
+            <button onClick={generateTrailers} disabled={!filmTitle.trim() || !genre || !synopsis.trim() || selectedStyles.length === 0} className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-2xl disabled:opacity-40 transition-colors text-lg">
               <Wand2 className="h-6 w-6" />
               Générer {selectedStyles.length} bande{selectedStyles.length > 1 ? 's' : ''}-annonce{selectedStyles.length > 1 ? 's' : ''}
             </button>
@@ -139,11 +139,11 @@ export default function TrailerMakerPage() {
 
         {step === 'generating' && (
           <div className="text-center py-20">
-            <Loader2 className="h-16 w-16 text-[#E50914] mx-auto mb-6 animate-spin" />
+            <Loader2 className="h-16 w-16 text-[#C9A227] mx-auto mb-6 animate-spin" />
             <h2 className="text-2xl font-bold text-white mb-2">Création en cours...</h2>
             <p className="text-gray-400 mb-6">L&apos;IA génère les scènes, les images et assemble votre bande-annonce</p>
             <div className="w-full max-w-md mx-auto h-3 bg-gray-800 rounded-full overflow-hidden">
-              <div className="h-full bg-[#E50914] rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
+              <div className="h-full bg-[#C9A227] rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
             </div>
             <p className="text-sm text-gray-500 mt-3">{progress}%</p>
           </div>
@@ -152,7 +152,7 @@ export default function TrailerMakerPage() {
         {step === 'result' && (
           <div className="space-y-8">
             <div className="text-center">
-              <Sparkles className="h-10 w-10 text-[#E50914] mx-auto mb-4" />
+              <Sparkles className="h-10 w-10 text-[#C9A227] mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-white mb-2">{results.length} bande{results.length > 1 ? 's' : ''}-annonce créée{results.length > 1 ? 's' : ''} !</h2>
               <p className="text-gray-400">Pour &quot;{filmTitle}&quot; — {genre}</p>
             </div>
@@ -218,7 +218,7 @@ export default function TrailerMakerPage() {
                   <div className="p-6 text-center">
                     <button
                       onClick={() => toast.info('Lecteur vidéo en cours de génération — disponible sous peu !')}
-                      className="inline-flex items-center gap-2 px-8 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl transition-colors"
+                      className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl transition-colors"
                     >
                       <Play className="h-5 w-5" /> Lire la bande-annonce
                     </button>

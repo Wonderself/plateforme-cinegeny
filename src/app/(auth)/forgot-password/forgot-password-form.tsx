@@ -15,8 +15,8 @@ export function ForgotPasswordForm() {
     <div className="space-y-10">
       {/* Header */}
       <div className="text-center space-y-5">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-4">
-          <KeyRound className="h-8 w-8 text-[#E50914]" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-4">
+          <KeyRound className="h-8 w-8 text-[#C9A227]" />
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold text-white font-playfair">
           Mot de passe oublié
@@ -28,13 +28,13 @@ export function ForgotPasswordForm() {
 
       {/* Form Card */}
       <div className="relative group">
-        <div className="absolute -inset-1 bg-gradient-to-b from-[#E50914]/10 via-transparent to-[#E50914]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="absolute -inset-1 bg-gradient-to-b from-[#C9A227]/10 via-transparent to-[#C9A227]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         <div className="relative sm:rounded-3xl rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm p-8 sm:p-10 shadow-2xl shadow-black/20">
           {state?.success ? (
             <div className="text-center space-y-5 py-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#E50914]/10 border border-[#E50914]/20">
-                <CheckCircle className="h-8 w-8 text-[#E50914]" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20">
+                <CheckCircle className="h-8 w-8 text-[#C9A227]" />
               </div>
               <p className="text-white/70 text-sm leading-relaxed">
                 Un email de réinitialisation a été envoyé à votre adresse.
@@ -62,14 +62,14 @@ export function ForgotPasswordForm() {
                     placeholder="vous@exemple.com"
                     required
                     autoComplete="email"
-                    className="pl-11 h-12 rounded-xl bg-white/[0.04] border-white/[0.08] text-white placeholder:text-white/25 focus:border-[#E50914]/40 focus:ring-[#E50914]/20 transition-all duration-300"
+                    className="pl-11 h-12 rounded-xl bg-white/[0.04] border-white/[0.08] text-white placeholder:text-white/25 focus:border-[#C9A227]/40 focus:ring-[#C9A227]/20 transition-all duration-300"
                   />
                 </div>
               </div>
 
               <Button
                 type="submit"
-                className="w-full h-12 rounded-xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold shadow-lg shadow-[#E50914]/20 hover:shadow-[#E50914]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                className="w-full h-12 rounded-xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold shadow-lg shadow-[#C9A227]/20 hover:shadow-[#C9A227]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
                 size="lg"
                 loading={isPending}
               >
@@ -83,7 +83,7 @@ export function ForgotPasswordForm() {
       <p className="text-center text-sm text-white/40">
         <Link
           href="/login"
-          className="inline-flex items-center gap-1.5 text-[#E50914] hover:text-[#FF2D2D] transition-colors duration-300 font-medium"
+          className="inline-flex items-center gap-1.5 text-[#C9A227] hover:text-[#E8C766] transition-colors duration-300 font-medium"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Retour à la connexion

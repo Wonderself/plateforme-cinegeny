@@ -64,7 +64,7 @@ export default function AgentBuilderPage() {
             <span className="text-sm font-medium text-red-400">Agent Builder</span>
           </div>
           <h1 className="text-3xl font-bold text-white font-[family-name:var(--font-playfair)] mb-3">
-            Créez votre <span className="text-[#E50914]">Agent IA</span>
+            Créez votre <span className="text-[#C9A227]">Agent IA</span>
           </h1>
           <p className="text-gray-400">Configurez un agent personnalisé pour vos projets cinéma</p>
         </div>
@@ -75,27 +75,27 @@ export default function AgentBuilderPage() {
             <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6 space-y-4">
               {AGENT_BUILDER_FIELDS.map(field => (
                 <div key={field.key}>
-                  <label className="text-xs text-gray-400 mb-1.5 block">{field.label} {field.required && <span className="text-[#E50914]">*</span>}</label>
+                  <label className="text-xs text-gray-400 mb-1.5 block">{field.label} {field.required && <span className="text-[#C9A227]">*</span>}</label>
                   {field.type === 'textarea' ? (
-                    <textarea value={values[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} placeholder={field.placeholder} rows={field.key === 'systemPrompt' ? 6 : 3} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none" />
+                    <textarea value={values[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} placeholder={field.placeholder} rows={field.key === 'systemPrompt' ? 6 : 3} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none" />
                   ) : field.type === 'select' ? (
-                    <select value={values[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white focus:border-[#E50914] focus:outline-none">
+                    <select value={values[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white focus:border-[#C9A227] focus:outline-none">
                       <option value="">Choisir...</option>
                       {field.options?.map(o => <option key={o} value={o}>{o}</option>)}
                     </select>
                   ) : field.type === 'slider' ? (
                     <div className="flex items-center gap-3">
-                      <input type="range" min={field.min || 0} max={field.max || 100} value={parseInt(values[field.key] || '50')} onChange={e => updateField(field.key, e.target.value)} className="flex-1 accent-[#E50914]" />
+                      <input type="range" min={field.min || 0} max={field.max || 100} value={parseInt(values[field.key] || '50')} onChange={e => updateField(field.key, e.target.value)} className="flex-1 accent-[#C9A227]" />
                       <span className="text-xs text-gray-400 w-8">{values[field.key] || '50'}%</span>
                     </div>
                   ) : (
-                    <input value={values[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} placeholder={field.placeholder} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+                    <input value={values[field.key] || ''} onChange={e => updateField(field.key, e.target.value)} placeholder={field.placeholder} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
                   )}
                 </div>
               ))}
 
               <div className="flex gap-3">
-                <button onClick={buildAgent} disabled={building} className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+                <button onClick={buildAgent} disabled={building} className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
                   {building ? <Loader2 className="h-5 w-5 animate-spin" /> : <Save className="h-5 w-5" />}
                   {building ? 'Création...' : 'Créer l\'agent'}
                 </button>
@@ -122,8 +122,8 @@ export default function AgentBuilderPage() {
             <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6">
               <h3 className="text-xs text-gray-500 uppercase tracking-wider mb-4">Aperçu</h3>
               <div className="text-center">
-                <div className="h-16 w-16 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center mx-auto mb-3">
-                  <SelectedIcon className="h-8 w-8 text-[#E50914]" />
+                <div className="h-16 w-16 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center mx-auto mb-3">
+                  <SelectedIcon className="h-8 w-8 text-[#C9A227]" />
                 </div>
                 <p className="text-sm font-bold text-white">{values.name || 'Mon Agent'}</p>
                 <p className="text-xs text-gray-500 mt-0.5">{values.role || 'Rôle à définir'}</p>
@@ -145,7 +145,7 @@ export default function AgentBuilderPage() {
                     const AIcon = ICON_MAP[agent.icon] || Bot
                     return (
                       <div key={agent.id} className="flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-800 bg-gray-900/50">
-                        <AIcon className="h-4 w-4 text-[#E50914]" />
+                        <AIcon className="h-4 w-4 text-[#C9A227]" />
                         <div className="flex-1 min-w-0">
                           <p className="text-xs font-medium text-white truncate">{agent.name}</p>
                           <p className="text-[10px] text-gray-500">{agent.category} · {agent.model.split('-').slice(0, 2).join(' ')}</p>

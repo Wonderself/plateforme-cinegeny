@@ -219,7 +219,7 @@ export const CINEMA_DOC_TEMPLATES: CinemaDocTemplate[] = [
 export const DOC_CATEGORIES = [
   { id: 'legal', label: 'Juridique', icon: 'scale', color: '#6366F1', count: CINEMA_DOC_TEMPLATES.filter(t => t.category === 'legal').length },
   { id: 'financial', label: 'Finance', icon: 'calculator', color: '#10B981', count: CINEMA_DOC_TEMPLATES.filter(t => t.category === 'financial').length },
-  { id: 'creative', label: 'Créatif', icon: 'pen-tool', color: '#E50914', count: CINEMA_DOC_TEMPLATES.filter(t => t.category === 'creative').length },
+  { id: 'creative', label: 'Créatif', icon: 'pen-tool', color: '#C9A227', count: CINEMA_DOC_TEMPLATES.filter(t => t.category === 'creative').length },
   { id: 'distribution', label: 'Distribution', icon: 'globe', color: '#3B82F6', count: CINEMA_DOC_TEMPLATES.filter(t => t.category === 'distribution').length },
 ]
 
@@ -260,7 +260,7 @@ export const DOC_FACTORY_AGENTS: DocFactoryAgent[] = [
     role: 'Documents créatifs',
     description: 'Traduit la vision artistique en documents professionnels : pitch decks, notes d\'intention, dossiers de présentation.',
     icon: 'pen-tool',
-    color: '#E50914',
+    color: '#C9A227',
     specialties: ['pitch deck', 'note d\'intention', 'présentation', 'storytelling'],
   },
   {

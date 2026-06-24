@@ -52,11 +52,11 @@ export async function ViewerDashboard({ user }: ViewerDashboardProps) {
         <Card variant="glass">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 rounded-lg bg-[#E50914]/10">
-                <Clapperboard className="h-5 w-5 text-[#E50914]" />
+              <div className="p-2 rounded-lg bg-[#C9A227]/10">
+                <Clapperboard className="h-5 w-5 text-[#C9A227]" />
               </div>
             </div>
-            <div className="text-2xl font-bold text-[#E50914]">{filmCount}</div>
+            <div className="text-2xl font-bold text-[#C9A227]">{filmCount}</div>
             <div className="text-xs text-white/40">Films en production</div>
           </CardContent>
         </Card>
@@ -90,7 +90,7 @@ export async function ViewerDashboard({ user }: ViewerDashboardProps) {
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold">Films a la une</h2>
-          <Link href="/films" className="text-sm text-[#E50914] hover:text-[#FF2D2D]">
+          <Link href="/films" className="text-sm text-[#C9A227] hover:text-[#E8C766]">
             Voir tout &rarr;
           </Link>
         </div>
@@ -106,7 +106,7 @@ export async function ViewerDashboard({ user }: ViewerDashboardProps) {
           <div className="grid md:grid-cols-3 gap-4">
             {featuredFilms.map((film) => (
               <Link key={film.id} href={`/films/${film.slug}`}>
-                <Card variant="glass" className="hover:border-[#E50914]/20 transition-all cursor-pointer h-full">
+                <Card variant="glass" className="hover:border-[#C9A227]/20 transition-all cursor-pointer h-full">
                   <CardContent className="p-5">
                     {film.coverImageUrl ? (
                       <div className="aspect-video rounded-lg bg-white/5 mb-3 overflow-hidden">
@@ -117,7 +117,7 @@ export async function ViewerDashboard({ user }: ViewerDashboardProps) {
                         />
                       </div>
                     ) : (
-                      <div className="aspect-video rounded-lg bg-gradient-to-br from-[#E50914]/10 to-transparent border border-white/5 mb-3 flex items-center justify-center">
+                      <div className="aspect-video rounded-lg bg-gradient-to-br from-[#C9A227]/10 to-transparent border border-white/5 mb-3 flex items-center justify-center">
                         <Film className="h-8 w-8 text-white/10" />
                       </div>
                     )}
@@ -134,7 +134,7 @@ export async function ViewerDashboard({ user }: ViewerDashboardProps) {
                       <div className="mt-3">
                         <div className="h-1 bg-white/10 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] rounded-full"
+                            className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full"
                             style={{ width: `${film.progressPct}%` }}
                           />
                         </div>
@@ -154,7 +154,7 @@ export async function ViewerDashboard({ user }: ViewerDashboardProps) {
         <Card variant="gold">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-3">
-              <Heart className="h-5 w-5 text-[#E50914]" />
+              <Heart className="h-5 w-5 text-[#C9A227]" />
               <h3 className="font-semibold">Soutenir un film</h3>
             </div>
             <p className="text-sm text-white/40 mb-4">

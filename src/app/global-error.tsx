@@ -23,7 +23,7 @@ export default function GlobalError({
     <html lang="fr">
       <body style={{ background: '#0A0A0A', color: '#fff', fontFamily: 'system-ui, sans-serif' }}>
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 700, color: '#E50914', marginBottom: '1rem' }}>
+          <h1 style={{ fontSize: '2rem', fontWeight: 700, color: '#C9A227', marginBottom: '1rem' }}>
             Oups, une erreur est survenue
           </h1>
           <p style={{ color: '#ffffff80', marginBottom: '2rem', maxWidth: '400px', textAlign: 'center', lineHeight: 1.6 }}>
@@ -33,7 +33,7 @@ export default function GlobalError({
             onClick={reset}
             style={{
               padding: '12px 28px',
-              background: '#E50914',
+              background: '#C9A227',
               color: '#000',
               border: 'none',
               borderRadius: '12px',

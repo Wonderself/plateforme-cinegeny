@@ -137,7 +137,7 @@ export default function MeetingPage() {
             <span className="text-sm font-medium text-purple-400">Réunion Multi-Agents</span>
           </div>
           <h1 className="text-3xl font-bold text-white mb-3">
-            Réunion d&apos;équipe <span className="text-[#E50914]">IA</span>
+            Réunion d&apos;équipe <span className="text-[#C9A227]">IA</span>
           </h1>
           <p className="text-gray-400 max-w-xl mx-auto">
             Faites discuter plusieurs agents cinéma ensemble sur un sujet.
@@ -155,7 +155,7 @@ export default function MeetingPage() {
                   value={title}
                   onChange={e => setTitle(e.target.value)}
                   placeholder="Ex: Revue du scénario Act 2"
-                  className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none"
+                  className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none"
                 />
               </div>
               <div>
@@ -165,7 +165,7 @@ export default function MeetingPage() {
                   onChange={e => setTopic(e.target.value)}
                   placeholder="Décrivez le sujet que les agents doivent discuter..."
                   rows={4}
-                  className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none"
+                  className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none"
                 />
               </div>
               <div>
@@ -176,7 +176,7 @@ export default function MeetingPage() {
                   max={5}
                   value={rounds}
                   onChange={e => setRounds(parseInt(e.target.value))}
-                  className="w-full accent-[#E50914]"
+                  className="w-full accent-[#C9A227]"
                 />
                 <div className="flex justify-between text-[10px] text-gray-600">
                   <span>2 (rapide)</span>
@@ -228,13 +228,13 @@ export default function MeetingPage() {
                       onClick={() => toggleAgent(agent.slug)}
                       className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors text-left ${
                         selected
-                          ? 'border-[#E50914] bg-[#E50914]/10 text-white'
+                          ? 'border-[#C9A227] bg-[#C9A227]/10 text-white'
                           : 'border-gray-800 bg-gray-900/30 text-gray-400 hover:border-gray-700'
                       }`}
                     >
                       <AIcon className="h-4 w-4 shrink-0" style={{ color: agent.color }} />
                       <span className="text-xs truncate">{agent.name}</span>
-                      {selected && <CheckCircle2 className="h-3.5 w-3.5 text-[#E50914] ml-auto shrink-0" />}
+                      {selected && <CheckCircle2 className="h-3.5 w-3.5 text-[#C9A227] ml-auto shrink-0" />}
                     </button>
                   )
                 })}
@@ -245,7 +245,7 @@ export default function MeetingPage() {
             <button
               onClick={startMeeting}
               disabled={running || selectedAgents.length < 2 || !title.trim() || !topic.trim()}
-              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-2xl transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-2xl transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {running ? (
                 <>

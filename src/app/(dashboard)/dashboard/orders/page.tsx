@@ -137,7 +137,7 @@ export default async function DashboardOrdersPage() {
         </div>
         <Link
           href="/collabs/orders/new"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold text-sm transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-[#E50914]/20"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold text-sm transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-[#C9A227]/20"
         >
           <Clapperboard className="h-4 w-4" />
           Nouvelle commande
@@ -152,8 +152,8 @@ export default async function DashboardOrdersPage() {
               label: 'Total commandes',
               value: orders.length,
               icon: ShoppingBag,
-              color: 'text-[#E50914]',
-              bg: 'bg-[#E50914]/10',
+              color: 'text-[#C9A227]',
+              bg: 'bg-[#C9A227]/10',
             },
             {
               label: 'En cours',
@@ -189,8 +189,8 @@ export default async function DashboardOrdersPage() {
       {/* Empty State */}
       {orders.length === 0 && (
         <div className="bg-white/5 rounded-2xl ring-1 ring-white/10 border border-white/[0.06] p-12 text-center">
-          <div className="mx-auto w-16 h-16 rounded-2xl bg-[#E50914]/10 flex items-center justify-center mb-5">
-            <ShoppingBag className="h-8 w-8 text-[#E50914]/60" />
+          <div className="mx-auto w-16 h-16 rounded-2xl bg-[#C9A227]/10 flex items-center justify-center mb-5">
+            <ShoppingBag className="h-8 w-8 text-[#C9A227]/60" />
           </div>
           <h2 className="text-white font-bold text-lg font-playfair mb-2">
             Aucune commande pour l&apos;instant
@@ -200,7 +200,7 @@ export default async function DashboardOrdersPage() {
           </p>
           <Link
             href="/collabs/orders"
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold text-sm transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-[#E50914]/20"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold text-sm transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-[#C9A227]/20"
           >
             Explorer les commandes
             <ArrowRight className="h-4 w-4" />
@@ -212,11 +212,11 @@ export default async function DashboardOrdersPage() {
       {activeOrders.length > 0 && (
         <section>
           <div className="flex items-center gap-3 mb-5">
-            <Clock className="h-4 w-4 text-[#E50914]" />
+            <Clock className="h-4 w-4 text-[#C9A227]" />
             <h2 className="text-white font-bold text-base font-playfair">
               Commandes actives
             </h2>
-            <span className="px-2 py-0.5 rounded-full bg-[#E50914]/10 text-[#E50914] text-xs font-semibold">
+            <span className="px-2 py-0.5 rounded-full bg-[#C9A227]/10 text-[#C9A227] text-xs font-semibold">
               {activeOrders.length}
             </span>
           </div>
@@ -231,7 +231,7 @@ export default async function DashboardOrdersPage() {
                   href={`/collabs/orders/${order.id}`}
                   className="block"
                 >
-                  <div className="group bg-white/5 rounded-2xl ring-1 ring-white/10 border border-white/[0.06] hover:border-[#E50914]/25 hover:bg-white/[0.07] transition-all duration-300 p-5 sm:p-6">
+                  <div className="group bg-white/5 rounded-2xl ring-1 ring-white/10 border border-white/[0.06] hover:border-[#C9A227]/25 hover:bg-white/[0.07] transition-all duration-300 p-5 sm:p-6">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                       {/* Left: Status Icon + Info */}
                       <div className="flex items-start gap-4 flex-1 min-w-0">
@@ -282,7 +282,7 @@ export default async function DashboardOrdersPage() {
                             À valider
                           </span>
                         )}
-                        <ChevronRight className="h-4 w-4 text-white/30 group-hover:text-[#E50914] transition-colors" />
+                        <ChevronRight className="h-4 w-4 text-white/30 group-hover:text-[#C9A227] transition-colors" />
                       </div>
                     </div>
                   </div>
@@ -366,18 +366,18 @@ export default async function DashboardOrdersPage() {
         <div className="pt-2">
           <Link
             href="/collabs/orders"
-            className="flex items-center justify-between p-5 rounded-2xl bg-gradient-to-r from-[#E50914]/[0.06] to-transparent border border-[#E50914]/10 hover:border-[#E50914]/25 transition-all duration-300 group"
+            className="flex items-center justify-between p-5 rounded-2xl bg-gradient-to-r from-[#C9A227]/[0.06] to-transparent border border-[#C9A227]/10 hover:border-[#C9A227]/25 transition-all duration-300 group"
           >
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-xl bg-[#E50914]/10 flex items-center justify-center">
-                <ShoppingBag className="h-5 w-5 text-[#E50914]" />
+              <div className="h-10 w-10 rounded-xl bg-[#C9A227]/10 flex items-center justify-center">
+                <ShoppingBag className="h-5 w-5 text-[#C9A227]" />
               </div>
               <div>
                 <p className="text-white/80 font-semibold text-sm">Marché des commandes</p>
                 <p className="text-white/40 text-xs">Voir toutes les commandes disponibles</p>
               </div>
             </div>
-            <ChevronRight className="h-5 w-5 text-white/30 group-hover:text-[#E50914] transition-colors" />
+            <ChevronRight className="h-5 w-5 text-white/30 group-hover:text-[#C9A227] transition-colors" />
           </Link>
         </div>
       )}

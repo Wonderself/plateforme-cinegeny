@@ -18,15 +18,15 @@ export default function CreateurCasePage() {
     <div className="min-h-screen bg-[#0A0A0A]">
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 mb-6"><Film className="h-4 w-4 text-[#E50914]" /><span className="text-sm font-medium text-[#E50914]">Cas d&apos;usage</span></div>
-          <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-4">Vous êtes <span className="text-[#E50914]">Créateur</span></h1>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6"><Film className="h-4 w-4 text-[#C9A227]" /><span className="text-sm font-medium text-[#C9A227]">Cas d&apos;usage</span></div>
+          <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-4">Vous êtes <span className="text-[#C9A227]">Créateur</span></h1>
           <p className="text-lg text-gray-400 max-w-xl mx-auto">Réalisez votre rêve de cinéma sans budget Hollywood. CineGen démocratise la création.</p>
         </div>
 
         <div className="space-y-6 mb-16">
           {steps.map((step, i) => (
             <div key={i} className="flex gap-6 items-start">
-              <div className="h-12 w-12 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center text-2xl shrink-0">{step.icon}</div>
+              <div className="h-12 w-12 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center text-2xl shrink-0">{step.icon}</div>
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">{step.title}</h3>
                 <p className="text-sm text-gray-400">{step.desc}</p>
@@ -42,7 +42,7 @@ export default function CreateurCasePage() {
         </div>
 
         <div className="text-center">
-          <Link href="/create" className="inline-flex items-center gap-2 px-8 py-4 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-2xl transition-colors text-lg"><Zap className="h-6 w-6" />Commencer à créer</Link>
+          <Link href="/create" className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-2xl transition-colors text-lg"><Zap className="h-6 w-6" />Commencer à créer</Link>
         </div>
       </div>
     </div>

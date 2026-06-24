@@ -53,8 +53,8 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-[#0A0A0A]/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/80 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 md:p-12 lg:p-16">
-            <Badge className="mb-6 bg-[#E50914]/20 text-[#E50914] border-[#E50914]/30 backdrop-blur-sm">
-              <Star className="h-3 w-3 mr-1 fill-[#E50914]" /> En vedette
+            <Badge className="mb-6 bg-[#C9A227]/20 text-[#C9A227] border-[#C9A227]/30 backdrop-blur-sm">
+              <Star className="h-3 w-3 mr-1 fill-[#C9A227]" /> En vedette
             </Badge>
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 font-[family-name:var(--font-playfair)] max-w-3xl">
               {featured.title}
@@ -63,7 +63,7 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href={`/streaming/${featured.slug}`}
-                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 bg-[#E50914] text-white font-semibold rounded-xl hover:bg-[#FF2D2D] transition-colors text-base sm:text-lg"
+                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 bg-[#C9A227] text-white font-semibold rounded-xl hover:bg-[#E8C766] transition-colors text-base sm:text-lg"
               >
                 <Play className="h-5 w-5" /> Regarder
               </Link>
@@ -75,8 +75,8 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
         </div>
       ) : (
         <div className="relative h-[40vh] min-h-[300px] overflow-hidden flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#E50914]/[0.05] via-transparent to-transparent" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#E50914]/[0.04] blur-[120px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#C9A227]/[0.05] via-transparent to-transparent" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#C9A227]/[0.04] blur-[120px]" />
           <div className="relative text-center px-4">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 font-[family-name:var(--font-playfair)]">
               Streaming
@@ -98,7 +98,7 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
               name="q"
               defaultValue={query}
               placeholder="Rechercher un film..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:border-[#E50914]/50 focus:outline-none"
+              className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:border-[#C9A227]/50 focus:outline-none"
             />
           </form>
           <div className="flex gap-3 flex-wrap">
@@ -108,7 +108,7 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
                 href={g === 'Tous' ? '/streaming' : `/streaming?genre=${g}`}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   (genre === g || (!genre && g === 'Tous'))
-                    ? 'bg-[#E50914] text-white'
+                    ? 'bg-[#C9A227] text-white'
                     : 'bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70'
                 }`}
               >
@@ -119,7 +119,7 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
         </div>
 
         {/* Submit CTA */}
-        <div className="mb-12 p-7 sm:p-8 rounded-2xl bg-gradient-to-r from-[#E50914]/10 to-transparent border border-[#E50914]/20">
+        <div className="mb-12 p-7 sm:p-8 rounded-2xl bg-gradient-to-r from-[#C9A227]/10 to-transparent border border-[#C9A227]/20">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
               <h2 className="text-xl font-bold text-white mb-1">Vous êtes réalisateur ?</h2>
@@ -127,7 +127,7 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
             </div>
             <Link
               href="/streaming/submit"
-              className="px-6 py-2.5 bg-[#E50914] text-white font-semibold rounded-lg hover:bg-[#FF2D2D] transition-colors"
+              className="px-6 py-2.5 bg-[#C9A227] text-white font-semibold rounded-lg hover:bg-[#E8C766] transition-colors"
             >
               Soumettre un film
             </Link>
@@ -144,7 +144,7 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 sm:gap-6">
             {films.map((film) => (
               <Link key={film.id} href={`/streaming/${film.slug}`} className="group">
-                <Card className="bg-white/[0.02] border-white/5 overflow-hidden hover:border-[#E50914]/30 transition-all duration-300">
+                <Card className="bg-white/[0.02] border-white/5 overflow-hidden hover:border-[#C9A227]/30 transition-all duration-300">
                   <div className="aspect-[2/3] relative bg-gradient-to-br from-white/5 to-transparent">
                     {film.thumbnailUrl ? (
                       <Image src={film.thumbnailUrl} alt={film.title} fill className="object-cover" sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 20vw" />
@@ -163,7 +163,7 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
                     )}
                   </div>
                   <CardContent className="p-4 sm:p-5">
-                    <h3 className="text-sm font-semibold text-white truncate group-hover:text-[#E50914] transition-colors">
+                    <h3 className="text-sm font-semibold text-white truncate group-hover:text-[#C9A227] transition-colors">
                       {film.title}
                     </h3>
                     <div className="flex items-center justify-between mt-1.5 text-[11px] text-white/30">
@@ -185,13 +185,13 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
         )}
 
         {/* Devenez Producteur Banner */}
-        <div className="mt-20 relative overflow-hidden rounded-2xl border border-[#E50914]/20 bg-gradient-to-br from-[#E50914]/[0.08] via-[#E50914]/[0.03] to-transparent p-8 md:p-12 lg:p-14">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#E50914]/[0.06] rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="mt-20 relative overflow-hidden rounded-2xl border border-[#C9A227]/20 bg-gradient-to-br from-[#C9A227]/[0.08] via-[#C9A227]/[0.03] to-transparent p-8 md:p-12 lg:p-14">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A227]/[0.06] rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
           <div className="relative flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-3">
-                <div className="h-10 w-10 rounded-xl bg-[#E50914]/15 border border-[#E50914]/25 flex items-center justify-center">
-                  <Crown className="h-5 w-5 text-[#E50914]" />
+                <div className="h-10 w-10 rounded-xl bg-[#C9A227]/15 border border-[#C9A227]/25 flex items-center justify-center">
+                  <Crown className="h-5 w-5 text-[#C9A227]" />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-playfair)]">
                   Devenez Producteur
@@ -204,7 +204,7 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
             </div>
             <Link
               href="/tokenization"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold transition-colors text-lg shrink-0"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold transition-colors text-lg shrink-0"
             >
               <Coins className="h-5 w-5" />
               Investir

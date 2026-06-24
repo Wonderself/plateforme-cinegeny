@@ -72,7 +72,7 @@ const INITIAL_LOCATIONS = [
 
 const LIGHTING_PRESETS = ['Golden Hour', 'Blue Hour', 'Neon', 'Natural', 'Studio']
 
-const COLOR_PALETTE = ['#E50914', '#FF6B35', '#F7C948', '#4ECDC4', '#1A535C', '#2D3047', '#8B5CF6', '#EC4899']
+const COLOR_PALETTE = ['#C9A227', '#FF6B35', '#F7C948', '#4ECDC4', '#1A535C', '#2D3047', '#8B5CF6', '#EC4899']
 
 const INITIAL_SCENE_MAP = [
   { id: '1', scene: 'Scene 1 - Opening', location: 'Urban Night', time: 'Night', weather: 'Rain' },
@@ -128,7 +128,7 @@ let idCounter = 100
 export default function SetupsPage() {
   const { completedSteps, markComplete, isStepUnlocked, loaded } = useCreateProgress()
   const [selectedLighting, setSelectedLighting] = useState('Golden Hour')
-  const [selectedColors, setSelectedColors] = useState<string[]>(['#E50914', '#F7C948'])
+  const [selectedColors, setSelectedColors] = useState<string[]>(['#C9A227', '#F7C948'])
   const [locations, setLocations] = useState<Location[]>(INITIAL_LOCATIONS)
   const [selectedLocationIds, setSelectedLocationIds] = useState<string[]>([])
   const [sceneData, setSceneData] = useState<SceneRow[]>(INITIAL_SCENE_MAP)
@@ -298,11 +298,11 @@ export default function SetupsPage() {
     >
       {/* Hero */}
       <section className="text-center mb-16">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-          <Home className="h-8 w-8 text-[#E50914]" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+          <Home className="h-8 w-8 text-[#C9A227]" />
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-          Design Your <span className="text-[#E50914]">Sets</span>
+          Design Your <span className="text-[#C9A227]">Sets</span>
         </h1>
         <p className="text-base text-white/50 max-w-2xl mx-auto leading-relaxed">
           Build immersive locations, craft mood boards, and set the perfect ambiance for every scene in your film.
@@ -322,8 +322,8 @@ export default function SetupsPage() {
               key={item.title}
               className="group p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-[#E50914]/10 flex items-center justify-center mb-3 group-hover:bg-[#E50914]/20 transition-colors">
-                <item.icon className="h-5 w-5 text-[#E50914]" />
+              <div className="w-10 h-10 rounded-lg bg-[#C9A227]/10 flex items-center justify-center mb-3 group-hover:bg-[#C9A227]/20 transition-colors">
+                <item.icon className="h-5 w-5 text-[#C9A227]" />
               </div>
               <h3 className="text-sm font-semibold text-white mb-1">{item.title}</h3>
               <p className="text-xs text-white/40 leading-relaxed">{item.desc}</p>
@@ -339,14 +339,14 @@ export default function SetupsPage() {
           <div className="flex items-center gap-3">
             <h2 className="text-lg font-bold text-white/80">Location Builder</h2>
             {selectedLocationIds.length > 0 && (
-              <span className="px-2.5 py-1 rounded-full bg-[#E50914]/20 text-[#E50914] text-xs font-semibold">
+              <span className="px-2.5 py-1 rounded-full bg-[#C9A227]/20 text-[#C9A227] text-xs font-semibold">
                 {selectedLocationIds.length} selected
               </span>
             )}
           </div>
           <button
             onClick={() => setShowAddForm((v) => !v)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#E50914] text-white text-sm font-semibold hover:bg-[#B20710] transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#C9A227] text-white text-sm font-semibold hover:bg-[#B20710] transition-colors"
           >
             <Plus className="h-4 w-4" />
             Add Location
@@ -362,14 +362,14 @@ export default function SetupsPage() {
               placeholder="Location name"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
-              className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white/80 placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 transition-colors"
+              className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white/80 placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 transition-colors"
             />
             <textarea
               placeholder="Description"
               value={newDesc}
               onChange={(e) => setNewDesc(e.target.value)}
               rows={2}
-              className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white/80 placeholder:text-white/25 resize-none focus:outline-none focus:border-[#E50914]/40 transition-colors"
+              className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white/80 placeholder:text-white/25 resize-none focus:outline-none focus:border-[#C9A227]/40 transition-colors"
             />
             <div className="flex gap-2">
               <input
@@ -377,7 +377,7 @@ export default function SetupsPage() {
                 placeholder="Image URL (optional)"
                 value={newImage}
                 onChange={(e) => setNewImage(e.target.value)}
-                className="flex-1 bg-white/[0.04] border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white/80 placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 transition-colors"
+                className="flex-1 bg-white/[0.04] border border-white/[0.08] rounded-lg px-3 py-2 text-sm text-white/80 placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 transition-colors"
               />
               <button
                 onClick={handleGenerateAIImage}
@@ -396,7 +396,7 @@ export default function SetupsPage() {
               <button
                 onClick={handleAddLocation}
                 disabled={!newName.trim()}
-                className="px-5 py-2 rounded-lg bg-[#E50914] text-white text-sm font-semibold hover:bg-[#B20710] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-5 py-2 rounded-lg bg-[#C9A227] text-white text-sm font-semibold hover:bg-[#B20710] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Save Location
               </button>
@@ -447,18 +447,18 @@ export default function SetupsPage() {
                         type="text"
                         value={editName}
                         onChange={(e) => setEditName(e.target.value)}
-                        className="w-full bg-white/[0.06] border border-white/[0.1] rounded-md px-2 py-1 text-xs text-white/80 focus:outline-none focus:border-[#E50914]/40"
+                        className="w-full bg-white/[0.06] border border-white/[0.1] rounded-md px-2 py-1 text-xs text-white/80 focus:outline-none focus:border-[#C9A227]/40"
                       />
                       <textarea
                         value={editDesc}
                         onChange={(e) => setEditDesc(e.target.value)}
                         rows={2}
-                        className="w-full bg-white/[0.06] border border-white/[0.1] rounded-md px-2 py-1 text-xs text-white/80 resize-none focus:outline-none focus:border-[#E50914]/40"
+                        className="w-full bg-white/[0.06] border border-white/[0.1] rounded-md px-2 py-1 text-xs text-white/80 resize-none focus:outline-none focus:border-[#C9A227]/40"
                       />
                       <div className="flex gap-1.5">
                         <button
                           onClick={() => saveCustomize(loc.id)}
-                          className="flex-1 py-1 rounded-md text-[10px] font-medium bg-[#E50914] text-white hover:bg-[#B20710] transition-colors"
+                          className="flex-1 py-1 rounded-md text-[10px] font-medium bg-[#C9A227] text-white hover:bg-[#B20710] transition-colors"
                         >
                           Save
                         </button>
@@ -493,7 +493,7 @@ export default function SetupsPage() {
                             'flex-1 py-1.5 rounded-md text-xs font-medium transition-colors',
                             isSelected
                               ? 'bg-green-600 text-white hover:bg-green-700'
-                              : 'bg-[#E50914] text-white hover:bg-[#B20710]'
+                              : 'bg-[#C9A227] text-white hover:bg-[#B20710]'
                           )}
                         >
                           {isSelected ? 'Selected' : 'Use'}
@@ -591,7 +591,7 @@ export default function SetupsPage() {
                     className={cn(
                       'px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200',
                       selectedLighting === preset
-                        ? 'bg-[#E50914] text-white'
+                        ? 'bg-[#C9A227] text-white'
                         : 'bg-white/[0.04] text-white/50 hover:text-white/70 hover:bg-white/[0.08] border border-white/[0.06]'
                     )}
                   >
@@ -605,7 +605,7 @@ export default function SetupsPage() {
             <button
               onClick={handleGenerateEnvironment}
               disabled={envGenerating}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-[#E50914] to-[#B20710] text-white text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-60"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-[#C9A227] to-[#B20710] text-white text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-60"
             >
               {envGenerating ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -625,7 +625,7 @@ export default function SetupsPage() {
                 <div className="p-3 bg-white/[0.02] flex gap-2">
                   <button
                     onClick={handleUseEnvResult}
-                    className="flex-1 py-1.5 rounded-md text-xs font-medium bg-[#E50914] text-white hover:bg-[#B20710] transition-colors"
+                    className="flex-1 py-1.5 rounded-md text-xs font-medium bg-[#C9A227] text-white hover:bg-[#B20710] transition-colors"
                   >
                     Use
                   </button>
@@ -649,7 +649,7 @@ export default function SetupsPage() {
           <h2 className="text-lg font-bold text-white/80">Scene Mapping</h2>
           <button
             onClick={addScene}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#E50914] text-white text-sm font-semibold hover:bg-[#B20710] transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#C9A227] text-white text-sm font-semibold hover:bg-[#B20710] transition-colors"
           >
             <Plus className="h-4 w-4" />
             Add Scene
@@ -683,7 +683,7 @@ export default function SetupsPage() {
                     value={editSceneName}
                     onChange={(e) => setEditSceneName(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && saveSceneName(row.id)}
-                    className="flex-1 bg-white/[0.06] border border-white/[0.1] rounded-md px-2 py-1 text-xs text-white/80 focus:outline-none focus:border-[#E50914]/40"
+                    className="flex-1 bg-white/[0.06] border border-white/[0.1] rounded-md px-2 py-1 text-xs text-white/80 focus:outline-none focus:border-[#C9A227]/40"
                     autoFocus
                   />
                   <button onClick={() => saveSceneName(row.id)} className="text-green-400 hover:text-green-300">
@@ -704,7 +704,7 @@ export default function SetupsPage() {
               <select
                 value={row.location}
                 onChange={(e) => updateScene(row.id, 'location', e.target.value)}
-                className="bg-white/[0.04] border border-white/[0.08] rounded-md px-2 py-1.5 text-xs text-white/70 focus:outline-none focus:border-[#E50914]/50 transition-colors appearance-none cursor-pointer"
+                className="bg-white/[0.04] border border-white/[0.08] rounded-md px-2 py-1.5 text-xs text-white/70 focus:outline-none focus:border-[#C9A227]/50 transition-colors appearance-none cursor-pointer"
               >
                 {locations.map((loc) => (
                   <option key={loc.id} value={loc.name} className="bg-[#1a1a1a]">{loc.name}</option>
@@ -715,7 +715,7 @@ export default function SetupsPage() {
               <select
                 value={row.time}
                 onChange={(e) => updateScene(row.id, 'time', e.target.value)}
-                className="bg-white/[0.04] border border-white/[0.08] rounded-md px-2 py-1.5 text-xs text-white/70 focus:outline-none focus:border-[#E50914]/50 transition-colors appearance-none cursor-pointer"
+                className="bg-white/[0.04] border border-white/[0.08] rounded-md px-2 py-1.5 text-xs text-white/70 focus:outline-none focus:border-[#C9A227]/50 transition-colors appearance-none cursor-pointer"
               >
                 {TIME_OPTIONS.map((t) => (
                   <option key={t} value={t} className="bg-[#1a1a1a]">{t}</option>
@@ -726,7 +726,7 @@ export default function SetupsPage() {
               <select
                 value={row.weather}
                 onChange={(e) => updateScene(row.id, 'weather', e.target.value)}
-                className="bg-white/[0.04] border border-white/[0.08] rounded-md px-2 py-1.5 text-xs text-white/70 focus:outline-none focus:border-[#E50914]/50 transition-colors appearance-none cursor-pointer"
+                className="bg-white/[0.04] border border-white/[0.08] rounded-md px-2 py-1.5 text-xs text-white/70 focus:outline-none focus:border-[#C9A227]/50 transition-colors appearance-none cursor-pointer"
               >
                 {WEATHER_OPTIONS.map((w) => (
                   <option key={w} value={w} className="bg-[#1a1a1a]">{w}</option>

@@ -50,7 +50,7 @@ function statusLabel(status: JobStatus): string {
 function statusIcon(status: JobStatus) {
   switch (status) {
     case 'PENDING': return <Clock className="h-4 w-4 text-white/40" />
-    case 'PROCESSING': return <Loader2 className="h-4 w-4 text-[#E50914] animate-spin" />
+    case 'PROCESSING': return <Loader2 className="h-4 w-4 text-[#C9A227] animate-spin" />
     case 'COMPLETED': return <CheckCircle2 className="h-4 w-4 text-green-400" />
     case 'FAILED': return <XCircle className="h-4 w-4 text-red-400" />
     case 'CANCELLED': return <AlertCircle className="h-4 w-4 text-yellow-400" />
@@ -133,7 +133,7 @@ export default async function AdminTranscodingPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {[
             { label: 'En attente', value: stats.pending, icon: Clock, color: 'text-white/60', bg: 'bg-white/5' },
-            { label: 'En cours', value: stats.processing, icon: Activity, color: 'text-[#E50914]', bg: 'bg-[#E50914]/10' },
+            { label: 'En cours', value: stats.processing, icon: Activity, color: 'text-[#C9A227]', bg: 'bg-[#C9A227]/10' },
             { label: 'Terminés', value: stats.completed, icon: CheckCircle2, color: 'text-green-400', bg: 'bg-green-500/10' },
             { label: 'Échoués', value: stats.failed, icon: XCircle, color: 'text-red-400', bg: 'bg-red-500/10' },
             { label: 'Annulés', value: stats.cancelled, icon: AlertCircle, color: 'text-yellow-400', bg: 'bg-yellow-500/10' },
@@ -171,12 +171,12 @@ export default async function AdminTranscodingPage() {
       {activeJobs.length > 0 && (
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <Activity className="h-4 w-4 text-[#E50914]" />
+            <Activity className="h-4 w-4 text-[#C9A227]" />
             <h2 className="text-white font-semibold">Jobs en cours ({activeJobs.length})</h2>
           </div>
           <div className="space-y-3">
             {activeJobs.map((job) => (
-              <Card key={job.id} className="border-[#E50914]/20 bg-[#E50914]/5">
+              <Card key={job.id} className="border-[#C9A227]/20 bg-[#C9A227]/5">
                 <CardContent className="p-5">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                     <div className="flex items-center gap-3 flex-1 min-w-0">
@@ -422,7 +422,7 @@ export default async function AdminTranscodingPage() {
                 key={p.key}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10"
               >
-                <span className="text-[#E50914] text-xs font-mono font-semibold">{p.key}</span>
+                <span className="text-[#C9A227] text-xs font-mono font-semibold">{p.key}</span>
                 <span className="text-white/40 text-xs">{p.label}</span>
                 <span className="text-white/20 text-[10px]">{p.resolution}</span>
                 <span className="text-white/30 text-[10px] font-mono">{p.bitrate}</span>

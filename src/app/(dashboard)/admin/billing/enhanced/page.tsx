@@ -13,7 +13,7 @@ import {
   Tooltip, ResponsiveContainer, PieChart as RPieChart, Pie, Cell, Legend,
 } from 'recharts'
 
-const COLORS = ['#E50914', '#3B82F6', '#8B5CF6', '#10B981', '#F59E0B', '#EC4899']
+const COLORS = ['#C9A227', '#3B82F6', '#8B5CF6', '#10B981', '#F59E0B', '#EC4899']
 
 interface BillingData {
   totalRevenue: number
@@ -107,7 +107,7 @@ export default function EnhancedBillingPage() {
               <YAxis tick={{ fontSize: 11 }} />
               <Tooltip />
               <Area type="monotone" dataKey="revenue" stackId="1" stroke="#10B981" fill="#10B981" fillOpacity={0.2} name="Revenue" />
-              <Area type="monotone" dataKey="cost" stackId="2" stroke="#E50914" fill="#E50914" fillOpacity={0.1} name="Coût" />
+              <Area type="monotone" dataKey="cost" stackId="2" stroke="#C9A227" fill="#C9A227" fillOpacity={0.1} name="Coût" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -149,7 +149,7 @@ export default function EnhancedBillingPage() {
               <XAxis dataKey="name" tick={{ fontSize: 10 }} />
               <YAxis tick={{ fontSize: 11 }} />
               <Tooltip />
-              <Bar dataKey="credits" fill="#E50914" radius={[4, 4, 0, 0]} name="Credits" />
+              <Bar dataKey="credits" fill="#C9A227" radius={[4, 4, 0, 0]} name="Credits" />
             </BarChart>
           </ResponsiveContainer>
         )}
@@ -168,7 +168,7 @@ export default function EnhancedBillingPage() {
                 <p className="text-sm font-medium text-white">{user.displayName || 'Anonymous'}</p>
                 <p className="text-[10px] text-white/50">{user.requestCount} requests</p>
               </div>
-              <p className="text-sm font-semibold text-[#E50914]">{microToCredits(user.totalSpent).toFixed(2)} cr</p>
+              <p className="text-sm font-semibold text-[#C9A227]">{microToCredits(user.totalSpent).toFixed(2)} cr</p>
             </div>
           ))}
           {data.topUsers.length === 0 && (

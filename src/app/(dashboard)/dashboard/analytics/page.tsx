@@ -113,7 +113,7 @@ export default async function PersonalAnalyticsPage() {
                       <Bot className="h-4 w-4" style={{ color: item.agent?.color || '#8B5CF6' }} />
                     </div>
                     <span className="text-sm font-medium text-white flex-1">{item.agent?.name || 'Unknown'}</span>
-                    <span className="text-sm font-semibold text-[#E50914]">{item.count}x</span>
+                    <span className="text-sm font-semibold text-[#C9A227]">{item.count}x</span>
                   </div>
                 ))}
               </div>
@@ -131,7 +131,7 @@ export default async function PersonalAnalyticsPage() {
               <div className="space-y-4">
                 <div>
                   <p className="text-xs text-white/50 uppercase tracking-wider">Solde actuel</p>
-                  <p className="text-3xl font-bold text-[#E50914]">{microToCredits(creditAccount.balance).toFixed(2)} <span className="text-sm text-white/50">crédits</span></p>
+                  <p className="text-3xl font-bold text-[#C9A227]">{microToCredits(creditAccount.balance).toFixed(2)} <span className="text-sm text-white/50">crédits</span></p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>

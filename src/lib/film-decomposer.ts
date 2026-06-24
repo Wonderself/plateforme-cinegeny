@@ -441,8 +441,8 @@ export function generateRiskAssessment(
 
 /** Category colors for charts */
 export const BUDGET_CATEGORY_COLORS: Record<string, string> = {
-  SCRIPT: '#E50914',
-  PREVIZ: '#FF2D2D',
+  SCRIPT: '#C9A227',
+  PREVIZ: '#E8C766',
   VFX: '#8B5CF6',
   ANIMATION: '#3B82F6',
   SOUND: '#10B981',

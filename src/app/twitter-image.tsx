@@ -30,7 +30,7 @@ export default async function TwitterImage() {
             width: '800px',
             height: '400px',
             borderRadius: '50%',
-            background: 'radial-gradient(ellipse, rgba(229,9,20,0.12) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(201,162,39,0.12) 0%, transparent 70%)',
           }}
         />
 
@@ -42,7 +42,7 @@ export default async function TwitterImage() {
             left: 0,
             right: 0,
             height: '3px',
-            background: 'linear-gradient(90deg, transparent, #E50914, transparent)',
+            background: 'linear-gradient(90deg, transparent, #C9A227, transparent)',
           }}
         />
 
@@ -54,7 +54,7 @@ export default async function TwitterImage() {
             left: 0,
             right: 0,
             height: '3px',
-            background: 'linear-gradient(90deg, transparent, #E50914, transparent)',
+            background: 'linear-gradient(90deg, transparent, #C9A227, transparent)',
           }}
         />
 
@@ -67,12 +67,12 @@ export default async function TwitterImage() {
             width: '80px',
             height: '80px',
             borderRadius: '20px',
-            background: 'rgba(229,9,20,0.12)',
-            border: '2px solid rgba(229,9,20,0.3)',
+            background: 'rgba(201,162,39,0.12)',
+            border: '2px solid rgba(201,162,39,0.3)',
             marginBottom: '32px',
           }}
         >
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#E50914" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C9A227" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="2" y="2" width="20" height="20" rx="2" />
             <path d="M7 2v20" />
             <path d="M17 2v20" />
@@ -90,7 +90,7 @@ export default async function TwitterImage() {
             fontSize: '72px',
             fontWeight: 800,
             letterSpacing: '6px',
-            background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 40%, #E50914 70%, #B8960C 100%)',
+            background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 40%, #C9A227 70%, #B8960C 100%)',
             backgroundClip: 'text',
             color: 'transparent',
             marginBottom: '20px',
@@ -105,7 +105,7 @@ export default async function TwitterImage() {
           style={{
             width: '120px',
             height: '2px',
-            background: 'linear-gradient(90deg, transparent, #E50914, transparent)',
+            background: 'linear-gradient(90deg, transparent, #C9A227, transparent)',
             marginBottom: '24px',
           }}
         />
@@ -142,7 +142,7 @@ export default async function TwitterImage() {
             position: 'absolute',
             bottom: '30px',
             fontSize: '16px',
-            color: 'rgba(229,9,20,0.5)',
+            color: 'rgba(201,162,39,0.5)',
             letterSpacing: '3px',
           }}
         >

@@ -102,7 +102,7 @@ export interface DiscussionCategory {
 }
 
 export const DISCUSSION_CATEGORIES: DiscussionCategory[] = [
-  { id: 'film-analysis', label: 'Analyse Filmique', icon: 'film', color: '#E50914', description: 'Décortiquer un film en profondeur', defaultAgent: 'cg-cine-critic' },
+  { id: 'film-analysis', label: 'Analyse Filmique', icon: 'film', color: '#C9A227', description: 'Décortiquer un film en profondeur', defaultAgent: 'cg-cine-critic' },
   { id: 'philosophy', label: 'Philosophie', icon: 'brain', color: '#7C3AED', description: 'Cinéma et pensée philosophique', defaultAgent: 'cg-cine-philosopher' },
   { id: 'ethics', label: 'Éthique', icon: 'shield', color: '#DC2626', description: 'Questions éthiques de la représentation', defaultAgent: 'cg-cine-philosopher' },
   { id: 'history', label: 'Histoire', icon: 'book-open', color: '#B45309', description: 'Mouvements et évolution du cinéma', defaultAgent: 'cg-cine-historian' },

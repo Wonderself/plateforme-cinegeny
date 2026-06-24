@@ -195,7 +195,7 @@ export default function DevelopersPage() {
           {/* Base URL */}
           <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
             <span className="text-xs text-white/30">Base URL</span>
-            <code className="text-sm text-[#E50914] font-mono">{BASE_URL}</code>
+            <code className="text-sm text-[#C9A227] font-mono">{BASE_URL}</code>
           </div>
         </div>
 
@@ -234,7 +234,7 @@ export default function DevelopersPage() {
                           {endpoint.params.map((param) => (
                             <tr key={param.name} className="border-b border-white/[0.03] last:border-0">
                               <td className="px-4 py-2.5">
-                                <code className="text-xs text-[#E50914] font-mono">{param.name}</code>
+                                <code className="text-xs text-[#C9A227] font-mono">{param.name}</code>
                               </td>
                               <td className="px-4 py-2.5">
                                 <span className="text-xs text-blue-400/70">{param.type}</span>
@@ -343,7 +343,7 @@ curl -s "${BASE_URL}/contributors?limit=5" | jq .`}</code>
             </h4>
             <p className="text-xs text-white/40 leading-relaxed">
               Toutes les reponses sont en JSON. En cas d&apos;erreur,
-              le format est <code className="text-[#E50914]">{`{ "error": "message" }`}</code> avec le code HTTP
+              le format est <code className="text-[#C9A227]">{`{ "error": "message" }`}</code> avec le code HTTP
               correspondant (404, 500, etc.).
             </p>
           </div>
@@ -354,14 +354,14 @@ curl -s "${BASE_URL}/contributors?limit=5" | jq .`}</code>
           <div className="inline-flex flex-col sm:flex-row items-center gap-4">
             <Link
               href="/register"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold transition-all duration-500 text-sm shadow-lg shadow-[#E50914]/20 hover:shadow-[#E50914]/30 hover:scale-[1.02]"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold transition-all duration-500 text-sm shadow-lg shadow-[#C9A227]/20 hover:shadow-[#C9A227]/30 hover:scale-[1.02]"
             >
               <Zap className="h-4 w-4" />
               Creer un Compte
             </Link>
             <Link
               href="/roadmap"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl border border-white/[0.08] hover:border-[#E50914]/30 text-white/50 hover:text-white font-semibold transition-all duration-500 text-sm hover:bg-white/[0.02]"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl border border-white/[0.08] hover:border-[#C9A227]/30 text-white/50 hover:text-white font-semibold transition-all duration-500 text-sm hover:bg-white/[0.02]"
             >
               Voir la Roadmap
               <ChevronRight className="h-4 w-4" />

@@ -17,9 +17,9 @@ export function LumensCounter() {
   return (
     <Link
       href="/lumens"
-      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-500 hover:text-[#E50914] hover:bg-amber-50 transition-all"
+      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-500 hover:text-[#C9A227] hover:bg-amber-50 transition-all"
     >
-      <Sun className="h-4 w-4 text-[#E50914]" />
+      <Sun className="h-4 w-4 text-[#C9A227]" />
       <span className="font-medium">
         {lumens === null ? (
           <span className="inline-block w-6 h-4 rounded bg-gray-100 animate-pulse" />

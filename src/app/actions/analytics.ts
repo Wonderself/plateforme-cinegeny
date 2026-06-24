@@ -360,7 +360,7 @@ export async function getRevenueStats(userId: string) {
     monthlyData,
     projection,
     revenueBySource: [
-      { label: 'Taches', value: Math.round(taskRevenue * 100) / 100, color: '#E50914' },
+      { label: 'Taches', value: Math.round(taskRevenue * 100) / 100, color: '#C9A227' },
       { label: 'Streaming', value: Math.round(streamingRevenue * 100) / 100, color: '#22c55e' },
       { label: 'Referrals', value: referralTokens, color: '#3b82f6' },
       { label: 'Bonus', value: lumenEarned - referralTokens, color: '#a855f7' },

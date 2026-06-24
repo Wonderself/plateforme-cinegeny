@@ -12,7 +12,7 @@ export default function TermsPage() {
       <div className="container mx-auto max-w-4xl">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 text-[#E50914] text-xs font-medium tracking-wider uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 text-[#C9A227] text-xs font-medium tracking-wider uppercase mb-6">
             Document Juridique
           </div>
           <h1
@@ -31,7 +31,7 @@ export default function TermsPage() {
           <section>
             <p className="text-white/70 leading-relaxed">
               Les présentes Conditions Générales d&apos;Utilisation (ci-après « CGU ») régissent
-              l&apos;accès et l&apos;utilisation de la plateforme <strong className="text-[#E50914]">CINEGEN</strong> (ci-après
+              l&apos;accès et l&apos;utilisation de la plateforme <strong className="text-[#C9A227]">CINEGEN</strong> (ci-après
               « la Plateforme »), éditée par la société CINEGEN Studio, SAS au capital
               de 10 000 €, immatriculée au RCS de Paris sous le numéro [à compléter], dont le
               siège social est situé à [adresse à compléter], Paris, France.
@@ -46,7 +46,7 @@ export default function TermsPage() {
           {/* Article 1 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 1 — Objet du service
             </h2>
@@ -72,7 +72,7 @@ export default function TermsPage() {
           {/* Article 2 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 2 — Inscription et comptes utilisateurs
             </h2>
@@ -104,14 +104,14 @@ export default function TermsPage() {
               connexion. Toute activité réalisée depuis son compte est réputée effectuée par lui.
               En cas de suspicion d&apos;utilisation frauduleuse, l&apos;utilisateur doit en informer
               CINEGEN sans délai à l&apos;adresse{' '}
-              <span className="text-[#E50914]">security@cinegen.studio</span>.
+              <span className="text-[#C9A227]">security@cinegen.studio</span>.
             </p>
           </section>
 
           {/* Article 3 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 3 — Système de crédits « Lumens »
             </h2>
@@ -144,7 +144,7 @@ export default function TermsPage() {
               de Lumens pour exercer son droit de rétractation et obtenir un remboursement
               intégral, à condition que les Lumens n&apos;aient pas été utilisés. La demande de
               remboursement doit être adressée à{' '}
-              <span className="text-[#E50914]">billing@cinegen.studio</span>.
+              <span className="text-[#C9A227]">billing@cinegen.studio</span>.
             </p>
 
             <h3 className="text-lg font-semibold text-white/90 mb-2 mt-4">3.5. Conversion en euros</h3>
@@ -160,7 +160,7 @@ export default function TermsPage() {
           {/* Article 4 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 4 — Propriété intellectuelle
             </h2>
@@ -205,7 +205,7 @@ export default function TermsPage() {
           {/* Article 5 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 5 — Obligations des utilisateurs
             </h2>
@@ -232,7 +232,7 @@ export default function TermsPage() {
           {/* Article 6 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 6 — Responsabilité de la plateforme
             </h2>
@@ -265,7 +265,7 @@ export default function TermsPage() {
           {/* Article 7 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 7 — Paiements et rémunération
             </h2>
@@ -304,7 +304,7 @@ export default function TermsPage() {
           {/* Article 8 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 8 — Données personnelles
             </h2>
@@ -313,7 +313,7 @@ export default function TermsPage() {
               Règlement Général sur la Protection des Données (RGPD) et de la loi Informatique
               et Libertés. Pour connaître en détail les conditions de traitement de vos données,
               veuillez consulter notre{' '}
-              <Link href="/legal/privacy" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors">
+              <Link href="/legal/privacy" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors">
                 Politique de Confidentialité
               </Link>.
             </p>
@@ -322,7 +322,7 @@ export default function TermsPage() {
           {/* Article 9 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 9 — Modification des CGU
             </h2>
@@ -343,14 +343,14 @@ export default function TermsPage() {
           {/* Article 10 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 10 — Résiliation
             </h2>
             <p className="text-white/70 leading-relaxed">
               L&apos;utilisateur peut résilier son compte à tout moment depuis son espace
               personnel ou en contactant le support à{' '}
-              <span className="text-[#E50914]">support@cinegen.studio</span>. La résiliation
+              <span className="text-[#C9A227]">support@cinegen.studio</span>. La résiliation
               entraîne la suppression du compte dans un délai de 30 jours, sous réserve de
               la conversion des Lumens restants.
             </p>
@@ -364,7 +364,7 @@ export default function TermsPage() {
           {/* Article 11 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 11 — Droit applicable et juridiction
             </h2>
@@ -385,7 +385,7 @@ export default function TermsPage() {
           {/* Article 12 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               Article 12 — Contact
             </h2>
@@ -393,7 +393,7 @@ export default function TermsPage() {
               Pour toute question relative aux présentes CGU, vous pouvez nous contacter :
             </p>
             <ul className="text-white/70 leading-relaxed mt-3 space-y-1 ml-4">
-              <li>Par email : <span className="text-[#E50914]">legal@cinegen.studio</span></li>
+              <li>Par email : <span className="text-[#C9A227]">legal@cinegen.studio</span></li>
               <li>Par courrier : CINEGEN Studio — [adresse à compléter], 75000 Paris, France</li>
             </ul>
           </section>
@@ -410,11 +410,11 @@ export default function TermsPage() {
 
         {/* Navigation */}
         <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm">
-          <Link href="/legal/privacy" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors duration-300">
+          <Link href="/legal/privacy" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors duration-300">
             Politique de Confidentialité
           </Link>
           <span className="text-white/10">|</span>
-          <Link href="/legal/cookies" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors duration-300">
+          <Link href="/legal/cookies" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors duration-300">
             Politique Cookies
           </Link>
         </div>

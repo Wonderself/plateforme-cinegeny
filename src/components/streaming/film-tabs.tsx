@@ -45,7 +45,7 @@ type Props = {
 }
 
 const ROLE_COLORS: Record<string, { bg: string; text: string; border: string }> = {
-  LEAD: { bg: 'bg-[#E50914]/20', text: 'text-[#E50914]', border: 'border-[#E50914]/30' },
+  LEAD: { bg: 'bg-[#C9A227]/20', text: 'text-[#C9A227]', border: 'border-[#C9A227]/30' },
   SUPPORTING: { bg: 'bg-gray-400/20', text: 'text-gray-300', border: 'border-gray-400/30' },
   CAMEO: { bg: 'bg-emerald-500/20', text: 'text-emerald-400', border: 'border-emerald-500/30' },
   VOICE: { bg: 'bg-purple-500/20', text: 'text-purple-400', border: 'border-purple-500/30' },
@@ -93,7 +93,7 @@ const BONUS_TYPE_COLORS: Record<string, string> = {
   CONCEPT_ART: 'bg-pink-500/20 text-pink-400 border-pink-500/30',
   SOUNDTRACK: 'bg-indigo-500/20 text-indigo-400 border-indigo-500/30',
   MAKING_OF: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-  AUDITION_TAPE: 'bg-[#E50914]/20 text-[#E50914] border-[#E50914]/30',
+  AUDITION_TAPE: 'bg-[#C9A227]/20 text-[#C9A227] border-[#C9A227]/30',
 }
 
 function formatDuration(seconds: number): string {
@@ -135,7 +135,7 @@ export function FilmTabs({ synopsis, tags, castRoles, bonusContent }: Props) {
             className={`
               relative px-5 py-3 text-sm font-medium transition-all duration-200
               ${activeTab === tab.id
-                ? 'text-[#E50914]'
+                ? 'text-[#C9A227]'
                 : 'text-white/40 hover:text-white/70'
               }
             `}
@@ -146,7 +146,7 @@ export function FilmTabs({ synopsis, tags, castRoles, bonusContent }: Props) {
                 <span className={`
                   text-[10px] px-1.5 py-0.5 rounded-full
                   ${activeTab === tab.id
-                    ? 'bg-[#E50914]/20 text-[#E50914]'
+                    ? 'bg-[#C9A227]/20 text-[#C9A227]'
                     : 'bg-white/10 text-white/40'
                   }
                 `}>
@@ -155,7 +155,7 @@ export function FilmTabs({ synopsis, tags, castRoles, bonusContent }: Props) {
               )}
             </span>
             {activeTab === tab.id && (
-              <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E50914]" />
+              <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C9A227]" />
             )}
           </button>
         ))}
@@ -206,8 +206,8 @@ export function FilmTabs({ synopsis, tags, castRoles, bonusContent }: Props) {
                             className="h-14 w-14 rounded-full object-cover border-2 border-white/10"
                           />
                         ) : (
-                          <div className="h-14 w-14 rounded-full bg-[#E50914]/10 flex items-center justify-center border-2 border-[#E50914]/20">
-                            <span className="text-[#E50914] font-bold text-lg">
+                          <div className="h-14 w-14 rounded-full bg-[#C9A227]/10 flex items-center justify-center border-2 border-[#C9A227]/20">
+                            <span className="text-[#C9A227] font-bold text-lg">
                               {cr.actor.name.charAt(0)}
                             </span>
                           </div>
@@ -217,11 +217,11 @@ export function FilmTabs({ synopsis, tags, castRoles, bonusContent }: Props) {
                       <div className="flex-1 min-w-0">
                         <Link
                           href={`/actors/${cr.actor.slug}`}
-                          className="text-white font-medium text-sm hover:text-[#E50914] transition-colors"
+                          className="text-white font-medium text-sm hover:text-[#C9A227] transition-colors"
                         >
                           {cr.actor.name}
                         </Link>
-                        <p className="text-[#E50914]/80 text-xs mt-0.5">
+                        <p className="text-[#C9A227]/80 text-xs mt-0.5">
                           &laquo; {cr.characterName} &raquo;
                         </p>
                         <div className="flex items-center gap-2 mt-2">
@@ -279,7 +279,7 @@ export function FilmTabs({ synopsis, tags, castRoles, bonusContent }: Props) {
                       {/* Play overlay for video types */}
                       {hasVideo && (
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                          <div className="h-12 w-12 rounded-full bg-[#E50914]/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="h-12 w-12 rounded-full bg-[#C9A227]/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <Play className="h-5 w-5 text-black ml-0.5" />
                           </div>
                         </div>
@@ -287,7 +287,7 @@ export function FilmTabs({ synopsis, tags, castRoles, bonusContent }: Props) {
                       {/* Premium badge */}
                       {bc.isPremium && (
                         <div className="absolute top-2 right-2">
-                          <Badge className="text-[9px] bg-[#E50914] text-white border-none px-1.5 py-0">
+                          <Badge className="text-[9px] bg-[#C9A227] text-white border-none px-1.5 py-0">
                             PREMIUM
                           </Badge>
                         </div>

@@ -56,7 +56,7 @@ export function LandingMobileMenu() {
                 <Link
                   href="/register"
                   onClick={() => setOpen(false)}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-md text-sm font-medium text-white bg-[#E50914] hover:opacity-90 transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-md text-sm font-medium text-white bg-[#C9A227] hover:opacity-90 transition-all"
                 >
                   <UserPlus className="h-4 w-4" />
                   S&apos;inscrire

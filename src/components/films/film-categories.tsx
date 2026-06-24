@@ -14,7 +14,8 @@ import {
   Briefcase,
   CheckSquare,
 } from 'lucide-react'
-import { ALL_FILMS, NAMED_POSTERS, type FilmData } from '@/data/films'
+import { NAMED_POSTERS, type FilmData } from '@/data/films'
+import { useLiveCatalog } from '@/lib/catalog-state'
 
 /* ── Helpers ── */
 
@@ -67,7 +68,7 @@ function categorizeFilms(films: FilmData[]) {
 
 function GenreBadge({ genre }: { genre: string }) {
   return (
-    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-[#E50914]/20 text-[#E50914] border border-[#E50914]/30">
+    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-[#C9A227]/20 text-[#C9A227] border border-[#C9A227]/30">
       {genre}
     </span>
   )
@@ -78,11 +79,11 @@ function FundingBar({ pct }: { pct: number }) {
     <div className="space-y-1.5">
       <div className="flex justify-between text-[11px]">
         <span className="text-white/40">Funding</span>
-        <span className="text-[#E50914] font-medium">{Math.round(pct)}%</span>
+        <span className="text-[#C9A227] font-medium">{Math.round(pct)}%</span>
       </div>
       <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] rounded-full transition-all"
+          className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all"
           style={{ width: `${Math.min(pct, 100)}%` }}
         />
       </div>
@@ -95,11 +96,11 @@ function ProgressBar({ pct, label }: { pct: number; label?: string }) {
     <div className="space-y-1.5">
       <div className="flex justify-between text-[11px]">
         <span className="text-white/40">{label ?? 'Progress'}</span>
-        <span className="text-[#E50914] font-medium">{Math.round(pct)}%</span>
+        <span className="text-[#C9A227] font-medium">{Math.round(pct)}%</span>
       </div>
       <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] rounded-full transition-all"
+          className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all"
           style={{ width: `${Math.min(pct, 100)}%` }}
         />
       </div>
@@ -113,9 +114,9 @@ function StandardCard({ film }: { film: FilmData }) {
   const poster = getPoster(film)
   return (
     <Link href={`/films/${film.slug}`}>
-      <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-[#E50914]/30 transition-all duration-500 h-full flex flex-col">
+      <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-[#C9A227]/30 transition-all duration-500 h-full flex flex-col">
         {/* Poster */}
-        <div className="relative aspect-[2/3] bg-gradient-to-br from-[#E50914]/[0.06] to-white/[0.03] shrink-0">
+        <div className="relative aspect-[2/3] bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03] shrink-0">
           {poster ? (
             <Image
               src={poster}
@@ -127,7 +128,7 @@ function StandardCard({ film }: { film: FilmData }) {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <Film className="h-14 w-14 text-[#E50914]/20" />
+              <Film className="h-14 w-14 text-[#C9A227]/20" />
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
@@ -138,7 +139,7 @@ function StandardCard({ film }: { film: FilmData }) {
 
         {/* Content */}
         <div className="p-5 flex flex-col flex-1">
-          <h3 className="font-semibold text-sm mb-2 text-white group-hover:text-[#E50914] transition-colors line-clamp-2">
+          <h3 className="font-semibold text-sm mb-2 text-white group-hover:text-[#C9A227] transition-colors line-clamp-2">
             {film.title}
           </h3>
           <p className="text-[11px] text-white/50 mb-4 line-clamp-2 flex-1">{film.synopsis}</p>
@@ -146,7 +147,7 @@ function StandardCard({ film }: { film: FilmData }) {
           {film.fundingPct < 100 && <div className="mt-2"><FundingBar pct={film.fundingPct} /></div>}
           <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/[0.06]">
             <span className="text-[11px] text-white/40">{film.director}</span>
-            <ChevronRight className="h-4 w-4 text-[#E50914]/50 group-hover:text-[#E50914] transition-colors" />
+            <ChevronRight className="h-4 w-4 text-[#C9A227]/50 group-hover:text-[#C9A227] transition-colors" />
           </div>
         </div>
       </div>
@@ -159,8 +160,8 @@ function StandardCard({ film }: { film: FilmData }) {
 function TrailerCard({ film }: { film: FilmData }) {
   const poster = getPoster(film)
   return (
-    <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-[#E50914]/30 transition-all duration-500">
-      <div className="relative aspect-video bg-gradient-to-br from-[#E50914]/[0.06] to-white/[0.03]">
+    <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-[#C9A227]/30 transition-all duration-500">
+      <div className="relative aspect-video bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03]">
         {poster ? (
           <Image
             src={poster}
@@ -172,7 +173,7 @@ function TrailerCard({ film }: { film: FilmData }) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <Film className="h-16 w-16 text-[#E50914]/20" />
+            <Film className="h-16 w-16 text-[#C9A227]/20" />
           </div>
         )}
 
@@ -181,7 +182,7 @@ function TrailerCard({ film }: { film: FilmData }) {
 
         {/* Play button */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-16 h-16 rounded-full bg-[#E50914]/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#E50914]/30">
+          <div className="w-16 h-16 rounded-full bg-[#C9A227]/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#C9A227]/30">
             <Play className="h-7 w-7 text-white ml-1" fill="white" />
           </div>
         </div>
@@ -216,7 +217,7 @@ function TrailerCard({ film }: { film: FilmData }) {
 
       {/* Watch Trailer button */}
       <div className="p-4">
-        <button className="w-full py-2.5 rounded-xl bg-[#E50914]/10 border border-[#E50914]/30 text-[#E50914] text-sm font-medium hover:bg-[#E50914]/20 transition-colors flex items-center justify-center gap-2">
+        <button className="w-full py-2.5 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-sm font-medium hover:bg-[#C9A227]/20 transition-colors flex items-center justify-center gap-2">
           <Play className="h-4 w-4" />
           Watch Trailer
         </button>
@@ -233,9 +234,9 @@ function VoteCard({ film }: { film: FilmData }) {
   const approvalPct = 40 + seededRandom(film.slug + 'a') % 45 // 40-84%
 
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-[#E50914]/30 transition-all duration-500">
+    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-[#C9A227]/30 transition-all duration-500">
       {/* Poster */}
-      <div className="relative aspect-[3/2] bg-gradient-to-br from-[#E50914]/[0.06] to-white/[0.03] shrink-0">
+      <div className="relative aspect-[3/2] bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03] shrink-0">
         {poster ? (
           <Image
             src={poster}
@@ -247,7 +248,7 @@ function VoteCard({ film }: { film: FilmData }) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <Film className="h-12 w-12 text-[#E50914]/20" />
+            <Film className="h-12 w-12 text-[#C9A227]/20" />
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
@@ -286,7 +287,7 @@ function VoteCard({ film }: { film: FilmData }) {
 
         {/* Stake info */}
         <div className="text-center text-[11px] text-white/40 py-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
-          Stake <span className="text-[#E50914] font-medium">5 points</span> to vote
+          Stake <span className="text-[#C9A227] font-medium">5 points</span> to vote
         </div>
 
         {/* Vote buttons */}
@@ -323,7 +324,8 @@ function SectionHeader({ title, count }: { title: string; count: number }) {
 export default function FilmCategories() {
   const [activeTab, setActiveTab] = useState<CategoryKey>('all')
 
-  const categories = useMemo(() => categorizeFilms(ALL_FILMS), [])
+  const liveFilms = useLiveCatalog()
+  const categories = useMemo(() => categorizeFilms(liveFilms), [liveFilms])
 
   const showSection = (key: CategoryKey) => activeTab === 'all' || activeTab === key
 
@@ -339,7 +341,7 @@ export default function FilmCategories() {
             Catalogue{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 40%, #E50914 70%, #B8960C 100%)',
+                background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 40%, #C9A227 70%, #B8960C 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -369,7 +371,7 @@ export default function FilmCategories() {
                   >
                     {tab.label}
                     {isActive && (
-                      <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#E50914] rounded-full" />
+                      <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#C9A227] rounded-full" />
                     )}
                   </button>
                 )

@@ -60,7 +60,7 @@ export const TIER_CONFIG: Record<AgentTier, { label: string; labelEn: string; mo
 
 export const CATEGORY_CONFIG: Record<AgentCategory, { label: string; icon: string; color: string }> = {
   WRITING: { label: 'Écriture', icon: 'pen-tool', color: '#3B82F6' },
-  DIRECTING: { label: 'Réalisation', icon: 'clapperboard', color: '#E50914' },
+  DIRECTING: { label: 'Réalisation', icon: 'clapperboard', color: '#C9A227' },
   PRODUCTION: { label: 'Production', icon: 'briefcase', color: '#10B981' },
   CASTING: { label: 'Casting', icon: 'users', color: '#F59E0B' },
   CINEMATOGRAPHY: { label: 'Photographie', icon: 'camera', color: '#8B5CF6' },
@@ -112,7 +112,7 @@ Tu écris en français par défaut sauf si demandé autrement. Tu es créatif ma
     category: 'DIRECTING',
     defaultModel: 'claude-sonnet-4-6',
     icon: 'clapperboard',
-    color: '#E50914',
+    color: '#C9A227',
     capabilities: ['shot_list', 'directing_notes', 'scene_blocking', 'visual_references', 'storyboard_notes'],
     inputTypes: ['text', 'image', 'document'],
     outputTypes: ['text', 'structured'],

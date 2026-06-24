@@ -16,8 +16,8 @@ export default function AgentsFeaturePage() {
     <div className="min-h-screen bg-[#0A0A0A]">
       <div className="max-w-5xl mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 mb-6"><Bot className="h-4 w-4 text-[#E50914]" /><span className="text-sm font-medium text-[#E50914]">113 Agents</span></div>
-          <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-4">Agents IA <span className="text-[#E50914]">Cinéma</span></h1>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6"><Bot className="h-4 w-4 text-[#C9A227]" /><span className="text-sm font-medium text-[#C9A227]">113 Agents</span></div>
+          <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-4">Agents IA <span className="text-[#C9A227]">Cinéma</span></h1>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">Une équipe complète d&apos;experts IA couvrant chaque métier du cinéma. Du scénario à la distribution.</p>
         </div>
         {tiers.map(({ tier, icon: TIcon, agents }) => {
@@ -41,7 +41,7 @@ export default function AgentsFeaturePage() {
           )
         })}
         <div className="text-center mt-12">
-          <Link href="/agents" className="inline-flex items-center gap-2 px-8 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl transition-colors"><Bot className="h-5 w-5" />Explorer tous les agents</Link>
+          <Link href="/agents" className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl transition-colors"><Bot className="h-5 w-5" />Explorer tous les agents</Link>
         </div>
       </div>
     </div>

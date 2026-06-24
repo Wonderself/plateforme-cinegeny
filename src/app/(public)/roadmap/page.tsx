@@ -255,14 +255,14 @@ const roadmap: Phase[] = [
 
 const STATUS_CONFIG = {
   done: { icon: CheckCircle, color: 'text-green-400', bg: 'bg-green-500/10 border-green-500/20', label: 'Termine', badge: 'bg-green-500/15 text-green-400 border-green-500/20' },
-  in_progress: { icon: Clock, color: 'text-[#E50914]', bg: 'bg-[#E50914]/10 border-[#E50914]/20', label: 'En cours', badge: 'bg-[#E50914]/15 text-[#E50914] border-[#E50914]/20' },
+  in_progress: { icon: Clock, color: 'text-[#C9A227]', bg: 'bg-[#C9A227]/10 border-[#C9A227]/20', label: 'En cours', badge: 'bg-[#C9A227]/15 text-[#C9A227] border-[#C9A227]/20' },
   todo: { icon: Circle, color: 'text-white/30', bg: 'bg-white/5 border-white/10', label: 'A faire', badge: 'bg-white/5 text-white/30 border-white/10' },
 }
 
 const DIFFICULTY_CONFIG: Record<string, { label: string; color: string; text: string }> = {
   trivial: { label: 'Très facile', color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', text: '⚡' },
   easy: { label: 'Facile', color: 'bg-green-500/10 text-green-400 border-green-500/20', text: '✓' },
-  medium: { label: 'Moyen', color: 'bg-[#E50914]/10 text-[#E50914] border-[#E50914]/20', text: '⭐' },
+  medium: { label: 'Moyen', color: 'bg-[#C9A227]/10 text-[#C9A227] border-[#C9A227]/20', text: '⭐' },
   guided: { label: 'Guidé', color: 'bg-blue-500/10 text-blue-400 border-blue-500/20', text: '📘' },
 }
 
@@ -276,13 +276,13 @@ export default function RoadmapPage() {
     <div className="min-h-screen py-16 sm:py-24 px-4 sm:px-6 lg:px-8 relative">
       {/* Ambient background */}
       <div className="fixed inset-0 pointer-events-none -z-10">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#E50914]/[0.03] blur-[200px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#C9A227]/[0.03] blur-[200px]" />
       </div>
 
       <div className="container mx-auto max-w-5xl">
         {/* Header */}
         <div className="text-center mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#E50914]/[0.06] border border-[#E50914]/15 text-[#E50914] text-xs sm:text-sm font-medium mb-7">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#C9A227]/[0.06] border border-[#C9A227]/15 text-[#C9A227] text-xs sm:text-sm font-medium mb-7">
             <Rocket className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             Plan de Developpement
           </div>
@@ -303,7 +303,7 @@ export default function RoadmapPage() {
           {/* Progress */}
           <div className="inline-flex flex-col items-center gap-4 p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm">
             <div className="flex items-center gap-4">
-              <div className="text-4xl sm:text-5xl font-bold text-[#E50914] font-playfair">{progressPercent}%</div>
+              <div className="text-4xl sm:text-5xl font-bold text-[#C9A227] font-playfair">{progressPercent}%</div>
               <div className="text-left">
                 <div className="text-sm text-white/50">{doneItems} / {totalItems} completes</div>
                 <div className="text-xs text-white/25">Phase {roadmap.findIndex(p => p.status === 'in_progress') + 1} en cours</div>
@@ -311,13 +311,13 @@ export default function RoadmapPage() {
             </div>
             <div className="w-full max-w-72 h-2.5 bg-white/[0.06] rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] rounded-full transition-all"
+                className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
             <div className="flex gap-6 text-xs text-white/30">
               <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-400" /> {doneItems} termines</span>
-              <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#E50914]" /> {inProgressItems} en cours</span>
+              <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#C9A227]" /> {inProgressItems} en cours</span>
               <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-white/15" /> {totalItems - doneItems - inProgressItems} a venir</span>
             </div>
           </div>
@@ -354,7 +354,7 @@ export default function RoadmapPage() {
                   <div
                     className={`h-full rounded-full transition-all duration-1000 ${
                       phase.status === 'done' ? 'bg-gradient-to-r from-green-500 to-emerald-400' :
-                      phase.status === 'in_progress' ? 'bg-gradient-to-r from-[#E50914] to-[#FF2D2D]' :
+                      phase.status === 'in_progress' ? 'bg-gradient-to-r from-[#C9A227] to-[#E8C766]' :
                       'bg-white/[0.06]'
                     }`}
                     style={{ width: `${phaseProgress}%` }}
@@ -389,7 +389,7 @@ export default function RoadmapPage() {
                               {diffConfig.text} {diffConfig.label}
                             </span>
                             {item.note && (
-                              <p className="text-[11px] text-[#E50914]/50 flex items-center gap-1">
+                              <p className="text-[11px] text-[#C9A227]/50 flex items-center gap-1">
                                 <Sparkles className="h-3 w-3 shrink-0" /> {item.note}
                               </p>
                             )}
@@ -405,18 +405,18 @@ export default function RoadmapPage() {
         </div>
 
         {/* Section separator */}
-        <div className="my-20 h-px bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent" />
+        <div className="my-20 h-px bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent" />
 
         {/* Encouraging footer */}
-        <div className="relative p-8 sm:p-12 rounded-2xl sm:rounded-3xl border border-[#E50914]/15 bg-[#E50914]/[0.03] text-center overflow-hidden backdrop-blur-sm">
+        <div className="relative p-8 sm:p-12 rounded-2xl sm:rounded-3xl border border-[#C9A227]/15 bg-[#C9A227]/[0.03] text-center overflow-hidden backdrop-blur-sm">
           {/* Background glow */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-[#E50914]/[0.04] blur-[120px]" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-[#C9A227]/[0.04] blur-[120px]" />
           </div>
 
           <div className="relative z-10">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-              <PartyPopper className="h-7 w-7 text-[#E50914]" />
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+              <PartyPopper className="h-7 w-7 text-[#C9A227]" />
             </div>
             <h3
               className="text-xl sm:text-2xl font-bold mb-4 text-white"
@@ -431,14 +431,14 @@ export default function RoadmapPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/register"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold transition-all duration-500 text-sm shadow-lg shadow-[#E50914]/20 hover:shadow-[#E50914]/30 hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold transition-all duration-500 text-sm shadow-lg shadow-[#C9A227]/20 hover:shadow-[#C9A227]/30 hover:scale-[1.02]"
               >
                 <Zap className="h-4 w-4" />
                 Rejoindre l&apos;Aventure
               </Link>
               <Link
                 href="/tasks"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl border border-white/[0.08] hover:border-[#E50914]/30 text-white/50 hover:text-white font-semibold transition-all duration-500 text-sm hover:bg-white/[0.02]"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl border border-white/[0.08] hover:border-[#C9A227]/30 text-white/50 hover:text-white font-semibold transition-all duration-500 text-sm hover:bg-white/[0.02]"
               >
                 Explorer les Taches
                 <ChevronRight className="h-4 w-4" />

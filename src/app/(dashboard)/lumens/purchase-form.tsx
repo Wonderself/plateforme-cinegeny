@@ -64,7 +64,7 @@ export function PurchaseForm() {
               <div
                 className={`relative rounded-xl border p-6 transition-all duration-300 hover:scale-[1.02] ${
                   isPopular
-                    ? 'border-[#E50914]/30 bg-[rgba(229,9,20,0.05)] shadow-[0_0_30px_rgba(229,9,20,0.08)]'
+                    ? 'border-[#C9A227]/30 bg-[rgba(201,162,39,0.05)] shadow-[0_0_30px_rgba(201,162,39,0.08)]'
                     : isBest
                     ? 'border-purple-500/20 bg-purple-500/[0.03]'
                     : 'border-white/10 bg-white/[0.02]'
@@ -76,7 +76,7 @@ export function PurchaseForm() {
                     <Badge
                       className={
                         isPopular
-                          ? 'border-[#E50914]/50 bg-[#E50914]/20 text-[#E50914]'
+                          ? 'border-[#C9A227]/50 bg-[#C9A227]/20 text-[#C9A227]'
                           : 'border-purple-500/50 bg-purple-500/20 text-purple-300'
                       }
                     >
@@ -99,7 +99,7 @@ export function PurchaseForm() {
                     {pack.amount}
                     <span className="text-sm font-normal text-white/40 ml-1">Lumens</span>
                   </div>
-                  <div className="text-2xl font-bold text-[#E50914]">
+                  <div className="text-2xl font-bold text-[#C9A227]">
                     {pack.price.toFixed(2).replace('.', ',')}&#8364;
                   </div>
                   {pack.bonus > 0 && (
@@ -115,7 +115,7 @@ export function PurchaseForm() {
                       key={feat}
                       className="flex items-center gap-2 text-xs text-white/50"
                     >
-                      <Check className="h-3.5 w-3.5 text-[#E50914] shrink-0" />
+                      <Check className="h-3.5 w-3.5 text-[#C9A227] shrink-0" />
                       {feat}
                     </li>
                   ))}

@@ -130,7 +130,7 @@ export default function MyDiscussionsPage() {
                 <Bot className="h-3.5 w-3.5" style={{ color: activeTemplate.color }} />
               </div>
             )}
-            <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm ${msg.role === 'user' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/90'}`}>
+            <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm ${msg.role === 'user' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/90'}`}>
               <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
             </div>
           </div>
@@ -151,8 +151,8 @@ export default function MyDiscussionsPage() {
       {/* Input */}
       <div className="px-4 pb-4">
         <div className="flex gap-2 items-end">
-          <textarea value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage() } }} placeholder={`Parlez à ${activeTemplate.name}...`} rows={1} className="flex-1 rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none resize-none" />
-          <button onClick={() => sendMessage()} disabled={!input.trim() || streaming} className="h-10 w-10 flex items-center justify-center rounded-xl bg-[#E50914] text-white disabled:opacity-30 shrink-0">
+          <textarea value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage() } }} placeholder={`Parlez à ${activeTemplate.name}...`} rows={1} className="flex-1 rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none resize-none" />
+          <button onClick={() => sendMessage()} disabled={!input.trim() || streaming} className="h-10 w-10 flex items-center justify-center rounded-xl bg-[#C9A227] text-white disabled:opacity-30 shrink-0">
             <Send className="h-4 w-4" />
           </button>
         </div>

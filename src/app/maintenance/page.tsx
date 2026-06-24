@@ -10,8 +10,8 @@ export default function MaintenancePage() {
     <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E50914]/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#E50914]/3 rounded-full blur-[120px]" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#C9A227]/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#C9A227]/3 rounded-full blur-[120px]" />
       </div>
 
       {/* Content */}
@@ -30,9 +30,9 @@ export default function MaintenancePage() {
 
         {/* Glassmorphism card */}
         <div className="bg-white/[0.03] border border-white/[0.06] backdrop-blur-xl rounded-2xl p-8 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E50914]/10 border border-[#E50914]/20 rounded-full">
-            <div className="w-2 h-2 rounded-full bg-[#E50914] animate-pulse" />
-            <span className="text-xs text-[#E50914] font-medium">Maintenance en cours</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#C9A227]/10 border border-[#C9A227]/20 rounded-full">
+            <div className="w-2 h-2 rounded-full bg-[#C9A227] animate-pulse" />
+            <span className="text-xs text-[#C9A227] font-medium">Maintenance en cours</span>
           </div>
 
           <h2 className="text-xl font-semibold text-white">
@@ -49,7 +49,7 @@ export default function MaintenancePage() {
             {[0, 1, 2].map((i) => (
               <div
                 key={i}
-                className="w-2 h-2 rounded-full bg-[#E50914]"
+                className="w-2 h-2 rounded-full bg-[#C9A227]"
                 style={{
                   animation: `pulse 1.5s ease-in-out ${i * 0.3}s infinite`,
                   opacity: 0.3,
@@ -61,7 +61,7 @@ export default function MaintenancePage() {
 
         {/* Contact */}
         <p className="mt-6 text-xs text-white/30">
-          Contact : <a href="mailto:contact@cinegen.studio" className="text-[#E50914]/60 hover:text-[#E50914] transition-colors">contact@cinegen.studio</a>
+          Contact : <a href="mailto:contact@cinegen.studio" className="text-[#C9A227]/60 hover:text-[#C9A227] transition-colors">contact@cinegen.studio</a>
         </p>
       </div>
 

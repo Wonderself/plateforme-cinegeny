@@ -78,7 +78,7 @@ export default async function ProfilePage() {
       icon: Star,
       label: 'Points',
       value: user.points.toLocaleString('fr-FR'),
-      color: 'text-[#E50914]',
+      color: 'text-[#C9A227]',
       bgColor: 'bg-amber-500/10 border-amber-500/20',
     },
     {
@@ -113,11 +113,11 @@ export default async function ProfilePage() {
         <div className="relative p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row items-start gap-6">
             {/* Avatar */}
-            <Avatar className="h-24 w-24 border-2 border-[#E50914]/20 shadow-lg ring-4 ring-[#E50914]/5">
+            <Avatar className="h-24 w-24 border-2 border-[#C9A227]/20 shadow-lg ring-4 ring-[#C9A227]/5">
               {user.avatarUrl && (
                 <AvatarImage src={user.avatarUrl} alt={user.displayName || 'Avatar'} />
               )}
-              <AvatarFallback className="text-lg bg-[#E50914]/10 text-[#E50914]">
+              <AvatarFallback className="text-lg bg-[#C9A227]/10 text-[#C9A227]">
                 {getInitials(user.displayName || user.email)}
               </AvatarFallback>
             </Avatar>
@@ -136,7 +136,7 @@ export default async function ProfilePage() {
                 >
                   {user.level}
                 </Badge>
-                <Badge variant="outline" className="text-[#E50914] border-[#E50914]/30">
+                <Badge variant="outline" className="text-[#C9A227] border-[#C9A227]/30">
                   {ROLE_LABELS[user.role] || user.role}
                 </Badge>
                 {user.isVerified && (
@@ -214,12 +214,12 @@ export default async function ProfilePage() {
         <div className="relative">
           {/* Level bar (light theme adaptation) */}
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-bold text-[#E50914]">{user.level}</span>
+            <span className="text-sm font-bold text-[#C9A227]">{user.level}</span>
             <span className="text-xs text-white/60">{user.points.toLocaleString('fr-FR')} points</span>
           </div>
           <div className="h-2.5 bg-white/[0.05] rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] rounded-full transition-all duration-1000"
+              className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all duration-1000"
               style={{ width: `${(() => {
                 const thresholds: Record<string, number> = { ROOKIE: 0, PRO: 500, EXPERT: 2500, VIP: 10000 }
                 const order = ['ROOKIE', 'PRO', 'EXPERT', 'VIP']
@@ -233,7 +233,7 @@ export default async function ProfilePage() {
           </div>
           <div className="flex justify-between mt-1.5">
             {['ROOKIE', 'PRO', 'EXPERT', 'VIP'].map((lvl) => (
-              <span key={lvl} className={`text-[10px] ${lvl === user.level ? 'text-[#E50914] font-bold' : 'text-white/60'}`}>
+              <span key={lvl} className={`text-[10px] ${lvl === user.level ? 'text-[#C9A227] font-bold' : 'text-white/60'}`}>
                 {lvl}
               </span>
             ))}
@@ -253,7 +253,7 @@ export default async function ProfilePage() {
             {allBadgesWithStatus.filter(b => b.earned).map((badge) => (
               <span
                 key={badge.type}
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium bg-[#E50914]/10 text-[#E50914] border border-[#E50914]/20"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/20"
                 title={badge.description}
               >
                 <span>{badge.icon}</span>
@@ -280,11 +280,11 @@ export default async function ProfilePage() {
 
       {/* ── Profile Completion CTA ── */}
       {!user.bio && user.skills.length === 0 && user.languages.length === 0 && (
-        <div className="relative overflow-hidden bg-white/5 sm:rounded-3xl rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.3)] border border-[#E50914]/20 hover:shadow-md transition-shadow duration-500">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#E50914]/5 via-transparent to-transparent pointer-events-none" />
+        <div className="relative overflow-hidden bg-white/5 sm:rounded-3xl rounded-2xl shadow-[0_2px_8px_rgba(0,0,0,0.3)] border border-[#C9A227]/20 hover:shadow-md transition-shadow duration-500">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/5 via-transparent to-transparent pointer-events-none" />
           <div className="relative p-8 sm:p-10 text-center">
-            <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-5">
-              <Clapperboard className="h-8 w-8 text-[#E50914]" />
+            <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-5">
+              <Clapperboard className="h-8 w-8 text-[#C9A227]" />
             </div>
             <h2
               className="text-xl font-bold text-white mb-3"
@@ -335,7 +335,7 @@ export default async function ProfilePage() {
               {user.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-3.5 py-2 rounded-xl text-xs font-medium bg-[#E50914]/10 text-[#E50914] border border-[#E50914]/20 hover:bg-[#E50914]/15 transition-colors duration-300"
+                  className="px-3.5 py-2 rounded-xl text-xs font-medium bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/20 hover:bg-[#C9A227]/15 transition-colors duration-300"
                 >
                   {skill}
                 </span>
@@ -378,7 +378,7 @@ export default async function ProfilePage() {
             href={user.portfolioUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#E50914] hover:text-[#FF2D2D] transition-colors text-sm"
+            className="inline-flex items-center gap-2 text-[#C9A227] hover:text-[#E8C766] transition-colors text-sm"
           >
             <Globe className="h-4 w-4" />
             {user.portfolioUrl}

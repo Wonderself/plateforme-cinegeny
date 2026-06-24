@@ -96,12 +96,12 @@ export default function MarketingPage() {
     <div className="min-h-screen bg-[#0A0A0A]">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-            <Megaphone className="h-4 w-4 text-[#E50914]" />
-            <span className="text-sm font-medium text-[#E50914]">Marketing Studio</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+            <Megaphone className="h-4 w-4 text-[#C9A227]" />
+            <span className="text-sm font-medium text-[#C9A227]">Marketing Studio</span>
           </div>
           <h1 className="text-3xl font-bold text-white font-[family-name:var(--font-playfair)] mb-2">
-            Social Media & <span className="text-[#E50914]">Campagnes</span>
+            Social Media & <span className="text-[#C9A227]">Campagnes</span>
           </h1>
           <p className="text-gray-400 text-sm">7 agents · Multi-plateforme · Calendrier éditorial · Campagnes</p>
         </div>
@@ -127,7 +127,7 @@ export default function MarketingPage() {
             { key: 'campaigns' as const, label: `Campagnes (${campaigns.length})`, icon: Target },
           ].map(t => {
             const TIcon = t.icon
-            return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}><TIcon className="h-4 w-4" />{t.label}</button>
+            return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}><TIcon className="h-4 w-4" />{t.label}</button>
           })}
         </div>
 
@@ -135,12 +135,12 @@ export default function MarketingPage() {
         {tab === 'posts' && (
           <div className="space-y-6">
             <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6 space-y-4">
-              <input value={postTopic} onChange={e => setPostTopic(e.target.value)} placeholder="Sujet du post (ex: Lancement du film Aurora)" className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+              <input value={postTopic} onChange={e => setPostTopic(e.target.value)} placeholder="Sujet du post (ex: Lancement du film Aurora)" className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
               <div className="flex gap-3">
                 <div className="flex-1">
                   <label className="text-[10px] text-gray-500 mb-1.5 block">Plateforme</label>
                   <div className="flex gap-1.5">
-                    <button onClick={() => setPostPlatform('all')} className={`px-3 py-1.5 rounded-lg text-xs ${postPlatform === 'all' ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400'}`}>Toutes</button>
+                    <button onClick={() => setPostPlatform('all')} className={`px-3 py-1.5 rounded-lg text-xs ${postPlatform === 'all' ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400'}`}>Toutes</button>
                     {SOCIAL_PLATFORMS.map(p => {
                       const PIcon = PLATFORM_ICONS[p.id] || Send
                       return <button key={p.id} onClick={() => setPostPlatform(p.id)} className={`px-3 py-1.5 rounded-lg text-xs flex items-center gap-1 ${postPlatform === p.id ? 'text-white' : 'bg-gray-800 text-gray-400'}`} style={postPlatform === p.id ? { backgroundColor: p.color } : {}}><PIcon className="h-3 w-3" />{p.name.split(' ')[0]}</button>
@@ -157,7 +157,7 @@ export default function MarketingPage() {
                   </select>
                 </div>
               </div>
-              <button onClick={generatePosts} disabled={generating || !postTopic.trim()} className="w-full flex items-center justify-center gap-2 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+              <button onClick={generatePosts} disabled={generating || !postTopic.trim()} className="w-full flex items-center justify-center gap-2 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
                 {generating ? <><Loader2 className="h-5 w-5 animate-spin" />Génération...</> : <><Zap className="h-5 w-5" />Générer les posts</>}
               </button>
             </div>
@@ -229,11 +229,11 @@ export default function MarketingPage() {
         {/* CAMPAIGNS TAB */}
         {tab === 'campaigns' && (
           <div className="space-y-6">
-            <button onClick={() => setShowNewCampaign(true)} className="flex items-center gap-2 px-4 py-2 bg-[#E50914] text-white text-sm rounded-xl hover:bg-[#FF2D2D]"><Plus className="h-4 w-4" />Nouvelle campagne</button>
+            <button onClick={() => setShowNewCampaign(true)} className="flex items-center gap-2 px-4 py-2 bg-[#C9A227] text-white text-sm rounded-xl hover:bg-[#E8C766]"><Plus className="h-4 w-4" />Nouvelle campagne</button>
 
             {showNewCampaign && (
               <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6 space-y-4">
-                <input value={newCampaign.name} onChange={e => setNewCampaign(p => ({ ...p, name: e.target.value }))} placeholder="Nom de la campagne" className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+                <input value={newCampaign.name} onChange={e => setNewCampaign(p => ({ ...p, name: e.target.value }))} placeholder="Nom de la campagne" className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
                 <div className="flex gap-3">
                   <select value={newCampaign.templateId} onChange={e => setNewCampaign(p => ({ ...p, templateId: e.target.value }))} className="flex-1 rounded-xl border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white">
                     <option value="">Template (optionnel)</option>

@@ -102,7 +102,7 @@ export default function CommunityHubPage() {
             <span className="text-sm font-medium text-blue-400">Community Hub</span>
           </div>
           <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-3">
-            Communauté <span className="text-[#E50914]">CineGen</span>
+            Communauté <span className="text-[#C9A227]">CineGen</span>
           </h1>
           <p className="text-gray-400 max-w-lg mx-auto">
             Créateurs, mentors, collaborations. Rejoignez la communauté du cinéma participatif.
@@ -132,7 +132,7 @@ export default function CommunityHubPage() {
             { key: 'collabs' as const, label: 'Collaborations', icon: Handshake },
           ].map(t => {
             const TIcon = t.icon
-            return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}><TIcon className="h-4 w-4" />{t.label}</button>
+            return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}><TIcon className="h-4 w-4" />{t.label}</button>
           })}
         </div>
 
@@ -162,7 +162,7 @@ export default function CommunityHubPage() {
           <div className="space-y-4">
             <div className="relative mb-4">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-              <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher un créateur..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-800 bg-gray-900/50 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+              <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher un créateur..." className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-800 bg-gray-900/50 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
             </div>
             {MOCK_CREATORS.filter(c => !search || c.name.toLowerCase().includes(search.toLowerCase())).map(creator => {
               const repLevel = [...REPUTATION_LEVELS].reverse().find(l => creator.reputation >= l.min) || REPUTATION_LEVELS[0]

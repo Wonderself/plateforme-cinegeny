@@ -10,7 +10,7 @@ export default function BlogPage() {
     <div className="min-h-screen bg-[#0A0A0A]">
       <div className="max-w-5xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-3">Blog <span className="text-[#E50914]">CineGen</span></h1>
+          <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-3">Blog <span className="text-[#C9A227]">CineGen</span></h1>
           <p className="text-gray-400">Cinéma participatif, IA, tendances industrie</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -18,8 +18,8 @@ export default function BlogPage() {
             <div key={article.slug} className="rounded-2xl border border-gray-800 bg-gray-900/50 overflow-hidden group hover:border-gray-700 transition-colors">
               <div className="aspect-video relative"><img src={article.coverImage} alt={article.title} className="w-full h-full object-cover" /></div>
               <div className="p-6">
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#E50914]/10 text-[#E50914] font-medium">{article.category}</span>
-                <h2 className="text-lg font-bold text-white mt-3 mb-2 group-hover:text-[#E50914] transition-colors">{article.title}</h2>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#C9A227]/10 text-[#C9A227] font-medium">{article.category}</span>
+                <h2 className="text-lg font-bold text-white mt-3 mb-2 group-hover:text-[#C9A227] transition-colors">{article.title}</h2>
                 <p className="text-sm text-gray-500 line-clamp-2 mb-4">{article.excerpt}</p>
                 <div className="flex items-center justify-between text-[10px] text-gray-600">
                   <span>{article.date}</span>

@@ -215,7 +215,7 @@ export default async function AdminFilmTokenizerPage() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold font-[family-name:var(--font-playfair)]">
-            <Wand2 className="inline h-7 w-7 text-[#E50914] mr-2 -mt-1" />
+            <Wand2 className="inline h-7 w-7 text-[#C9A227] mr-2 -mt-1" />
             Film Tokenizer
           </h1>
           <p className="text-white/50 mt-1">
@@ -253,7 +253,7 @@ export default async function AdminFilmTokenizerPage() {
             <Card variant="gold">
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
-                  <Coins className="h-4 w-4 text-[#E50914]" />
+                  <Coins className="h-4 w-4 text-[#C9A227]" />
                   Créer une Offre de Tokenisation
                 </CardTitle>
               </CardHeader>
@@ -279,7 +279,7 @@ export default async function AdminFilmTokenizerPage() {
                 {/* Budget Breakdown Preview */}
                 <div>
                   <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
-                    <PieChart className="h-4 w-4 text-[#E50914]" />
+                    <PieChart className="h-4 w-4 text-[#C9A227]" />
                     Répartition budgétaire (modifiable)
                   </h3>
                   <div className="space-y-2">
@@ -311,7 +311,7 @@ export default async function AdminFilmTokenizerPage() {
                         <div className="col-span-3 sm:col-span-4">
                           <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                             <div
-                              className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D]"
+                              className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766]"
                               style={{ width: `${line.percentage}%` }}
                             />
                           </div>
@@ -324,7 +324,7 @@ export default async function AdminFilmTokenizerPage() {
                 {/* Token Parameters */}
                 <div>
                   <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
-                    <Sparkles className="h-4 w-4 text-[#E50914]" />
+                    <Sparkles className="h-4 w-4 text-[#C9A227]" />
                     Paramètres des Tokens (modifiable)
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -426,7 +426,7 @@ export default async function AdminFilmTokenizerPage() {
           <Card>
             <CardHeader>
               <CardTitle className="text-base flex items-center gap-2">
-                <ListChecks className="h-4 w-4 text-[#E50914]" />
+                <ListChecks className="h-4 w-4 text-[#C9A227]" />
                 Prévisualisation des Tâches Auto-Générées
                 <Badge variant="outline" className="text-[10px] ml-2">
                   {demoTasks.length} tâches
@@ -444,7 +444,7 @@ export default async function AdminFilmTokenizerPage() {
                   }, {})
                 ).map(([phase, tasks]) => (
                   <div key={phase} className="mb-4">
-                    <h4 className="text-xs font-semibold text-[#E50914] mb-2 uppercase tracking-wider">
+                    <h4 className="text-xs font-semibold text-[#C9A227] mb-2 uppercase tracking-wider">
                       {(PHASE_LABELS as Record<string, string>)[phase] || phase}
                     </h4>
                     <div className="space-y-1.5">
@@ -467,7 +467,7 @@ export default async function AdminFilmTokenizerPage() {
                               <span>{(DIFFICULTY_LABELS as Record<string, string>)[task.difficulty] || task.difficulty}</span>
                             </div>
                           </div>
-                          <span className="text-sm font-bold text-[#E50914] shrink-0">
+                          <span className="text-sm font-bold text-[#C9A227] shrink-0">
                             {formatPrice(task.priceEuros)}
                           </span>
                         </div>
@@ -481,7 +481,7 @@ export default async function AdminFilmTokenizerPage() {
                 <span className="text-sm text-white/50">
                   Coût total des tâches :
                 </span>
-                <span className="text-lg font-bold text-[#E50914]">
+                <span className="text-lg font-bold text-[#C9A227]">
                   {formatPrice(demoTasks.reduce((s, t) => s + t.priceEuros, 0))}
                 </span>
               </div>
@@ -507,7 +507,7 @@ export default async function AdminFilmTokenizerPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-[#E50914]" />
+                  <Calendar className="h-4 w-4 text-[#C9A227]" />
                   Estimation du Planning
                   <Badge variant="outline" className="text-[10px] ml-2">
                     {totalTimelineWeeks} semaines
@@ -533,7 +533,7 @@ export default async function AdminFilmTokenizerPage() {
                         </div>
                         <div className="flex-1 h-6 bg-white/[0.02] rounded relative">
                           <div
-                            className="absolute h-full rounded bg-gradient-to-r from-[#E50914]/60 to-[#FF2D2D]/60 border border-[#E50914]/20"
+                            className="absolute h-full rounded bg-gradient-to-r from-[#C9A227]/60 to-[#E8C766]/60 border border-[#C9A227]/20"
                             style={{ left: `${leftPct}%`, width: `${widthPct}%` }}
                           >
                             <span className="absolute inset-0 flex items-center justify-center text-[9px] font-medium text-white/80">
@@ -550,7 +550,7 @@ export default async function AdminFilmTokenizerPage() {
                   <span>Semaine {totalTimelineWeeks}</span>
                 </div>
                 <div className="mt-2 text-xs text-white/40 text-center">
-                  Durée estimée : <span className="text-[#E50914] font-medium">
+                  Durée estimée : <span className="text-[#C9A227] font-medium">
                     {Math.ceil(totalTimelineWeeks / 4)} mois
                   </span>
                 </div>
@@ -563,7 +563,7 @@ export default async function AdminFilmTokenizerPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-[#E50914]" />
+                  <Shield className="h-4 w-4 text-[#C9A227]" />
                   Évaluation des Risques
                 </CardTitle>
               </CardHeader>
@@ -607,13 +607,13 @@ export default async function AdminFilmTokenizerPage() {
           <Card variant="glass">
             <CardContent className="p-6">
               <h3 className="font-semibold text-lg mb-4 font-[family-name:var(--font-playfair)] flex items-center gap-2">
-                <BarChart3 className="h-5 w-5 text-[#E50914]" />
+                <BarChart3 className="h-5 w-5 text-[#C9A227]" />
                 Résumé de la Décomposition
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center p-3 rounded-lg bg-white/[0.02] border border-white/5">
-                  <Coins className="h-5 w-5 text-[#E50914] mx-auto mb-1" />
-                  <p className="text-lg font-bold text-[#E50914]">{demoDecomp.tokens.totalTokens}</p>
+                  <Coins className="h-5 w-5 text-[#C9A227] mx-auto mb-1" />
+                  <p className="text-lg font-bold text-[#C9A227]">{demoDecomp.tokens.totalTokens}</p>
                   <p className="text-[10px] text-white/40">Tokens à émettre</p>
                 </div>
                 <div className="text-center p-3 rounded-lg bg-white/[0.02] border border-white/5">
@@ -659,7 +659,7 @@ export default async function AdminFilmTokenizerPage() {
                     <p className="text-[10px] text-white/30">{film.genre || 'N/A'} · {film.tasks.length} tâches</p>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="text-sm text-[#E50914] font-bold">
+                    <p className="text-sm text-[#C9A227] font-bold">
                       {formatPrice(film.tokenOffering?.raised || 0)}
                     </p>
                     <p className="text-[10px] text-white/30">

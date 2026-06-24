@@ -67,7 +67,7 @@ const TX_TYPE_CONFIG: Record<string, { label: string; icon: typeof TrendingUp; c
   SUBSCRIPTION_GRANT: { label: 'Crédit abonnement', icon: Sparkles, color: 'text-blue-600' },
   AI_USAGE: { label: 'Utilisation IA', icon: Zap, color: 'text-orange-600' },
   REFUND: { label: 'Remboursement', icon: RefreshCcw, color: 'text-green-600' },
-  CONTEST_PRIZE: { label: 'Prix concours', icon: Crown, color: 'text-[#E50914]' },
+  CONTEST_PRIZE: { label: 'Prix concours', icon: Crown, color: 'text-[#C9A227]' },
   REFERRAL_BONUS: { label: 'Bonus parrainage', icon: Gift, color: 'text-emerald-600' },
   PROMO_CODE: { label: 'Code promo', icon: Sparkles, color: 'text-pink-600' },
   HOLD: { label: 'Réservation crédits', icon: Lock, color: 'text-yellow-600' },
@@ -117,7 +117,7 @@ export default async function WalletCreditsPage() {
         </div>
         <Link
           href="/pricing-ia"
-          className="flex items-center gap-1.5 text-sm text-[#E50914] hover:text-[#FF2D2D] transition-colors"
+          className="flex items-center gap-1.5 text-sm text-[#C9A227] hover:text-[#E8C766] transition-colors"
         >
           Voir les tarifs détaillés
           <ChevronRight className="h-4 w-4" />
@@ -142,14 +142,14 @@ export default async function WalletCreditsPage() {
 
       {/* Balance Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
-        <div className="rounded-2xl border border-[#E50914]/20 bg-gradient-to-br from-[#E50914]/5 to-transparent p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+        <div className="rounded-2xl border border-[#C9A227]/20 bg-gradient-to-br from-[#C9A227]/5 to-transparent p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-[#E50914]/10 flex items-center justify-center">
-              <Coins className="h-5 w-5 text-[#E50914]" />
+            <div className="h-10 w-10 rounded-xl bg-[#C9A227]/10 flex items-center justify-center">
+              <Coins className="h-5 w-5 text-[#C9A227]" />
             </div>
             <div>
               <p className="text-xs text-white/60 font-medium">Solde actuel</p>
-              <p className="text-2xl font-bold text-[#E50914]">{balanceDisplay.toFixed(2)}</p>
+              <p className="text-2xl font-bold text-[#C9A227]">{balanceDisplay.toFixed(2)}</p>
               <p className="text-[10px] text-white/50">{balance.toLocaleString()} µ-crédits</p>
             </div>
           </div>
@@ -210,13 +210,13 @@ export default async function WalletCreditsPage() {
               key={pack.name}
               className={`relative rounded-2xl border p-4 sm:p-6 transition-all hover:shadow-lg shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
                 pack.popular
-                  ? 'border-[#E50914] bg-gradient-to-b from-[#E50914]/5 to-transparent shadow-[#E50914]/10'
+                  ? 'border-[#C9A227] bg-gradient-to-b from-[#C9A227]/5 to-transparent shadow-[#C9A227]/10'
                   : 'border-white/10 bg-white/5 hover:border-white/10'
               }`}
             >
               {pack.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge className="bg-[#E50914] text-white text-[10px] font-semibold px-3">
+                  <Badge className="bg-[#C9A227] text-white text-[10px] font-semibold px-3">
                     POPULAIRE
                   </Badge>
                 </div>
@@ -226,7 +226,7 @@ export default async function WalletCreditsPage() {
                 <div className="mt-2">
                   <span className="text-3xl font-bold text-white">{pack.price}€</span>
                 </div>
-                <p className="text-sm text-[#E50914] font-semibold mt-1">
+                <p className="text-sm text-[#C9A227] font-semibold mt-1">
                   {pack.credits.toLocaleString()} crédits
                   {pack.bonus > 0 && <span className="text-green-600"> +{pack.bonus} bonus</span>}
                 </p>
@@ -237,7 +237,7 @@ export default async function WalletCreditsPage() {
               <ul className="space-y-2.5 mb-5">
                 {pack.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2 text-xs text-white/60">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-[#E50914] shrink-0" />
+                    <CheckCircle2 className="h-3.5 w-3.5 text-[#C9A227] shrink-0" />
                     {feature}
                   </li>
                 ))}

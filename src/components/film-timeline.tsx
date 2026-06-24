@@ -43,7 +43,7 @@ export function FilmTimeline({ phases }: FilmTimelineProps) {
           {/* Track */}
           <div className="h-2 bg-white/[0.06] rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] rounded-full transition-all duration-1000"
+              className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all duration-1000"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -66,7 +66,7 @@ export function FilmTimeline({ phases }: FilmTimelineProps) {
                     className={cn(
                       'h-8 w-8 rounded-full flex items-center justify-center transition-all duration-300',
                       isCompleted && 'bg-green-500/20 text-green-400 ring-2 ring-green-500/30',
-                      isActive && 'bg-[#E50914]/20 text-[#E50914] ring-2 ring-[#E50914]/30 animate-pulse',
+                      isActive && 'bg-[#C9A227]/20 text-[#C9A227] ring-2 ring-[#C9A227]/30 animate-pulse',
                       !isCompleted && !isActive && 'bg-white/5 text-white/20',
                       isExpanded && 'scale-110'
                     )}
@@ -81,7 +81,7 @@ export function FilmTimeline({ phases }: FilmTimelineProps) {
                   </div>
                   <span className={cn(
                     'text-[10px] mt-1.5 font-medium transition-colors',
-                    isCompleted ? 'text-green-400/60' : isActive ? 'text-[#E50914]' : 'text-white/20',
+                    isCompleted ? 'text-green-400/60' : isActive ? 'text-[#C9A227]' : 'text-white/20',
                     'group-hover:text-white/50'
                   )}>
                     {(PHASE_LABELS as Record<string, string>)[phase.phaseName] || phase.phaseName}
@@ -111,16 +111,16 @@ export function FilmTimeline({ phases }: FilmTimelineProps) {
                 className={cn(
                   'w-full flex items-center gap-4 p-4 rounded-xl border transition-all text-left',
                   isCompleted && 'border-green-500/15 bg-green-500/[0.03]',
-                  isActive && 'border-[#E50914]/20 bg-[#E50914]/[0.04]',
+                  isActive && 'border-[#C9A227]/20 bg-[#C9A227]/[0.04]',
                   !isCompleted && !isActive && 'border-white/[0.04] bg-white/[0.01] opacity-50',
-                  isExpanded && 'border-[#E50914]/30'
+                  isExpanded && 'border-[#C9A227]/30'
                 )}
               >
                 {/* Phase number */}
                 <div className={cn(
                   'h-9 w-9 rounded-full flex items-center justify-center text-sm font-bold shrink-0',
                   isCompleted && 'bg-green-500/15 text-green-400',
-                  isActive && 'bg-[#E50914]/15 text-[#E50914]',
+                  isActive && 'bg-[#C9A227]/15 text-[#C9A227]',
                   !isCompleted && !isActive && 'bg-white/5 text-white/20'
                 )}>
                   {isCompleted ? <CheckCircle className="h-4 w-4" /> : phase.phaseOrder}
@@ -133,7 +133,7 @@ export function FilmTimeline({ phases }: FilmTimelineProps) {
                       {(PHASE_LABELS as Record<string, string>)[phase.phaseName] || phase.phaseName}
                     </span>
                     {isActive && (
-                      <span className="px-2 py-0.5 rounded-full bg-[#E50914]/15 text-[#E50914] text-[10px] font-bold">
+                      <span className="px-2 py-0.5 rounded-full bg-[#C9A227]/15 text-[#C9A227] text-[10px] font-bold">
                         EN COURS
                       </span>
                     )}
@@ -162,7 +162,7 @@ export function FilmTimeline({ phases }: FilmTimelineProps) {
                         <span className={cn(
                           'h-1.5 w-1.5 rounded-full shrink-0',
                           task.status === 'VALIDATED' && 'bg-green-400',
-                          task.status === 'AVAILABLE' && 'bg-[#E50914]',
+                          task.status === 'AVAILABLE' && 'bg-[#C9A227]',
                           task.status === 'CLAIMED' && 'bg-blue-400',
                           !['VALIDATED', 'AVAILABLE', 'CLAIMED'].includes(task.status) && 'bg-white/20'
                         )} />

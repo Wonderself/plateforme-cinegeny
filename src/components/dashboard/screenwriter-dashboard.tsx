@@ -79,8 +79,8 @@ export async function ScreenwriterDashboard({ user }: ScreenwriterDashboardProps
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <Card variant="glass">
           <CardContent className="p-6">
-            <FileText className="h-5 w-5 text-[#E50914] mb-3" />
-            <div className="text-2xl font-bold text-[#E50914]">{submitted}</div>
+            <FileText className="h-5 w-5 text-[#C9A227] mb-3" />
+            <div className="text-2xl font-bold text-[#C9A227]">{submitted}</div>
             <div className="text-xs text-white/40">Scripts soumis</div>
           </CardContent>
         </Card>
@@ -116,7 +116,7 @@ export async function ScreenwriterDashboard({ user }: ScreenwriterDashboardProps
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold">Scenarios recents</h2>
-          <Link href="/screenplays" className="text-sm text-[#E50914] hover:text-[#FF2D2D]">
+          <Link href="/screenplays" className="text-sm text-[#C9A227] hover:text-[#E8C766]">
             Voir tout &rarr;
           </Link>
         </div>
@@ -140,7 +140,7 @@ export async function ScreenwriterDashboard({ user }: ScreenwriterDashboardProps
               const StatusIcon = config.icon
 
               return (
-                <Card key={screenplay.id} variant="glass" className="hover:border-[#E50914]/20 transition-all">
+                <Card key={screenplay.id} variant="glass" className="hover:border-[#C9A227]/20 transition-all">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3 min-w-0">
@@ -164,7 +164,7 @@ export async function ScreenwriterDashboard({ user }: ScreenwriterDashboardProps
                         {screenplay.aiScore !== null && screenplay.aiScore !== undefined && (
                           <div className="text-right">
                             <div className="flex items-center gap-1.5">
-                              <Sparkles className="h-3 w-3 text-[#E50914]" />
+                              <Sparkles className="h-3 w-3 text-[#C9A227]" />
                               <span
                                 className={`text-sm font-bold ${
                                   screenplay.aiScore >= 80
@@ -206,7 +206,7 @@ export async function ScreenwriterDashboard({ user }: ScreenwriterDashboardProps
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <PenTool className="h-5 w-5 text-[#E50914]" />
+              <PenTool className="h-5 w-5 text-[#C9A227]" />
               <div>
                 <h3 className="font-semibold">Soumettez un nouveau scenario</h3>
                 <p className="text-sm text-white/40">

@@ -46,7 +46,7 @@ export default async function AdminUsersPage() {
           <div className="space-y-2">
             {users.filter((u) => !u.isVerified).map((user) => (
               <div key={user.id} className="flex items-center gap-4 p-4 sm:rounded-2xl rounded-xl border border-yellow-500/20 bg-yellow-500/5 hover:shadow-md transition-all duration-500">
-                <div className="h-10 w-10 rounded-xl bg-[#E50914]/20 border border-[#E50914]/30 flex items-center justify-center text-sm font-bold text-[#E50914] shrink-0">
+                <div className="h-10 w-10 rounded-xl bg-[#C9A227]/20 border border-[#C9A227]/30 flex items-center justify-center text-sm font-bold text-[#C9A227] shrink-0">
                   {getInitials(user.displayName || user.email)}
                 </div>
                 <div className="flex-1 min-w-0">

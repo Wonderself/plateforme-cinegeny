@@ -161,7 +161,7 @@ export default async function AdminBillingPage() {
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-semibold text-[#E50914]">
+                      <p className="text-sm font-semibold text-[#C9A227]">
                         {microToCredits(user.totalSpent).toFixed(2)} cr
                       </p>
                       <p className="text-[10px] text-white/50 flex items-center gap-0.5 justify-end">

@@ -56,7 +56,7 @@ export function AutoTopupForm({ enabled, threshold, amount }: AutoTopupFormProps
         <button
           onClick={() => setIsEnabled(!isEnabled)}
           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-            isEnabled ? 'bg-[#E50914]' : 'bg-gray-600'
+            isEnabled ? 'bg-[#C9A227]' : 'bg-gray-600'
           }`}
         >
           <span
@@ -79,7 +79,7 @@ export function AutoTopupForm({ enabled, threshold, amount }: AutoTopupFormProps
               step={1}
               value={thresholdCredits}
               onChange={(e) => setThresholdCredits(parseFloat(e.target.value) || 0)}
-              className="w-full rounded-lg border border-gray-600 bg-gray-900 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none"
+              className="w-full rounded-lg border border-gray-600 bg-gray-900 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none"
               placeholder="Ex: 10"
             />
             <p className="text-[10px] text-white/60 mt-1">
@@ -96,7 +96,7 @@ export function AutoTopupForm({ enabled, threshold, amount }: AutoTopupFormProps
               step={1}
               value={amountCredits}
               onChange={(e) => setAmountCredits(parseFloat(e.target.value) || 0)}
-              className="w-full rounded-lg border border-gray-600 bg-gray-900 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none"
+              className="w-full rounded-lg border border-gray-600 bg-gray-900 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none"
               placeholder="Ex: 100"
             />
             <p className="text-[10px] text-white/60 mt-1">
@@ -106,7 +106,7 @@ export function AutoTopupForm({ enabled, threshold, amount }: AutoTopupFormProps
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center gap-2 px-4 py-2 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-50"
           >
             <Save className="h-4 w-4" />
             {saving ? 'Sauvegarde...' : 'Sauvegarder'}

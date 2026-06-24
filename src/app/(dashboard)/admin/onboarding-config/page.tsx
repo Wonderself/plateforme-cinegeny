@@ -43,7 +43,7 @@ export default function OnboardingConfigPage() {
           { key: 'steps' as const, label: 'Étapes Onboarding', icon: Compass },
         ].map(t => {
           const TIcon = t.icon
-          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
+          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
         })}
       </div>
 
@@ -91,7 +91,7 @@ export default function OnboardingConfigPage() {
             <div><p className="text-[10px] text-white/50">Durée max</p><p className="text-lg font-bold text-white">{DEMO_CONFIG.maxDuration} jours</p></div>
             <div><p className="text-[10px] text-white/50">Auto-désactivation</p><p className="text-lg font-bold text-green-600">{DEMO_CONFIG.autoDisableEnabled ? 'Oui (cron)' : 'Non'}</p></div>
             <div><p className="text-[10px] text-white/50">Rappel conversion</p><p className="text-lg font-bold text-white">J-{DEMO_CONFIG.conversionReminder}</p></div>
-            <div><p className="text-[10px] text-white/50">Crédits initiaux</p><p className="text-lg font-bold text-[#E50914]">{microToCredits(DEMO_CONFIG.initialCredits).toFixed(0)} cr</p></div>
+            <div><p className="text-[10px] text-white/50">Crédits initiaux</p><p className="text-lg font-bold text-[#C9A227]">{microToCredits(DEMO_CONFIG.initialCredits).toFixed(0)} cr</p></div>
           </div>
         </div>
       )}
@@ -104,7 +104,7 @@ export default function OnboardingConfigPage() {
           <p className="text-3xl font-bold text-emerald-600 mb-2">{SIGNUP_BONUS.label}</p>
           <p className="text-sm text-white/50">{SIGNUP_BONUS.description}</p>
           <div className="mt-4 grid grid-cols-2 gap-4">
-            <div className="rounded-xl bg-white/5 p-4"><p className="text-2xl font-bold text-[#E50914]">{microToCredits(SIGNUP_BONUS.credits).toFixed(0)}</p><p className="text-[10px] text-white/50">crédits IA</p></div>
+            <div className="rounded-xl bg-white/5 p-4"><p className="text-2xl font-bold text-[#C9A227]">{microToCredits(SIGNUP_BONUS.credits).toFixed(0)}</p><p className="text-[10px] text-white/50">crédits IA</p></div>
             <div className="rounded-xl bg-white/5 p-4"><p className="text-2xl font-bold text-yellow-500">{SIGNUP_BONUS.xp}</p><p className="text-[10px] text-white/50">XP bonus</p></div>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function OnboardingConfigPage() {
             const SIcon = STEP_ICONS[step.icon] || Zap
             return (
               <div key={step.id} className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4">
-                <div className="h-8 w-8 rounded-lg bg-[#E50914]/10 flex items-center justify-center text-sm font-bold text-[#E50914]">{i + 1}</div>
+                <div className="h-8 w-8 rounded-lg bg-[#C9A227]/10 flex items-center justify-center text-sm font-bold text-[#C9A227]">{i + 1}</div>
                 <SIcon className="h-4 w-4 text-white/50" />
                 <div className="flex-1">
                   <p className="text-xs font-medium text-white">{step.label}</p>

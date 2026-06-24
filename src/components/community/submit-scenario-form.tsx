@@ -88,7 +88,7 @@ export function SubmitScenarioForm() {
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center">
-            <PenTool className="h-5 w-5 text-[#E50914]" />
+            <PenTool className="h-5 w-5 text-[#C9A227]" />
           </div>
           <div className="text-left">
             <h3 className="font-semibold text-gray-900">Proposer un scenario</h3>
@@ -141,7 +141,7 @@ export function SubmitScenarioForm() {
                   minLength={5}
                   maxLength={200}
                   placeholder="Ex: Les Echos du Silence"
-                  className="bg-white border-gray-200 focus:border-[#E50914]/40"
+                  className="bg-white border-gray-200 focus:border-[#C9A227]/40"
                   value={aiTitle}
                   onChange={(e) => setAiTitle(e.target.value)}
                 />
@@ -156,7 +156,7 @@ export function SubmitScenarioForm() {
                   name="genre"
                   value={aiGenre}
                   onChange={(e) => setAiGenre(e.target.value)}
-                  className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 focus:border-[#E50914]/50 transition-all duration-200"
+                  className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227]/50 transition-all duration-200"
                 >
                   <option value="">Choisir un genre...</option>
                   {GENRES.map((g) => (
@@ -166,11 +166,11 @@ export function SubmitScenarioForm() {
               </div>
 
               {/* AI Synopsis Generator */}
-              <div className="p-4 rounded-xl border border-dashed border-[#E50914]/30 bg-[#E50914]/[0.03]">
+              <div className="p-4 rounded-xl border border-dashed border-[#C9A227]/30 bg-[#C9A227]/[0.03]">
                 <div className="flex items-center justify-between gap-3 mb-2">
                   <div className="flex items-center gap-2">
-                    <Wand2 className="h-4 w-4 text-[#E50914]" />
-                    <span className="text-xs font-semibold text-[#E50914]">Assistant IA</span>
+                    <Wand2 className="h-4 w-4 text-[#C9A227]" />
+                    <span className="text-xs font-semibold text-[#C9A227]">Assistant IA</span>
                   </div>
                   <button
                     type="button"
@@ -180,7 +180,7 @@ export function SubmitScenarioForm() {
                       'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200',
                       isGenerating
                         ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                        : 'bg-[#E50914] text-white hover:bg-[#FF2D2D] hover:shadow-sm'
+                        : 'bg-[#C9A227] text-white hover:bg-[#E8C766] hover:shadow-sm'
                     )}
                   >
                     {isGenerating ? (
@@ -210,7 +210,7 @@ export function SubmitScenarioForm() {
                   maxLength={500}
                   rows={2}
                   placeholder="Un resume accrocheur de votre histoire en une ou deux phrases..."
-                  className="bg-white border-gray-200 focus:border-[#E50914]/40"
+                  className="bg-white border-gray-200 focus:border-[#C9A227]/40"
                   value={logline}
                   onChange={(e) => setLogline(e.target.value)}
                 />
@@ -225,7 +225,7 @@ export function SubmitScenarioForm() {
                   name="synopsis"
                   rows={5}
                   placeholder="Developpez votre histoire plus en detail..."
-                  className="bg-white border-gray-200 focus:border-[#E50914]/40"
+                  className="bg-white border-gray-200 focus:border-[#C9A227]/40"
                   value={synopsis}
                   onChange={(e) => setSynopsis(e.target.value)}
                 />

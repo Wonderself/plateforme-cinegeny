@@ -86,7 +86,7 @@ export default function ProStudioPage() {
             <Link href="/studio" className="text-gray-500 hover:text-white"><ArrowLeft className="h-5 w-5" /></Link>
             <div>
               <h1 className="text-xl font-bold text-white flex items-center gap-2">
-                <Sparkles className="h-5 w-5 text-[#E50914]" /> Studio Pro
+                <Sparkles className="h-5 w-5 text-[#C9A227]" /> Studio Pro
               </h1>
               <p className="text-[10px] text-gray-500">Mode avancé · Toutes les fonctionnalités · {IMAGE_MODELS.length + VIDEO_MODELS.length} modèles</p>
             </div>
@@ -109,7 +109,7 @@ export default function ProStudioPage() {
             { key: 'projects' as const, label: `Galerie (${gallery.length})`, icon: FolderOpen },
           ].map(t => {
             const TIcon = t.icon
-            return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
+            return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
           })}
         </div>
 
@@ -121,7 +121,7 @@ export default function ProStudioPage() {
                 {/* Prompt */}
                 <div className="rounded-xl border border-gray-800 bg-gray-900/50 p-4">
                   <label className="text-[10px] text-gray-400 mb-1 block">Prompt</label>
-                  <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez l'image..." rows={4} className="w-full rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none" />
+                  <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez l'image..." rows={4} className="w-full rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none" />
                   {/* Negative prompt */}
                   <details className="mt-2">
                     <summary className="text-[10px] text-gray-500 cursor-pointer hover:text-gray-400">Negative prompt</summary>
@@ -134,10 +134,10 @@ export default function ProStudioPage() {
                   <label className="text-[10px] text-gray-400 mb-2 block">Provider ({IMAGE_MODELS.length})</label>
                   <div className="space-y-1.5 max-h-32 overflow-y-auto">
                     {IMAGE_MODELS.map(m => (
-                      <button key={m.id} onClick={() => setProvider(m.id)} className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-left text-xs ${provider === m.id ? 'bg-[#E50914]/10 border border-[#E50914]/30 text-white' : 'bg-gray-800/50 text-gray-400 hover:bg-gray-800'}`}>
+                      <button key={m.id} onClick={() => setProvider(m.id)} className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-left text-xs ${provider === m.id ? 'bg-[#C9A227]/10 border border-[#C9A227]/30 text-white' : 'bg-gray-800/50 text-gray-400 hover:bg-gray-800'}`}>
                         <span>{m.icon}</span>
                         <span className="flex-1">{m.name}</span>
-                        <span className="text-[10px] text-[#E50914]">~{microToCredits(m.costPerRequest || 0).toFixed(1)}cr</span>
+                        <span className="text-[10px] text-[#C9A227]">~{microToCredits(m.costPerRequest || 0).toFixed(1)}cr</span>
                       </button>
                     ))}
                   </div>
@@ -153,7 +153,7 @@ export default function ProStudioPage() {
                         if (style2 === s.id) { setStyle2(''); return }
                         if (!style2) setStyle2(s.id)
                         else { setStyle(style2); setStyle2(s.id) }
-                      }} className={`px-2.5 py-1 rounded-lg text-[10px] ${style === s.id ? 'bg-[#E50914] text-white' : style2 === s.id ? 'bg-purple-600 text-white' : 'bg-gray-800 text-gray-400'}`}>
+                      }} className={`px-2.5 py-1 rounded-lg text-[10px] ${style === s.id ? 'bg-[#C9A227] text-white' : style2 === s.id ? 'bg-purple-600 text-white' : 'bg-gray-800 text-gray-400'}`}>
                         {s.label}
                       </button>
                     ))}
@@ -166,13 +166,13 @@ export default function ProStudioPage() {
                   <div>
                     <label className="text-[10px] text-gray-400 mb-1.5 block">Format</label>
                     <div className="flex gap-1.5">{PHOTO_RATIOS.map(r => (
-                      <button key={r.id} onClick={() => setRatio(r.id)} className={`flex-1 py-1.5 rounded-lg text-[10px] ${ratio === r.id ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400'}`}>{r.label}</button>
+                      <button key={r.id} onClick={() => setRatio(r.id)} className={`flex-1 py-1.5 rounded-lg text-[10px] ${ratio === r.id ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400'}`}>{r.label}</button>
                     ))}</div>
                   </div>
                   <div>
                     <label className="text-[10px] text-gray-400 mb-1.5 block">Catégorie</label>
                     <div className="flex flex-wrap gap-1">{CINEMA_CATEGORIES.map(c => (
-                      <button key={c.id} onClick={() => setCategory(c.id)} className={`px-2 py-1 rounded text-[10px] ${category === c.id ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400'}`}>{c.label}</button>
+                      <button key={c.id} onClick={() => setCategory(c.id)} className={`px-2 py-1 rounded text-[10px] ${category === c.id ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400'}`}>{c.label}</button>
                     ))}</div>
                   </div>
                 </div>
@@ -181,18 +181,18 @@ export default function ProStudioPage() {
                 <details>
                   <summary className="text-[10px] text-gray-500 cursor-pointer hover:text-gray-400 flex items-center gap-1"><Settings className="h-3 w-3" />Paramètres avancés</summary>
                   <div className="mt-2 rounded-xl border border-gray-800 bg-gray-900/50 p-4 space-y-3">
-                    <div><label className="text-[10px] text-gray-400">Guidance Scale: {guidanceScale}</label><input type="range" min={1} max={20} step={0.5} value={guidanceScale} onChange={e => setGuidanceScale(parseFloat(e.target.value))} className="w-full accent-[#E50914]" /></div>
-                    <div><label className="text-[10px] text-gray-400">Steps: {steps}</label><input type="range" min={10} max={50} step={5} value={steps} onChange={e => setSteps(parseInt(e.target.value))} className="w-full accent-[#E50914]" /></div>
+                    <div><label className="text-[10px] text-gray-400">Guidance Scale: {guidanceScale}</label><input type="range" min={1} max={20} step={0.5} value={guidanceScale} onChange={e => setGuidanceScale(parseFloat(e.target.value))} className="w-full accent-[#C9A227]" /></div>
+                    <div><label className="text-[10px] text-gray-400">Steps: {steps}</label><input type="range" min={10} max={50} step={5} value={steps} onChange={e => setSteps(parseInt(e.target.value))} className="w-full accent-[#C9A227]" /></div>
                     <div><label className="text-[10px] text-gray-400">Seed (-1 = random)</label><input type="number" value={seed} onChange={e => setSeed(parseInt(e.target.value))} className="w-full rounded-lg border border-gray-700 bg-gray-800 px-3 py-1.5 text-xs text-white focus:outline-none" /></div>
                     <div className="flex items-center justify-between"><span className="text-[10px] text-gray-400">HD Mode</span>
-                      <button onClick={() => setHdMode(!hdMode)} className={`h-5 w-9 rounded-full ${hdMode ? 'bg-[#E50914]' : 'bg-gray-600'}`}><span className={`block h-3 w-3 rounded-full bg-white transition-transform ${hdMode ? 'translate-x-5' : 'translate-x-1'}`} /></button>
+                      <button onClick={() => setHdMode(!hdMode)} className={`h-5 w-9 rounded-full ${hdMode ? 'bg-[#C9A227]' : 'bg-gray-600'}`}><span className={`block h-3 w-3 rounded-full bg-white transition-transform ${hdMode ? 'translate-x-5' : 'translate-x-1'}`} /></button>
                     </div>
                     <div><label className="text-[10px] text-gray-400">Image référence (img2img)</label><input value={referenceUrl} onChange={e => setReferenceUrl(e.target.value)} placeholder="URL image..." className="w-full rounded-lg border border-gray-700 bg-gray-800 px-3 py-1.5 text-xs text-white focus:outline-none" /></div>
                   </div>
                 </details>
 
                 {/* Generate Buttons */}
-                <button onClick={() => generate(tab === 'batch' ? batchCount : 1)} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+                <button onClick={() => generate(tab === 'batch' ? batchCount : 1)} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
                   {generating ? <><Loader2 className="h-5 w-5 animate-spin" />{tab === 'batch' ? `Batch ×${batchCount}...` : 'Génération...'}</> :
                     <><Wand2 className="h-5 w-5" />{tab === 'batch' ? `Batch ×${batchCount}` : 'Générer'}</>}
                 </button>
@@ -212,24 +212,24 @@ export default function ProStudioPage() {
             {tab === 'video' && (
               <div className="space-y-4">
                 <div className="rounded-xl border border-gray-800 bg-gray-900/50 p-4">
-                  <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez la séquence vidéo..." rows={4} className="w-full rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none" />
+                  <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez la séquence vidéo..." rows={4} className="w-full rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none" />
                 </div>
                 <div className="rounded-xl border border-gray-800 bg-gray-900/50 p-4">
                   <label className="text-[10px] text-gray-400 mb-2 block">Provider vidéo ({VIDEO_MODELS.length})</label>
                   <div className="space-y-1.5 max-h-40 overflow-y-auto">
                     {VIDEO_MODELS.map(m => (
-                      <button key={m.id} onClick={() => setVideoProvider(m.id)} className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-left text-xs ${videoProvider === m.id ? 'bg-[#E50914]/10 border border-[#E50914]/30 text-white' : 'bg-gray-800/50 text-gray-400'}`}>
+                      <button key={m.id} onClick={() => setVideoProvider(m.id)} className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-left text-xs ${videoProvider === m.id ? 'bg-[#C9A227]/10 border border-[#C9A227]/30 text-white' : 'bg-gray-800/50 text-gray-400'}`}>
                         <span>{m.icon}</span><span className="flex-1">{m.name}</span>
                         <span className="text-[10px]">{m.maxDuration}</span>
-                        <span className="text-[10px] text-[#E50914]">~{microToCredits(m.costPerRequest || 0).toFixed(0)}cr</span>
+                        <span className="text-[10px] text-[#C9A227]">~{microToCredits(m.costPerRequest || 0).toFixed(0)}cr</span>
                       </button>
                     ))}
                   </div>
                 </div>
                 <div className="flex gap-2">{([5, 10, 15] as const).map(d => (
-                  <button key={d} onClick={() => setVideoDuration(d)} className={`flex-1 py-2 rounded-lg text-xs ${videoDuration === d ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400'}`}>{d}s</button>
+                  <button key={d} onClick={() => setVideoDuration(d)} className={`flex-1 py-2 rounded-lg text-xs ${videoDuration === d ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400'}`}>{d}s</button>
                 ))}</div>
-                <button onClick={() => { toast.info('Vidéo en génération async...'); generate() }} disabled={generating || !prompt.trim()} className="w-full py-3 bg-[#E50914] text-white font-semibold rounded-xl disabled:opacity-50">
+                <button onClick={() => { toast.info('Vidéo en génération async...'); generate() }} disabled={generating || !prompt.trim()} className="w-full py-3 bg-[#C9A227] text-white font-semibold rounded-xl disabled:opacity-50">
                   {generating ? <Loader2 className="inline h-5 w-5 animate-spin" /> : <Film className="inline h-5 w-5 mr-2" />}Générer la vidéo
                 </button>
               </div>

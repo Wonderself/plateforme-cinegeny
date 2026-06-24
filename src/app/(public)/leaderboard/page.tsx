@@ -55,7 +55,7 @@ async function getStats() {
 const LEVEL_COLORS: Record<string, string> = {
   ROOKIE: 'text-gray-400',
   PRO: 'text-blue-500',
-  EXPERT: 'text-[#E50914]',
+  EXPERT: 'text-[#C9A227]',
   VIP: 'text-purple-500',
 }
 
@@ -80,18 +80,18 @@ export default async function LeaderboardPage() {
       <section className="relative pt-24 pb-16 px-4 overflow-hidden bg-gradient-to-b from-white/[0.02] to-transparent">
         {/* Ambient blur circles */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#E50914]/[0.05] rounded-full blur-[120px]" />
-          <div className="absolute top-10 right-1/3 w-72 h-72 bg-[#E50914]/[0.06] rounded-full blur-[100px]" />
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#C9A227]/[0.05] rounded-full blur-[120px]" />
+          <div className="absolute top-10 right-1/3 w-72 h-72 bg-[#C9A227]/[0.06] rounded-full blur-[100px]" />
           {/* Gold particles */}
-          <div className="absolute top-[20%] left-[25%] w-1 h-1 rounded-full bg-[#E50914]/40 animate-pulse" />
-          <div className="absolute top-[30%] right-[20%] w-1.5 h-1.5 rounded-full bg-[#E50914]/30 animate-pulse [animation-delay:0.5s]" />
-          <div className="absolute top-[55%] left-[10%] w-1 h-1 rounded-full bg-[#E50914]/25 animate-pulse [animation-delay:1s]" />
-          <div className="absolute top-[45%] right-[30%] w-1 h-1 rounded-full bg-[#E50914]/30 animate-pulse [animation-delay:1.5s]" />
+          <div className="absolute top-[20%] left-[25%] w-1 h-1 rounded-full bg-[#C9A227]/40 animate-pulse" />
+          <div className="absolute top-[30%] right-[20%] w-1.5 h-1.5 rounded-full bg-[#C9A227]/30 animate-pulse [animation-delay:0.5s]" />
+          <div className="absolute top-[55%] left-[10%] w-1 h-1 rounded-full bg-[#C9A227]/25 animate-pulse [animation-delay:1s]" />
+          <div className="absolute top-[45%] right-[30%] w-1 h-1 rounded-full bg-[#C9A227]/30 animate-pulse [animation-delay:1.5s]" />
         </div>
 
         <div className="relative container mx-auto max-w-4xl text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 text-[#E50914] text-sm mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 text-[#C9A227] text-sm mb-6">
             <Trophy className="h-4 w-4" />
             <span className="font-medium">Hall of Fame</span>
           </div>
@@ -102,7 +102,7 @@ export default async function LeaderboardPage() {
           >
             <span
               style={{
-                background: 'linear-gradient(135deg, #E50914 0%, #FF2D2D 40%, #E50914 70%, #B8960C 100%)',
+                background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 40%, #C9A227 70%, #B8960C 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -120,7 +120,7 @@ export default async function LeaderboardPage() {
           {/* Global stats */}
           <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
             {[
-              { label: 'Contributeurs actifs', value: stats.totalUsers, icon: Star, color: 'text-[#E50914]' },
+              { label: 'Contributeurs actifs', value: stats.totalUsers, icon: Star, color: 'text-[#C9A227]' },
               { label: 'Taches validees', value: stats.totalTasks, icon: Zap, color: 'text-green-500' },
               { label: 'Revenus distribues', value: formatPrice(stats.totalPaid), icon: Film, color: 'text-purple-500' },
             ].map((s) => (
@@ -157,11 +157,11 @@ export default async function LeaderboardPage() {
               {top3.length > 0 && (
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16 sm:items-end">
                   {/* 1st place — shown first on mobile, centered on desktop */}
-                  <div className="flex flex-col items-center p-6 sm:p-5 rounded-2xl sm:rounded-3xl border border-[#E50914]/30 bg-[#E50914]/[0.04] sm:order-2 hover-lift transition-all duration-500">
+                  <div className="flex flex-col items-center p-6 sm:p-5 rounded-2xl sm:rounded-3xl border border-[#C9A227]/30 bg-[#C9A227]/[0.04] sm:order-2 hover-lift transition-all duration-500">
                     <div className="mb-3">
-                      <Crown className="h-7 w-7 text-[#E50914]" />
+                      <Crown className="h-7 w-7 text-[#C9A227]" />
                     </div>
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#E50914]/20 to-amber-200/40 flex items-center justify-center text-2xl font-bold text-[#E50914] mb-2 ring-2 ring-[#E50914]/30">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#C9A227]/20 to-amber-200/40 flex items-center justify-center text-2xl font-bold text-[#C9A227] mb-2 ring-2 ring-[#C9A227]/30">
                       {top3[0].displayName?.[0]?.toUpperCase() || '?'}
                     </div>
                     <p className="font-semibold text-sm text-white truncate w-full text-center mb-1">
@@ -170,7 +170,7 @@ export default async function LeaderboardPage() {
                     <span className={`text-xs font-medium mb-2 ${LEVEL_COLORS[top3[0].level]}`}>
                       {LEVEL_LABELS[top3[0].level]}
                     </span>
-                    <p className="text-2xl font-bold text-[#E50914]">{top3[0].points.toLocaleString()}</p>
+                    <p className="text-2xl font-bold text-[#C9A227]">{top3[0].points.toLocaleString()}</p>
                     <p className="text-xs text-white/40">points</p>
                   </div>
 
@@ -233,7 +233,7 @@ export default async function LeaderboardPage() {
                     <a
                       key={user.id}
                       href={`/users/${user.id}`}
-                      className="flex items-center gap-4 p-4 rounded-xl border border-white/[0.06] bg-white/[0.03] hover:border-[#E50914]/20 hover:bg-white/[0.04] transition-all duration-500 cursor-pointer"
+                      className="flex items-center gap-4 p-4 rounded-xl border border-white/[0.06] bg-white/[0.03] hover:border-[#C9A227]/20 hover:bg-white/[0.04] transition-all duration-500 cursor-pointer"
                     >
                       <div className="w-8 text-center text-sm font-bold text-white/40 shrink-0">
                         #{idx + 4}
@@ -269,9 +269,9 @@ export default async function LeaderboardPage() {
           )}
 
           {/* CTA */}
-          <div className="mt-16 text-center p-8 rounded-2xl sm:rounded-3xl border border-[#E50914]/20 bg-[#E50914]/[0.03] relative overflow-hidden transition-all duration-500">
+          <div className="mt-16 text-center p-8 rounded-2xl sm:rounded-3xl border border-[#C9A227]/20 bg-[#C9A227]/[0.03] relative overflow-hidden transition-all duration-500">
             <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-32 bg-[#E50914]/[0.05] rounded-full blur-[60px]" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-32 bg-[#C9A227]/[0.05] rounded-full blur-[60px]" />
             </div>
             <div className="relative">
               <h2 className="text-2xl font-bold mb-2 text-white font-playfair">
@@ -282,7 +282,7 @@ export default async function LeaderboardPage() {
               </p>
               <a
                 href="/register"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#E50914] text-white font-semibold hover:bg-[#C4A030] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#C9A227] text-white font-semibold hover:bg-[#C4A030] transition-colors"
               >
                 <Star className="h-4 w-4" />
                 Commencer a contribuer

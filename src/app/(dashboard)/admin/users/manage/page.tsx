@@ -156,7 +156,7 @@ export default async function UserManagementPage() {
                   <p className="text-[10px] text-white/50">{c.requestCount} requests</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-semibold text-[#E50914]">{microToCredits(c.totalSpent).toFixed(2)} cr</p>
+                  <p className="text-sm font-semibold text-[#C9A227]">{microToCredits(c.totalSpent).toFixed(2)} cr</p>
                 </div>
                 <ChevronRight className="h-4 w-4 text-white/50" />
               </Link>

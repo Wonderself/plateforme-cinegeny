@@ -14,6 +14,7 @@ import { FilmReviews } from '@/components/film-reviews'
 import { FilmVoteButton } from '@/components/film-vote-button'
 import { WatchlistButton } from '@/components/watchlist-button'
 import { FILMS_BY_SLUG, FILMS_BY_GENRE } from '@/data/films'
+import { ARCHIVED_FILMS_BY_SLUG } from '@/data/archived-films'
 import { getFilmCreditsAction } from '@/app/actions/credits'
 import type { Metadata } from 'next'
 
@@ -33,8 +34,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     }
   }
-  // Fallback to shared data
-  const fake = FILMS_BY_SLUG[slug]
+  // Fallback to shared data (active slate or archived catalog)
+  const fake = FILMS_BY_SLUG[slug] || ARCHIVED_FILMS_BY_SLUG[slug]
   if (fake) {
     return {
       title: `${fake.title} — CINEGEN`,
@@ -77,7 +78,7 @@ export default async function FilmDetailPage({ params }: Props) {
   }
 
   // Fallback: check shared catalog data
-  const fakeFilm = FILMS_BY_SLUG[slug]
+  const fakeFilm = FILMS_BY_SLUG[slug] || ARCHIVED_FILMS_BY_SLUG[slug]
   if (!fakeFilm) notFound()
 
   return <CatalogFilmPage film={fakeFilm} />
@@ -120,8 +121,8 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
         {film.coverImageUrl ? (
           <Image src={film.coverImageUrl} alt={film.title} fill className="object-cover" sizes="100vw" priority />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#E50914]/10 via-purple-900/20 to-black flex items-center justify-center">
-            <Film className="h-24 w-24 text-[#E50914]/20" />
+          <div className="w-full h-full bg-gradient-to-br from-[#C9A227]/10 via-purple-900/20 to-black flex items-center justify-center">
+            <Film className="h-24 w-24 text-[#C9A227]/20" />
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent" />
@@ -157,7 +158,7 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
           <div className="md:col-span-2 space-y-4">
             {film.synopsis && (
               <div>
-                <h2 className="text-lg font-semibold mb-3 text-[#E50914]">Synopsis</h2>
+                <h2 className="text-lg font-semibold mb-3 text-[#C9A227]">Synopsis</h2>
                 <p className="text-white/60 leading-relaxed">{film.synopsis}</p>
               </div>
             )}
@@ -170,12 +171,12 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
             {/* Progress card */}
             <div className="rounded-xl border border-white/5 bg-white/[0.02] p-8">
               <h3 className="text-sm font-medium text-white/50 mb-4 uppercase tracking-wider">Progression globale</h3>
-              <div className="text-5xl font-bold text-[#E50914] mb-3 font-playfair">
+              <div className="text-5xl font-bold text-[#C9A227] mb-3 font-playfair">
                 {Math.round(film.progressPct)}%
               </div>
               <div className="h-2 bg-white/10 rounded-full overflow-hidden mb-4">
                 <div
-                  className="h-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] rounded-full transition-all duration-1000"
+                  className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all duration-1000"
                   style={{ width: `${film.progressPct}%` }}
                 />
               </div>
@@ -234,7 +235,7 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
         {credits.length > 0 && (
           <div>
             <h2 className="text-xl font-bold font-playfair text-white mb-6 flex items-center gap-2">
-              <Users className="h-5 w-5 text-[#E50914]" />
+              <Users className="h-5 w-5 text-[#C9A227]" />
               Générique
             </h2>
             <div className="space-y-8">
@@ -259,8 +260,8 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
                               className="rounded-full object-cover shrink-0"
                             />
                           ) : (
-                            <div className="h-9 w-9 rounded-full bg-[#E50914]/10 flex items-center justify-center shrink-0">
-                              <Users className="h-4 w-4 text-[#E50914]/60" />
+                            <div className="h-9 w-9 rounded-full bg-[#C9A227]/10 flex items-center justify-center shrink-0">
+                              <Users className="h-4 w-4 text-[#C9A227]/60" />
                             </div>
                           )}
                           <div className="min-w-0">
@@ -296,7 +297,7 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
 import type { FilmData } from '@/data/films'
 
 const GENRE_COLORS: Record<string, string> = {
-  'Action': '#E50914',
+  'Action': '#C9A227',
   'Comedy': '#F59E0B',
   'Drama': '#8B5CF6',
   'Sci-Fi': '#3B82F6',
@@ -315,7 +316,7 @@ function deterministicNumber(slug: string, min: number, max: number): number {
 }
 
 function CatalogFilmPage({ film }: { film: FilmData }) {
-  const accentColor = GENRE_COLORS[film.genre] || '#E50914'
+  const accentColor = GENRE_COLORS[film.genre] || '#C9A227'
   const statusLabel = FILM_STATUS_LABELS[film.status as keyof typeof FILM_STATUS_LABELS] || film.status
   const similarFilms = Object.values(FILMS_BY_GENRE[film.genre] || []).filter(f => f.slug !== film.slug).slice(0, 5)
 
@@ -571,8 +572,8 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
               const fullStars = Math.floor(Number(communityRating))
               const hasHalf = Number(communityRating) - fullStars >= 0.5
               return (
-                <div className="rounded-xl border border-[#E50914]/20 bg-[#E50914]/[0.04] p-6 space-y-5">
-                  <h3 className="text-base font-bold text-[#E50914] flex items-center gap-2">
+                <div className="rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/[0.04] p-6 space-y-5">
+                  <h3 className="text-base font-bold text-[#C9A227] flex items-center gap-2">
                     <Star className="h-4 w-4" /> Released
                   </h3>
                   <p className="text-white/50 text-sm">This film is now available for streaming. Watch it and share your rating!</p>
@@ -595,7 +596,7 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
                       <p className="text-xs text-white/30 mt-1">{deterministicNumber(film.slug, 200, 1000)} community ratings</p>
                     </div>
                   </div>
-                  <Link href="/streaming" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#E50914] text-white text-sm font-bold hover:bg-[#E50914]/90 transition-colors shadow-lg shadow-[#E50914]/20">
+                  <Link href="/streaming" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#C9A227] text-white text-sm font-bold hover:bg-[#C9A227]/90 transition-colors shadow-lg shadow-[#C9A227]/20">
                     <ArrowRight className="h-4 w-4" /> Watch Now
                   </Link>
                 </div>
@@ -663,7 +664,7 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
 
           <div className="relative rounded-2xl bg-gradient-to-br from-amber-900/[0.12] via-[#0A0A0A] to-amber-800/[0.06] p-8 md:p-10 overflow-hidden">
             <div className="absolute top-0 right-0 w-72 h-72 bg-amber-500/[0.04] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#E50914]/[0.04] rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#C9A227]/[0.04] rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
             <div className="relative space-y-6">
               <div className="flex items-center gap-3">
@@ -792,13 +793,13 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function CoProducerSection({ film }: { film: any }) {
   return (
-    <div className="rounded-2xl border border-[#E50914]/20 bg-gradient-to-br from-[#E50914]/[0.06] to-transparent p-8 md:p-10 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#E50914]/[0.05] rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+    <div className="rounded-2xl border border-[#C9A227]/20 bg-gradient-to-br from-[#C9A227]/[0.06] to-transparent p-8 md:p-10 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A227]/[0.05] rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
       <div className="relative">
         <div className="flex items-center gap-2 mb-4">
-          <div className="h-10 w-10 rounded-xl bg-[#E50914]/15 border border-[#E50914]/25 flex items-center justify-center">
-            <Crown className="h-5 w-5 text-[#E50914]" />
+          <div className="h-10 w-10 rounded-xl bg-[#C9A227]/15 border border-[#C9A227]/25 flex items-center justify-center">
+            <Crown className="h-5 w-5 text-[#C9A227]" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold font-playfair">
             Devenez Co-Producteur
@@ -813,19 +814,19 @@ function CoProducerSection({ film }: { film: any }) {
         {film.tokenOffering && film.tokenOffering.status === 'OPEN' ? (
           <div className="space-y-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-              <div className="rounded-xl border border-[#E50914]/10 bg-white/[0.03] p-4 text-center">
-                <div className="text-2xl font-bold text-[#E50914] font-playfair">
+              <div className="rounded-xl border border-[#C9A227]/10 bg-white/[0.03] p-4 text-center">
+                <div className="text-2xl font-bold text-[#C9A227] font-playfair">
                   {film.tokenOffering.tokenPrice}&#8364;
                 </div>
                 <div className="text-xs text-white/30 mt-1">Prix / token</div>
               </div>
-              <div className="rounded-xl border border-[#E50914]/10 bg-white/[0.03] p-4 text-center">
+              <div className="rounded-xl border border-[#C9A227]/10 bg-white/[0.03] p-4 text-center">
                 <div className="text-2xl font-bold text-white font-playfair">
                   {Math.round(film.tokenOffering.raised).toLocaleString('fr-FR')}&#8364;
                 </div>
                 <div className="text-xs text-white/30 mt-1">Leves</div>
               </div>
-              <div className="rounded-xl border border-[#E50914]/10 bg-white/[0.03] p-4 text-center">
+              <div className="rounded-xl border border-[#C9A227]/10 bg-white/[0.03] p-4 text-center">
                 <div className="text-2xl font-bold text-white font-playfair">
                   {film.tokenOffering.tokensSold}
                 </div>
@@ -844,13 +845,13 @@ function CoProducerSection({ film }: { film: any }) {
             <div>
               <div className="flex items-center justify-between mb-2 text-sm">
                 <span className="text-white/50">Progression de la levee</span>
-                <span className="text-[#E50914] font-semibold">
+                <span className="text-[#C9A227] font-semibold">
                   {film.tokenOffering.hardCap > 0 ? Math.round((film.tokenOffering.raised / film.tokenOffering.hardCap) * 100) : 0}%
                 </span>
               </div>
               <div className="h-2.5 bg-white/[0.06] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] rounded-full transition-all duration-1000"
+                  className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all duration-1000"
                   style={{ width: `${film.tokenOffering.hardCap > 0 ? Math.min(100, (film.tokenOffering.raised / film.tokenOffering.hardCap) * 100) : 0}%` }}
                 />
               </div>
@@ -867,7 +868,7 @@ function CoProducerSection({ film }: { film: any }) {
                 { icon: Crown, label: 'Nom au generique' },
               ].map((b) => (
                 <div key={b.label} className="flex items-center gap-2 text-xs text-white/40">
-                  <b.icon className="h-3.5 w-3.5 text-[#E50914]" />
+                  <b.icon className="h-3.5 w-3.5 text-[#C9A227]" />
                   {b.label}
                 </div>
               ))}
@@ -890,7 +891,7 @@ function CoProducerSection({ film }: { film: any }) {
                 { icon: Crown, title: 'Au Generique', desc: 'Votre nom credite comme co-producteur' },
               ].map((b) => (
                 <div key={b.title} className="rounded-xl border border-white/5 bg-white/[0.02] p-4 text-center">
-                  <b.icon className="h-6 w-6 text-[#E50914]/60 mx-auto mb-2" />
+                  <b.icon className="h-6 w-6 text-[#C9A227]/60 mx-auto mb-2" />
                   <h4 className="text-sm font-semibold text-white mb-1">{b.title}</h4>
                   <p className="text-xs text-white/30">{b.desc}</p>
                 </div>

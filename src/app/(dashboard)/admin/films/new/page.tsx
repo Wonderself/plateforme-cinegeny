@@ -34,7 +34,7 @@ export default async function NewFilmPage() {
             <select
               id="genre"
               name="genre"
-              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 transition-colors duration-300"
+              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 transition-colors duration-300"
             >
               <option value="">Sélectionner un genre</option>
               {GENRES.map((g) => <option key={g} value={g}>{g}</option>)}
@@ -46,7 +46,7 @@ export default async function NewFilmPage() {
             <select
               id="catalog"
               name="catalog"
-              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 transition-colors duration-300"
+              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 transition-colors duration-300"
             >
               {Object.entries(CATALOG_LABELS).map(([value, label]) => (
                 <option key={value} value={value}>{label}</option>
@@ -62,7 +62,7 @@ export default async function NewFilmPage() {
             name="description"
             rows={3}
             placeholder="Description affichée dans le catalogue..."
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical transition-colors duration-300"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical transition-colors duration-300"
           />
         </div>
 
@@ -73,7 +73,7 @@ export default async function NewFilmPage() {
             name="synopsis"
             rows={5}
             placeholder="Synopsis détaillé du film..."
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical transition-colors duration-300"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical transition-colors duration-300"
           />
         </div>
 

@@ -376,14 +376,14 @@ export default function CastingPage() {
       {/* ── Hero ── */}
       <section className="relative text-center mb-12">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-[#E50914]/[0.04] blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-[#C9A227]/[0.04] blur-[100px]" />
         </div>
         <div className="relative">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-5">
-            <UserCircle className="h-7 w-7 text-[#E50914]" />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-5">
+            <UserCircle className="h-7 w-7 text-[#C9A227]" />
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-            Cast Your <span className="text-[#E50914]">Characters</span>
+            Cast Your <span className="text-[#C9A227]">Characters</span>
           </h1>
           <p className="text-sm sm:text-base text-white/50 max-w-xl mx-auto leading-relaxed">
             Build your dream cast. Browse AI actors, create custom characters from scratch, or insert yourself into your film.
@@ -400,7 +400,7 @@ export default function CastingPage() {
             className={cn(
               'flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium transition-all duration-200 border',
               activeTab === tab.id
-                ? 'bg-[#E50914]/10 border-[#E50914]/30 text-[#E50914]'
+                ? 'bg-[#C9A227]/10 border-[#C9A227]/30 text-[#C9A227]'
                 : 'bg-white/[0.02] border-white/[0.06] text-white/40 hover:text-white/60 hover:border-white/[0.12]'
             )}
           >
@@ -435,7 +435,7 @@ export default function CastingPage() {
                     placeholder="Search AI actors..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 transition-colors"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 transition-colors"
                   />
                 </div>
               </div>
@@ -451,7 +451,7 @@ export default function CastingPage() {
                         className={cn(
                           'px-3 py-1 rounded-lg text-xs font-medium transition-all',
                           styleFilter === s
-                            ? 'bg-[#E50914]/15 text-[#E50914] border border-[#E50914]/30'
+                            ? 'bg-[#C9A227]/15 text-[#C9A227] border border-[#C9A227]/30'
                             : 'bg-white/[0.03] text-white/35 border border-white/[0.06] hover:text-white/50'
                         )}
                       >
@@ -471,7 +471,7 @@ export default function CastingPage() {
                         className={cn(
                           'px-3 py-1 rounded-lg text-xs font-medium transition-all',
                           genderFilter === g
-                            ? 'bg-[#E50914]/15 text-[#E50914] border border-[#E50914]/30'
+                            ? 'bg-[#C9A227]/15 text-[#C9A227] border border-[#C9A227]/30'
                             : 'bg-white/[0.03] text-white/35 border border-white/[0.06] hover:text-white/50'
                         )}
                       >
@@ -491,7 +491,7 @@ export default function CastingPage() {
                         className={cn(
                           'px-3 py-1 rounded-lg text-xs font-medium transition-all',
                           ageFilter === a
-                            ? 'bg-[#E50914]/15 text-[#E50914] border border-[#E50914]/30'
+                            ? 'bg-[#C9A227]/15 text-[#C9A227] border border-[#C9A227]/30'
                             : 'bg-white/[0.03] text-white/35 border border-white/[0.06] hover:text-white/50'
                         )}
                       >
@@ -556,7 +556,7 @@ export default function CastingPage() {
                           'w-full py-2 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-1.5',
                           alreadyCast
                             ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                            : 'bg-[#E50914] text-white hover:bg-[#FF2D2D] hover:shadow-[0_0_16px_rgba(229,9,20,0.25)]'
+                            : 'bg-[#C9A227] text-white hover:bg-[#E8C766] hover:shadow-[0_0_16px_rgba(201,162,39,0.25)]'
                         )}
                       >
                         {alreadyCast ? (
@@ -587,7 +587,7 @@ export default function CastingPage() {
             <div className="text-center pt-2">
               <Link
                 href="/actors"
-                className="inline-flex items-center gap-2 text-sm text-[#E50914] hover:text-[#FF2D2D] transition-colors font-medium"
+                className="inline-flex items-center gap-2 text-sm text-[#C9A227] hover:text-[#E8C766] transition-colors font-medium"
               >
                 Browse all actors
                 <ArrowRight className="h-4 w-4" />
@@ -603,19 +603,19 @@ export default function CastingPage() {
             <div className="space-y-6">
               <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-5">
                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <Wand2 className="h-5 w-5 text-[#E50914]" />
+                  <Wand2 className="h-5 w-5 text-[#C9A227]" />
                   Character Details
                 </h3>
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-xs font-medium text-white/40 mb-1.5">Character Name <span className="text-[#E50914]">*</span></label>
+                    <label className="block text-xs font-medium text-white/40 mb-1.5">Character Name <span className="text-[#C9A227]">*</span></label>
                     <input
                       type="text"
                       value={charName}
                       onChange={(e) => setCharName(e.target.value)}
                       placeholder="e.g. Detective Noir"
-                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/40 transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/40 transition-colors"
                     />
                   </div>
 
@@ -626,7 +626,7 @@ export default function CastingPage() {
                       value={charAge}
                       onChange={(e) => setCharAge(e.target.value)}
                       placeholder="e.g. 35"
-                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/40 transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/40 transition-colors"
                     />
                   </div>
 
@@ -637,7 +637,7 @@ export default function CastingPage() {
                       value={charTraits}
                       onChange={(e) => setCharTraits(e.target.value)}
                       placeholder="e.g. Brooding, intelligent, haunted by past"
-                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/40 transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/40 transition-colors"
                     />
                   </div>
 
@@ -648,7 +648,7 @@ export default function CastingPage() {
                       onChange={(e) => setCharAppearance(e.target.value)}
                       placeholder="Describe the character's physical appearance, clothing style, distinguishing features..."
                       rows={3}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/40 transition-colors resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/40 transition-colors resize-none"
                     />
                   </div>
 
@@ -659,7 +659,7 @@ export default function CastingPage() {
                       onChange={(e) => setCharBackstory(e.target.value)}
                       placeholder="Brief character backstory... Where do they come from? What shaped them?"
                       rows={3}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/40 transition-colors resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/40 transition-colors resize-none"
                     />
                   </div>
 
@@ -670,7 +670,7 @@ export default function CastingPage() {
                       value={charMotivation}
                       onChange={(e) => setCharMotivation(e.target.value)}
                       placeholder="What drives this character? e.g. Seeking justice for a past wrong"
-                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/40 transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/40 transition-colors"
                     />
                   </div>
 
@@ -685,7 +685,7 @@ export default function CastingPage() {
                           className={cn(
                             'py-2 rounded-xl text-xs font-medium border transition-all duration-200',
                             charVoiceType === vt
-                              ? 'bg-[#E50914]/10 border-[#E50914]/30 text-[#E50914]'
+                              ? 'bg-[#C9A227]/10 border-[#C9A227]/30 text-[#C9A227]'
                               : 'bg-white/[0.02] border-white/[0.06] text-white/35 hover:text-white/50'
                           )}
                         >
@@ -706,7 +706,7 @@ export default function CastingPage() {
                           className={cn(
                             'flex-1 py-2.5 rounded-xl text-xs font-medium border transition-all duration-200',
                             charStyle === style
-                              ? 'bg-[#E50914]/10 border-[#E50914]/30 text-[#E50914]'
+                              ? 'bg-[#C9A227]/10 border-[#C9A227]/30 text-[#C9A227]'
                               : 'bg-white/[0.02] border-white/[0.06] text-white/35 hover:text-white/50'
                           )}
                         >
@@ -731,8 +731,8 @@ export default function CastingPage() {
                   className={cn(
                     'w-full py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 flex items-center justify-center gap-2',
                     isGenerating
-                      ? 'bg-[#E50914]/50 cursor-not-allowed'
-                      : 'bg-[#E50914] hover:bg-[#FF2D2D] hover:shadow-[0_0_24px_rgba(229,9,20,0.3)]'
+                      ? 'bg-[#C9A227]/50 cursor-not-allowed'
+                      : 'bg-[#C9A227] hover:bg-[#E8C766] hover:shadow-[0_0_24px_rgba(201,162,39,0.3)]'
                   )}
                 >
                   {isGenerating ? (
@@ -753,7 +753,7 @@ export default function CastingPage() {
               {/* Marketplace Pricing Section */}
               <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-4">
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <DollarSign className="h-4 w-4 text-[#E50914]" />
+                  <DollarSign className="h-4 w-4 text-[#C9A227]" />
                   Marketplace
                 </h3>
 
@@ -768,7 +768,7 @@ export default function CastingPage() {
                     className="shrink-0"
                   >
                     {listOnMarketplace ? (
-                      <ToggleRight className="h-7 w-7 text-[#E50914]" />
+                      <ToggleRight className="h-7 w-7 text-[#C9A227]" />
                     ) : (
                       <ToggleLeft className="h-7 w-7 text-white/20" />
                     )}
@@ -787,7 +787,7 @@ export default function CastingPage() {
                           min={1}
                           value={marketplacePrice}
                           onChange={(e) => setMarketplacePrice(Math.max(1, Number(e.target.value)))}
-                          className="w-full pl-8 pr-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white focus:outline-none focus:border-[#E50914]/40 transition-colors"
+                          className="w-full pl-8 pr-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white focus:outline-none focus:border-[#C9A227]/40 transition-colors"
                         />
                       </div>
                     </div>
@@ -808,7 +808,7 @@ export default function CastingPage() {
                       </div>
                       <button onClick={() => setAutoGenerateTags(!autoGenerateTags)}>
                         {autoGenerateTags ? (
-                          <ToggleRight className="h-6 w-6 text-[#E50914]" />
+                          <ToggleRight className="h-6 w-6 text-[#C9A227]" />
                         ) : (
                           <ToggleLeft className="h-6 w-6 text-white/20" />
                         )}
@@ -842,7 +842,7 @@ export default function CastingPage() {
               {isGenerating ? (
                 <div className="text-center">
                   <div className="w-24 h-24 rounded-2xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center mx-auto mb-4 animate-pulse">
-                    <RefreshCw className="h-10 w-10 text-[#E50914]/40 animate-spin" />
+                    <RefreshCw className="h-10 w-10 text-[#C9A227]/40 animate-spin" />
                   </div>
                   <h4 className="text-sm font-semibold text-white/60 mb-2">Creating your character...</h4>
                   <p className="text-xs text-white/25">AI is generating a unique character based on your inputs.</p>
@@ -911,7 +911,7 @@ export default function CastingPage() {
                   <div className="flex gap-3">
                     <button
                       onClick={addGeneratedToCast}
-                      className="flex-1 py-3 rounded-xl text-sm font-semibold text-white bg-[#E50914] hover:bg-[#FF2D2D] transition-all duration-200 flex items-center justify-center gap-2 hover:shadow-[0_0_24px_rgba(229,9,20,0.3)]"
+                      className="flex-1 py-3 rounded-xl text-sm font-semibold text-white bg-[#C9A227] hover:bg-[#E8C766] transition-all duration-200 flex items-center justify-center gap-2 hover:shadow-[0_0_24px_rgba(201,162,39,0.3)]"
                     >
                       <Plus className="h-4 w-4" />
                       Add to Cast
@@ -975,7 +975,7 @@ export default function CastingPage() {
                     className={cn(
                       'relative p-10 rounded-2xl border-2 border-dashed transition-all duration-300 flex flex-col items-center justify-center min-h-[260px] cursor-pointer',
                       isDragging
-                        ? 'border-[#E50914]/50 bg-[#E50914]/5'
+                        ? 'border-[#C9A227]/50 bg-[#C9A227]/5'
                         : 'border-white/[0.08] bg-white/[0.02] hover:border-white/[0.15]'
                     )}
                   >
@@ -1025,7 +1025,7 @@ export default function CastingPage() {
                     ) : (
                       <button
                         onClick={handleScanFace}
-                        className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-[#E50914] hover:bg-[#FF2D2D] transition-all duration-200 flex items-center justify-center gap-2 hover:shadow-[0_0_24px_rgba(229,9,20,0.3)]"
+                        className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-[#C9A227] hover:bg-[#E8C766] transition-all duration-200 flex items-center justify-center gap-2 hover:shadow-[0_0_24px_rgba(201,162,39,0.3)]"
                       >
                         <Camera className="h-4 w-4" />
                         Scan Face
@@ -1063,7 +1063,7 @@ export default function CastingPage() {
                 {/* Voice recording */}
                 <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
                   <h4 className="text-sm font-semibold text-white/70 mb-3 flex items-center gap-2">
-                    <Mic className="h-4 w-4 text-[#E50914]" />
+                    <Mic className="h-4 w-4 text-[#C9A227]" />
                     Record Your Voice
                   </h4>
                   <p className="text-xs text-white/35 mb-4 leading-relaxed">
@@ -1121,7 +1121,7 @@ export default function CastingPage() {
                   ) : (
                     <button
                       onClick={startRecording}
-                      className="w-full py-3 rounded-xl text-sm font-semibold border border-[#E50914]/30 bg-[#E50914]/10 text-[#E50914] hover:bg-[#E50914]/20 transition-all duration-200 flex items-center justify-center gap-2"
+                      className="w-full py-3 rounded-xl text-sm font-semibold border border-[#C9A227]/30 bg-[#C9A227]/10 text-[#C9A227] hover:bg-[#C9A227]/20 transition-all duration-200 flex items-center justify-center gap-2"
                     >
                       <Mic className="h-4 w-4" />
                       Start Recording
@@ -1180,7 +1180,7 @@ export default function CastingPage() {
         <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
           <div className="flex items-center justify-between mb-5">
             <h3 className="text-lg font-bold text-white flex items-center gap-2">
-              <Users className="h-5 w-5 text-[#E50914]" />
+              <Users className="h-5 w-5 text-[#C9A227]" />
               Your Cast
               {castList.length > 0 && (
                 <span className="text-xs font-normal text-white/30 ml-1">({castList.length} member{castList.length !== 1 ? 's' : ''})</span>
@@ -1206,7 +1206,7 @@ export default function CastingPage() {
                   className={cn(
                     'flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border transition-colors group',
                     dragOverIdx === idx && dragIdx !== idx
-                      ? 'border-[#E50914]/30 bg-[#E50914]/5'
+                      ? 'border-[#C9A227]/30 bg-[#C9A227]/5'
                       : 'border-white/[0.06] hover:border-white/[0.1]'
                   )}
                 >
@@ -1237,7 +1237,7 @@ export default function CastingPage() {
                   <select
                     value={member.role}
                     onChange={(e) => updateCast(member.id, 'role', e.target.value)}
-                    className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-white/60 focus:outline-none focus:border-[#E50914]/40 appearance-none cursor-pointer shrink-0"
+                    className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-white/60 focus:outline-none focus:border-[#C9A227]/40 appearance-none cursor-pointer shrink-0"
                   >
                     {ROLE_OPTIONS.map((r) => (
                       <option key={r} value={r} className="bg-[#1a1a1a]">{r}</option>
@@ -1250,7 +1250,7 @@ export default function CastingPage() {
                     value={member.characterName}
                     onChange={(e) => updateCast(member.id, 'characterName', e.target.value)}
                     placeholder="Character name..."
-                    className="flex-1 min-w-0 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-white/60 placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/40 transition-colors"
+                    className="flex-1 min-w-0 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-white/60 placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/40 transition-colors"
                   />
 
                   {/* Dialogue Lines */}
@@ -1261,7 +1261,7 @@ export default function CastingPage() {
                       min={0}
                       value={member.dialogueLines}
                       onChange={(e) => updateCast(member.id, 'dialogueLines', Math.max(0, Number(e.target.value)))}
-                      className="w-14 px-2 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-white/60 focus:outline-none focus:border-[#E50914]/40 text-center"
+                      className="w-14 px-2 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-white/60 focus:outline-none focus:border-[#C9A227]/40 text-center"
                       title="Dialogue lines"
                     />
                   </div>
@@ -1270,7 +1270,7 @@ export default function CastingPage() {
                   <select
                     value={member.screenTime}
                     onChange={(e) => updateCast(member.id, 'screenTime', e.target.value)}
-                    className="px-2 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-white/60 focus:outline-none focus:border-[#E50914]/40 appearance-none cursor-pointer shrink-0"
+                    className="px-2 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-white/60 focus:outline-none focus:border-[#C9A227]/40 appearance-none cursor-pointer shrink-0"
                     title="Screen time"
                   >
                     {SCREEN_TIME_OPTIONS.map((st) => (
@@ -1306,7 +1306,7 @@ export default function CastingPage() {
 
         <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
           <h3 className="text-lg font-bold text-white flex items-center gap-2 mb-5">
-            <Heart className="h-5 w-5 text-[#E50914]" />
+            <Heart className="h-5 w-5 text-[#C9A227]" />
             Character Relationships
           </h3>
 

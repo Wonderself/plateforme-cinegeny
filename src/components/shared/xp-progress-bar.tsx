@@ -63,7 +63,7 @@ export function XPProgressBar({ xp, streak = 0, compact }: XPProgressBarProps) {
         <span>{level.title}</span>
         {nextLevel && <span>{remaining} XP → {nextLevel.title} {nextLevel.icon}</span>}
       </div>
-      <Link href="/rewards" className="mt-3 flex items-center gap-1 text-xs text-[#E50914] hover:underline">
+      <Link href="/rewards" className="mt-3 flex items-center gap-1 text-xs text-[#C9A227] hover:underline">
         <TrendingUp className="h-3.5 w-3.5" /> Voir toutes les récompenses
       </Link>
     </div>

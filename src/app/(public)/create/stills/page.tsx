@@ -224,11 +224,11 @@ export default function StillsPage() {
     >
       {/* Hero */}
       <section className="text-center mb-16">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-          <ImageIcon className="h-8 w-8 text-[#E50914]" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+          <ImageIcon className="h-8 w-8 text-[#C9A227]" />
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-          Generate <span className="text-[#E50914]">Still Shots</span>
+          Generate <span className="text-[#C9A227]">Still Shots</span>
         </h1>
         <p className="text-base text-white/50 max-w-2xl mx-auto leading-relaxed">
           Create cinematic still images for every scene. Describe your vision and let AI bring it to life.
@@ -248,8 +248,8 @@ export default function StillsPage() {
               key={item.title}
               className="group p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-[#E50914]/10 flex items-center justify-center mb-3 group-hover:bg-[#E50914]/20 transition-colors">
-                <item.icon className="h-5 w-5 text-[#E50914]" />
+              <div className="w-10 h-10 rounded-lg bg-[#C9A227]/10 flex items-center justify-center mb-3 group-hover:bg-[#C9A227]/20 transition-colors">
+                <item.icon className="h-5 w-5 text-[#C9A227]" />
               </div>
               <h3 className="text-sm font-semibold text-white mb-1">{item.title}</h3>
               <p className="text-xs text-white/40 leading-relaxed">{item.desc}</p>
@@ -274,7 +274,7 @@ export default function StillsPage() {
                 rows={6}
                 className={cn(
                   'w-full bg-white/[0.02] border rounded-xl px-4 py-3 text-sm text-white/80 placeholder:text-white/25 resize-none focus:outline-none transition-colors',
-                  promptError ? 'border-red-500/60 focus:border-red-500/80' : 'border-white/[0.08] focus:border-[#E50914]/40'
+                  promptError ? 'border-red-500/60 focus:border-red-500/80' : 'border-white/[0.08] focus:border-[#C9A227]/40'
                 )}
               />
               {promptError && (
@@ -285,7 +285,7 @@ export default function StillsPage() {
               <button
                 onClick={handleGenerate}
                 disabled={isGenerating}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#E50914] text-white text-sm font-semibold hover:bg-[#B20710] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#C9A227] text-white text-sm font-semibold hover:bg-[#B20710] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {generating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
                 {generating ? 'Generating...' : 'Generate'}
@@ -322,7 +322,7 @@ export default function StillsPage() {
                       className={cn(
                         'px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200',
                         aspectRatio === ar
-                          ? 'bg-[#E50914] text-white'
+                          ? 'bg-[#C9A227] text-white'
                           : 'bg-white/[0.04] text-white/50 hover:text-white/70 hover:bg-white/[0.08] border border-white/[0.06]'
                       )}
                     >
@@ -343,7 +343,7 @@ export default function StillsPage() {
                       className={cn(
                         'px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200',
                         style === s
-                          ? 'bg-[#E50914] text-white'
+                          ? 'bg-[#C9A227] text-white'
                           : 'bg-white/[0.04] text-white/50 hover:text-white/70 hover:bg-white/[0.08] border border-white/[0.06]'
                       )}
                     >
@@ -364,7 +364,7 @@ export default function StillsPage() {
                       className={cn(
                         'px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200',
                         cameraAngle === a
-                          ? 'bg-[#E50914] text-white'
+                          ? 'bg-[#C9A227] text-white'
                           : 'bg-white/[0.04] text-white/50 hover:text-white/70 hover:bg-white/[0.08] border border-white/[0.06]'
                       )}
                     >
@@ -393,7 +393,7 @@ export default function StillsPage() {
             <select
               value={sceneFilter}
               onChange={(e) => setSceneFilter(e.target.value)}
-              className="bg-white/[0.04] border border-white/[0.08] rounded-md px-3 py-1.5 text-xs text-white/60 focus:outline-none focus:border-[#E50914]/50 transition-colors appearance-none cursor-pointer"
+              className="bg-white/[0.04] border border-white/[0.08] rounded-md px-3 py-1.5 text-xs text-white/60 focus:outline-none focus:border-[#C9A227]/50 transition-colors appearance-none cursor-pointer"
             >
               {SCENE_FILTERS.map((f) => (
                 <option key={f} value={f} className="bg-[#1a1a1a]">{f}</option>
@@ -405,12 +405,12 @@ export default function StillsPage() {
         {/* Loading state */}
         {isGenerating && (
           <div className="mb-6 p-8 rounded-xl border border-white/[0.08] bg-white/[0.02] flex flex-col items-center justify-center gap-3">
-            <Loader2 className="h-8 w-8 text-[#E50914] animate-spin" />
+            <Loader2 className="h-8 w-8 text-[#C9A227] animate-spin" />
             <p className="text-sm text-white/50">
               {generatingVariations ? 'Generating 4 variations...' : 'Generating your still...'}
             </p>
             <div className="w-48 h-1 rounded-full bg-white/[0.06] overflow-hidden">
-              <div className="h-full bg-[#E50914] rounded-full animate-pulse" style={{ width: '70%' }} />
+              <div className="h-full bg-[#C9A227] rounded-full animate-pulse" style={{ width: '70%' }} />
             </div>
           </div>
         )}
@@ -475,7 +475,7 @@ export default function StillsPage() {
                         'flex-1 flex items-center justify-center gap-1 py-1.5 rounded-md text-[10px] font-medium transition-colors',
                         item.selected
                           ? 'bg-green-600 text-white hover:bg-green-700'
-                          : 'bg-[#E50914]/80 text-white hover:bg-[#E50914]'
+                          : 'bg-[#C9A227]/80 text-white hover:bg-[#C9A227]'
                       )}
                     >
                       {item.selected ? <Check className="h-3 w-3" /> : <Film className="h-3 w-3" />}
@@ -556,7 +556,7 @@ export default function StillsPage() {
           {/* Style transfer */}
           <div className="p-6 rounded-xl bg-white/[0.02] border border-white/[0.06]">
             <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="h-5 w-5 text-[#E50914]" />
+              <Sparkles className="h-5 w-5 text-[#C9A227]" />
               <h3 className="text-sm font-semibold text-white/80">Style Transfer</h3>
             </div>
             <p className="text-xs text-white/40 leading-relaxed mb-4">
@@ -600,7 +600,7 @@ export default function StillsPage() {
                 <button
                   onClick={handleApplyStyleTransfer}
                   disabled={styleTransferring}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#E50914] text-white text-xs font-semibold hover:bg-[#B20710] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#C9A227] text-white text-xs font-semibold hover:bg-[#B20710] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {styleTransferring ? (
                     <Loader2 className="h-3.5 w-3.5 animate-spin" />

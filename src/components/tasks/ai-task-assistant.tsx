@@ -66,7 +66,7 @@ export function AITaskAssistant({ taskCategory, taskDescription, filmProjectId, 
     <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
       {/* Header */}
       <div className="px-5 py-3 border-b border-white/10 flex items-center gap-3">
-        <Bot className="h-5 w-5 text-[#E50914]" />
+        <Bot className="h-5 w-5 text-[#C9A227]" />
         <div className="flex-1">
           <p className="text-sm font-semibold text-[#1A1A2E]">{agent?.name || 'Assistant IA'}</p>
           <p className="text-[10px] text-gray-400">Agent {agent?.agentSlug} · {agent?.capabilities.join(', ')}</p>
@@ -82,7 +82,7 @@ export function AITaskAssistant({ taskCategory, taskDescription, filmProjectId, 
         ].map(tab => {
           const TIcon = tab.icon
           return (
-            <button key={tab.key} onClick={() => setActiveTab(tab.key)} className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 text-xs font-medium border-b-2 transition-colors ${activeTab === tab.key ? 'border-[#E50914] text-[#E50914]' : 'border-transparent text-gray-400 hover:text-white/60'}`}>
+            <button key={tab.key} onClick={() => setActiveTab(tab.key)} className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 text-xs font-medium border-b-2 transition-colors ${activeTab === tab.key ? 'border-[#C9A227] text-[#C9A227]' : 'border-transparent text-gray-400 hover:text-white/60'}`}>
               <TIcon className="h-3.5 w-3.5" /> {tab.label}
             </button>
           )
@@ -97,7 +97,7 @@ export function AITaskAssistant({ taskCategory, taskDescription, filmProjectId, 
               <div className="text-center py-6">
                 <Lightbulb className="h-8 w-8 text-gray-300 mx-auto mb-2" />
                 <p className="text-sm text-gray-400">Vous bloquez ? L&apos;IA peut vous aider.</p>
-                <button onClick={getSuggestions} disabled={loading} className="mt-3 px-4 py-2 bg-[#E50914] text-white text-sm rounded-lg disabled:opacity-50">
+                <button onClick={getSuggestions} disabled={loading} className="mt-3 px-4 py-2 bg-[#C9A227] text-white text-sm rounded-lg disabled:opacity-50">
                   {loading ? <Loader2 className="inline h-4 w-4 animate-spin mr-1" /> : <Zap className="inline h-4 w-4 mr-1" />}
                   Obtenir des suggestions
                 </button>
@@ -119,7 +119,7 @@ export function AITaskAssistant({ taskCategory, taskDescription, filmProjectId, 
               <div className="text-center py-6">
                 <Shield className="h-8 w-8 text-gray-300 mx-auto mb-2" />
                 <p className="text-sm text-gray-400">Vérifiez la cohérence avant de soumettre.</p>
-                <button onClick={runReview} disabled={loading} className="mt-3 px-4 py-2 bg-[#E50914] text-white text-sm rounded-lg disabled:opacity-50">
+                <button onClick={runReview} disabled={loading} className="mt-3 px-4 py-2 bg-[#C9A227] text-white text-sm rounded-lg disabled:opacity-50">
                   {loading ? <Loader2 className="inline h-4 w-4 animate-spin mr-1" /> : <Eye className="inline h-4 w-4 mr-1" />}
                   Lancer la review IA
                 </button>
@@ -143,7 +143,7 @@ export function AITaskAssistant({ taskCategory, taskDescription, filmProjectId, 
                     ))}
                   </div>
                 )}
-                <button onClick={() => setReview(null)} className="text-xs text-[#E50914] hover:underline">Relancer la review</button>
+                <button onClick={() => setReview(null)} className="text-xs text-[#C9A227] hover:underline">Relancer la review</button>
               </>
             )}
           </div>
@@ -154,7 +154,7 @@ export function AITaskAssistant({ taskCategory, taskDescription, filmProjectId, 
             <div className="max-h-48 overflow-y-auto space-y-2">
               {chatMessages.map((m, i) => (
                 <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] rounded-xl px-3 py-2 text-xs ${m.role === 'user' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/80'}`}>
+                  <div className={`max-w-[80%] rounded-xl px-3 py-2 text-xs ${m.role === 'user' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/80'}`}>
                     {m.content}
                   </div>
                 </div>
@@ -162,8 +162,8 @@ export function AITaskAssistant({ taskCategory, taskDescription, filmProjectId, 
               {loading && <div className="flex gap-1"><div className="h-2 w-2 rounded-full bg-gray-300 animate-bounce" /><div className="h-2 w-2 rounded-full bg-gray-300 animate-bounce" style={{ animationDelay: '150ms' }} /><div className="h-2 w-2 rounded-full bg-gray-300 animate-bounce" style={{ animationDelay: '300ms' }} /></div>}
             </div>
             <div className="flex gap-2">
-              <input value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') sendChat() }} placeholder={`Demandez à ${agent?.name || 'l\'agent'}...`} className="flex-1 rounded-lg border border-white/10 px-3 py-2 text-xs focus:border-[#E50914] focus:outline-none" />
-              <button onClick={sendChat} disabled={!chatInput.trim() || loading} className="h-8 w-8 rounded-lg bg-[#E50914] text-white disabled:opacity-30 flex items-center justify-center shrink-0">
+              <input value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') sendChat() }} placeholder={`Demandez à ${agent?.name || 'l\'agent'}...`} className="flex-1 rounded-lg border border-white/10 px-3 py-2 text-xs focus:border-[#C9A227] focus:outline-none" />
+              <button onClick={sendChat} disabled={!chatInput.trim() || loading} className="h-8 w-8 rounded-lg bg-[#C9A227] text-white disabled:opacity-30 flex items-center justify-center shrink-0">
                 <Send className="h-3.5 w-3.5" />
               </button>
             </div>

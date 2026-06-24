@@ -311,11 +311,11 @@ export default function VideosPage() {
     >
       {/* Hero */}
       <section className="text-center mb-16">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-          <Video className="h-8 w-8 text-[#E50914]" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+          <Video className="h-8 w-8 text-[#C9A227]" />
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-          Produce Your <span className="text-[#E50914]">Videos</span>
+          Produce Your <span className="text-[#C9A227]">Videos</span>
         </h1>
         <p className="text-base text-white/50 max-w-2xl mx-auto leading-relaxed">
           Generate cinematic video clips, assemble them on a timeline, and craft seamless transitions between scenes.
@@ -335,8 +335,8 @@ export default function VideosPage() {
               key={item.title}
               className="group p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-[#E50914]/10 flex items-center justify-center mb-3 group-hover:bg-[#E50914]/20 transition-colors">
-                <item.icon className="h-5 w-5 text-[#E50914]" />
+              <div className="w-10 h-10 rounded-lg bg-[#C9A227]/10 flex items-center justify-center mb-3 group-hover:bg-[#C9A227]/20 transition-colors">
+                <item.icon className="h-5 w-5 text-[#C9A227]" />
               </div>
               <h3 className="text-sm font-semibold text-white mb-1">{item.title}</h3>
               <p className="text-xs text-white/40 leading-relaxed">{item.desc}</p>
@@ -359,7 +359,7 @@ export default function VideosPage() {
               <select
                 value={selectedScene}
                 onChange={(e) => setSelectedScene(e.target.value)}
-                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-2.5 text-sm text-white/70 focus:outline-none focus:border-[#E50914]/50 transition-colors appearance-none cursor-pointer"
+                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-2.5 text-sm text-white/70 focus:outline-none focus:border-[#C9A227]/50 transition-colors appearance-none cursor-pointer"
               >
                 {SCENES.map((s) => (
                   <option key={s} value={s} className="bg-[#1a1a1a]">{s}</option>
@@ -374,7 +374,7 @@ export default function VideosPage() {
                 onChange={(e) => { setPrompt(e.target.value); setGenerationError('') }}
                 placeholder="Describe the video clip... e.g. Camera slowly dollies forward through a foggy forest, morning light breaking through the canopy, particles floating in the air"
                 rows={5}
-                className="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/80 placeholder:text-white/25 resize-none focus:outline-none focus:border-[#E50914]/40 transition-colors"
+                className="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/80 placeholder:text-white/25 resize-none focus:outline-none focus:border-[#C9A227]/40 transition-colors"
               />
               {generationError && (
                 <p className="text-xs text-red-400 mt-1">{generationError}</p>
@@ -389,8 +389,8 @@ export default function VideosPage() {
               className={cn(
                 'flex items-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-semibold transition-colors',
                 isGenerating
-                  ? 'bg-[#E50914]/50 cursor-not-allowed'
-                  : 'bg-[#E50914] hover:bg-[#B20710]'
+                  ? 'bg-[#C9A227]/50 cursor-not-allowed'
+                  : 'bg-[#C9A227] hover:bg-[#B20710]'
               )}
             >
               {isGenerating ? (
@@ -417,13 +417,13 @@ export default function VideosPage() {
                         isComplete
                           ? 'bg-green-500/20 border border-green-500/40'
                           : isActive
-                          ? 'bg-[#E50914]/20 border border-[#E50914]/40'
+                          ? 'bg-[#C9A227]/20 border border-[#C9A227]/40'
                           : 'bg-white/[0.04] border border-white/[0.06]'
                       )}>
                         {isComplete ? (
                           <Check className="h-3 w-3 text-green-400" />
                         ) : isActive ? (
-                          <Loader2 className="h-3 w-3 text-[#E50914] animate-spin" />
+                          <Loader2 className="h-3 w-3 text-[#C9A227] animate-spin" />
                         ) : (
                           <span className="text-[8px] text-white/20">{i + 1}</span>
                         )}
@@ -440,7 +440,7 @@ export default function VideosPage() {
               </div>
               <div className="mt-3 h-1 rounded-full bg-white/[0.06] overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-[#E50914] transition-all duration-500"
+                  className="h-full rounded-full bg-[#C9A227] transition-all duration-500"
                   style={{
                     width: isGenerating
                       ? `${((generationStep + 1) / GENERATION_STEPS.length) * 100}%`
@@ -468,7 +468,7 @@ export default function VideosPage() {
                       className={cn(
                         'px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200',
                         duration === d
-                          ? 'bg-[#E50914] text-white'
+                          ? 'bg-[#C9A227] text-white'
                           : 'bg-white/[0.04] text-white/50 hover:text-white/70 hover:bg-white/[0.08] border border-white/[0.06]'
                       )}
                     >
@@ -492,7 +492,7 @@ export default function VideosPage() {
                       className={cn(
                         'px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200',
                         resolution === r
-                          ? 'bg-[#E50914] text-white'
+                          ? 'bg-[#C9A227] text-white'
                           : 'bg-white/[0.04] text-white/50 hover:text-white/70 hover:bg-white/[0.08] border border-white/[0.06]'
                       )}
                     >
@@ -516,7 +516,7 @@ export default function VideosPage() {
                       className={cn(
                         'px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200',
                         frameRate === f
-                          ? 'bg-[#E50914] text-white'
+                          ? 'bg-[#C9A227] text-white'
                           : 'bg-white/[0.04] text-white/50 hover:text-white/70 hover:bg-white/[0.08] border border-white/[0.06]'
                       )}
                     >
@@ -561,7 +561,7 @@ export default function VideosPage() {
                       <p className="text-[10px] text-white/50 mb-2">Playing...</p>
                       <div className="w-3/4 h-1 rounded-full bg-white/10 overflow-hidden">
                         <div
-                          className="h-full bg-[#E50914] rounded-full transition-all duration-100"
+                          className="h-full bg-[#C9A227] rounded-full transition-all duration-100"
                           style={{ width: `${clipPlaybackProgress * 100}%` }}
                         />
                       </div>
@@ -574,7 +574,7 @@ export default function VideosPage() {
                       onClick={() => handlePlayClip(clip)}
                       className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
                     >
-                      <div className="w-12 h-12 rounded-full bg-[#E50914]/90 flex items-center justify-center backdrop-blur-sm">
+                      <div className="w-12 h-12 rounded-full bg-[#C9A227]/90 flex items-center justify-center backdrop-blur-sm">
                         <Play className="h-5 w-5 text-white ml-0.5" />
                       </div>
                     </button>
@@ -585,7 +585,7 @@ export default function VideosPage() {
                     {clip.duration}
                   </span>
                   {/* Scene label */}
-                  <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#E50914]/80 text-[10px] text-white font-medium z-20">
+                  <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#C9A227]/80 text-[10px] text-white font-medium z-20">
                     {clip.scene}
                   </span>
                 </div>
@@ -596,7 +596,7 @@ export default function VideosPage() {
                   <div className="flex gap-1.5">
                     <button
                       onClick={() => handleUseClip(clip)}
-                      className="flex-1 py-1.5 rounded-md text-[10px] font-medium bg-[#E50914]/80 text-white hover:bg-[#E50914] transition-colors"
+                      className="flex-1 py-1.5 rounded-md text-[10px] font-medium bg-[#C9A227]/80 text-white hover:bg-[#C9A227] transition-colors"
                     >
                       Use
                     </button>
@@ -655,7 +655,7 @@ export default function VideosPage() {
               {/* Progress bar */}
               <div className="h-1 rounded-full bg-white/[0.06] overflow-hidden mb-3 cursor-pointer">
                 <div
-                  className="h-full bg-[#E50914] rounded-full transition-all duration-100"
+                  className="h-full bg-[#C9A227] rounded-full transition-all duration-100"
                   style={{ width: totalTimelineDuration > 0 ? `${(previewTime / totalTimelineDuration) * 100}%` : '0%' }}
                 />
               </div>
@@ -665,14 +665,14 @@ export default function VideosPage() {
                   {!previewPlaying ? (
                     <button
                       onClick={startPreview}
-                      className="w-8 h-8 rounded-full bg-[#E50914] flex items-center justify-center hover:bg-[#B20710] transition-colors"
+                      className="w-8 h-8 rounded-full bg-[#C9A227] flex items-center justify-center hover:bg-[#B20710] transition-colors"
                     >
                       <Play className="h-4 w-4 text-white ml-0.5" />
                     </button>
                   ) : (
                     <button
                       onClick={pausePreview}
-                      className="w-8 h-8 rounded-full bg-[#E50914] flex items-center justify-center hover:bg-[#B20710] transition-colors"
+                      className="w-8 h-8 rounded-full bg-[#C9A227] flex items-center justify-center hover:bg-[#B20710] transition-colors"
                     >
                       <Pause className="h-4 w-4 text-white" />
                     </button>
@@ -727,7 +727,7 @@ export default function VideosPage() {
                 <button
                   key={clip.id}
                   onClick={() => { handleUseClip(clip); setShowAddFromLibrary(false) }}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.04] border border-white/[0.06] hover:border-[#E50914]/30 hover:bg-white/[0.06] transition-all"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.04] border border-white/[0.06] hover:border-[#C9A227]/30 hover:bg-white/[0.06] transition-all"
                 >
                   <img src={clip.thumbnail} alt="" className="w-8 h-5 rounded object-cover" />
                   <span className="text-xs text-white/60">{clip.label}</span>
@@ -761,7 +761,7 @@ export default function VideosPage() {
                       onClick={() => setTooltipClip(tooltipClip === clip.timelineId ? null : clip.timelineId)}
                       className={cn(
                         'group/clip relative flex flex-col items-center justify-center px-4 py-3 bg-white/[0.03] hover:bg-white/[0.06] transition-colors cursor-grab border-r border-white/[0.04]',
-                        dragOverIndex === i && 'bg-[#E50914]/10 border-l-2 border-l-[#E50914]'
+                        dragOverIndex === i && 'bg-[#C9A227]/10 border-l-2 border-l-[#C9A227]'
                       )}
                       style={{ minWidth: `${minW}px` }}
                     >
@@ -800,7 +800,7 @@ export default function VideosPage() {
                           onChange={(e) =>
                             setSelectedTransitions((prev) => ({ ...prev, [i]: e.target.value }))
                           }
-                          className="bg-[#E50914]/10 border border-[#E50914]/20 rounded px-1.5 py-1 text-[9px] text-[#E50914] font-medium focus:outline-none cursor-pointer appearance-none text-center w-[60px]"
+                          className="bg-[#C9A227]/10 border border-[#C9A227]/20 rounded px-1.5 py-1 text-[9px] text-[#C9A227] font-medium focus:outline-none cursor-pointer appearance-none text-center w-[60px]"
                         >
                           {TRANSITIONS.map((t) => (
                             <option key={t} value={t} className="bg-[#1a1a1a] text-white">{t}</option>

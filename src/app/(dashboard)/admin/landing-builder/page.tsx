@@ -45,7 +45,7 @@ export default function LandingBuilderPage() {
       blocks: [
         { id: `b-${Date.now()}`, type: 'hero', content: { title: filmTitle, tagline: 'Un film qui va vous surprendre', bgImage: '' } },
         { id: `b-${Date.now() + 1}`, type: 'synopsis', content: { text: 'Synopsis à rédiger...', genre: '', duration: '' } },
-        { id: `b-${Date.now() + 2}`, type: 'cta', content: { text: 'Votez maintenant', href: '#', color: '#E50914' } },
+        { id: `b-${Date.now() + 2}`, type: 'cta', content: { text: 'Votez maintenant', href: '#', color: '#C9A227' } },
       ],
       status: 'draft', createdAt: new Date(),
     }
@@ -107,10 +107,10 @@ export default function LandingBuilderPage() {
 
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
           <div className="grid grid-cols-2 gap-3">
-            <input value={pageName} onChange={e => setPageName(e.target.value)} placeholder="Nom de la page" className="rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
-            <input value={filmTitle} onChange={e => setFilmTitle(e.target.value)} placeholder="Titre du film" className="rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
+            <input value={pageName} onChange={e => setPageName(e.target.value)} placeholder="Nom de la page" className="rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
+            <input value={filmTitle} onChange={e => setFilmTitle(e.target.value)} placeholder="Titre du film" className="rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
           </div>
-          <button onClick={createPage} disabled={!pageName.trim() || !filmTitle.trim()} className="w-full flex items-center justify-center gap-2 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50">
+          <button onClick={createPage} disabled={!pageName.trim() || !filmTitle.trim()} className="w-full flex items-center justify-center gap-2 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50">
             <Plus className="h-5 w-5" /> Créer une landing page
           </button>
         </div>
@@ -124,7 +124,7 @@ export default function LandingBuilderPage() {
           <div className="space-y-3">
             {pages.map(page => (
               <button key={page.id} onClick={() => setActivePage(page)} className="w-full text-left rounded-xl border border-white/10 bg-white/5 p-5 hover:border-white/15 transition-colors flex items-center gap-4">
-                <Layout className="h-5 w-5 text-[#E50914]" />
+                <Layout className="h-5 w-5 text-[#C9A227]" />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-white">{page.name}</p>
                   <p className="text-xs text-white/50">{page.filmTitle} · {page.blocks.length} blocs · {page.status}</p>
@@ -151,7 +151,7 @@ export default function LandingBuilderPage() {
           <button onClick={() => setPreview(!preview)} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${preview ? 'bg-blue-50 text-blue-700' : 'bg-white/[0.05] text-white/60'}`}>
             <Eye className="inline h-3.5 w-3.5 mr-1" />{preview ? 'Éditer' : 'Preview'}
           </button>
-          <button onClick={savePage} disabled={saving} className="px-4 py-1.5 bg-[#E50914] text-white text-xs font-medium rounded-lg disabled:opacity-50">
+          <button onClick={savePage} disabled={saving} className="px-4 py-1.5 bg-[#C9A227] text-white text-xs font-medium rounded-lg disabled:opacity-50">
             {saving ? <Loader2 className="inline h-3.5 w-3.5 animate-spin mr-1" /> : <Save className="inline h-3.5 w-3.5 mr-1" />}Save
           </button>
         </div>
@@ -166,7 +166,7 @@ export default function LandingBuilderPage() {
               const BIcon = BLOCK_ICONS[block.icon] || Layout
               return (
                 <button key={block.type} onClick={() => addBlock(block.type)} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/[0.03] text-left transition-colors">
-                  <BIcon className="h-4 w-4 text-[#E50914]" />
+                  <BIcon className="h-4 w-4 text-[#C9A227]" />
                   <div>
                     <p className="text-xs font-medium text-white">{block.label}</p>
                     <p className="text-[10px] text-white/50">{block.description}</p>
@@ -198,7 +198,7 @@ export default function LandingBuilderPage() {
                   {block.type === 'synopsis' && <p className="text-sm text-white/60 leading-relaxed">{block.content.text || 'Synopsis...'}</p>}
                   {block.type === 'cta' && (
                     <div className="text-center">
-                      <button className="px-8 py-3 rounded-xl text-white font-semibold" style={{ backgroundColor: block.content.color || '#E50914' }}>{block.content.text || 'CTA'}</button>
+                      <button className="px-8 py-3 rounded-xl text-white font-semibold" style={{ backgroundColor: block.content.color || '#C9A227' }}>{block.content.text || 'CTA'}</button>
                     </div>
                   )}
                   {!['hero', 'synopsis', 'cta'].includes(block.type) && <p className="text-sm text-white/50 italic">[{blockDef?.label} — contenu configurable]</p>}
@@ -209,7 +209,7 @@ export default function LandingBuilderPage() {
             return (
               <div key={block.id} className="rounded-xl border border-white/10 bg-white/5 p-5">
                 <div className="flex items-center gap-3 mb-4">
-                  <BIcon className="h-4 w-4 text-[#E50914]" />
+                  <BIcon className="h-4 w-4 text-[#C9A227]" />
                   <span className="text-sm font-medium text-white flex-1">{blockDef?.label}</span>
                   <button onClick={() => moveBlock(block.id, 'up')} disabled={idx === 0} className="p-1 text-white/50 hover:text-white/60 disabled:opacity-30"><MoveUp className="h-4 w-4" /></button>
                   <button onClick={() => moveBlock(block.id, 'down')} disabled={idx === activePage.blocks.length - 1} className="p-1 text-white/50 hover:text-white/60 disabled:opacity-30"><MoveDown className="h-4 w-4" /></button>
@@ -220,9 +220,9 @@ export default function LandingBuilderPage() {
                     <div key={key}>
                       <label className="text-[10px] text-white/50 mb-1 block capitalize">{key.replace(/([A-Z])/g, ' $1')}</label>
                       {key === 'text' || key === 'tagline' ? (
-                        <textarea value={value} onChange={e => updateBlockContent(block.id, key, e.target.value)} rows={2} className="w-full rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none resize-none" />
+                        <textarea value={value} onChange={e => updateBlockContent(block.id, key, e.target.value)} rows={2} className="w-full rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none resize-none" />
                       ) : (
-                        <input value={value} onChange={e => updateBlockContent(block.id, key, e.target.value)} className="w-full rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none" />
+                        <input value={value} onChange={e => updateBlockContent(block.id, key, e.target.value)} className="w-full rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none" />
                       )}
                     </div>
                   ))}

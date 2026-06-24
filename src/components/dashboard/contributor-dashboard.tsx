@@ -113,7 +113,7 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
             icon: Trophy,
             label: 'Points Gagnes',
             value: user.points.toLocaleString('fr-FR'),
-            color: 'text-[#E50914]',
+            color: 'text-[#C9A227]',
           },
           {
             icon: TrendingUp,
@@ -150,7 +150,7 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <Zap className="h-4 w-4 text-[#E50914]" />
+                <Zap className="h-4 w-4 text-[#C9A227]" />
                 <span className="text-sm font-medium">Progression vers {nextLevelKey}</span>
               </div>
               <span className="text-sm text-white/40">
@@ -170,7 +170,7 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold">Taches en cours</h2>
-            <Link href="/tasks" className="text-sm text-[#E50914] hover:text-[#FF2D2D]">
+            <Link href="/tasks" className="text-sm text-[#C9A227] hover:text-[#E8C766]">
               Voir tout &rarr;
             </Link>
           </div>
@@ -189,7 +189,7 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
             <div className="space-y-3">
               {activeTasks.map((task) => (
                 <Link key={task.id} href={`/tasks/${task.id}`}>
-                  <Card variant="glass" className="hover:border-[#E50914]/20 transition-all cursor-pointer">
+                  <Card variant="glass" className="hover:border-[#C9A227]/20 transition-all cursor-pointer">
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
@@ -200,7 +200,7 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
                           <span className={`text-xs px-2 py-0.5 rounded-full border ${getStatusColor(task.status)}`}>
                             {TASK_STATUS_LABELS[task.status as keyof typeof TASK_STATUS_LABELS]}
                           </span>
-                          <span className="text-sm font-medium text-[#E50914]">
+                          <span className="text-sm font-medium text-[#C9A227]">
                             {formatPrice(task.priceEuros)}
                           </span>
                         </div>
@@ -221,7 +221,7 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
             <Card variant="glass">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <BarChart3 className="h-5 w-5 text-[#E50914]" />
+                  <BarChart3 className="h-5 w-5 text-[#C9A227]" />
                   <span className="text-sm text-white/50">Apercu de votre activite</span>
                 </div>
                 {/* Placeholder bars */}
@@ -231,7 +231,7 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
                     return (
                       <div key={day} className="flex-1 flex flex-col items-center gap-1">
                         <div
-                          className="w-full rounded-t bg-gradient-to-t from-[#E50914]/40 to-[#E50914]/10 transition-all"
+                          className="w-full rounded-t bg-gradient-to-t from-[#C9A227]/40 to-[#C9A227]/10 transition-all"
                           style={{ height: `${heights[i]}%` }}
                         />
                         <span className="text-[10px] text-white/25">{day}</span>
@@ -248,16 +248,16 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
             <h2 className="text-xl font-semibold mb-4">Acces rapide</h2>
             <div className="grid grid-cols-2 gap-3">
               <Link href="/tasks">
-                <Card variant="glass" className="hover:border-[#E50914]/20 transition-all cursor-pointer">
+                <Card variant="glass" className="hover:border-[#C9A227]/20 transition-all cursor-pointer">
                   <CardContent className="p-4 flex items-center gap-3">
-                    <Briefcase className="h-5 w-5 text-[#E50914]" />
+                    <Briefcase className="h-5 w-5 text-[#C9A227]" />
                     <span className="text-sm font-medium">Taches disponibles</span>
                   </CardContent>
                 </Card>
               </Link>
 
               <Link href="/profile">
-                <Card variant="glass" className="hover:border-[#E50914]/20 transition-all cursor-pointer">
+                <Card variant="glass" className="hover:border-[#C9A227]/20 transition-all cursor-pointer">
                   <CardContent className="p-4 flex items-center gap-3">
                     <User className="h-5 w-5 text-blue-400" />
                     <span className="text-sm font-medium">Mon profil</span>
@@ -266,7 +266,7 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
               </Link>
 
               <Link href="/profile/payments">
-                <Card variant="glass" className="hover:border-[#E50914]/20 transition-all cursor-pointer">
+                <Card variant="glass" className="hover:border-[#C9A227]/20 transition-all cursor-pointer">
                   <CardContent className="p-4 flex items-center gap-3">
                     <CreditCard className="h-5 w-5 text-green-400" />
                     <span className="text-sm font-medium">Mes paiements</span>
@@ -275,7 +275,7 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
               </Link>
 
               <Link href="/leaderboard">
-                <Card variant="glass" className="hover:border-[#E50914]/20 transition-all cursor-pointer">
+                <Card variant="glass" className="hover:border-[#C9A227]/20 transition-all cursor-pointer">
                   <CardContent className="p-4 flex items-center gap-3">
                     <Trophy className="h-5 w-5 text-yellow-400" />
                     <span className="text-sm font-medium">Classement</span>
@@ -293,7 +293,7 @@ export async function ContributorDashboard({ user }: ContributorDashboardProps) 
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Zap className="h-5 w-5 text-[#E50914]" />
+                <Zap className="h-5 w-5 text-[#C9A227]" />
                 <span className="font-medium">Administration</span>
               </div>
               <Link href="/admin">

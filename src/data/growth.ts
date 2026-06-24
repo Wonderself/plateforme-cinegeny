@@ -11,7 +11,7 @@ export interface GrowthAgent {
 }
 
 export const GROWTH_AGENTS: GrowthAgent[] = [
-  { slug: 'cg-promo-manager', name: 'Promo Manager', role: 'Codes promo & offres', description: 'Crée et gère les codes promotionnels. Contrôle unicité, limites d\'utilisation, expiration. Analyse l\'impact sur l\'acquisition.', icon: 'ticket', color: '#E50914' },
+  { slug: 'cg-promo-manager', name: 'Promo Manager', role: 'Codes promo & offres', description: 'Crée et gère les codes promotionnels. Contrôle unicité, limites d\'utilisation, expiration. Analyse l\'impact sur l\'acquisition.', icon: 'ticket', color: '#C9A227' },
   { slug: 'cg-referral-engine', name: 'Moteur Parrainage', role: 'Programme referral', description: 'Gère le programme de parrainage : génération de codes CG-XXXXXX, suivi des conversions, distribution des récompenses par paliers.', icon: 'users', color: '#3B82F6' },
   { slug: 'cg-onboarding-guide', name: 'Guide Onboarding', role: 'Parcours d\'accueil', description: 'Orchestre le parcours d\'onboarding : signup bonus, premiers pas guidés, activation des fonctionnalités clés.', icon: 'compass', color: '#10B981' },
   { slug: 'cg-tier-manager', name: 'Gestionnaire Tiers', role: 'Niveaux d\'accès', description: 'Gère les 4 tiers (guest/demo/free/paid) avec limites quotidiennes. Auto-upgrade, downgrade, restrictions.', icon: 'layers', color: '#8B5CF6' },

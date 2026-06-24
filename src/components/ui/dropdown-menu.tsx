@@ -91,7 +91,7 @@ const DropdownMenuItem = React.forwardRef<
     className={cn(
       'relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2 text-sm outline-none',
       'text-white/80 transition-colors',
-      'focus:bg-[#E50914]/10 focus:text-[#E50914]',
+      'focus:bg-[#C9A227]/10 focus:text-[#C9A227]',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       inset && 'pl-8',
       className
@@ -110,7 +110,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     className={cn(
       'relative flex cursor-pointer select-none items-center rounded-lg py-2 pl-8 pr-3 text-sm outline-none',
       'text-white/80 transition-colors',
-      'focus:bg-[#E50914]/10 focus:text-[#E50914]',
+      'focus:bg-[#C9A227]/10 focus:text-[#C9A227]',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className
     )}
@@ -119,7 +119,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <Check className="h-4 w-4 text-[#E50914]" />
+        <Check className="h-4 w-4 text-[#C9A227]" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -136,7 +136,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     className={cn(
       'relative flex cursor-pointer select-none items-center rounded-lg py-2 pl-8 pr-3 text-sm outline-none',
       'text-white/80 transition-colors',
-      'focus:bg-[#E50914]/10 focus:text-[#E50914]',
+      'focus:bg-[#C9A227]/10 focus:text-[#C9A227]',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className
     )}
@@ -144,7 +144,7 @@ const DropdownMenuRadioItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <Circle className="h-2 w-2 fill-[#E50914] text-[#E50914]" />
+        <Circle className="h-2 w-2 fill-[#C9A227] text-[#C9A227]" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}

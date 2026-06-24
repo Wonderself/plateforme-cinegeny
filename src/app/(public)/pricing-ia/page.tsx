@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const CATEGORY_CONFIG: Record<string, { label: string; icon: typeof Cpu; color: string }> = {
   script: { label: 'Scénario & Analyse', icon: FileText, color: 'text-blue-400' },
   image: { label: 'Images & Storyboard', icon: Image, color: 'text-purple-400' },
-  video: { label: 'Vidéo & Animation', icon: Video, color: 'text-[#E50914]' },
+  video: { label: 'Vidéo & Animation', icon: Video, color: 'text-[#C9A227]' },
   audio: { label: 'Audio & Musique', icon: Music, color: 'text-emerald-400' },
   analysis: { label: 'Analyse & IA', icon: Cpu, color: 'text-orange-400' },
 }
@@ -95,7 +95,7 @@ export default function PricingIAPage() {
                       >
                         <div className="flex items-start justify-between mb-2">
                           <h4 className="text-sm font-semibold text-white">{action.label}</h4>
-                          <span className="text-lg font-bold text-[#E50914]">
+                          <span className="text-lg font-bold text-[#C9A227]">
                             {action.costCredits.toFixed(1)}
                           </span>
                         </div>
@@ -194,7 +194,7 @@ export default function PricingIAPage() {
         <div className="text-center mt-16">
           <Link
             href="/credits"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl transition-colors"
           >
             <Zap className="h-5 w-5" />
             Recharger mes crédits

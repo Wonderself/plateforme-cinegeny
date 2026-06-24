@@ -9,17 +9,17 @@ const cardVariants = cva(
       variant: {
         default: 'border border-white/5 bg-white/[0.03] backdrop-blur-sm hover:border-white/10',
         glass: [
-          'border border-[rgba(229,9,20,0.12)] bg-[rgba(255,255,255,0.04)]',
+          'border border-[rgba(201,162,39,0.12)] bg-[rgba(255,255,255,0.04)]',
           'backdrop-blur-xl',
           'shadow-[0_8px_32px_rgba(0,0,0,0.4),0_1px_0_rgba(255,255,255,0.03)_inset]',
-          'hover:bg-[rgba(255,255,255,0.07)] hover:border-[rgba(229,9,20,0.25)]',
+          'hover:bg-[rgba(255,255,255,0.07)] hover:border-[rgba(201,162,39,0.25)]',
         ].join(' '),
         gold: [
-          'border border-[#E50914]/20 bg-[rgba(229,9,20,0.05)]',
+          'border border-[#C9A227]/20 bg-[rgba(201,162,39,0.05)]',
           'backdrop-blur-xl',
-          'shadow-[0_0_40px_rgba(229,9,20,0.1),0_8px_32px_rgba(0,0,0,0.4)]',
-          'hover:border-[#E50914]/35 hover:bg-[rgba(229,9,20,0.08)]',
-          'hover:shadow-[0_0_60px_rgba(229,9,20,0.2),0_8px_32px_rgba(0,0,0,0.4)]',
+          'shadow-[0_0_40px_rgba(201,162,39,0.1),0_8px_32px_rgba(0,0,0,0.4)]',
+          'hover:border-[#C9A227]/35 hover:bg-[rgba(201,162,39,0.08)]',
+          'hover:shadow-[0_0_60px_rgba(201,162,39,0.2),0_8px_32px_rgba(0,0,0,0.4)]',
         ].join(' '),
         flat: 'border border-white/5 hover:border-white/10',
       },

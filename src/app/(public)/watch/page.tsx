@@ -15,7 +15,7 @@ import { ALL_TV_SHOWS, type TvShowData } from '@/data/tv-shows'
    Constants
    ═══════════════════════════════════════════════════════════════ */
 
-const RED  = '#E50914'
+const RED  = '#C9A227'
 const BLUE = '#2563EB'
 const BG   = '#0A0A0A'
 
@@ -130,9 +130,9 @@ function FilmCard({ film }: { film: FilmData }) {
     <Link
       href={`/films/${film.slug}`}
       className="group flex-shrink-0 w-[170px] md:w-[200px] rounded-xl overflow-hidden
-                 bg-[#141414] border border-transparent hover:border-[#E50914]/60
+                 bg-[#141414] border border-transparent hover:border-[#C9A227]/60
                  transition-all duration-300 hover:scale-[1.03]
-                 hover:shadow-[0_0_24px_rgba(229,9,20,0.25)]"
+                 hover:shadow-[0_0_24px_rgba(201,162,39,0.25)]"
     >
       {/* poster */}
       <div className="relative aspect-[2/3] bg-gray-900 overflow-hidden">
@@ -150,7 +150,7 @@ function FilmCard({ film }: { film: FilmData }) {
             <Film size={40} className="text-gray-600" />
           </div>
         )}
-        <span className="absolute top-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded bg-[#E50914]/90 text-white">
+        <span className="absolute top-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded bg-[#C9A227]/90 text-white">
           {film.genre}
         </span>
       </div>
@@ -164,7 +164,7 @@ function FilmCard({ film }: { film: FilmData }) {
         </p>
         {/* quick actions */}
         <div className="flex items-center gap-2 pt-1">
-          <Link href={`/streaming/${film.slug}`} onClick={(e) => e.stopPropagation()} className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-[#E50914] transition-colors">
+          <Link href={`/streaming/${film.slug}`} onClick={(e) => e.stopPropagation()} className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-[#C9A227] transition-colors">
             <Eye size={12} /> Watch
           </Link>
           <Link href="/community" onClick={(e) => e.stopPropagation()} className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-yellow-400 transition-colors">
@@ -468,12 +468,12 @@ function SplitHero() {
       {/* two halves */}
       <div className="absolute inset-0 flex">
         {/* films half */}
-        <div className="w-1/2 relative bg-gradient-to-br from-[#E50914]/30 via-[#0A0A0A] to-[#0A0A0A]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(229,9,20,0.25)_0%,transparent_70%)]" />
+        <div className="w-1/2 relative bg-gradient-to-br from-[#C9A227]/30 via-[#0A0A0A] to-[#0A0A0A]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(201,162,39,0.25)_0%,transparent_70%)]" />
           <div className="absolute bottom-16 left-6 md:left-12">
             <div className="flex items-center gap-2 mb-2">
-              <Film size={20} className="text-[#E50914]" />
-              <span className="text-[#E50914] font-bold text-sm tracking-widest uppercase">
+              <Film size={20} className="text-[#C9A227]" />
+              <span className="text-[#C9A227] font-bold text-sm tracking-widest uppercase">
                 Films
               </span>
             </div>
@@ -506,7 +506,7 @@ function SplitHero() {
         <div className="relative text-center px-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none mb-3">
             Watch{' '}
-            <span className="bg-gradient-to-r from-[#E50914] to-[#2563EB] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#C9A227] to-[#2563EB] bg-clip-text text-transparent">
               Everything
             </span>
           </h1>
@@ -623,7 +623,7 @@ export default function WatchPage() {
       <ScrollRow
         label="Popular Films"
         accent={RED}
-        icon={<Film size={18} className="text-[#E50914]" />}
+        icon={<Film size={18} className="text-[#C9A227]" />}
       >
         {popularFilms.map((f) => (
           <FilmCard key={f.id} film={f} />
@@ -645,7 +645,7 @@ export default function WatchPage() {
       <ScrollRow
         label="Film Trailers"
         accent={RED}
-        icon={<Play size={18} className="text-[#E50914]" />}
+        icon={<Play size={18} className="text-[#C9A227]" />}
       >
         {trailerFilms.map((f) => (
           <TrailerCard
@@ -761,7 +761,7 @@ export default function WatchPage() {
         <ScrollRow
           label="Popular Films"
           accent={RED}
-          icon={<Film size={18} className="text-[#E50914]" />}
+          icon={<Film size={18} className="text-[#C9A227]" />}
         >
           {popularFilms.map((f) => (
             <FilmCard key={`dup-f-${f.id}`} film={f} />

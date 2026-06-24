@@ -43,7 +43,7 @@ export default async function NewTaskPage() {
               id="filmId"
               name="filmId"
               required
-              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 transition-colors duration-300"
+              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 transition-colors duration-300"
             >
               <option value="">Sélectionner un film</option>
               {films.map((film) => (
@@ -58,7 +58,7 @@ export default async function NewTaskPage() {
               id="phaseId"
               name="phaseId"
               required
-              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 transition-colors duration-300"
+              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 transition-colors duration-300"
             >
               <option value="">Sélectionner une phase</option>
               {films.flatMap((film) =>
@@ -77,7 +77,7 @@ export default async function NewTaskPage() {
               id="type"
               name="type"
               required
-              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 transition-colors duration-300"
+              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 transition-colors duration-300"
             >
               {Object.entries(TASK_TYPE_LABELS).map(([value, label]) => (
                 <option key={value} value={value}>{label}</option>
@@ -90,7 +90,7 @@ export default async function NewTaskPage() {
             <select
               id="difficulty"
               name="difficulty"
-              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 transition-colors duration-300"
+              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 transition-colors duration-300"
             >
               {Object.entries(DIFFICULTY_LABELS).map(([value, label]) => (
                 <option key={value} value={value}>{label}</option>
@@ -146,7 +146,7 @@ export default async function NewTaskPage() {
             required
             rows={4}
             placeholder="Description de la tâche (markdown supporté)..."
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical transition-colors duration-300"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical transition-colors duration-300"
           />
         </div>
 
@@ -157,7 +157,7 @@ export default async function NewTaskPage() {
             name="instructionsMd"
             rows={5}
             placeholder="Instructions pas-à-pas pour le contributeur..."
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical transition-colors duration-300"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical transition-colors duration-300"
           />
         </div>
 

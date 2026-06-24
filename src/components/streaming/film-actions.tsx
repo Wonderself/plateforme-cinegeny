@@ -40,11 +40,11 @@ export function FilmActions({ filmTitle, filmSlug }: FilmActionsProps) {
         onClick={handleLike}
         className={`flex items-center gap-2 px-5 py-2.5 rounded-lg transition-colors ${
           liked
-            ? 'bg-[#E50914]/20 text-[#E50914] hover:bg-[#E50914]/30'
+            ? 'bg-[#C9A227]/20 text-[#C9A227] hover:bg-[#C9A227]/30'
             : 'bg-white/5 text-white/60 hover:bg-white/10'
         }`}
       >
-        <Heart className={`h-4 w-4 ${liked ? 'fill-[#E50914]' : ''}`} />
+        <Heart className={`h-4 w-4 ${liked ? 'fill-[#C9A227]' : ''}`} />
         J&apos;aime
       </button>
       <button

@@ -75,7 +75,7 @@ export default async function TaskDetailPage({ params }: Props) {
     return Array.from({ length: 4 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${i < count ? 'text-[#E50914] fill-[#E50914]' : 'text-white/20'}`}
+        className={`h-4 w-4 ${i < count ? 'text-[#C9A227] fill-[#C9A227]' : 'text-white/20'}`}
       />
     ))
   }
@@ -114,7 +114,7 @@ export default async function TaskDetailPage({ params }: Props) {
               {DIFFICULTY_LABELS[task.difficulty]}
             </span>
           </div>
-          <div className="text-3xl font-bold text-[#E50914] font-playfair">
+          <div className="text-3xl font-bold text-[#C9A227] font-playfair">
             {formatPrice(task.priceEuros)}
           </div>
           {task.claimedAt && isClaimedByMe && (
@@ -168,9 +168,9 @@ export default async function TaskDetailPage({ params }: Props) {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-3 rounded-lg border border-white/10 hover:border-[#E50914]/30 transition-colors text-sm text-white/70 hover:text-white"
+                    className="flex items-center gap-2 p-3 rounded-lg border border-white/10 hover:border-[#C9A227]/30 transition-colors text-sm text-white/70 hover:text-white"
                   >
-                    <Download className="h-4 w-4 text-[#E50914]" />
+                    <Download className="h-4 w-4 text-[#C9A227]" />
                     Fichier {i + 1}
                   </a>
                 ))}
@@ -180,9 +180,9 @@ export default async function TaskDetailPage({ params }: Props) {
 
           {/* Submit Form */}
           {canSubmit && (
-            <Card className="border-[#E50914]/20">
+            <Card className="border-[#C9A227]/20">
               <CardHeader>
-                <CardTitle className="text-base text-[#E50914]">Soumettre votre Travail</CardTitle>
+                <CardTitle className="text-base text-[#C9A227]">Soumettre votre Travail</CardTitle>
               </CardHeader>
               <CardContent>
                 <form action={submitTaskAction} className="space-y-4">
@@ -193,7 +193,7 @@ export default async function TaskDetailPage({ params }: Props) {
                       name="notes"
                       rows={4}
                       placeholder="Decrivez votre travail, les choix que vous avez faits..."
-                      className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical"
+                      className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical"
                     />
                   </div>
                   <div className="space-y-2">
@@ -202,7 +202,7 @@ export default async function TaskDetailPage({ params }: Props) {
                       type="url"
                       name="fileUrl"
                       placeholder="https://drive.google.com/... ou URL directe"
-                      className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+                      className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
                     />
                   </div>
                   <Button type="submit" className="w-full" size="lg">
@@ -234,7 +234,7 @@ export default async function TaskDetailPage({ params }: Props) {
                     </div>
                     {sub.aiScore !== null && (
                       <div className="flex items-center gap-2">
-                        <div className="text-sm font-bold text-[#E50914]">Score IA : {sub.aiScore}/100</div>
+                        <div className="text-sm font-bold text-[#C9A227]">Score IA : {sub.aiScore}/100</div>
                       </div>
                     )}
                     {sub.aiFeedback && (
@@ -253,7 +253,7 @@ export default async function TaskDetailPage({ params }: Props) {
           <Card className="border-white/10 bg-white/[0.03] backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="text-base flex items-center gap-2">
-                <MessageCircle className="h-5 w-5 text-[#E50914]" />
+                <MessageCircle className="h-5 w-5 text-[#C9A227]" />
                 <span className="font-playfair">Commentaires</span>
                 {comments.length > 0 && (
                   <span className="text-xs font-normal text-white/40 ml-1">
@@ -292,10 +292,10 @@ export default async function TaskDetailPage({ params }: Props) {
                         {/* Comment Body */}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
-                            <span className="text-sm font-medium text-[#E50914]">
+                            <span className="text-sm font-medium text-[#C9A227]">
                               {comment.user.displayName || 'Anonyme'}
                             </span>
-                            <span className="text-xs text-[#E50914]/50">
+                            <span className="text-xs text-[#C9A227]/50">
                               {comment.createdAt.toLocaleDateString('fr-FR', {
                                 day: 'numeric',
                                 month: 'long',
@@ -345,7 +345,7 @@ export default async function TaskDetailPage({ params }: Props) {
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-white/50">Recompense</span>
-                  <span className="font-bold text-[#E50914]">{formatPrice(task.priceEuros)}</span>
+                  <span className="font-bold text-[#C9A227]">{formatPrice(task.priceEuros)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-white/50">Difficulte</span>
@@ -399,7 +399,7 @@ export default async function TaskDetailPage({ params }: Props) {
           <Card>
             <CardContent className="p-4">
               <p className="text-xs text-white/40 mb-2">Film associe</p>
-              <Link href={`/films/${task.film.slug}`} className="text-sm font-medium hover:text-[#E50914] transition-colors">
+              <Link href={`/films/${task.film.slug}`} className="text-sm font-medium hover:text-[#C9A227] transition-colors">
                 {task.film.title} →
               </Link>
             </CardContent>

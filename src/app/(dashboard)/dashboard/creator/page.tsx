@@ -51,7 +51,7 @@ export default async function CreatorDashboardPage() {
   const plan = subscription?.plan || 'FREE'
 
   const kpis = [
-    { label: 'Cr\u00e9dits IA', value: microToCredits(balance).toFixed(1), sub: 'Solde actuel', icon: CreditCard, color: 'text-[#E50914]', bg: 'bg-[#E50914]/10', border: 'border-[#E50914]/20', href: '/credits' },
+    { label: 'Cr\u00e9dits IA', value: microToCredits(balance).toFixed(1), sub: 'Solde actuel', icon: CreditCard, color: 'text-[#C9A227]', bg: 'bg-[#C9A227]/10', border: 'border-[#C9A227]/20', href: '/credits' },
     { label: 'T\u00e2ches', value: `${tasksInProgress}`, sub: `${tasksCompleted} compl\u00e9t\u00e9es`, icon: Zap, color: 'text-blue-500', bg: 'bg-blue-500/10', border: 'border-blue-500/20', href: '/tasks' },
     { label: 'Votes', value: filmVotes, sub: 'Films vot\u00e9s', icon: Heart, color: 'text-pink-500', bg: 'bg-pink-500/10', border: 'border-pink-500/20', href: '/films' },
     { label: 'Conversations', value: conversations, sub: 'Chats IA', icon: MessageSquare, color: 'text-emerald-500', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', href: '/chat' },
@@ -60,7 +60,7 @@ export default async function CreatorDashboardPage() {
   ]
 
   const quickLinks = [
-    { href: '/create', label: 'Cr\u00e9er un film', icon: Film, color: 'text-[#E50914]' },
+    { href: '/create', label: 'Cr\u00e9er un film', icon: Film, color: 'text-[#C9A227]' },
     { href: '/chat', label: 'Chat IA', icon: MessageSquare, color: 'text-emerald-600' },
     { href: '/agents', label: 'Agents cin\u00e9ma', icon: Bot, color: 'text-purple-600' },
     { href: '/credits', label: 'Recharger cr\u00e9dits', icon: CreditCard, color: 'text-blue-600' },
@@ -81,7 +81,7 @@ export default async function CreatorDashboardPage() {
           </p>
         </div>
         {unreadNotifs > 0 && (
-          <Link href="/notifications" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#E50914]/10 text-[#E50914] border border-[#E50914]/20">
+          <Link href="/notifications" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/20">
             <Bell className="h-3.5 w-3.5" />
             {unreadNotifs} notification{unreadNotifs > 1 ? 's' : ''}
           </Link>
@@ -111,7 +111,7 @@ export default async function CreatorDashboardPage() {
         {/* Quick Links */}
         <div>
           <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-[#E50914]" /> Acc\u00e8s rapide
+            <Sparkles className="h-5 w-5 text-[#C9A227]" /> Acc\u00e8s rapide
           </h2>
           <div className="space-y-2">
             {quickLinks.map(link => {
@@ -141,8 +141,8 @@ export default async function CreatorDashboardPage() {
               <div className="divide-y divide-white/10">
                 {recentActivity.map(exec => (
                   <div key={exec.id} className="flex items-center gap-4 px-5 py-3 hover:bg-white/[0.03] transition-colors">
-                    <div className="h-8 w-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${exec.agent?.color || '#E50914'}15` }}>
-                      <Bot className="h-4 w-4" style={{ color: exec.agent?.color || '#E50914' }} />
+                    <div className="h-8 w-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${exec.agent?.color || '#C9A227'}15` }}>
+                      <Bot className="h-4 w-4" style={{ color: exec.agent?.color || '#C9A227' }} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white">{exec.agent?.name || 'Agent'}</p>
@@ -168,7 +168,7 @@ export default async function CreatorDashboardPage() {
           <h2 className="text-lg font-semibold text-white flex items-center gap-2">
             <Bell className="h-5 w-5 text-yellow-500" /> Notifications r\u00e9centes
           </h2>
-          <Link href="/notifications" className="text-xs text-[#E50914] hover:underline">Tout voir</Link>
+          <Link href="/notifications" className="text-xs text-[#C9A227] hover:underline">Tout voir</Link>
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
           {recentNotifs.length === 0 ? (
@@ -177,7 +177,7 @@ export default async function CreatorDashboardPage() {
             <div className="divide-y divide-white/10">
               {recentNotifs.map(notif => (
                 <div key={notif.id} className={`flex items-center gap-3 px-5 py-3 ${!notif.read ? 'bg-white/[0.03]' : ''}`}>
-                  <div className={`h-2 w-2 rounded-full shrink-0 ${!notif.read ? 'bg-[#E50914]' : 'bg-transparent'}`} />
+                  <div className={`h-2 w-2 rounded-full shrink-0 ${!notif.read ? 'bg-[#C9A227]' : 'bg-transparent'}`} />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm text-white">{notif.title}</p>
                   </div>
@@ -192,7 +192,7 @@ export default async function CreatorDashboardPage() {
       {/* Quick Video Generation */}
       <div>
         <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-          <Video className="h-5 w-5 text-[#E50914]" /> G\u00e9n\u00e9rer une vid\u00e9o rapidement
+          <Video className="h-5 w-5 text-[#C9A227]" /> G\u00e9n\u00e9rer une vid\u00e9o rapidement
         </h2>
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
           <p className="text-xs text-white/50 mb-5">

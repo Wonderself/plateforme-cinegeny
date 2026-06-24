@@ -38,9 +38,9 @@ const PLANS = [
     period: '/mois',
     description: 'Pour les cinephiles exigeants.',
     icon: Star,
-    color: 'text-[#E50914]',
-    borderColor: 'border-[#E50914]/30',
-    bgColor: 'bg-[#E50914]/[0.03]',
+    color: 'text-[#C9A227]',
+    borderColor: 'border-[#C9A227]/30',
+    bgColor: 'bg-[#C9A227]/[0.03]',
     popular: true,
     features: [
       '30 films par mois',
@@ -53,7 +53,7 @@ const PLANS = [
       'Badge "Supporter"',
     ],
     cta: 'Go Premium',
-    ctaStyle: 'bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold shadow-lg shadow-[#E50914]/20',
+    ctaStyle: 'bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold shadow-lg shadow-[#C9A227]/20',
     ctaLink: '/register?plan=premium',
   },
   {
@@ -119,13 +119,13 @@ export default function PricingPage() {
     <div className="min-h-screen py-16 sm:py-24 px-4 sm:px-6 lg:px-8 relative">
       {/* Ambient background */}
       <div className="fixed inset-0 pointer-events-none -z-10">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#E50914]/[0.03] blur-[200px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#C9A227]/[0.03] blur-[200px]" />
       </div>
 
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#E50914]/[0.06] border border-[#E50914]/15 text-[#E50914] text-xs sm:text-sm font-medium mb-7">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#C9A227]/[0.06] border border-[#C9A227]/15 text-[#C9A227] text-xs sm:text-sm font-medium mb-7">
             <Sparkles className="h-3.5 w-3.5" />
             Plans & Tarifs
           </div>
@@ -146,7 +146,7 @@ export default function PricingPage() {
               className={`relative rounded-2xl sm:rounded-3xl border p-6 sm:p-8 ${plan.borderColor} ${plan.bgColor} transition-all duration-500 hover:scale-[1.02] hover:shadow-lg`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#E50914] text-white text-xs font-bold">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#C9A227] text-white text-xs font-bold">
                   Le plus populaire
                 </div>
               )}
@@ -188,7 +188,7 @@ export default function PricingPage() {
         </div>
 
         {/* Gradient divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#E50914]/30 to-transparent mb-20" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#C9A227]/30 to-transparent mb-20" />
 
         {/* Points & Voting Section */}
         <div className="mb-20">
@@ -212,11 +212,11 @@ export default function PricingPage() {
               <p className="text-sm text-white/60">Votez sur les films soumis</p>
             </div>
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 text-center">
-              <Zap className="h-6 w-6 text-[#E50914] mx-auto mb-3" />
+              <Zap className="h-6 w-6 text-[#C9A227] mx-auto mb-3" />
               <p className="text-sm text-white/60">Gagnez des points a chaque vote</p>
             </div>
-            <div className="rounded-2xl border border-[#E50914]/20 bg-[#E50914]/[0.03] p-5 text-center">
-              <Star className="h-6 w-6 text-[#E50914] mx-auto mb-3" />
+            <div className="rounded-2xl border border-[#C9A227]/20 bg-[#C9A227]/[0.03] p-5 text-center">
+              <Star className="h-6 w-6 text-[#C9A227] mx-auto mb-3" />
               <p className="text-sm text-white/80 font-medium">1000 pts = 1 mois Premium</p>
             </div>
             <div className="rounded-2xl border border-purple-500/20 bg-purple-500/[0.03] p-5 text-center">
@@ -250,7 +250,7 @@ export default function PricingPage() {
                 <tr className="border-b border-white/10">
                   <th className="text-left py-4 px-4 text-white/40 font-medium">Fonctionnalite</th>
                   <th className="text-center py-4 px-4 text-white/60 font-semibold">Free</th>
-                  <th className="text-center py-4 px-4 text-[#E50914] font-semibold">Premium</th>
+                  <th className="text-center py-4 px-4 text-[#C9A227] font-semibold">Premium</th>
                   <th className="text-center py-4 px-4 text-purple-400 font-semibold">Premium+</th>
                 </tr>
               </thead>
@@ -269,7 +269,7 @@ export default function PricingPage() {
         </div>
 
         {/* Gradient divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#E50914]/20 to-transparent mb-20" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent mb-20" />
 
         {/* FAQ Section */}
         <div className="mb-20">
@@ -290,7 +290,7 @@ export default function PricingPage() {
                 className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6"
               >
                 <h4 className="text-white font-semibold text-sm mb-2 flex items-start gap-2.5">
-                  <ChevronDown className="h-4 w-4 mt-0.5 shrink-0 text-[#E50914]" />
+                  <ChevronDown className="h-4 w-4 mt-0.5 shrink-0 text-[#C9A227]" />
                   {item.q}
                 </h4>
                 <p className="text-white/40 text-sm pl-6.5 leading-relaxed">{item.a}</p>
@@ -299,7 +299,7 @@ export default function PricingPage() {
           </div>
         </div>
 
-        <div className="h-px bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent my-12" />
+        <div className="h-px bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent my-12" />
 
         {/* ═══ PAY-PER-VIEW ═══ */}
         <div className="mb-16">
@@ -352,7 +352,7 @@ export default function PricingPage() {
         {/* Creator CTA */}
         <div className="text-center">
           <div className="inline-flex flex-col items-center gap-4 p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
-            <Users className="h-8 w-8 text-[#E50914]" />
+            <Users className="h-8 w-8 text-[#C9A227]" />
             <h3 className="text-lg font-bold font-playfair">
               Vous etes createur ?
             </h3>
@@ -361,7 +361,7 @@ export default function PricingPage() {
             </p>
             <Link
               href="/tasks"
-              className="inline-flex items-center gap-2 text-sm text-[#E50914] hover:text-[#FF2D2D] font-medium"
+              className="inline-flex items-center gap-2 text-sm text-[#C9A227] hover:text-[#E8C766] font-medium"
             >
               <Zap className="h-4 w-4" /> Explorer les taches disponibles
             </Link>

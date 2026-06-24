@@ -51,7 +51,7 @@ const SFX_SAMPLES: Record<string, string[]> = {
 }
 
 const AUDIO_TRACKS = [
-  { id: 'music', label: 'Music', color: '#E50914', volume: 80 },
+  { id: 'music', label: 'Music', color: '#C9A227', volume: 80 },
   { id: 'dialogue', label: 'Dialogue', color: '#4ECDC4', volume: 100 },
   { id: 'sfx', label: 'SFX', color: '#F7C948', volume: 65 },
   { id: 'ambiance', label: 'Ambiance', color: '#8B5CF6', volume: 45 },
@@ -78,7 +78,7 @@ function WaveformBars({ active }: { active: boolean }) {
             key={i}
             className={cn(
               'w-[3px] rounded-full transition-all duration-300',
-              active ? 'bg-[#E50914]' : 'bg-white/15'
+              active ? 'bg-[#C9A227]' : 'bg-white/15'
             )}
             style={{
               height: `${Math.max(15, height)}%`,
@@ -134,11 +134,11 @@ export default function MusicPage() {
     >
       {/* Hero */}
       <section className="text-center mb-16">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-          <Music className="h-8 w-8 text-[#E50914]" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+          <Music className="h-8 w-8 text-[#C9A227]" />
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-          Add <span className="text-[#E50914]">Music & SFX</span>
+          Add <span className="text-[#C9A227]">Music & SFX</span>
         </h1>
         <p className="text-base text-white/50 max-w-2xl mx-auto leading-relaxed">
           Browse curated audio libraries, generate custom soundtracks, and mix every layer to perfection.
@@ -158,8 +158,8 @@ export default function MusicPage() {
               key={item.title}
               className="group p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-[#E50914]/10 flex items-center justify-center mb-3 group-hover:bg-[#E50914]/20 transition-colors">
-                <item.icon className="h-5 w-5 text-[#E50914]" />
+              <div className="w-10 h-10 rounded-lg bg-[#C9A227]/10 flex items-center justify-center mb-3 group-hover:bg-[#C9A227]/20 transition-colors">
+                <item.icon className="h-5 w-5 text-[#C9A227]" />
               </div>
               <h3 className="text-sm font-semibold text-white mb-1">{item.title}</h3>
               <p className="text-xs text-white/40 leading-relaxed">{item.desc}</p>
@@ -185,7 +185,7 @@ export default function MusicPage() {
                 }
               )
             }}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#E50914] to-[#B20710] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#C9A227] to-[#B20710] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             <Sparkles className="h-4 w-4" />
             Generate Custom Track
@@ -202,7 +202,7 @@ export default function MusicPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search tracks..."
-              className="w-full bg-white/[0.02] border border-white/[0.08] rounded-lg pl-10 pr-4 py-2.5 text-sm text-white/80 placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 transition-colors"
+              className="w-full bg-white/[0.02] border border-white/[0.08] rounded-lg pl-10 pr-4 py-2.5 text-sm text-white/80 placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 transition-colors"
             />
           </div>
           <div className="flex flex-wrap gap-1.5">
@@ -211,7 +211,7 @@ export default function MusicPage() {
               className={cn(
                 'px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200',
                 !selectedGenre
-                  ? 'bg-[#E50914] text-white'
+                  ? 'bg-[#C9A227] text-white'
                   : 'bg-white/[0.04] text-white/50 hover:text-white/70 hover:bg-white/[0.08] border border-white/[0.06]'
               )}
             >
@@ -224,7 +224,7 @@ export default function MusicPage() {
                 className={cn(
                   'px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200',
                   selectedGenre === g
-                    ? 'bg-[#E50914] text-white'
+                    ? 'bg-[#C9A227] text-white'
                     : 'bg-white/[0.04] text-white/50 hover:text-white/70 hover:bg-white/[0.08] border border-white/[0.06]'
                 )}
               >
@@ -244,7 +244,7 @@ export default function MusicPage() {
                 className={cn(
                   'group p-4 rounded-xl border transition-all duration-300',
                   isPlaying
-                    ? 'bg-[#E50914]/5 border-[#E50914]/20'
+                    ? 'bg-[#C9A227]/5 border-[#C9A227]/20'
                     : 'bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04]'
                 )}
               >
@@ -271,7 +271,7 @@ export default function MusicPage() {
                     className={cn(
                       'w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 shrink-0',
                       isPlaying
-                        ? 'bg-[#E50914] text-white'
+                        ? 'bg-[#C9A227] text-white'
                         : 'bg-white/[0.06] text-white/50 hover:bg-white/[0.12] hover:text-white'
                     )}
                   >
@@ -286,7 +286,7 @@ export default function MusicPage() {
                 {/* Add button */}
                 <button
                   onClick={() => toast.success(`"${track.title}" ajouté à votre film !`)}
-                  className="w-full py-2 rounded-lg text-xs font-medium bg-white/[0.04] border border-white/[0.08] text-white/60 hover:bg-[#E50914] hover:border-[#E50914] hover:text-white transition-all duration-200 flex items-center justify-center gap-1.5"
+                  className="w-full py-2 rounded-lg text-xs font-medium bg-white/[0.04] border border-white/[0.08] text-white/60 hover:bg-[#C9A227] hover:border-[#C9A227] hover:text-white transition-all duration-200 flex items-center justify-center gap-1.5"
                 >
                   <Plus className="h-3.5 w-3.5" />
                   Add to Film
@@ -311,7 +311,7 @@ export default function MusicPage() {
               className={cn(
                 'px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200',
                 selectedSfxCategory === cat
-                  ? 'bg-[#E50914] text-white'
+                  ? 'bg-[#C9A227] text-white'
                   : 'bg-white/[0.04] text-white/50 hover:text-white/70 hover:bg-white/[0.08] border border-white/[0.06]'
               )}
             >
@@ -331,14 +331,14 @@ export default function MusicPage() {
                 className={cn(
                   'group flex items-center gap-3 p-3 rounded-xl border transition-all duration-200',
                   isPlaying
-                    ? 'bg-[#E50914]/10 border-[#E50914]/30'
+                    ? 'bg-[#C9A227]/10 border-[#C9A227]/30'
                     : 'bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04]'
                 )}
               >
                 <div className={cn(
                   'w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors',
                   isPlaying
-                    ? 'bg-[#E50914] text-white'
+                    ? 'bg-[#C9A227] text-white'
                     : 'bg-white/[0.06] text-white/40 group-hover:text-white/60'
                 )}>
                   {isPlaying ? (
@@ -379,8 +379,8 @@ export default function MusicPage() {
                 <div className="flex-1 h-10 rounded-lg bg-white/[0.02] border border-white/[0.04] relative overflow-hidden">
                   {/* Placeholder audio blocks */}
                   {track.id === 'music' && (
-                    <div className="absolute left-[5%] top-1 bottom-1 w-[60%] rounded bg-[#E50914]/20 border border-[#E50914]/30 flex items-center px-2">
-                      <span className="text-[9px] text-[#E50914]/60 truncate">Epic Orchestral Rise</span>
+                    <div className="absolute left-[5%] top-1 bottom-1 w-[60%] rounded bg-[#C9A227]/20 border border-[#C9A227]/30 flex items-center px-2">
+                      <span className="text-[9px] text-[#C9A227]/60 truncate">Epic Orchestral Rise</span>
                     </div>
                   )}
                   {track.id === 'dialogue' && (
@@ -442,7 +442,7 @@ export default function MusicPage() {
                 onChange={(e) => setMasterVolume(Number(e.target.value))}
                 className="w-full h-1 rounded-full appearance-none cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, #E50914 0%, #E50914 ${masterVolume}%, rgba(255,255,255,0.06) ${masterVolume}%, rgba(255,255,255,0.06) 100%)`,
+                  background: `linear-gradient(to right, #C9A227 0%, #C9A227 ${masterVolume}%, rgba(255,255,255,0.06) ${masterVolume}%, rgba(255,255,255,0.06) 100%)`,
                 }}
               />
               <span className="text-[10px] text-white/40 w-7 text-right shrink-0">{masterVolume}%</span>

@@ -35,7 +35,7 @@ export default async function NewActorPage() {
       <form action={createActorAction} className="space-y-8">
         {/* Identity Section */}
         <section className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 space-y-5">
-          <h2 className="text-lg font-semibold text-[#E50914] font-playfair">
+          <h2 className="text-lg font-semibold text-[#C9A227] font-playfair">
             Identite
           </h2>
 
@@ -50,7 +50,7 @@ export default async function NewActorPage() {
               <select
                 id="nationality"
                 name="nationality"
-                className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+                className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
               >
                 <option value="">Selectionner</option>
                 {NATIONALITIES.map((n) => (
@@ -64,7 +64,7 @@ export default async function NewActorPage() {
               <select
                 id="style"
                 name="style"
-                className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+                className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
               >
                 {Object.entries(ACTOR_STYLE_LABELS).map(([value, label]) => (
                   <option key={value} value={value}>{label}</option>
@@ -86,7 +86,7 @@ export default async function NewActorPage() {
 
         {/* Bio & Quote Section */}
         <section className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 space-y-5">
-          <h2 className="text-lg font-semibold text-[#E50914] font-playfair">
+          <h2 className="text-lg font-semibold text-[#C9A227] font-playfair">
             Biographie
           </h2>
 
@@ -97,7 +97,7 @@ export default async function NewActorPage() {
               name="bio"
               rows={5}
               placeholder="L'histoire de cet acteur IA..."
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical"
             />
           </div>
 
@@ -113,7 +113,7 @@ export default async function NewActorPage() {
 
         {/* Personality Section */}
         <section className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 space-y-5">
-          <h2 className="text-lg font-semibold text-[#E50914] font-playfair">
+          <h2 className="text-lg font-semibold text-[#C9A227] font-playfair">
             Personnalite
           </h2>
 
@@ -142,14 +142,14 @@ export default async function NewActorPage() {
               name="funFacts"
               rows={4}
               placeholder="A refuse 3 roles avant d'accepter celui-ci&#10;Son regard a ete calibre sur 200 peintures"
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical"
             />
           </div>
         </section>
 
         {/* Media Section */}
         <section className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 space-y-5">
-          <h2 className="text-lg font-semibold text-[#E50914] font-playfair">
+          <h2 className="text-lg font-semibold text-[#C9A227] font-playfair">
             Media & Social
           </h2>
 

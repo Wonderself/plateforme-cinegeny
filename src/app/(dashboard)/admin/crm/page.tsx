@@ -81,7 +81,7 @@ export default function CRMPage() {
             { key: 'list' as const, label: 'Liste' },
             { key: 'add' as const, label: '+ Contact' },
           ].map(v => (
-            <button key={v.key} onClick={() => setView(v.key)} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${view === v.key ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>{v.label}</button>
+            <button key={v.key} onClick={() => setView(v.key)} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${view === v.key ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>{v.label}</button>
           ))}
         </div>
       </div>
@@ -104,12 +104,12 @@ export default function CRMPage() {
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/50" />
-            <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher..." className="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 text-sm focus:border-[#E50914] focus:outline-none" />
+            <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher..." className="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 text-sm focus:border-[#C9A227] focus:outline-none" />
           </div>
           <div className="flex gap-1 flex-wrap">
-            <button onClick={() => setFilterType('all')} className={`px-3 py-1.5 rounded-lg text-xs ${filterType === 'all' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>Tous</button>
+            <button onClick={() => setFilterType('all')} className={`px-3 py-1.5 rounded-lg text-xs ${filterType === 'all' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>Tous</button>
             {CONTACT_TYPES.map(ct => (
-              <button key={ct.id} onClick={() => setFilterType(ct.id)} className={`px-3 py-1.5 rounded-lg text-xs ${filterType === ct.id ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>{ct.label}</button>
+              <button key={ct.id} onClick={() => setFilterType(ct.id)} className={`px-3 py-1.5 rounded-lg text-xs ${filterType === ct.id ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>{ct.label}</button>
             ))}
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function CRMPage() {
                           <p className="text-sm font-medium text-white truncate flex-1">{contact.name}</p>
                         </div>
                         <p className="text-[10px] text-white/50 mb-2">{contact.company}</p>
-                        {contact.value > 0 && <p className="text-xs font-semibold text-[#E50914] mb-1">€{contact.value.toLocaleString()}</p>}
+                        {contact.value > 0 && <p className="text-xs font-semibold text-[#C9A227] mb-1">€{contact.value.toLocaleString()}</p>}
                         <div className="flex gap-1 mb-2">
                           {contact.tags.slice(0, 2).map(tag => (
                             <span key={tag} className="text-[9px] px-1.5 py-0.5 rounded bg-white/[0.05] text-white/50">{tag}</span>
@@ -216,34 +216,34 @@ export default function CRMPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="text-xs text-white/50 mb-1 block">Nom *</label>
-              <input value={newContact.name} onChange={e => setNewContact(p => ({ ...p, name: e.target.value }))} placeholder="Prénom Nom" className="w-full rounded-xl border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none" />
+              <input value={newContact.name} onChange={e => setNewContact(p => ({ ...p, name: e.target.value }))} placeholder="Prénom Nom" className="w-full rounded-xl border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none" />
             </div>
             <div>
               <label className="text-xs text-white/50 mb-1 block">Entreprise</label>
-              <input value={newContact.company} onChange={e => setNewContact(p => ({ ...p, company: e.target.value }))} placeholder="Société" className="w-full rounded-xl border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none" />
+              <input value={newContact.company} onChange={e => setNewContact(p => ({ ...p, company: e.target.value }))} placeholder="Société" className="w-full rounded-xl border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none" />
             </div>
             <div>
               <label className="text-xs text-white/50 mb-1 block">Email</label>
-              <input type="email" value={newContact.email} onChange={e => setNewContact(p => ({ ...p, email: e.target.value }))} placeholder="email@..." className="w-full rounded-xl border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none" />
+              <input type="email" value={newContact.email} onChange={e => setNewContact(p => ({ ...p, email: e.target.value }))} placeholder="email@..." className="w-full rounded-xl border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none" />
             </div>
             <div>
               <label className="text-xs text-white/50 mb-1 block">Téléphone</label>
-              <input value={newContact.phone} onChange={e => setNewContact(p => ({ ...p, phone: e.target.value }))} placeholder="+33..." className="w-full rounded-xl border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none" />
+              <input value={newContact.phone} onChange={e => setNewContact(p => ({ ...p, phone: e.target.value }))} placeholder="+33..." className="w-full rounded-xl border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none" />
             </div>
           </div>
           <div>
             <label className="text-xs text-white/50 mb-1 block">Type</label>
             <div className="flex gap-2 flex-wrap">
               {CONTACT_TYPES.map(ct => (
-                <button key={ct.id} onClick={() => setNewContact(p => ({ ...p, type: ct.id }))} className={`px-3 py-1.5 rounded-lg text-xs ${newContact.type === ct.id ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>{ct.label}</button>
+                <button key={ct.id} onClick={() => setNewContact(p => ({ ...p, type: ct.id }))} className={`px-3 py-1.5 rounded-lg text-xs ${newContact.type === ct.id ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>{ct.label}</button>
               ))}
             </div>
           </div>
           <div>
             <label className="text-xs text-white/50 mb-1 block">Notes</label>
-            <textarea value={newContact.notes} onChange={e => setNewContact(p => ({ ...p, notes: e.target.value }))} rows={3} placeholder="Notes..." className="w-full rounded-xl border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none resize-none" />
+            <textarea value={newContact.notes} onChange={e => setNewContact(p => ({ ...p, notes: e.target.value }))} rows={3} placeholder="Notes..." className="w-full rounded-xl border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none resize-none" />
           </div>
-          <button onClick={addContact} className="w-full py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl transition-colors">Ajouter le contact</button>
+          <button onClick={addContact} className="w-full py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl transition-colors">Ajouter le contact</button>
         </div>
       )}
     </div>

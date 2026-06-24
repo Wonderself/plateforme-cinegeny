@@ -55,7 +55,7 @@ const TYPE_COLORS: Record<string, string> = {
   CONCEPT_ART: 'bg-pink-500/20 text-pink-600 border-pink-500/30',
   SOUNDTRACK: 'bg-indigo-500/20 text-indigo-600 border-indigo-500/30',
   MAKING_OF: 'bg-orange-500/20 text-orange-600 border-orange-500/30',
-  AUDITION_TAPE: 'bg-[#E50914]/20 text-[#E50914] border-[#E50914]/30',
+  AUDITION_TAPE: 'bg-[#C9A227]/20 text-[#C9A227] border-[#C9A227]/30',
 }
 
 const TYPE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -123,8 +123,8 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-5">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-lg bg-[#E50914]/10 flex items-center justify-center">
-              <Sparkles className="h-5 w-5 text-[#E50914]" />
+            <div className="h-10 w-10 rounded-lg bg-[#C9A227]/10 flex items-center justify-center">
+              <Sparkles className="h-5 w-5 text-[#C9A227]" />
             </div>
             <div>
               <p className="text-2xl font-bold text-white">{totalItems}</p>
@@ -159,7 +159,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
       {/* Create Form */}
       <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-6">
         <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-          <Plus className="h-5 w-5 text-[#E50914]" />
+          <Plus className="h-5 w-5 text-[#C9A227]" />
           Ajouter un bonus
         </h2>
         <form action={createBonusContentAction} className="space-y-4">
@@ -169,7 +169,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
               <label className="block text-xs font-medium text-white/50 mb-1.5">Film Studio</label>
               <select
                 name="filmId"
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
               >
                 <option value="">-- Aucun --</option>
                 {films.map((f) => (
@@ -181,7 +181,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
               <label className="block text-xs font-medium text-white/50 mb-1.5">Film Catalogue</label>
               <select
                 name="catalogFilmId"
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
               >
                 <option value="">-- Aucun --</option>
                 {catalogFilms.map((f) => (
@@ -193,7 +193,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
               <label className="block text-xs font-medium text-white/50 mb-1.5">Acteur IA</label>
               <select
                 name="actorId"
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
               >
                 <option value="">-- Aucun --</option>
                 {actors.map((a) => (
@@ -210,7 +210,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
               <select
                 name="type"
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
               >
                 {BONUS_TYPES.map((t) => (
                   <option key={t} value={t}>{TYPE_LABELS[t] || t}</option>
@@ -223,7 +223,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
                 name="title"
                 required
                 placeholder="Titre du contenu bonus"
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
               />
             </div>
           </div>
@@ -235,7 +235,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
               name="description"
               rows={2}
               placeholder="Description optionnelle..."
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50 resize-none"
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50 resize-none"
             />
           </div>
 
@@ -246,7 +246,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
               <input
                 name="contentUrl"
                 placeholder="https://..."
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
               />
             </div>
             <div>
@@ -254,7 +254,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
               <input
                 name="thumbnailUrl"
                 placeholder="https://..."
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
               />
             </div>
             <div>
@@ -264,7 +264,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
                 type="number"
                 min="0"
                 placeholder="300"
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
               />
             </div>
           </div>
@@ -275,7 +275,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
               <input
                 name="isPremium"
                 type="checkbox"
-                className="h-4 w-4 rounded border-white/20 bg-white/5 text-[#E50914] focus:ring-[#E50914]/50"
+                className="h-4 w-4 rounded border-white/20 bg-white/5 text-[#C9A227] focus:ring-[#C9A227]/50"
               />
               <span className="text-sm text-white/60">Premium</span>
             </label>
@@ -285,12 +285,12 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
                 name="sortOrder"
                 type="number"
                 defaultValue={0}
-                className="w-20 bg-white/5 border border-white/10 rounded-lg px-2 py-1.5 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#E50914]/50"
+                className="w-20 bg-white/5 border border-white/10 rounded-lg px-2 py-1.5 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50"
               />
             </div>
             <button
               type="submit"
-              className="ml-auto px-5 py-2 bg-[#E50914] text-white rounded-lg text-sm font-medium hover:bg-[#E50914]/90 transition-colors"
+              className="ml-auto px-5 py-2 bg-[#C9A227] text-white rounded-lg text-sm font-medium hover:bg-[#C9A227]/90 transition-colors"
             >
               Creer
             </button>
@@ -304,7 +304,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
           href="/admin/bonus-content"
           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
             !filterType
-              ? 'bg-[#E50914]/20 text-[#E50914] border border-[#E50914]/30'
+              ? 'bg-[#C9A227]/20 text-[#C9A227] border border-[#C9A227]/30'
               : 'bg-white/5 text-white/40 hover:text-white/60 border border-white/10'
           }`}
         >
@@ -316,7 +316,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
             href={`/admin/bonus-content?type=${t}`}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               filterType === t
-                ? 'bg-[#E50914]/20 text-[#E50914] border border-[#E50914]/30'
+                ? 'bg-[#C9A227]/20 text-[#C9A227] border border-[#C9A227]/30'
                 : 'bg-white/5 text-white/40 hover:text-white/60 border border-white/10'
             }`}
           >
@@ -356,7 +356,7 @@ export default async function AdminBonusContentPage(props: { searchParams: Promi
                     <div className="flex items-center gap-2 mb-0.5">
                       <h3 className="text-sm font-medium text-white truncate">{item.title}</h3>
                       {item.isPremium && (
-                        <Badge className="text-[9px] bg-[#E50914] text-white border-none px-1.5 py-0 shrink-0">
+                        <Badge className="text-[9px] bg-[#C9A227] text-white border-none px-1.5 py-0 shrink-0">
                           PREMIUM
                         </Badge>
                       )}

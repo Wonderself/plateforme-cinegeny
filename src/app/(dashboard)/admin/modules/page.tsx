@@ -74,14 +74,14 @@ export default function ModulesMonitorPage() {
       <div className="flex gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/50" />
-          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher..." className="w-full pl-10 pr-4 py-2 rounded-lg border border-white/10 text-sm focus:border-[#E50914] focus:outline-none" />
+          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher..." className="w-full pl-10 pr-4 py-2 rounded-lg border border-white/10 text-sm focus:border-[#C9A227] focus:outline-none" />
         </div>
         <div className="flex gap-1">
           {['all', 'form', 'crm', 'agent', 'dashboard'].map(type => (
             <button
               key={type}
               onClick={() => setFilterType(type)}
-              className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${filterType === type ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}
+              className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${filterType === type ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}
             >
               {type === 'all' ? 'Tous' : TYPE_CONFIG[type as keyof typeof TYPE_CONFIG]?.label || type}
             </button>

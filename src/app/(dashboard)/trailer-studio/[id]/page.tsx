@@ -73,7 +73,7 @@ export default async function TrailerProjectPage({ params }: { params: Promise<{
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
         <div>
-          <Link href="/trailer-studio" className="inline-flex items-center gap-1.5 text-xs text-white/50 hover:text-[#E50914] transition-colors mb-3">
+          <Link href="/trailer-studio" className="inline-flex items-center gap-1.5 text-xs text-white/50 hover:text-[#C9A227] transition-colors mb-3">
             <ArrowLeft className="h-3.5 w-3.5" />
             Retour au studio
           </Link>
@@ -92,7 +92,7 @@ export default async function TrailerProjectPage({ params }: { params: Promise<{
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <Badge variant="outline" className="text-sm px-3 py-1.5 border-[#E50914]/20 text-[#E50914]">
+          <Badge variant="outline" className="text-sm px-3 py-1.5 border-[#C9A227]/20 text-[#C9A227]">
             <Coins className="h-3.5 w-3.5 mr-1.5" />
             {project.creditsUsed}/{project.estimatedCredits} crédits
           </Badge>
@@ -103,11 +103,11 @@ export default async function TrailerProjectPage({ params }: { params: Promise<{
       <div className="rounded-2xl border border-white/10 bg-white/5 p-7">
         <div className="flex items-center justify-between mb-5">
           <h2 className="text-sm font-semibold text-white">Progression globale</h2>
-          <span className="text-sm font-bold text-[#E50914]">{Math.round(project.progressPct)}%</span>
+          <span className="text-sm font-bold text-[#C9A227]">{Math.round(project.progressPct)}%</span>
         </div>
         <div className="h-3 rounded-full bg-white/[0.05] overflow-hidden">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] transition-all duration-500"
+            className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] transition-all duration-500"
             style={{ width: `${project.progressPct}%` }}
           />
         </div>
@@ -183,7 +183,7 @@ export default async function TrailerProjectPage({ params }: { params: Promise<{
                       </div>
                       <div className="h-1.5 rounded-full bg-white/[0.05] mt-1.5 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] transition-all duration-500"
+                          className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] transition-all duration-500"
                           style={{ width: `${phaseProgress}%` }}
                         />
                       </div>

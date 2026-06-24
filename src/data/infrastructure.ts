@@ -118,6 +118,6 @@ export const EVENT_CATEGORIES = ['system', 'auth', 'billing', 'agents', 'cron', 
 // ─── Dark Mode Config ───────────────────────────────────────────────
 
 export const THEME_VARS = {
-  light: { '--bg-primary': '#FFFFFF', '--bg-secondary': '#F9FAFB', '--text-primary': '#1A1A2E', '--text-secondary': '#6B7280', '--border': '#E5E7EB', '--accent': '#E50914' },
-  dark: { '--bg-primary': '#0A0A0A', '--bg-secondary': '#111111', '--text-primary': '#FFFFFF', '--text-secondary': '#9CA3AF', '--border': '#1F2937', '--accent': '#E50914' },
+  light: { '--bg-primary': '#FFFFFF', '--bg-secondary': '#F9FAFB', '--text-primary': '#1A1A2E', '--text-secondary': '#6B7280', '--border': '#E5E7EB', '--accent': '#C9A227' },
+  dark: { '--bg-primary': '#0A0A0A', '--bg-secondary': '#111111', '--text-primary': '#FFFFFF', '--text-secondary': '#9CA3AF', '--border': '#1F2937', '--accent': '#C9A227' },
 }

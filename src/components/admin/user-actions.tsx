@@ -55,7 +55,7 @@ export function UserActions({ userId, userEmail, userRole }: UserActionsProps) {
             value={creditAmount}
             onChange={e => setCreditAmount(e.target.value)}
             placeholder="Montant (crédits)"
-            className="flex-1 rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none"
+            className="flex-1 rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none"
           />
           <button
             onClick={grantCredits}

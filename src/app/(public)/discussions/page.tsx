@@ -210,7 +210,7 @@ export default function DeepDiscussionsPage() {
               <span className="text-sm font-medium text-purple-400">{DISCUSSION_TEMPLATES.length} discussions</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white font-[family-name:var(--font-playfair)] mb-4">
-              Deep <span className="text-[#E50914]">Discussions</span>
+              Deep <span className="text-[#C9A227]">Discussions</span>
             </h1>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               Explorez le cinéma en profondeur avec 7 agents experts. Philosophie, histoire, éthique, narration, et plus.
@@ -238,11 +238,11 @@ export default function DeepDiscussionsPage() {
           <div className="space-y-4 mb-8">
             <div className="relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-              <input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Rechercher une discussion..." className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-800 bg-gray-900/50 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+              <input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Rechercher une discussion..." className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-800 bg-gray-900/50 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
             </div>
 
             <div className="flex gap-2 overflow-x-auto pb-2">
-              <button onClick={() => { setSelectedCategory(null); setShowChallengeOnly(false) }} className={`px-3 py-1.5 rounded-lg text-xs font-medium shrink-0 ${!selectedCategory && !showChallengeOnly ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400'}`}>Tous ({DISCUSSION_TEMPLATES.length})</button>
+              <button onClick={() => { setSelectedCategory(null); setShowChallengeOnly(false) }} className={`px-3 py-1.5 rounded-lg text-xs font-medium shrink-0 ${!selectedCategory && !showChallengeOnly ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400'}`}>Tous ({DISCUSSION_TEMPLATES.length})</button>
               <button onClick={() => setShowChallengeOnly(!showChallengeOnly)} className={`px-3 py-1.5 rounded-lg text-xs font-medium shrink-0 flex items-center gap-1 ${showChallengeOnly ? 'bg-red-600 text-white' : 'bg-gray-800 text-gray-400'}`}><Flame className="h-3 w-3" />Challenge</button>
               {DISCUSSION_CATEGORIES.map(cat => {
                 const CIcon = CAT_ICON_MAP[cat.icon] || MessageSquare
@@ -260,7 +260,7 @@ export default function DeepDiscussionsPage() {
             <div className="flex gap-1.5 flex-wrap">
               {DISCUSSION_TAGS.map(tag => (
                 <button key={tag} onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-                  className={`text-[10px] px-2 py-1 rounded-full border ${selectedTag === tag ? 'border-[#E50914] bg-[#E50914]/10 text-[#E50914]' : 'border-gray-800 text-gray-500 hover:border-gray-600'}`}>
+                  className={`text-[10px] px-2 py-1 rounded-full border ${selectedTag === tag ? 'border-[#C9A227] bg-[#C9A227]/10 text-[#C9A227]' : 'border-gray-800 text-gray-500 hover:border-gray-600'}`}>
                   #{tag}
                 </button>
               ))}
@@ -312,9 +312,9 @@ export default function DeepDiscussionsPage() {
         <AIcon className="h-5 w-5" style={{ color: activeAgent?.color }} />
         <div className="flex-1 min-w-0">
           {editingTitle ? (
-            <input value={customTitle} onChange={e => setCustomTitle(e.target.value)} onBlur={() => setEditingTitle(false)} onKeyDown={e => { if (e.key === 'Enter') setEditingTitle(false) }} autoFocus className="bg-transparent text-sm font-semibold text-white border-b border-[#E50914] focus:outline-none w-full" />
+            <input value={customTitle} onChange={e => setCustomTitle(e.target.value)} onBlur={() => setEditingTitle(false)} onKeyDown={e => { if (e.key === 'Enter') setEditingTitle(false) }} autoFocus className="bg-transparent text-sm font-semibold text-white border-b border-[#C9A227] focus:outline-none w-full" />
           ) : (
-            <button onClick={() => setEditingTitle(true)} className="text-sm font-semibold text-white hover:text-[#E50914] flex items-center gap-1 truncate">
+            <button onClick={() => setEditingTitle(true)} className="text-sm font-semibold text-white hover:text-[#C9A227] flex items-center gap-1 truncate">
               {customTitle} <Edit3 className="h-3 w-3 text-gray-500" />
             </button>
           )}
@@ -324,7 +324,7 @@ export default function DeepDiscussionsPage() {
         {/* Depth level */}
         <div className="flex gap-1">
           {(['exploration', 'approfondissement', 'synthese'] as const).map(d => (
-            <span key={d} className={`text-[10px] px-2 py-1 rounded-full ${depth === d ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-500'}`}>{d}</span>
+            <span key={d} className={`text-[10px] px-2 py-1 rounded-full ${depth === d ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-500'}`}>{d}</span>
           ))}
         </div>
 
@@ -366,7 +366,7 @@ export default function DeepDiscussionsPage() {
                   <AIcon className="h-4 w-4" style={{ color: activeAgent?.color }} />
                 </div>
               )}
-              <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${msg.role === 'user' ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-200'}`}>
+              <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${msg.role === 'user' ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-200'}`}>
                 <p className="text-sm whitespace-pre-wrap leading-relaxed">{msg.content}</p>
                 {msg.depth && <p className="text-[10px] mt-2 opacity-50">Niveau: {msg.depth}</p>}
               </div>
@@ -404,10 +404,10 @@ export default function DeepDiscussionsPage() {
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage() } }}
               placeholder="Votre réflexion..."
               rows={1}
-              className="flex-1 rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none min-h-[44px] max-h-[120px]"
+              className="flex-1 rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none min-h-[44px] max-h-[120px]"
               onInput={e => { const t = e.target as HTMLTextAreaElement; t.style.height = 'auto'; t.style.height = Math.min(t.scrollHeight, 120) + 'px' }}
             />
-            <button onClick={sendMessage} disabled={!input.trim() || streaming} className="h-11 w-11 rounded-xl bg-[#E50914] text-white disabled:opacity-30 flex items-center justify-center shrink-0">
+            <button onClick={sendMessage} disabled={!input.trim() || streaming} className="h-11 w-11 rounded-xl bg-[#C9A227] text-white disabled:opacity-30 flex items-center justify-center shrink-0">
               <Send className="h-4 w-4" />
             </button>
           </div>

@@ -63,8 +63,8 @@ export function CookieConsent() {
               onClick={handleAcceptAll}
               className="
                 px-4 py-1.5 rounded-md text-xs font-medium
-                bg-[#E50914] text-white
-                hover:bg-[#FF2D2D]
+                bg-[#C9A227] text-white
+                hover:bg-[#E8C766]
                 transition-all duration-200
                 cursor-pointer
               "

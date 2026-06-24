@@ -22,7 +22,7 @@ export const MARKETING_AGENTS: MarketingAgent[] = [
     role: 'Stratégie réseaux sociaux',
     description: 'Définit la stratégie social media globale. Calendrier éditorial, KPIs, croissance audience, positionnement de marque.',
     icon: 'target',
-    color: '#E50914',
+    color: '#C9A227',
     platforms: ['all'],
   },
   {
@@ -204,7 +204,7 @@ export const LANDING_BLOCKS: LandingBlock[] = [
   { type: 'trailer', label: 'Bande-Annonce', description: 'Player vidéo intégré', icon: 'play', defaultContent: { videoUrl: '', poster: '' } },
   { type: 'synopsis', label: 'Synopsis', description: 'Résumé du film', icon: 'file-text', defaultContent: { text: 'Synopsis du film...', genre: '', duration: '' } },
   { type: 'cast', label: 'Casting', description: 'Liste des acteurs/créateurs', icon: 'users', defaultContent: {} },
-  { type: 'cta', label: 'Appel à l\'Action', description: 'Bouton principal (vote, invest, watch)', icon: 'zap', defaultContent: { text: 'Votez maintenant', href: '#', color: '#E50914' } },
+  { type: 'cta', label: 'Appel à l\'Action', description: 'Bouton principal (vote, invest, watch)', icon: 'zap', defaultContent: { text: 'Votez maintenant', href: '#', color: '#C9A227' } },
   { type: 'reviews', label: 'Avis', description: 'Citations et notes', icon: 'star', defaultContent: {} },
   { type: 'gallery', label: 'Galerie Photos', description: 'Stills du film', icon: 'grid', defaultContent: {} },
   { type: 'countdown', label: 'Compte à rebours', description: 'Countdown vers la sortie', icon: 'clock', defaultContent: { targetDate: '' } },

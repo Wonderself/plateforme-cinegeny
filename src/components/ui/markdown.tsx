@@ -27,7 +27,7 @@ export function Markdown({ content }: { content: string }) {
     if (line.match(/^[-*]\s/)) {
       elements.push(
         <div key={i} className="flex gap-2 ml-2 mb-1">
-          <span className="text-[#E50914] mt-1">•</span>
+          <span className="text-[#C9A227] mt-1">•</span>
           <span className="text-white/70">{parseLine(line.slice(2))}</span>
         </div>
       )
@@ -39,7 +39,7 @@ export function Markdown({ content }: { content: string }) {
     if (olMatch) {
       elements.push(
         <div key={i} className="flex gap-2 ml-2 mb-1">
-          <span className="text-[#E50914] font-medium min-w-[1.2rem]">{olMatch[1]}.</span>
+          <span className="text-[#C9A227] font-medium min-w-[1.2rem]">{olMatch[1]}.</span>
           <span className="text-white/70">{parseLine(line.slice(olMatch[0].length))}</span>
         </div>
       )
@@ -70,7 +70,7 @@ function parseLine(text: string): (string | React.ReactElement)[] {
     if (codeMatch && codeMatch.index !== undefined) {
       if (codeMatch.index > 0) parts.push(remaining.slice(0, codeMatch.index))
       parts.push(
-        <code key={key++} className="px-1.5 py-0.5 rounded bg-white/10 text-[#E50914] text-sm font-mono">
+        <code key={key++} className="px-1.5 py-0.5 rounded bg-white/10 text-[#C9A227] text-sm font-mono">
           {codeMatch[1]}
         </code>
       )
@@ -102,7 +102,7 @@ function parseLine(text: string): (string | React.ReactElement)[] {
       if (linkMatch.index > 0) parts.push(remaining.slice(0, linkMatch.index))
       parts.push(
         <a key={key++} href={linkMatch[2]} target="_blank" rel="noopener noreferrer"
-           className="text-[#E50914] underline hover:text-[#FF2D2D] transition-colors">
+           className="text-[#C9A227] underline hover:text-[#E8C766] transition-colors">
           {linkMatch[1]}
         </a>
       )

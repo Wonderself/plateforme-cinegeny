@@ -23,6 +23,8 @@ export interface FilmData {
   progressPct: number
   fundingPct: number
   isPipeline?: boolean
+  /** True when the film belongs to the archived (legacy) catalog */
+  archived?: boolean
 }
 
 /* ── Named posters (films with real images) ── */

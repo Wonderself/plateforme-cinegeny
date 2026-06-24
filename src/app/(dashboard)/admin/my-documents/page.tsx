@@ -120,8 +120,8 @@ export default function MyDocumentsPage() {
           <p className="text-sm text-white/50 mt-1">25 templates · Génération IA · Bibliothèque personnelle</p>
         </div>
         <div className="flex gap-2">
-          <button onClick={() => setView('templates')} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${view === 'templates' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>Templates</button>
-          <button onClick={() => setView('library')} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${view === 'library' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>
+          <button onClick={() => setView('templates')} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${view === 'templates' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>Templates</button>
+          <button onClick={() => setView('library')} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${view === 'library' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>
             Bibliothèque ({savedDocs.length})
           </button>
         </div>
@@ -133,12 +133,12 @@ export default function MyDocumentsPage() {
           <div className="flex gap-3">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/50" />
-              <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher un template..." className="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 text-sm focus:border-[#E50914] focus:outline-none" />
+              <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Rechercher un template..." className="w-full pl-10 pr-4 py-2 rounded-xl border border-white/10 text-sm focus:border-[#C9A227] focus:outline-none" />
             </div>
             <div className="flex gap-1 overflow-x-auto">
-              <button onClick={() => setSelectedCategory('all')} className={`px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap ${selectedCategory === 'all' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>Tous</button>
+              <button onClick={() => setSelectedCategory('all')} className={`px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap ${selectedCategory === 'all' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>Tous</button>
               {CATEGORIES.map(cat => (
-                <button key={cat} onClick={() => setSelectedCategory(cat)} className={`px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap ${selectedCategory === cat ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>{cat}</button>
+                <button key={cat} onClick={() => setSelectedCategory(cat)} className={`px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap ${selectedCategory === cat ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>{cat}</button>
               ))}
             </div>
           </div>
@@ -156,9 +156,9 @@ export default function MyDocumentsPage() {
                   className="text-left rounded-xl border border-white/10 bg-white/5 p-5 hover:bg-white/[0.03] hover:border-white/15 transition-colors disabled:opacity-50"
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <TIcon className="h-5 w-5 text-[#E50914]" />
+                    <TIcon className="h-5 w-5 text-[#C9A227]" />
                     <span className="text-sm font-medium text-white">{template.name}</span>
-                    {isGenerating && <Loader2 className="h-4 w-4 animate-spin text-[#E50914] ml-auto" />}
+                    {isGenerating && <Loader2 className="h-4 w-4 animate-spin text-[#C9A227] ml-auto" />}
                   </div>
                   <p className="text-[10px] text-white/50">{template.category}</p>
                 </button>
@@ -172,11 +172,11 @@ export default function MyDocumentsPage() {
               <PenTool className="h-4 w-4 text-purple-500" /> Document personnalisé
             </h3>
             <div className="flex gap-3">
-              <input value={customPrompt} onChange={e => setCustomPrompt(e.target.value)} placeholder="Décrivez le document à générer..." className="flex-1 rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none" />
+              <input value={customPrompt} onChange={e => setCustomPrompt(e.target.value)} placeholder="Décrivez le document à générer..." className="flex-1 rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none" />
               <button
                 onClick={() => { if (customPrompt) generateDoc({ id: 'custom', name: 'Document personnalisé', category: 'Custom', icon: FileText, prompt: customPrompt }) }}
                 disabled={!customPrompt || !!generating}
-                className="px-4 py-2 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-medium rounded-lg disabled:opacity-50 transition-colors"
+                className="px-4 py-2 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-medium rounded-lg disabled:opacity-50 transition-colors"
               >
                 <Zap className="h-4 w-4" />
               </button>
@@ -216,7 +216,7 @@ export default function MyDocumentsPage() {
           ) : savedDocs.map(doc => (
             <div key={doc.id} className="rounded-xl border border-white/10 bg-white/5 p-5">
               <div className="flex items-center gap-3">
-                <FileText className="h-5 w-5 text-[#E50914]" />
+                <FileText className="h-5 w-5 text-[#C9A227]" />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-white">{doc.title}</p>
                   <p className="text-[10px] text-white/50">{doc.createdAt.toLocaleString('fr-FR')}</p>

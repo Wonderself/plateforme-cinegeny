@@ -19,7 +19,7 @@ export const metadata: Metadata = { title: 'Admin — Editer Acteur IA' }
 type Props = { params: Promise<{ id: string }> }
 
 const ROLE_COLORS: Record<string, string> = {
-  LEAD: 'border-[#E50914]/30 bg-[#E50914]/10 text-[#E50914]',
+  LEAD: 'border-[#C9A227]/30 bg-[#C9A227]/10 text-[#C9A227]',
   SUPPORTING: 'border-blue-400/30 bg-blue-400/10 text-blue-600',
   CAMEO: 'border-purple-400/30 bg-purple-400/10 text-purple-600',
   VOICE: 'border-cyan-400/30 bg-cyan-400/10 text-cyan-600',
@@ -79,7 +79,7 @@ export default async function EditActorPage({ params }: Props) {
 
         {/* Identity Section */}
         <section className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 space-y-5">
-          <h2 className="text-lg font-semibold text-[#E50914] font-playfair">
+          <h2 className="text-lg font-semibold text-[#C9A227] font-playfair">
             Identite
           </h2>
 
@@ -95,7 +95,7 @@ export default async function EditActorPage({ params }: Props) {
                 id="nationality"
                 name="nationality"
                 defaultValue={actor.nationality || ''}
-                className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+                className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
               >
                 <option value="">Selectionner</option>
                 {NATIONALITIES.map((n) => (
@@ -110,7 +110,7 @@ export default async function EditActorPage({ params }: Props) {
                 id="style"
                 name="style"
                 defaultValue={actor.style}
-                className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+                className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
               >
                 {Object.entries(ACTOR_STYLE_LABELS).map(([value, label]) => (
                   <option key={value} value={value}>{label}</option>
@@ -144,7 +144,7 @@ export default async function EditActorPage({ params }: Props) {
 
         {/* Bio & Quote Section */}
         <section className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 space-y-5">
-          <h2 className="text-lg font-semibold text-[#E50914] font-playfair">
+          <h2 className="text-lg font-semibold text-[#C9A227] font-playfair">
             Biographie
           </h2>
 
@@ -155,7 +155,7 @@ export default async function EditActorPage({ params }: Props) {
               name="bio"
               rows={5}
               defaultValue={actor.bio || ''}
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical"
             />
           </div>
 
@@ -167,7 +167,7 @@ export default async function EditActorPage({ params }: Props) {
 
         {/* Personality Section */}
         <section className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 space-y-5">
-          <h2 className="text-lg font-semibold text-[#E50914] font-playfair">
+          <h2 className="text-lg font-semibold text-[#C9A227] font-playfair">
             Personnalite
           </h2>
 
@@ -196,14 +196,14 @@ export default async function EditActorPage({ params }: Props) {
               name="funFacts"
               rows={4}
               defaultValue={actor.funFacts.join('\n')}
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical"
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical"
             />
           </div>
         </section>
 
         {/* Media Section */}
         <section className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 space-y-5">
-          <h2 className="text-lg font-semibold text-[#E50914] font-playfair">
+          <h2 className="text-lg font-semibold text-[#C9A227] font-playfair">
             Media & Social
           </h2>
 
@@ -237,9 +237,9 @@ export default async function EditActorPage({ params }: Props) {
       </form>
 
       {/* ─── Cast Roles Section ─────────────────────────────────── */}
-      <section className="rounded-2xl border border-[#E50914]/10 bg-white/[0.02] p-6 space-y-6">
+      <section className="rounded-2xl border border-[#C9A227]/10 bg-white/[0.02] p-6 space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-[#E50914] flex items-center gap-2 font-playfair">
+          <h2 className="text-lg font-semibold text-[#C9A227] flex items-center gap-2 font-playfair">
             <Film className="h-5 w-5" />
             Roles dans les films ({actor.castRoles.length})
           </h2>
@@ -308,7 +308,7 @@ export default async function EditActorPage({ params }: Props) {
                 <select
                   id="filmId"
                   name="filmId"
-                  className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+                  className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
                 >
                   <option value="">-- Aucun --</option>
                   {films.map((f) => (
@@ -323,7 +323,7 @@ export default async function EditActorPage({ params }: Props) {
                 <select
                   id="catalogFilmId"
                   name="catalogFilmId"
-                  className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+                  className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
                 >
                   <option value="">-- Aucun --</option>
                   {catalogFilms.map((f) => (
@@ -344,7 +344,7 @@ export default async function EditActorPage({ params }: Props) {
                 <select
                   id="role"
                   name="role"
-                  className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+                  className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
                 >
                   {Object.entries(CAST_ROLE_LABELS).map(([value, label]) => (
                     <option key={value} value={value}>{label}</option>

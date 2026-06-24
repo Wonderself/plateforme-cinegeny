@@ -16,7 +16,7 @@ export const REPUTATION_WEIGHTS = {
 export const REPUTATION_BADGES = [
   { name: 'bronze', minScore: 0, color: '#CD7F32', label: 'Bronze' },
   { name: 'silver', minScore: 40, color: '#C0C0C0', label: 'Argent' },
-  { name: 'gold', minScore: 65, color: '#E50914', label: 'Or' },
+  { name: 'gold', minScore: 65, color: '#C9A227', label: 'Or' },
   { name: 'platinum', minScore: 85, color: '#E5E4E2', label: 'Platine' },
 ] as const
 

@@ -69,12 +69,12 @@ export default async function PaymentsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white/[0.03] backdrop-blur border border-white/10 sm:rounded-3xl rounded-2xl p-6 hover:shadow-md transition-all duration-500">
           <div className="flex items-center gap-3 mb-3">
-            <div className="h-10 w-10 rounded-xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center">
-              <CreditCard className="h-5 w-5 text-[#E50914]" />
+            <div className="h-10 w-10 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center">
+              <CreditCard className="h-5 w-5 text-[#C9A227]" />
             </div>
             <span className="text-sm text-white/40">Total gagné</span>
           </div>
-          <p className="text-2xl font-bold text-[#E50914]">
+          <p className="text-2xl font-bold text-[#C9A227]">
             {totalEarned.toFixed(2)} &euro;
           </p>
         </div>
@@ -158,7 +158,7 @@ export default async function PaymentsPage() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <span className="text-sm font-semibold text-[#E50914]">
+                        <span className="text-sm font-semibold text-[#C9A227]">
                           {payment.amountEur.toFixed(2)} &euro;
                         </span>
                       </td>
@@ -201,7 +201,7 @@ export default async function PaymentsPage() {
                         {payment.task.film?.title ?? '—'}
                       </p>
                     </div>
-                    <span className="text-sm font-semibold text-[#E50914] shrink-0">
+                    <span className="text-sm font-semibold text-[#C9A227] shrink-0">
                       {payment.amountEur.toFixed(2)} &euro;
                     </span>
                   </div>

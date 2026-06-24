@@ -75,9 +75,11 @@ import {
   Map,
   MessagesSquare,
   CheckSquare,
+  Archive,
 } from 'lucide-react'
 import { cn, getInitials } from '@/lib/utils'
 import { useState, useEffect } from 'react'
+import { Logo } from '@/components/layout/logo'
 
 const LEVEL_LABELS_MAP: Record<string, string> = {
   ROOKIE: 'Rookie',
@@ -106,7 +108,7 @@ const mainNavSections: NavSection[] = [
   {
     title: 'Home',
     icon: Home,
-    dotColor: 'bg-[#E50914]',
+    dotColor: 'bg-[#C9A227]',
     links: [
       { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, exact: true },
       { href: '/streaming', label: 'Streaming', icon: Play },
@@ -167,9 +169,10 @@ const adminNavSections: NavSection[] = [
   {
     title: 'Contenu',
     icon: Film,
-    dotColor: 'bg-[#E50914]',
+    dotColor: 'bg-[#C9A227]',
     links: [
       { href: '/admin/films', label: 'Films Studio', icon: Film },
+      { href: '/admin/films-catalog', label: 'Catalogue (Actif/Archive)', icon: Archive },
       { href: '/admin/tasks', label: 'Tâches', icon: Star },
       { href: '/admin/screenplays', label: 'Scénarios', icon: FileText },
       { href: '/admin/catalog', label: 'Catalogue Streaming', icon: Play },
@@ -369,17 +372,17 @@ export function Sidebar() {
         className={cn(
           'flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 group',
           isActive
-            ? 'bg-[#E50914]/10 text-[#E50914] font-medium'
-            : 'text-white/60 hover:text-[#E50914] hover:bg-white/[0.05]'
+            ? 'bg-[#C9A227]/10 text-[#C9A227] font-medium'
+            : 'text-white/60 hover:text-[#C9A227] hover:bg-white/[0.05]'
         )}
       >
         <link.icon className={cn(
           'h-4 w-4 shrink-0 transition-colors',
-          isActive ? 'text-[#E50914]' : 'text-white/50 group-hover:text-[#E50914]'
+          isActive ? 'text-[#C9A227]' : 'text-white/50 group-hover:text-[#C9A227]'
         )} />
         <span className="flex-1">{link.label}</span>
         {link.badge && (
-          <Badge className="text-[9px] px-1.5 py-0 h-4 bg-[#E50914]/15 text-[#E50914] border-[#E50914]/20">
+          <Badge className="text-[9px] px-1.5 py-0 h-4 bg-[#C9A227]/15 text-[#C9A227] border-[#C9A227]/20">
             {link.badge}
           </Badge>
         )}
@@ -450,7 +453,7 @@ export function Sidebar() {
           </div>
           <Link
             href="/dashboard"
-            className="flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] text-white/50 hover:text-[#E50914] hover:bg-white/[0.05] transition-all"
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] text-white/50 hover:text-[#C9A227] hover:bg-white/[0.05] transition-all"
           >
             <LayoutDashboard className="h-4 w-4" />
             Dashboard
@@ -465,16 +468,16 @@ export function Sidebar() {
             className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.03] transition-all group"
           >
             <Avatar className="h-9 w-9">
-              <AvatarFallback className="text-xs bg-[#E50914]/10 text-[#E50914]">
+              <AvatarFallback className="text-xs bg-[#C9A227]/10 text-[#C9A227]">
                 {getInitials(session.user.name || session.user.email || '')}
               </AvatarFallback>
             </Avatar>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-white truncate group-hover:text-[#E50914] transition-colors">
+              <p className="text-sm font-medium text-white truncate group-hover:text-[#C9A227] transition-colors">
                 {session.user.name || 'Utilisateur'}
               </p>
               <div className="flex items-center gap-1.5">
-                <Badge variant="outline" className="text-[10px] px-1.5 py-0 h-4 border-[#E50914]/20 text-[#E50914]/70">
+                <Badge variant="outline" className="text-[10px] px-1.5 py-0 h-4 border-[#C9A227]/20 text-[#C9A227]/70">
                   {LEVEL_LABELS_MAP[userLevel || 'ROOKIE'] || 'Rookie'}
                 </Badge>
               </div>
@@ -509,7 +512,7 @@ export function Sidebar() {
         )}
       >
         <div className="p-3 flex items-center justify-between border-b border-white/10">
-          <span className="text-sm font-bold text-white font-[family-name:var(--font-playfair)]">CINEGEN</span>
+          <Logo height={34} />
           <button onClick={() => setMobileOpen(false)} className="h-8 w-8 rounded-lg hover:bg-white/[0.05] flex items-center justify-center text-white/50">
             <X className="h-4 w-4" />
           </button>

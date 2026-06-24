@@ -1,19 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark cinema base (default) */
-  --background: #0A0A0A;
-  --background-secondary: #111111;
-  --background-tertiary: #1A1A1A;
+  /* Dark cinema base (default) — warm deep black */
+  --background: #0A0908;
+  --background-secondary: #110F0B;
+  --background-tertiary: #1A1611;
   --foreground: #FAFAFA;
   --foreground-secondary: #CCCCCC;
   --foreground-muted: #888888;
-  --gold: #E50914;       /* Primary red (was gold) */
-  --gold-light: #FF2D2D;
-  --gold-dark: #9B0000;
-  --card: #111111;
-  --card-border: #222222;
-  --muted: #888888;
+  --gold: #C9A227;       /* Primary brand gold */
+  --gold-light: #E8C766;
+  --gold-dark: #8A6A12;
+  --gold-bright: #F5D77A;
+  --gold-deep: #B8860B;
+  /* Premium metallic gold gradient (matches logo) */
+  --gold-metallic: linear-gradient(135deg, #8A6A12 0%, #C9A227 22%, #F5D77A 45%, #FBE9A6 55%, #C9A227 78%, #8A6A12 100%);
+  /* Deliberate red accent — used sparingly as "touches" */
+  --red-accent: #E11D2A;
+  --red-accent-soft: rgba(225, 29, 42, 0.14);
+  --card: #0E0E0E;
+  --card-border: #1F1B12;
+  --muted: #8A8578;
 
   /* Accent palette */
   --accent-blue: #3B82F6;
@@ -25,17 +32,17 @@
   --glass-bg: rgba(255, 255, 255, 0.04);
   --glass-bg-hover: rgba(255, 255, 255, 0.07);
   --glass-bg-strong: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(229, 9, 20, 0.12);
-  --glass-border-hover: rgba(229, 9, 20, 0.25);
-  --glass-border-strong: rgba(229, 9, 20, 0.3);
+  --glass-border: rgba(201, 162, 39, 0.12);
+  --glass-border-hover: rgba(201, 162, 39, 0.25);
+  --glass-border-strong: rgba(201, 162, 39, 0.3);
   --glass-blur: blur(16px);
   --glass-blur-heavy: blur(32px);
 
   /* Dark depth shadows */
   --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.03) inset;
   --shadow-elevated: 0 16px 48px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
-  --shadow-gold: 0 0 40px rgba(229, 9, 20, 0.1);
-  --shadow-gold-intense: 0 0 60px rgba(229, 9, 20, 0.2);
+  --shadow-gold: 0 0 40px rgba(201, 162, 39, 0.1);
+  --shadow-gold-intense: 0 0 60px rgba(201, 162, 39, 0.2);
 }
 
 /* Light scope — for dashboard pages */
@@ -54,13 +61,13 @@
   --glass-bg-hover: rgba(255, 255, 255, 0.85);
   --glass-bg-strong: rgba(255, 255, 255, 0.9);
   --glass-border: rgba(0, 0, 0, 0.06);
-  --glass-border-hover: rgba(229, 9, 20, 0.2);
+  --glass-border-hover: rgba(201, 162, 39, 0.2);
   --glass-border-strong: rgba(0, 0, 0, 0.1);
 
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 16px rgba(0, 0, 0, 0.04);
   --shadow-elevated: 0 4px 24px rgba(0, 0, 0, 0.08);
-  --shadow-gold: 0 4px 24px rgba(229, 9, 20, 0.12);
-  --shadow-gold-intense: 0 4px 32px rgba(229, 9, 20, 0.2);
+  --shadow-gold: 0 4px 24px rgba(201, 162, 39, 0.12);
+  --shadow-gold-intense: 0 4px 32px rgba(201, 162, 39, 0.2);
 
   --accent-blue: #2563EB;
   --accent-purple: #7C3AED;
@@ -96,7 +103,11 @@
   }
 
   body {
-    background: var(--background);
+    background:
+      radial-gradient(ellipse 90% 50% at 50% -10%, rgba(201, 162, 39, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(225, 29, 42, 0.03) 0%, transparent 60%),
+      var(--background);
+    background-attachment: fixed;
     color: var(--foreground);
     font-family: var(--font-inter, 'Inter', sans-serif);
     min-height: 100vh;
@@ -120,17 +131,17 @@
 
 @keyframes splashGlowInner {
   0% { background: transparent; transform: scale(0.3); filter: blur(40px); }
-  100% { background: rgba(229, 9, 20, 0.15); transform: scale(1); filter: blur(60px); }
+  100% { background: rgba(201, 162, 39, 0.15); transform: scale(1); filter: blur(60px); }
 }
 
 @keyframes splashGlowOuter {
   0% { background: transparent; transform: scale(0.2); filter: blur(60px); }
-  100% { background: rgba(229, 9, 20, 0.05); transform: scale(1); filter: blur(100px); }
+  100% { background: rgba(201, 162, 39, 0.05); transform: scale(1); filter: blur(100px); }
 }
 
 @keyframes splashRing {
   0% { border-color: transparent; transform: scale(0.5); opacity: 0; }
-  50% { border-color: rgba(229, 9, 20, 0.15); opacity: 1; }
+  50% { border-color: rgba(201, 162, 39, 0.15); opacity: 1; }
   100% { border-color: transparent; transform: scale(1.3); opacity: 0; }
 }
 
@@ -185,10 +196,70 @@
    ======================================== */
 
 .text-gold-gradient {
-  background: linear-gradient(135deg, #E50914 0%, #FF2D2D 50%, #E50914 100%);
+  background: linear-gradient(135deg, #8A6A12 0%, #C9A227 22%, #F5D77A 48%, #FBE9A6 58%, #C9A227 80%, #8A6A12 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Premium metallic gold — wordmarks, headings, stats */
+.text-gold-metallic {
+  background: var(--gold-metallic);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+}
+
+.bg-gold-metallic {
+  background: var(--gold-metallic);
+}
+
+/* Hairline metallic gold border (premium cards / dividers) */
+.border-gold-metallic {
+  position: relative;
+}
+.border-gold-metallic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gold-metallic);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+.border-gold-metallic:hover::before {
+  opacity: 1;
+}
+
+/* Deliberate red accent touches */
+.text-red-accent { color: var(--red-accent); }
+.bg-red-accent { background: var(--red-accent); }
+.badge-red-accent {
+  background: var(--red-accent-soft);
+  border: 1px solid rgba(225, 29, 42, 0.35);
+  color: #FF6B73;
+}
+
+/* Thin animated gold sheen for headings */
+@keyframes goldSheen {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+.text-gold-sheen {
+  background: linear-gradient(110deg, #8A6A12 0%, #C9A227 30%, #FBE9A6 50%, #C9A227 70%, #8A6A12 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldSheen 6s linear infinite;
 }
 
 .text-instagram-gradient {
@@ -223,11 +294,11 @@
 .text-shimmer {
   background: linear-gradient(
     120deg,
-    #E50914 0%,
-    #FF2D2D 25%,
-    #E50914 50%,
-    #FF2D2D 75%,
-    #E50914 100%
+    #C9A227 0%,
+    #E8C766 25%,
+    #C9A227 50%,
+    #E8C766 75%,
+    #C9A227 100%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;
@@ -268,16 +339,16 @@
 }
 
 .glass-gold {
-  background: rgba(229, 9, 20, 0.05);
+  background: rgba(201, 162, 39, 0.05);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid rgba(229, 9, 20, 0.15);
+  border: 1px solid rgba(201, 162, 39, 0.15);
   box-shadow: var(--shadow-gold), var(--shadow-card);
 }
 
 .glass-gold:hover {
-  background: rgba(229, 9, 20, 0.08);
-  border-color: rgba(229, 9, 20, 0.25);
+  background: rgba(201, 162, 39, 0.08);
+  border-color: rgba(201, 162, 39, 0.25);
   box-shadow: var(--shadow-gold-intense), var(--shadow-card);
 }
 
@@ -296,11 +367,11 @@
    ======================================== */
 
 .gradient-radial-gold {
-  background: radial-gradient(ellipse at 50% 0%, rgba(229, 9, 20, 0.08) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.08) 0%, transparent 60%);
 }
 
 .gradient-radial-gold-bottom {
-  background: radial-gradient(ellipse at 50% 100%, rgba(229, 9, 20, 0.06) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 50% 100%, rgba(201, 162, 39, 0.06) 0%, transparent 50%);
 }
 
 .noise-overlay::after {
@@ -327,7 +398,7 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(229, 9, 20, 0.3), rgba(255, 45, 45, 0.1), rgba(229, 9, 20, 0.3));
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(255, 45, 45, 0.1), rgba(201, 162, 39, 0.3));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -351,7 +422,7 @@
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E50914;
+  background: #C9A227;
 }
 
 .scrollbar-thin::-webkit-scrollbar {
@@ -396,8 +467,8 @@
    ======================================== */
 
 @keyframes borderGlow {
-  0%, 100% { box-shadow: 0 0 5px rgba(229, 9, 20, 0.2); }
-  50% { box-shadow: 0 0 25px rgba(229, 9, 20, 0.4); }
+  0%, 100% { box-shadow: 0 0 5px rgba(201, 162, 39, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(201, 162, 39, 0.4); }
 }
 
 .gold-glow {
@@ -565,8 +636,8 @@
 }
 
 @keyframes subtleGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(229, 9, 20, 0.05), 0 0 60px rgba(131, 58, 180, 0.03); }
-  50% { box-shadow: 0 0 40px rgba(229, 9, 20, 0.1), 0 0 80px rgba(131, 58, 180, 0.06); }
+  0%, 100% { box-shadow: 0 0 20px rgba(201, 162, 39, 0.05), 0 0 60px rgba(131, 58, 180, 0.03); }
+  50% { box-shadow: 0 0 40px rgba(201, 162, 39, 0.1), 0 0 80px rgba(131, 58, 180, 0.06); }
 }
 
 .card-glow-hover:hover {
@@ -634,12 +705,12 @@
    ======================================== */
 
 ::selection {
-  background: rgba(229, 9, 20, 0.3);
+  background: rgba(201, 162, 39, 0.3);
   color: #FAFAFA;
 }
 
 .light-theme ::selection {
-  background: rgba(229, 9, 20, 0.2);
+  background: rgba(201, 162, 39, 0.2);
   color: #1A1A2E;
 }
 
@@ -656,7 +727,7 @@
    ======================================== */
 
 :focus-visible {
-  outline: 2px solid rgba(229, 9, 20, 0.5);
+  outline: 2px solid rgba(201, 162, 39, 0.5);
   outline-offset: 2px;
 }
 
@@ -703,8 +774,8 @@
 }
 
 @keyframes logoGlowPulse {
-  0%, 100% { text-shadow: 0 0 10px rgba(229,9,20,0.3), 0 0 30px rgba(229,9,20,0.1); }
-  50% { text-shadow: 0 0 20px rgba(229,9,20,0.6), 0 0 50px rgba(229,9,20,0.2), 0 0 80px rgba(229,9,20,0.1); }
+  0%, 100% { text-shadow: 0 0 10px rgba(201,162,39,0.3), 0 0 30px rgba(201,162,39,0.1); }
+  50% { text-shadow: 0 0 20px rgba(201,162,39,0.6), 0 0 50px rgba(201,162,39,0.2), 0 0 80px rgba(201,162,39,0.1); }
 }
 
 @keyframes accentLineGrow {

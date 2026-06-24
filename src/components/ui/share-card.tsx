@@ -89,12 +89,12 @@ export function ShareCard({ title, description, url, compact = false }: ShareCar
     <Card variant="gold">
       <CardContent className="p-5">
         {/* Card preview */}
-        <div className="rounded-lg bg-gradient-to-br from-[#E50914]/20 via-[#0A0A0A] to-[#E50914]/10 border border-[#E50914]/20 p-5 mb-5">
+        <div className="rounded-lg bg-gradient-to-br from-[#C9A227]/20 via-[#0A0A0A] to-[#C9A227]/10 border border-[#C9A227]/20 p-5 mb-5">
           <div className="flex items-center gap-2 mb-3">
-            <div className="h-8 w-8 rounded-full bg-[#E50914]/30 flex items-center justify-center">
-              <Share2 className="h-4 w-4 text-[#E50914]" />
+            <div className="h-8 w-8 rounded-full bg-[#C9A227]/30 flex items-center justify-center">
+              <Share2 className="h-4 w-4 text-[#C9A227]" />
             </div>
-            <span className="text-[#E50914] text-xs font-semibold uppercase tracking-wider">CINEGEN Studio</span>
+            <span className="text-[#C9A227] text-xs font-semibold uppercase tracking-wider">CINEGEN Studio</span>
           </div>
           <h3 className="text-white font-bold text-lg mb-1">{title}</h3>
           <p className="text-white/50 text-sm">{description}</p>

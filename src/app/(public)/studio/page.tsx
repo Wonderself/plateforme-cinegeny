@@ -71,12 +71,12 @@ export default function StudioPage() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-            <Camera className="h-4 w-4 text-[#E50914]" />
-            <span className="text-sm font-medium text-[#E50914]">Creative Studio</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+            <Camera className="h-4 w-4 text-[#C9A227]" />
+            <span className="text-sm font-medium text-[#C9A227]">Creative Studio</span>
           </div>
           <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-3">
-            Studio <span className="text-[#E50914]">Créatif IA</span>
+            Studio <span className="text-[#C9A227]">Créatif IA</span>
           </h1>
           <p className="text-gray-400 max-w-xl mx-auto">
             Générez affiches, storyboards, concept art, VFX et vidéos avec 7 agents spécialisés cinéma.
@@ -123,7 +123,7 @@ export default function StudioPage() {
           ].map(t => {
             const TIcon = t.icon
             return (
-              <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}>
+              <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}>
                 <TIcon className="h-4 w-4" /> {t.label}
               </button>
             )
@@ -134,7 +134,7 @@ export default function StudioPage() {
           <div className="space-y-6">
             <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6">
               <label className="text-xs text-gray-400 mb-2 block">Prompt</label>
-              <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez l'image cinéma à générer..." rows={3} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none" />
+              <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez l'image cinéma à générer..." rows={3} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none" />
             </div>
 
             {/* Category */}
@@ -144,8 +144,8 @@ export default function StudioPage() {
                 {CINEMA_CATEGORIES.map(cat => {
                   const CIcon = ICON_MAP[cat.icon] || Image
                   return (
-                    <button key={cat.id} onClick={() => setCategory(cat.id)} className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border transition-colors ${category === cat.id ? 'border-[#E50914] bg-[#E50914]/10' : 'border-gray-800 hover:border-gray-700'}`}>
-                      <CIcon className="h-5 w-5" style={{ color: category === cat.id ? '#E50914' : cat.color }} />
+                    <button key={cat.id} onClick={() => setCategory(cat.id)} className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border transition-colors ${category === cat.id ? 'border-[#C9A227] bg-[#C9A227]/10' : 'border-gray-800 hover:border-gray-700'}`}>
+                      <CIcon className="h-5 w-5" style={{ color: category === cat.id ? '#C9A227' : cat.color }} />
                       <span className="text-[10px] text-gray-400">{cat.label}</span>
                     </button>
                   )
@@ -158,7 +158,7 @@ export default function StudioPage() {
               <label className="text-xs text-gray-400 mb-2 block">Style</label>
               <div className="flex gap-2 flex-wrap">
                 {PHOTO_STYLES.map(s => (
-                  <button key={s.id} onClick={() => setStyle(s.id)} className={`px-4 py-2 rounded-xl text-xs font-medium ${style === s.id ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}>{s.label}</button>
+                  <button key={s.id} onClick={() => setStyle(s.id)} className={`px-4 py-2 rounded-xl text-xs font-medium ${style === s.id ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}>{s.label}</button>
                 ))}
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function StudioPage() {
                 <label className="text-xs text-gray-400 mb-2 block">Ratio</label>
                 <div className="flex gap-2">
                   {PHOTO_RATIOS.map(r => (
-                    <button key={r.id} onClick={() => setRatio(r.id)} className={`px-4 py-2 rounded-lg text-xs font-medium ${ratio === r.id ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400'}`}>{r.label}</button>
+                    <button key={r.id} onClick={() => setRatio(r.id)} className={`px-4 py-2 rounded-lg text-xs font-medium ${ratio === r.id ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400'}`}>{r.label}</button>
                   ))}
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function StudioPage() {
               </div>
             </div>
 
-            <button onClick={genPhoto} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+            <button onClick={genPhoto} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
               {generating ? <><Loader2 className="h-5 w-5 animate-spin" />Génération...</> : <><Wand2 className="h-5 w-5" />Générer</>}
             </button>
           </div>
@@ -188,17 +188,17 @@ export default function StudioPage() {
         {tab === 'video' && (
           <div className="space-y-6">
             <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6">
-              <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez la séquence vidéo..." rows={3} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none resize-none" />
+              <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez la séquence vidéo..." rows={3} className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none resize-none" />
             </div>
             <div>
               <label className="text-xs text-gray-400 mb-2 block">Durée</label>
               <div className="flex gap-2">
                 {([5, 10, 15] as const).map(d => (
-                  <button key={d} onClick={() => setDuration(d)} className={`px-4 py-2 rounded-lg text-xs font-medium ${duration === d ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400'}`}>{d}s</button>
+                  <button key={d} onClick={() => setDuration(d)} className={`px-4 py-2 rounded-lg text-xs font-medium ${duration === d ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400'}`}>{d}s</button>
                 ))}
               </div>
             </div>
-            <button onClick={genVideo} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+            <button onClick={genVideo} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
               {generating ? <><Loader2 className="h-5 w-5 animate-spin" />Génération async...</> : <><Play className="h-5 w-5" />Générer la vidéo</>}
             </button>
           </div>

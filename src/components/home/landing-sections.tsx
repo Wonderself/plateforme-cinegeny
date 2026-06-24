@@ -23,11 +23,11 @@ export function StudioShowcaseSection() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-xs text-white/50 mb-6">
-            <Camera className="h-3.5 w-3.5 text-[#E50914]" />
+            <Camera className="h-3.5 w-3.5 text-[#C9A227]" />
             Studio Créatif IA
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Créez avec l&apos;<span className="text-[#E50914]">IA</span>
+            Créez avec l&apos;<span className="text-[#C9A227]">IA</span>
           </h2>
           <p className="text-gray-400 max-w-lg mx-auto">
             Photos, vidéos, affiches, bandes-annonces — tout est généré par nos agents IA cinéma.
@@ -37,16 +37,16 @@ export function StudioShowcaseSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { title: 'Photos & Storyboards', desc: '5 styles, 4 ratios, qualité HD', icon: Image, color: '#3B82F6', href: '/studio' },
-            { title: 'Vidéos IA', desc: '7 providers, jusqu\'à 15s, async', icon: Video, color: '#E50914', href: '/studio' },
+            { title: 'Vidéos IA', desc: '7 providers, jusqu\'à 15s, async', icon: Video, color: '#C9A227', href: '/studio' },
             { title: 'Affiches & Trailers', desc: 'Inventez un film, l\'IA fait le reste', icon: Film, color: '#8B5CF6', href: '/trailer-maker' },
           ].map(item => {
             const Icon = item.icon
             return (
-              <Link key={item.title} href={item.href} className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 hover:border-[#E50914]/30 transition-all">
+              <Link key={item.title} href={item.href} className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 hover:border-[#C9A227]/30 transition-all">
                 <Icon className="h-10 w-10 mb-4" style={{ color: item.color }} />
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#E50914] transition-colors">{item.title}</h3>
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#C9A227] transition-colors">{item.title}</h3>
                 <p className="text-sm text-gray-500 mb-4">{item.desc}</p>
-                <span className="text-xs text-[#E50914] flex items-center gap-1 group-hover:gap-2 transition-all">Découvrir <ArrowRight className="h-3.5 w-3.5" /></span>
+                <span className="text-xs text-[#C9A227] flex items-center gap-1 group-hover:gap-2 transition-all">Découvrir <ArrowRight className="h-3.5 w-3.5" /></span>
               </Link>
             )
           })}
@@ -64,7 +64,7 @@ export function WhyCineGenSection() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Pourquoi <span className="text-[#E50914]">CineGen</span> ?
+            Pourquoi <span className="text-[#C9A227]">CineGen</span> ?
           </h2>
           <p className="text-gray-400 max-w-lg mx-auto">
             La plateforme de cinéma participatif la plus complète, propulsée par 113 agents IA.
@@ -112,11 +112,11 @@ export function DemoSection() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-xs text-white/50 mb-6">
-            <Play className="h-3.5 w-3.5 text-[#E50914]" />
+            <Play className="h-3.5 w-3.5 text-[#C9A227]" />
             Essayez maintenant
           </div>
           <h2 className="text-3xl font-bold text-white mb-4">
-            Démo <span className="text-[#E50914]">Interactive</span>
+            Démo <span className="text-[#C9A227]">Interactive</span>
           </h2>
           <p className="text-gray-400">Testez CineGen sans inscription</p>
         </div>
@@ -125,19 +125,19 @@ export function DemoSection() {
           {DEMO_SCENARIOS.map(demo => {
             const DIcon = DEMO_ICONS[demo.icon] || Zap
             return (
-              <div key={demo.id} className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 hover:border-[#E50914]/20 transition-all">
+              <div key={demo.id} className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 hover:border-[#C9A227]/20 transition-all">
                 <DIcon className="h-8 w-8 mb-4" style={{ color: demo.color }} />
                 <h3 className="text-lg font-bold text-white mb-2">{demo.title}</h3>
                 <p className="text-sm text-gray-500 mb-4">{demo.description}</p>
                 <ol className="space-y-2 mb-6">
                   {demo.steps.map((step, i) => (
                     <li key={i} className="flex items-center gap-2 text-xs text-gray-400">
-                      <span className="h-5 w-5 rounded-full bg-[#E50914]/10 text-[#E50914] flex items-center justify-center text-[10px] font-bold shrink-0">{i + 1}</span>
+                      <span className="h-5 w-5 rounded-full bg-[#C9A227]/10 text-[#C9A227] flex items-center justify-center text-[10px] font-bold shrink-0">{i + 1}</span>
                       {step}
                     </li>
                   ))}
                 </ol>
-                <Link href={demo.id === 'poster-generate' ? '/poster-maker' : demo.id === 'investment-analysis' ? '/agents/cg-investment-strategist' : '/chat'} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-semibold rounded-xl transition-colors">
+                <Link href={demo.id === 'poster-generate' ? '/poster-maker' : demo.id === 'investment-analysis' ? '/agents/cg-investment-strategist' : '/chat'} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-semibold rounded-xl transition-colors">
                   <Play className="h-4 w-4" /> Essayer
                 </Link>
               </div>
@@ -169,7 +169,7 @@ export function FAQSection() {
     <section className="py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white mb-4">Questions <span className="text-[#E50914]">Fréquentes</span></h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Questions <span className="text-[#C9A227]">Fréquentes</span></h2>
           <p className="text-gray-400">5 catégories · {FAQ_CATEGORIES.reduce((s, c) => s + c.items.length, 0)} questions</p>
         </div>
 
@@ -177,7 +177,7 @@ export function FAQSection() {
           {FAQ_CATEGORIES.map(cat => {
             const CIcon = CAT_ICONS[cat.icon] || HelpCircle
             return (
-              <button key={cat.id} onClick={() => setActiveCategory(cat.id)} className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium ${activeCategory === cat.id ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-gray-400 hover:bg-white/[0.1]'}`}>
+              <button key={cat.id} onClick={() => setActiveCategory(cat.id)} className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium ${activeCategory === cat.id ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-gray-400 hover:bg-white/[0.1]'}`}>
                 <CIcon className="h-3.5 w-3.5" />{cat.label}
               </button>
             )

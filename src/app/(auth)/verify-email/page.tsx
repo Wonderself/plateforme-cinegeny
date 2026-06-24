@@ -29,7 +29,7 @@ export default async function VerifyEmailPage({
         </p>
         <Link
           href="/login"
-          className="inline-block mt-6 px-6 py-3 rounded-xl bg-[#E50914] text-white font-semibold hover:bg-[#FF2D2D] transition-all"
+          className="inline-block mt-6 px-6 py-3 rounded-xl bg-[#C9A227] text-white font-semibold hover:bg-[#E8C766] transition-all"
         >
           Se connecter
         </Link>
@@ -53,7 +53,7 @@ export default async function VerifyEmailPage({
         </p>
         <Link
           href="/login"
-          className="inline-block mt-6 px-6 py-3 rounded-xl bg-[#E50914] text-white font-semibold hover:bg-[#FF2D2D] transition-all"
+          className="inline-block mt-6 px-6 py-3 rounded-xl bg-[#C9A227] text-white font-semibold hover:bg-[#E8C766] transition-all"
         >
           Se connecter
         </Link>
@@ -74,7 +74,7 @@ export default async function VerifyEmailPage({
       </p>
       <Link
         href="/login"
-        className="inline-block mt-6 px-6 py-3 rounded-xl bg-[#E50914] text-white font-semibold hover:bg-[#FF2D2D] transition-all"
+        className="inline-block mt-6 px-6 py-3 rounded-xl bg-[#C9A227] text-white font-semibold hover:bg-[#E8C766] transition-all"
       >
         Se connecter
       </Link>

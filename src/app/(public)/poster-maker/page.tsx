@@ -55,12 +55,12 @@ export default function PosterMakerPage() {
     <div className="min-h-screen bg-[#0A0A0A]">
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-            <Image className="h-4 w-4 text-[#E50914]" />
-            <span className="text-sm font-medium text-[#E50914]">Poster Maker</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+            <Image className="h-4 w-4 text-[#C9A227]" />
+            <span className="text-sm font-medium text-[#C9A227]">Poster Maker</span>
           </div>
           <h1 className="text-4xl font-bold text-white font-[family-name:var(--font-playfair)] mb-3">
-            Créez votre <span className="text-[#E50914]">affiche de film</span>
+            Créez votre <span className="text-[#C9A227]">affiche de film</span>
           </h1>
           <p className="text-gray-400 max-w-lg mx-auto">
             Inventez un film et l&apos;IA crée l&apos;affiche professionnelle.
@@ -74,19 +74,19 @@ export default function PosterMakerPage() {
             <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6 space-y-5">
               <div>
                 <label className="text-xs text-gray-400 mb-1.5 block">Titre du film *</label>
-                <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Ex: Éclipse Fatale" className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+                <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Ex: Éclipse Fatale" className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs text-gray-400 mb-1.5 block">Genre *</label>
                 <div className="flex flex-wrap gap-1.5">
                   {FILM_GENRES.slice(0, 12).map(g => (
-                    <button key={g} onClick={() => setGenre(g)} className={`px-3 py-1 rounded-lg text-xs ${genre === g ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}>{g}</button>
+                    <button key={g} onClick={() => setGenre(g)} className={`px-3 py-1 rounded-lg text-xs ${genre === g ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}>{g}</button>
                   ))}
                 </div>
               </div>
               <div>
                 <label className="text-xs text-gray-400 mb-1.5 block">Tagline</label>
-                <input value={tagline} onChange={e => setTagline(e.target.value)} placeholder="Ex: La vérité a un prix..." className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+                <input value={tagline} onChange={e => setTagline(e.target.value)} placeholder="Ex: La vérité a un prix..." className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
               </div>
             </div>
 
@@ -96,7 +96,7 @@ export default function PosterMakerPage() {
                 <label className="text-xs text-gray-400 mb-2 block">Style</label>
                 <div className="flex flex-wrap gap-1.5">
                   {PHOTO_STYLES.map(s => (
-                    <button key={s.id} onClick={() => setStyle(s.id)} className={`px-3 py-1.5 rounded-lg text-xs ${style === s.id ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400'}`}>{s.label}</button>
+                    <button key={s.id} onClick={() => setStyle(s.id)} className={`px-3 py-1.5 rounded-lg text-xs ${style === s.id ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400'}`}>{s.label}</button>
                   ))}
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function PosterMakerPage() {
                 <label className="text-xs text-gray-400 mb-2 block">Format</label>
                 <div className="flex gap-1.5">
                   {POSTER_RATIOS.map(r => (
-                    <button key={r.id} onClick={() => setRatio(r.id)} className={`px-3 py-1.5 rounded-lg text-xs ${ratio === r.id ? 'bg-[#E50914] text-white' : 'bg-gray-800 text-gray-400'}`}>{r.label}</button>
+                    <button key={r.id} onClick={() => setRatio(r.id)} className={`px-3 py-1.5 rounded-lg text-xs ${ratio === r.id ? 'bg-[#C9A227] text-white' : 'bg-gray-800 text-gray-400'}`}>{r.label}</button>
                   ))}
                 </div>
               </div>
@@ -117,16 +117,16 @@ export default function PosterMakerPage() {
                   <User className="h-4 w-4 text-purple-400" />
                   <span className="text-sm text-white">Votre visage sur l&apos;affiche</span>
                 </div>
-                <button onClick={() => setFaceMode(!faceMode)} className={`relative h-6 w-11 rounded-full ${faceMode ? 'bg-[#E50914]' : 'bg-gray-600'}`}>
+                <button onClick={() => setFaceMode(!faceMode)} className={`relative h-6 w-11 rounded-full ${faceMode ? 'bg-[#C9A227]' : 'bg-gray-600'}`}>
                   <span className={`inline-block h-4 w-4 rounded-full bg-white transition-transform ${faceMode ? 'translate-x-6' : 'translate-x-1'}`} />
                 </button>
               </div>
               {faceMode && (
-                <input value={faceUrl} onChange={e => setFaceUrl(e.target.value)} placeholder="URL photo portrait..." className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#E50914] focus:outline-none" />
+                <input value={faceUrl} onChange={e => setFaceUrl(e.target.value)} placeholder="URL photo portrait..." className="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-[#C9A227] focus:outline-none" />
               )}
             </div>
 
-            <button onClick={generate} disabled={generating || !title.trim() || !genre} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-40 transition-colors">
+            <button onClick={generate} disabled={generating || !title.trim() || !genre} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-40 transition-colors">
               {generating ? <><Loader2 className="h-5 w-5 animate-spin" />Génération...</> : <><Wand2 className="h-5 w-5" />Créer l&apos;affiche</>}
             </button>
 
@@ -155,7 +155,7 @@ export default function PosterMakerPage() {
                         <p className="text-2xl font-black text-white tracking-tight">{poster.title}</p>
                         <p className="text-sm text-gray-300 italic mt-1">{poster.tagline}</p>
                         <div className="flex gap-2 mt-3">
-                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#E50914]/80 text-white">{poster.genre}</span>
+                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#C9A227]/80 text-white">{poster.genre}</span>
                           <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/20 text-white">{poster.style}</span>
                           {poster.withFace && <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/80 text-white">Face</span>}
                         </div>

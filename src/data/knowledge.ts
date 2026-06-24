@@ -11,7 +11,7 @@ export interface KnowledgeAgent {
 export const KNOWLEDGE_AGENTS: KnowledgeAgent[] = [
   { slug: 'cg-memory-manager', name: 'Memory Manager', role: 'Stockage & recherche vectorielle', description: 'Gère les embeddings vectoriels (pgvector), recherche sémantique par cosine similarity, indexation automatique du contenu.', icon: 'brain', color: '#8B5CF6', tier: 'L2' },
   { slug: 'cg-knowledge-auditor', name: 'Knowledge Auditor', role: 'Audit connaissances', description: 'Audite la base de connaissances : détecte les informations obsolètes, les contradictions, les lacunes à combler.', icon: 'shield-check', color: '#3B82F6', tier: 'L2' },
-  { slug: 'cg-film-lore-keeper', name: 'Gardien du Lore', role: 'Mémoire film / Bible', description: 'Maintient la bible de chaque film : personnages, lore, timeline, style visuel, contraintes. Garantit la cohérence de toute contribution IA.', icon: 'book-open', color: '#E50914', tier: 'L2' },
+  { slug: 'cg-film-lore-keeper', name: 'Gardien du Lore', role: 'Mémoire film / Bible', description: 'Maintient la bible de chaque film : personnages, lore, timeline, style visuel, contraintes. Garantit la cohérence de toute contribution IA.', icon: 'book-open', color: '#C9A227', tier: 'L2' },
   { slug: 'cg-character-memory', name: 'Mémoire Personnages', role: 'Cohérence personnages', description: 'Garde en mémoire chaque personnage : apparence, personnalité, voix, relations, arc narratif. Vérifie toute incohérence.', icon: 'user-circle', color: '#EC4899', tier: 'L1' },
   { slug: 'cg-style-guardian', name: 'Gardien du Style', role: 'Cohérence visuelle', description: 'Préserve la cohérence visuelle du film : palette couleurs, éclairage, texture, direction artistique. Rejette les contributions hors-style.', icon: 'palette', color: '#F59E0B', tier: 'L1' },
   { slug: 'cg-context-builder', name: 'Constructeur Contexte', role: 'Enrichissement contexte', description: 'Construit dynamiquement le contexte optimal pour chaque requête IA en combinant mémoire long-terme + conversation + bible film.', icon: 'layers', color: '#10B981', tier: 'L1' },
@@ -96,7 +96,7 @@ export const EMBEDDING_CONFIG = {
 export type KnowledgeType = 'film_bible' | 'character' | 'scene' | 'dialogue' | 'visual_ref' | 'sound_ref' | 'constraint' | 'general'
 
 export const KNOWLEDGE_TYPES: Record<KnowledgeType, { label: string; icon: string; color: string }> = {
-  film_bible: { label: 'Bible Film', icon: 'book-open', color: '#E50914' },
+  film_bible: { label: 'Bible Film', icon: 'book-open', color: '#C9A227' },
   character: { label: 'Personnage', icon: 'user', color: '#EC4899' },
   scene: { label: 'Scène', icon: 'film', color: '#3B82F6' },
   dialogue: { label: 'Dialogue', icon: 'message-square', color: '#8B5CF6' },

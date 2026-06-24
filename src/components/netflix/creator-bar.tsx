@@ -11,9 +11,9 @@ const creatorActions = [
     description: 'Soumettez votre histoire au vote de la communaute',
     href: '/community/scenarios',
     gradient: 'from-amber-500/25 via-yellow-600/15 to-amber-900/25',
-    glow: 'rgba(229, 9, 20, 0.12)',
-    iconBg: 'from-[#E50914] to-[#9B0000]',
-    accent: '#E50914',
+    glow: 'rgba(201, 162, 39, 0.12)',
+    iconBg: 'from-[#C9A227] to-[#8A6A12]',
+    accent: '#C9A227',
     bgImage: '/posters/the-rebbe.jpg',
   },
   {
@@ -68,7 +68,7 @@ export function CreatorBar() {
     <section className="px-6 sm:px-10 md:px-16 lg:px-20 mb-20 mt-6">
       {/* Section header */}
       <div className="flex items-center gap-5 mb-10">
-        <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-[#E50914] to-[#9B0000] flex items-center justify-center shadow-[0_0_20px_rgba(229,9,20,0.2)]">
+        <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-[#C9A227] to-[#8A6A12] flex items-center justify-center shadow-[0_0_20px_rgba(201,162,39,0.2)]">
           <Sparkles className="h-4.5 w-4.5 text-black" />
         </div>
         <div>

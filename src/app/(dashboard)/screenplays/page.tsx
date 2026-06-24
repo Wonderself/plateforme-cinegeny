@@ -98,7 +98,7 @@ export default async function ScreenplaysPage() {
           {screenplays.map((screenplay) => {
             const statusConfig = STATUS_CONFIG[screenplay.status] || STATUS_CONFIG.SUBMITTED
             return (
-              <Card key={screenplay.id} variant="glass" className="hover:border-[#E50914]/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-500">
+              <Card key={screenplay.id} variant="glass" className="hover:border-[#C9A227]/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-500">
                 <CardContent className="p-7">
                   {/* Title & Status */}
                   <div className="flex items-start justify-between gap-3 mb-3">
@@ -137,7 +137,7 @@ export default async function ScreenplaysPage() {
                     <div className="mb-4">
                       <div className="flex items-center justify-between mb-1.5">
                         <div className="flex items-center gap-1.5">
-                          <Sparkles className="h-3.5 w-3.5 text-[#E50914]" />
+                          <Sparkles className="h-3.5 w-3.5 text-[#C9A227]" />
                           <span className="text-xs text-white/50">Score IA</span>
                         </div>
                         <span

@@ -123,7 +123,7 @@ export function FileUpload({
             ? 'border-green-500/30 bg-green-500/5'
             : error
               ? 'border-red-500/30 bg-red-500/5'
-              : 'border-white/10 bg-white/[0.02] hover:border-[#E50914]/30 hover:bg-[#E50914]/5'
+              : 'border-white/10 bg-white/[0.02] hover:border-[#C9A227]/30 hover:bg-[#C9A227]/5'
         }`}
       >
         <input
@@ -150,12 +150,12 @@ export function FileUpload({
                 <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" strokeWidth="3" className="text-white/10" />
                 <circle
                   cx="24" cy="24" r="20" fill="none" stroke="currentColor" strokeWidth="3"
-                  className="text-[#E50914]"
+                  className="text-[#C9A227]"
                   strokeDasharray={`${progress * 1.26} 126`}
                   strokeLinecap="round"
                 />
               </svg>
-              <span className="absolute inset-0 flex items-center justify-center text-xs text-[#E50914] font-bold">
+              <span className="absolute inset-0 flex items-center justify-center text-xs text-[#C9A227] font-bold">
                 {progress}%
               </span>
             </div>

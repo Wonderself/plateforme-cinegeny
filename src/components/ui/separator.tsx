@@ -19,7 +19,7 @@ const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>(
         'shrink-0',
         orientation === 'horizontal' ? 'h-[1px] w-full' : 'h-full w-[1px]',
         gold
-          ? 'bg-gradient-to-r from-transparent via-[#E50914]/30 to-transparent'
+          ? 'bg-gradient-to-r from-transparent via-[#C9A227]/30 to-transparent'
           : 'bg-white/5',
         className
       )}

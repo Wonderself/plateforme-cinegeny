@@ -31,7 +31,7 @@ export default async function AdminSettingsPage() {
     <div className="max-w-2xl space-y-8">
       <div>
         <h1 className="text-3xl sm:text-4xl font-bold flex items-center gap-3 font-playfair">
-          <Settings className="h-7 w-7 text-[#E50914]" /> Paramètres
+          <Settings className="h-7 w-7 text-[#C9A227]" /> Paramètres
         </h1>
         <p className="text-white/60">Configuration globale de la plateforme.</p>
       </div>
@@ -42,7 +42,7 @@ export default async function AdminSettingsPage() {
         {/* AI Settings */}
         <Card className="rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)] border border-white/10 hover:shadow-md">
           <CardContent className="p-6 space-y-6">
-            <h2 className="text-lg font-semibold text-[#E50914] flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-[#C9A227] flex items-center gap-2">
               <Cpu className="h-5 w-5" /> Paramètres IA
             </h2>
 
@@ -61,9 +61,9 @@ export default async function AdminSettingsPage() {
                   max="100"
                   step="5"
                   defaultValue={settings.aiConfidenceThreshold}
-                  className="flex-1 accent-[#E50914] h-2 rounded-full"
+                  className="flex-1 accent-[#C9A227] h-2 rounded-full"
                 />
-                <span className="text-sm text-[#E50914] font-medium w-12 text-right">{settings.aiConfidenceThreshold}%</span>
+                <span className="text-sm text-[#C9A227] font-medium w-12 text-right">{settings.aiConfidenceThreshold}%</span>
               </div>
               <div className="flex justify-between text-xs text-white/50">
                 <span>0% — Tout passe en review humaine</span>
@@ -76,7 +76,7 @@ export default async function AdminSettingsPage() {
         {/* Lumens Settings */}
         <Card className="rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)] border border-white/10 hover:shadow-md">
           <CardContent className="p-6 space-y-6">
-            <h2 className="text-lg font-semibold text-[#E50914] flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-[#C9A227] flex items-center gap-2">
               <Sun className="h-5 w-5" /> Lumens (Crédits)
             </h2>
 
@@ -116,7 +116,7 @@ export default async function AdminSettingsPage() {
         {/* Email Settings */}
         <Card className="rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)] border border-white/10 hover:shadow-md">
           <CardContent className="p-6 space-y-6">
-            <h2 className="text-lg font-semibold text-[#E50914] flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-[#C9A227] flex items-center gap-2">
               <Mail className="h-5 w-5" /> Notifications Email
             </h2>
 
@@ -127,7 +127,7 @@ export default async function AdminSettingsPage() {
                 name="notifEmailEnabled"
                 value="true"
                 defaultChecked={settings.notifEmailEnabled}
-                className="rounded accent-[#E50914]"
+                className="rounded accent-[#C9A227]"
               />
               <div>
                 <Label htmlFor="notifEmailEnabled">Activer les emails transactionnels</Label>
@@ -140,7 +140,7 @@ export default async function AdminSettingsPage() {
         {/* Task Settings */}
         <Card className="rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)] border border-white/10 hover:shadow-md">
           <CardContent className="p-6 space-y-6">
-            <h2 className="text-lg font-semibold text-[#E50914] flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-[#C9A227] flex items-center gap-2">
               <Settings className="h-5 w-5" /> Tâches
             </h2>
 
@@ -165,7 +165,7 @@ export default async function AdminSettingsPage() {
         {/* Payment Settings */}
         <Card className="rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)] border border-white/10 hover:shadow-md">
           <CardContent className="p-6 space-y-6">
-            <h2 className="text-lg font-semibold text-[#E50914] flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-[#C9A227] flex items-center gap-2">
               <CreditCard className="h-5 w-5" /> Paiements
             </h2>
 
@@ -176,7 +176,7 @@ export default async function AdminSettingsPage() {
                 name="bitcoinEnabled"
                 value="true"
                 defaultChecked={settings.bitcoinEnabled}
-                className="rounded accent-[#E50914]"
+                className="rounded accent-[#C9A227]"
               />
               <div>
                 <Label htmlFor="bitcoinEnabled">Activer les paiements Bitcoin Lightning</Label>

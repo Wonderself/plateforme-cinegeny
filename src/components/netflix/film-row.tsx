@@ -26,7 +26,7 @@ interface FilmRowProps {
 
 /* ── Genre color map for gradient posters ── */
 const GENRE_COLORS: Record<string, [string, string]> = {
-  'Action':      ['#E50914', '#FF4444'],
+  'Action':      ['#C9A227', '#E8C766'],
   'Comedy':      ['#F59E0B', '#FCD34D'],
   'Drama':       ['#8B5CF6', '#C4B5FD'],
   'Sci-Fi':      ['#3B82F6', '#93C5FD'],
@@ -394,7 +394,7 @@ function getStatusBadge(status: string): { label: string; color: string; icon: t
       return { label: 'Watch Now', color: '#10B981', icon: Eye }
     case 'POST_PRODUCTION':
     case 'IN_PRODUCTION':
-      return { label: 'Trailer', color: '#E50914', icon: Film }
+      return { label: 'Trailer', color: '#C9A227', icon: Film }
     case 'PRE_PRODUCTION':
     case 'DRAFT':
       return { label: 'Vote', color: '#F59E0B', icon: Vote }
@@ -445,7 +445,7 @@ export function FilmRow({ title, films, href, variant = 'default' }: FilmRowProp
         {href && (
           <Link
             href={href}
-            className="text-xs text-[#E50914]/70 hover:text-[#E50914] transition-colors font-medium tracking-wide group/link flex items-center gap-1"
+            className="text-xs text-[#C9A227]/70 hover:text-[#C9A227] transition-colors font-medium tracking-wide group/link flex items-center gap-1"
           >
             View All
             <ChevronRight className="h-3.5 w-3.5 group-hover/link:translate-x-0.5 transition-transform" />
@@ -460,7 +460,7 @@ export function FilmRow({ title, films, href, variant = 'default' }: FilmRowProp
             onClick={() => scroll('left')}
             className="absolute left-0 top-0 bottom-0 z-20 w-14 md:w-16 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent flex items-center justify-start pl-2 opacity-0 group-hover/row:opacity-100 transition-opacity duration-300"
           >
-            <div className="h-9 w-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center hover:bg-black/80 hover:border-[#E50914]/30 transition-all">
+            <div className="h-9 w-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center hover:bg-black/80 hover:border-[#C9A227]/30 transition-all">
               <ChevronLeft className="h-4 w-4 text-white/80" />
             </div>
           </button>
@@ -471,7 +471,7 @@ export function FilmRow({ title, films, href, variant = 'default' }: FilmRowProp
             onClick={() => scroll('right')}
             className="absolute right-0 top-0 bottom-0 z-20 w-14 md:w-16 bg-gradient-to-l from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent flex items-center justify-end pr-2 opacity-0 group-hover/row:opacity-100 transition-opacity duration-300"
           >
-            <div className="h-9 w-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center hover:bg-black/80 hover:border-[#E50914]/30 transition-all">
+            <div className="h-9 w-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center hover:bg-black/80 hover:border-[#C9A227]/30 transition-all">
               <ChevronRight className="h-4 w-4 text-white/80" />
             </div>
           </button>
@@ -488,7 +488,7 @@ export function FilmRow({ title, films, href, variant = 'default' }: FilmRowProp
             const fundingPct = film.fundingPct ?? ((hashStr(film.id) % 60) + 20)
             const badge = getStatusBadge(film.status)
             const hasImage = !!film.coverImageUrl
-            const genreColor = GENRE_COLORS[film.genre || ''] || ['#E50914', '#FF4444']
+            const genreColor = GENRE_COLORS[film.genre || ''] || ['#C9A227', '#E8C766']
 
             return (
               <Link
@@ -497,7 +497,7 @@ export function FilmRow({ title, films, href, variant = 'default' }: FilmRowProp
                 className="group/card flex-shrink-0 snap-start w-[140px] sm:w-[160px] md:w-[190px] lg:w-[210px] relative transition-all duration-300 hover:scale-[1.05] hover:z-20"
               >
                 {/* Poster */}
-                <div className="relative aspect-[2/3] bg-[#141414] rounded-xl overflow-hidden ring-1 ring-white/5 group-hover/card:ring-[#E50914]/30 transition-all duration-300 group-hover/card:shadow-[0_8px_40px_rgba(0,0,0,0.6)]">
+                <div className="relative aspect-[2/3] bg-[#141414] rounded-xl overflow-hidden ring-1 ring-white/5 group-hover/card:ring-[#C9A227]/30 transition-all duration-300 group-hover/card:shadow-[0_8px_40px_rgba(0,0,0,0.6)]">
                   {hasImage ? (
                     <Image
                       src={film.coverImageUrl!}
@@ -544,7 +544,7 @@ export function FilmRow({ title, films, href, variant = 'default' }: FilmRowProp
                   {/* Hover overlay — play button + expanded info */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3.5">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover/card:opacity-100 transition-all duration-300 group-hover/card:scale-100 scale-75">
-                      <div className="h-12 w-12 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(229,9,20,0.5)]" style={{ background: 'linear-gradient(135deg, #E50914, #FF2D2D)' }}>
+                      <div className="h-12 w-12 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(201,162,39,0.5)]" style={{ background: 'linear-gradient(135deg, #C9A227, #E8C766)' }}>
                         <Play className="h-5 w-5 text-white fill-white ml-0.5" />
                       </div>
                     </div>
@@ -593,14 +593,14 @@ export function FilmRow({ title, films, href, variant = 'default' }: FilmRowProp
                     <div>
                       <div className="flex items-center justify-between">
                         <span className="text-[8px] text-white/25 uppercase tracking-wider">Progress</span>
-                        <span className="text-[8px] font-bold text-[#E50914]">{film.progressPct}%</span>
+                        <span className="text-[8px] font-bold text-[#C9A227]">{film.progressPct}%</span>
                       </div>
                       <div className="h-[2px] bg-white/[0.06] rounded-full overflow-hidden mt-px">
                         <div
                           className="h-full rounded-full"
                           style={{
                             width: `${film.progressPct}%`,
-                            background: 'linear-gradient(90deg, #B20710, #E50914)',
+                            background: 'linear-gradient(90deg, #B20710, #C9A227)',
                           }}
                         />
                       </div>

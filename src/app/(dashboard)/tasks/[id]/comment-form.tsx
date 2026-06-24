@@ -45,7 +45,7 @@ export function CommentForm({ taskId }: CommentFormProps) {
         required
         minLength={1}
         maxLength={2000}
-        className="bg-white/[0.03] border-white/10 focus:border-[#E50914]/40"
+        className="bg-white/[0.03] border-white/10 focus:border-[#C9A227]/40"
       />
 
       <div className="flex justify-end">

@@ -64,7 +64,7 @@ export function CreateLayout({ children, currentStepId, completedSteps, onMarkCo
                     className={cn(
                       'flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[10px] font-medium transition-all duration-200',
                       isActive
-                        ? 'bg-[#E50914]/15 text-[#E50914]'
+                        ? 'bg-[#C9A227]/15 text-[#C9A227]'
                         : isCompleted
                           ? 'text-emerald-400/70 hover:text-emerald-400'
                           : isLocked
@@ -112,7 +112,7 @@ export function CreateLayout({ children, currentStepId, completedSteps, onMarkCo
             </p>
             <Link
               href={CREATE_STEPS[currentIndex - 1]?.href || '/create'}
-              className="inline-block mt-4 px-6 py-2.5 rounded-lg text-sm font-medium text-white bg-[#E50914] hover:bg-[#B20710] transition-colors"
+              className="inline-block mt-4 px-6 py-2.5 rounded-lg text-sm font-medium text-white bg-[#C9A227] hover:bg-[#B20710] transition-colors"
             >
               Go to Step {currentIndex}: {CREATE_STEPS[currentIndex - 1]?.shortTitle}
             </Link>
@@ -124,7 +124,7 @@ export function CreateLayout({ children, currentStepId, completedSteps, onMarkCo
             <button
               onClick={onMarkComplete}
               className="group relative px-8 py-3 rounded-lg text-sm font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-              style={{ background: 'linear-gradient(135deg, #E50914 0%, #B20710 100%)' }}
+              style={{ background: 'linear-gradient(135deg, #C9A227 0%, #B20710 100%)' }}
             >
               <span className="relative z-10 flex items-center gap-2">
                 <Check className="h-4 w-4" />
@@ -148,7 +148,7 @@ export function CreateLayout({ children, currentStepId, completedSteps, onMarkCo
             {currentIndex < CREATE_STEPS.length - 1 && (
               <Link
                 href={CREATE_STEPS[currentIndex + 1].href}
-                className="inline-flex items-center gap-1.5 mt-3 text-sm text-[#E50914] hover:text-[#FF2D2D] transition-colors"
+                className="inline-flex items-center gap-1.5 mt-3 text-sm text-[#C9A227] hover:text-[#E8C766] transition-colors"
               >
                 Continue to {CREATE_STEPS[currentIndex + 1].shortTitle}
                 <ChevronRight className="h-4 w-4" />

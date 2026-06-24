@@ -36,7 +36,7 @@ import {
 
 /* ── Helpers ── */
 
-function WaveformBars({ active, color = '#E50914' }: { active: boolean; color?: string }) {
+function WaveformBars({ active, color = '#C9A227' }: { active: boolean; color?: string }) {
   return (
     <div className="flex items-end gap-[2px] h-6">
       {Array.from({ length: 16 }).map((_, i) => {
@@ -87,13 +87,13 @@ function VoiceCard({
       className={cn(
         'group relative p-4 rounded-xl border text-left transition-all duration-300 w-full',
         selected
-          ? 'border-[#E50914]/40 bg-[#E50914]/5 shadow-[0_0_20px_rgba(229,9,20,0.08)]'
+          ? 'border-[#C9A227]/40 bg-[#C9A227]/5 shadow-[0_0_20px_rgba(201,162,39,0.08)]'
           : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.04]'
       )}
     >
       {selected && (
         <div className="absolute top-2.5 right-2.5">
-          <CheckCircle2 className="h-4 w-4 text-[#E50914]" />
+          <CheckCircle2 className="h-4 w-4 text-[#C9A227]" />
         </div>
       )}
 
@@ -153,7 +153,7 @@ function GeneratedVoiceItem({
         className={cn(
           'shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200',
           playing
-            ? 'bg-[#E50914] text-white'
+            ? 'bg-[#C9A227] text-white'
             : 'bg-white/[0.06] text-white/50 hover:bg-white/[0.12] hover:text-white'
         )}
       >
@@ -262,11 +262,11 @@ export default function VoicesPage() {
     >
       {/* Hero */}
       <section className="text-center mb-16">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-          <Mic2 className="h-8 w-8 text-[#E50914]" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+          <Mic2 className="h-8 w-8 text-[#C9A227]" />
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-          Voix & <span className="text-[#E50914]">Dialogues</span>
+          Voix & <span className="text-[#C9A227]">Dialogues</span>
         </h1>
         <p className="text-base text-white/50 max-w-2xl mx-auto leading-relaxed">
           Donnez vie à vos personnages avec des voix expressives générées par IA.
@@ -287,8 +287,8 @@ export default function VoicesPage() {
               key={item.title}
               className="group p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-[#E50914]/10 flex items-center justify-center mb-3 group-hover:bg-[#E50914]/20 transition-colors">
-                <item.icon className="h-5 w-5 text-[#E50914]" />
+              <div className="w-10 h-10 rounded-lg bg-[#C9A227]/10 flex items-center justify-center mb-3 group-hover:bg-[#C9A227]/20 transition-colors">
+                <item.icon className="h-5 w-5 text-[#C9A227]" />
               </div>
               <h3 className="text-sm font-semibold text-white mb-1">{item.title}</h3>
               <p className="text-xs text-white/40 leading-relaxed">{item.desc}</p>
@@ -322,13 +322,13 @@ export default function VoicesPage() {
                 onChange={e => setText(e.target.value.slice(0, MAX_CHARS))}
                 placeholder="Entrez le texte du dialogue à vocaliser&#10;&#10;Ex: Il était une fois, dans un monde oublié des hommes, une lumière qui refusait de s'éteindre..."
                 rows={8}
-                className="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/80 placeholder:text-white/20 focus:outline-none focus:border-[#E50914]/40 transition-colors resize-none leading-relaxed"
+                className="w-full bg-white/[0.02] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/80 placeholder:text-white/20 focus:outline-none focus:border-[#C9A227]/40 transition-colors resize-none leading-relaxed"
               />
               {text.trim() && (
                 <div className="mt-2 flex items-center gap-4 text-[10px] text-white/30">
                   <span>{text.trim().split(/\s+/).length} mots</span>
                   <span>~{formatDuration(Math.ceil(text.split(' ').length * 0.4))} audio estimé</span>
-                  <span className="flex items-center gap-1 text-[#E50914]/70">
+                  <span className="flex items-center gap-1 text-[#C9A227]/70">
                     <Coins className="h-3 w-3" />
                     {creditCost} crédits estimés
                   </span>
@@ -348,7 +348,7 @@ export default function VoicesPage() {
                     className={cn(
                       'flex flex-col items-center gap-1 p-3 rounded-xl border text-center transition-all duration-200',
                       selectedEmotion === emotion.id
-                        ? 'bg-[#E50914]/10 border-[#E50914]/40 text-[#E50914]'
+                        ? 'bg-[#C9A227]/10 border-[#C9A227]/40 text-[#C9A227]'
                         : 'bg-white/[0.02] border-white/[0.06] text-white/40 hover:text-white/60 hover:border-white/[0.12]'
                     )}
                   >
@@ -370,7 +370,7 @@ export default function VoicesPage() {
                     className={cn(
                       'flex flex-col items-center gap-0.5 p-2 rounded-lg text-[10px] font-medium border transition-all duration-200',
                       selectedLanguage === lang.code
-                        ? 'bg-[#E50914]/10 border-[#E50914]/40 text-[#E50914]'
+                        ? 'bg-[#C9A227]/10 border-[#C9A227]/40 text-[#C9A227]'
                         : 'bg-white/[0.02] border-white/[0.06] text-white/40 hover:text-white/60 hover:border-white/[0.12]'
                     )}
                   >
@@ -385,7 +385,7 @@ export default function VoicesPage() {
             <button
               onClick={handleGenerate}
               disabled={isGenerating || !text.trim()}
-              className="w-full py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-[#E50914] to-[#B20710] text-white hover:opacity-90 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-[#C9A227] to-[#B20710] text-white hover:opacity-90 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isGenerating ? (
                 <>
@@ -458,7 +458,7 @@ export default function VoicesPage() {
             <div className="flex items-center gap-2">
               <History className="h-4 w-4 text-white/40" />
               <h2 className="text-lg font-bold text-white/80">Voix générées</h2>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 text-[#E50914]">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 text-[#C9A227]">
                 {generated.length}
               </span>
             </div>

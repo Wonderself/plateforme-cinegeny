@@ -70,7 +70,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
           <ArrowLeft className="h-4 w-4" /> Retour
         </Link>
         <div className="flex items-start gap-6">
-          <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-[#E50914] to-[#FF6B35] flex items-center justify-center">
+          <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-[#C9A227] to-[#FF6B35] flex items-center justify-center">
             <User className="h-8 w-8 text-white" />
           </div>
           <div className="flex-1">
@@ -112,7 +112,7 @@ export default async function UserDetailPage({ params }: { params: Promise<{ id:
         </h2>
         {user.creditAccount ? (
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            <div><p className="text-[10px] text-white/50">Balance</p><p className="text-lg font-bold text-[#E50914]">{microToCredits(user.creditAccount.balance).toFixed(2)}</p></div>
+            <div><p className="text-[10px] text-white/50">Balance</p><p className="text-lg font-bold text-[#C9A227]">{microToCredits(user.creditAccount.balance).toFixed(2)}</p></div>
             <div><p className="text-[10px] text-white/50">Total acheté</p><p className="text-lg font-bold text-white">{microToCredits(user.creditAccount.totalPurchased).toFixed(2)}</p></div>
             <div><p className="text-[10px] text-white/50">Total accordé</p><p className="text-lg font-bold text-white">{microToCredits(user.creditAccount.totalGranted).toFixed(2)}</p></div>
             <div><p className="text-[10px] text-white/50">Total utilisé</p><p className="text-lg font-bold text-white">{microToCredits(user.creditAccount.totalUsed).toFixed(2)}</p></div>

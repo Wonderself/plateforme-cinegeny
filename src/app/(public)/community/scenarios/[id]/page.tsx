@@ -110,7 +110,7 @@ export default async function ScenarioDetailPage({
     ROOKIE: 'text-gray-400',
     PRO: 'text-blue-400',
     EXPERT: 'text-purple-400',
-    VIP: 'text-[#E50914]',
+    VIP: 'text-[#C9A227]',
   }
 
   return (
@@ -120,7 +120,7 @@ export default async function ScenarioDetailPage({
         {/* Breadcrumb */}
         <Link
           href="/community/scenarios"
-          className="inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-[#E50914] transition-colors duration-300 mb-8"
+          className="inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-[#C9A227] transition-colors duration-300 mb-8"
         >
           <ArrowLeft className="h-4 w-4" />
           Retour aux scenarios
@@ -133,7 +133,7 @@ export default async function ScenarioDetailPage({
           <div>
             {/* Status & Genre */}
             <div className="flex flex-wrap items-center gap-2 mb-4">
-              {isWinner && <Crown className="h-5 w-5 text-[#E50914]" />}
+              {isWinner && <Crown className="h-5 w-5 text-[#C9A227]" />}
               <Badge variant={statusInfo.variant} className="text-sm px-3 py-1">
                 {statusInfo.label}
               </Badge>
@@ -145,7 +145,7 @@ export default async function ScenarioDetailPage({
 
             {/* Title */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 font-playfair">
-              {isWinner && <span className="text-[#E50914]">&#9733; </span>}
+              {isWinner && <span className="text-[#C9A227]">&#9733; </span>}
               {scenario.title}
             </h1>
 
@@ -160,7 +160,7 @@ export default async function ScenarioDetailPage({
             {scenario.synopsis && (
               <div className="mb-8">
                 <h2 className="flex items-center gap-2 text-lg font-semibold mb-4">
-                  <BookOpen className="h-5 w-5 text-[#E50914]" />
+                  <BookOpen className="h-5 w-5 text-[#C9A227]" />
                   Synopsis
                 </h2>
                 <div className="prose prose-invert prose-sm max-w-none">
@@ -176,7 +176,7 @@ export default async function ScenarioDetailPage({
             {/* Film reference */}
             {(scenario.film || scenario.catalog) && (
               <div className="mb-8 p-4 sm:rounded-2xl rounded-xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm flex items-center gap-3">
-                <Film className="h-5 w-5 text-[#E50914] shrink-0" />
+                <Film className="h-5 w-5 text-[#C9A227] shrink-0" />
                 <div>
                   <span className="text-xs text-white/40">Film associe</span>
                   <p className="text-sm font-medium text-white/70">
@@ -188,11 +188,11 @@ export default async function ScenarioDetailPage({
 
             {/* AI Analysis */}
             {scenario.aiScore !== null && scenario.aiAnalysis && (
-              <div className="mb-8 sm:rounded-2xl rounded-xl border border-[#E50914]/10 bg-[#E50914]/[0.03] overflow-hidden">
-                <div className="px-6 py-4 border-b border-[#E50914]/10 flex items-center justify-between">
+              <div className="mb-8 sm:rounded-2xl rounded-xl border border-[#C9A227]/10 bg-[#C9A227]/[0.03] overflow-hidden">
+                <div className="px-6 py-4 border-b border-[#C9A227]/10 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Sparkles className="h-4 w-4 text-[#E50914]" />
-                    <span className="text-sm font-semibold text-[#E50914]">Analyse IA</span>
+                    <Sparkles className="h-4 w-4 text-[#C9A227]" />
+                    <span className="text-sm font-semibold text-[#C9A227]">Analyse IA</span>
                   </div>
                   <div className={cn(
                     'px-3 py-1 rounded-full text-xs font-bold',
@@ -211,7 +211,7 @@ export default async function ScenarioDetailPage({
                       <ul className="space-y-1.5">
                         {scenario.aiSuggestions.map((s: string, i: number) => (
                           <li key={i} className="flex items-start gap-2 text-xs text-white/50">
-                            <span className="text-[#E50914] mt-0.5">&#8226;</span>
+                            <span className="text-[#C9A227] mt-0.5">&#8226;</span>
                             {s}
                           </li>
                         ))}
@@ -236,7 +236,7 @@ export default async function ScenarioDetailPage({
             <Card variant={isVoting ? 'gold' : isWinner ? 'gold' : 'default'}>
               <CardContent className="p-6 text-center">
                 <div className="mb-4">
-                  <div className={`text-4xl font-bold tabular-nums ${isWinner || isVoting ? 'text-[#E50914]' : 'text-white'}`}>
+                  <div className={`text-4xl font-bold tabular-nums ${isWinner || isVoting ? 'text-[#C9A227]' : 'text-white'}`}>
                     {scenario.votesCount}
                   </div>
                   <div className="text-xs text-white/40 mt-1">
@@ -258,7 +258,7 @@ export default async function ScenarioDetailPage({
                     <p className="text-xs text-white/40">Connectez-vous pour voter</p>
                     <Link
                       href="/login"
-                      className="inline-flex items-center gap-1.5 text-sm text-[#E50914] hover:text-[#FF2D2D] transition-colors duration-300"
+                      className="inline-flex items-center gap-1.5 text-sm text-[#C9A227] hover:text-[#E8C766] transition-colors duration-300"
                     >
                       Se connecter
                     </Link>
@@ -266,7 +266,7 @@ export default async function ScenarioDetailPage({
                 )}
 
                 {isWinner && (
-                  <div className="flex items-center justify-center gap-2 text-[#E50914]">
+                  <div className="flex items-center justify-center gap-2 text-[#C9A227]">
                     <Award className="h-5 w-5" />
                     <span className="font-semibold text-sm">Scenario Gagnant</span>
                   </div>
@@ -286,7 +286,7 @@ export default async function ScenarioDetailPage({
               <CardContent className="p-5">
                 <h3 className="text-xs text-white/40 uppercase tracking-wider font-medium mb-3">Auteur</h3>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#E50914]/20 to-white/5 flex items-center justify-center text-sm font-bold text-[#E50914]">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#C9A227]/20 to-white/5 flex items-center justify-center text-sm font-bold text-[#C9A227]">
                     {scenario.author.displayName?.[0]?.toUpperCase() || '?'}
                   </div>
                   <div>
@@ -303,14 +303,14 @@ export default async function ScenarioDetailPage({
             {isVoting && userId && !isPremium && (
               <Card variant="gold">
                 <CardContent className="p-5 text-center">
-                  <Lock className="h-6 w-6 text-[#E50914] mx-auto mb-2" />
+                  <Lock className="h-6 w-6 text-[#C9A227] mx-auto mb-2" />
                   <h3 className="text-sm font-semibold mb-1">Debloquez le vote</h3>
                   <p className="text-xs text-white/40 mb-3">
                     Passez a Premium pour voter et influencer les futures productions.
                   </p>
                   <Link
                     href="/dashboard/subscription"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#E50914] text-white text-xs font-semibold hover:bg-[#FF2D2D] transition-colors duration-300"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#C9A227] text-white text-xs font-semibold hover:bg-[#E8C766] transition-colors duration-300"
                   >
                     <Sparkles className="h-3.5 w-3.5" />
                     Passer Premium
@@ -322,13 +322,13 @@ export default async function ScenarioDetailPage({
         </div>
 
         {/* Section separator */}
-        <div className="h-px bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent mt-16" />
+        <div className="h-px bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent mt-16" />
 
         {/* Related Scenarios */}
         {related.length > 0 && (
           <section className="mt-10">
             <h2 className="flex items-center gap-2 text-xl font-bold mb-6 font-playfair">
-              <Sparkles className="h-5 w-5 text-[#E50914]" />
+              <Sparkles className="h-5 w-5 text-[#C9A227]" />
               Scenarios similaires
             </h2>
             <div className="grid sm:grid-cols-2 gap-4">
@@ -336,10 +336,10 @@ export default async function ScenarioDetailPage({
                 const sStatus = STATUS_CONFIG[s.status] || STATUS_CONFIG.SUBMITTED
                 return (
                   <Link key={s.id} href={`/community/scenarios/${s.id}`}>
-                    <Card className="h-full group cursor-pointer hover:shadow-lg hover:shadow-[#E50914]/5 hover:-translate-y-[1px] transition-all duration-500">
+                    <Card className="h-full group cursor-pointer hover:shadow-lg hover:shadow-[#C9A227]/5 hover:-translate-y-[1px] transition-all duration-500">
                       <CardContent className="p-5">
                         <Badge variant={sStatus.variant} className="mb-2">{sStatus.label}</Badge>
-                        <h3 className="font-semibold text-sm group-hover:text-[#E50914] transition-colors duration-300 mb-1.5">
+                        <h3 className="font-semibold text-sm group-hover:text-[#C9A227] transition-colors duration-300 mb-1.5">
                           {s.title}
                         </h3>
                         <p className="text-xs text-white/40 line-clamp-2 italic mb-2">{s.logline}</p>

@@ -35,7 +35,7 @@ type AddMode = 'upload' | 'auto'
 /* ── Subtitle track badge ── */
 function SubtitleBadge({ lang, label, onRemove }: { lang: string; label: string; onRemove?: () => void }) {
   return (
-    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#E50914]/10 border border-[#E50914]/20 text-[#E50914]">
+    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#C9A227]/10 border border-[#C9A227]/20 text-[#C9A227]">
       {label}
       {onRemove && (
         <button onClick={onRemove} className="hover:text-white transition-colors ml-0.5">
@@ -146,7 +146,7 @@ function AddSubtitlePanel({ film, onClose, onSuccess }: { film: Film; onClose: (
                 className={cn(
                   'flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-xs font-medium transition-all duration-200',
                   mode === id
-                    ? 'bg-[#E50914] text-white shadow-sm'
+                    ? 'bg-[#C9A227] text-white shadow-sm'
                     : 'text-white/40 hover:text-white/60'
                 )}
               >
@@ -170,7 +170,7 @@ function AddSubtitlePanel({ film, onClose, onSuccess }: { film: Film; onClose: (
                       className={cn(
                         'flex flex-col items-center gap-0.5 p-2 rounded-lg text-[10px] font-medium border transition-all duration-200',
                         selectedLang === lang.code
-                          ? 'bg-[#E50914]/10 border-[#E50914]/40 text-[#E50914]'
+                          ? 'bg-[#C9A227]/10 border-[#C9A227]/40 text-[#C9A227]'
                           : 'bg-white/[0.02] border-white/[0.06] text-white/40 hover:text-white/60 hover:border-white/[0.12]'
                       )}
                     >
@@ -185,12 +185,12 @@ function AddSubtitlePanel({ film, onClose, onSuccess }: { film: Film; onClose: (
               {/* File upload */}
               <div>
                 <label className="text-xs font-medium text-white/60 mb-2 block">Fichier de sous-titres (.srt ou .vtt)</label>
-                <label className="relative flex flex-col items-center justify-center gap-2 p-6 rounded-xl border-2 border-dashed border-white/10 bg-white/[0.01] hover:border-[#E50914]/30 hover:bg-[#E50914]/[0.02] transition-all cursor-pointer group">
-                  <Upload className="h-6 w-6 text-white/20 group-hover:text-[#E50914]/50 transition-colors" />
+                <label className="relative flex flex-col items-center justify-center gap-2 p-6 rounded-xl border-2 border-dashed border-white/10 bg-white/[0.01] hover:border-[#C9A227]/30 hover:bg-[#C9A227]/[0.02] transition-all cursor-pointer group">
+                  <Upload className="h-6 w-6 text-white/20 group-hover:text-[#C9A227]/50 transition-colors" />
                   {fileName ? (
                     <div className="text-center">
                       <p className="text-sm font-medium text-white/80">{fileName}</p>
-                      <p className="text-[10px] text-[#E50914] mt-0.5">Fichier prêt · cliquez pour changer</p>
+                      <p className="text-[10px] text-[#C9A227] mt-0.5">Fichier prêt · cliquez pour changer</p>
                     </div>
                   ) : (
                     <div className="text-center">
@@ -205,7 +205,7 @@ function AddSubtitlePanel({ film, onClose, onSuccess }: { film: Film; onClose: (
               <button
                 onClick={handleUploadSubmit}
                 disabled={isPending || !fileContent}
-                className="w-full py-2.5 rounded-lg text-sm font-semibold bg-[#E50914] hover:bg-[#B20710] text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-2.5 rounded-lg text-sm font-semibold bg-[#C9A227] hover:bg-[#B20710] text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isPending ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
                 Ajouter les sous-titres
@@ -234,12 +234,12 @@ function AddSubtitlePanel({ film, onClose, onSuccess }: { film: Film; onClose: (
                       className={cn(
                         'flex flex-col items-center gap-0.5 p-2 rounded-lg text-[10px] font-medium border transition-all duration-200 relative',
                         autoLangs.includes(lang.code)
-                          ? 'bg-[#E50914]/10 border-[#E50914]/40 text-[#E50914]'
+                          ? 'bg-[#C9A227]/10 border-[#C9A227]/40 text-[#C9A227]'
                           : 'bg-white/[0.02] border-white/[0.06] text-white/40 hover:text-white/60 hover:border-white/[0.12]'
                       )}
                     >
                       {autoLangs.includes(lang.code) && (
-                        <div className="absolute top-1 right-1 w-3 h-3 rounded-full bg-[#E50914] flex items-center justify-center">
+                        <div className="absolute top-1 right-1 w-3 h-3 rounded-full bg-[#C9A227] flex items-center justify-center">
                           <Check className="h-2 w-2 text-white" />
                         </div>
                       )}
@@ -249,7 +249,7 @@ function AddSubtitlePanel({ film, onClose, onSuccess }: { film: Film; onClose: (
                   ))}
                 </div>
                 {autoLangs.length > 0 && (
-                  <p className="text-[10px] text-[#E50914] mt-1.5">
+                  <p className="text-[10px] text-[#C9A227] mt-1.5">
                     {autoLangs.length} langue(s) sélectionnée(s) · ~{(autoLangs.length * 12).toFixed(0)}s de traitement
                   </p>
                 )}
@@ -258,7 +258,7 @@ function AddSubtitlePanel({ film, onClose, onSuccess }: { film: Film; onClose: (
               <button
                 onClick={handleAutoGenerate}
                 disabled={isGenerating || autoLangs.length === 0}
-                className="w-full py-2.5 rounded-lg text-sm font-semibold bg-gradient-to-r from-[#E50914] to-[#B20710] text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:opacity-90"
+                className="w-full py-2.5 rounded-lg text-sm font-semibold bg-gradient-to-r from-[#C9A227] to-[#B20710] text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:opacity-90"
               >
                 {isGenerating ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
                 Générer automatiquement
@@ -375,9 +375,9 @@ export default function AdminSubtitlesPage() {
               <Film className="h-3.5 w-3.5 text-white/50" />
               <span className="text-white/60">{films.length} films</span>
             </div>
-            <div className="rounded-lg border border-[#E50914]/20 bg-[#E50914]/5 px-3 py-2 flex items-center gap-2">
-              <Languages className="h-3.5 w-3.5 text-[#E50914]" />
-              <span className="text-[#E50914]">{totalTracks} pistes</span>
+            <div className="rounded-lg border border-[#C9A227]/20 bg-[#C9A227]/5 px-3 py-2 flex items-center gap-2">
+              <Languages className="h-3.5 w-3.5 text-[#C9A227]" />
+              <span className="text-[#C9A227]">{totalTracks} pistes</span>
             </div>
             <div className="rounded-lg border border-green-500/20 bg-green-500/5 px-3 py-2 flex items-center gap-2">
               <Check className="h-3.5 w-3.5 text-green-500" />
@@ -391,7 +391,7 @@ export default function AdminSubtitlesPage() {
           <Globe className="h-4 w-4 text-blue-400/70 mt-0.5 shrink-0" />
           <div>
             <p className="text-xs text-white/60 leading-relaxed">
-              Les sous-titres sont stockés dans les tags du film (format <code className="text-[#E50914]/80 bg-[#E50914]/5 px-1 rounded">subtitle:lang:url</code>).
+              Les sous-titres sont stockés dans les tags du film (format <code className="text-[#C9A227]/80 bg-[#C9A227]/5 px-1 rounded">subtitle:lang:url</code>).
               Vous pouvez importer des fichiers .srt/.vtt ou lancer une génération automatique IA (Whisper + DeepL en production).
               12 langues supportées.
             </p>
@@ -406,7 +406,7 @@ export default function AdminSubtitlesPage() {
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder="Rechercher un film..."
-            className="h-9 pl-9 pr-4 rounded-lg border border-white/10 bg-white/5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#E50914]/50 w-full"
+            className="h-9 pl-9 pr-4 rounded-lg border border-white/10 bg-white/5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/50 w-full"
           />
         </div>
 
@@ -463,7 +463,7 @@ export default function AdminSubtitlesPage() {
                         <div className="flex items-center justify-end gap-2">
                           <button
                             onClick={() => setActiveFilm(film)}
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#E50914]/10 border border-[#E50914]/20 text-[#E50914] hover:bg-[#E50914]/20 transition-colors"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#C9A227]/10 border border-[#C9A227]/20 text-[#C9A227] hover:bg-[#C9A227]/20 transition-colors"
                           >
                             <Plus className="h-3.5 w-3.5" />
                             Ajouter

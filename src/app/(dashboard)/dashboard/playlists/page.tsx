@@ -83,7 +83,7 @@ function FilmThumbnail({ item, onRemove, removing }: {
         <button
           onClick={() => onRemove(item.filmId)}
           disabled={removing}
-          className="mt-1 p-1.5 rounded-full bg-[#E50914]/80 hover:bg-[#E50914] transition-colors disabled:opacity-50"
+          className="mt-1 p-1.5 rounded-full bg-[#C9A227]/80 hover:bg-[#C9A227] transition-colors disabled:opacity-50"
           title="Retirer de la playlist"
         >
           {removing ? (
@@ -199,7 +199,7 @@ function PlaylistCard({ playlist, onDelete, onToggleExpand, expanded }: {
             <button
               onClick={handleDelete}
               disabled={deleting}
-              className="p-1.5 rounded-lg text-white/40 hover:text-[#E50914] hover:bg-[#E50914]/10 transition-colors"
+              className="p-1.5 rounded-lg text-white/40 hover:text-[#C9A227] hover:bg-[#C9A227]/10 transition-colors"
               title="Supprimer la playlist"
             >
               {deleting ? (
@@ -218,7 +218,7 @@ function PlaylistCard({ playlist, onDelete, onToggleExpand, expanded }: {
           </div>
         </div>
         {error && (
-          <div className="flex items-center gap-2 mt-2 text-[#E50914] text-xs">
+          <div className="flex items-center gap-2 mt-2 text-[#C9A227] text-xs">
             <AlertCircle className="h-3.5 w-3.5 shrink-0" />
             <span>{error}</span>
             <button onClick={() => setError(null)} className="ml-auto hover:text-white/70">
@@ -234,7 +234,7 @@ function PlaylistCard({ playlist, onDelete, onToggleExpand, expanded }: {
           <div className="border-t border-white/5 pt-4">
             {loadingDetail ? (
               <div className="flex items-center justify-center py-8">
-                <Loader2 className="h-5 w-5 text-[#E50914] animate-spin" />
+                <Loader2 className="h-5 w-5 text-[#C9A227] animate-spin" />
               </div>
             ) : detail && detail.items.length > 0 ? (
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
@@ -253,7 +253,7 @@ function PlaylistCard({ playlist, onDelete, onToggleExpand, expanded }: {
                 <p className="text-white/40 text-sm">Aucun film dans cette playlist.</p>
                 <Link
                   href="/films"
-                  className="inline-flex items-center gap-1 text-[#E50914] text-xs mt-2 hover:underline"
+                  className="inline-flex items-center gap-1 text-[#C9A227] text-xs mt-2 hover:underline"
                 >
                   Parcourir les films <ArrowRight className="h-3 w-3" />
                 </Link>
@@ -319,7 +319,7 @@ function CreatePlaylistForm({ onCreated }: { onCreated: (p: PlaylistSummary) => 
   }
 
   return (
-    <div className="rounded-xl border border-[#E50914]/20 bg-[#E50914]/5 p-5">
+    <div className="rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/5 p-5">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-white font-semibold text-sm">Créer une playlist</h3>
         <button
@@ -332,7 +332,7 @@ function CreatePlaylistForm({ onCreated }: { onCreated: (p: PlaylistSummary) => 
       <form onSubmit={handleSubmit} className="space-y-3">
         <div>
           <label className="text-white/60 text-xs mb-1.5 block">
-            Titre <span className="text-[#E50914]">*</span>
+            Titre <span className="text-[#C9A227]">*</span>
           </label>
           <input
             type="text"
@@ -341,7 +341,7 @@ function CreatePlaylistForm({ onCreated }: { onCreated: (p: PlaylistSummary) => 
             placeholder="Ma playlist..."
             maxLength={100}
             required
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#E50914]/50 focus:ring-1 focus:ring-[#E50914]/30 transition-colors"
+            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#C9A227]/50 focus:ring-1 focus:ring-[#C9A227]/30 transition-colors"
           />
         </div>
         <div>
@@ -351,13 +351,13 @@ function CreatePlaylistForm({ onCreated }: { onCreated: (p: PlaylistSummary) => 
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Une courte description..."
             rows={2}
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#E50914]/50 focus:ring-1 focus:ring-[#E50914]/30 transition-colors resize-none"
+            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#C9A227]/50 focus:ring-1 focus:ring-[#C9A227]/30 transition-colors resize-none"
           />
         </div>
         <label className="flex items-center gap-2.5 cursor-pointer select-none">
           <div
             onClick={() => setIsPublic((v) => !v)}
-            className={`w-9 h-5 rounded-full transition-colors relative ${isPublic ? 'bg-[#E50914]' : 'bg-white/10'}`}
+            className={`w-9 h-5 rounded-full transition-colors relative ${isPublic ? 'bg-[#C9A227]' : 'bg-white/10'}`}
           >
             <span
               className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform ${isPublic ? 'translate-x-4' : 'translate-x-0.5'}`}
@@ -368,7 +368,7 @@ function CreatePlaylistForm({ onCreated }: { onCreated: (p: PlaylistSummary) => 
           </span>
         </label>
         {error && (
-          <div className="flex items-center gap-2 text-[#E50914] text-xs">
+          <div className="flex items-center gap-2 text-[#C9A227] text-xs">
             <AlertCircle className="h-3.5 w-3.5 shrink-0" />
             <span>{error}</span>
           </div>
@@ -432,8 +432,8 @@ export default function PlaylistsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <div className="h-10 w-10 rounded-xl bg-[#E50914]/10 flex items-center justify-center">
-              <ListVideo className="h-5 w-5 text-[#E50914]" />
+            <div className="h-10 w-10 rounded-xl bg-[#C9A227]/10 flex items-center justify-center">
+              <ListVideo className="h-5 w-5 text-[#C9A227]" />
             </div>
             <h1 className="text-2xl font-bold text-white font-[family-name:var(--font-playfair)]">
               Mes Playlists
@@ -449,12 +449,12 @@ export default function PlaylistsPage() {
       {/* Content */}
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="h-6 w-6 text-[#E50914] animate-spin" />
+          <Loader2 className="h-6 w-6 text-[#C9A227] animate-spin" />
         </div>
       ) : fetchError ? (
-        <div className="flex items-center gap-3 p-5 rounded-xl border border-[#E50914]/20 bg-[#E50914]/5">
-          <AlertCircle className="h-5 w-5 text-[#E50914] shrink-0" />
-          <p className="text-[#E50914] text-sm">{fetchError}</p>
+        <div className="flex items-center gap-3 p-5 rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/5">
+          <AlertCircle className="h-5 w-5 text-[#C9A227] shrink-0" />
+          <p className="text-[#C9A227] text-sm">{fetchError}</p>
         </div>
       ) : playlists.length === 0 ? (
         /* Empty State */
@@ -498,7 +498,7 @@ export default function PlaylistsPage() {
           <div className="pt-4 border-t border-white/5 flex items-center justify-between">
             <p className="text-white/40 text-sm">Envie d'ajouter des films ?</p>
             <Link href="/films">
-              <Button variant="ghost" size="sm" className="gap-1.5 text-[#E50914] hover:text-[#E50914]">
+              <Button variant="ghost" size="sm" className="gap-1.5 text-[#C9A227] hover:text-[#C9A227]">
                 Parcourir le catalogue
                 <ArrowRight className="h-3.5 w-3.5" />
               </Button>

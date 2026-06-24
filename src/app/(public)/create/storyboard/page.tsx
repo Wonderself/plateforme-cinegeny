@@ -378,16 +378,16 @@ export default function StoryboardPage() {
       {/* ── Hero Section ── */}
       <section className="relative mb-12">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-[#E50914]/[0.04] blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full bg-[#C9A227]/[0.04] blur-[100px]" />
         </div>
 
         <div className="relative text-center">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 mb-6">
-            <LayoutGrid className="h-7 w-7 text-[#E50914]" />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6">
+            <LayoutGrid className="h-7 w-7 text-[#C9A227]" />
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-            Create Your <span className="text-[#E50914]">Storyboard</span>
+            Create Your <span className="text-[#C9A227]">Storyboard</span>
           </h1>
 
           <p className="text-base sm:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
@@ -410,11 +410,11 @@ export default function StoryboardPage() {
               className="relative p-6 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-300 group"
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center">
-                  <step.icon className="h-5 w-5 text-[#E50914]" />
+                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center">
+                  <step.icon className="h-5 w-5 text-[#C9A227]" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#E50914]/60 mb-1">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#C9A227]/60 mb-1">
                     Step {step.number}
                   </div>
                   <h3 className="text-sm font-semibold text-white/90 mb-1.5">
@@ -470,7 +470,7 @@ export default function StoryboardPage() {
               className={cn(
                 'flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-medium transition-all duration-200',
                 isUnlocked
-                  ? 'bg-[#E50914] text-white hover:bg-[#B20710] active:scale-[0.97]'
+                  ? 'bg-[#C9A227] text-white hover:bg-[#B20710] active:scale-[0.97]'
                   : 'bg-white/[0.04] text-white/20 cursor-not-allowed'
               )}
             >
@@ -512,15 +512,15 @@ export default function StoryboardPage() {
               className={cn(
                 'group relative rounded-xl bg-white/[0.02] border transition-all duration-300 overflow-hidden',
                 dragIndex === index
-                  ? 'opacity-40 border-[#E50914]/40'
+                  ? 'opacity-40 border-[#C9A227]/40'
                   : dropIndex === index
-                    ? 'border-[#E50914]/60 ring-2 ring-[#E50914]/20'
+                    ? 'border-[#C9A227]/60 ring-2 ring-[#C9A227]/20'
                     : 'border-white/[0.06] hover:border-white/[0.12]'
               )}
             >
               {/* Drop indicator line */}
               {dropIndex === index && dragIndex !== null && dragIndex !== index && (
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#E50914] z-20 shadow-[0_0_8px_rgba(229,9,20,0.5)]" />
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#C9A227] z-20 shadow-[0_0_8px_rgba(201,162,39,0.5)]" />
               )}
 
               {/* Frame area with dynamic aspect ratio */}
@@ -536,7 +536,7 @@ export default function StoryboardPage() {
                     />
                     {/* Shot type badge */}
                     {frame.shotType && (
-                      <div className="absolute top-2 left-2 z-10 px-2 py-0.5 rounded-md bg-black/70 border border-[#E50914]/30 text-[10px] font-semibold text-[#E50914] backdrop-blur-sm">
+                      <div className="absolute top-2 left-2 z-10 px-2 py-0.5 rounded-md bg-black/70 border border-[#C9A227]/30 text-[10px] font-semibold text-[#C9A227] backdrop-blur-sm">
                         <Camera className="inline h-2.5 w-2.5 mr-1" />
                         {frame.shotType}
                       </div>
@@ -561,7 +561,7 @@ export default function StoryboardPage() {
                   <div className="absolute inset-0 flex flex-col items-center justify-center border-2 border-dashed border-white/[0.08] rounded-lg m-2">
                     {generatingFrameId === frame.id ? (
                       <div className="flex flex-col items-center gap-3">
-                        <div className="w-8 h-8 border-2 border-[#E50914]/30 border-t-[#E50914] rounded-full animate-spin" />
+                        <div className="w-8 h-8 border-2 border-[#C9A227]/30 border-t-[#C9A227] rounded-full animate-spin" />
                         <span className="text-xs text-white/40">
                           {GENERATION_STEPS[generationStep] ?? 'Generating...'}
                         </span>
@@ -570,7 +570,7 @@ export default function StoryboardPage() {
                       <>
                         {/* Shot type badge even when empty */}
                         {frame.shotType && (
-                          <div className="absolute top-2 left-2 z-10 px-2 py-0.5 rounded-md bg-black/70 border border-[#E50914]/30 text-[10px] font-semibold text-[#E50914]">
+                          <div className="absolute top-2 left-2 z-10 px-2 py-0.5 rounded-md bg-black/70 border border-[#C9A227]/30 text-[10px] font-semibold text-[#C9A227]">
                             <Camera className="inline h-2.5 w-2.5 mr-1" />
                             {frame.shotType}
                           </div>
@@ -584,7 +584,7 @@ export default function StoryboardPage() {
                           className={cn(
                             'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all',
                             isUnlocked
-                              ? 'bg-[#E50914]/10 border border-[#E50914]/20 text-[#E50914] hover:bg-[#E50914]/20'
+                              ? 'bg-[#C9A227]/10 border border-[#C9A227]/20 text-[#C9A227] hover:bg-[#C9A227]/20'
                               : 'bg-white/[0.03] border border-white/[0.06] text-white/20 cursor-not-allowed'
                           )}
                         >
@@ -614,7 +614,7 @@ export default function StoryboardPage() {
                         setEditingLabelValue('')
                       }
                     }}
-                    className="text-xs font-medium text-white/90 bg-black/40 border border-[#E50914]/40 rounded px-2 py-0.5 outline-none w-28"
+                    className="text-xs font-medium text-white/90 bg-black/40 border border-[#C9A227]/40 rounded px-2 py-0.5 outline-none w-28"
                   />
                 ) : (
                   <button
@@ -648,7 +648,7 @@ export default function StoryboardPage() {
                   value={frame.shotType}
                   onChange={(e) => setShotType(frame.id, e.target.value)}
                   disabled={!isUnlocked}
-                  className="w-full px-2.5 py-1.5 rounded-lg bg-black/30 border border-white/[0.06] text-[11px] text-white/60 focus:outline-none focus:border-[#E50914]/30 transition-colors appearance-none cursor-pointer"
+                  className="w-full px-2.5 py-1.5 rounded-lg bg-black/30 border border-white/[0.06] text-[11px] text-white/60 focus:outline-none focus:border-[#C9A227]/30 transition-colors appearance-none cursor-pointer"
                 >
                   <option value="" className="bg-[#111] text-white/40">Shot type...</option>
                   {SHOT_TYPES.map((st) => (
@@ -672,7 +672,7 @@ export default function StoryboardPage() {
                     placeholder="What happens in this scene?"
                     rows={2}
                     disabled={!isUnlocked}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-black/30 border border-white/[0.06] text-[11px] text-white/70 placeholder:text-white/15 resize-none focus:outline-none focus:border-[#E50914]/30 transition-colors"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-black/30 border border-white/[0.06] text-[11px] text-white/70 placeholder:text-white/15 resize-none focus:outline-none focus:border-[#C9A227]/30 transition-colors"
                   />
                   <span className="absolute bottom-2 right-2 text-[9px] text-white/20">
                     {frame.description.length}/200
@@ -704,7 +704,7 @@ export default function StoryboardPage() {
               className={cn(
                 'w-full px-4 py-3 rounded-lg bg-black/30 border text-sm text-white/90 placeholder:text-white/20 resize-none focus:outline-none transition-colors',
                 isUnlocked
-                  ? 'border-white/[0.08] focus:border-[#E50914]/40'
+                  ? 'border-white/[0.08] focus:border-[#C9A227]/40'
                   : 'border-white/[0.04] text-white/20 cursor-not-allowed'
               )}
             />
@@ -720,7 +720,7 @@ export default function StoryboardPage() {
                   className={cn(
                     'w-full px-4 py-2.5 rounded-lg bg-black/30 border text-sm text-white/80 focus:outline-none transition-colors appearance-none cursor-pointer',
                     isUnlocked
-                      ? 'border-white/[0.08] focus:border-[#E50914]/40'
+                      ? 'border-white/[0.08] focus:border-[#C9A227]/40'
                       : 'border-white/[0.04] text-white/20 cursor-not-allowed'
                   )}
                 >
@@ -741,7 +741,7 @@ export default function StoryboardPage() {
                   className={cn(
                     'w-full px-4 py-2.5 rounded-lg bg-black/30 border text-sm text-white/80 focus:outline-none transition-colors appearance-none cursor-pointer',
                     isUnlocked
-                      ? 'border-white/[0.08] focus:border-[#E50914]/40'
+                      ? 'border-white/[0.08] focus:border-[#C9A227]/40'
                       : 'border-white/[0.04] text-white/20 cursor-not-allowed'
                   )}
                 >
@@ -760,7 +760,7 @@ export default function StoryboardPage() {
                   className={cn(
                     'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200',
                     isUnlocked && aiPrompt.trim() && !batchGenerating
-                      ? 'bg-[#E50914] text-white hover:bg-[#B20710] active:scale-[0.97]'
+                      ? 'bg-[#C9A227] text-white hover:bg-[#B20710] active:scale-[0.97]'
                       : 'bg-white/[0.04] text-white/20 cursor-not-allowed'
                   )}
                 >
@@ -854,7 +854,7 @@ export default function StoryboardPage() {
                     </div>
                     <span className="text-sm font-medium text-white/70">{frame.label}</span>
                     {frame.shotType && (
-                      <span className="px-1.5 py-0.5 rounded bg-[#E50914]/10 text-[10px] font-medium text-[#E50914]/80">
+                      <span className="px-1.5 py-0.5 rounded bg-[#C9A227]/10 text-[10px] font-medium text-[#C9A227]/80">
                         {frame.shotType}
                       </span>
                     )}
@@ -884,7 +884,7 @@ export default function StoryboardPage() {
                           placeholder="Action, emotion, pacing..."
                           rows={3}
                           disabled={!isUnlocked}
-                          className="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/[0.06] text-xs text-white/80 placeholder:text-white/15 resize-none focus:outline-none focus:border-[#E50914]/30 transition-colors"
+                          className="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/[0.06] text-xs text-white/80 placeholder:text-white/15 resize-none focus:outline-none focus:border-[#C9A227]/30 transition-colors"
                         />
                       </div>
                       <div>
@@ -897,7 +897,7 @@ export default function StoryboardPage() {
                           placeholder="Wide shot, close-up, over-the-shoulder..."
                           rows={3}
                           disabled={!isUnlocked}
-                          className="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/[0.06] text-xs text-white/80 placeholder:text-white/15 resize-none focus:outline-none focus:border-[#E50914]/30 transition-colors"
+                          className="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/[0.06] text-xs text-white/80 placeholder:text-white/15 resize-none focus:outline-none focus:border-[#C9A227]/30 transition-colors"
                         />
                       </div>
                       <div>
@@ -910,7 +910,7 @@ export default function StoryboardPage() {
                           placeholder="Natural, low-key, neon, golden hour..."
                           rows={3}
                           disabled={!isUnlocked}
-                          className="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/[0.06] text-xs text-white/80 placeholder:text-white/15 resize-none focus:outline-none focus:border-[#E50914]/30 transition-colors"
+                          className="w-full px-3 py-2 rounded-lg bg-black/30 border border-white/[0.06] text-xs text-white/80 placeholder:text-white/15 resize-none focus:outline-none focus:border-[#C9A227]/30 transition-colors"
                         />
                       </div>
                     </div>

@@ -84,7 +84,7 @@ export default function AdminChatPage() {
           )}
           {messages.map((m, i) => (
             <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[70%] rounded-2xl px-4 py-2.5 text-sm ${m.role === 'user' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/90'}`}>
+              <div className={`max-w-[70%] rounded-2xl px-4 py-2.5 text-sm ${m.role === 'user' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/90'}`}>
                 <p className="whitespace-pre-wrap">{m.content}</p>
               </div>
             </div>
@@ -94,8 +94,8 @@ export default function AdminChatPage() {
         </div>
 
         <div className="px-5 pb-4 flex gap-2">
-          <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') send() }} placeholder={`Message ${agent.name}...`} className="flex-1 rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
-          <button onClick={send} disabled={!input.trim() || streaming} className="h-10 w-10 rounded-xl bg-[#E50914] text-white disabled:opacity-30 flex items-center justify-center shrink-0"><Send className="h-4 w-4" /></button>
+          <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') send() }} placeholder={`Message ${agent.name}...`} className="flex-1 rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
+          <button onClick={send} disabled={!input.trim() || streaming} className="h-10 w-10 rounded-xl bg-[#C9A227] text-white disabled:opacity-30 flex items-center justify-center shrink-0"><Send className="h-4 w-4" /></button>
         </div>
       </div>
     </div>

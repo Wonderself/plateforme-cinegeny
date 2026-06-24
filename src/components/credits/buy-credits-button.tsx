@@ -57,7 +57,7 @@ export function BuyCreditsButton({ packId, amount, popular = false, label = 'Ach
       disabled={loading}
       className={`w-full ${
         popular
-          ? 'bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold'
+          ? 'bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold'
           : 'bg-white/[0.05] hover:bg-white/[0.08] text-white/60'
       }`}
     >

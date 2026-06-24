@@ -2,7 +2,7 @@
 
 type DataPoint = { label: string; value: number }
 
-export function LineChart({ data, color = '#E50914', height = 200, title }: {
+export function LineChart({ data, color = '#C9A227', height = 200, title }: {
   data: DataPoint[]
   color?: string
   height?: number

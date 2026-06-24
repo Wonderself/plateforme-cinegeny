@@ -39,7 +39,7 @@ export function AgentConfigSlideOver({ open, onClose, agentSlug }: AgentConfigSl
                 setSelectedAgent(a || null)
                 if (a) { setMaxTokens(a.maxTokens); setTemperature(a.temperature) }
               }}
-              className="w-full rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#E50914] focus:outline-none"
+              className="w-full rounded-lg border border-white/10 px-3 py-2 text-sm focus:border-[#C9A227] focus:outline-none"
             >
               <option value="">Choisir un agent...</option>
               {ALL_AGENTS.map(a => (
@@ -69,7 +69,7 @@ export function AgentConfigSlideOver({ open, onClose, agentSlug }: AgentConfigSl
               <input
                 type="range" min={1024} max={16384} step={1024} value={maxTokens}
                 onChange={e => setMaxTokens(parseInt(e.target.value))}
-                className="w-full accent-[#E50914]"
+                className="w-full accent-[#C9A227]"
               />
               <div className="flex justify-between text-[10px] text-white/50">
                 <span>1024</span><span>16384</span>
@@ -82,7 +82,7 @@ export function AgentConfigSlideOver({ open, onClose, agentSlug }: AgentConfigSl
               <input
                 type="range" min={0} max={1} step={0.1} value={temperature}
                 onChange={e => setTemperature(parseFloat(e.target.value))}
-                className="w-full accent-[#E50914]"
+                className="w-full accent-[#C9A227]"
               />
               <div className="flex justify-between text-[10px] text-white/50">
                 <span>0 (déterministe)</span><span>1 (créatif)</span>
@@ -94,7 +94,7 @@ export function AgentConfigSlideOver({ open, onClose, agentSlug }: AgentConfigSl
               <span className="text-sm text-white/60">Agent actif</span>
               <button
                 onClick={() => setIsActive(!isActive)}
-                className={`relative h-6 w-11 rounded-full transition-colors ${isActive ? 'bg-[#E50914]' : 'bg-gray-300'}`}
+                className={`relative h-6 w-11 rounded-full transition-colors ${isActive ? 'bg-[#C9A227]' : 'bg-gray-300'}`}
               >
                 <span className={`inline-block h-4 w-4 rounded-full bg-white/5 transition-transform ${isActive ? 'translate-x-6' : 'translate-x-1'}`} />
               </button>
@@ -115,7 +115,7 @@ export function AgentConfigSlideOver({ open, onClose, agentSlug }: AgentConfigSl
             {/* Save */}
             <button
               onClick={handleSave}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-semibold rounded-lg transition-colors"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-semibold rounded-lg transition-colors"
             >
               <Save className="h-4 w-4" /> Sauvegarder
             </button>

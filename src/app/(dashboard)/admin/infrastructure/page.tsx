@@ -82,7 +82,7 @@ export default function InfrastructurePage() {
           { key: 'events' as const, label: 'Events', icon: ScrollText },
         ].map(t => {
           const TIcon = t.icon
-          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
+          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
         })}
       </div>
 
@@ -228,9 +228,9 @@ export default function InfrastructurePage() {
       {tab === 'events' && (
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">
-            <button onClick={() => setEventFilter('all')} className={`px-3 py-1.5 rounded-lg text-xs ${eventFilter === 'all' ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>Tous</button>
+            <button onClick={() => setEventFilter('all')} className={`px-3 py-1.5 rounded-lg text-xs ${eventFilter === 'all' ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>Tous</button>
             {EVENT_CATEGORIES.slice(0, 6).map(cat => (
-              <button key={cat} onClick={() => setEventFilter(cat)} className={`px-3 py-1.5 rounded-lg text-xs capitalize ${eventFilter === cat ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}>{cat}</button>
+              <button key={cat} onClick={() => setEventFilter(cat)} className={`px-3 py-1.5 rounded-lg text-xs capitalize ${eventFilter === cat ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}>{cat}</button>
             ))}
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center">

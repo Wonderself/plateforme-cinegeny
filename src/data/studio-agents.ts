@@ -21,7 +21,7 @@ export const STUDIO_AGENTS: StudioAgent[] = [
     role: 'Création d\'affiches',
     description: 'Crée des affiches de film professionnelles avec composition, typographie et impact visuel. Maîtrise tous les styles d\'affiches (blockbuster, indie, festival, série).',
     icon: 'image',
-    color: '#E50914',
+    color: '#C9A227',
     capabilities: ['poster_design', 'composition', 'typography', 'color_grading', 'key_art'],
     defaultStyle: 'cinematic',
   },
@@ -107,7 +107,7 @@ export const PHOTO_RATIOS = [
 // ─── Cinema Categories ──────────────────────────────────────────────
 
 export const CINEMA_CATEGORIES = [
-  { id: 'posters', label: 'Affiches', icon: 'image', color: '#E50914', agent: 'cg-studio-poster' },
+  { id: 'posters', label: 'Affiches', icon: 'image', color: '#C9A227', agent: 'cg-studio-poster' },
   { id: 'storyboards', label: 'Storyboards', icon: 'layout-grid', color: '#3B82F6', agent: 'cg-studio-storyboard' },
   { id: 'concept-art', label: 'Concept Art', icon: 'palette', color: '#8B5CF6', agent: 'cg-studio-concept' },
   { id: 'vfx-preview', label: 'VFX Preview', icon: 'sparkles', color: '#F97316', agent: 'cg-studio-vfx-prev' },

@@ -12,7 +12,7 @@ export default function CookiesPage() {
       <div className="container mx-auto max-w-4xl">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E50914]/10 border border-[#E50914]/20 text-[#E50914] text-xs font-medium tracking-wider uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 text-[#C9A227] text-xs font-medium tracking-wider uppercase mb-6">
             Cookies & Traceurs
           </div>
           <h1
@@ -31,10 +31,10 @@ export default function CookiesPage() {
           <section>
             <p className="text-white/70 leading-relaxed">
               La présente Politique Cookies explique comment la plateforme{' '}
-              <strong className="text-[#E50914]">CINEGEN</strong>, éditée par CINEGEN
+              <strong className="text-[#C9A227]">CINEGEN</strong>, éditée par CINEGEN
               Studio, utilise des cookies et technologies similaires lorsque vous naviguez
               sur notre site. Elle complète notre{' '}
-              <Link href="/legal/privacy" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors">
+              <Link href="/legal/privacy" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors">
                 Politique de Confidentialité
               </Link>{' '}
               et est conforme aux recommandations de la CNIL et au RGPD.
@@ -44,7 +44,7 @@ export default function CookiesPage() {
           {/* Section 1 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               1. Qu&apos;est-ce qu&apos;un cookie ?
             </h2>
@@ -65,7 +65,7 @@ export default function CookiesPage() {
           {/* Section 2 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               2. Cookies strictement nécessaires
             </h2>
@@ -86,22 +86,22 @@ export default function CookiesPage() {
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   <tr>
-                    <td className="py-3 pr-4 font-mono text-xs text-[#E50914]">next-auth.session-token</td>
+                    <td className="py-3 pr-4 font-mono text-xs text-[#C9A227]">next-auth.session-token</td>
                     <td className="py-3 pr-4">Authentification et maintien de la session utilisateur</td>
                     <td className="py-3">Session (30 jours)</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 font-mono text-xs text-[#E50914]">next-auth.csrf-token</td>
+                    <td className="py-3 pr-4 font-mono text-xs text-[#C9A227]">next-auth.csrf-token</td>
                     <td className="py-3 pr-4">Protection contre les attaques CSRF</td>
                     <td className="py-3">Session</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 font-mono text-xs text-[#E50914]">next-auth.callback-url</td>
+                    <td className="py-3 pr-4 font-mono text-xs text-[#C9A227]">next-auth.callback-url</td>
                     <td className="py-3 pr-4">Redirection après authentification</td>
                     <td className="py-3">Session</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 font-mono text-xs text-[#E50914]">cookie-consent</td>
+                    <td className="py-3 pr-4 font-mono text-xs text-[#C9A227]">cookie-consent</td>
                     <td className="py-3 pr-4">Mémorisation de votre choix concernant les cookies</td>
                     <td className="py-3">12 mois</td>
                   </tr>
@@ -113,7 +113,7 @@ export default function CookiesPage() {
           {/* Section 3 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               3. Cookies analytiques
             </h2>
@@ -135,7 +135,7 @@ export default function CookiesPage() {
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   <tr>
-                    <td className="py-3 pr-4 font-mono text-xs text-[#E50914]">plausible_*</td>
+                    <td className="py-3 pr-4 font-mono text-xs text-[#C9A227]">plausible_*</td>
                     <td className="py-3 pr-4">Plausible Analytics</td>
                     <td className="py-3 pr-4">Mesure d&apos;audience respectueuse de la vie privée (sans données personnelles)</td>
                     <td className="py-3">13 mois</td>
@@ -154,7 +154,7 @@ export default function CookiesPage() {
           {/* Section 4 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               4. Cookies de personnalisation
             </h2>
@@ -174,22 +174,22 @@ export default function CookiesPage() {
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   <tr>
-                    <td className="py-3 pr-4 font-mono text-xs text-[#E50914]">locale</td>
+                    <td className="py-3 pr-4 font-mono text-xs text-[#C9A227]">locale</td>
                     <td className="py-3 pr-4">Mémorisation de la langue d&apos;interface choisie</td>
                     <td className="py-3">12 mois</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 font-mono text-xs text-[#E50914]">theme</td>
+                    <td className="py-3 pr-4 font-mono text-xs text-[#C9A227]">theme</td>
                     <td className="py-3 pr-4">Préférence de thème visuel (sombre/clair)</td>
                     <td className="py-3">12 mois</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 font-mono text-xs text-[#E50914]">task-filters</td>
+                    <td className="py-3 pr-4 font-mono text-xs text-[#C9A227]">task-filters</td>
                     <td className="py-3 pr-4">Mémorisation des filtres de recherche de tâches</td>
                     <td className="py-3">Session</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 font-mono text-xs text-[#E50914]">video-quality</td>
+                    <td className="py-3 pr-4 font-mono text-xs text-[#C9A227]">video-quality</td>
                     <td className="py-3 pr-4">Préférence de qualité vidéo pour le lecteur</td>
                     <td className="py-3">12 mois</td>
                   </tr>
@@ -201,7 +201,7 @@ export default function CookiesPage() {
           {/* Section 5 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               5. Gestion de vos préférences
             </h2>
@@ -213,7 +213,7 @@ export default function CookiesPage() {
             <p className="text-white/70 leading-relaxed">
               Lors de votre première visite, une bannière vous permet d&apos;accepter ou de
               refuser les cookies non essentiels. Vous pouvez modifier ce choix à tout moment
-              en supprimant le cookie <code className="text-[#E50914] text-xs bg-white/5 px-1.5 py-0.5 rounded">cookie-consent</code>{' '}
+              en supprimant le cookie <code className="text-[#C9A227] text-xs bg-white/5 px-1.5 py-0.5 rounded">cookie-consent</code>{' '}
               de votre navigateur, ce qui déclenchera un nouvel affichage de la bannière.
             </p>
 
@@ -244,7 +244,7 @@ export default function CookiesPage() {
           {/* Section 6 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               6. Durée de conservation des cookies
             </h2>
@@ -276,19 +276,19 @@ export default function CookiesPage() {
           {/* Section 7 */}
           <section>
             <h2
-              className="text-2xl font-bold text-[#E50914] mb-4"
+              className="text-2xl font-bold text-[#C9A227] mb-4"
             >
               7. Contact
             </h2>
             <p className="text-white/70 leading-relaxed">
               Pour toute question relative à notre utilisation des cookies, vous pouvez
               contacter notre Délégué à la Protection des Données à l&apos;adresse{' '}
-              <span className="text-[#E50914]">dpo@cinegen.studio</span>.
+              <span className="text-[#C9A227]">dpo@cinegen.studio</span>.
             </p>
             <p className="text-white/70 leading-relaxed mt-3">
               Pour en savoir plus sur la protection de vos données personnelles, consultez
               notre{' '}
-              <Link href="/legal/privacy" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors">
+              <Link href="/legal/privacy" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors">
                 Politique de Confidentialité
               </Link>.
             </p>
@@ -306,10 +306,10 @@ export default function CookiesPage() {
 
         {/* Navigation */}
         <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm">
-          <Link href="/legal/terms" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors">
+          <Link href="/legal/terms" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors">
             Conditions Générales d&apos;Utilisation
           </Link>
-          <Link href="/legal/privacy" className="text-[#E50914] underline underline-offset-4 hover:text-[#FF2D2D] transition-colors">
+          <Link href="/legal/privacy" className="text-[#C9A227] underline underline-offset-4 hover:text-[#E8C766] transition-colors">
             Politique de Confidentialité
           </Link>
         </div>

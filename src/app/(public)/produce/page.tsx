@@ -70,7 +70,7 @@ const steps = [
 
 const revenueShares = [
   { label: 'Investors', pct: 25, color: 'bg-emerald-500' },
-  { label: 'Screenwriters', pct: 25, color: 'bg-[#E50914]' },
+  { label: 'Screenwriters', pct: 25, color: 'bg-[#C9A227]' },
   { label: 'Workers', pct: 25, color: 'bg-amber-500' },
   { label: 'Platform', pct: 25, color: 'bg-blue-500' },
 ]
@@ -95,7 +95,7 @@ export default function ProducePage() {
       <section className="relative py-28 sm:py-36 px-4 sm:px-8 md:px-16 lg:px-20 overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0 gradient-radial-gold opacity-60" />
-        <div className="absolute top-10 left-1/4 w-[400px] h-[400px] rounded-full bg-[#E50914]/[0.04] blur-[180px]" />
+        <div className="absolute top-10 left-1/4 w-[400px] h-[400px] rounded-full bg-[#C9A227]/[0.04] blur-[180px]" />
         <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] rounded-full bg-amber-500/[0.02] blur-[200px]" />
 
         {/* Decorative cinema icons */}
@@ -107,7 +107,7 @@ export default function ProducePage() {
         </div>
 
         <div className="container mx-auto max-w-5xl relative text-center">
-          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[#E50914]/15 bg-[#E50914]/[0.06] text-[#E50914] text-xs sm:text-sm font-medium mb-8 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[#C9A227]/15 bg-[#C9A227]/[0.06] text-[#C9A227] text-xs sm:text-sm font-medium mb-8 backdrop-blur-sm">
             <Camera className="h-3.5 w-3.5" />
             Film Production
           </div>
@@ -123,7 +123,7 @@ export default function ProducePage() {
 
           <Link
             href="/create"
-            className="golden-border-btn golden-border-always inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold transition-all duration-500 shadow-lg shadow-[#E50914]/20 hover:shadow-[#E50914]/30 hover:scale-[1.02]"
+            className="golden-border-btn golden-border-always inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold transition-all duration-500 shadow-lg shadow-[#C9A227]/20 hover:shadow-[#C9A227]/30 hover:scale-[1.02]"
           >
             Start a Project
             <ArrowRight className="h-5 w-5" />
@@ -138,10 +138,10 @@ export default function ProducePage() {
             {features.map((f) => (
               <div
                 key={f.title}
-                className="group p-7 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm hover:border-[#E50914]/15 transition-all duration-500"
+                className="group p-7 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm hover:border-[#C9A227]/15 transition-all duration-500"
               >
-                <div className="h-12 w-12 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center mb-5 transition-transform duration-500 group-hover:scale-105">
-                  <f.icon className="h-5 w-5 text-[#E50914]" />
+                <div className="h-12 w-12 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center mb-5 transition-transform duration-500 group-hover:scale-105">
+                  <f.icon className="h-5 w-5 text-[#C9A227]" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{f.title}</h3>
                 <p className="text-sm text-white/40 leading-relaxed">{f.desc}</p>
@@ -157,7 +157,7 @@ export default function ProducePage() {
       <section className="py-20 sm:py-28 px-4 sm:px-8 md:px-16 lg:px-20">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <p className="text-[#E50914] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
+            <p className="text-[#C9A227] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
               Process
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
@@ -171,7 +171,7 @@ export default function ProducePage() {
                 key={s.num}
                 className="relative text-center p-5 rounded-xl border border-white/[0.06] bg-white/[0.02]"
               >
-                <div className="w-10 h-10 rounded-full bg-[#E50914]/15 border border-[#E50914]/25 flex items-center justify-center mx-auto mb-3 text-[#E50914] font-bold text-lg">
+                <div className="w-10 h-10 rounded-full bg-[#C9A227]/15 border border-[#C9A227]/25 flex items-center justify-center mx-auto mb-3 text-[#C9A227] font-bold text-lg">
                   {s.num}
                 </div>
                 <h3 className="text-sm font-bold text-white mb-1.5">{s.title}</h3>
@@ -182,7 +182,7 @@ export default function ProducePage() {
         </div>
       </section>
 
-      <div className="h-px bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent" />
 
       {/* ═══ TRENDING FILM PROJECTS ═══ */}
       <section className="py-20 sm:py-28 px-4 sm:px-8 md:px-16 lg:px-20">
@@ -198,7 +198,7 @@ export default function ProducePage() {
             </div>
             <Link
               href="/films"
-              className="hidden sm:inline-flex items-center gap-1.5 text-sm text-[#E50914] hover:text-[#FF2D2D] font-medium transition-colors"
+              className="hidden sm:inline-flex items-center gap-1.5 text-sm text-[#C9A227] hover:text-[#E8C766] font-medium transition-colors"
             >
               Explore Projects
               <ArrowRight className="h-4 w-4" />
@@ -213,7 +213,7 @@ export default function ProducePage() {
                 <Link
                   key={film.slug}
                   href={`/films/${film.slug}`}
-                  className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden hover:border-[#E50914]/20 transition-all duration-300"
+                  className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden hover:border-[#C9A227]/20 transition-all duration-300"
                 >
                   <div className="relative h-36 bg-[#141414]">
                     {film.coverImageUrl ? (
@@ -263,7 +263,7 @@ export default function ProducePage() {
             {/* YOUR FILM card */}
             <Link
               href="/create"
-              className="group rounded-2xl border border-dashed border-white/[0.1] bg-white/[0.02] hover:border-[#E50914]/30 transition-all duration-300 flex flex-col items-center justify-center p-8 text-center min-h-[280px]"
+              className="group rounded-2xl border border-dashed border-white/[0.1] bg-white/[0.02] hover:border-[#C9A227]/30 transition-all duration-300 flex flex-col items-center justify-center p-8 text-center min-h-[280px]"
             >
               <div className="h-16 w-16 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500">
                 <DollarSign className="h-8 w-8 text-amber-400" />
@@ -272,7 +272,7 @@ export default function ProducePage() {
               <p className="text-sm text-white/40 leading-relaxed mb-4 max-w-[200px]">
                 Have a story to tell? Launch your project and let the community fund it.
               </p>
-              <span className="inline-flex items-center gap-1.5 text-sm text-[#E50914] font-medium group-hover:gap-2.5 transition-all">
+              <span className="inline-flex items-center gap-1.5 text-sm text-[#C9A227] font-medium group-hover:gap-2.5 transition-all">
                 Start a Project
                 <ArrowRight className="h-4 w-4" />
               </span>
@@ -283,7 +283,7 @@ export default function ProducePage() {
           <div className="mt-6 text-center sm:hidden">
             <Link
               href="/films"
-              className="inline-flex items-center gap-1.5 text-sm text-[#E50914] hover:text-[#FF2D2D] font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm text-[#C9A227] hover:text-[#E8C766] font-medium transition-colors"
             >
               Explore Projects
               <ArrowRight className="h-4 w-4" />
@@ -303,7 +303,7 @@ export default function ProducePage() {
             </h2>
             <Link
               href="/films"
-              className="inline-flex items-center gap-1.5 text-sm text-[#E50914] hover:text-[#FF2D2D] font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm text-[#C9A227] hover:text-[#E8C766] font-medium transition-colors"
             >
               Explore Projects
               <ArrowRight className="h-4 w-4" />
@@ -320,7 +320,7 @@ export default function ProducePage() {
                   <Link
                     key={film.slug}
                     href={`/films/${film.slug}`}
-                    className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden hover:border-[#E50914]/20 transition-all duration-300"
+                    className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden hover:border-[#C9A227]/20 transition-all duration-300"
                   >
                     <div className="relative h-28 bg-[#141414]">
                       {film.coverImageUrl ? (
@@ -360,13 +360,13 @@ export default function ProducePage() {
         </div>
       </section>
 
-      <div className="h-px bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent" />
 
       {/* ═══ REVENUE SHARING ═══ */}
       <section className="py-20 sm:py-28 px-4 sm:px-8 md:px-16 lg:px-20">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <p className="text-[#E50914] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
+            <p className="text-[#C9A227] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
               Economics
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
@@ -440,8 +440,8 @@ export default function ProducePage() {
 
               <div className="p-5 rounded-xl border border-white/[0.06] bg-white/[0.02]">
                 <div className="flex items-start gap-3">
-                  <div className="h-9 w-9 rounded-lg bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center shrink-0">
-                    <Play className="h-4 w-4 text-[#E50914]" />
+                  <div className="h-9 w-9 rounded-lg bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center shrink-0">
+                    <Play className="h-4 w-4 text-[#C9A227]" />
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-white mb-1">Screenwriter IP</h4>
@@ -468,8 +468,8 @@ export default function ProducePage() {
             </div>
 
             {/* Screenwriter Tiers */}
-            <div className="mt-8 p-6 rounded-2xl border border-[#E50914]/10 bg-[#E50914]/[0.02]">
-              <h3 className="text-sm font-bold text-[#E50914] mb-4 uppercase tracking-wider">Screenwriter Revenue Tiers</h3>
+            <div className="mt-8 p-6 rounded-2xl border border-[#C9A227]/10 bg-[#C9A227]/[0.02]">
+              <h3 className="text-sm font-bold text-[#C9A227] mb-4 uppercase tracking-wider">Screenwriter Revenue Tiers</h3>
               <div className="grid sm:grid-cols-3 gap-4">
                 <div className="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] text-center">
                   <p className="text-2xl font-black text-white">5%</p>
@@ -544,7 +544,7 @@ export default function ProducePage() {
       <section className="py-20 sm:py-28 px-4 sm:px-8 md:px-16 lg:px-20">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <p className="text-[#E50914] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
+            <p className="text-[#C9A227] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
               Flexible Payments
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
@@ -556,10 +556,10 @@ export default function ProducePage() {
             {paymentOptions.map((opt) => (
               <div
                 key={opt.title}
-                className="group p-7 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm hover:border-[#E50914]/15 transition-all duration-500 text-center"
+                className="group p-7 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm hover:border-[#C9A227]/15 transition-all duration-500 text-center"
               >
-                <div className="h-12 w-12 rounded-2xl bg-[#E50914]/10 border border-[#E50914]/20 flex items-center justify-center mb-5 mx-auto transition-transform duration-500 group-hover:scale-105">
-                  <opt.icon className="h-5 w-5 text-[#E50914]" />
+                <div className="h-12 w-12 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/20 flex items-center justify-center mb-5 mx-auto transition-transform duration-500 group-hover:scale-105">
+                  <opt.icon className="h-5 w-5 text-[#C9A227]" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{opt.title}</h3>
                 <p className="text-sm text-white/40 leading-relaxed">{opt.desc}</p>
@@ -589,12 +589,12 @@ export default function ProducePage() {
         </div>
       </section>
 
-      <div className="h-px bg-gradient-to-r from-transparent via-[#E50914]/10 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-[#C9A227]/10 to-transparent" />
 
       {/* ═══ CTA ═══ */}
       <section className="py-24 sm:py-32 px-4 sm:px-8 md:px-16 lg:px-20 relative">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#E50914]/[0.03] blur-[200px]" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#C9A227]/[0.03] blur-[200px]" />
         </div>
         <div className="container mx-auto max-w-3xl relative text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight">
@@ -608,7 +608,7 @@ export default function ProducePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/create"
-              className="golden-border-btn golden-border-always inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold transition-all duration-500 shadow-lg shadow-[#E50914]/20 hover:shadow-[#E50914]/30 hover:scale-[1.02]"
+              className="golden-border-btn golden-border-always inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold transition-all duration-500 shadow-lg shadow-[#C9A227]/20 hover:shadow-[#C9A227]/30 hover:scale-[1.02]"
             >
               Start a Project
               <ArrowRight className="h-5 w-5" />

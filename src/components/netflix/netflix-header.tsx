@@ -48,6 +48,7 @@ import { cn, getInitials } from '@/lib/utils'
 import { AnimatePresence, MotionDiv } from '@/components/ui/motion'
 import { NotificationBell } from '@/components/layout/notification-bell'
 import { SearchOverlay } from '@/components/search-overlay'
+import { Logo } from '@/components/layout/logo'
 import { LocaleSwitcher } from '@/components/layout/locale-switcher'
 
 /* ── Dropdown item component ── */
@@ -180,24 +181,7 @@ export function NetflixHeader() {
     >
       <div className="flex h-14 md:h-[56px] items-center justify-between px-5 md:px-10 lg:px-16 mt-1">
         {/* Left: Logo */}
-        <Link href="/" className="flex items-center shrink-0 group relative">
-          <div
-            className="absolute -inset-3 rounded-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-            style={{ background: 'radial-gradient(ellipse, rgba(229,9,20,0.08) 0%, transparent 70%)' }}
-          />
-          <span className="relative text-xl md:text-2xl font-black tracking-[0.15em] text-white group-hover:tracking-[0.2em] transition-all duration-500">
-            CINE<span
-              className="text-[#E50914] relative"
-              style={{ animation: 'logoGlowPulse 4s ease-in-out infinite' }}
-            >GEN</span>
-          </span>
-          <div className="absolute -bottom-1 left-0 right-0 h-[1.5px] overflow-hidden">
-            <div
-              className="h-full w-0 group-hover:w-full transition-all duration-700 ease-out"
-              style={{ background: 'linear-gradient(90deg, transparent, #E50914, #FF2D2D, #E50914, transparent)' }}
-            />
-          </div>
-        </Link>
+        <Logo height={46} priority />
 
         {/* Center: Desktop nav with dropdowns */}
         <nav className="hidden lg:flex items-center gap-1">
@@ -281,15 +265,15 @@ export function NetflixHeader() {
           {session?.user ? (
             <div className="hidden lg:flex items-center gap-1.5">
               <NotificationBell />
-              <Link href="/lumens" className="flex items-center gap-1.5 px-2 py-1 rounded text-sm text-white/50 hover:text-[#E50914] transition-all" aria-label="My Lumens">
-                <Sun className="h-3.5 w-3.5 text-[#E50914]" />
+              <Link href="/lumens" className="flex items-center gap-1.5 px-2 py-1 rounded text-sm text-white/50 hover:text-[#C9A227] transition-all" aria-label="My Lumens">
+                <Sun className="h-3.5 w-3.5 text-[#C9A227]" />
               </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className="flex items-center gap-1.5 rounded px-1 py-1 hover:bg-white/5 transition-all outline-none" aria-label="Profile menu">
                     <Avatar className="h-7 w-7 rounded">
                       {session.user.image && <AvatarImage src={session.user.image} alt={userName} />}
-                      <AvatarFallback className="text-[10px] rounded bg-[#E50914]/20 text-[#E50914]">{getInitials(userName)}</AvatarFallback>
+                      <AvatarFallback className="text-[10px] rounded bg-[#C9A227]/20 text-[#C9A227]">{getInitials(userName)}</AvatarFallback>
                     </Avatar>
                     <ChevronDown className="h-3 w-3 text-white/30" />
                   </button>
@@ -359,8 +343,8 @@ export function NetflixHeader() {
               </Link>
               <Link
                 href="/register"
-                className="relative text-[12px] font-bold px-5 py-2 rounded-lg text-white overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(229,9,20,0.35)] hover:scale-[1.02] active:scale-[0.98]"
-                style={{ background: 'linear-gradient(135deg, #E50914 0%, #B20710 100%)' }}
+                className="relative text-[12px] font-bold px-5 py-2 rounded-lg text-white overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,162,39,0.35)] hover:scale-[1.02] active:scale-[0.98]"
+                style={{ background: 'linear-gradient(135deg, #C9A227 0%, #B20710 100%)' }}
               >
                 <span className="relative z-10">{t('sign_up')}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] hover:translate-x-[200%] transition-transform duration-700" />
@@ -397,7 +381,7 @@ export function NetflixHeader() {
                   className={cn(
                     'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all',
                     (link.href === '/' ? pathname === '/' : pathname.startsWith(link.href))
-                      ? 'text-[#E50914] bg-[#E50914]/10'
+                      ? 'text-[#C9A227] bg-[#C9A227]/10'
                       : 'text-white/60 hover:text-white hover:bg-white/5'
                   )}
                 >
@@ -432,7 +416,7 @@ export function NetflixHeader() {
                   <Link href="/login" onClick={() => setMobileOpen(false)} className="flex-1 text-center text-sm text-white/60 border border-white/10 rounded-full py-2.5 hover:bg-white/5 transition-all">
                     {t('sign_in')}
                   </Link>
-                  <Link href="/register" onClick={() => setMobileOpen(false)} className="flex-1 text-center text-sm font-semibold text-white rounded-full py-2.5" style={{ background: 'linear-gradient(135deg, #E50914, #B20710)' }}>
+                  <Link href="/register" onClick={() => setMobileOpen(false)} className="flex-1 text-center text-sm font-semibold text-white rounded-full py-2.5" style={{ background: 'linear-gradient(135deg, #C9A227, #B20710)' }}>
                     {t('sign_up')}
                   </Link>
                 </div>

@@ -36,8 +36,8 @@ export function SplashScreen() {
       <div className="absolute w-[500px] h-[500px] rounded-full animate-[splashGlowOuter_2.8s_ease-out_1s_both]" />
 
       {/* Subtle radial rings */}
-      <div className="absolute w-[160px] h-[160px] md:w-[200px] md:h-[200px] rounded-full border border-[#E50914]/0 animate-[splashRing_2s_ease-out_1.2s_both]" />
-      <div className="absolute w-[240px] h-[240px] md:w-[300px] md:h-[300px] rounded-full border border-[#E50914]/0 animate-[splashRing_2.2s_ease-out_1.5s_both]" />
+      <div className="absolute w-[160px] h-[160px] md:w-[200px] md:h-[200px] rounded-full border border-[#C9A227]/0 animate-[splashRing_2s_ease-out_1.2s_both]" />
+      <div className="absolute w-[240px] h-[240px] md:w-[300px] md:h-[300px] rounded-full border border-[#C9A227]/0 animate-[splashRing_2.2s_ease-out_1.5s_both]" />
 
       {/* SVG Letter C — stroke draw animation */}
       <svg
@@ -69,7 +69,7 @@ export function SplashScreen() {
         <path
           d="M 74 18 A 40 40 0 1 0 74 82"
           fill="none"
-          stroke="#E50914"
+          stroke="#C9A227"
           strokeWidth="12"
           strokeLinecap="round"
           filter="url(#cGlowHeavy)"
@@ -81,7 +81,7 @@ export function SplashScreen() {
         <path
           d="M 74 18 A 40 40 0 1 0 74 82"
           fill="none"
-          stroke="#E50914"
+          stroke="#C9A227"
           strokeWidth="7"
           strokeLinecap="round"
           filter="url(#cGlow)"
@@ -103,7 +103,7 @@ export function SplashScreen() {
         {/* Layer 4: Bright tip dot — follows the draw with a trailing glow */}
         <circle
           r="4"
-          fill="#FF4444"
+          fill="#E8C766"
           filter="url(#cGlowHeavy)"
           className="animate-[drawTip_1.8s_cubic-bezier(0.33,1,0.68,1)_0.5s_both]"
         >

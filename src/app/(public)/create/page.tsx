@@ -169,18 +169,18 @@ export default function CreatePage() {
       <section className="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
         {/* Background glow */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#E50914]/[0.04] blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#C9A227]/[0.04] blur-[120px]" />
         </div>
 
         <div className="relative">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-xs text-white/50 mb-6">
-            <Sparkles className="h-3.5 w-3.5 text-[#E50914]" />
+            <Sparkles className="h-3.5 w-3.5 text-[#C9A227]" />
             AI-Powered Film Production
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-6">
             Create Your{' '}
-            <span className="text-[#E50914]">Movie</span>
+            <span className="text-[#C9A227]">Movie</span>
           </h1>
 
           <p className="text-base sm:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
@@ -273,7 +273,7 @@ export default function CreatePage() {
                           <Lock className="h-3.5 w-3.5 text-white/30" />
                         </div>
                       ) : (
-                        <div className="w-8 h-8 rounded-full bg-[#E50914]/20 border border-[#E50914]/40 flex items-center justify-center text-xs font-bold text-[#E50914]">
+                        <div className="w-8 h-8 rounded-full bg-[#C9A227]/20 border border-[#C9A227]/40 flex items-center justify-center text-xs font-bold text-[#C9A227]">
                           {step.number}
                         </div>
                       )}
@@ -287,7 +287,7 @@ export default function CreatePage() {
 
                   {/* Content */}
                   <div className="p-5">
-                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#E50914] transition-colors">
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#C9A227] transition-colors">
                       {step.title}
                     </h3>
                     <p className="text-sm text-white/40 leading-relaxed mb-5 line-clamp-2">
@@ -299,7 +299,7 @@ export default function CreatePage() {
                       className={cn(
                         'flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300',
                         unlocked
-                          ? 'bg-[#E50914] text-white group-hover:bg-[#FF2D2D] group-hover:shadow-[0_0_20px_rgba(229,9,20,0.3)]'
+                          ? 'bg-[#C9A227] text-white group-hover:bg-[#E8C766] group-hover:shadow-[0_0_20px_rgba(201,162,39,0.3)]'
                           : 'bg-white/5 text-white/30 border border-white/[0.06]'
                       )}
                     >
@@ -318,9 +318,9 @@ export default function CreatePage() {
             data-card
             className="group relative flex-shrink-0 snap-start rounded-xl overflow-hidden w-[280px] sm:w-[320px] md:w-[340px]"
           >
-            <div className="relative bg-gradient-to-br from-[#E50914]/20 to-[#111] rounded-xl overflow-hidden border border-[#E50914]/20 h-full flex flex-col items-center justify-center p-8 text-center min-h-[380px]">
-              <div className="w-16 h-16 rounded-full bg-[#E50914]/10 border border-[#E50914]/30 flex items-center justify-center mb-5">
-                <Sparkles className="h-8 w-8 text-[#E50914]" />
+            <div className="relative bg-gradient-to-br from-[#C9A227]/20 to-[#111] rounded-xl overflow-hidden border border-[#C9A227]/20 h-full flex flex-col items-center justify-center p-8 text-center min-h-[380px]">
+              <div className="w-16 h-16 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 flex items-center justify-center mb-5">
+                <Sparkles className="h-8 w-8 text-[#C9A227]" />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">Publish Your Film</h3>
               <p className="text-sm text-white/40 mb-6 max-w-[240px]">
@@ -359,7 +359,7 @@ export default function CreatePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-3">
-              <Film className="h-6 w-6 text-[#E50914]" />
+              <Film className="h-6 w-6 text-[#C9A227]" />
               My Films
               {myFilms.films.length > 0 && (
                 <span className="text-sm font-normal text-white/30">({myFilms.films.length}/2 free)</span>
@@ -367,7 +367,7 @@ export default function CreatePage() {
             </h2>
             <button
               onClick={() => setShowNewFilm(!showNewFilm)}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-[#E50914] text-white hover:bg-[#FF2D2D] transition-all duration-200 hover:shadow-[0_0_20px_rgba(229,9,20,0.3)]"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-[#C9A227] text-white hover:bg-[#E8C766] transition-all duration-200 hover:shadow-[0_0_20px_rgba(201,162,39,0.3)]"
             >
               <Plus className="h-4 w-4" />
               New Film
@@ -384,12 +384,12 @@ export default function CreatePage() {
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   placeholder="Film title..."
-                  className="flex-1 px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#E50914]/40 transition-colors"
+                  className="flex-1 px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#C9A227]/40 transition-colors"
                 />
                 <select
                   value={newGenre}
                   onChange={(e) => setNewGenre(e.target.value)}
-                  className="px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-sm text-white/70 focus:outline-none focus:border-[#E50914]/40 transition-colors appearance-none cursor-pointer"
+                  className="px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-sm text-white/70 focus:outline-none focus:border-[#C9A227]/40 transition-colors appearance-none cursor-pointer"
                 >
                   {['Drama', 'Comedy', 'Action', 'Thriller', 'Horror', 'Sci-Fi', 'Romance', 'Documentary', 'Animation', 'Fantasy'].map(g => (
                     <option key={g} value={g} className="bg-[#1a1a1a]">{g}</option>
@@ -406,7 +406,7 @@ export default function CreatePage() {
                   className={cn(
                     'px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200',
                     newTitle.trim()
-                      ? 'bg-[#E50914] text-white hover:bg-[#FF2D2D]'
+                      ? 'bg-[#C9A227] text-white hover:bg-[#E8C766]'
                       : 'bg-white/5 text-white/20 cursor-not-allowed'
                   )}
                 >
@@ -426,7 +426,7 @@ export default function CreatePage() {
               </p>
               <button
                 onClick={() => setShowNewFilm(true)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-[#E50914] text-white hover:bg-[#FF2D2D] transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-[#C9A227] text-white hover:bg-[#E8C766] transition-all"
               >
                 <Plus className="h-4 w-4" />
                 Create Your First Film
@@ -468,7 +468,7 @@ export default function CreatePage() {
                       <div className="flex items-center gap-2 mb-3">
                         <div className="flex-1 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
                           <div
-                            className="h-full rounded-full bg-gradient-to-r from-[#E50914] to-[#FF2D2D] transition-all duration-500"
+                            className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] transition-all duration-500"
                             style={{ width: `${progress}%` }}
                           />
                         </div>
@@ -476,7 +476,7 @@ export default function CreatePage() {
                       </div>
                       <Link
                         href="/create/script"
-                        className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold bg-[#E50914] text-white hover:bg-[#FF2D2D] transition-all"
+                        className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold bg-[#C9A227] text-white hover:bg-[#E8C766] transition-all"
                       >
                         Continue
                         <ArrowRight className="h-3.5 w-3.5" />

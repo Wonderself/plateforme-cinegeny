@@ -144,7 +144,7 @@ export function FeaturedCreatorPanel({ initialCreator }: Props) {
             <button
               type="submit"
               disabled={isPending}
-              className="flex items-center gap-1.5 px-4 py-2 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-xs font-medium rounded-lg disabled:opacity-50 transition-colors"
+              className="flex items-center gap-1.5 px-4 py-2 bg-[#C9A227] hover:bg-[#E8C766] text-white text-xs font-medium rounded-lg disabled:opacity-50 transition-colors"
             >
               {isPending ? <Loader2 className="h-3 w-3 animate-spin" /> : null}
               Confirmer

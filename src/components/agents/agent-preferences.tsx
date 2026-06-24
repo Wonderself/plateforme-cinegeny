@@ -91,7 +91,7 @@ export function AgentPreferences({ initialValues }: AgentPreferencesProps) {
                 step={5}
                 value={values[slider.key]}
                 onChange={(e) => handleChange(slider.key, parseInt(e.target.value))}
-                className="flex-1 h-2 rounded-full appearance-none bg-gray-700 accent-[#E50914] cursor-pointer"
+                className="flex-1 h-2 rounded-full appearance-none bg-gray-700 accent-[#C9A227] cursor-pointer"
               />
               <span className="text-[10px] text-white/60 w-20 shrink-0">{slider.labelRight}</span>
             </div>
@@ -102,7 +102,7 @@ export function AgentPreferences({ initialValues }: AgentPreferencesProps) {
       <button
         onClick={handleSave}
         disabled={saving}
-        className="mt-6 flex items-center gap-2 px-5 py-2.5 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-semibold rounded-xl transition-colors disabled:opacity-50 w-full justify-center"
+        className="mt-6 flex items-center gap-2 px-5 py-2.5 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-semibold rounded-xl transition-colors disabled:opacity-50 w-full justify-center"
       >
         <Save className="h-4 w-4" />
         {saving ? 'Sauvegarde...' : 'Sauvegarder les préférences'}

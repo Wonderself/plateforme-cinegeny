@@ -60,7 +60,7 @@ export default function NotificationsConfigPage() {
           <h1 className="text-2xl font-bold text-white font-[family-name:var(--font-playfair)]">Notifications Push</h1>
           <p className="text-sm text-white/50 mt-1">{events.length} types d&apos;événements · 3 canaux · Configurable</p>
         </div>
-        <button onClick={saveConfig} disabled={saving} className="flex items-center gap-1.5 px-4 py-2 bg-[#E50914] text-white text-xs font-medium rounded-lg disabled:opacity-50">
+        <button onClick={saveConfig} disabled={saving} className="flex items-center gap-1.5 px-4 py-2 bg-[#C9A227] text-white text-xs font-medium rounded-lg disabled:opacity-50">
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
           Sauvegarder
         </button>
@@ -94,7 +94,7 @@ export default function NotificationsConfigPage() {
             return (
               <div key={event.id} className={`flex items-center gap-4 px-5 py-4 ${!event.enabled ? 'opacity-50' : ''}`}>
                 {/* Toggle */}
-                <button onClick={() => toggleEvent(event.id)} className={`relative h-6 w-11 rounded-full transition-colors shrink-0 ${event.enabled ? 'bg-[#E50914]' : 'bg-white/20'}`}>
+                <button onClick={() => toggleEvent(event.id)} className={`relative h-6 w-11 rounded-full transition-colors shrink-0 ${event.enabled ? 'bg-[#C9A227]' : 'bg-white/20'}`}>
                   <span className={`inline-block h-4 w-4 rounded-full bg-white/5 transition-transform ${event.enabled ? 'translate-x-6' : 'translate-x-1'}`} />
                 </button>
 

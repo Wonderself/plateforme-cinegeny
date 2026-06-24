@@ -83,7 +83,7 @@ export default function CreatorProfilePage() {
             <button
               onClick={() => setCurrentStep(i)}
               className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-colors w-full ${
-                i === currentStep ? 'bg-[#E50914] text-white' :
+                i === currentStep ? 'bg-[#C9A227] text-white' :
                 i < currentStep ? 'bg-green-500/10 text-green-400' :
                 'bg-white/[0.05] text-white/50'
               }`}
@@ -113,15 +113,15 @@ export default function CreatorProfilePage() {
               <h2 className="text-lg font-semibold text-white">Informations de base</h2>
               <div>
                 <label className="text-xs text-white/50 mb-1.5 block">Nom de scène / Pseudo créateur</label>
-                <input value={displayName} onChange={e => setDisplayName(e.target.value)} placeholder="Votre nom de créateur" className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
+                <input value={displayName} onChange={e => setDisplayName(e.target.value)} placeholder="Votre nom de créateur" className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs text-white/50 mb-1.5 block">Niche / Thématique</label>
-                <input value={niche} onChange={e => setNiche(e.target.value)} placeholder="Ex: Cinéma IA, Horreur, Comédie..." className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
+                <input value={niche} onChange={e => setNiche(e.target.value)} placeholder="Ex: Cinéma IA, Horreur, Comédie..." className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs text-white/50 mb-1.5 block">Localisation</label>
-                <input value={location} onChange={e => setLocation(e.target.value)} placeholder="Paris, France" className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
+                <input value={location} onChange={e => setLocation(e.target.value)} placeholder="Paris, France" className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
               </div>
               <div>
                 <label className="text-xs text-white/50 mb-1.5 block">Style de présentation</label>
@@ -151,10 +151,10 @@ export default function CreatorProfilePage() {
                   const SIcon = s.icon
                   const selected = selectedSpecialties.includes(s.id)
                   return (
-                    <button type="button" key={s.id} onClick={() => toggleSpecialty(s.id)} className={`flex flex-col items-center gap-2 p-4 rounded-xl border transition-colors ${selected ? 'border-[#E50914] bg-red-500/10' : 'border-white/10 hover:border-white/15'}`}>
-                      <SIcon className={`h-6 w-6 ${selected ? 'text-[#E50914]' : 'text-white/50'}`} />
-                      <span className={`text-xs font-medium ${selected ? 'text-[#E50914]' : 'text-white/60'}`}>{s.label}</span>
-                      {selected && <CheckCircle2 className="h-3.5 w-3.5 text-[#E50914]" />}
+                    <button type="button" key={s.id} onClick={() => toggleSpecialty(s.id)} className={`flex flex-col items-center gap-2 p-4 rounded-xl border transition-colors ${selected ? 'border-[#C9A227] bg-red-500/10' : 'border-white/10 hover:border-white/15'}`}>
+                      <SIcon className={`h-6 w-6 ${selected ? 'text-[#C9A227]' : 'text-white/50'}`} />
+                      <span className={`text-xs font-medium ${selected ? 'text-[#C9A227]' : 'text-white/60'}`}>{s.label}</span>
+                      {selected && <CheckCircle2 className="h-3.5 w-3.5 text-[#C9A227]" />}
                     </button>
                   )
                 })}
@@ -168,7 +168,7 @@ export default function CreatorProfilePage() {
               <p className="text-xs text-white/50">Ajoutez des liens vers vos travaux (Vimeo, YouTube, Behance, etc.)</p>
               {portfolioLinks.map((link, i) => (
                 <div key={i} className="flex gap-2">
-                  <input value={link} onChange={e => updatePortfolioLink(i, e.target.value)} placeholder="https://..." className="flex-1 rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
+                  <input value={link} onChange={e => updatePortfolioLink(i, e.target.value)} placeholder="https://..." className="flex-1 rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
                   {portfolioLinks.length > 1 && (
                     <button type="button" onClick={() => removePortfolioLink(i)} className="text-white/50 hover:text-red-400"><X className="h-5 w-5" /></button>
                   )}
@@ -176,16 +176,16 @@ export default function CreatorProfilePage() {
               ))}
               <div>
                 <label className="text-xs text-white/50 mb-1.5 block">Ton de voix</label>
-                <input value={toneOfVoice} onChange={e => setToneOfVoice(e.target.value)} placeholder="Ex: Inspirant, Humoristique, Sérieux..." className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#E50914] focus:outline-none" />
+                <input value={toneOfVoice} onChange={e => setToneOfVoice(e.target.value)} placeholder="Ex: Inspirant, Humoristique, Sérieux..." className="w-full rounded-xl border border-white/10 px-4 py-2.5 text-sm focus:border-[#C9A227] focus:outline-none" />
               </div>
-              <button type="button" onClick={addPortfolioLink} className="flex items-center gap-1.5 text-sm text-[#E50914] hover:underline"><Plus className="h-4 w-4" /> Ajouter un lien</button>
+              <button type="button" onClick={addPortfolioLink} className="flex items-center gap-1.5 text-sm text-[#C9A227] hover:underline"><Plus className="h-4 w-4" /> Ajouter un lien</button>
             </div>
           )}
 
           {currentStep === 3 && (
             <div className="space-y-5">
               <h2 className="text-lg font-semibold text-white">Bio & Présentation</h2>
-              <textarea value={bio} onChange={e => setBio(e.target.value)} placeholder="Parlez de vous, de vos projets, de votre vision du cinéma..." rows={8} className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#E50914] focus:outline-none resize-none" />
+              <textarea value={bio} onChange={e => setBio(e.target.value)} placeholder="Parlez de vous, de vos projets, de votre vision du cinéma..." rows={8} className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#C9A227] focus:outline-none resize-none" />
               <p className="text-[10px] text-white/50">{bio.length}/1000 caractères</p>
               {actionState?.error && (
                 <p className="text-xs text-red-400 flex items-center gap-1.5">
@@ -205,9 +205,9 @@ export default function CreatorProfilePage() {
             <button type="button" onClick={() => setCurrentStep(Math.max(0, currentStep - 1))} disabled={currentStep === 0} className="px-4 py-2 text-sm text-white/50 hover:text-white disabled:opacity-30">Précédent</button>
             <div className="flex gap-2">
               {currentStep < ONBOARDING_STEPS.length - 1 ? (
-                <button type="button" onClick={() => setCurrentStep(currentStep + 1)} className="px-6 py-2 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-medium rounded-lg transition-colors">Suivant</button>
+                <button type="button" onClick={() => setCurrentStep(currentStep + 1)} className="px-6 py-2 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-medium rounded-lg transition-colors">Suivant</button>
               ) : (
-                <button type="submit" disabled={isPending} className="flex items-center gap-2 px-6 py-2 bg-[#E50914] hover:bg-[#FF2D2D] text-white text-sm font-medium rounded-lg disabled:opacity-50 transition-colors">
+                <button type="submit" disabled={isPending} className="flex items-center gap-2 px-6 py-2 bg-[#C9A227] hover:bg-[#E8C766] text-white text-sm font-medium rounded-lg disabled:opacity-50 transition-colors">
                   {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
                   Sauvegarder
                 </button>

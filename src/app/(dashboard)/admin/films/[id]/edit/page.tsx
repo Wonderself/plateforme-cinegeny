@@ -68,7 +68,7 @@ export default async function EditFilmPage({ params }: Props) {
               id="status"
               name="status"
               defaultValue={film.status}
-              className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+              className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
             >
               {FILM_STATUSES.map((s) => (
                 <option key={s.value} value={s.value}>{s.label}</option>
@@ -82,7 +82,7 @@ export default async function EditFilmPage({ params }: Props) {
               id="genre"
               name="genre"
               defaultValue={film.genre || ''}
-              className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+              className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
             >
               <option value="">Sélectionner un genre</option>
               {GENRES.map((g) => <option key={g} value={g}>{g}</option>)}
@@ -95,7 +95,7 @@ export default async function EditFilmPage({ params }: Props) {
               id="catalog"
               name="catalog"
               defaultValue={film.catalog}
-              className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#E50914]/50"
+              className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50"
             >
               {Object.entries(CATALOG_LABELS).map(([value, label]) => (
                 <option key={value} value={value}>{label}</option>
@@ -121,7 +121,7 @@ export default async function EditFilmPage({ params }: Props) {
             name="description"
             rows={3}
             defaultValue={film.description || ''}
-            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical"
+            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical"
           />
         </div>
 
@@ -132,7 +132,7 @@ export default async function EditFilmPage({ params }: Props) {
             name="synopsis"
             rows={5}
             defaultValue={film.synopsis || ''}
-            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#E50914]/50 resize-vertical"
+            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical"
           />
         </div>
 
@@ -170,7 +170,7 @@ export default async function EditFilmPage({ params }: Props) {
           <p className="text-xs text-white/40 mb-3">Statistiques</p>
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <div className="text-xl font-bold text-[#E50914]">{Math.round(film.progressPct)}%</div>
+              <div className="text-xl font-bold text-[#C9A227]">{Math.round(film.progressPct)}%</div>
               <div className="text-xs text-white/30">Progression</div>
             </div>
             <div>
@@ -193,10 +193,10 @@ export default async function EditFilmPage({ params }: Props) {
       </form>
 
       {/* Generate Tasks from Film Decomposer */}
-      <div className="p-6 rounded-xl border border-[#E50914]/20 bg-[#E50914]/[0.03]">
+      <div className="p-6 rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/[0.03]">
         <div className="flex items-start gap-4">
-          <div className="h-10 w-10 rounded-xl bg-[#E50914]/15 border border-[#E50914]/25 flex items-center justify-center shrink-0">
-            <Wand2 className="h-5 w-5 text-[#E50914]" />
+          <div className="h-10 w-10 rounded-xl bg-[#C9A227]/15 border border-[#C9A227]/25 flex items-center justify-center shrink-0">
+            <Wand2 className="h-5 w-5 text-[#C9A227]" />
           </div>
           <div className="flex-1">
             <h3 className="font-semibold mb-1">Generateur de Taches IA</h3>
@@ -204,12 +204,12 @@ export default async function EditFilmPage({ params }: Props) {
               Genere automatiquement les micro-taches pour ce film en fonction de son genre
               ({film.genre || 'non defini'}). Base + taches specialisees par genre.
               {film._count.tasks > 0 && (
-                <span className="text-[#E50914]"> Ce film a deja {film._count.tasks} tache{film._count.tasks > 1 ? 's' : ''}.</span>
+                <span className="text-[#C9A227]"> Ce film a deja {film._count.tasks} tache{film._count.tasks > 1 ? 's' : ''}.</span>
               )}
             </p>
             <form action={generateTasksForFilmAction}>
               <input type="hidden" name="filmId" value={film.id} />
-              <Button type="submit" variant="outline" className="border-[#E50914]/30 text-[#E50914] hover:bg-[#E50914]/10">
+              <Button type="submit" variant="outline" className="border-[#C9A227]/30 text-[#C9A227] hover:bg-[#C9A227]/10">
                 <Wand2 className="h-4 w-4 mr-2" />
                 Generer les Taches
               </Button>

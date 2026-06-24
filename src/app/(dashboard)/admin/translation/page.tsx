@@ -61,7 +61,7 @@ export default function TranslationPage() {
           { key: 'pitch' as const, label: 'Pitch multilingue', icon: Send },
         ].map(m => {
           const MIcon = m.icon
-          return <button key={m.key} onClick={() => setMode(m.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium ${mode === m.key ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60'}`}><MIcon className="h-3.5 w-3.5" />{m.label}</button>
+          return <button key={m.key} onClick={() => setMode(m.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium ${mode === m.key ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60'}`}><MIcon className="h-3.5 w-3.5" />{m.label}</button>
         })}
       </div>
 
@@ -78,9 +78,9 @@ export default function TranslationPage() {
             </select>
           </div>
 
-          <textarea value={sourceText} onChange={e => setSourceText(e.target.value)} placeholder={`Texte en ${TRANSLATION_LANGUAGES.find(l => l.code === sourceLang)?.name}...`} rows={10} className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#E50914] focus:outline-none resize-none" />
+          <textarea value={sourceText} onChange={e => setSourceText(e.target.value)} placeholder={`Texte en ${TRANSLATION_LANGUAGES.find(l => l.code === sourceLang)?.name}...`} rows={10} className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#C9A227] focus:outline-none resize-none" />
 
-          <button onClick={translate} disabled={translating || !sourceText.trim()} className="w-full flex items-center justify-center gap-2 py-3 bg-[#E50914] text-white font-semibold rounded-xl disabled:opacity-50">
+          <button onClick={translate} disabled={translating || !sourceText.trim()} className="w-full flex items-center justify-center gap-2 py-3 bg-[#C9A227] text-white font-semibold rounded-xl disabled:opacity-50">
             {translating ? <Loader2 className="h-5 w-5 animate-spin" /> : <Languages className="h-5 w-5" />}
             {translating ? 'Traduction...' : 'Traduire'}
           </button>

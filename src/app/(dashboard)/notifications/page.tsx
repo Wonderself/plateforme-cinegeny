@@ -39,7 +39,7 @@ const NOTIF_COLORS: Record<string, string> = {
   TASK_REJECTED: 'text-red-500',
   SUBMISSION_REVIEWED: 'text-yellow-500',
   PAYMENT_RECEIVED: 'text-emerald-500',
-  LEVEL_UP: 'text-[#E50914]',
+  LEVEL_UP: 'text-[#C9A227]',
   SYSTEM: 'text-white/50',
 }
 
@@ -133,7 +133,7 @@ export default async function NotificationsPage({
         </div>
         {unreadCount > 0 && (
           <form action={markAllNotificationsReadAction}>
-            <Button variant="outline" size="sm" type="submit" className="rounded-xl border-[#E50914]/30 text-[#E50914] hover:bg-[#E50914]/5 transition-all duration-300">
+            <Button variant="outline" size="sm" type="submit" className="rounded-xl border-[#C9A227]/30 text-[#C9A227] hover:bg-[#C9A227]/5 transition-all duration-300">
               <CheckCircle className="h-4 w-4 mr-2" />
               Tout marquer comme lu
             </Button>
@@ -151,7 +151,7 @@ export default async function NotificationsPage({
               href={filter.value ? `/notifications?type=${filter.value}` : '/notifications'}
               className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all border ${
                 isActive
-                  ? 'bg-[#E50914]/10 text-[#E50914] border-[#E50914]/30'
+                  ? 'bg-[#C9A227]/10 text-[#C9A227] border-[#C9A227]/30'
                   : 'bg-white/[0.03] text-white/50 border-white/10 hover:border-white/10 hover:text-white/80'
               }`}
             >
@@ -194,7 +194,7 @@ export default async function NotificationsPage({
                       key={notification.id}
                       className={`rounded-xl border transition-all duration-300 p-4 hover:bg-white/[0.03] ${
                         isUnread
-                          ? 'border-l-2 border-l-[#E50914] border-white/10 bg-[#E50914]/5'
+                          ? 'border-l-2 border-l-[#C9A227] border-white/10 bg-[#C9A227]/5'
                           : 'border-white/5 opacity-70 hover:opacity-100'
                       }`}
                     >
@@ -207,7 +207,7 @@ export default async function NotificationsPage({
                             <Icon className="h-4 w-4" />
                           </div>
                           {isUnread && (
-                            <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#E50914] border-2 border-[#0A0A0A] shadow-[0_2px_8px_rgba(0,0,0,0.3)] shadow-[#E50914]/20" />
+                            <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#C9A227] border-2 border-[#0A0A0A] shadow-[0_2px_8px_rgba(0,0,0,0.3)] shadow-[#C9A227]/20" />
                           )}
                         </div>
 
@@ -237,7 +237,7 @@ export default async function NotificationsPage({
                           <div className="flex items-center gap-2 mt-2.5">
                             {notification.href && (
                               <Link href={notification.href}>
-                                <Button variant="ghost" size="sm" className="h-7 text-xs rounded-lg text-[#E50914] hover:text-[#FF2D2D] hover:bg-[#E50914]/5 transition-all duration-300">
+                                <Button variant="ghost" size="sm" className="h-7 text-xs rounded-lg text-[#C9A227] hover:text-[#E8C766] hover:bg-[#C9A227]/5 transition-all duration-300">
                                   Voir <ExternalLink className="h-3 w-3 ml-1" />
                                 </Button>
                               </Link>

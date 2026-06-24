@@ -107,7 +107,7 @@ export default function MyStudioPage() {
         ].map(t => {
           const TIcon = t.icon
           return (
-            <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>
+            <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>
               <TIcon className="h-4 w-4" /> {t.label}
             </button>
           )
@@ -119,7 +119,7 @@ export default function MyStudioPage() {
           {/* Prompt */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <label className="text-xs text-white/50 mb-1.5 block">Prompt</label>
-            <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez l'image que vous souhaitez générer..." rows={3} className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#E50914] focus:outline-none resize-none" />
+            <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez l'image que vous souhaitez générer..." rows={3} className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#C9A227] focus:outline-none resize-none" />
           </div>
 
           {/* Style */}
@@ -127,7 +127,7 @@ export default function MyStudioPage() {
             <label className="text-xs text-white/50 mb-2 block">Style ({PHOTO_STYLES.length})</label>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
               {PHOTO_STYLES.map(s => (
-                <button key={s.id} onClick={() => setStyle(s.id)} className={`rounded-xl border p-3 text-left transition-colors ${style === s.id ? 'border-[#E50914] bg-[#E50914]/10' : 'border-white/10 hover:border-white/15'}`}>
+                <button key={s.id} onClick={() => setStyle(s.id)} className={`rounded-xl border p-3 text-left transition-colors ${style === s.id ? 'border-[#C9A227] bg-[#C9A227]/10' : 'border-white/10 hover:border-white/15'}`}>
                   <p className="text-xs font-medium text-white">{s.label}</p>
                   <p className="text-[10px] text-white/40">{s.desc}</p>
                 </button>
@@ -141,7 +141,7 @@ export default function MyStudioPage() {
               <label className="text-xs text-white/50 mb-2 block">Ratio</label>
               <div className="flex gap-2">
                 {RATIOS.map(r => (
-                  <button key={r.id} onClick={() => setRatio(r.id)} className={`px-4 py-2 rounded-lg text-xs font-medium ${ratio === r.id ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>
+                  <button key={r.id} onClick={() => setRatio(r.id)} className={`px-4 py-2 rounded-lg text-xs font-medium ${ratio === r.id ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>
                     {r.label}
                   </button>
                 ))}
@@ -156,7 +156,7 @@ export default function MyStudioPage() {
           </div>
 
           {/* Generate */}
-          <button onClick={generatePhoto} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+          <button onClick={generatePhoto} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
             {generating ? <><Loader2 className="h-5 w-5 animate-spin" /> Génération...</> : <><Wand2 className="h-5 w-5" /> Générer l&apos;image</>}
           </button>
         </div>
@@ -166,21 +166,21 @@ export default function MyStudioPage() {
         <div className="space-y-6">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <label className="text-xs text-white/50 mb-1.5 block">Prompt vidéo</label>
-            <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez la séquence vidéo..." rows={3} className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#E50914] focus:outline-none resize-none" />
+            <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Décrivez la séquence vidéo..." rows={3} className="w-full rounded-xl border border-white/10 px-4 py-3 text-sm focus:border-[#C9A227] focus:outline-none resize-none" />
           </div>
 
           <div>
             <label className="text-xs text-white/50 mb-2 block">Durée</label>
             <div className="flex gap-2">
               {VIDEO_DURATIONS.map(d => (
-                <button key={d.id} onClick={() => setDuration(d.id)} className={`px-4 py-2 rounded-lg text-xs font-medium ${duration === d.id ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>
+                <button key={d.id} onClick={() => setDuration(d.id)} className={`px-4 py-2 rounded-lg text-xs font-medium ${duration === d.id ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}>
                   {d.label}
                 </button>
               ))}
             </div>
           </div>
 
-          <button onClick={generateVideo} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#E50914] hover:bg-[#FF2D2D] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
+          <button onClick={generateVideo} disabled={generating || !prompt.trim()} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-xl disabled:opacity-50 transition-colors">
             {generating ? <><Loader2 className="h-5 w-5 animate-spin" /> Génération async...</> : <><Film className="h-5 w-5" /> Générer la vidéo</>}
           </button>
         </div>

@@ -75,7 +75,7 @@ export default function BriefingPage() {
           { key: 'plan' as const, label: 'Plan d\'Attaque', icon: Target },
         ].map(t => {
           const TIcon = t.icon
-          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium ${tab === t.key ? 'bg-[#E50914] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
+          return <button key={t.key} onClick={() => setTab(t.key)} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium ${tab === t.key ? 'bg-[#C9A227] text-white' : 'bg-white/[0.05] text-white/60 hover:bg-white/[0.08]'}`}><TIcon className="h-3.5 w-3.5" />{t.label}</button>
         })}
       </div>
 
@@ -189,7 +189,7 @@ export default function BriefingPage() {
       {tab === 'plan' && (
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <h2 className="text-lg font-semibold text-white flex items-center gap-2"><Target className="h-5 w-5 text-[#E50914]" />Plan d&apos;Attaque — Aujourd&apos;hui</h2>
+            <h2 className="text-lg font-semibold text-white flex items-center gap-2"><Target className="h-5 w-5 text-[#C9A227]" />Plan d&apos;Attaque — Aujourd&apos;hui</h2>
             <button onClick={() => sendToTelegram('Plan d\'attaque')} disabled={loading} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs bg-red-500/15 text-red-400 hover:bg-red-500/25 disabled:opacity-50 self-start sm:self-auto">
               <Send className="h-3.5 w-3.5" />Envoyer Telegram
             </button>

@@ -15,7 +15,7 @@ const LEVEL_COLORS: Record<string, { text: string; bar: string; bg: string }> = 
   ROOKIE: { text: 'text-gray-400', bar: 'bg-gray-400', bg: 'bg-gray-400/10' },
   PRO: { text: 'text-blue-400', bar: 'bg-blue-500', bg: 'bg-blue-500/10' },
   EXPERT: { text: 'text-purple-400', bar: 'bg-purple-500', bg: 'bg-purple-500/10' },
-  VIP: { text: 'text-[#E50914]', bar: 'bg-[#E50914]', bg: 'bg-[#E50914]/10' },
+  VIP: { text: 'text-[#C9A227]', bar: 'bg-[#C9A227]', bg: 'bg-[#C9A227]/10' },
 }
 
 interface LevelProgressProps {
@@ -51,7 +51,7 @@ export function LevelProgress({ level, points, compact = false }: LevelProgressP
         {nextLevel ? (
           <span className="text-[10px] text-white/30">{nextLevel}</span>
         ) : (
-          <span className="text-[10px] text-[#E50914]">MAX</span>
+          <span className="text-[10px] text-[#C9A227]">MAX</span>
         )}
       </div>
     )
@@ -71,7 +71,7 @@ export function LevelProgress({ level, points, compact = false }: LevelProgressP
             {(nextThreshold - points).toLocaleString('fr-FR')} pts → {nextLevel}
           </span>
         ) : (
-          <span className="text-xs text-[#E50914]">Niveau Maximum</span>
+          <span className="text-xs text-[#C9A227]">Niveau Maximum</span>
         )}
       </div>
 
