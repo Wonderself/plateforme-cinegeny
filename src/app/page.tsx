@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma'
 import { NetflixHome } from '@/components/netflix/netflix-home'
+import { ALL_FILMS, FILMS_BY_GENRE } from '@/data/films'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,103 +25,109 @@ export const metadata = {
 }
 
 async function getHomeData() {
+  // ── Film showcase: canonical slate (src/data/films.ts) ──
+  // Source of truth is the curated 6-film slate, identical to /films.
+  // This keeps the homepage in sync with the catalogue and the official
+  // posters regardless of the (legacy) database seed state.
+  const slate = ALL_FILMS.map((f) => ({
+    id: f.id,
+    title: f.title,
+    slug: f.slug,
+    synopsis: f.synopsis,
+    genre: f.genre,
+    coverImageUrl: f.coverImageUrl,
+    status: f.status,
+    progressPct: f.progressPct,
+    fundingPct: f.fundingPct,
+    type: 'film' as const,
+  }))
+
+  // Hero = the most advanced productions first (highest progress), with poster.
+  const heroFilms = [...slate]
+    .filter((f) => f.coverImageUrl)
+    .sort((a, b) => b.progressPct - a.progressPct)
+    .slice(0, 5)
+    .map((f) => ({
+      id: f.id,
+      title: f.title,
+      slug: f.slug,
+      synopsis: f.synopsis,
+      genre: f.genre,
+      coverImageUrl: f.coverImageUrl,
+      status: f.status,
+      type: 'film' as const,
+    }))
+
+  const genres = Object.fromEntries(
+    Object.entries(FILMS_BY_GENRE)
+      .filter(([, films]) => films.length > 0)
+      .map(([genre, films]) => [
+        genre,
+        films.map((f) => ({
+          id: f.id,
+          title: f.title,
+          slug: f.slug,
+          genre: f.genre,
+          coverImageUrl: f.coverImageUrl,
+          status: f.status,
+          progressPct: f.progressPct,
+          fundingPct: f.fundingPct,
+          type: 'film' as const,
+        })),
+      ])
+  )
+
+  const inProduction = slate.filter(
+    (f) => f.status === 'IN_PRODUCTION' || f.status === 'POST_PRODUCTION'
+  )
+  const inDevelopment = slate.filter(
+    (f) => f.status === 'DRAFT' || f.status === 'PRE_PRODUCTION'
+  )
+  const released = slate.filter((f) => f.status === 'RELEASED')
+
+  // ── Streaming catalog (separate feature) — best-effort from DB ──
+  type CatalogCard = {
+    id: string
+    title: string
+    slug: string
+    genre: string | null
+    coverImageUrl: string | null
+    status: string
+    progressPct: number
+    type: 'catalog'
+  }
+  let catalogFilms: CatalogCard[] = []
   try {
-    // Featured films for hero banner (most advanced projects)
-    const heroFilms = await prisma.film.findMany({
-      where: { isPublic: true, coverImageUrl: { not: null } },
-      orderBy: [{ status: 'desc' }, { updatedAt: 'desc' }],
-      take: 5,
-      select: {
-        id: true, title: true, slug: true, synopsis: true,
-        genre: true, coverImageUrl: true, status: true,
-      },
-    })
-
-    // All public films grouped by genre
-    const allFilmsRaw = await prisma.film.findMany({
-      where: { isPublic: true },
-      orderBy: { updatedAt: 'desc' },
-      select: {
-        id: true, title: true, slug: true, genre: true,
-        coverImageUrl: true, status: true, progressPct: true,
-        estimatedBudget: true,
-      },
-    })
-
-    // Compute a deterministic fundingPct from estimatedBudget + progressPct
-    const allFilms = allFilmsRaw.map(f => {
-      // Seed a deterministic funding % based on slug hash + progress
-      const hash = f.slug.split('').reduce((a, c) => a + c.charCodeAt(0), 0)
-      const baseFunding = (hash % 60) + 15 // 15-74%
-      const bonus = Math.min(f.progressPct * 0.5, 25) // more progress = more funded
-      const fundingPct = Math.min(Math.round(baseFunding + bonus), 100)
-      return { ...f, fundingPct }
-    })
-
-    // Catalog films (streaming)
-    const catalogFilms = await prisma.catalogFilm.findMany({
+    const rows = await prisma.catalogFilm.findMany({
       where: { status: { in: ['LIVE', 'APPROVED'] } },
       orderBy: { viewCount: 'desc' },
       select: {
         id: true, title: true, slug: true, genre: true,
-        thumbnailUrl: true, posterUrl: true, status: true, viewCount: true,
+        thumbnailUrl: true, posterUrl: true, status: true,
       },
     })
-
-    // Group films by genre
-    const genres = new Map<string, typeof allFilms>()
-    for (const film of allFilms) {
-      const genre = film.genre || 'Other'
-      if (!genres.has(genre)) genres.set(genre, [])
-      genres.get(genre)!.push(film)
-    }
-
-    // Films in production
-    const inProduction = allFilms.filter(f =>
-      f.status === 'IN_PRODUCTION' || f.status === 'POST_PRODUCTION'
-    )
-
-    // Films in development
-    const inDevelopment = allFilms.filter(f =>
-      f.status === 'DRAFT' || f.status === 'PRE_PRODUCTION'
-    )
-
-    // Released films
-    const released = allFilms.filter(f => f.status === 'RELEASED')
-
-    return {
-      heroFilms: heroFilms.map(f => ({ ...f, type: 'film' as const })),
-      allFilms: allFilms.map(f => ({ ...f, type: 'film' as const })),
-      catalogFilms: catalogFilms.map(f => ({
-        id: f.id,
-        title: f.title,
-        slug: f.slug,
-        genre: f.genre,
-        coverImageUrl: f.posterUrl || f.thumbnailUrl,
-        status: f.status,
-        progressPct: 0,
-        type: 'catalog' as const,
-      })),
-      genres: Object.fromEntries(
-        Array.from(genres.entries())
-          .filter(([, films]) => films.length > 0)
-          .map(([genre, films]) => [genre, films.map(f => ({ ...f, type: 'film' as const }))])
-      ),
-      inProduction: inProduction.map(f => ({ ...f, type: 'film' as const })),
-      inDevelopment: inDevelopment.map(f => ({ ...f, type: 'film' as const })),
-      released: released.map(f => ({ ...f, type: 'film' as const })),
-    }
+    catalogFilms = rows.map((f) => ({
+      id: f.id,
+      title: f.title,
+      slug: f.slug,
+      genre: f.genre,
+      coverImageUrl: f.posterUrl || f.thumbnailUrl,
+      status: f.status,
+      progressPct: 0,
+      type: 'catalog' as const,
+    }))
   } catch {
-    // DB not available — return empty data
-    return {
-      heroFilms: [],
-      allFilms: [],
-      catalogFilms: [],
-      genres: {},
-      inProduction: [],
-      inDevelopment: [],
-      released: [],
-    }
+    // DB unavailable — the slate above still renders the full homepage.
+  }
+
+  return {
+    heroFilms,
+    allFilms: slate,
+    catalogFilms,
+    genres,
+    inProduction,
+    inDevelopment,
+    released,
   }
 }
 
