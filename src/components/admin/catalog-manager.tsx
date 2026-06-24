@@ -100,6 +100,7 @@ export function CatalogManager() {
   const activeSlugs = useActiveArchivedSlugs()
   const [query, setQuery] = useState('')
   const [genre, setGenre] = useState<string>('Tous')
+  const [error, setError] = useState<string | null>(null)
 
   const genres = useMemo(
     () => ['Tous', ...Array.from(new Set(ARCHIVED_FILMS.map((f) => f.genre)))],
@@ -132,6 +133,11 @@ export function CatalogManager() {
           La slate active (6 films réels) est toujours publiée. Réactivez n&apos;importe quel film
           archivé pour le faire réapparaître dans le catalogue public.
         </p>
+        {error && (
+          <p className="mt-3 rounded-xl border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">
+            {error}
+          </p>
+        )}
       </div>
 
       {/* Stat strip */}
@@ -214,7 +220,12 @@ export function CatalogManager() {
                 key={f.slug}
                 film={f}
                 on={on}
-                onToggle={() => setArchivedActive(f.slug, !on)}
+                onToggle={() => {
+                  setError(null)
+                  setArchivedActive(f.slug, !on).catch((err) =>
+                    setError(err instanceof Error ? err.message : 'Erreur inconnue')
+                  )
+                }}
               />
             )
           })}

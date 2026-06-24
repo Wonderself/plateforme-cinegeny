@@ -497,6 +497,16 @@ model AdminSettings {
   updatedAt             DateTime @updatedAt
 }
 
+/// Server-side activation state for archived (legacy) catalog films.
+/// A row exists for any archived film an admin has toggled; `active`
+/// controls whether it is merged into the public live catalog.
+/// Managed from /admin/films-catalog (replaces the old localStorage store).
+model CatalogActivation {
+  slug      String   @id
+  active    Boolean  @default(true)
+  updatedAt DateTime @updatedAt
+}
+
 model AdminTodo {
   id          String       @id @default(cuid())
   title       String

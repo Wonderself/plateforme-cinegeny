@@ -506,24 +506,25 @@ async function main() {
   }
 
   // =============================================
-  // SLATE DECK 2026 — 20 films from Pipeline
+  // SLATE 2026 — 6 films officiels CINEGENY
+  // (source de vérité : src/data/films.ts)
   // =============================================
 
-  // ── P1: MERCI... (THE MIRACLE PROTOCOL) ──
+  // ── P1: LE PORTRAIT DE OSCAR WILDE ──
   const filmP1 = await prisma.film.upsert({
-    where: { slug: 'merci-the-miracle-protocol' },
+    where: { slug: 'le-portrait-de-oscar-wilde' },
     update: {},
     create: {
-      title: 'MERCI... (The Miracle Protocol)',
-      slug: 'merci-the-miracle-protocol',
-      description: "Docu-serie sur les miracles du 7 octobre. Temoignages de survivants, reconstitutions cinematiques.",
-      synopsis: "Quatre episodes de 52 minutes explorant les recits de miracles et de survie du 7 octobre. A travers des temoignages bouleversants et des reconstitutions cinematographiques, cette serie documentaire revele la dimension spirituelle et humaine de l'evenement.",
-      genre: 'Documentaire',
+      title: 'Le portrait de Oscar Wilde',
+      slug: 'le-portrait-de-oscar-wilde',
+      description: "Réalisé par Eric Haldezos — un film de Emmanuel Smadja. Biopic flamboyant sur Oscar Wilde.",
+      synopsis: "Génie de l'esprit et martyr de son époque, Oscar Wilde fascine et scandalise le Londres victorien. Un portrait flamboyant de l'écrivain le plus spirituel — et le plus provocateur — de son siècle, de sa gloire à sa chute.",
+      genre: 'Drame',
       catalog: 'LUMIERE',
       status: 'IN_PRODUCTION',
       isPublic: true,
-      coverImageUrl: '/posters/miracle-protocol.jpg',
-      estimatedBudget: 120000,
+      coverImageUrl: '/posters/oscar-wilde.png',
+      estimatedBudget: 180000,
     },
   })
   await prisma.filmPhase.createMany({ data: [
@@ -539,21 +540,21 @@ async function main() {
     { filmId: filmP1.id, phaseName: 'FINAL', phaseOrder: 10, status: 'LOCKED' },
   ] })
 
-  // ── P2: KETER (THE SINGULARITY POINT) ──
+  // ── P2: LES SOUFFRANCES DU JEUNE GOETHE ──
   const filmP2 = await prisma.film.upsert({
-    where: { slug: 'keter-the-singularity-point' },
+    where: { slug: 'les-souffrances-du-jeune-goethe' },
     update: {},
     create: {
-      title: 'KETER (The Singularity Point)',
-      slug: 'keter-the-singularity-point',
-      description: "Christopher Nolan meets the Zohar. Thriller sci-fi ou physique quantique et Kabbale se rencontrent.",
-      synopsis: "Un physicien de renom decouvre que le point de singularite quantique correspond exactement a la Keter (couronne) de l'Arbre de Vie kabbalistique. Alors qu'une intelligence artificielle tente d'utiliser cette decouverte pour recrire la realite, il doit affronter les limites de la science et de la foi dans une course contre la montre vertigineuse.",
-      genre: 'Science-Fiction',
+      title: 'Les souffrances du jeune Goethe',
+      slug: 'les-souffrances-du-jeune-goethe',
+      description: "Réalisé par Ludovic Clermont. D'après le chef-d'œuvre de J.W. von Goethe.",
+      synopsis: "D'après le chef-d'œuvre de J.W. von Goethe. Un jeune homme se consume d'un amour impossible pour une femme déjà promise. L'amour, la folie, l'éternité : une adaptation cinématographique éblouissante.",
+      genre: 'Drame',
       catalog: 'LUMIERE',
       status: 'PRE_PRODUCTION',
       isPublic: true,
-      coverImageUrl: '/posters/keter.jpg',
-      estimatedBudget: 200000,
+      coverImageUrl: '/posters/jeune-goethe.png',
+      estimatedBudget: 160000,
     },
   })
   await prisma.filmPhase.createMany({ data: [
@@ -569,21 +570,21 @@ async function main() {
     { filmId: filmP2.id, phaseName: 'FINAL', phaseOrder: 10, status: 'LOCKED' },
   ] })
 
-  // ── P3: LE CODE D'ESTHER ──
+  // ── P3: LE VOYAGE DANS LA LUNE ──
   const filmP3 = await prisma.film.upsert({
-    where: { slug: 'le-code-desther' },
+    where: { slug: 'le-voyage-dans-la-lune' },
     update: {},
     create: {
-      title: "Le Code d'Esther",
-      slug: 'le-code-desther',
-      description: "Investigation sur les codes caches du Livre d'Esther. Docu-fiction historique.",
-      synopsis: "Un cryptographe et une historienne decouvrent des patterns mathematiques caches dans le Livre d'Esther. Leurs recherches revelent des paralleles troublants entre le recit biblique et des evenements historiques majeurs. Entre reconstitutions epiques de la Perse antique et analyses cryptographiques modernes.",
-      genre: 'Documentaire',
-      catalog: 'BIBLE',
+      title: 'Le voyage dans la Lune',
+      slug: 'le-voyage-dans-la-lune',
+      description: "Réalisé par Frédéric Noël — Les Films de l'Akyme. Le premier film de science-fiction, ré-imaginé.",
+      synopsis: "Le premier film de science-fiction de l'histoire, ré-imaginé pour notre époque. L'épopée d'un explorateur visionnaire qui défie l'impossible pour atteindre la Lune. Sortie prochainement.",
+      genre: 'Science-Fiction',
+      catalog: 'LUMIERE',
       status: 'PRE_PRODUCTION',
       isPublic: true,
-      coverImageUrl: '/posters/esther-code.jpg',
-      estimatedBudget: 90000,
+      coverImageUrl: '/posters/voyage-dans-la-lune.png',
+      estimatedBudget: 220000,
     },
   })
   await prisma.filmPhase.createMany({ data: [
@@ -599,21 +600,21 @@ async function main() {
     { filmId: filmP3.id, phaseName: 'FINAL', phaseOrder: 10, status: 'LOCKED' },
   ] })
 
-  // ── P4: ZION OF AFRICA ──
+  // ── P4: LE DICTIONNAIRE DE VOLTAIRE ──
   const filmP4 = await prisma.film.upsert({
-    where: { slug: 'zion-of-africa' },
+    where: { slug: 'le-dictionnaire-de-voltaire' },
     update: {},
     create: {
-      title: 'Zion of Africa',
-      slug: 'zion-of-africa',
-      description: "L'histoire meconnue des communautes juives d'Afrique. Des Beta Israel aux Lemba.",
-      synopsis: "Des Beta Israel d'Ethiopie aux Lemba du Zimbabwe, en passant par les communautes du Nigeria et d'Afrique du Sud, ce documentaire revelateur retrace l'heritage juif africain meconnu. Voyage a travers les siecles, les rituels, les genes et les traditions qui unissent ces peuples a une histoire commune.",
-      genre: 'Documentaire',
+      title: 'Le dictionnaire de Voltaire',
+      slug: 'le-dictionnaire-de-voltaire',
+      description: "Réalisé par François Laroche. Une satire épique sur Voltaire et le combat des Lumières.",
+      synopsis: "Une satire épique sur Voltaire et son combat des Lumières. Armé de sa plume et de son ironie, le philosophe affronte l'obscurantisme de son temps dans une fresque mordante et flamboyante.",
+      genre: 'Historique',
       catalog: 'LUMIERE',
-      status: 'DRAFT',
+      status: 'IN_PRODUCTION',
       isPublic: true,
-      coverImageUrl: '/posters/keter.jpg',
-      estimatedBudget: 80000,
+      coverImageUrl: '/posters/dictionnaire-voltaire.png',
+      estimatedBudget: 170000,
     },
   })
   await prisma.filmPhase.createMany({ data: [
@@ -634,13 +635,13 @@ async function main() {
     where: { slug: 'le-dernier-convoi' },
     update: {},
     create: {
-      title: 'Le Dernier Convoi (The Last Train)',
+      title: 'Le Dernier Convoi',
       slug: 'le-dernier-convoi',
-      description: "Le dernier convoi de deportation parti de France en 1944. Docu-drama poignant.",
-      synopsis: "Aout 1944 : alors que Paris est sur le point d'etre libere, un dernier train quitte Bobigny vers les camps. A travers les destins croises de deportes, de resistants et de cheminots, ce film reconstitue les dernieres heures d'une tragedie historique basee sur des temoignages reels.",
-      genre: 'Drame',
+      description: "Réalisé par Eric Haldezos. Docu-drama d'après des témoignages réels du dernier convoi de 1944.",
+      synopsis: "Août 1944 : alors que Paris est sur le point d'être libéré, un dernier train quitte Bobigny vers les camps. À travers les destins croisés de déportés, de résistants et de cheminots, ce docu-drama reconstitue les dernières heures d'une tragédie historique basée sur des témoignages réels.",
+      genre: 'Historique',
       catalog: 'LUMIERE',
-      status: 'DRAFT',
+      status: 'PRE_PRODUCTION',
       isPublic: true,
       coverImageUrl: '/posters/last-train.jpg',
       estimatedBudget: 150000,
@@ -659,21 +660,21 @@ async function main() {
     { filmId: filmP5.id, phaseName: 'FINAL', phaseOrder: 10, status: 'LOCKED' },
   ] })
 
-  // ── P6: CARNAVAL (BAD TRIP) ──
+  // ── P6: THE ARTISTS ──
   const filmP6 = await prisma.film.upsert({
-    where: { slug: 'carnaval-bad-trip' },
+    where: { slug: 'the-artists' },
     update: {},
     create: {
-      title: 'Carnaval (Bad Trip)',
-      slug: 'carnaval-bad-trip',
-      description: "Court-metrage experimental. Un carnaval qui tourne au cauchemar. Demo technique IA.",
-      synopsis: "Un jeune homme se retrouve piege dans un carnaval qui se transforme progressivement en cauchemar. Les masques deviennent reels, les couleurs virent au cauchemardesque, la realite se distord. Court-metrage experimental entierement genere par IA, servant de demonstration technique pour le studio.",
-      genre: 'Horreur',
+      title: 'The Artists',
+      slug: 'the-artists',
+      description: "Réalisé par Eric Haldezos — produit par Emmanuel Smadja, curation & IA Daniel Siboni. Animation CINEGENY.",
+      synopsis: "Un petit garçon donne vie à ses dessins : une bande de petits monstres hauts en couleur s'échappe de sa feuille et devient les artistes les plus déjantés du monde. Une fable tendre sur l'imagination et la création.",
+      genre: 'Animation',
       catalog: 'LUMIERE',
-      status: 'PRE_PRODUCTION',
+      status: 'POST_PRODUCTION',
       isPublic: true,
-      coverImageUrl: '/posters/esther-code.jpg',
-      estimatedBudget: 25000,
+      coverImageUrl: '/posters/the-artists.png',
+      estimatedBudget: 140000,
     },
   })
   await prisma.filmPhase.createMany({ data: [
@@ -1106,8 +1107,13 @@ async function main() {
     { filmId: filmB5.id, phaseName: 'FINAL', phaseOrder: 10, status: 'LOCKED' },
   ] })
 
-  const allSlateFilms = [filmP1, filmP2, filmP3, filmP4, filmP5, filmP6, filmP7, filmP8, filmE1, filmE2, filmE3, filmE4, filmE5, filmE6, filmE7, filmB1, filmB2, filmB3, filmB4, filmB5]
-  console.log(`✅ ${allSlateFilms.length} films Slate Deck 2026 créés avec phases`)
+  // filmP1..filmP6 = la slate officielle 2026 (6 films, cf. src/data/films.ts).
+  // Les films suivants (P7, P8, E*, B*) sont des données de démo / catalogue archivé
+  // alimentant les flux tâches, tokens et streaming.
+  const slateFilms = [filmP1, filmP2, filmP3, filmP4, filmP5, filmP6]
+  const archiveDemoFilms = [filmP7, filmP8, filmE1, filmE2, filmE3, filmE4, filmE5, filmE6, filmE7, filmB1, filmB2, filmB3, filmB4, filmB5]
+  const allSlateFilms = [...slateFilms, ...archiveDemoFilms]
+  console.log(`✅ ${slateFilms.length} films officiels + ${archiveDemoFilms.length} films démo/archive créés avec phases`)
 
   // =============================================
   // UPDATE FILM STATS
