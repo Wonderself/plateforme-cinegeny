@@ -309,10 +309,12 @@ const GENRE_COLORS: Record<string, string> = {
   'Fantasy': '#A855F7',
 }
 
-function deterministicNumber(slug: string, min: number, max: number): number {
-  let hash = 0
-  for (let i = 0; i < slug.length; i++) hash = ((hash << 5) - hash) + slug.charCodeAt(i)
-  return min + Math.abs(hash) % (max - min)
+const STATUS_NOTE: Record<string, string> = {
+  DRAFT: 'En développement. Les votes de la communauté décident des projets qui passent en production.',
+  PRE_PRODUCTION: "En pré-production — l'équipe prépare le tournage : scénario, storyboard, casting, repérages.",
+  IN_PRODUCTION: 'En production — le film est créé phase par phase par la communauté et nos agents IA.',
+  POST_PRODUCTION: 'En post-production — montage, VFX et mixage son. La bande-annonce arrive bientôt.',
+  RELEASED: 'Disponible — le film est désormais visible en streaming.',
 }
 
 function CatalogFilmPage({ film }: { film: FilmData }) {
@@ -345,406 +347,216 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Banner */}
-      <div className="relative h-72 md:h-96">
+      {/* ── Cinematic hero ── */}
+      <section className="relative flex min-h-[60vh] items-end overflow-hidden md:min-h-[66vh]">
         {film.coverImageUrl ? (
-          <Image src={film.coverImageUrl} alt={film.title} fill className="object-cover" sizes="100vw" priority />
+          <Image src={film.coverImageUrl} alt={film.title} fill priority sizes="100vw" className="scale-105 object-cover object-center" />
         ) : (
-          <div className="w-full h-full flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${accentColor}15, #0A0A0A 50%, ${accentColor}08)` }}>
-            <Film className="h-24 w-24" style={{ color: `${accentColor}30` }} />
-          </div>
+          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${accentColor}1A, #0A0908 55%, ${accentColor}0D)` }} />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent" />
+        {/* Cinematic gradients */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/70 to-[#0A0908]/15" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/85 via-transparent to-transparent" />
+        {/* Accent glow */}
+        <div className="pointer-events-none absolute -bottom-24 left-[18%] h-72 w-72 rounded-full opacity-25 blur-[130px]" style={{ background: accentColor }} />
 
-        <div className="absolute bottom-8 left-4 right-4 container mx-auto max-w-5xl">
-          <div className="flex items-end gap-4">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-3">
-                <Badge variant="default" style={{ backgroundColor: accentColor }}>{film.genre}</Badge>
-                <Badge variant="secondary">{statusLabel}</Badge>
-                <Badge variant="outline" className="text-white/50 border-white/10">{film.rating}</Badge>
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold font-playfair section-title-flash">
-                {film.title}
-              </h1>
-              <div className="flex items-center gap-4 mt-3 text-sm text-white/40">
-                <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {film.year}</span>
-                <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {film.duration}</span>
-                <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> {film.director}</span>
-              </div>
-              <div className="mt-3">
-                <SocialShare
-                  url={`https://cinegen.studio/films/${film.slug}`}
-                  title={`${film.title} — ${film.genre} | CINEGENY`}
-                  description={film.synopsis}
-                />
-              </div>
+        <div className="relative z-10 w-full">
+          <div className="container mx-auto max-w-5xl px-6 pb-12 sm:px-10 md:px-16 md:pb-16">
+            <div className="mb-5 flex flex-wrap items-center gap-2.5">
+              <span className="rounded-full px-3 py-1 text-[11px] font-semibold text-black" style={{ backgroundColor: accentColor }}>{film.genre}</span>
+              <span className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-1 text-[11px] font-medium text-white/75 backdrop-blur-md">{statusLabel}</span>
+              <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-white/45">{film.rating}</span>
+            </div>
+            <h1 className="max-w-3xl font-playfair text-4xl font-bold leading-[1.05] text-white md:text-6xl">
+              {film.title}
+            </h1>
+            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/55">
+              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4 text-[#C9A227]/70" /> {film.year}</span>
+              <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-[#C9A227]/70" /> {film.duration}</span>
+              <span className="flex items-center gap-1.5"><Users className="h-4 w-4 text-[#C9A227]/70" /> {film.director}</span>
+            </div>
+            <div className="mt-6">
+              <SocialShare
+                url={`https://cinegen.studio/films/${film.slug}`}
+                title={`${film.title} — ${film.genre} | CINEGENY`}
+                description={film.synopsis}
+              />
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <div className="container mx-auto max-w-5xl px-6 sm:px-10 md:px-16 py-16 md:py-20 space-y-14 md:space-y-16">
         {/* Synopsis + Stats */}
         <div className="grid md:grid-cols-3 gap-10 md:gap-12">
-          <div className="md:col-span-2 space-y-6">
-            <div>
-              <h2 className="text-lg font-semibold mb-3" style={{ color: accentColor }}>Synopsis</h2>
-              <p className="text-white/60 leading-relaxed text-base">{film.synopsis}</p>
-            </div>
+          <div className="md:col-span-2 space-y-10">
+            {/* Synopsis */}
+            <section>
+              <h2 className="mb-4 flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white/40">
+                <span className="h-px w-6 bg-[#C9A227]/60" /> Synopsis
+              </h2>
+              <p className="text-[15px] leading-[1.85] text-white/65">{film.synopsis}</p>
+            </section>
 
-            {/* Cast & Crew */}
-            <div>
-              <h2 className="text-lg font-semibold mb-3" style={{ color: accentColor }}>Cast & Crew</h2>
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <span className="text-xs text-white/30 uppercase tracking-wider w-20 shrink-0 pt-0.5">Director</span>
-                  <span className="text-white/70">{film.director}</span>
+            {/* Casting & équipe */}
+            <section>
+              <h2 className="mb-4 flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white/40">
+                <span className="h-px w-6 bg-[#C9A227]/60" /> Casting &amp; Équipe
+              </h2>
+              <dl className="overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+                <div className="flex gap-4 px-5 py-4">
+                  <dt className="w-28 shrink-0 pt-0.5 text-xs uppercase tracking-wider text-white/30">Réalisation</dt>
+                  <dd className="text-sm text-white/75">{film.director}</dd>
                 </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-xs text-white/30 uppercase tracking-wider w-20 shrink-0 pt-0.5">Cast</span>
-                  <span className="text-white/70">{film.cast.join(', ')}</span>
+                <div className="flex gap-4 border-t border-white/[0.06] px-5 py-4">
+                  <dt className="w-28 shrink-0 pt-0.5 text-xs uppercase tracking-wider text-white/30">Distribution</dt>
+                  <dd className="text-sm text-white/75">{film.cast.join(' · ')}</dd>
                 </div>
-              </div>
-            </div>
+              </dl>
+            </section>
 
             {/* Tags */}
             {film.tags.length > 0 && (
-              <div className="flex items-center gap-2 flex-wrap">
-                <Tag className="h-3.5 w-3.5 text-white/30" />
+              <div className="flex flex-wrap items-center gap-2">
+                <Tag className="h-3.5 w-3.5 text-white/25" />
                 {film.tags.map((tag) => (
-                  <span key={tag} className="text-xs px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-white/40">
+                  <span key={tag} className="rounded-full border border-white/[0.07] bg-white/[0.03] px-3 py-1 text-[11px] text-white/45">
                     {tag}
                   </span>
                 ))}
               </div>
             )}
 
-            {/* ── Status-specific sections ── */}
-
-            {/* DRAFT: Vote to greenlight */}
-            {film.status === 'DRAFT' && (
-              <div className="rounded-xl border border-amber-500/20 bg-amber-500/[0.04] p-6 space-y-4">
-                <h3 className="text-base font-bold text-amber-400 flex items-center gap-2">
-                  <Vote className="h-4 w-4" /> This film is in development phase
-                </h3>
-                <p className="text-white/50 text-sm">Vote to greenlight it! Community votes determine which projects move into pre-production.</p>
-                <div className="flex items-center gap-4">
-                  <Link href="/community/scenarios" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500/20 text-amber-400 text-sm font-semibold hover:bg-amber-500/30 transition-colors border border-amber-500/30 hover:border-amber-500/50">
-                    <Vote className="h-4 w-4" /> Vote for this film
-                  </Link>
-                  <div className="flex items-center gap-2 text-sm text-white/40">
-                    <Users className="h-3.5 w-3.5" />
-                    <span className="font-semibold text-amber-400">{deterministicNumber(film.slug, 120, 520)}</span> votes so far
-                  </div>
-                </div>
-                <div className="h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
-                  <div className="h-full rounded-full bg-gradient-to-r from-amber-600 to-amber-400 animate-pulse" style={{ width: `${deterministicNumber(film.slug, 30, 70)}%` }} />
-                </div>
-                <p className="text-xs text-white/25">500 votes needed to greenlight</p>
+            {/* Production status — single, on-brand */}
+            <section className="rounded-2xl border border-[#C9A227]/15 bg-gradient-to-br from-[#C9A227]/[0.05] to-transparent p-6 md:p-7">
+              <div className="mb-3 flex items-center gap-2.5">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-[#C9A227]/25 bg-[#C9A227]/12">
+                  <Clock className="h-3.5 w-3.5 text-[#C9A227]" />
+                </span>
+                <h3 className="text-sm font-semibold text-white">Où en est la production</h3>
+                <span className="ml-auto text-[11px] font-medium text-[#E8C766]">{statusLabel}</span>
               </div>
-            )}
-
-            {/* PRE_PRODUCTION: Phase timeline */}
-            {film.status === 'PRE_PRODUCTION' && (() => {
-              const phases = [
-                { name: 'Script', icon: '01' },
-                { name: 'Storyboard', icon: '02' },
-                { name: 'Previz', icon: '03' },
-                { name: 'Casting', icon: '04' },
-                { name: 'Locations', icon: '05' },
-              ]
-              const currentPhaseIdx = Math.floor(film.progressPct / 20)
-              return (
-                <div className="rounded-xl border border-blue-500/20 bg-blue-500/[0.04] p-6 space-y-5">
-                  <h3 className="text-base font-bold text-blue-400 flex items-center gap-2">
-                    <Clock className="h-4 w-4" /> Pre-production Timeline
-                  </h3>
-                  <p className="text-white/50 text-sm">This film is being prepared for production. The team is working through each preparatory phase.</p>
-                  <div className="relative">
-                    {/* Timeline connector line */}
-                    <div className="absolute top-5 left-0 right-0 h-0.5 bg-white/[0.06]" />
-                    <div className="absolute top-5 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-400 transition-all duration-1000" style={{ width: `${Math.min(100, (currentPhaseIdx / (phases.length - 1)) * 100)}%` }} />
-                    <div className="relative flex justify-between">
-                      {phases.map((phase, i) => {
-                        const isDone = i < currentPhaseIdx
-                        const isCurrent = i === currentPhaseIdx
-                        return (
-                          <div key={phase.name} className="flex flex-col items-center gap-2 w-16">
-                            <div className={`relative z-10 w-10 h-10 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all duration-500 ${
-                              isDone ? 'border-blue-400 bg-blue-500/20 text-blue-400' :
-                              isCurrent ? 'border-blue-400 bg-blue-500/30 text-blue-300 ring-4 ring-blue-500/20 animate-pulse' :
-                              'border-white/10 bg-white/[0.03] text-white/20'
-                            }`}>
-                              {isDone ? '\u2713' : phase.icon}
-                            </div>
-                            <span className={`text-[10px] text-center leading-tight ${isCurrent ? 'text-blue-400 font-semibold' : isDone ? 'text-blue-400/60' : 'text-white/25'}`}>
-                              {phase.name}
-                            </span>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
-                </div>
-              )
-            })()}
-
-            {/* IN_PRODUCTION: Progress bar + task list */}
-            {film.status === 'IN_PRODUCTION' && (() => {
-              const tasks = [
-                { name: 'Scene lighting setup', status: 'Done', color: 'emerald' },
-                { name: 'Character animation pass', status: 'In Progress', color: 'amber' },
-                { name: 'Sound design - Act II', status: 'In Progress', color: 'amber' },
-                { name: 'VFX compositing', status: 'Pending', color: 'white' },
-              ]
-              return (
-                <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[0.04] p-6 space-y-5">
-                  <h3 className="text-base font-bold text-emerald-400 flex items-center gap-2">
-                    <Film className="h-4 w-4" /> In Production
-                  </h3>
-                  <p className="text-white/50 text-sm">This film is actively being produced. Join the team by contributing to micro-tasks!</p>
-                  {/* Animated progress bar */}
-                  <div>
-                    <div className="flex justify-between text-xs mb-2">
-                      <span className="text-white/40">Production progress</span>
-                      <span className="text-emerald-400 font-semibold">{film.progressPct}%</span>
-                    </div>
-                    <div className="h-3 bg-white/[0.06] rounded-full overflow-hidden relative">
-                      <div className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400 transition-all duration-1000 relative" style={{ width: `${film.progressPct}%` }}>
-                        <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.15)_50%,transparent_100%)] animate-[shimmer_2s_infinite]" />
-                      </div>
-                    </div>
-                  </div>
-                  {/* Task list */}
-                  <div className="space-y-2">
-                    {tasks.map((task) => (
-                      <div key={task.name} className="flex items-center justify-between py-2 px-3 rounded-lg bg-white/[0.02] border border-white/[0.04]">
-                        <span className="text-sm text-white/60">{task.name}</span>
-                        <span className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
-                          task.status === 'Done' ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20' :
-                          task.status === 'In Progress' ? 'bg-amber-500/15 text-amber-400 border border-amber-500/20' :
-                          'bg-white/[0.04] text-white/30 border border-white/[0.06]'
-                        }`}>{task.status}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link href="/tasks" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-500/20 text-emerald-400 text-sm font-semibold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30">
-                    <ArrowRight className="h-3.5 w-3.5" /> Contribute to tasks
-                  </Link>
-                </div>
-              )
-            })()}
-
-            {/* POST_PRODUCTION: Trailer coming soon + film strip animation */}
-            {film.status === 'POST_PRODUCTION' && (
-              <div className="rounded-xl border border-purple-500/20 bg-purple-500/[0.04] p-6 space-y-5">
-                <h3 className="text-base font-bold text-purple-400 flex items-center gap-2">
-                  <Film className="h-4 w-4" /> Post-production
-                </h3>
-                <p className="text-white/50 text-sm">Final editing, VFX, and sound mixing are underway. The trailer is being prepared.</p>
-                <div className="aspect-video rounded-lg bg-black/40 border border-purple-500/10 flex items-center justify-center relative overflow-hidden">
-                  {/* Film strip top & bottom borders */}
-                  <div className="absolute top-0 left-0 right-0 h-6 bg-[#111] flex items-center gap-1.5 px-2 overflow-hidden">
-                    {Array.from({ length: 20 }).map((_, i) => (
-                      <div key={`t${i}`} className="w-3 h-3 rounded-[1px] bg-white/[0.06] shrink-0 animate-[filmstrip_8s_linear_infinite]" style={{ animationDelay: `${i * -0.4}s` }} />
-                    ))}
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 h-6 bg-[#111] flex items-center gap-1.5 px-2 overflow-hidden">
-                    {Array.from({ length: 20 }).map((_, i) => (
-                      <div key={`b${i}`} className="w-3 h-3 rounded-[1px] bg-white/[0.06] shrink-0 animate-[filmstrip_8s_linear_infinite]" style={{ animationDelay: `${i * -0.4}s` }} />
-                    ))}
-                  </div>
-                  <div className="text-center z-10">
-                    <div className="relative">
-                      <Film className="h-12 w-12 text-purple-400/50 mx-auto mb-3 animate-pulse" />
-                    </div>
-                    <p className="text-sm font-semibold text-purple-300/80">Trailer Coming Soon</p>
-                    <p className="text-xs text-white/25 mt-1">Stay tuned for the official reveal</p>
-                  </div>
+              <p className="mb-5 text-sm leading-relaxed text-white/50">{STATUS_NOTE[film.status] ?? ''}</p>
+              <div className="mb-2 flex justify-between text-[11px]">
+                <span className="text-white/40">Avancement</span>
+                <span className="font-medium text-[#C9A227]">{Math.round(film.progressPct)}%</span>
+              </div>
+              <div className="relative h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                <div
+                  className="relative h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-1000"
+                  style={{ width: `${film.progressPct}%` }}
+                >
+                  <div className="absolute inset-0 animate-[shimmerSweep_2.6s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
                 </div>
               </div>
-            )}
+            </section>
 
-            {/* RELEASED: Watch Now + Community rating */}
-            {film.status === 'RELEASED' && (() => {
-              const communityRating = (3.5 + (deterministicNumber(film.slug, 0, 15) / 10)).toFixed(1)
-              const fullStars = Math.floor(Number(communityRating))
-              const hasHalf = Number(communityRating) - fullStars >= 0.5
-              return (
-                <div className="rounded-xl border border-[#C9A227]/20 bg-[#C9A227]/[0.04] p-6 space-y-5">
-                  <h3 className="text-base font-bold text-[#C9A227] flex items-center gap-2">
-                    <Star className="h-4 w-4" /> Released
-                  </h3>
-                  <p className="text-white/50 text-sm">This film is now available for streaming. Watch it and share your rating!</p>
-                  {/* Community rating */}
-                  <div className="flex items-center gap-4 p-4 rounded-lg bg-white/[0.03] border border-white/[0.05]">
-                    <div className="text-3xl font-bold text-white font-playfair">{communityRating}</div>
-                    <div>
-                      <div className="flex items-center gap-0.5">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-5 w-5 ${
-                              i < fullStars ? 'text-amber-400 fill-amber-400' :
-                              i === fullStars && hasHalf ? 'text-amber-400 fill-amber-400/50' :
-                              'text-white/15'
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      <p className="text-xs text-white/30 mt-1">{deterministicNumber(film.slug, 200, 1000)} community ratings</p>
-                    </div>
-                  </div>
-                  <Link href="/streaming" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#C9A227] text-white text-sm font-bold hover:bg-[#C9A227]/90 transition-colors shadow-lg shadow-[#C9A227]/20">
-                    <ArrowRight className="h-4 w-4" /> Watch Now
-                  </Link>
-                </div>
-              )
-            })()}
           </div>
 
-          <div className="space-y-4">
-            {/* Progress card */}
-            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-8">
-              <h3 className="text-sm font-medium text-white/50 mb-4 uppercase tracking-wider">Production Progress</h3>
-              <div className="text-5xl font-bold mb-3 font-playfair" style={{ color: accentColor }}>
-                {film.progressPct}%
+          <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+            {/* Production + financement */}
+            <div className="space-y-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6">
+              <div>
+                <div className="mb-2 flex items-baseline justify-between">
+                  <span className="text-xs uppercase tracking-wider text-white/40">Production</span>
+                  <span className="font-playfair text-2xl font-bold text-[#E8C766]">{Math.round(film.progressPct)}%</span>
+                </div>
+                <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                  <div className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] transition-all duration-1000" style={{ width: `${film.progressPct}%` }} />
+                </div>
               </div>
-              <div className="h-2 bg-white/10 rounded-full overflow-hidden mb-4">
-                <div
-                  className="h-full rounded-full transition-all duration-1000"
-                  style={{ width: `${film.progressPct}%`, background: `linear-gradient(90deg, ${accentColor}, ${accentColor}CC)` }}
-                />
-              </div>
-            </div>
-
-            {/* Funding card */}
-            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-8">
-              <h3 className="text-sm font-medium text-white/50 mb-4 uppercase tracking-wider">Funding</h3>
-              <div className="text-5xl font-bold text-emerald-400 mb-3 font-playfair">
-                {film.fundingPct}%
-              </div>
-              <div className="h-2 bg-white/10 rounded-full overflow-hidden mb-4">
-                <div
-                  className="h-full rounded-full transition-all duration-1000"
-                  style={{ width: `${Math.min(film.fundingPct, 100)}%`, background: 'linear-gradient(90deg, #059669, #10B981)' }}
-                />
+              <div>
+                <div className="mb-2 flex items-baseline justify-between">
+                  <span className="text-xs uppercase tracking-wider text-white/40">Financement</span>
+                  <span className="font-playfair text-2xl font-bold text-emerald-300/90">{Math.round(film.fundingPct)}%</span>
+                </div>
+                <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                  <div className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400 transition-all duration-1000" style={{ width: `${Math.min(film.fundingPct, 100)}%` }} />
+                </div>
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Meta */}
+            <div className="grid grid-cols-2 gap-3">
               {[
                 { label: 'Genre', value: film.genre, icon: Star },
-                { label: 'Year', value: film.year, icon: Calendar },
+                { label: 'Année', value: film.year, icon: Calendar },
+                { label: 'Durée', value: film.duration, icon: Clock },
+                { label: 'Classification', value: film.rating, icon: Tag },
               ].map((s) => (
-                <div key={s.label} className="rounded-xl border border-white/5 bg-white/[0.02] p-4 text-center">
-                  <s.icon className="h-4 w-4 mx-auto mb-1.5 text-white/30" />
-                  <div className="text-lg font-bold text-white">{s.value}</div>
-                  <div className="text-xs text-white/30 mt-1">{s.label}</div>
+                <div key={s.label} className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3.5 text-center">
+                  <s.icon className="mx-auto mb-1.5 h-4 w-4 text-[#C9A227]/60" />
+                  <div className="truncate text-sm font-semibold text-white">{s.value}</div>
+                  <div className="mt-0.5 text-[10px] uppercase tracking-wider text-white/30">{s.label}</div>
                 </div>
               ))}
             </div>
 
-            <Link href="/tasks">
+            <Link href="/invest" className="block">
               <Button className="w-full" size="lg">
-                Contribute to this Film
-                <ArrowRight className="h-4 w-4 ml-1" />
+                Soutenir ce film
+                <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-          </div>
+          </aside>
         </div>
 
-        {/* Co-Producer Section — Golden animated border */}
-        <div className="relative rounded-2xl p-[2px] overflow-hidden">
-          {/* Animated golden border */}
-          <div className="absolute inset-0 rounded-2xl animate-[borderGlow_3s_ease-in-out_infinite] bg-[conic-gradient(from_var(--angle,0deg),#B8860B,#FFD700,#DAA520,#B8860B,#FFD700)] opacity-60" style={{ ['--angle' as string]: '0deg' }} />
-          <div className="absolute inset-[2px] rounded-2xl bg-[#0A0A0A]" />
-
-          <div className="relative rounded-2xl bg-gradient-to-br from-amber-900/[0.12] via-[#0A0A0A] to-amber-800/[0.06] p-8 md:p-10 overflow-hidden">
-            <div className="absolute top-0 right-0 w-72 h-72 bg-amber-500/[0.04] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#C9A227]/[0.04] rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-
-            <div className="relative space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-700/20 border border-amber-500/30 flex items-center justify-center">
-                  <Crown className="h-6 w-6 text-amber-400" />
-                </div>
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-bold font-playfair bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 bg-clip-text text-transparent">
-                    Become a Co-Producer
-                  </h2>
-                  <p className="text-xs text-amber-500/50 uppercase tracking-wider font-medium mt-0.5">Exclusive Investment Opportunity</p>
-                </div>
-              </div>
-
-              <p className="text-white/50 max-w-2xl text-lg leading-relaxed">
-                Invest in this film and receive a share of the revenue. Each token gives you a vote on creative decisions and your name in the credits.
-              </p>
-
-              {/* Funding progress bar (if fundingPct exists) */}
-              {film.fundingPct != null && (
-                <div className="rounded-xl border border-amber-500/15 bg-white/[0.02] p-5">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm text-white/40">Funding Progress</span>
-                    <span className="text-sm font-bold text-amber-400">{film.fundingPct}%</span>
-                  </div>
-                  <div className="h-3 bg-white/[0.06] rounded-full overflow-hidden relative">
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-amber-600 via-amber-400 to-amber-500 transition-all duration-1000 relative"
-                      style={{ width: `${Math.min(film.fundingPct, 100)}%` }}
-                    >
-                      <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.2)_50%,transparent_100%)] animate-[shimmer_2s_infinite]" />
-                    </div>
-                  </div>
-                  <div className="flex justify-between text-xs text-white/25 mt-2">
-                    <span>{film.fundingPct}% funded</span>
-                    <span>Goal: 100%</span>
-                  </div>
-                </div>
-              )}
-
-              <div className="grid sm:grid-cols-3 gap-4">
-                {[
-                  { icon: Coins, title: 'Invest from 10\u20AC', desc: 'Co-production tokens accessible to all' },
-                  { icon: Vote, title: 'Vote on Decisions', desc: 'Participate in creative choices' },
-                  { icon: Crown, title: 'Credits & Revenue', desc: 'Your name in credits + revenue share' },
-                ].map((b) => (
-                  <div key={b.title} className="rounded-xl border border-amber-500/10 bg-white/[0.02] p-4 text-center hover:border-amber-500/25 transition-colors">
-                    <b.icon className="h-6 w-6 text-amber-400/60 mx-auto mb-2" />
-                    <h4 className="text-sm font-semibold text-white mb-1">{b.title}</h4>
-                    <p className="text-xs text-white/30">{b.desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <Link href="/tokenization">
-                  <button className="golden-border-btn golden-border-always relative group px-8 py-4 rounded-xl font-bold text-base text-black bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:via-amber-200 hover:to-amber-400 transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02]">
-                    <span className="flex items-center gap-2">
-                      <Coins className="h-5 w-5" />
-                      Become Co-Producer
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </button>
-                </Link>
-                <Link href="/tokenization" className="text-sm text-amber-400/60 hover:text-amber-400 transition-colors flex items-center gap-1">
-                  <Bell className="h-3.5 w-3.5" /> View all offerings
-                </Link>
+        {/* Co-Producteur — bande dorée raffinée */}
+        <section className="relative overflow-hidden rounded-2xl border border-[#C9A227]/20 bg-gradient-to-br from-[#C9A227]/[0.07] via-[#0A0908] to-transparent p-8 md:p-10">
+          <div className="pointer-events-none absolute -top-16 right-0 h-64 w-64 rounded-full bg-[#C9A227]/[0.06] blur-[90px]" />
+          <div className="relative">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#C9A227]/25 bg-[#C9A227]/12">
+                <Crown className="h-5 w-5 text-[#C9A227]" />
+              </span>
+              <div>
+                <h2 className="font-playfair text-2xl font-bold text-gold-metallic md:text-3xl">Devenez co-producteur</h2>
+                <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wider text-[#C9A227]/60">Opportunité d&apos;investissement</p>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Similar Films — Horizontal scroll row */}
+            <p className="mb-7 max-w-2xl text-[15px] leading-relaxed text-white/55">
+              Investissez dès 10 € et recevez une part des revenus. Chaque token donne un droit de vote sur les
+              décisions créatives et votre nom au générique.
+            </p>
+
+            <div className="mb-8 grid gap-3 sm:grid-cols-3">
+              {[
+                { icon: Coins, title: 'Dès 10 €', desc: 'Tokens de co-production accessibles à tous' },
+                { icon: Vote, title: 'Droit de vote', desc: 'Pesez sur les choix créatifs du film' },
+                { icon: Crown, title: 'Au générique', desc: 'Votre nom crédité + part des revenus' },
+              ].map((b) => (
+                <div key={b.title} className="rounded-xl border border-[#C9A227]/10 bg-white/[0.02] p-4 transition-colors hover:border-[#C9A227]/25">
+                  <b.icon className="mb-2 h-5 w-5 text-[#C9A227]/70" />
+                  <h4 className="mb-1 text-sm font-semibold text-white">{b.title}</h4>
+                  <p className="text-xs leading-relaxed text-white/35">{b.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+              <Link href="/tokenization">
+                <Button size="lg" className="w-full sm:w-auto">
+                  <Coins className="h-5 w-5" />
+                  Devenir co-producteur
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="/invest" className="inline-flex items-center justify-center gap-1.5 text-sm text-[#C9A227]/70 transition-colors hover:text-[#C9A227]">
+                <Bell className="h-3.5 w-3.5" /> Voir toutes les offres
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Films similaires — défilement horizontal */}
         {similarFilms.length > 0 && (
           <section>
-            <div className="flex items-center justify-between mb-5">
-              <h2 className="text-xl font-bold font-playfair" style={{ color: accentColor }}>
-                Similar Films
+            <div className="mb-6 flex items-center justify-between">
+              <h2 className="font-playfair text-xl font-bold text-white md:text-2xl">
+                Dans le même genre
               </h2>
-              <span className="text-xs text-white/25 uppercase tracking-wider">{film.genre}</span>
+              <span className="text-[11px] uppercase tracking-wider text-white/30">{film.genre}</span>
             </div>
             <div className="relative group/row">
               {/* Fade edges */}
@@ -765,7 +577,7 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
                       {/* Hover overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end p-3">
                         <span className="text-[10px] font-medium text-white/80 uppercase tracking-wider flex items-center gap-1">
-                          <ArrowRight className="h-3 w-3" /> View
+                          <ArrowRight className="h-3 w-3" /> Voir
                         </span>
                       </div>
                       {/* Progress indicator */}
@@ -774,7 +586,7 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
                       </div>
                     </div>
                     <p className="text-xs font-medium text-white/60 truncate group-hover/card:text-white transition-colors duration-200">{sf.title}</p>
-                    <p className="text-[10px] text-white/25 mt-0.5">{sf.year} &middot; {sf.progressPct}% complete</p>
+                    <p className="text-[10px] text-white/25 mt-0.5">{sf.year} &middot; {sf.progressPct}% achevé</p>
                   </Link>
                 ))}
               </div>
