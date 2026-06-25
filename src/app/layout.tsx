@@ -20,8 +20,12 @@ const playfair = Playfair_Display({
   display: 'swap',
 })
 
+// Site URL is driven by the deployment env so SEO/OG/canonical follow the
+// real domain automatically (no hardcoded domain). Trailing slash stripped.
+const SITE_URL = (process.env.NEXT_PUBLIC_APP_URL || 'https://platform.cinegeny.com').replace(/\/+$/, '')
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://cinegen.studio'),
+  metadataBase: new URL(SITE_URL),
   title: {
     template: '%s | CINEGENY',
     default: 'CINEGENY — The AI Cinema Studio',
@@ -51,11 +55,11 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'fr_FR',
     siteName: 'CINEGENY',
     title: 'CINEGENY — The AI Cinema Studio',
     description: "Collaborative AI film production, creative micro-tasks, worldwide streaming.",
-    url: 'https://cinegen.studio',
+    url: SITE_URL,
   },
   twitter: {
     card: 'summary_large_image',

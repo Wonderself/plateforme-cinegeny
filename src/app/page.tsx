@@ -11,7 +11,7 @@ export const metadata = {
   openGraph: {
     title: 'CINEGENY — The AI Cinema Studio',
     description: 'Create, fund, and stream films powered by 113 AI agents. Join the cinema revolution.',
-    url: 'https://cinegen.studio',
+    url: (process.env.NEXT_PUBLIC_APP_URL || 'https://platform.cinegeny.com').replace(/\/+$/, ''),
     siteName: 'CINEGENY',
     type: 'website',
     locale: 'fr_FR',
