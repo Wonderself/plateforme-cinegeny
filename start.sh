@@ -42,8 +42,12 @@ npx prisma db push 2>&1 || {
   npx prisma db push --accept-data-loss 2>&1 || echo "Warning: db push retry also failed"
 }
 
+# Normalize boolean-ish env vars to lowercase (accept True / TRUE / 1 / yes)
+SEED_DB_LC=$(printf '%s' "$SEED_DB" | tr '[:upper:]' '[:lower:]')
+ADMIN_BOOTSTRAP_LC=$(printf '%s' "$ADMIN_BOOTSTRAP" | tr '[:upper:]' '[:lower:]')
+
 # Seed database if SEED_DB=true (only on first deploy)
-if [ "$SEED_DB" = "true" ]; then
+if [ "$SEED_DB_LC" = "true" ] || [ "$SEED_DB_LC" = "1" ] || [ "$SEED_DB_LC" = "yes" ]; then
   echo "Seeding database..."
   npx prisma db seed 2>&1 || echo "Warning: seed failed (data may already exist)"
 fi
@@ -51,7 +55,7 @@ fi
 # One-shot admin bootstrap (no demo data) — set ADMIN_BOOTSTRAP=true once,
 # then remove the variable. Optional ADMIN_EMAIL / ADMIN_PASSWORD overrides.
 # Plain Node (no ts-node) so it runs reliably in the production container.
-if [ "$ADMIN_BOOTSTRAP" = "true" ]; then
+if [ "$ADMIN_BOOTSTRAP_LC" = "true" ] || [ "$ADMIN_BOOTSTRAP_LC" = "1" ] || [ "$ADMIN_BOOTSTRAP_LC" = "yes" ]; then
   echo "Bootstrapping admin account..."
   node prisma/bootstrap-admin.cjs 2>&1 || echo "Warning: admin bootstrap failed"
 fi
