@@ -14,7 +14,7 @@ import {
   ArrowRight, ChevronLeft, ChevronRight,
   Vote, Star, Users, MessageSquare,
   Flame, Laugh, Drama, Microscope, BookOpen, Swords, Ghost, Heart, Wand2, Clock,
-  Activity,
+  Activity, GraduationCap,
 } from 'lucide-react'
 
 /* ────────────────────────────────────────────────
@@ -478,6 +478,29 @@ export function NetflixHome({ data }: { data: HomeData }) {
         </section>
 
         <div className="h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
+
+        {/* ── Academy — small banner ── */}
+        <div className="mx-4 my-8 sm:mx-8 md:mx-16 lg:mx-20">
+          <Link
+            href="/academy"
+            className="group flex flex-col items-start justify-between gap-3 rounded-2xl border border-[#C9A227]/15 bg-gradient-to-r from-[#C9A227]/[0.06] to-transparent px-5 py-4 transition-colors hover:border-[#C9A227]/35 sm:flex-row sm:items-center"
+          >
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#C9A227]/25 bg-[#C9A227]/10">
+                <GraduationCap className="h-4 w-4 text-[#C9A227]" />
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-white">
+                  CINEGENY <span className="text-gold-metallic">Academy</span>
+                </p>
+                <p className="text-xs text-white/45">Apprenez à créer des films avec l&apos;IA, de l&apos;idée à la projection.</p>
+              </div>
+            </div>
+            <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-[12px] font-medium text-[#C9A227] transition-transform group-hover:translate-x-0.5">
+              Découvrir <ArrowRight className="h-3.5 w-3.5" />
+            </span>
+          </Link>
+        </div>
 
       </div>
 

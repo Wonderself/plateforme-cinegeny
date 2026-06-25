@@ -36,6 +36,7 @@ import {
   Tv,
   Play,
   Radio,
+  GraduationCap,
 } from 'lucide-react'
 import { cn, getInitials } from '@/lib/utils'
 import { AnimatePresence, MotionDiv } from '@/components/ui/motion'
@@ -164,6 +165,7 @@ export function NetflixHeader() {
     { href: '/work', label: t('missions'), icon: Briefcase, desc: 'Micro-tâches rémunérées' },
     { href: '/produce', label: t('produce'), icon: Film, desc: 'Co-produisez la slate' },
     { href: '/trailer-studio', label: t('trailer_studio'), icon: Sparkles, desc: 'Créez une bande-annonce', badge: 'NEW' },
+    { href: '/academy', label: t('academy'), icon: GraduationCap, desc: 'Apprenez le cinéma IA' },
     { href: '/community/scenarios/new', label: t('submit_scenario'), icon: FileText, desc: 'Proposez votre scénario' },
   ]
 

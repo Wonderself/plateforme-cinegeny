@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import {
   Film, Tv, Play, Radio, Clapperboard, Star, Briefcase, Sparkles, FileText,
-  MessageSquare, Trophy, Users, DollarSign, TrendingUp, Tag, MapPin, Code2, Info,
+  MessageSquare, Trophy, Users, DollarSign, TrendingUp, Tag, MapPin, Code2, Info, GraduationCap,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Logo } from '@/components/layout/logo'
@@ -38,6 +38,7 @@ export function Footer() {
         { href: '/work', label: n('missions'), icon: Briefcase },
         { href: '/produce', label: n('produce'), icon: Film },
         { href: '/trailer-studio', label: n('trailer_studio'), icon: Sparkles },
+        { href: '/academy', label: n('academy'), icon: GraduationCap },
         { href: '/community/scenarios/new', label: n('submit_scenario'), icon: FileText },
       ],
     },
