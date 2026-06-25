@@ -41,43 +41,6 @@ const nextAuth = NextAuth({
 
         const { email, password } = parsed.data
 
-        /* ── Dev/demo bypass: hardcoded admin account ── */
-        if (email.toLowerCase() === 'admin@admin.com' && password === 'adminadmin') {
-          // Upsert admin user in DB so dashboard pages can find it
-          try {
-            const adminUser = await prisma.user.upsert({
-              where: { email: 'admin@admin.com' },
-              update: { role: 'ADMIN', level: 'VIP', isVerified: true },
-              create: {
-                email: 'admin@admin.com',
-                displayName: 'Admin',
-                passwordHash: '',
-                role: 'ADMIN',
-                level: 'VIP',
-                isVerified: true,
-              },
-            })
-            return {
-              id: adminUser.id,
-              email: adminUser.email,
-              name: adminUser.displayName,
-              role: adminUser.role,
-              level: adminUser.level,
-              isVerified: adminUser.isVerified,
-            }
-          } catch {
-            // DB not available — fallback to hardcoded ID
-            return {
-              id: 'admin-bypass-001',
-              email: 'admin@admin.com',
-              name: 'Admin',
-              role: 'ADMIN',
-              level: 'VIP',
-              isVerified: true,
-            }
-          }
-        }
-
         let user
         try {
           user = await prisma.user.findUnique({

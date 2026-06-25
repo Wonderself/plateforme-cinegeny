@@ -138,31 +138,6 @@ export function LoginForm() {
               </button>
             </div>
           </form>
-
-          {/* Demo accounts */}
-          <div className="mt-10 flex items-center gap-3">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/[0.06]" />
-            <span className="text-xs text-white/20 uppercase tracking-widest">{t('demo_accounts')}</span>
-            <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/[0.06]" />
-          </div>
-          <div className="mt-5 space-y-3.5">
-            <button
-              type="button"
-              disabled={loading}
-              onClick={() => handleLogin('admin@admin.com', 'adminadmin')}
-              className="w-full rounded-xl bg-[#C9A227]/[0.06] border border-[#C9A227]/15 hover:border-[#C9A227]/30 hover:bg-[#C9A227]/10 p-3.5 text-left transition-all duration-300 group cursor-pointer disabled:opacity-50"
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-semibold text-[#C9A227]/80 group-hover:text-[#C9A227]">Admin</p>
-                  <p className="text-[11px] text-white/35 mt-0.5">admin@admin.com / adminadmin</p>
-                </div>
-                <span className="text-[10px] text-[#C9A227]/40 group-hover:text-[#C9A227]/70 uppercase tracking-wider font-medium">
-                  {loading ? 'Connexion...' : t('quick_login')}
-                </span>
-              </div>
-            </button>
-          </div>
         </div>
       </div>
 
