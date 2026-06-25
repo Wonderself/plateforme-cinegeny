@@ -48,5 +48,12 @@ if [ "$SEED_DB" = "true" ]; then
   npx prisma db seed 2>&1 || echo "Warning: seed failed (data may already exist)"
 fi
 
+# One-shot admin bootstrap (no demo data) — set ADMIN_BOOTSTRAP=true once,
+# then remove the variable. Optional ADMIN_EMAIL / ADMIN_PASSWORD overrides.
+if [ "$ADMIN_BOOTSTRAP" = "true" ]; then
+  echo "Bootstrapping admin account..."
+  npx ts-node --compiler-options '{"module":"CommonJS"}' prisma/bootstrap-admin.ts 2>&1 || echo "Warning: admin bootstrap failed"
+fi
+
 echo "Starting Next.js server..."
 exec node server.js
