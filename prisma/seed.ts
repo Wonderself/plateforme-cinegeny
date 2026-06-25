@@ -33,12 +33,14 @@ async function main() {
   // =============================================
   // USERS (10 variés)
   // =============================================
-  const pw = await bcrypt.hash('Admin1234!', 12)
+  const pw = await bcrypt.hash('Admin99999!!', 12)
   const pwUser = await bcrypt.hash('Test1234!', 12)
 
   const admin = await prisma.user.upsert({
     where: { email: 'admin@lumiere.film' },
-    update: {},
+    // Re-seeding applies the current admin password & role even if the
+    // account already exists (upsert update was previously a no-op).
+    update: { passwordHash: pw, role: 'ADMIN', isVerified: true },
     create: {
       email: 'admin@lumiere.film',
       passwordHash: pw,
@@ -1114,6 +1116,16 @@ async function main() {
   const archiveDemoFilms = [filmP7, filmP8, filmE1, filmE2, filmE3, filmE4, filmE5, filmE6, filmE7, filmB1, filmB2, filmB3, filmB4, filmB5]
   const allSlateFilms = [...slateFilms, ...archiveDemoFilms]
   console.log(`✅ ${slateFilms.length} films officiels + ${archiveDemoFilms.length} films démo/archive créés avec phases`)
+
+  // =============================================
+  // CATALOGUE PUBLIC : seuls les 6 films officiels sont publics.
+  // Tous les autres films (anciens / démo) restent en base et sont
+  // gérables depuis /admin/films (publier / archiver / éditer).
+  // =============================================
+  const publicSlugs = slateFilms.map((f) => f.slug)
+  await prisma.film.updateMany({ where: { slug: { in: publicSlugs } }, data: { isPublic: true } })
+  await prisma.film.updateMany({ where: { slug: { notIn: publicSlugs } }, data: { isPublic: false } })
+  console.log('✅ Visibilité catalogue : 6 films publics, le reste archivé (gérable en admin)')
 
   // =============================================
   // UPDATE FILM STATS
@@ -3082,7 +3094,7 @@ async function main() {
   console.log('🎬 Seed Lumière Brothers V10 terminé avec succès!')
   console.log('='.repeat(50))
   console.log('\n📋 Comptes de test:')
-  console.log('   Admin       : admin@lumiere.film         / Admin1234!')
+  console.log('   Admin       : admin@lumiere.film         / Admin99999!!')
   console.log('   Contributeur: contributeur@lumiere.film  / Test1234!')
   console.log('   Artiste     : artiste@lumiere.film       / Test1234!  (créateur, Pro)')
   console.log('   Scénariste  : scenariste@lumiere.film    / Test1234!')

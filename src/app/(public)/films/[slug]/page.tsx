@@ -52,6 +52,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function FilmDetailPage({ params }: Props) {
   const { slug } = await params
 
+  // Curated slate / archived catalogue → premium presentation (rich data
+  // files: réalisation, casting, durée, tags…). These keep their high-end
+  // page even though the films also exist as DB records (manageable in admin).
+  const curated = FILMS_BY_SLUG[slug] || ARCHIVED_FILMS_BY_SLUG[slug]
+  if (curated) return <CatalogFilmPage film={curated} />
+
+  // Otherwise: a film managed entirely from the database (admin-created).
   const film = await prisma.film.findUnique({
     where: { slug, isPublic: true },
     include: {
@@ -71,17 +78,12 @@ export default async function FilmDetailPage({ params }: Props) {
     },
   })
 
-  // If DB has the film, render the full DB-driven page
   if (film) {
     const { credits } = await getFilmCreditsAction(slug)
     return <DbFilmPage film={film} credits={credits} />
   }
 
-  // Fallback: check shared catalog data
-  const fakeFilm = FILMS_BY_SLUG[slug] || ARCHIVED_FILMS_BY_SLUG[slug]
-  if (!fakeFilm) notFound()
-
-  return <CatalogFilmPage film={fakeFilm} />
+  notFound()
 }
 
 /* ─────────────────────────────────────────────
