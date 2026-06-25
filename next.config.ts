@@ -6,6 +6,11 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  // Type-checking and linting are enforced in CI (tsc --noEmit + eslint).
+  // Skipping them during `next build` avoids the memory-heavy TypeScript
+  // pass that was OOM-killing the production Docker build on the server.
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
   // Fix workspace root detection warning (non-ASCII chars in parent path)
   outputFileTracingRoot: path.join(__dirname),
   // Server external packages (needed for Prisma adapter)
