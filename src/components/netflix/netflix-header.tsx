@@ -267,6 +267,12 @@ export function NetflixHeader() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
+                    <Link href="/academy" className="flex items-center gap-2 cursor-pointer text-white/70 hover:text-white">
+                      <GraduationCap className="h-4 w-4" /> {t('academy')}
+                      <span className="ml-auto rounded bg-emerald-500/15 px-1.5 py-0 text-[9px] font-bold uppercase tracking-wider text-emerald-300">Gratuit</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
                     <Link href="/profile" className="flex items-center gap-2 cursor-pointer text-white/70 hover:text-white">
                       <User className="h-4 w-4" /> {t('profile')}
                     </Link>

@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { registerAction } from '@/app/actions/auth'
 import { signIn as nextAuthSignIn } from 'next-auth/react'
 import { SKILLS, LANGUAGES } from '@/lib/constants'
-import { CheckCircle, UserPlus, User, Mail, Lock, Link2, Briefcase, Eye, EyeOff } from 'lucide-react'
+import { CheckCircle, UserPlus, User, Mail, Lock, Link2, Briefcase, Eye, EyeOff, GraduationCap } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
 const VALID_ROLES = ['CONTRIBUTOR', 'ARTIST', 'STUNT_PERFORMER', 'SCREENWRITER', 'VIEWER']
@@ -79,6 +79,12 @@ export function RegisterForm() {
             ? t('screenwriter_subtitle')
             : t('register_subtitle_default')}
         </p>
+
+        {/* Academy gratuite incluse */}
+        <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-[13px] font-semibold text-emerald-300">
+          <GraduationCap className="h-4 w-4" />
+          Academy incluse — <span className="text-emerald-200">100% gratuite</span>
+        </div>
       </div>
 
       {/* Form Card */}

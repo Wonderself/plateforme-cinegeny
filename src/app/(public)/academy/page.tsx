@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { GraduationCap, PenLine, Wand2, Clapperboard, Scissors, Sparkles, ArrowRight } from 'lucide-react'
+import { GraduationCap, PenLine, Wand2, Clapperboard, Scissors, Sparkles, ArrowRight, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { auth } from '@/lib/auth'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -22,7 +23,9 @@ const MODULES = [
   { icon: GraduationCap, title: 'Distribution', desc: 'Diffuser, monétiser et bâtir une audience pour vos films.' },
 ]
 
-export default function AcademyPage() {
+export default async function AcademyPage() {
+  const session = await auth()
+  const loggedIn = !!session?.user
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -33,30 +36,61 @@ export default function AcademyPage() {
         </div>
 
         <div className="relative container mx-auto max-w-5xl text-center">
-          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/10 px-4 py-1.5 text-sm text-[#E8C766]">
-            <GraduationCap className="h-4 w-4" />
-            <span className="font-medium">CINEGENY Academy</span>
+          <div className="mb-5 flex flex-wrap items-center justify-center gap-2.5">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/10 px-4 py-1.5 text-sm text-[#E8C766]">
+              <GraduationCap className="h-4 w-4" />
+              <span className="font-medium">CINEGENY Academy</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-[13px] font-semibold text-emerald-300">
+              <Check className="h-3.5 w-3.5" />
+              {loggedIn ? 'Incluse dans votre compte' : '100% gratuite'}
+            </div>
           </div>
 
           <h1 className="mb-6 font-playfair text-4xl font-bold leading-[1.1] text-white sm:text-5xl md:text-6xl">
             Apprenez le <span className="text-gold-metallic">cinéma de demain</span>
           </h1>
 
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/55">
-            De l&apos;idée à la projection : maîtrisez l&apos;écriture, la direction artistique, la production
-            et la post-production assistées par l&apos;IA — au sein de la communauté CINEGENY.
-          </p>
+          {loggedIn ? (
+            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/60">
+              <span className="font-semibold text-emerald-300">Votre accès est débloqué.</span> L&apos;Academy
+              est <span className="text-white">100% gratuite</span> et incluse dans votre compte — apprenez en
+              créant, de l&apos;écriture à la distribution.
+            </p>
+          ) : (
+            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/55">
+              De l&apos;idée à la projection : maîtrisez l&apos;écriture, la direction artistique, la production
+              et la post-production assistées par l&apos;IA.{' '}
+              <span className="font-semibold text-emerald-300">Gratuite dès l&apos;inscription.</span>
+            </p>
+          )}
 
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href="/register">
-              <Button size="lg">
-                Commencer gratuitement
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-            <Link href="/films">
-              <Button size="lg" variant="outline">Voir les productions</Button>
-            </Link>
+            {loggedIn ? (
+              <>
+                <Link href="/dashboard">
+                  <Button size="lg">
+                    Accéder à mon espace
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/films">
+                  <Button size="lg" variant="outline">Voir les productions</Button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href="/register">
+                  <Button size="lg">
+                    Créer un compte gratuit
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/login">
+                  <Button size="lg" variant="outline">Se connecter</Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -99,11 +133,13 @@ export default function AcademyPage() {
                 Prêt à réaliser votre premier film ?
               </h2>
               <p className="mx-auto mb-7 max-w-xl text-white/55">
-                Rejoignez la communauté, apprenez en créant, et participez à de vraies productions.
+                {loggedIn
+                  ? 'Votre accès Academy est déjà actif — apprenez en créant et participez à de vraies productions.'
+                  : 'Créez un compte gratuit : l’Academy est incluse, sans frais. Apprenez en créant et participez à de vraies productions.'}
               </p>
-              <Link href="/register">
+              <Link href={loggedIn ? '/dashboard' : '/register'}>
                 <Button size="lg">
-                  Rejoindre l&apos;Academy
+                  {loggedIn ? 'Continuer' : 'Rejoindre gratuitement'}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>

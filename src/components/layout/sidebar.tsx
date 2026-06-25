@@ -120,6 +120,7 @@ const mainNavSections: NavSection[] = [
     icon: Clapperboard,
     dotColor: 'bg-[#8B5CF6]',
     links: [
+      { href: '/academy', label: 'Academy', icon: GraduationCap, badge: 'GRATUIT' },
       { href: '/trailer-studio', label: 'Studio Bande-Annonce', icon: Wand2, badge: 'NEW' },
       { href: '/tasks', label: 'Micro-tâches', icon: Star },
       { href: '/films', label: 'Films', icon: Film },
@@ -382,7 +383,14 @@ export function Sidebar() {
         )} />
         <span className="flex-1">{link.label}</span>
         {link.badge && (
-          <Badge className="text-[9px] px-1.5 py-0 h-4 bg-[#C9A227]/15 text-[#C9A227] border-[#C9A227]/20">
+          <Badge
+            className={cn(
+              'text-[9px] px-1.5 py-0 h-4',
+              link.badge === 'GRATUIT' || link.badge === 'INCLUS'
+                ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/25'
+                : 'bg-[#C9A227]/15 text-[#C9A227] border-[#C9A227]/20'
+            )}
+          >
             {link.badge}
           </Badge>
         )}
