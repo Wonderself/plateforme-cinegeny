@@ -185,7 +185,7 @@ function toSlug(title: string): string {
 
 /* ── Full film catalog ── */
 
-const FILM_ENTRIES: Record<string, Omit<FilmData, 'id' | 'slug' | 'genre' | 'coverImageUrl' | 'status' | 'progressPct' | 'fundingPct'>[]> = {
+const FILM_ENTRIES: Record<string, Omit<FilmData, 'id' | 'slug' | 'genre' | 'coverImageUrl' | 'status' | 'progressPct' | 'fundingPct' | 'track'>[]> = {
   'Pipeline 2026': [
     {
       title: 'Les Ombres de Jérusalem',
@@ -419,6 +419,8 @@ function buildCatalog(): { all: FilmData[]; byGenre: Record<string, FilmData[]>;
         status: isPipelineGenre ? PIPELINE_STATUSES[i] : STATUSES[i % STATUSES.length],
         progressPct: isPipelineGenre ? ((i * 11 + 30) % 55) + 20 : ((i * 17 + 5 + gi * 7) % 75),
         fundingPct: isPipelineGenre ? ((i * 9 + 40) % 45) + 35 : ((i * 13 + 20 + gi * 11) % 80) + 12,
+        // Catalogue archivé (legacy) : piste par défaut, non utilisée côté vote.
+        track: 'A',
         ...(isPipelineGenre ? { isPipeline: true } : {}),
       }
       genreFilms.push(film)

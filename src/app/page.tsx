@@ -1,138 +1,95 @@
+import type { Metadata } from 'next'
 import { prisma } from '@/lib/prisma'
-import { NetflixHome } from '@/components/netflix/netflix-home'
-import { ALL_FILMS, FILMS_BY_GENRE } from '@/data/films'
+import { NetflixHeader } from '@/components/netflix/netflix-header'
+import { Footer } from '@/components/layout/footer'
+import { HomeVitrine } from '@/components/home/home-vitrine'
+import { ALL_FILMS, HERO_FILM_SLUG } from '@/data/films'
+import { buildHomeVitrineModel, type HomeFilmInput } from '@/lib/home-vitrine'
+import { BRAND } from '@/content/brand'
 
 export const dynamic = 'force-dynamic'
 
-export const metadata = {
-  title: 'CINEGENY — Create. Fund. Stream Your Films.',
-  description:
-    'The collaborative cinema platform powered by AI. Micro-tasks, streaming, independent film production. Paris, Jerusalem, Hollywood.',
+const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || 'https://platform.cinegeny.com').replace(/\/+$/, '')
+
+export const metadata: Metadata = {
+  title: 'CINEGENY — Regardez. Votez. Le film se fait.',
+  description: BRAND.launchLine,
+  keywords: [
+    'CINEGENY',
+    'cinéma IA',
+    'voter pour un film',
+    'film participatif',
+    'studio de cinéma',
+    'Finale CINEGENY',
+    'streaming',
+  ],
   openGraph: {
-    title: 'CINEGENY — The AI Cinema Studio',
-    description: 'Create, fund, and stream films powered by 113 AI agents. Join the cinema revolution.',
-    url: (process.env.NEXT_PUBLIC_APP_URL || 'https://platform.cinegeny.com').replace(/\/+$/, ''),
+    title: 'CINEGENY — Regardez. Votez. Le film se fait.',
+    description: BRAND.pitchShort,
+    url: APP_URL,
     siteName: 'CINEGENY',
     type: 'website',
     locale: 'fr_FR',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CINEGENY — The AI Cinema Studio',
-    description: 'Create, fund, and stream films powered by 113 AI agents.',
+    title: 'CINEGENY — Regardez. Votez. Le film se fait.',
+    description: BRAND.pitchShort,
   },
-  keywords: ['cinema IA', 'film participatif', 'production cinématographique', 'streaming', 'crowdfunding film', 'AI cinema', 'CINEGENY'],
 }
 
-async function getHomeData() {
-  // ── Film showcase: canonical slate (src/data/films.ts) ──
-  // Source of truth is the curated 6-film slate, identical to /films.
-  // This keeps the homepage in sync with the catalogue and the official
-  // posters regardless of the (legacy) database seed state.
-  const slate = ALL_FILMS.map((f) => ({
-    id: f.id,
-    title: f.title,
-    slug: f.slug,
-    synopsis: f.synopsis,
-    genre: f.genre,
-    coverImageUrl: f.coverImageUrl,
-    status: f.status,
-    progressPct: f.progressPct,
-    fundingPct: f.fundingPct,
-    type: 'film' as const,
-  }))
+/**
+ * Construit les entrées de la vitrine : slate officielle (contenu éditorial)
+ * enrichie de l'id en base et du compteur de votes RÉEL (aucun chiffre inventé,
+ * règle 15.0bis #1). Si la base est indisponible, on rend quand même la page
+ * avec des compteurs à zéro et un repli « Voter » vers la fiche du film.
+ */
+async function getHomeInputs(): Promise<HomeFilmInput[]> {
+  const slugs = ALL_FILMS.map((f) => f.slug)
 
-  // Hero = the most advanced productions first (highest progress), with poster.
-  const heroFilms = [...slate]
-    .filter((f) => f.coverImageUrl)
-    .sort((a, b) => b.progressPct - a.progressPct)
-    .slice(0, 5)
-    .map((f) => ({
-      id: f.id,
-      title: f.title,
-      slug: f.slug,
-      synopsis: f.synopsis,
-      genre: f.genre,
-      coverImageUrl: f.coverImageUrl,
-      status: f.status,
-      type: 'film' as const,
-    }))
+  const idBySlug = new Map<string, string>()
+  const countByFilmId = new Map<string, number>()
 
-  const genres = Object.fromEntries(
-    Object.entries(FILMS_BY_GENRE)
-      .filter(([, films]) => films.length > 0)
-      .map(([genre, films]) => [
-        genre,
-        films.map((f) => ({
-          id: f.id,
-          title: f.title,
-          slug: f.slug,
-          genre: f.genre,
-          coverImageUrl: f.coverImageUrl,
-          status: f.status,
-          progressPct: f.progressPct,
-          fundingPct: f.fundingPct,
-          type: 'film' as const,
-        })),
-      ])
-  )
-
-  const inProduction = slate.filter(
-    (f) => f.status === 'IN_PRODUCTION' || f.status === 'POST_PRODUCTION'
-  )
-  const inDevelopment = slate.filter(
-    (f) => f.status === 'DRAFT' || f.status === 'PRE_PRODUCTION'
-  )
-  const released = slate.filter((f) => f.status === 'RELEASED')
-
-  // ── Streaming catalog (separate feature) — best-effort from DB ──
-  type CatalogCard = {
-    id: string
-    title: string
-    slug: string
-    genre: string | null
-    coverImageUrl: string | null
-    status: string
-    progressPct: number
-    type: 'catalog'
-  }
-  let catalogFilms: CatalogCard[] = []
   try {
-    const rows = await prisma.catalogFilm.findMany({
-      where: { status: { in: ['LIVE', 'APPROVED'] } },
-      orderBy: { viewCount: 'desc' },
-      select: {
-        id: true, title: true, slug: true, genre: true,
-        thumbnailUrl: true, posterUrl: true, status: true,
-      },
+    const dbFilms = await prisma.film.findMany({
+      where: { slug: { in: slugs } },
+      select: { id: true, slug: true },
     })
-    catalogFilms = rows.map((f) => ({
-      id: f.id,
-      title: f.title,
-      slug: f.slug,
-      genre: f.genre,
-      coverImageUrl: f.posterUrl || f.thumbnailUrl,
-      status: f.status,
-      progressPct: 0,
-      type: 'catalog' as const,
-    }))
+    for (const f of dbFilms) idBySlug.set(f.slug, f.id)
+
+    const filmIds = dbFilms.map((f) => f.id)
+    if (filmIds.length > 0) {
+      // Compteur public = votes CONFIRMÉS uniquement (15.0 #5, cf. votes.ts).
+      const grouped = await prisma.filmVote.groupBy({
+        by: ['filmId'],
+        where: { filmId: { in: filmIds }, voteType: 'vote', confirmed: true },
+        _count: { _all: true },
+      })
+      for (const g of grouped) countByFilmId.set(g.filmId, g._count._all)
+    }
   } catch {
-    // DB unavailable — the slate above still renders the full homepage.
+    // Base indisponible (build/preview) — la vitrine reste rendue.
   }
 
-  return {
-    heroFilms,
-    allFilms: slate,
-    catalogFilms,
-    genres,
-    inProduction,
-    inDevelopment,
-    released,
-  }
+  return ALL_FILMS.map((film) => {
+    const filmId = idBySlug.get(film.slug) ?? null
+    return {
+      film,
+      filmId,
+      voteCount: filmId ? (countByFilmId.get(filmId) ?? 0) : 0,
+    }
+  })
 }
 
 export default async function HomePage() {
-  const data = await getHomeData()
+  const inputs = await getHomeInputs()
+  const model = buildHomeVitrineModel(inputs, HERO_FILM_SLUG)
 
-  return <NetflixHome data={data} />
+  return (
+    <div className="min-h-screen bg-[#0A0908] text-white">
+      <NetflixHeader />
+      {model && <HomeVitrine model={model} />}
+      <Footer />
+    </div>
+  )
 }

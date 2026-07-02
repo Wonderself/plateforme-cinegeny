@@ -1,10 +1,19 @@
 /**
  * Shared film data for the CINEGENY slate.
- * Used by the homepage (netflix-home), film detail fallback, and any page
- * that needs to reference the catalog when the DB has no entries.
+ * Used by the homepage vitrine (session 15.3), film detail fallback, and any
+ * page that needs to reference the catalog when the DB has no entries.
+ * `track` (piste A/B) et `HERO_FILM_SLUG` sont la source de vérité éditoriale
+ * de la vitrine ; les compteurs de votes viennent toujours de la base.
  */
 
 /* ── Types ── */
+
+/**
+ * Piste de compétition d'un film (décision 15.0 #5, wording brand.ts VOTE_TRACKS).
+ * A = « Bandes-annonces en compétition » → 5 000 votes → production.
+ * B = « Films en compétition » → 5 000 votes → Finale CINEGENY.
+ */
+export type FilmTrack = 'A' | 'B'
 
 export interface FilmData {
   id: string
@@ -22,10 +31,25 @@ export interface FilmData {
   status: string
   progressPct: number
   fundingPct: number
+  /**
+   * Piste de vote (15.0 #5). Décision éditoriale — À VALIDER PAR LE FONDATEUR :
+   * les films les plus aboutis sont placés en piste B (« films déjà réalisés »
+   * qui visent la Finale), les autres en piste A (« bandes-annonces » qui visent
+   * la production). Le compteur de votes, lui, vient toujours de la base.
+   */
+  track: FilmTrack
   isPipeline?: boolean
   /** True when the film belongs to the archived (legacy) catalog */
   archived?: boolean
 }
+
+/**
+ * Film mis en avant dans le hero de l'accueil (session 15.3).
+ * PRÉREQUIS FONDATEUR (roadmap 15.3) : « choisir le film mis en avant dans le
+ * hero ». Valeur par défaut proposée — le fondateur peut la changer ici en une
+ * ligne. Doit correspondre à un `slug` de la slate ci-dessous.
+ */
+export const HERO_FILM_SLUG = 'le-portrait-de-oscar-wilde'
 
 /* ── Named posters (films with real images) ── */
 
@@ -65,6 +89,7 @@ const SLATE: Omit<FilmData, 'id' | 'slug' | 'coverImageUrl'>[] = [
     status: 'IN_PRODUCTION',
     progressPct: 55,
     fundingPct: 70,
+    track: 'B',
     isPipeline: true,
   },
   {
@@ -81,6 +106,7 @@ const SLATE: Omit<FilmData, 'id' | 'slug' | 'coverImageUrl'>[] = [
     status: 'PRE_PRODUCTION',
     progressPct: 20,
     fundingPct: 45,
+    track: 'A',
     isPipeline: true,
   },
   {
@@ -97,6 +123,7 @@ const SLATE: Omit<FilmData, 'id' | 'slug' | 'coverImageUrl'>[] = [
     status: 'PRE_PRODUCTION',
     progressPct: 30,
     fundingPct: 25,
+    track: 'A',
     isPipeline: true,
   },
   {
@@ -113,6 +140,7 @@ const SLATE: Omit<FilmData, 'id' | 'slug' | 'coverImageUrl'>[] = [
     status: 'IN_PRODUCTION',
     progressPct: 40,
     fundingPct: 60,
+    track: 'B',
     isPipeline: true,
   },
   {
@@ -129,6 +157,7 @@ const SLATE: Omit<FilmData, 'id' | 'slug' | 'coverImageUrl'>[] = [
     status: 'PRE_PRODUCTION',
     progressPct: 15,
     fundingPct: 20,
+    track: 'A',
     isPipeline: true,
   },
   {
@@ -145,6 +174,7 @@ const SLATE: Omit<FilmData, 'id' | 'slug' | 'coverImageUrl'>[] = [
     status: 'POST_PRODUCTION',
     progressPct: 100,
     fundingPct: 100,
+    track: 'B',
     isPipeline: true,
   },
 ]
