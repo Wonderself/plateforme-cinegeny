@@ -52,6 +52,223 @@
 
 ---
 
+## PHASE 15 — REFONTE « CLARTE & LANCEMENT » (PRIORITE ABSOLUE — Juillet 2026)
+
+> **Objectif** : un visiteur novice comprend en 5 secondes ce que propose CINEGENY, vote en
+> 30 secondes, et sait pourquoi revenir. C'est la phase qui prepare le premier lancement
+> public. Elle passe AVANT toutes les autres phases en attente.
+
+### 15.0 Decisions strategiques verrouillees (fondateur, Juillet 2026)
+
+1. **Pitch** : CINEGENY est le studio de cinema IA ou le public decide — un 360 complet de
+   la creation au streaming, en passant par le vote et le financement.
+2. **Cible n°1** : grand public novice + petits investisseurs. Zero jargon.
+3. **Action prioritaire du visiteur** : VOTER. Les autres parcours (contribuer, investir,
+   regarder, apprendre) sont proposes selon le profil, apres le vote.
+4. **Hierarchie des piliers** : (1) Vote, (2) Production collaborative, (3) Streaming.
+   Academy = produit d'appel pour les reseaux sociaux. Tokenisation/TV = bonus discrets.
+   **TV en direct retiree du site public.**
+5. **Systeme de vote (LA mecanique centrale du site)** :
+   - Deux competitions distinctes :
+     - **Piste A — Bandes-annonces en competition** : films au stade bande-annonce.
+       **A 5 000 votes, le film part en production.**
+     - **Piste B — Films en competition** : films deja developpes. **A 5 000 votes, le
+       film entre dans la Finale annuelle** ; en fin d'annee, des prix sont a gagner
+       (voyages) pour la communaute votante.
+   - 1 vote gratuit par film et par personne. **Pas de mise de points** (le staking est
+     abandonne cote public : incompris, il brouille le message).
+   - **Vote anonyme autorise** : le vote est enregistre immediatement (cookie + hash IP),
+     puis une inscription rapide (email) le confirme et le rend definitif. Anti-fraude :
+     rate limiting, 1 vote confirme par compte et par film.
+   - Les 6 films officiels demarrent tous en statut **« En vote »**, compteurs reels
+     affiches (meme bas) : **zero chiffre invente, zero stat aleatoire**.
+6. **Axe de navigation du catalogue — un seul, celui du parcours d'un film** :
+   « En vote » → « En production » → « A regarder ». Pas d'autre taxonomie publique.
+7. **Une seule monnaie publique** : les **Points CINEGENY** (gagnes en votant, contribuant,
+   parrainant ; utilises pour les recompenses et le concours). Credits IA = usage interne
+   outils uniquement. Lumens et tokens retires de l'interface publique.
+8. **Investissement au lancement** : pas d'argent reel — page « Devenir co-producteur » en
+   **liste d'attente** (capture email + montant d'intention), ouverture des co-productions
+   annoncee « apres la premiere selection ». Evite tout risque legal avant structuration
+   (les phases Stripe/tokenisation existantes restent pour plus tard).
+9. **Accueil** : vitrine type Netflix (hero + rows), mais dont chaque bloc sert la
+   comprehension et le vote.
+10. **Design** : on garde le theme noir & or et on l'affine (contraste, respiration,
+    hierarchie typographique). Pas de changement d'identite.
+11. **Langue** : 100 % francais pour cette phase (la Phase 14 bilingue vient apres).
+12. **Ton** : communautaire et enthousiaste — « un mouvement », pas une institution.
+13. **Angle de lancement** : « Le premier studio de cinema ou VOUS decidez du prochain
+    film IA. 5 000 votes, et le film se fait. » Le compteur public de votes EST la
+    campagne de lancement.
+14. **Sessions** : taille moyenne, validees une par une par le fondateur (pas de sessions
+    autonomes). Deploiement par le fondateur via Coolify apres chaque validation.
+
+### 15.0bis PROMPT MAITRE de la refonte (a coller en tete de CHAQUE session 15.x)
+
+```text
+Tu es l'architecte produit et le lead designer de CINEGENY (Next.js 16 App Router,
+React 19, Tailwind 4, Prisma 7 + PostgreSQL, next-intl FR). Tu executes une session de la
+PHASE 15 « Clarte & Lancement » decrite dans ROADMAP.md — lis d'abord la section 15.0
+(decisions verrouillees) : elle prime sur tout le reste.
+
+CONTEXTE PRODUIT
+CINEGENY est le studio de cinema IA ou le public decide : la communaute vote pour les
+films (bandes-annonces et films developpes), les films plebiscites sont produits de
+maniere collaborative, puis diffuses en streaming sur la plateforme. Cible : grand public
+novice et petits investisseurs. Ton : communautaire, enthousiaste, simple — on s'adresse a
+quelqu'un qui n'a jamais entendu parler de nous et n'y connait rien en cinema ni en IA.
+
+LA MECANIQUE A RENDRE LIMPIDE PARTOUT
+« Regardez. Votez. Le film se fait. »
+- Piste A (bandes-annonces) : 5 000 votes => le film part en production.
+- Piste B (films developpes) : 5 000 votes => Finale annuelle, prix a gagner (voyages).
+- 1 vote gratuit par film. Vote possible sans compte, confirme par inscription rapide.
+- Un film suit un parcours unique et visible : En vote -> En production -> A regarder.
+
+REGLES NON NEGOCIABLES
+1. ZERO donnee inventee : pas de compteurs codes en dur, pas de seededRandom, pas de
+   pourcentages fictifs. Tout compteur affiche vient de la base (ou n'est pas affiche).
+2. Une seule monnaie publique : les Points CINEGENY. Ne jamais exposer lumens, tokens ou
+   credits IA dans un parcours grand public.
+3. 100 % francais sur toute surface publique (labels, boutons, categories, messages
+   d'erreur, emails). Aucun label anglais residuel.
+4. Theme noir & or existant (#0A0908 / #C9A227, .text-gold-metallic, .btn-sheen,
+   composants ui/ existants) — on affine, on ne remplace pas. Viser un rendu premium :
+   plus de respiration, hierarchie typographique nette, 1 CTA principal par ecran.
+5. Chaque page publique doit repondre en un ecran a : qu'est-ce que c'est ? qu'est-ce que
+   j'y gagne ? que dois-je faire maintenant ? Si un element ne sert pas une de ces trois
+   reponses, il saute ou descend sous le pli.
+6. Vocabulaire fixe (ne pas creer de synonymes) : « voter », « En vote », « En
+   production », « A regarder », « co-producteur », « Points CINEGENY », « Finale
+   CINEGENY ». Bannir cote public : staking, tokenisation, gouvernance, DAO, micro-tache.
+7. Pas d'argent reel au lancement : tout parcours d'investissement aboutit a la liste
+   d'attente co-producteurs, jamais a un paiement.
+8. Mobile d'abord : chaque ecran est concu et verifie en 390px avant le desktop.
+9. Accessibilite : contrastes AA sur fond noir, focus visibles, alt sur les affiches.
+10. Ne casse rien : les pages retirees du public font l'objet de redirects 308 ; l'admin
+    et les modeles Prisma existants sont conserves.
+
+QUALITE ATTENDUE
+Niveau « produit qu'on montre a la presse » : inspiration Netflix (vitrine), Kickstarter
+(clarte de la mecanique et des compteurs), Ulule/KissKissBankBank (chaleur communautaire
+francaise). Code TypeScript strict, composants reutilisables dans src/components,
+contenus editables centralises dans src/content ou src/data, tests sur la logique de
+vote. Termine chaque session par : npx tsc --noEmit && npx vitest run, et un recapitulatif
+de ce qui a change avec les URLs a verifier pour validation par le fondateur.
+```
+
+### Sessions d'execution (dans l'ordre — 1 session = 1 validation fondateur)
+
+### 15.1 Fondations du message — architecture de l'information & wording
+**Statut**: A FAIRE · **Modele**: **Opus** (travail de strategie/copywriting, faible volume de code)
+> Creer `src/content/brand.ts` : pitch officiel, baseline « Regardez. Votez. Le film se
+> fait. », vocabulaire fixe (regle 6 du prompt maitre), definition des 3 statuts du
+> parcours film, texte « Comment ca marche » en 3 etapes maximum (formule grand public a
+> proposer en 2-3 variantes au fondateur), noms officiels des deux pistes de vote et de la
+> Finale CINEGENY. Restructurer header/footer autour de 4 entrees : Films (voter),
+> Regarder, Participer, Co-produire — Academy mise en avant comme accroche. Livrable
+> soumis au fondateur AVANT toute session suivante : c'est la source de verite du wording.
+> **Prerequis fondateur** : valider les noms des pistes et la formule « Comment ca marche ».
+
+### 15.2 Vote reel branche en base + parcours vote anonyme
+**Statut**: A FAIRE · **Modele**: **Sonnet** (implementation backend cadree)
+> Remplacer integralement le vote localStorage de `src/components/films/vote-panel.tsx`
+> par le modele Prisma `FilmVote` existant (adapte si besoin) : server actions + API de
+> vote, piste A/B par film, compteur reel, seuil 5 000 avec barre de progression,
+> vote anonyme (cookie + hash IP) confirme a l'inscription, contrainte unique
+> user+film, rate limiting (lib existante `src/lib/rate-limit.ts`), tests Vitest sur la
+> logique (double vote, confirmation, seuil). Supprimer `seededRandom` et tous les
+> compteurs inventes du front (187/47, points localStorage a 500).
+> **Prerequis fondateur** : aucun.
+
+### 15.3 Page d'accueil — vitrine Netflix au service du vote
+**Statut**: A FAIRE · **Modele**: **Opus** (page la plus strategique du site : structure, design et narration)
+> Refondre `/` : hero plein ecran sur un film en vote (affiche + baseline + CTA « Voter »
+> + compteur reel x/5000), row « En vote — Bandes-annonces », row « En vote — Films en
+> competition », bloc « Comment ca marche » (3 etapes, issu de 15.1), row « Bientot en
+> production / A regarder », bloc Finale CINEGENY (prix, date), bloc Academy (accroche
+> reseaux), CTA final inscription. Supprimer de l'accueil tout ce qui ne sert pas ces
+> blocs. Verification mobile 390px systematique.
+> **Prerequis fondateur** : choisir le film mis en avant dans le hero.
+
+### 15.4 Fiche film + panneau de vote refondus
+**Statut**: A FAIRE · **Modele**: **Sonnet**
+> Refondre `/films/[slug]` : au-dessus du pli = affiche/bande-annonce, piste (A ou B),
+> compteur x/5000, bouton Voter, « que se passe-t-il a 5 000 ? » en une phrase. En
+> dessous : synopsis, equipe/contributeurs reels, parcours du film (timeline En vote ->
+> En production -> A regarder), partage social (le vote partage EST l'acquisition).
+> Etats post-vote soignes : confirmation, invitation a s'inscrire (si anonyme), a
+> partager, a voter pour un autre film.
+> **Prerequis fondateur** : bandes-annonces/videos disponibles pour chaque film (ou
+> placeholder assume).
+
+### 15.5 Catalogue /films — axe unique de progression
+**Statut**: A FAIRE · **Modele**: **Sonnet**
+> Refondre `src/components/films/film-categories.tsx` et `/films` : 3 onglets seulement
+> (« En vote » (defaut), « En production », « A regarder »), badges de piste A/B, labels
+> 100 % FR, cartes films avec compteur reel et CTA Voter direct depuis la carte.
+> Supprimer la categorisation par fundingPct et les 5 onglets anglais actuels.
+> **Prerequis fondateur** : aucun (les 6 films sont « En vote », decision 15.0).
+
+### 15.6 Monnaie unique + degraissage des pages publiques
+**Statut**: A FAIRE · **Modele**: **Sonnet**
+> Ne garder qu'une monnaie publique (Points CINEGENY) : fusionner/rediriger `/points`,
+> `/rewards`, `/credits`, `/lumens` vers une page unique « Mes Points » + page publique
+> « Recompenses ». Retirer du public : TV live (`/tv/live`), tokenisation, gouvernance,
+> et les pages redondantes (`/invest` vs `/investors`, `/produce` vs `/create`...) —
+> redirects 308 vers les pages canoniques, nav/footer/sitemap nettoyes. Rien n'est
+> supprime en base ni dans l'admin. Livrer la liste exacte des redirects pour validation.
+> **Prerequis fondateur** : valider la liste des pages retirees/fusionnees.
+
+### 15.7 « Comment ca marche » + co-producteurs en liste d'attente
+**Statut**: A FAIRE · **Modele**: **Sonnet**
+> Page `/comment-ca-marche` grand public (3 etapes illustrees, FAQ courte : qui peut
+> voter, c'est gratuit ?, que gagne-t-on ?, c'est quoi un film IA ?). Page
+> `/co-produire` : promesse co-production + formulaire liste d'attente (email + montant
+> d'intention, stockage Prisma, email de confirmation via Resend) — aucun paiement.
+> Mention claire « ouverture apres la premiere selection ».
+> **Prerequis fondateur** : valider le texte legal court de la liste d'attente.
+
+### 15.8 Page equipe / A propos
+**Statut**: A FAIRE · **Modele**: **Haiku** (integration de contenu, pas de logique)
+> Page `/about` refondue : mission (wording 15.1), equipe reelle reprise de CineGeny.com
+> (photos, roles), la promesse de transparence (compteurs publics). Ton communautaire.
+> **Prerequis fondateur** : fournir photos + noms + roles de l'equipe (ou lien exact vers
+> la page CineGeny.com a repliquer).
+
+### 15.9 Finale CINEGENY — page concours + reglement
+**Statut**: A FAIRE · **Modele**: **Sonnet**
+> Page `/finale` : principe (les films de la piste B a 5 000 votes entrent en Finale),
+> prix de fin d'annee (voyages), compte a rebours, films qualifies (reel : vide au debut,
+> assume avec un etat « Aucun finaliste encore — votez ! »), reglement lisible.
+> **Prerequis fondateur** : nature exacte des prix, date de la Finale, conditions
+> (indispensable avant mise en ligne — obligations legales des jeux-concours FR).
+
+### 15.10 Passe francais integral des surfaces publiques
+**Statut**: A FAIRE · **Modele**: **Haiku** (passe mecanique de labels, volume eleve, zero decision)
+> Balayer toutes les pages publiques restantes : traduire chaque label/bouton/message
+> anglais residuel en francais, appliquer le vocabulaire fixe de 15.1, verifier emails
+> transactionnels. Ne touche pas a l'admin ni a la Phase 14 (i18n complete plus tard).
+> **Prerequis fondateur** : aucun.
+
+### 15.11 QA de lancement
+**Statut**: A FAIRE · **Modele**: **Sonnet**
+> Parcours complet teste en conditions reelles (mobile + desktop) : arrivee -> comprendre
+> -> voter anonyme -> s'inscrire -> vote confirme -> partager -> revenir. SEO/OG de
+> toutes les pages publiques (titres FR, images OG par film), sitemap a jour apres 15.6,
+> perf (LCP accueil < 2,5 s), events analytics sur l'entonnoir de vote (vue film ->
+> clic vote -> vote confirme -> inscription). Rapport final go/no-go pour le fondateur.
+> **Prerequis fondateur** : acces au domaine de prod pour la verification finale.
+
+### 15.12 (Post-lancement) Trailer Studio v2 — integration du depot « bande annonce »
+**Statut**: A FAIRE (apres lancement) · **Modele**: **Opus** (refonte from scratch d'un module complet)
+> Reconstruire de zero l'outil de creation de video assistee a partir du depot « bande
+> annonce » du fondateur, et l'integrer comme parcours « Creer une bande-annonce » qui
+> alimente directement la piste A du vote. Cadrage en debut de session avec le fondateur.
+> **Prerequis fondateur** : acces au depot « bande annonce » + demo de l'existant.
+
+---
+
 ## PHASE 14 — VERSIONS COMPLETES BILINGUES FR / EN
 
 **Decision (Juin 2026)** : plutot que d'harmoniser au cas par cas (ex: le contenu Academy
