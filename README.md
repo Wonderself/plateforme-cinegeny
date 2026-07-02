@@ -78,10 +78,11 @@ npx tsc --noEmit     # Vérification de types (aussi lancée en CI)
 npx vitest run       # Tests unitaires
 ```
 
-> Note build : `next.config.ts` désactive la vérification TypeScript/ESLint pendant
-> `next build` (`typescript.ignoreBuildErrors`, `eslint.ignoreDuringBuilds`) pour éviter un
-> OOM sur le build Docker en production. La validation reste faite en CI (`tsc --noEmit` +
-> ESLint) sur chaque push — voir `.github/workflows/ci.yml`.
+> Note build : `next.config.ts` désactive la vérification TypeScript pendant `next build`
+> (`typescript.ignoreBuildErrors`) pour éviter un OOM sur le build Docker en production. La
+> validation reste faite en CI (`tsc --noEmit`) sur chaque push — voir
+> `.github/workflows/ci.yml`. (`eslint.ignoreDuringBuilds` a été retiré : ce n'est pas une
+> propriété valide sur cette version de Next.js — elle cassait `tsc --noEmit` en CI.)
 
 ## Catalogue de Films
 

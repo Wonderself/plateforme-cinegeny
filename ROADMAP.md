@@ -49,8 +49,36 @@
 ### En cours
 - [ ] Integration Claude AI reelle (remplacement du mock de review)
 - [ ] Invitation scenaristes (systeme d'invitation en masse)
-- [ ] Academy : harmoniser le design (import fait en anglais, palette #E50914/#D4AF37) avec
-      le theme noir & or francophone du reste du site (#0A0908/#C9A227)
+
+---
+
+## PHASE 14 — VERSIONS COMPLETES BILINGUES FR / EN
+
+**Decision (Juin 2026)** : plutot que d'harmoniser au cas par cas (ex: le contenu Academy
+importe est actuellement 100% anglais avec une palette differente #E50914/#D4AF37 du reste
+du site en #0A0908/#C9A227), construire **une vraie version complete en anglais ET une vraie
+version complete en francais** de toute la plateforme.
+
+### 14.1 Audit du melange FR/EN actuel
+**Statut**: A FAIRE
+> Reperer toutes les pages/contenus qui ne suivent pas la locale active : Academy (100%
+> anglais, non traduit), quelques pages historiques en anglais (ex: certaines pages
+> publiques legacy), vs le gros du site qui est en francais avec un systeme i18n (next-intl)
+> deja en place (`messages/fr.json`, `messages/en.json`) mais partiellement utilise.
+
+### 14.2 Academy — traduction + harmonisation theme
+**Statut**: A FAIRE
+> Traduire integralement le contenu de `src/content/academy.ts` (3 niveaux, 29 lecons, 87
+> prompts) en francais, et proposer les deux langues via le systeme de locale existant
+> (next-intl). Harmoniser la palette avec le theme noir & or du site (#0A0908/#C9A227,
+> `.text-gold-metallic`, `.btn-sheen`, composant `Button`) au lieu du rouge Netflix
+> (#E50914) et de l'or divergent (#D4AF37) actuellement utilises.
+
+### 14.3 Couverture i18n complete du reste du site
+**Statut**: A FAIRE
+> Passer toutes les pages et tout le contenu restant (pas seulement la nav) par next-intl,
+> pour garantir une bascule FR/EN complete et coherente sur l'integralite de la plateforme,
+> pas seulement les menus.
 
 ---
 

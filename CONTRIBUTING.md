@@ -59,7 +59,7 @@ plateforme-cinegeny/
 │   └── lib/             # Librairies utilitaires (auth, prisma, catalog-state, ...)
 ├── public/              # Assets statiques
 ├── start.sh             # Script de démarrage conteneur (voir DEPLOYMENT.md)
-├── next.config.ts        # ignoreBuildErrors/ignoreDuringBuilds (voir DEPLOYMENT.md §5)
+├── next.config.ts        # typescript.ignoreBuildErrors (voir DEPLOYMENT.md §5)
 ├── README.md             # Vue d'ensemble + installation
 ├── PROJECT_HISTORY.md    # Changelog complet (À METTRE À JOUR)
 ├── FEATURES.md           # Inventaire de fonctionnalités (À METTRE À JOUR)

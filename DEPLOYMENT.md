@@ -206,12 +206,16 @@ DB_PASSWORD=your-password AUTH_SECRET=your-secret docker compose -f docker-compo
 - `DATABASE_URL` factice pendant le build — Prisma en a besoin pour l'analyse des modules,
   pas pour une vraie connexion (le client réel se connecte au runtime via un proxy lazy,
   `src/lib/prisma.ts`)
-- **Important** : `next.config.ts` définit `typescript.ignoreBuildErrors: true` et
-  `eslint.ignoreDuringBuilds: true`. Ceci a été ajouté après qu'un build ait échoué en
-  production (exit 255 à l'étape "Running TypeScript") alors que la CI GitHub passait — le
-  serveur manquait de RAM pour la passe de typage. La validation TypeScript/ESLint reste
-  assurée par la CI (`.github/workflows/ci.yml`, job `lint-and-typecheck`) sur chaque push ;
-  le build de production ne la refait plus, ce qui allège fortement la consommation mémoire.
+- **Important** : `next.config.ts` définit `typescript.ignoreBuildErrors: true`. Ceci a été
+  ajouté après qu'un build ait échoué en production (exit 255 à l'étape "Running TypeScript")
+  alors que la CI GitHub passait — le serveur manquait de RAM pour la passe de typage. La
+  validation TypeScript reste assurée par la CI (`.github/workflows/ci.yml`, job
+  `lint-and-typecheck`, `npx tsc --noEmit`) sur chaque push ; le build de production ne la
+  refait plus, ce qui allège fortement la consommation mémoire.
+  ⚠️ Une clé `eslint: { ignoreDuringBuilds: true }` avait été ajoutée en même temps mais
+  s'est révélée invalide sur cette version de Next.js (`NextConfig` ne l'accepte pas), ce qui
+  a cassé `tsc --noEmit` en CI pendant plusieurs commits — retirée. La CI n'exécute de toute
+  façon jamais `npm run lint` (job `lint-and-typecheck` ne lance que `tsc --noEmit`).
 
 ### Stage 3 : `runner`
 - Image Alpine minimale, utilisateur non-root `nextjs:1001`

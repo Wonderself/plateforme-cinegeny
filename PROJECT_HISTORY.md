@@ -76,9 +76,10 @@
   détail `src/app/(public)/academy/[level]/[slug]/page.tsx`, composants
   `src/components/academy/*`. Import non destructif, fusionné sans conflit avec le reste du
   travail de la semaine.
-- ⚠️ **À faire** : le contenu importé est en anglais avec une palette différente
-  (`#E50914`/`#D4AF37`) du reste du site (français, `#0A0908`/`#C9A227`) — harmonisation à
-  prévoir.
+- Le contenu importé est en anglais avec une palette différente (`#E50914`/`#D4AF37`) du
+  reste du site (français, `#0A0908`/`#C9A227`). Décision (2026-06) : au lieu d'une
+  harmonisation ponctuelle, construire de vraies versions complètes FR et EN de toute la
+  plateforme — voir `ROADMAP.md` Phase 14.
 
 ### Sécurité — Correction critique
 - **Suppression d'un bypass d'authentification codé en dur** (`admin@admin.com` /
@@ -103,6 +104,12 @@
 - **Domaine en dur dans le SEO/OG** (`cinegen.studio`) remplacé par `NEXT_PUBLIC_APP_URL`
   (fallback `platform.cinegeny.com`), `og:locale` corrigé en `fr_FR`.
 - `public/manifest.json` : nom "Lumiere" → "CINEGENY", couleur de thème rouge Netflix → or.
+- **CI cassée pendant 3 commits** : le fix OOM avait ajouté `eslint: { ignoreDuringBuilds: true }`
+  dans `next.config.ts`, mais cette propriété n'existe pas dans le type `NextConfig` de cette
+  version de Next.js — `tsc --noEmit` échouait en CI (`TS2353`) à chaque push depuis. Retirée ;
+  seule `typescript.ignoreBuildErrors` (celle qui corrige réellement l'OOM) est conservée. La
+  CI n'exécute de toute façon jamais `npm run lint` (job `lint-and-typecheck` ne lance que
+  `tsc --noEmit`).
 
 ---
 

@@ -1291,9 +1291,10 @@ Each phase has: status (LOCKED/ACTIVE/COMPLETED), order, dependencies
 - Intégrée dans : dropdown "Participer" du header (desktop + mobile), dropdown profil
   (badge "Gratuit"), sidebar dashboard (badge vert "GRATUIT"), footer, bannière accueil,
   pastille sur la page d'inscription.
-- ⚠️ **Incohérence de design à corriger** : le contenu importé est en **anglais** et utilise
-  une palette différente (`#E50914` rouge Netflix, `#D4AF37` or) du reste du site (français,
-  `#0A0908`/`#C9A227`). Voir `ROADMAP.md` section "En cours".
+- Le contenu importé est en **anglais** et utilise une palette différente (`#E50914` rouge
+  Netflix, `#D4AF37` or) du reste du site (français, `#0A0908`/`#C9A227`). Décision (juin
+  2026) : plutôt qu'une harmonisation ponctuelle, construire de vraies versions complètes
+  FR et EN de toute la plateforme — voir `ROADMAP.md` Phase 14.
 
 ## 88. Admin Bootstrap — création de compte admin sans données de démo (v14)
 - **Fichier**: `prisma/bootstrap-admin.cjs` (Node pur, pas `ts-node` — fiable en conteneur
