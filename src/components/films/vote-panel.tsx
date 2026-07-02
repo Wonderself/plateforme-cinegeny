@@ -1,103 +1,65 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
-import { ThumbsUp, ThumbsDown, CheckCircle, Coins } from 'lucide-react'
+import { useState, useEffect, useCallback, useTransition } from 'react'
+import Link from 'next/link'
+import { Vote as VoteIcon, CheckCircle, Loader2 } from 'lucide-react'
+import { castVoteAction, getVoteStateAction } from '@/app/actions/votes'
+import { computeVoteProgress, type VoteProgress, type VoteTrack } from '@/lib/votes'
+import { VOTE_TRACKS } from '@/content/brand'
 
 interface VotePanelProps {
+  filmId: string
   filmTitle: string
-  filmSlug: string
-  initialVotesFor?: number
-  initialVotesAgainst?: number
+  /** Piste de compétition du film (décision 15.0 #5). */
+  track: VoteTrack
+  /** Compteur réel initial (rendu serveur) — évite un flash à 0 au montage. */
+  initialProgress?: VoteProgress
   compact?: boolean
 }
 
-interface StoredVote {
-  vote: 'approve' | 'reject'
-  staked: number
-  timestamp: number
-}
-
-const STAKE_OPTIONS = [1, 5, 10, 25, 50]
-
-function getStoredVote(slug: string): StoredVote | null {
-  if (typeof window === 'undefined') return null
-  try {
-    const raw = localStorage.getItem(`cinegen-votes-${slug}`)
-    return raw ? (JSON.parse(raw) as StoredVote) : null
-  } catch {
-    return null
-  }
-}
-
-function storeVote(slug: string, vote: StoredVote) {
-  if (typeof window === 'undefined') return
-  localStorage.setItem(`cinegen-votes-${slug}`, JSON.stringify(vote))
-}
-
-function deductPoints(amount: number) {
-  if (typeof window === 'undefined') return
-  const current = Number(localStorage.getItem('cinegen-user-points') ?? '500')
-  localStorage.setItem('cinegen-user-points', String(Math.max(0, current - amount)))
-}
-
-function getUserPoints(): number {
-  if (typeof window === 'undefined') return 500
-  return Number(localStorage.getItem('cinegen-user-points') ?? '500')
-}
-
 export function VotePanel({
+  filmId,
   filmTitle,
-  filmSlug,
-  initialVotesFor = 187,
-  initialVotesAgainst = 47,
+  track,
+  initialProgress,
   compact = false,
 }: VotePanelProps) {
-  const [votesFor, setVotesFor] = useState(initialVotesFor)
-  const [votesAgainst, setVotesAgainst] = useState(initialVotesAgainst)
-  const [selectedStake, setSelectedStake] = useState(10)
-  const [existingVote, setExistingVote] = useState<StoredVote | null>(null)
-  const [justVoted, setJustVoted] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const [progress, setProgress] = useState<VoteProgress | null>(initialProgress ?? null)
+  const [hasVoted, setHasVoted] = useState(false)
+  const [pendingConfirmation, setPendingConfirmation] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [isPending, startTransition] = useTransition()
 
   useEffect(() => {
-    setMounted(true)
-    const stored = getStoredVote(filmSlug)
-    if (stored) {
-      setExistingVote(stored)
+    let cancelled = false
+    getVoteStateAction(filmId).then((state) => {
+      if (cancelled) return
+      setProgress(state.progress)
+      setHasVoted(state.hasVoted)
+      setPendingConfirmation(state.pendingConfirmation)
+    })
+    return () => {
+      cancelled = true
     }
-  }, [filmSlug])
+  }, [filmId])
 
-  const handleVote = useCallback(
-    (direction: 'approve' | 'reject') => {
-      if (existingVote) return
-      const points = getUserPoints()
-      if (points < selectedStake) return
-
-      const vote: StoredVote = {
-        vote: direction,
-        staked: selectedStake,
-        timestamp: Date.now(),
+  const handleVote = useCallback(() => {
+    if (hasVoted || isPending) return
+    setError(null)
+    startTransition(async () => {
+      const result = await castVoteAction(filmId, track)
+      if ('error' in result) {
+        setError(result.error)
+        return
       }
+      setProgress(result.progress)
+      setHasVoted(true)
+      setPendingConfirmation(result.pendingConfirmation)
+    })
+  }, [filmId, track, hasVoted, isPending])
 
-      storeVote(filmSlug, vote)
-      deductPoints(selectedStake)
-      setExistingVote(vote)
-      setJustVoted(true)
-
-      if (direction === 'approve') {
-        setVotesFor((v) => v + 1)
-      } else {
-        setVotesAgainst((v) => v + 1)
-      }
-    },
-    [existingVote, selectedStake, filmSlug],
-  )
-
-  const totalVotes = votesFor + votesAgainst
-  const totalStaked = totalVotes * 8 // simulated average
-  const forPct = totalVotes > 0 ? (votesFor / totalVotes) * 100 : 50
-
-  if (!mounted) return null
+  const displayProgress = progress ?? computeVoteProgress(0)
+  const trackInfo = VOTE_TRACKS[track]
 
   /* ------------------------------------------------------------------ */
   /* COMPACT MODE                                                       */
@@ -109,43 +71,22 @@ export function VotePanel({
           onClick={(e) => {
             e.preventDefault()
             e.stopPropagation()
-            handleVote('approve')
+            handleVote()
           }}
-          disabled={!!existingVote}
+          disabled={hasVoted || isPending}
           className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
-            existingVote?.vote === 'approve'
-              ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-              : existingVote
-                ? 'bg-white/[0.04] text-white/30 border border-white/[0.06] cursor-not-allowed'
-                : 'bg-white/[0.06] text-white/60 border border-white/[0.08] hover:bg-emerald-500/10 hover:text-emerald-400 hover:border-emerald-500/20'
+            hasVoted
+              ? 'bg-[#C9A227]/20 text-[#E8C766] border border-[#C9A227]/30'
+              : 'bg-white/[0.06] text-white/60 border border-white/[0.08] hover:bg-[#C9A227]/10 hover:text-[#E8C766] hover:border-[#C9A227]/20'
           }`}
         >
-          <ThumbsUp className="h-3 w-3" />
-          <span>{votesFor}</span>
+          {isPending ? (
+            <Loader2 className="h-3 w-3 animate-spin" />
+          ) : (
+            <VoteIcon className="h-3 w-3" />
+          )}
+          <span>{displayProgress.count.toLocaleString('fr-FR')}</span>
         </button>
-
-        <button
-          onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            handleVote('reject')
-          }}
-          disabled={!!existingVote}
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
-            existingVote?.vote === 'reject'
-              ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-              : existingVote
-                ? 'bg-white/[0.04] text-white/30 border border-white/[0.06] cursor-not-allowed'
-                : 'bg-white/[0.06] text-white/60 border border-white/[0.08] hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/20'
-          }`}
-        >
-          <ThumbsDown className="h-3 w-3" />
-          <span>{votesAgainst}</span>
-        </button>
-
-        {existingVote && (
-          <span className="text-[10px] text-amber-400/60">{existingVote.staked} pts</span>
-        )}
       </div>
     )
   }
@@ -158,111 +99,68 @@ export function VotePanel({
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-white">Voter pour ce film</h3>
-        <div className="flex items-center gap-1.5 text-xs text-amber-400/80">
-          <Coins className="h-3.5 w-3.5" />
-          <span>{getUserPoints()} pts</span>
-        </div>
+        <span className="rounded-full border border-[#C9A227]/25 bg-[#C9A227]/10 px-2.5 py-1 text-[11px] font-medium text-[#E8C766]">
+          {trackInfo.name}
+        </span>
       </div>
 
       <p className="text-sm text-white/50 mb-6">
-        Pensez-vous que <span className="text-white/80 font-medium">{filmTitle}</span> devrait
-        etre produit par CINEGENY ?
+        <span className="text-white/80 font-medium">{filmTitle}</span> — {trackInfo.outcome}
       </p>
 
-      {/* Vote buttons */}
-      {!existingVote ? (
-        <>
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <button
-              onClick={() => handleVote('approve')}
-              className="flex flex-col items-center gap-2 py-5 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] text-emerald-400 hover:bg-emerald-500/[0.12] hover:border-emerald-500/40 transition-all duration-300"
-            >
-              <ThumbsUp className="h-6 w-6" />
-              <span className="text-sm font-semibold">Approuver</span>
-            </button>
-
-            <button
-              onClick={() => handleVote('reject')}
-              className="flex flex-col items-center gap-2 py-5 rounded-xl border border-red-500/20 bg-red-500/[0.06] text-red-400 hover:bg-red-500/[0.12] hover:border-red-500/40 transition-all duration-300"
-            >
-              <ThumbsDown className="h-6 w-6" />
-              <span className="text-sm font-semibold">Rejeter</span>
-            </button>
-          </div>
-
-          {/* Stake selector */}
-          <div className="mb-6">
-            <p className="text-xs text-white/40 mb-3">Points a miser :</p>
-            <div className="flex flex-wrap gap-2">
-              {STAKE_OPTIONS.map((amount) => (
-                <button
-                  key={amount}
-                  onClick={() => setSelectedStake(amount)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300 ${
-                    selectedStake === amount
-                      ? 'bg-amber-500/20 border-amber-500/40 text-amber-400'
-                      : 'bg-white/[0.04] border-white/[0.08] text-white/50 hover:bg-white/[0.08] hover:text-white/70'
-                  }`}
-                >
-                  {amount} pts
-                </button>
-              ))}
-            </div>
-          </div>
-        </>
-      ) : (
-        /* Confirmation */
-        <div
-          className={`flex flex-col items-center gap-3 py-6 mb-6 rounded-xl border ${
-            existingVote.vote === 'approve'
-              ? 'border-emerald-500/20 bg-emerald-500/[0.06]'
-              : 'border-red-500/20 bg-red-500/[0.06]'
-          } ${justVoted ? 'animate-pulse' : ''}`}
+      {/* Vote button / confirmation */}
+      {!hasVoted ? (
+        <button
+          onClick={handleVote}
+          disabled={isPending}
+          className="mb-6 flex w-full items-center justify-center gap-2 rounded-xl border border-[#C9A227]/30 bg-[#C9A227]/[0.08] py-4 text-sm font-semibold text-[#E8C766] transition-all duration-300 hover:bg-[#C9A227]/[0.16] hover:border-[#C9A227]/50 disabled:opacity-50"
         >
-          <CheckCircle
-            className={`h-8 w-8 ${
-              existingVote.vote === 'approve' ? 'text-emerald-400' : 'text-red-400'
-            }`}
-          />
-          <p className="text-sm font-medium text-white/80">
-            Vous avez {existingVote.vote === 'approve' ? 'approuve' : 'rejete'} ce film
-          </p>
-          <p className="text-xs text-amber-400/70">
-            {existingVote.staked} points mises
-          </p>
+          {isPending ? <Loader2 className="h-5 w-5 animate-spin" /> : <VoteIcon className="h-5 w-5" />}
+          Voter
+        </button>
+      ) : (
+        <div className="flex flex-col items-center gap-3 py-6 mb-6 rounded-xl border border-[#C9A227]/25 bg-[#C9A227]/[0.06]">
+          <CheckCircle className="h-8 w-8 text-[#E8C766]" />
+          <p className="text-sm font-medium text-white/80">Vous avez voté pour ce film</p>
+          {pendingConfirmation && (
+            <div className="text-center px-4">
+              <p className="text-xs text-white/40 mb-2">
+                Votre vote est enregistré mais pas encore définitif.
+              </p>
+              <Link
+                href="/register"
+                className="text-xs font-semibold text-[#E8C766] underline underline-offset-2 hover:text-[#C9A227]"
+              >
+                Confirmez-le en vous inscrivant
+              </Link>
+            </div>
+          )}
         </div>
       )}
 
+      {error && <p className="text-xs text-red-400 text-center mb-4">{error}</p>}
+
       {/* Progress bar */}
-      <div className="space-y-3">
+      <div className="space-y-2">
         <div className="flex justify-between text-xs">
-          <span className="text-emerald-400">
-            {Math.round(forPct)}% Approuve
-          </span>
-          <span className="text-red-400">
-            {Math.round(100 - forPct)}% Rejete
-          </span>
+          <span className="text-white/40">Progression</span>
+          <span className="font-medium text-[#C9A227]">{Math.round(displayProgress.pct)}%</span>
         </div>
-        <div className="h-2.5 rounded-full overflow-hidden bg-white/[0.06] flex">
+        <div className="h-2.5 rounded-full overflow-hidden bg-white/[0.06]">
           <div
-            className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-700"
-            style={{ width: `${forPct}%` }}
-          />
-          <div
-            className="h-full bg-gradient-to-r from-red-500 to-red-400 transition-all duration-700"
-            style={{ width: `${100 - forPct}%` }}
+            className="h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700"
+            style={{ width: `${displayProgress.pct}%` }}
           />
         </div>
         <p className="text-xs text-white/40 text-center">
-          {totalVotes.toLocaleString('fr-FR')} votes &middot;{' '}
-          {totalStaked.toLocaleString('fr-FR')} points mises
+          {displayProgress.count.toLocaleString('fr-FR')} / {displayProgress.threshold.toLocaleString('fr-FR')} votes
         </p>
       </div>
 
       {/* Info */}
-      {!existingVote && (
+      {!hasVoted && (
         <p className="text-[11px] text-white/30 text-center mt-5 leading-relaxed">
-          Vos points seront retournes + bonus si votre vote correspond au resultat final.
+          1 vote gratuit par film. Vous pouvez voter sans compte — une inscription rapide confirme votre vote.
         </p>
       )}
     </div>

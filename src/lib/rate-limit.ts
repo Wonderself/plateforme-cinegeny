@@ -80,3 +80,10 @@ export const passwordResetLimiter = createRateLimiter({
   maxAttempts: isDev ? 50 : 3,
   windowMs: isDev ? 60 * 1000 : 15 * 60 * 1000,
 })
+
+// Vote sur les films (piste A/B) — assez large pour voter sur plusieurs
+// films, mais borne pour empecher le bombardement de l'API par IP.
+export const voteLimiter = createRateLimiter({
+  maxAttempts: isDev ? 100 : 20,
+  windowMs: isDev ? 60 * 1000 : 10 * 60 * 1000,
+})
