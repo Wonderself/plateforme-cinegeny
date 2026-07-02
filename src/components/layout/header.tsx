@@ -20,31 +20,36 @@ import {
   LogOut,
   Menu,
   Settings,
-  Star,
   User,
   X,
-  Trophy,
-  BookOpen,
   CreditCard,
   Sun,
   FileText,
   ChevronDown,
-  Info,
   Play,
+  Users,
+  Coins,
+  GraduationCap,
 } from 'lucide-react'
 import { cn, getInitials } from '@/lib/utils'
 import { AnimatePresence, MotionDiv } from '@/components/ui/motion'
 import { NotificationBell } from '@/components/layout/notification-bell'
 import { Logo } from '@/components/layout/logo'
+import { PRIMARY_NAV, ACADEMY_NAV } from '@/content/brand'
 
-const navLinks = [
-  { href: '/films', label: 'Films', icon: Film },
-  { href: '/streaming', label: 'Streaming', icon: Play },
-  { href: '/tasks', label: 'Tâches', icon: Star, protected: true },
-  { href: '/leaderboard', label: 'Classement', icon: Trophy },
-  { href: '/about', label: 'À Propos', icon: Info },
-  { href: '/roadmap', label: 'Roadmap', icon: BookOpen },
-]
+// Icônes de la couche présentation, associées aux entrées définies dans
+// `src/content/brand.ts` (source de vérité du wording, session 15.1).
+const NAV_ICONS: Record<string, React.ElementType> = {
+  '/films': Film,
+  '/streaming': Play,
+  '/create': Users,
+  '/invest': Coins,
+}
+
+const navLinks = PRIMARY_NAV.map((entry) => ({
+  ...entry,
+  icon: NAV_ICONS[entry.href] ?? Film,
+}))
 
 export function Header() {
   const pathname = usePathname()
@@ -60,10 +65,9 @@ export function Header() {
         {/* Logo */}
         <Logo height={40} priority />
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav — 4 piliers (source : src/content/brand.ts) */}
         <nav className="hidden lg:flex items-center gap-0.5">
           {navLinks.map((link) => {
-            if (link.protected && !session?.user) return null
             const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
             return (
               <Link
@@ -80,6 +84,19 @@ export function Header() {
               </Link>
             )
           })}
+          {/* Academy — accroche mise en avant */}
+          <Link
+            href={ACADEMY_NAV.href}
+            className={cn(
+              'ml-1 flex items-center gap-1.5 rounded-full border border-[#C9A227]/30 bg-[#C9A227]/5 px-3 py-1.5 text-sm font-medium transition-all duration-200',
+              pathname.startsWith(ACADEMY_NAV.href)
+                ? 'text-[#C9A227] border-[#C9A227]/60'
+                : 'text-[#C9A227]/80 hover:text-[#C9A227] hover:border-[#C9A227]/50'
+            )}
+          >
+            <GraduationCap className="h-3.5 w-3.5" />
+            {ACADEMY_NAV.label}
+          </Link>
           {isAdmin && (
             <Link
               href="/admin"
@@ -199,7 +216,6 @@ export function Header() {
           >
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link) => {
-                if (link.protected && !session?.user) return null
                 return (
                   <Link
                     key={link.href}
@@ -212,9 +228,23 @@ export function Header() {
                   >
                     <link.icon className="h-4 w-4" />
                     {link.label}
+                    {link.tagline && <span className="ml-auto text-[11px] text-white/30">{link.tagline}</span>}
                   </Link>
                 )
               })}
+              {/* Academy — accroche mise en avant */}
+              <Link
+                href={ACADEMY_NAV.href}
+                onClick={() => setMobileOpen(false)}
+                className={cn(
+                  'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all border border-[#C9A227]/25 bg-[#C9A227]/5',
+                  pathname.startsWith(ACADEMY_NAV.href) ? 'text-[#C9A227]' : 'text-[#C9A227]/80 hover:text-[#C9A227]'
+                )}
+              >
+                <GraduationCap className="h-4 w-4" />
+                {ACADEMY_NAV.label}
+                {ACADEMY_NAV.tagline && <span className="ml-auto text-[11px] text-[#C9A227]/40">{ACADEMY_NAV.tagline}</span>}
+              </Link>
               {session?.user ? (
                 <>
                   <div className="h-px bg-white/5 my-2" />
