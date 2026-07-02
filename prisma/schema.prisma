@@ -160,6 +160,9 @@ model Film {
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
 
+  // Phase 15 — piste de vote (15.0 #5) : A = bandes-annonces, B = films developpes
+  voteTrack VoteTrack @default(A)
+
   phases  FilmPhase[]
   tasks   Task[]
   votes   FilmVote[]
@@ -332,14 +335,31 @@ model FilmBacker {
 model FilmVote {
   id        String   @id @default(cuid())
   filmId    String
-  userId    String
-  voteType  String
+  userId    String?
+  voteType  String   @default("vote")
   createdAt DateTime @default(now())
 
-  film Film @relation(fields: [filmId], references: [id])
-  user User @relation(fields: [userId], references: [id])
+  // Phase 15 — mecanique de vote reelle (15.0 #5, session 15.2)
+  // Piste (A/B) au moment du vote, vote anonyme (cookie + hash IP) confirme
+  // a l'inscription. `voteType` reste "up"/"down" pour l'ancien mecanisme
+  // d'avis communautaire (voteFilmAction) et "vote" pour le vote de piste.
+  track       VoteTrack?
+  anonId      String?
+  ipHash      String?
+  confirmed   Boolean    @default(true)
+  confirmedAt DateTime?
+
+  film Film  @relation(fields: [filmId], references: [id])
+  user User? @relation(fields: [userId], references: [id])
 
   @@unique([filmId, userId, voteType])
+  @@unique([filmId, anonId, voteType])
+  @@index([filmId, voteType, confirmed])
+}
+
+enum VoteTrack {
+  A
+  B
 }
 
 // ============================================

@@ -11,6 +11,7 @@ import { randomBytes } from 'crypto'
 import { sendWelcomeEmail, sendPasswordResetEmail } from '@/lib/email'
 import { loginLimiter, registerLimiter, passwordResetLimiter } from '@/lib/rate-limit'
 import { headers } from 'next/headers'
+import { confirmPendingVotesForUser } from '@/app/actions/votes'
 
 // ─── Helpers ─────────────────────────────────────────────────
 
@@ -107,6 +108,9 @@ export async function registerAction(
     // Send welcome email with verification link (non-blocking)
     sendWelcomeEmail(email.toLowerCase(), displayName, verificationToken).catch((err) => console.error("[Email] Failed to send welcome email:", err))
 
+    // Confirme les votes anonymes (cookie) faits avant l'inscription (15.0 #5).
+    await confirmPendingVotesForUser(newUser.id).catch((err) => console.error('[Vote] Confirmation failed:', err))
+
     return { success: true }
   } catch (error) {
     console.error('Register error:', error)
@@ -188,6 +192,9 @@ export async function loginAction(
     // Log but don't fail — session cookie may already be set
     console.error('[loginAction] signIn error (session may still be valid):', error)
   }
+
+  // Confirme les votes anonymes (cookie) faits avant la connexion (15.0 #5).
+  await confirmPendingVotesForUser(user.id).catch((err) => console.error('[Vote] Confirmation failed:', err))
 
   // Step 3: Return redirect URL — client will handle the navigation
   return { redirectTo: safeCallbackUrl }

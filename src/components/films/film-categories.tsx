@@ -5,11 +5,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   Play,
-  ThumbsUp,
-  ThumbsDown,
+  Vote,
   Film,
   ChevronRight,
-  Users,
   DollarSign,
   Briefcase,
   CheckSquare,
@@ -26,14 +24,6 @@ function getPoster(film: FilmData): string | null {
 
 function isUnsplash(url: string | null): boolean {
   return !!url && url.includes('unsplash.com')
-}
-
-function seededRandom(seed: string): number {
-  let h = 0
-  for (let i = 0; i < seed.length; i++) {
-    h = (Math.imul(31, h) + seed.charCodeAt(i)) | 0
-  }
-  return Math.abs(h % 451) + 50 // 50-500
 }
 
 /* ── Categories ── */
@@ -242,79 +232,45 @@ function TrailerCard({ film }: { film: FilmData }) {
 
 function VoteCard({ film }: { film: FilmData }) {
   const poster = getPoster(film)
-  const voteCount = seededRandom(film.id)
-  const approvalPct = 40 + seededRandom(film.slug + 'a') % 45 // 40-84%
 
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-[#C9A227]/30 transition-all duration-500">
-      {/* Poster */}
-      <div className="relative aspect-[3/2] bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03] shrink-0">
-        {poster ? (
-          <Image
-            src={poster}
-            alt={film.title}
-            fill
-            unoptimized={isUnsplash(poster)}
-            className="object-cover"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <Film className="h-12 w-12 text-[#C9A227]/20" />
+    <Link href={`/films/${film.slug}`} className="block h-full">
+      <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-[#C9A227]/30 transition-all duration-500">
+        {/* Poster */}
+        <div className="relative aspect-[3/2] bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03] shrink-0">
+          {poster ? (
+            <Image
+              src={poster}
+              alt={film.title}
+              fill
+              unoptimized={isUnsplash(poster)}
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <Film className="h-12 w-12 text-[#C9A227]/20" />
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
+          <div className="absolute top-3 left-3">
+            <GenreBadge genre={film.genre} />
           </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
-        <div className="absolute top-3 left-3">
-          <GenreBadge genre={film.genre} />
+        </div>
+
+        {/* Content */}
+        <div className="p-5 space-y-4">
+          <h3 className="font-semibold text-sm text-white line-clamp-1">{film.title}</h3>
+
+          {/* Real vote count and progress live on the film page (VotePanel) —
+              no invented numbers are shown here (règle 15.0bis #1). */}
+          <div className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#C9A227]/[0.06] border border-[#C9A227]/20 text-xs font-medium text-[#E8C766]">
+            <Vote className="h-3.5 w-3.5" />
+            Voir la fiche et voter
+          </div>
         </div>
       </div>
-
-      {/* Content */}
-      <div className="p-5 space-y-4">
-        <h3 className="font-semibold text-sm text-white line-clamp-1">{film.title}</h3>
-
-        {/* Vote count */}
-        <div className="flex items-center gap-2 text-[11px] text-white/40">
-          <Users className="h-3.5 w-3.5" />
-          <span>{voteCount} votes</span>
-        </div>
-
-        {/* Approval bar */}
-        <div className="space-y-1.5">
-          <div className="flex justify-between text-[11px]">
-            <span className="text-green-400">Approve {approvalPct}%</span>
-            <span className="text-red-400">Reject {100 - approvalPct}%</span>
-          </div>
-          <div className="h-1.5 bg-white/[0.06] rounded-full overflow-hidden flex">
-            <div
-              className="h-full bg-green-500 rounded-l-full"
-              style={{ width: `${approvalPct}%` }}
-            />
-            <div
-              className="h-full bg-red-500 rounded-r-full"
-              style={{ width: `${100 - approvalPct}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Stake info */}
-        <div className="text-center text-[11px] text-white/40 py-1 rounded-lg bg-white/[0.03] border border-white/[0.06]">
-          Stake <span className="text-[#C9A227] font-medium">5 points</span> to vote
-        </div>
-
-        {/* Vote buttons */}
-        <div className="grid grid-cols-2 gap-2">
-          <button className="flex items-center justify-center gap-1.5 py-2 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-medium hover:bg-green-500/20 transition-colors">
-            <ThumbsUp className="h-3.5 w-3.5" />
-            Approve
-          </button>
-          <button className="flex items-center justify-center gap-1.5 py-2 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium hover:bg-red-500/20 transition-colors">
-            <ThumbsDown className="h-3.5 w-3.5" />
-            Reject
-          </button>
-        </div>
-      </div>
-    </div>
+    </Link>
   )
 }
 
