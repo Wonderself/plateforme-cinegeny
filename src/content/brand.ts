@@ -10,9 +10,11 @@
 // Règles verrouillées : voir ROADMAP.md §15.0 (décisions) et §15.0bis (prompt
 // maître). En cas de doute, ces sections priment sur tout le reste.
 //
-// ⚠️ ÉLÉMENTS À VALIDER PAR LE FONDATEUR avant la session 15.2 :
-//   1. Les noms officiels des deux pistes de vote (voir VOTE_TRACKS + variantes).
-//   2. La formule « Comment ça marche » (voir HOW_IT_WORKS + HOW_IT_WORKS_VARIANTS).
+// ✅ VALIDÉ PAR LE FONDATEUR (2026-07-02) :
+//   1. Piste A = « Bandes-annonces en compétition », Piste B = « Films en
+//      compétition » (recommandations retenues — voir VOTE_TRACKS).
+//   2. « Comment ça marche » = Variante 1, calée sur la baseline (HOW_IT_WORKS).
+//   Les variantes sont conservées ci-dessous à titre d'historique.
 // ─────────────────────────────────────────────────────────────────────────────
 
 /* ── Identité ─────────────────────────────────────────────────────────────── */
