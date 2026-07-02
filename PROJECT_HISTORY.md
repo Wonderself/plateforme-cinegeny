@@ -1,15 +1,15 @@
-# Lumiere App — Project History
+# CINEGENY — Project History
 
-> **GitHub**: https://github.com/Wonderself/lumiere-app.git
-> **Production**: https://cinema.lumiere.film
+> **GitHub**: https://github.com/Wonderself/plateforme-cinegeny
+> **Production**: https://platform.cinegeny.com
 > **Ce fichier doit être mis à jour à chaque modification significative.**
 
 ---
 
 ## Stack Technique
 - Next.js 16.1.6 + React 19.2.3 (standalone output)
-- NextAuth 5 beta (JWT + Credentials)
-- PostgreSQL + Prisma 7.4.1
+- NextAuth 5 beta (JWT + Credentials + Google OAuth)
+- PostgreSQL + Prisma 7.4.1 (108 modèles)
 - Redis (ioredis, graceful degradation)
 - TailwindCSS 4 + Radix UI + Framer Motion 12
 - Blockchain: SHA-256 proof system (ready for Polygon/Base)
@@ -17,6 +17,90 @@
 ---
 
 ## Version History
+
+## v14 — Refonte Premium, Marque Unifiée & Mise en Production (2026-06)
+
+> Session de refonte complète : identité visuelle, navigation, sécurité, et déblocage du
+> déploiement en production (repo GitHub différent de celui déployé par Coolify, build OOM,
+> compte admin).
+
+### Marque & Design
+- **Marque publique unifiée sous CINEGENY** — remplacement de "CINEGEN"/"Lumière" partout
+  côté utilisateur (295 occurrences, 105 fichiers), en gardant les références techniques
+  legacy intactes (enum Prisma `Catalog.LUMIERE`, domaine `cinegen.studio`, emails de démo
+  `@lumiere.film`, clés Redis, bucket S3).
+- **Refonte noir & or premium** : logo officiel intégré, palette et ombres affinées.
+- **Boutons premium** (`src/components/ui/button.tsx`) : dégradé or métallique enrichi,
+  balayage lumineux animé au survol (`.btn-sheen`, CSS pur, compatible Radix `Slot`),
+  micro-lift, feedback d'enfoncement — cascade sur tout le site.
+- **Cartes de films premium** (`film-categories.tsx`) : élévation + halo or au survol, zoom
+  lent de l'affiche, sheen sur le poster, CTA qui glisse à l'apparition, barres de
+  progression avec reflet animé (`shimmerSweep`).
+- **Fiche film refondue** (`/films/[slug]`) : suppression de 5 panneaux de statut
+  multicolores remplis de fausses données (votes/ratings/tâches fictifs, anglais), remplacés
+  par un hero cinématographique, un bloc "Où en est la production" unique en français, une
+  sidebar épurée (Production/Financement/CTA), et une seule bande Co-Producteur.
+
+### Navigation
+- **Header/footer/sidebar restructurés** : ~10 entrées plates + 3 dropdowns qui se
+  chevauchaient (Invest/Investors en doublon, TV/Watch/Live éparpillés) remplacés par **5
+  intentions claires** : Films, Regarder (streaming/TV/direct/replay), Participer (créer/
+  jouer/missions/produire/trailer studio/Academy/scénario), Investir (co-production/espace
+  investisseurs), Communauté.
+- Dropdowns premium avec icônes, descriptions et badges (NEW/GRATUIT/OPEN).
+- i18n : nouvelles clés `nav.*` ajoutées en FR et EN.
+
+### Catalogue de Films — architecture base de données
+- **Toggles admin persistés en base** (nouveau modèle `CatalogActivation`) au lieu du
+  localStorage par navigateur — `GET /api/catalog/active-archived` (lecture publique),
+  `GET`/`POST /api/admin/catalog-activations` (écriture admin, role-checked).
+- **Catalogue réduit à 6 films officiels** (`src/data/films.ts`) sur l'accueil et `/films` ;
+  l'ancien catalogue (~100 films) déplacé dans `src/data/archived-films.ts`, réactivable
+  individuellement depuis `/admin/films-catalog`.
+- **Tous les films existent aussi en base** (`Film` model) : les 6 officiels marqués
+  `isPublic: true`, le reste `isPublic: false` — gérables depuis `/admin/films`.
+- La page d'accueil (`src/app/page.tsx`) lisait auparavant les films **depuis la base**
+  (ancien seed, anciennes affiches) au lieu des fichiers de données — corrigé pour utiliser
+  `ALL_FILMS`/`FILMS_BY_GENRE`, identique à `/films`.
+- Fiche film (`/films/[slug]`) : les films de la slate/catalogue archivé gardent leur
+  présentation riche même s'ils existent en base (réalisation, casting, durée, tags) —
+  priorité à la version enrichie sur la version DB minimale.
+
+### CINEGENY Academy (nouveau)
+- Nouvelle page `/academy` : hero, parcours en 6 modules (écriture, direction/prompting,
+  production IA, VFX, montage/son, distribution), CTA.
+- **Gratuite et incluse pour tout membre** — mise en avant dans le menu connecté (sidebar +
+  dropdown profil, badge vert GRATUIT), le footer, une bannière sur l'accueil, et une
+  pastille sur la page d'inscription.
+- Page consciente de l'authentification : messages différenciés connecté ("Incluse dans
+  votre compte") / non connecté ("100% gratuite, dès l'inscription").
+- **Contenu actuel = page de présentation/parcours, pas encore de vraies leçons/vidéos.**
+
+### Sécurité — Correction critique
+- **Suppression d'un bypass d'authentification codé en dur** (`admin@admin.com` /
+  `adminadmin`) présent dans `src/lib/auth.ts` et `src/app/actions/auth.ts`, avec les
+  identifiants **affichés publiquement** sur `/login` et deux pages `/auto-admin` /
+  `/auto-user` qui s'auto-connectaient avec ce compte. Tout supprimé — la connexion valide
+  désormais uniquement contre la base (bcrypt). Voir `SECURITY.md` section 0.
+
+### Déploiement — incidents résolus
+- **Mauvais dépôt déployé** : Coolify pointait sur `Wonderself/lumiere-fork-a-vider` au lieu
+  de `Wonderself/plateforme-cinegeny` — tout le travail de refonte n'atteignait jamais la
+  prod malgré des déploiements "réussis". Repointé sur le bon dépôt.
+- **Build Docker en échec sur le serveur** (exit 255 à "Running TypeScript") alors que la CI
+  GitHub passait — OOM sur la passe de typage. Fix : `next.config.ts` ignore
+  TypeScript/ESLint pendant `next build` (déjà validés en CI séparément).
+- **Compte admin inaccessible** : nouveau script `prisma/bootstrap-admin.cjs` (Node pur, pas
+  `ts-node`) pour créer/réinitialiser un compte admin sans données de démo, déclenché par
+  `ADMIN_BOOTSTRAP=true`.
+- **Variable `SEED_DB`/`ADMIN_BOOTSTRAP` insensible à la casse** : Coolify sauvegardait `True`
+  (majuscule), le test shell exact `= "true"` ne matchait pas — `start.sh` normalise
+  désormais en minuscule avant comparaison.
+- **Domaine en dur dans le SEO/OG** (`cinegen.studio`) remplacé par `NEXT_PUBLIC_APP_URL`
+  (fallback `platform.cinegeny.com`), `og:locale` corrigé en `fr_FR`.
+- `public/manifest.json` : nom "Lumiere" → "CINEGENY", couleur de thème rouge Netflix → or.
+
+---
 
 ## v9.1 — Deep Audit, Dead Code Cleanup & Trailer Fix (2026-02-25)
 

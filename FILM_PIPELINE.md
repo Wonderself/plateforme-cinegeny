@@ -1,7 +1,9 @@
-# Lumiere — Film Creation Pipeline (Vision Document)
+# CINEGENY — Film Creation Pipeline (Vision Document)
 
-> **Ce document décrit le workflow complet de création d'un film sur la plateforme Lumière.**
+> **Ce document décrit le workflow complet de création d'un film sur la plateforme CINEGENY.**
 > **De la soumission initiale jusqu'à la distribution finale.**
+> Document de vision — décrit l'objectif cible, pas nécessairement l'état 100% implémenté
+> (voir section "Statut Actuel d'Implémentation" en fin de document et `ROADMAP.md`).
 
 ---
 
@@ -42,17 +44,18 @@ SOUMISSION → VALIDATION → DECOMPOSITION IA → DISTRIBUTION TACHES → EXECU
 ## 2. Décomposition par l'IA
 
 ### Phases Automatiques
-Le film est automatiquement découpé en 9 phases de production :
+Le film est automatiquement découpé en 10 phases de production (enum Prisma `PhaseName`) :
 
 1. **SCRIPT** — Écriture et finalisation du scénario
 2. **STORYBOARD** — Découpage visuel scène par scène
-3. **DESIGN** — Personnages, environnements, props
-4. **ANIMATION** — Création des animations IA
-5. **VFX** — Effets visuels et compositing
-6. **SOUND** — Sound design, musique, voix off
-7. **EDITING** — Montage et rythme
-8. **COLOR** — Étalonnage et colorimétrie
-9. **FINAL** — QA, sous-titres, master final
+3. **PREVIZ** — Prévisualisation
+4. **DESIGN** — Personnages, environnements, props
+5. **ANIMATION** — Création des animations IA
+6. **VFX** — Effets visuels et compositing
+7. **AUDIO** — Sound design, musique, voix off
+8. **EDITING** — Montage et rythme
+9. **COLOR** — Étalonnage et colorimétrie
+10. **FINAL** — QA, sous-titres, master final
 
 ### Découpage en Scènes
 - Le film est découpé en scènes numérotées
@@ -181,7 +184,7 @@ Certaines tâches nécessitent impérativement une intervention humaine :
 ### Visualisation
 - **Bande blanche → Film complet** — Le film commence vierge et se remplit
 - **Progression par scène** — Chaque scène a son propre pourcentage
-- **Progression par phase** — Vue d'ensemble des 9 phases
+- **Progression par phase** — Vue d'ensemble des 10 phases
 - **Timeline** — Visualisation temporelle de la production
 
 ### Fichiers du Film

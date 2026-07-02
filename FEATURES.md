@@ -1,4 +1,4 @@
-# Lumiere App — Complete Feature Inventory
+# CINEGENY — Complete Feature Inventory
 
 > **Ce fichier documente TOUTES les fonctionnalités du site.**
 > **Doit être mis à jour à chaque ajout/modification de fonctionnalité.**
@@ -12,9 +12,12 @@
 - Email/password registration with role selection
 - URL param auto-select role (e.g. `?role=SCREENWRITER`)
 - Custom welcome for screenwriters: "Devenez Scenariste"
-- Credential-based login via NextAuth 5 (no PrismaAdapter — pure JWT + Credentials)
+- Credential-based login via NextAuth 5 (no PrismaAdapter — pure JWT + Credentials) + Google OAuth
 - JWT stateless sessions with type-safe callbacks (no more `as any` casts)
-- Clickable demo login buttons (Admin + Contributeur) — gated behind `NEXT_PUBLIC_SHOW_DEMO` or dev mode
+- ⚠️ **No demo login buttons / no auth bypass** (removed 2026-06 — see `SECURITY.md` §0). A
+  hardcoded `admin@admin.com`/`adminadmin` bypass was previously exposed publicly on
+  `/login` and via `/auto-admin`/`/auto-user` pages; all removed. Login validates only
+  against the database (bcrypt).
 - Password visibility toggle (eye icon) on login and register forms
 - Password reset via token (1h expiry, email link)
 - Email verification with `verify:` prefix tokens (fixed in v8.2)
@@ -1248,4 +1251,56 @@ Each phase has: status (LOCKED/ACTIVE/COMPLETED), order, dependencies
 - Balance display with gold accent
 - 4 credit packs (disabled "Bientot disponible" for now — no Stripe yet)
 - Transaction history list with type icons and amounts
+- Sidebar: "Credits IA" with NEW badge in Mon Compte section
+
+---
+
+## 85. Catalog Activation — Admin-managed archived films (v14)
+- **Fichier**: `src/lib/catalog-state.ts`, `src/components/admin/catalog-manager.tsx`
+- **Modèle Prisma**: `CatalogActivation` — `slug` (id), `active` (bool), `updatedAt`
+- **API**:
+  - `GET /api/catalog/active-archived` — lecture publique des slugs actifs
+  - `GET /POST /api/admin/catalog-activations` — lecture/écriture admin (role-checked)
+- Remplace l'ancien stockage `localStorage` (par navigateur, non partagé) : l'état des
+  toggles est maintenant partagé entre tous les navigateurs/appareils.
+- `localStorage` conservé uniquement comme cache d'affichage instantané côté client
+  (résilience hors-ligne), le serveur reste la source de vérité.
+- Toggle optimiste avec revert + message d'erreur si l'écriture échoue.
+- Page admin `/admin/films-catalog` : recherche, filtre par genre, compteurs
+  (slate active / archivés réactivés / total archive).
+
+## 86. Films en base de données — architecture hybride (v14)
+- Les 6 films officiels (`src/data/films.ts`) ET le catalogue archivé
+  (`src/data/archived-films.ts`, ~100 films) existent **aussi** en base (`Film` model).
+- Seuls les 6 officiels sont `isPublic: true` par défaut (seed) ; le reste `isPublic: false`.
+- Gérables depuis `/admin/films` (CRUD complet : liste, création, édition).
+- Fiche film publique (`/films/[slug]`) : priorité donnée à la version "riche" (fichiers de
+  données — réalisation, casting, durée, tags, synopsis long) sur la version DB minimale,
+  pour ne pas perdre la présentation premium des films de la slate/catalogue archivé.
+- Films créés entièrement depuis l'admin (hors slate/archive) utilisent la fiche DB
+  standard (`DbFilmPage`).
+
+## 87. CINEGENY Academy (v14)
+- **Fichier**: `src/app/(public)/academy/page.tsx`
+- Page de présentation : hero, parcours en 6 modules (Écriture & Scénario, Direction &
+  Prompting, Production IA, VFX & Esthétique, Montage & Son, Distribution), CTA.
+- **Gratuite pour tout membre** — page consciente de la session (`auth()`) :
+  - connecté → "Incluse dans votre compte" / "Votre accès est débloqué", CTA "Accéder à mon espace"
+  - non connecté → "100% gratuite" / "Gratuite dès l'inscription", CTA "Créer un compte gratuit"
+- Intégrée dans : dropdown "Participer" du header (desktop + mobile), dropdown profil
+  (badge "Gratuit"), sidebar dashboard (badge vert "GRATUIT"), footer, bannière accueil,
+  pastille sur la page d'inscription.
+- **Statut**: page de présentation/parcours uniquement — pas encore de contenu de leçons
+  (texte, vidéo, progression par niveau). À construire.
+
+## 88. Admin Bootstrap — création de compte admin sans données de démo (v14)
+- **Fichier**: `prisma/bootstrap-admin.cjs` (Node pur, pas `ts-node` — fiable en conteneur
+  de production)
+- Déclenché par `ADMIN_BOOTSTRAP=true` (ou `True`/`1`/`yes`, insensible à la casse) dans
+  `start.sh`, au démarrage du conteneur.
+- Crée ou réinitialise **un seul** compte admin (upsert), sans injecter de données de démo.
+- Email/mot de passe configurables via `ADMIN_EMAIL`/`ADMIN_PASSWORD`, défaut
+  `admin@lumiere.film` / `Admin99999!!`.
+- Complète `prisma/seed.ts` (qui crée l'admin + films + données de démo complètes) pour les
+  cas où on veut uniquement débloquer l'accès admin sur une base existante.
 - Sidebar: "Credits IA" with NEW badge in Mon Compte section

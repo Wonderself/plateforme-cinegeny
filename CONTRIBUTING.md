@@ -1,6 +1,6 @@
-# Contributing to Lumiere Cinema
+# Contributing to CINEGENY
 
-> **Bienvenue !** Lumière est un studio de cinéma collaboratif propulsé par l'IA.
+> **Bienvenue !** CINEGENY est un studio de cinéma collaboratif propulsé par l'IA.
 > Ce guide explique comment contribuer au code de la plateforme.
 
 ---
@@ -9,8 +9,8 @@
 
 ```bash
 # 1. Clone
-git clone https://github.com/Wonderself/lumiere-app.git
-cd lumiere-app
+git clone https://github.com/Wonderself/plateforme-cinegeny.git
+cd plateforme-cinegeny
 
 # 2. Install dependencies
 npm install
@@ -25,6 +25,7 @@ docker compose up -d
 # 5. Initialize database
 npx prisma db push
 npx prisma db seed
+# → crée admin@lumiere.film / Admin99999!! + 6 films officiels + données de démo
 
 # 6. Start dev server
 npm run dev
@@ -36,28 +37,36 @@ npm run dev
 ## Project Structure
 
 ```
-lumiere-app/
-├── prisma/              # Database schema + seed
-│   ├── schema.prisma    # 70+ models
-│   └── seed.ts          # 20 films + demo data
+plateforme-cinegeny/
+├── prisma/
+│   ├── schema.prisma        # 108 modèles
+│   ├── seed.ts               # Admin + 6 films officiels + catalogue archivé + démo
+│   └── bootstrap-admin.cjs   # Création admin seule, sans données de démo (Node pur)
 ├── src/
 │   ├── app/
-│   │   ├── (public)/    # Public pages (cinema, films, streaming, etc.)
-│   │   ├── (dashboard)/ # Protected dashboard pages
-│   │   ├── actions/     # 26 server action files
-│   │   └── api/         # API routes (auth, cron, stripe, upload, etc.)
+│   │   ├── (public)/    # Pages publiques (films, academy, streaming, tv, invest, ...)
+│   │   ├── (dashboard)/ # Pages protégées (dashboard, admin/~65 sous-sections, ...)
+│   │   ├── (auth)/      # Login, register, reset password
+│   │   ├── actions/     # Server actions
+│   │   └── api/         # Routes API (auth, cron, stripe, upload, catalog, ...)
 │   ├── components/
-│   │   ├── netflix/     # Netflix-style UI components
-│   │   ├── ui/          # Radix UI primitives
-│   │   └── *.tsx        # Feature components
-│   ├── hooks/           # React hooks (useNotifications, etc.)
-│   └── lib/             # 21 utility libraries
-├── public/              # Static assets
-├── PROJECT_HISTORY.md   # Full changelog (MUST update)
-├── FEATURES.md          # Feature inventory (MUST update)
-├── SECURITY.md          # Security practices
-├── DEPLOYMENT.md        # Deployment guide
-└── SLATE_DECK.md        # 20 film projects details
+│   │   ├── netflix/     # Composants UI style Netflix
+│   │   ├── ui/          # Primitives Radix UI (Button, Badge, ...)
+│   │   ├── admin/       # Composants admin (catalog-manager, ...)
+│   │   └── *.tsx        # Composants métier
+│   ├── data/            # Données statiques : films.ts (6 officiels), archived-films.ts (~100)
+│   ├── hooks/           # Hooks React
+│   └── lib/             # Librairies utilitaires (auth, prisma, catalog-state, ...)
+├── public/              # Assets statiques
+├── start.sh             # Script de démarrage conteneur (voir DEPLOYMENT.md)
+├── next.config.ts        # ignoreBuildErrors/ignoreDuringBuilds (voir DEPLOYMENT.md §5)
+├── README.md             # Vue d'ensemble + installation
+├── PROJECT_HISTORY.md    # Changelog complet (À METTRE À JOUR)
+├── FEATURES.md           # Inventaire de fonctionnalités (À METTRE À JOUR)
+├── SECURITY.md           # Pratiques de sécurité + incidents résolus
+├── DEPLOYMENT.md         # Guide de déploiement (Docker + Coolify)
+├── ROADMAP.md            # Roadmap technique détaillée
+└── SLATE_DECK.md         # Détail des 6 films officiels + catalogue archivé
 ```
 
 ---
@@ -185,13 +194,12 @@ Use `'use client'` only when needed (interactivity, hooks).
 
 ## Getting Help
 
-- **Issues**: https://github.com/Wonderself/lumiere-app/issues
-- **Email**: dev@lumiere.film
-- **Docs**: `PROJECT_HISTORY.md`, `FEATURES.md`, `FILM_PIPELINE.md`
+- **Issues**: https://github.com/Wonderself/plateforme-cinegeny/issues
+- **Docs**: `README.md`, `PROJECT_HISTORY.md`, `FEATURES.md`, `FILM_PIPELINE.md`
 
 ---
 
 ## License
 
-All rights reserved — Lumière Brothers SAS / Wonderself.
+All rights reserved — CINEGENY Studio / Wonderself.
 Contributions are welcome under the project's license terms.

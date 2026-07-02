@@ -1,7 +1,15 @@
-# Lumiere App — Deployment Guide
+# CINEGENY — Guide de Déploiement
 
-> **Guide complet pour déployer Lumière Cinema en production.**
-> Infrastructure: Docker + Coolify + Hetzner (ou tout serveur compatible).
+> **Guide complet pour déployer CINEGENY en production.**
+> Infrastructure: Docker + Coolify + Hetzner.
+> **Dépôt déployé**: `Wonderself/plateforme-cinegeny` (branche `main`)
+> **Production**: https://platform.cinegeny.com
+
+⚠️ **Historique important** : ce projet a eu deux dépôts GitHub en parallèle
+(`plateforme-cinegeny` et un ancien fork `lumiere-fork-a-vider`). Coolify a pointé un temps
+sur le mauvais dépôt, ce qui a fait tourner une ancienne version pendant plusieurs
+déploiements sans erreur apparente. **Vérifiez toujours, en cas de "rien ne change après
+déploiement", que la source Git configurée dans Coolify est bien `plateforme-cinegeny`.**
 
 ---
 
@@ -9,12 +17,13 @@
 
 ```
                  ┌──────────────┐
-                 │   Cloudflare  │  DNS + CDN
-                 │  lumiere.film │
+                 │   Cloudflare  │  DNS + CDN (optionnel)
+                 │ platform.     │
+                 │ cinegeny.com  │
                  └──────┬───────┘
                         │ HTTPS
                  ┌──────┴───────┐
-                 │   Traefik    │  Reverse proxy (auto-SSL)
+                 │   Traefik    │  Reverse proxy (auto-SSL, géré par Coolify)
                  │  (Coolify)   │
                  └──────┬───────┘
                         │
@@ -22,107 +31,111 @@
           │             │             │
    ┌──────┴──────┐ ┌───┴────┐ ┌─────┴─────┐
    │  Next.js    │ │  Redis │ │ PostgreSQL │
-   │  App :3000  │ │  :6379 │ │   :5432    │
+   │  App :3000  │ │ (opt.) │ │            │
    │ (standalone)│ │        │ │            │
    └─────────────┘ └────────┘ └────────────┘
 ```
 
 ---
 
-## 2. Prerequisites
+## 2. Prérequis
 
-### Server Requirements
-- **VPS**: Hetzner CX21 minimum (2 vCPU, 4GB RAM, 40GB SSD)
-- **OS**: Ubuntu 22.04+ or Debian 12+
-- **Docker**: v24+ with Docker Compose
+### Serveur
+- **VPS**: Hetzner (ou équivalent), suffisant pour Next.js + build Docker
+- **Docker**: v24+ avec Docker Compose
 - **Coolify**: v4+ (self-hosted PaaS)
 
-### Accounts Required
-| Service | Purpose | Required |
-|---------|---------|----------|
-| Hetzner | VPS hosting | Yes |
-| GitHub | Code repository | Yes |
-| Cloudflare | DNS + CDN | Recommended |
-| Resend | Transactional emails | Optional |
-| Stripe | Payments | Optional |
-| Sentry | Error monitoring | Optional |
-| AWS S3 / Cloudflare R2 | File storage | Optional |
+### Comptes / services
+| Service | Usage | Requis |
+|---------|-------|--------|
+| Hetzner (ou autre VPS) | Hébergement | Oui |
+| GitHub — `Wonderself/plateforme-cinegeny` | Dépôt de code | Oui |
+| PostgreSQL | Base de données | Oui |
+| Redis | Cache (dégradation gracieuse si absent) | Non |
+| Resend | Emails transactionnels | Non |
+| Stripe | Paiements | Non |
+| Sentry | Monitoring d'erreurs | Non |
+| S3 / Cloudflare R2 | Stockage fichiers | Non |
 
-### Environment Variables
+### Variables d'environnement
+
 ```env
-# Required
-DATABASE_URL="postgresql://lumiere:PASSWORD@db:5432/lumiere?sslmode=require"
-AUTH_SECRET="your-256-bit-secret-here"
+# Requis
+DATABASE_URL="postgresql://user:PASSWORD@host:5432/db?sslmode=require"
+AUTH_SECRET="secret-256-bits"
 
-# Optional (graceful degradation if missing)
+# URL du site — piloté dynamiquement (SEO, Open Graph, NextAuth)
+NEXT_PUBLIC_APP_URL="https://platform.cinegeny.com"
+AUTH_URL="https://platform.cinegeny.com"
+NEXTAUTH_URL="https://platform.cinegeny.com"
+
+# Bootstrap base de données (voir section 6)
+SEED_DB="false"            # true = seed complet (admin + films + démo), une fois puis repasser à false
+ADMIN_BOOTSTRAP="false"    # true = crée/réinitialise UN compte admin sans données de démo
+ADMIN_EMAIL="vous@example.com"
+ADMIN_PASSWORD="mot-de-passe-fort"
+
+# Optionnel (dégradation gracieuse si absent)
 REDIS_URL="redis://redis:6379"
 RESEND_API_KEY="re_xxxxxxxxxxxx"
+RESEND_FROM_EMAIL="CINEGENY <noreply@votredomaine>"
 STRIPE_SECRET_KEY="sk_test_xxxxxxxxxxxx"
 STRIPE_WEBHOOK_SECRET="whsec_xxxxxxxxxxxx"
 STRIPE_PRICE_BASIC="price_xxxxxxxxxxxx"
 STRIPE_PRICE_PREMIUM="price_xxxxxxxxxxxx"
 NEXT_PUBLIC_SENTRY_DSN="https://xxx@xxx.ingest.sentry.io/xxx"
-CRON_SECRET="your-cron-secret"
+CRON_SECRET="votre-secret-cron"
 ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxx"
-S3_ACCESS_KEY_ID="AKIAXXXXXXXXXXXX"
-S3_SECRET_ACCESS_KEY="xxxxxxxxxxxxxxxx"
-S3_BUCKET="lumiere-uploads"
-S3_REGION="eu-west-3"
-
-# App
-NEXT_PUBLIC_APP_URL="https://cinema.lumiere.film"
-BLOCKCHAIN_NETWORK="polygon_testnet"
+S3_ACCESS_KEY_ID="..."
+S3_SECRET_ACCESS_KEY="..."
+S3_BUCKET="..."
+S3_REGION="..."
+S3_ENDPOINT="..."
+GOOGLE_CLIENT_ID="..."
+GOOGLE_CLIENT_SECRET="..."
 ```
+
+> **Casse des booléens** : `SEED_DB` et `ADMIN_BOOTSTRAP` acceptent `true`/`True`/`TRUE`/`1`/`yes`
+> (normalisés en minuscule dans `start.sh`). Une variable Coolify sauvegardée en `True` (majuscule)
+> fonctionne donc normalement.
 
 ---
 
-## 3. Coolify Deployment (Recommended)
+## 3. Déploiement Coolify (recommandé)
 
-### Step 1: Install Coolify
-```bash
-ssh root@your-server-ip
-curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
-```
+### Étape 1 : Connecter le dépôt GitHub
+1. Ouvrir le dashboard Coolify
+2. Ajouter une ressource → Application → GitHub App
+3. **Connecter `Wonderself/plateforme-cinegeny`** (pas un fork)
+4. Sélectionner la branche `main`
 
-### Step 2: Connect GitHub Repository
-1. Open Coolify dashboard (http://your-server-ip:8000)
-2. Add new resource → GitHub App
-3. Connect `Wonderself/lumiere-app` repository
-4. Select branch: `main`
-
-### Step 3: Configure Build
+### Étape 2 : Configurer le build
 - **Build pack**: Dockerfile
-- **Dockerfile path**: `./Dockerfile`
+- **Dockerfile**: `./Dockerfile`
 - **Port**: 3000
 
-### Step 4: Add Services
-1. **PostgreSQL**: Add managed PostgreSQL database
-   - Note the connection string for DATABASE_URL
-2. **Redis**: Add managed Redis instance
-   - Note the connection string for REDIS_URL
+### Étape 3 : Services
+1. **PostgreSQL** — noter la chaîne de connexion pour `DATABASE_URL`
+2. **Redis** (optionnel) — noter la chaîne pour `REDIS_URL`
 
-### Step 5: Set Environment Variables
-Add all variables from Section 2 in Coolify's environment settings.
+### Étape 4 : Variables d'environnement
+Ajouter toutes les variables de la section 2.
 
-### Step 6: Deploy
-Click "Deploy" — Coolify will:
-1. Pull from GitHub
-2. Build Docker image (multi-stage)
-3. Run `start.sh` which handles:
-   - Prisma migration (`prisma db push`)
-   - Seed if first deploy
-   - Start Next.js server
+### Étape 5 : Déployer
+Cliquer "Deploy". Le pipeline :
+1. Build l'image Docker (multi-stage, voir section 5)
+2. Démarre un nouveau conteneur, exécute `start.sh` (voir section 6)
+3. Attend le healthcheck (`curl http://localhost:3000/`, 40s de délai initial)
+4. Bascule le trafic (rolling update) puis supprime l'ancien conteneur
 
-### Step 7: Configure Domain
-1. In Coolify: Set custom domain `cinema.lumiere.film`
-2. In Cloudflare: Add A record → your server IP
-3. Traefik auto-generates SSL certificate
+### Étape 6 : Domaine
+1. Coolify : domaine personnalisé `platform.cinegeny.com`
+2. DNS : enregistrement A → IP du serveur
+3. Traefik génère le certificat SSL automatiquement
 
 ---
 
-## 4. Docker Compose (Manual)
-
-For non-Coolify deployments:
+## 4. Docker Compose (déploiement manuel, hors Coolify)
 
 ```yaml
 # docker-compose.production.yml
@@ -136,8 +149,11 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgresql://lumiere:${DB_PASSWORD}@db:5432/lumiere
+      - DATABASE_URL=postgresql://cinegeny:${DB_PASSWORD}@db:5432/cinegeny
       - AUTH_SECRET=${AUTH_SECRET}
+      - NEXT_PUBLIC_APP_URL=https://platform.cinegeny.com
+      - AUTH_URL=https://platform.cinegeny.com
+      - NEXTAUTH_URL=https://platform.cinegeny.com
       - REDIS_URL=redis://redis:6379
     depends_on:
       db:
@@ -149,13 +165,13 @@ services:
   db:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: lumiere
-      POSTGRES_USER: lumiere
+      POSTGRES_DB: cinegeny
+      POSTGRES_USER: cinegeny
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U lumiere"]
+      test: ["CMD-SHELL", "pg_isready -U cinegeny"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -174,143 +190,140 @@ volumes:
 ```
 
 ```bash
-# Deploy
 DB_PASSWORD=your-password AUTH_SECRET=your-secret docker compose -f docker-compose.production.yml up -d
 ```
 
 ---
 
-## 5. Dockerfile Explained
+## 5. Dockerfile — build multi-stage
 
-Our Dockerfile uses a 3-stage build:
+### Stage 1 : `deps`
+- `npm ci --ignore-scripts` — cache réutilisé tant que `package.json` ne change pas
 
-### Stage 1: Dependencies
-- Installs npm packages with `npm ci --ignore-scripts`
-- Cached: only rebuilds when package.json changes
+### Stage 2 : `builder`
+- `npx prisma generate`
+- `npm run build` (= `next build --webpack`, output `standalone`)
+- `DATABASE_URL` factice pendant le build — Prisma en a besoin pour l'analyse des modules,
+  pas pour une vraie connexion (le client réel se connecte au runtime via un proxy lazy,
+  `src/lib/prisma.ts`)
+- **Important** : `next.config.ts` définit `typescript.ignoreBuildErrors: true` et
+  `eslint.ignoreDuringBuilds: true`. Ceci a été ajouté après qu'un build ait échoué en
+  production (exit 255 à l'étape "Running TypeScript") alors que la CI GitHub passait — le
+  serveur manquait de RAM pour la passe de typage. La validation TypeScript/ESLint reste
+  assurée par la CI (`.github/workflows/ci.yml`, job `lint-and-typecheck`) sur chaque push ;
+  le build de production ne la refait plus, ce qui allège fortement la consommation mémoire.
 
-### Stage 2: Builder
-- Generates Prisma client
-- Builds Next.js (standalone output)
-- Uses dummy DATABASE_URL (Prisma needs it for module analysis, not connection)
-
-### Stage 3: Runner
-- Minimal Alpine image
-- Non-root user `nextjs:1001`
-- Copies: standalone build + static + Prisma + pg drivers
-- Copies: start.sh for migration handling
-- Healthcheck on port 3000
-
-### Key: pg module copies
-Next.js `serverExternalPackages: ['@prisma/adapter-pg', 'pg']` means pg is NOT bundled.
-We must explicitly COPY 13 pg-related packages to the runner stage.
+### Stage 3 : `runner`
+- Image Alpine minimale, utilisateur non-root `nextjs:1001`
+- Copie : build standalone + assets statiques + `node_modules` complet (Prisma CLI et le
+  driver `pg` ont des arbres de dépendances profonds — copie intégrale plus robuste que de
+  cibler des paquets individuels)
+- Copie : schéma Prisma, `prisma.config.ts`, `start.sh`, `prisma/bootstrap-admin.cjs`
+- Healthcheck : `curl http://localhost:3000/` toutes les 30s
 
 ---
 
-## 6. Startup Script (start.sh)
+## 6. Script de démarrage (`start.sh`)
 
-```bash
-#!/bin/sh
-echo "🎬 Lumiere Cinema — Starting..."
+Séquence réelle exécutée à chaque démarrage de conteneur :
 
-# Check DATABASE_URL
-if [ -z "$DATABASE_URL" ]; then
-  echo "❌ DATABASE_URL not set"
-  exit 1
-fi
+1. Affiche la version Node et vérifie que `DATABASE_URL` est défini
+2. Vérifie que le module `pg` est disponible
+3. Attend que PostgreSQL réponde (30 tentatives, 2s d'intervalle)
+4. `npx prisma db push` (avec repli `--accept-data-loss` si le premier essai échoue)
+5. Si `SEED_DB` est vrai → `npx prisma db seed` (crée l'admin de démo `admin@lumiere.film` /
+   `Admin99999!!`, les 6 films officiels marqués publics, le catalogue archivé marqué non
+   public, et diverses données de démonstration — voir `prisma/seed.ts`)
+6. Si `ADMIN_BOOTSTRAP` est vrai → `node prisma/bootstrap-admin.cjs` : crée ou réinitialise
+   **un seul** compte admin (email/mot de passe via `ADMIN_EMAIL`/`ADMIN_PASSWORD`, ou
+   `admin@lumiere.film` / `Admin99999!!` par défaut), **sans** toucher au reste de la base.
+   Écrit en Node pur (`.cjs`, pas `ts-node`) pour ne jamais échouer silencieusement au
+   démarrage.
+7. `exec node server.js`
 
-# Check pg module
-node -e "require('pg')" 2>/dev/null || {
-  echo "❌ pg module not found"
-  exit 1
-}
-
-# Run migrations
-npx prisma db push --accept-data-loss 2>/dev/null || echo "⚠️ Migration warning (normal on first deploy)"
-
-# Start Next.js
-exec node server.js
-```
+**Bonnes pratiques** :
+- En premier déploiement sur une base vide, utiliser soit `SEED_DB=true` (si vous voulez le
+  jeu de données de démo complet) soit `ADMIN_BOOTSTRAP=true` seul (si vous voulez uniquement
+  un compte admin réel, recommandé en production).
+- **Repasser la variable à `false`/la retirer après usage** pour ne pas la relancer à chaque
+  déploiement.
 
 ---
 
 ## 7. Cron Jobs
 
-Set up a cron job to call the maintenance endpoint:
-
 ```bash
-# Every 15 minutes — auto-release expired tasks, close contests, complete phases
-*/15 * * * * curl -s "https://cinema.lumiere.film/api/cron?key=YOUR_CRON_SECRET" > /dev/null
+# Toutes les 15 minutes — libère les tâches expirées, clôture les concours, etc.
+*/15 * * * * curl -s "https://platform.cinegeny.com/api/cron?key=YOUR_CRON_SECRET" > /dev/null
 ```
 
-In Coolify: Add a scheduled task with the same URL.
+Dans Coolify : ajouter une tâche planifiée avec la même URL.
 
 ---
 
 ## 8. Monitoring
 
 ### Sentry
-Set `NEXT_PUBLIC_SENTRY_DSN` to enable:
-- Server-side error capture (instrumentation.ts)
-- Client-side error boundary (global-error.tsx)
-- Performance monitoring (10% sample rate in prod)
+`NEXT_PUBLIC_SENTRY_DSN` active la capture d'erreurs serveur (`src/instrumentation.ts`) et
+client (`src/app/global-error.tsx`).
 
-### Health Check
+### Health check
 ```bash
-curl -f https://cinema.lumiere.film/
-# Returns 200 if healthy
+curl -f https://platform.cinegeny.com/
+# 200 si sain
 ```
 
 ### Logs
-```bash
-# Coolify: View logs in dashboard
-# Docker: docker logs -f lumiere-app
-```
+Coolify → onglet **Logs** de l'application (démarrage du conteneur, `bootstrap-admin`,
+erreurs runtime) — distinct de l'onglet **Deployments** (logs de build Docker uniquement).
 
 ---
 
-## 9. Troubleshooting
+## 9. Dépannage
 
-### Build fails: "Type 'string' is not assignable to type 'TaskType'"
-- Prisma enum types need `as never` cast in seed.ts
-- Already fixed in codebase (commit e8dbf1a)
+### Le build s'arrête à "Running TypeScript" (exit 255) alors que la CI passe
+- Symptôme d'un OOM sur le serveur pendant la vérification de types.
+- Déjà corrigé : `next.config.ts` ignore la vérif TS/lint pendant `next build` (voir section 5).
+- Si ça se reproduit à une autre étape, c'est probablement une vraie limite de RAM serveur.
 
-### Build fails: "Both middleware and proxy detected"
-- Delete `src/middleware.ts` — Next.js 16 uses `proxy.ts`
-- Already fixed (commit f0ef985)
+### "Rien ne change après déploiement" malgré un build réussi
+- Vérifier que Coolify pointe bien sur `Wonderself/plateforme-cinegeny` (pas un autre dépôt/fork).
+- Vérifier la branche déployée (`main`).
+- Forcer un rebuild sans cache.
 
-### Runtime: "Cannot find module 'pg'"
-- The 13 pg packages must be COPY'd to the runner stage
-- Check Dockerfile for all COPY lines
+### Connexion admin impossible
+- Aucun compte admin n'existe tant que `SEED_DB` ou `ADMIN_BOOTSTRAP` n'a pas tourné au moins
+  une fois sur cette base. Voir section 6.
+- Il n'existe **plus** de bypass d'authentification codé en dur (supprimé — voir `SECURITY.md`).
+  Toute connexion passe par un vrai compte en base.
 
-### Redis errors in build logs
-- Normal — Redis graceful degradation means the app logs warnings but works without Redis
-- These are NOT errors, just informational warnings
+### `SEED_DB=True` (majuscule) ne se déclenche pas
+- Corrigé : `start.sh` normalise la casse. Si vous êtes sur une version antérieure, mettez la
+  valeur en minuscule ou mettez à jour `start.sh`.
 
-### Prisma: "Can't reach database server"
-- Ensure DATABASE_URL is set at **runtime** (not just build time)
-- The build uses a dummy URL; the real connection happens at first request
+### "Cannot find module 'pg'" au runtime
+- Le Dockerfile copie `node_modules` en entier vers le stage `runner` — vérifier que cette
+  étape n'a pas été modifiée/tronquée.
 
-### Slow Docker pull
-- Hetzner EU servers may have slow Docker Hub access
-- Consider using a Docker registry mirror
+### Erreurs Redis dans les logs
+- Normal — dégradation gracieuse : l'app fonctionne sans Redis, juste plus lentement (pas de
+  cache).
+
+### `prisma db push` échoue au premier déploiement
+- `start.sh` retente automatiquement avec `--accept-data-loss` — normal sur une base vierge.
 
 ---
 
-## 10. Backup Strategy
+## 10. Sauvegardes
 
 ### PostgreSQL
 ```bash
-# Daily backup
 pg_dump $DATABASE_URL > backup-$(date +%Y%m%d).sql
-
-# Restore
-psql $DATABASE_URL < backup-20260224.sql
+psql $DATABASE_URL < backup-20260101.sql
 ```
 
 ### Redis
-- Redis is a cache layer — no backup needed
-- App works without Redis (graceful degradation)
+Couche de cache uniquement — pas de sauvegarde nécessaire (l'app fonctionne sans).
 
-### Files (S3)
-- S3 handles durability (11 nines)
-- Consider cross-region replication for critical assets
+### Fichiers (S3)
+S3/R2 gère la durabilité — envisager une réplication cross-région pour les assets critiques.

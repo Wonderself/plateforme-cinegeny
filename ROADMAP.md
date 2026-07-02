@@ -1,30 +1,54 @@
-# LUMIERE CINEMA — Roadmap Technique Detaillee
+# CINEGENY — Roadmap Technique Detaillee
 
 > Chaque etape inclut le **prompt pret a copier** pour Claude Code et la **liste de prerequis** (ce que le fondateur doit fournir avant de lancer).
 
 ---
 
-## ETAT ACTUEL (Fevrier 2026)
+## ETAT ACTUEL (Juin 2026)
 
-### Fait
-- [x] Architecture Next.js 16 + Prisma 7 + PostgreSQL + Redis
-- [x] Auth complete (register, login, reset password, roles)
-- [x] 23 films avec pipeline 10 phases (230 phases, 17 taches)
+### Fait — Fondations (jusqu'a Fevrier 2026)
+- [x] Architecture Next.js 16 + Prisma 7 (108 modeles) + PostgreSQL + Redis
+- [x] Auth complete (register, login, reset password, roles, Google OAuth)
+- [x] Pipeline de production par phases (10 phases : SCRIPT -> STORYBOARD -> PREVIZ -> DESIGN -> ANIMATION -> VFX -> AUDIO -> EDITING -> COLOR -> FINAL)
 - [x] Design Netflix premium (hero banner, film rows, top 10, creator bar)
 - [x] Systeme de vote blockchain (hash SHA-256, pret pour on-chain)
 - [x] Scenarios communautaires (soumission + vote)
-- [x] Concours de bandes-annonces
-- [x] Streaming catalog (3 films live)
+- [x] Concours de bandes-annonces + Trailer Studio complet (32 types de taches)
+- [x] Streaming catalog + TV en direct
 - [x] Tokenisation V4 (modeles DB complets)
-- [x] Dashboard admin complet
-- [x] 54 tests E2E automatises
+- [x] Dashboard admin complet (~65 sous-sections)
 - [x] Creator tools (profil, videos, social, scheduler)
-- [x] AI Review mock (scoring deterministe)
+- [x] Systeme de credits IA (packs prepayes, commission 20%)
 - [x] Paiements Stripe (modeles prets)
 
+### Fait — Refonte & mise en production (Juin 2026)
+- [x] **Marque unifiee CINEGENY** partout (ex-"Lumiere" cote public ; references techniques
+      legacy conservees : enum `Catalog.LUMIERE`, emails de demo `@lumiere.film`)
+- [x] **Theme noir & or premium** (logo, boutons avec sheen anime, cartes de films avec
+      hover-lift, fiche film entierement refondue, motion/Framer Motion)
+- [x] **Catalogue reduit a 6 films officiels** (`src/data/films.ts`) sur l'accueil et
+      `/films` ; ~100 films legacy archives (`src/data/archived-films.ts`) reactivables
+      individuellement depuis `/admin/films-catalog`, avec etat persiste en base
+      (modele `CatalogActivation`, pas seulement localStorage)
+- [x] Tous les films existent aussi en base (`Film` model), geres depuis `/admin/films`
+- [x] **Menus simplifies** : header/footer/sidebar restructures autour de 5 intentions
+      claires (Films, Regarder, Participer, Investir, Communaute) au lieu d'entrees eparses
+- [x] **CINEGENY Academy** — page dediee, gratuite pour tout membre, mise en avant dans le
+      menu connecte, le footer, l'accueil et la page d'inscription (contenu actuel = page
+      de presentation/parcours en 6 modules, pas encore de lecons/videos)
+- [x] **Securite** : suppression d'un bypass d'authentification code en dur
+      (`admin@admin.com` / `adminadmin`) qui etait affiche publiquement sur `/login` —
+      voir `SECURITY.md` section 0
+- [x] **Script bootstrap admin** (`prisma/bootstrap-admin.cjs`) — cree un compte admin sans
+      injecter de donnees de demo, declenchable via `ADMIN_BOOTSTRAP` en production
+- [x] **Fix build production** : `next.config.ts` ignore la verification TypeScript/ESLint
+      pendant `next build` (deja assuree par la CI) — evite un OOM sur le serveur de deploiement
+- [x] Domaine de production pilote par `NEXT_PUBLIC_APP_URL` (plus de domaine en dur dans le SEO/OG)
+
 ### En cours
-- [ ] Integration Claude AI reelle (remplacement du mock)
+- [ ] Integration Claude AI reelle (remplacement du mock de review)
 - [ ] Invitation scenaristes (systeme d'invitation en masse)
+- [ ] Vrai contenu de cours pour l'Academy (lecons, videos, progression par niveau)
 
 ---
 
@@ -486,4 +510,4 @@
 
 ---
 
-*Derniere mise a jour: 25 Fevrier 2026*
+*Derniere mise a jour: 25 Juin 2026*

@@ -1,135 +1,94 @@
-# Lumiere Brothers Pictures — Pipeline Projects 2026
+# CINEGENY — Slate Officielle 2026
 
-> **Company**: Lumiere Brothers Pictures
-> **Baseline**: We are light.
-> **Locations**: Paris, Tel Aviv, Hollywood
-
----
-
-## Main Projects (8)
-
-### P1: MERCI... (THE MIRACLE PROTOCOL)
-- **Genre**: Documentaire / Docu-Serie
-- **Format**: 4 x 52 min
-- **Logline**: Docu-serie sur les miracles du 7 octobre. Temoignages de survivants, reconstitutions cinematiques, dimension spirituelle.
-- **Status**: DEVELOPMENT
-- **Tags**: documentaire, israel, spiritualite, temoignage
-- **Poster concept**: Lumiere divine traversant la fumee, silhouettes humaines
-
-### P2: KETER (THE SINGULARITY POINT)
-- **Genre**: Thriller / Sci-Fi
-- **Format**: Long-metrage (90-110 min)
-- **Logline**: "Christopher Nolan meets the Zohar." Un physicien decouvre que le point de singularite quantique correspond a la Keter (couronne) de la Kabbale. Course contre la montre avant qu'une IA ne l'utilise pour recrire la realite.
-- **Status**: DEVELOPMENT
-- **Tags**: sci-fi, thriller, kabbale, intelligence-artificielle, quantique
-- **Poster concept**: Arbre de vie kabbalistique fusionne avec circuits quantiques
-
-### P3: LE CODE D'ESTHER (THE ESTHER CODE)
-- **Genre**: Docu-Fiction / Investigation Historique
-- **Format**: Long-metrage ou mini-serie (2x52')
-- **Logline**: Investigation sur les codes caches du Livre d'Esther. Paralleles troublants entre le recit biblique et des evenements historiques. Reconstitutions epiques + analyses cryptographiques.
-- **Status**: DEVELOPMENT
-- **Tags**: histoire, bible, investigation, cryptographie, esther
-- **Poster concept**: Parchemin ancien avec code binaire en surimpression
-
-### P4: ZION OF AFRICA
-- **Genre**: Docu-Historique
-- **Format**: Long-metrage documentaire (90 min)
-- **Logline**: L'histoire meconnue des communautes juives d'Afrique. Des Beta Israel d'Ethiopie aux Lemba du Zimbabwe, voyage a travers l'heritage juif africain.
-- **Status**: DEVELOPMENT
-- **Tags**: documentaire, afrique, histoire, communautes-juives, heritage
-- **Poster concept**: Carte d'Afrique doree avec etoiles de David dispersees
-
-### P5: LE DERNIER CONVOI (THE LAST TRAIN)
-- **Genre**: Film / Docu-Drama
-- **Format**: Long-metrage (100-120 min)
-- **Logline**: Le dernier convoi de deportation parti de France en 1944. Reconstitution cinematique basee sur des temoignages reels. Destins croises de deportes, resistants et cheminots.
-- **Status**: DEVELOPMENT
-- **Tags**: drame, shoah, histoire, france, wwii, resistance
-- **Poster concept**: Rails de train disparaissant dans le brouillard, lueur doree
-
-### P6: CARNAVAL (BAD TRIP)
-- **Genre**: Court-Metrage / Fiction
-- **Format**: Court-metrage (15-25 min)
-- **Logline**: Demo technique et creative. Un carnaval qui tourne au cauchemar. Effets visuels experimentaux generes par IA. "SCRIPT LOCKE" - pret a tourner.
-- **Status**: PRE_PRODUCTION
-- **Tags**: court-metrage, experimental, ia, vfx, demo-technique
-- **Poster concept**: Masque de carnaval dore fissurant, couleurs psychedeliques
-
-### P7: NA NAH NAHMA (THE BRESLOV LIGHT)
-- **Genre**: Docu-Serie / Spiritualite
-- **Format**: 3 x 52 min ou 1 x 90 min
-- **Logline**: Plongee dans l'univers du mouvement Breslov. Du Rabbi Nachman de Bratslav au phenomene mondial Na Nach. Musique, danse, priere et joie comme philosophie de vie.
-- **Status**: DEVELOPMENT
-- **Tags**: documentaire, spiritualite, breslov, musique, nachman, judaisme
-- **Poster concept**: Kippa Na Nach sur fond de coucher de soleil dore
-
-### P8: ORTISTES (THE GIFT)
-- **Genre**: Mini-Serie Animee
-- **Format**: 10 x 12 min
-- **Logline**: Serie animee sur des artistes autistes aux talents extraordinaires. Chaque episode explore un talent unique : musique, peinture, calcul, memoire. Animation generee par IA.
-- **Status**: DEVELOPMENT
-- **Tags**: animation, autisme, art, inclusion, serie-animee, ia
-- **Poster concept**: Cerveau humain en eclats colores et dores
+> Source de vérité du code : `src/data/films.ts` (page d'accueil et `/films`).
+> Pour l'ancien catalogue (archivé), voir la section 2 plus bas.
 
 ---
 
-## Extra / Quick Projects (7)
+## 1. Les 6 Films Officiels
 
-### E1: SUPER-HEROS (Working Title)
-- **Genre**: Action / Fantastique
-- **Format**: Court ou Long-metrage
-- **Logline**: Projet super-heros a la franchise israelienne. Details en developpement.
-- **Status**: CONCEPT
-- **Tags**: action, super-heros, fantastique
+### 1. Le portrait de Oscar Wilde
+- **Genre**: Drame — biopic
+- **Réalisation**: Eric Haldezos — un film de Emmanuel Smadja
+- **Durée**: 2h 04min · **Année**: 2026 · **Classification**: PG-13
+- **Statut**: IN_PRODUCTION (55% production, 70% financement)
+- **Logline**: Génie de l'esprit et martyr de son époque, Oscar Wilde fascine et scandalise le
+  Londres victorien. Un portrait flamboyant de l'écrivain le plus spirituel — et le plus
+  provocateur — de son siècle, de sa gloire à sa chute.
+- **Tags**: biopic, littérature, époque victorienne, Oscar Wilde
 
-### E2: AMELIE POUL2
-- **Genre**: Comedie / Drame
-- **Format**: Long-metrage
-- **Logline**: Suite/hommage/parodie du Fabuleux Destin d'Amelie Poulain. Vision IA et contemporaine.
-- **Status**: CONCEPT
-- **Tags**: comedie, hommage, amelie-poulain, paris
+### 2. Les souffrances du jeune Goethe
+- **Genre**: Drame — adaptation littéraire
+- **Réalisation**: Ludovic Clermont — d'après J.W. von Goethe
+- **Durée**: 2h 10min · **Année**: 2026 · **Classification**: PG-13
+- **Statut**: PRE_PRODUCTION (20% production, 45% financement)
+- **Logline**: D'après le chef-d'œuvre de Goethe. Un jeune homme se consume d'un amour
+  impossible pour une femme déjà promise. L'amour, la folie, l'éternité.
+- **Tags**: romantisme, adaptation, amour, Goethe
 
-### E3: ROYAL RUMBLE
-- **Genre**: Action / Comedie
-- **Format**: Court ou Long-metrage
-- **Logline**: Battle royale cinematique. Melange d'action et d'humour.
-- **Status**: CONCEPT
-- **Tags**: action, comedie, battle-royale
+### 3. Le voyage dans la Lune
+- **Genre**: Science-fiction
+- **Réalisation**: Frédéric Noël — Les Films de l'Akyme
+- **Cast**: Jean Dupont, Sophie Marie, Pierre-Luc Leroy, Marie Glaude
+- **Durée**: 2h 02min · **Année**: 2026 · **Classification**: PG
+- **Statut**: PRE_PRODUCTION (30% production, 25% financement)
+- **Logline**: Le premier film de science-fiction de l'histoire, ré-imaginé pour notre époque.
+  L'épopée d'un explorateur visionnaire qui défie l'impossible pour atteindre la Lune.
+- **Tags**: science-fiction, aventure, espace
 
-### E4: TRIP CARNAVAL
-- **Genre**: Experimental / Musique
-- **Format**: Court-metrage musical
-- **Logline**: Version musicale/extended du concept Carnaval. Trip visuel et sonore.
-- **Status**: CONCEPT
-- **Tags**: experimental, musique, carnaval, visuel
+### 4. Le dictionnaire de Voltaire
+- **Genre**: Historique — satire
+- **Réalisation**: François Laroche
+- **Durée**: 1h 58min · **Année**: 2026 · **Classification**: PG-13
+- **Statut**: IN_PRODUCTION (40% production, 60% financement)
+- **Logline**: Une satire épique sur Voltaire et son combat des Lumières. Armé de sa plume et
+  de son ironie, le philosophe affronte l'obscurantisme de son temps.
+- **Tags**: Lumières, satire, historique, Voltaire
 
-### E5: TOKENISATION (Le Film)
-- **Genre**: Docu-Fiction / Tech
-- **Format**: Moyen-metrage (45-60 min)
-- **Logline**: Un film sur la tokenisation du cinema elle-meme. Meta-documentaire sur le financement decentralise de l'art.
-- **Status**: CONCEPT
-- **Tags**: documentaire, blockchain, tokenisation, meta, fintech
+### 5. Le Dernier Convoi
+- **Genre**: Historique — docu-drama
+- **Réalisation**: Eric Haldezos
+- **Durée**: 1h 52min · **Année**: 2026 · **Classification**: PG-13
+- **Statut**: PRE_PRODUCTION (15% production, 20% financement)
+- **Logline**: Août 1944 : alors que Paris est sur le point d'être libéré, un dernier train
+  quitte Bobigny vers les camps. À travers les destins croisés de déportés, de résistants et
+  de cheminots, ce docu-drama reconstitue les dernières heures d'une tragédie historique
+  basée sur des témoignages réels.
+- **Tags**: docu-drama, Shoah, histoire, résistance
 
-### E6: NUIT DES CESARS
-- **Genre**: Satire / Comedie
-- **Format**: Court-metrage (20-30 min)
-- **Logline**: Satire de la ceremonie des Cesars. Comedie noire sur l'industrie du cinema francais.
-- **Status**: CONCEPT
-- **Tags**: satire, comedie, cesars, industrie-cinema, france
-
-### E7: METACINEMA
-- **Genre**: Experimental / Art
-- **Format**: Installation / Film experimental
-- **Logline**: Cinema qui parle de lui-meme. Experience immersive meta-cinematographique generee par IA.
-- **Status**: CONCEPT
-- **Tags**: experimental, meta, art, immersif, ia
+### 6. The Artists
+- **Genre**: Animation
+- **Réalisation**: Eric Haldezos — produit par Emmanuel Smadja, curation & IA : Daniel Siboni
+- **Durée**: 1h 35min · **Année**: 2026 · **Classification**: PG
+- **Statut**: POST_PRODUCTION (100% production, 100% financement)
+- **Logline**: Un petit garçon donne vie à ses dessins : une bande de petits monstres hauts en
+  couleur s'échappe de sa feuille et devient les artistes les plus déjantés du monde. Une
+  fable tendre sur l'imagination et la création.
+- **Tags**: animation, famille, imagination, CINEGENY
 
 ---
 
-## Notes
-- All projects use Lumiere Brothers Pictures' collaborative pipeline
-- Community can vote on scenarios, participate in production tasks
-- Each project gets blockchain-recorded lifecycle events
-- Tokenization available for co-production financing
-- AI-generated posters and trailers for all projects
+## 2. Catalogue Archivé (legacy)
+
+Un second catalogue d'environ 100 films (`src/data/archived-films.ts`) — l'ancienne slate
+« Lumière Brothers Pictures » incluant des projets comme *MERCI... (The Miracle Protocol)*,
+*KETER (The Singularity Point)*, *Le Code d'Esther*, *Zion of Africa*, etc. — n'est **plus
+affiché par défaut** sur le site public.
+
+Chaque film archivé peut être **réactivé individuellement** depuis
+**`/admin/films-catalog`** ; l'état actif/inactif est persisté en base de données (modèle
+Prisma `CatalogActivation`, exposé via `GET /api/catalog/active-archived` en lecture publique
+et `POST /api/admin/catalog-activations` en écriture admin) — pas seulement dans le
+navigateur de l'admin qui l'a activé.
+
+Ces films existent aussi en base (`Film` model, `isPublic: false`) et restent éditables
+depuis `/admin/films`, indépendamment de leur présence dans le catalogue public statique.
+
+---
+
+## 3. Studio & Sociétés
+
+- **Marque publique**: CINEGENY
+- **Références historiques/techniques conservées** (non visibles des utilisateurs) :
+  enum Prisma `Catalog.LUMIERE` (catégorie de catalogue par défaut), domaine technique
+  `cinegen.studio`, emails de comptes de démo `@lumiere.film`.

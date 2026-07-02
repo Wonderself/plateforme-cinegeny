@@ -1,17 +1,41 @@
-# Lumiere App — Security Policy
+# CINEGENY — Security Policy
 
 > **Ce document décrit les pratiques de sécurité, les protections en place,
 > et les procédures de réponse aux incidents.**
 
 ---
 
+## 0. Incident résolu — Bypass d'authentification codé en dur
+
+**Découvert et corrigé** durant la session de refonte : `src/lib/auth.ts` et
+`src/app/actions/auth.ts` contenaient un bypass permettant de se connecter en tant qu'admin
+avec `admin@admin.com` / `adminadmin` **sans vérification en base**. Les identifiants étaient
+en plus **affichés publiquement** sur la page `/login` (bloc "comptes démo"), et deux pages
+publiques `/auto-admin` et `/auto-user` s'auto-connectaient avec ce compte.
+
+**Correctifs appliqués** :
+- Suppression totale du bypass dans `lib/auth.ts` et `actions/auth.ts` — la connexion valide
+  désormais **uniquement** contre la base (bcrypt).
+- Suppression du bloc d'affichage des identifiants sur `/login`.
+- Suppression des pages `/auto-admin` et `/auto-user`.
+- L'accès admin se fait via un vrai compte : soit `prisma/seed.ts` (admin de démo
+  `admin@lumiere.film` / `Admin99999!!`), soit le script one-shot
+  `prisma/bootstrap-admin.cjs` (déclenché par `ADMIN_BOOTSTRAP=true`, email/mot de passe
+  configurables via `ADMIN_EMAIL`/`ADMIN_PASSWORD`).
+
+**Action recommandée** : si ce bypass a été exposé en production avant sa suppression,
+changer le mot de passe de tout compte admin existant.
+
+---
+
 ## 1. Authentication & Authorization
 
 ### Auth System
-- **NextAuth v5** (beta) with JWT strategy
+- **NextAuth v5** (beta) with JWT strategy + Google OAuth
 - Stateless sessions — no server-side session storage
 - JWT tokens signed with `AUTH_SECRET` (256-bit minimum)
 - Token expiry: 30 days (configurable)
+- No hardcoded bypass — see section 0 above
 
 ### Password Policy
 - Minimum 8 characters
@@ -107,6 +131,11 @@
 |----------|---------|----------|
 | `DATABASE_URL` | PostgreSQL connection | Yes |
 | `AUTH_SECRET` | JWT signing secret | Yes |
+| `NEXT_PUBLIC_APP_URL` | Public site URL (SEO/OG canonical) | Recommended |
+| `AUTH_URL` / `NEXTAUTH_URL` | NextAuth callback URL | Recommended |
+| `SEED_DB` | Run full demo seed at startup (true/false) | No (default false) |
+| `ADMIN_BOOTSTRAP` | One-shot admin account creation (true/false) | No (default false) |
+| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Override for `ADMIN_BOOTSTRAP` | No |
 | `REDIS_URL` | Redis cache connection | No (graceful degradation) |
 | `RESEND_API_KEY` | Email sending | No (logs in dev) |
 | `STRIPE_SECRET_KEY` | Payment processing | No (mock mode) |
@@ -115,6 +144,7 @@
 | `ANTHROPIC_API_KEY` | AI features | No (mock mode) |
 | `NEXT_PUBLIC_SENTRY_DSN` | Error monitoring | No |
 | `S3_ACCESS_KEY_ID` | File upload | No (local fallback) |
+| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Google OAuth login | No |
 
 ### Secrets Management
 - **NEVER** commit `.env` files (in `.gitignore`)
