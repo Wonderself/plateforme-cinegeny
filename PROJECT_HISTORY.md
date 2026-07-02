@@ -67,14 +67,18 @@
   priorité à la version enrichie sur la version DB minimale.
 
 ### CINEGENY Academy (nouveau)
-- Nouvelle page `/academy` : hero, parcours en 6 modules (écriture, direction/prompting,
-  production IA, VFX, montage/son, distribution), CTA.
-- **Gratuite et incluse pour tout membre** — mise en avant dans le menu connecté (sidebar +
-  dropdown profil, badge vert GRATUIT), le footer, une bannière sur l'accueil, et une
-  pastille sur la page d'inscription.
-- Page consciente de l'authentification : messages différenciés connecté ("Incluse dans
-  votre compte") / non connecté ("100% gratuite, dès l'inscription").
-- **Contenu actuel = page de présentation/parcours, pas encore de vraies leçons/vidéos.**
+- Nouvelle page `/academy` créée (hero, parcours en 6 modules, CTA), **gratuite et incluse
+  pour tout membre** — mise en avant dans le menu connecté (sidebar + dropdown profil, badge
+  vert GRATUIT), le footer, une bannière sur l'accueil, et une pastille sur la page
+  d'inscription. Page consciente de l'authentification.
+- **Puis migration du vrai contenu de cours** depuis l'ancien fork (`lumiere-fork-a-vider`) :
+  3 niveaux, 29 leçons, 87 prompts copiables, images — `src/content/academy.ts`, page de
+  détail `src/app/(public)/academy/[level]/[slug]/page.tsx`, composants
+  `src/components/academy/*`. Import non destructif, fusionné sans conflit avec le reste du
+  travail de la semaine.
+- ⚠️ **À faire** : le contenu importé est en anglais avec une palette différente
+  (`#E50914`/`#D4AF37`) du reste du site (français, `#0A0908`/`#C9A227`) — harmonisation à
+  prévoir.
 
 ### Sécurité — Correction critique
 - **Suppression d'un bypass d'authentification codé en dur** (`admin@admin.com` /

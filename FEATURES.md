@@ -1281,17 +1281,19 @@ Each phase has: status (LOCKED/ACTIVE/COMPLETED), order, dependencies
   standard (`DbFilmPage`).
 
 ## 87. CINEGENY Academy (v14)
-- **Fichier**: `src/app/(public)/academy/page.tsx`
-- Page de présentation : hero, parcours en 6 modules (Écriture & Scénario, Direction &
-  Prompting, Production IA, VFX & Esthétique, Montage & Son, Distribution), CTA.
+- **Fichiers**: `src/app/(public)/academy/page.tsx`, `src/app/(public)/academy/[level]/[slug]/page.tsx`,
+  `src/content/academy.ts` (contenu), `src/components/academy/*` (block-renderer, copy-prompt, reveal)
+- **Cours complet migré depuis l'ancien fork** : 3 niveaux, 29 leçons, 87 prompts copiables,
+  images — voir `src/content/academy.ts` (~1400 lignes) pour la structure `LEVELS`.
 - **Gratuite pour tout membre** — page consciente de la session (`auth()`) :
-  - connecté → "Incluse dans votre compte" / "Votre accès est débloqué", CTA "Accéder à mon espace"
-  - non connecté → "100% gratuite" / "Gratuite dès l'inscription", CTA "Créer un compte gratuit"
+  - connecté → accès direct aux leçons, CTA "Start Module 1"
+  - non connecté → leçons verrouillées (icône cadenas), CTA "Create free account to start"
 - Intégrée dans : dropdown "Participer" du header (desktop + mobile), dropdown profil
   (badge "Gratuit"), sidebar dashboard (badge vert "GRATUIT"), footer, bannière accueil,
   pastille sur la page d'inscription.
-- **Statut**: page de présentation/parcours uniquement — pas encore de contenu de leçons
-  (texte, vidéo, progression par niveau). À construire.
+- ⚠️ **Incohérence de design à corriger** : le contenu importé est en **anglais** et utilise
+  une palette différente (`#E50914` rouge Netflix, `#D4AF37` or) du reste du site (français,
+  `#0A0908`/`#C9A227`). Voir `ROADMAP.md` section "En cours".
 
 ## 88. Admin Bootstrap — création de compte admin sans données de démo (v14)
 - **Fichier**: `prisma/bootstrap-admin.cjs` (Node pur, pas `ts-node` — fiable en conteneur

@@ -33,9 +33,10 @@
 - [x] Tous les films existent aussi en base (`Film` model), geres depuis `/admin/films`
 - [x] **Menus simplifies** : header/footer/sidebar restructures autour de 5 intentions
       claires (Films, Regarder, Participer, Investir, Communaute) au lieu d'entrees eparses
-- [x] **CINEGENY Academy** — page dediee, gratuite pour tout membre, mise en avant dans le
-      menu connecte, le footer, l'accueil et la page d'inscription (contenu actuel = page
-      de presentation/parcours en 6 modules, pas encore de lecons/videos)
+- [x] **CINEGENY Academy** — cours complet migre depuis l'ancien fork : 3 niveaux, 29 lecons,
+      87 prompts copiables, images ; gratuite pour tout membre, mise en avant dans le menu
+      connecte, le footer, l'accueil et la page d'inscription (`src/content/academy.ts`,
+      pages `/academy` et `/academy/[level]/[slug]`)
 - [x] **Securite** : suppression d'un bypass d'authentification code en dur
       (`admin@admin.com` / `adminadmin`) qui etait affiche publiquement sur `/login` —
       voir `SECURITY.md` section 0
@@ -48,7 +49,8 @@
 ### En cours
 - [ ] Integration Claude AI reelle (remplacement du mock de review)
 - [ ] Invitation scenaristes (systeme d'invitation en masse)
-- [ ] Vrai contenu de cours pour l'Academy (lecons, videos, progression par niveau)
+- [ ] Academy : harmoniser le design (import fait en anglais, palette #E50914/#D4AF37) avec
+      le theme noir & or francophone du reste du site (#0A0908/#C9A227)
 
 ---
 
