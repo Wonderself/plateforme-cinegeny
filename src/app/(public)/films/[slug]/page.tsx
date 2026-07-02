@@ -6,17 +6,20 @@ import { Badge } from '@/components/ui/badge'
 
 export const dynamic = 'force-dynamic'
 import Image from 'next/image'
-import { Film, ArrowRight, Coins, Crown, Vote, TrendingUp, Bell, Clock, Users, Star, Calendar, Tag } from 'lucide-react'
-import { FILM_STATUS_LABELS } from '@/lib/constants'
-import { FilmTimeline } from '@/components/film-timeline'
+import { Film, ArrowRight, Coins, Crown, Vote, TrendingUp, Bell, Clock, Users, Star, Calendar, Tag, PlaySquare } from 'lucide-react'
+import { FilmJourney } from '@/components/films/film-journey'
+import { VotePanel } from '@/components/films/vote-panel'
 import { SocialShare } from '@/components/social-share'
 import { FilmReviews } from '@/components/film-reviews'
-import { FilmVoteButton } from '@/components/film-vote-button'
 import { WatchlistButton } from '@/components/watchlist-button'
 import { FILMS_BY_SLUG, FILMS_BY_GENRE } from '@/data/films'
 import { ARCHIVED_FILMS_BY_SLUG } from '@/data/archived-films'
 import { getFilmCreditsAction } from '@/app/actions/credits'
+import { computeVoteProgress, deriveFilmStatusKey, type VoteProgress } from '@/lib/votes'
+import { FILM_STATUSES, VOTE_TRACKS, type FilmStatusKey } from '@/content/brand'
 import type { Metadata } from 'next'
+
+const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || 'https://cinegen.studio').replace(/\/+$/, '')
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -53,10 +56,48 @@ export default async function FilmDetailPage({ params }: Props) {
   const { slug } = await params
 
   // Curated slate / archived catalogue → premium presentation (rich data
-  // files: réalisation, casting, durée, tags…). These keep their high-end
-  // page even though the films also exist as DB records (manageable in admin).
+  // files: réalisation, casting, durée, tags…). Ces films existent aussi en
+  // base (id, statut, bande-annonce, votes réels) — on l'interroge pour
+  // brancher le panneau de vote réel (15.2) sur la fiche film (15.4).
   const curated = FILMS_BY_SLUG[slug] || ARCHIVED_FILMS_BY_SLUG[slug]
-  if (curated) return <CatalogFilmPage film={curated} />
+  if (curated) {
+    let filmId: string | null = null
+    let trailerUrl: string | null = null
+    let legacyStatus: string = curated.status
+    let voteCount = 0
+
+    try {
+      const dbFilm = await prisma.film.findUnique({
+        where: { slug },
+        select: { id: true, status: true, trailerUrl: true },
+      })
+      if (dbFilm) {
+        filmId = dbFilm.id
+        trailerUrl = dbFilm.trailerUrl
+        legacyStatus = dbFilm.status
+        voteCount = await prisma.filmVote.count({
+          where: { filmId: dbFilm.id, voteType: 'vote', confirmed: true },
+        })
+      }
+    } catch {
+      // Base indisponible (build/preview) — la fiche reste rendue, compteur à zéro.
+    }
+
+    const { credits } = await getFilmCreditsAction(slug)
+    const progress = computeVoteProgress(voteCount)
+    const statusKey = deriveFilmStatusKey({ legacyStatus, reached: progress.reached })
+
+    return (
+      <CatalogFilmPage
+        film={curated}
+        filmId={filmId}
+        trailerUrl={trailerUrl}
+        progress={progress}
+        statusKey={statusKey}
+        credits={credits}
+      />
+    )
+  }
 
   // Otherwise: a film managed entirely from the database (admin-created).
   const film = await prisma.film.findUnique({
@@ -74,13 +115,16 @@ export default async function FilmDetailPage({ params }: Props) {
         },
       },
       tokenOffering: true,
-      _count: { select: { tasks: true, votes: true, backers: true } },
+      _count: { select: { tasks: true, backers: true } },
     },
   })
 
   if (film) {
-    const { credits } = await getFilmCreditsAction(slug)
-    return <DbFilmPage film={film} credits={credits} />
+    const [{ credits }, voteCount] = await Promise.all([
+      getFilmCreditsAction(slug),
+      prisma.filmVote.count({ where: { filmId: film.id, voteType: 'vote', confirmed: true } }),
+    ])
+    return <DbFilmPage film={film} credits={credits} voteCount={voteCount} />
   }
 
   notFound()
@@ -93,8 +137,11 @@ export default async function FilmDetailPage({ params }: Props) {
 type FilmCredit = Awaited<ReturnType<typeof getFilmCreditsAction>>['credits'][number]
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
+function DbFilmPage({ film, credits, voteCount }: { film: any; credits: FilmCredit[]; voteCount: number }) {
   const availableTasks = 0 // Already counted in the main function for DB films
+  const progress = computeVoteProgress(voteCount)
+  const statusKey = deriveFilmStatusKey({ legacyStatus: film.status, reached: progress.reached })
+  const shareUrl = `${APP_URL}/films/${film.slug}`
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -103,7 +150,7 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
     description: film.synopsis || film.description || undefined,
     genre: film.genre || undefined,
     image: film.coverImageUrl || undefined,
-    url: `https://cinegen.studio/films/${film.slug}`,
+    url: shareUrl,
     productionCompany: {
       '@type': 'Organization',
       name: 'CINEGENY Studio',
@@ -134,7 +181,7 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
                 <Badge variant="default">{film.genre || 'Film IA'}</Badge>
-                <Badge variant="secondary">{FILM_STATUS_LABELS[film.status as keyof typeof FILM_STATUS_LABELS] || film.status}</Badge>
+                <Badge variant="secondary">{FILM_STATUSES[statusKey].label}</Badge>
                 {availableTasks > 0 && (
                   <Badge variant="success">{availableTasks} tâches disponibles</Badge>
                 )}
@@ -144,7 +191,7 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
               </h1>
               <div className="mt-3">
                 <SocialShare
-                  url={`https://cinegen.studio/films/${film.slug}`}
+                  url={shareUrl}
                   title={`${film.title} — Film en Production | CINEGENY`}
                   description={film.synopsis || film.description || undefined}
                 />
@@ -155,7 +202,7 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
       </div>
 
       <div className="container mx-auto max-w-5xl px-6 sm:px-10 md:px-16 py-16 md:py-20 space-y-14 md:space-y-16">
-        {/* Synopsis + Stats */}
+        {/* Synopsis + Vote */}
         <div className="grid md:grid-cols-3 gap-10 md:gap-12">
           <div className="md:col-span-2 space-y-4">
             {film.synopsis && (
@@ -170,35 +217,19 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
           </div>
 
           <div className="space-y-4">
-            {/* Progress card */}
-            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-8">
-              <h3 className="text-sm font-medium text-white/50 mb-4 uppercase tracking-wider">Progression globale</h3>
-              <div className="text-5xl font-bold text-[#C9A227] mb-3 font-playfair">
-                {Math.round(film.progressPct)}%
-              </div>
-              <div className="h-2 bg-white/10 rounded-full overflow-hidden mb-4">
-                <div
-                  className="h-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] rounded-full transition-all duration-1000"
-                  style={{ width: `${film.progressPct}%` }}
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-5 text-center">
-                <div>
-                  <div className="text-xl font-bold">{film.completedTasks}</div>
-                  <div className="text-xs text-white/30">Validées</div>
-                </div>
-                <div>
-                  <div className="text-xl font-bold">{film.totalTasks}</div>
-                  <div className="text-xs text-white/30">Total</div>
-                </div>
-              </div>
-            </div>
+            {/* Vote — mécanique centrale (15.0 #5) */}
+            <VotePanel
+              filmId={film.id}
+              filmTitle={film.title}
+              track={film.voteTrack}
+              initialProgress={progress}
+              shareUrl={shareUrl}
+            />
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
               {[
                 { label: 'Tâches dispo', value: availableTasks },
-                { label: 'Votes', value: film._count.votes },
                 { label: 'Backers', value: film._count.backers },
                 { label: 'Phases', value: film.phases.length },
               ].map((s) => (
@@ -207,16 +238,6 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
                   <div className="text-xs text-white/30 mt-1">{s.label}</div>
                 </div>
               ))}
-            </div>
-
-            {/* Community voting */}
-            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-4">
-              <p className="text-xs font-medium text-white/40 uppercase tracking-wider mb-3">Votre avis</p>
-              <FilmVoteButton
-                filmId={film.id}
-                initialUpVotes={film._count.votes}
-                className="justify-center"
-              />
             </div>
 
             <WatchlistButton filmId={film.id} className="w-full justify-center" />
@@ -230,8 +251,8 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
           </div>
         </div>
 
-        {/* Production Timeline */}
-        <FilmTimeline phases={film.phases as never} />
+        {/* Le parcours de ce film : En vote -> En production -> À regarder */}
+        <FilmJourney current={statusKey} />
 
         {/* Film Credits */}
         {credits.length > 0 && (
@@ -293,7 +314,7 @@ function DbFilmPage({ film, credits }: { film: any; credits: FilmCredit[] }) {
 }
 
 /* ─────────────────────────────────────────────
-   Catalog Film Page (fake film from shared data)
+   Catalog Film Page (curated slate / archived catalog)
    ───────────────────────────────────────────── */
 
 import type { FilmData } from '@/data/films'
@@ -311,18 +332,29 @@ const GENRE_COLORS: Record<string, string> = {
   'Fantasy': '#A855F7',
 }
 
-const STATUS_NOTE: Record<string, string> = {
-  DRAFT: 'En développement. Les votes de la communauté décident des projets qui passent en production.',
-  PRE_PRODUCTION: "En pré-production — l'équipe prépare le tournage : scénario, storyboard, casting, repérages.",
-  IN_PRODUCTION: 'En production — le film est créé phase par phase par la communauté et nos agents IA.',
-  POST_PRODUCTION: 'En post-production — montage, VFX et mixage son. La bande-annonce arrive bientôt.',
-  RELEASED: 'Disponible — le film est désormais visible en streaming.',
-}
+const DIRECT_VIDEO_EXTENSIONS = /\.(mp4|webm|mov)(\?.*)?$/i
 
-function CatalogFilmPage({ film }: { film: FilmData }) {
+function CatalogFilmPage({
+  film,
+  filmId,
+  trailerUrl,
+  progress,
+  statusKey,
+  credits,
+}: {
+  film: FilmData
+  filmId: string | null
+  trailerUrl: string | null
+  progress: VoteProgress
+  statusKey: FilmStatusKey
+  credits: FilmCredit[]
+}) {
   const accentColor = GENRE_COLORS[film.genre] || '#C9A227'
-  const statusLabel = FILM_STATUS_LABELS[film.status as keyof typeof FILM_STATUS_LABELS] || film.status
+  const trackInfo = VOTE_TRACKS[film.track]
+  const statusLabel = FILM_STATUSES[statusKey].label
   const similarFilms = Object.values(FILMS_BY_GENRE[film.genre] || []).filter(f => f.slug !== film.slug).slice(0, 5)
+  const shareUrl = `${APP_URL}/films/${film.slug}`
+  const isDirectVideo = !!trailerUrl && DIRECT_VIDEO_EXTENSIONS.test(trailerUrl)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -331,7 +363,7 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
     description: film.synopsis,
     genre: film.genre,
     image: film.coverImageUrl || undefined,
-    url: `https://cinegen.studio/films/${film.slug}`,
+    url: shareUrl,
     director: { '@type': 'Person', name: film.director },
     duration: film.duration,
     dateCreated: `${film.year}-01-01`,
@@ -349,47 +381,101 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── Cinematic hero ── */}
-      <section className="relative flex min-h-[60vh] items-end overflow-hidden md:min-h-[66vh]">
-        {film.coverImageUrl ? (
+      {/* ── Cinematic hero : affiche/bande-annonce + vote (15.4) ── */}
+      <section className="relative flex min-h-[70vh] items-end overflow-hidden md:min-h-[78vh]">
+        {isDirectVideo ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={film.coverImageUrl || undefined}
+            className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
+          >
+            <source src={trailerUrl!} />
+          </video>
+        ) : film.coverImageUrl ? (
           <Image src={film.coverImageUrl} alt={film.title} fill priority sizes="100vw" className="scale-105 object-cover object-center" />
         ) : (
           <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${accentColor}1A, #0A0908 55%, ${accentColor}0D)` }} />
         )}
         {/* Cinematic gradients */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/70 to-[#0A0908]/15" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/85 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/80 to-[#0A0908]/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/40 to-transparent" />
         {/* Accent glow */}
         <div className="pointer-events-none absolute -bottom-24 left-[18%] h-72 w-72 rounded-full opacity-25 blur-[130px]" style={{ background: accentColor }} />
 
         <div className="relative z-10 w-full">
           <div className="container mx-auto max-w-5xl px-6 pb-12 sm:px-10 md:px-16 md:pb-16">
-            <div className="mb-5 flex flex-wrap items-center gap-2.5">
-              <span className="rounded-full px-3 py-1 text-[11px] font-semibold text-black" style={{ backgroundColor: accentColor }}>{film.genre}</span>
-              <span className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-1 text-[11px] font-medium text-white/75 backdrop-blur-md">{statusLabel}</span>
-              <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-white/45">{film.rating}</span>
-            </div>
-            <h1 className="max-w-3xl font-playfair text-4xl font-bold leading-[1.05] text-white md:text-6xl">
-              {film.title}
-            </h1>
-            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/55">
-              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4 text-[#C9A227]/70" /> {film.year}</span>
-              <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-[#C9A227]/70" /> {film.duration}</span>
-              <span className="flex items-center gap-1.5"><Users className="h-4 w-4 text-[#C9A227]/70" /> {film.director}</span>
-            </div>
-            <div className="mt-6">
-              <SocialShare
-                url={`https://cinegen.studio/films/${film.slug}`}
-                title={`${film.title} — ${film.genre} | CINEGENY`}
-                description={film.synopsis}
-              />
+            <div className="grid items-end gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+              {/* Récit */}
+              <div className="max-w-2xl">
+                <div className="mb-5 flex flex-wrap items-center gap-2.5">
+                  <span className="rounded-full px-3 py-1 text-[11px] font-semibold text-black" style={{ backgroundColor: accentColor }}>{film.genre}</span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/25 bg-[#0A0908]/70 px-3 py-1 text-[11px] font-medium text-[#E8C766] backdrop-blur-md">
+                    <Vote className="h-3 w-3" /> {statusLabel} · {trackInfo.name}
+                  </span>
+                  <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-white/45">{film.rating}</span>
+                </div>
+                <h1 className="max-w-3xl font-playfair text-4xl font-bold leading-[1.05] text-white md:text-6xl">
+                  {film.title}
+                </h1>
+                <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/55">
+                  <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4 text-[#C9A227]/70" /> {film.year}</span>
+                  <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-[#C9A227]/70" /> {film.duration}</span>
+                  <span className="flex items-center gap-1.5"><Users className="h-4 w-4 text-[#C9A227]/70" /> {film.director}</span>
+                  {!!trailerUrl && !isDirectVideo && (
+                    <a
+                      href={trailerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-[#E8C766] hover:text-[#C9A227]"
+                    >
+                      <PlaySquare className="h-4 w-4" /> Voir la bande-annonce
+                    </a>
+                  )}
+                </div>
+                <div className="mt-6">
+                  <SocialShare
+                    url={shareUrl}
+                    title={`${film.title} — ${film.genre} | CINEGENY`}
+                    description={film.synopsis}
+                  />
+                </div>
+              </div>
+
+              {/* Vote en ligne : compteur réel x/5000 + bouton Voter */}
+              <div className="w-full lg:max-w-md lg:justify-self-end">
+                {filmId ? (
+                  <VotePanel
+                    filmId={filmId}
+                    filmTitle={film.title}
+                    track={film.track}
+                    initialProgress={progress}
+                    shareUrl={shareUrl}
+                  />
+                ) : (
+                  <div className="rounded-2xl border border-white/[0.08] bg-[#0A0908]/70 p-6 backdrop-blur-md">
+                    <p className="text-sm font-medium text-white/70">Voter pour ce film</p>
+                    <p className="mt-2 text-xs text-white/40">
+                      Le vote sera disponible dès que ce film sera activé dans le catalogue.
+                    </p>
+                    <Link
+                      href="/films"
+                      className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-[#C9A227]/30 bg-[#C9A227]/[0.10] py-3.5 text-sm font-semibold text-[#E8C766] transition-colors hover:bg-[#C9A227]/[0.18]"
+                    >
+                      <Vote className="h-4 w-4" /> Voir les films en vote
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <div className="container mx-auto max-w-5xl px-6 sm:px-10 md:px-16 py-16 md:py-20 space-y-14 md:space-y-16">
-        {/* Synopsis + Stats */}
+        {/* Synopsis + Meta */}
         <div className="grid md:grid-cols-3 gap-10 md:gap-12">
           <div className="md:col-span-2 space-y-10">
             {/* Synopsis */}
@@ -400,21 +486,63 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
               <p className="text-[15px] leading-[1.85] text-white/65">{film.synopsis}</p>
             </section>
 
-            {/* Casting & équipe */}
+            {/* Équipe / contributeurs réels — repli sur la fiche éditoriale si le film n'a pas encore de tâches validées */}
             <section>
               <h2 className="mb-4 flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white/40">
-                <span className="h-px w-6 bg-[#C9A227]/60" /> Casting &amp; Équipe
+                <span className="h-px w-6 bg-[#C9A227]/60" /> Équipe &amp; Contributeurs
               </h2>
-              <dl className="overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
-                <div className="flex gap-4 px-5 py-4">
-                  <dt className="w-28 shrink-0 pt-0.5 text-xs uppercase tracking-wider text-white/30">Réalisation</dt>
-                  <dd className="text-sm text-white/75">{film.director}</dd>
+              {credits.length > 0 ? (
+                <div className="space-y-6">
+                  {credits.map((group) => (
+                    <div key={group.phase}>
+                      <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-widest text-white/30">
+                        {group.phase}
+                      </h3>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {group.tasks.map((task) =>
+                          task.contributor ? (
+                            <div
+                              key={task.title}
+                              className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3"
+                            >
+                              {task.contributor.avatarUrl ? (
+                                <Image
+                                  src={task.contributor.avatarUrl}
+                                  alt={task.contributor.displayName || ''}
+                                  width={36}
+                                  height={36}
+                                  className="rounded-full object-cover shrink-0"
+                                />
+                              ) : (
+                                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#C9A227]/10">
+                                  <Users className="h-4 w-4 text-[#C9A227]/60" />
+                                </div>
+                              )}
+                              <div className="min-w-0">
+                                <p className="truncate text-sm font-medium text-white">
+                                  {task.contributor.displayName || 'Contributeur'}
+                                </p>
+                                <p className="truncate text-xs text-white/40">{task.title}</p>
+                              </div>
+                            </div>
+                          ) : null
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="flex gap-4 border-t border-white/[0.06] px-5 py-4">
-                  <dt className="w-28 shrink-0 pt-0.5 text-xs uppercase tracking-wider text-white/30">Distribution</dt>
-                  <dd className="text-sm text-white/75">{film.cast.join(' · ')}</dd>
-                </div>
-              </dl>
+              ) : (
+                <dl className="overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+                  <div className="flex gap-4 px-5 py-4">
+                    <dt className="w-28 shrink-0 pt-0.5 text-xs uppercase tracking-wider text-white/30">Réalisation</dt>
+                    <dd className="text-sm text-white/75">{film.director}</dd>
+                  </div>
+                  <div className="flex gap-4 border-t border-white/[0.06] px-5 py-4">
+                    <dt className="w-28 shrink-0 pt-0.5 text-xs uppercase tracking-wider text-white/30">Distribution</dt>
+                    <dd className="text-sm text-white/75">{film.cast.join(' · ')}</dd>
+                  </div>
+                </dl>
+              )}
             </section>
 
             {/* Tags */}
@@ -429,55 +557,11 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
               </div>
             )}
 
-            {/* Production status — single, on-brand */}
-            <section className="rounded-2xl border border-[#C9A227]/15 bg-gradient-to-br from-[#C9A227]/[0.05] to-transparent p-6 md:p-7">
-              <div className="mb-3 flex items-center gap-2.5">
-                <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-[#C9A227]/25 bg-[#C9A227]/12">
-                  <Clock className="h-3.5 w-3.5 text-[#C9A227]" />
-                </span>
-                <h3 className="text-sm font-semibold text-white">Où en est la production</h3>
-                <span className="ml-auto text-[11px] font-medium text-[#E8C766]">{statusLabel}</span>
-              </div>
-              <p className="mb-5 text-sm leading-relaxed text-white/50">{STATUS_NOTE[film.status] ?? ''}</p>
-              <div className="mb-2 flex justify-between text-[11px]">
-                <span className="text-white/40">Avancement</span>
-                <span className="font-medium text-[#C9A227]">{Math.round(film.progressPct)}%</span>
-              </div>
-              <div className="relative h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
-                <div
-                  className="relative h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-1000"
-                  style={{ width: `${film.progressPct}%` }}
-                >
-                  <div className="absolute inset-0 animate-[shimmerSweep_2.6s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-                </div>
-              </div>
-            </section>
-
+            {/* Le parcours de ce film : En vote -> En production -> À regarder */}
+            <FilmJourney current={statusKey} />
           </div>
 
           <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
-            {/* Production + financement */}
-            <div className="space-y-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6">
-              <div>
-                <div className="mb-2 flex items-baseline justify-between">
-                  <span className="text-xs uppercase tracking-wider text-white/40">Production</span>
-                  <span className="font-playfair text-2xl font-bold text-[#E8C766]">{Math.round(film.progressPct)}%</span>
-                </div>
-                <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
-                  <div className="h-full rounded-full bg-gradient-to-r from-[#C9A227] to-[#E8C766] transition-all duration-1000" style={{ width: `${film.progressPct}%` }} />
-                </div>
-              </div>
-              <div>
-                <div className="mb-2 flex items-baseline justify-between">
-                  <span className="text-xs uppercase tracking-wider text-white/40">Financement</span>
-                  <span className="font-playfair text-2xl font-bold text-emerald-300/90">{Math.round(film.fundingPct)}%</span>
-                </div>
-                <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
-                  <div className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400 transition-all duration-1000" style={{ width: `${Math.min(film.fundingPct, 100)}%` }} />
-                </div>
-              </div>
-            </div>
-
             {/* Meta */}
             <div className="grid grid-cols-2 gap-3">
               {[
@@ -494,62 +578,17 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
               ))}
             </div>
 
+            {filmId && <WatchlistButton filmId={filmId} className="w-full justify-center" />}
+
             <Link href="/invest" className="block">
-              <Button className="w-full" size="lg">
-                Soutenir ce film
+              <Button className="w-full" size="lg" variant="outline">
+                <Coins className="h-4 w-4" />
+                Devenir co-producteur
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
           </aside>
         </div>
-
-        {/* Co-Producteur — bande dorée raffinée */}
-        <section className="relative overflow-hidden rounded-2xl border border-[#C9A227]/20 bg-gradient-to-br from-[#C9A227]/[0.07] via-[#0A0908] to-transparent p-8 md:p-10">
-          <div className="pointer-events-none absolute -top-16 right-0 h-64 w-64 rounded-full bg-[#C9A227]/[0.06] blur-[90px]" />
-          <div className="relative">
-            <div className="mb-4 flex items-center gap-3">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#C9A227]/25 bg-[#C9A227]/12">
-                <Crown className="h-5 w-5 text-[#C9A227]" />
-              </span>
-              <div>
-                <h2 className="font-playfair text-2xl font-bold text-gold-metallic md:text-3xl">Devenez co-producteur</h2>
-                <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wider text-[#C9A227]/60">Opportunité d&apos;investissement</p>
-              </div>
-            </div>
-
-            <p className="mb-7 max-w-2xl text-[15px] leading-relaxed text-white/55">
-              Investissez dès 10 € et recevez une part des revenus. Chaque token donne un droit de vote sur les
-              décisions créatives et votre nom au générique.
-            </p>
-
-            <div className="mb-8 grid gap-3 sm:grid-cols-3">
-              {[
-                { icon: Coins, title: 'Dès 10 €', desc: 'Tokens de co-production accessibles à tous' },
-                { icon: Vote, title: 'Droit de vote', desc: 'Pesez sur les choix créatifs du film' },
-                { icon: Crown, title: 'Au générique', desc: 'Votre nom crédité + part des revenus' },
-              ].map((b) => (
-                <div key={b.title} className="rounded-xl border border-[#C9A227]/10 bg-white/[0.02] p-4 transition-colors hover:border-[#C9A227]/25">
-                  <b.icon className="mb-2 h-5 w-5 text-[#C9A227]/70" />
-                  <h4 className="mb-1 text-sm font-semibold text-white">{b.title}</h4>
-                  <p className="text-xs leading-relaxed text-white/35">{b.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
-              <Link href="/tokenization">
-                <Button size="lg" className="w-full sm:w-auto">
-                  <Coins className="h-5 w-5" />
-                  Devenir co-producteur
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/invest" className="inline-flex items-center justify-center gap-1.5 text-sm text-[#C9A227]/70 transition-colors hover:text-[#C9A227]">
-                <Bell className="h-3.5 w-3.5" /> Voir toutes les offres
-              </Link>
-            </div>
-          </div>
-        </section>
 
         {/* Films similaires — défilement horizontal */}
         {similarFilms.length > 0 && (
@@ -582,13 +621,9 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
                           <ArrowRight className="h-3 w-3" /> Voir
                         </span>
                       </div>
-                      {/* Progress indicator */}
-                      <div className="absolute bottom-0 left-0 right-0 h-0.5">
-                        <div className="h-full rounded-full" style={{ width: `${sf.progressPct}%`, backgroundColor: accentColor }} />
-                      </div>
                     </div>
                     <p className="text-xs font-medium text-white/60 truncate group-hover/card:text-white transition-colors duration-200">{sf.title}</p>
-                    <p className="text-[10px] text-white/25 mt-0.5">{sf.year} &middot; {sf.progressPct}% achevé</p>
+                    <p className="text-[10px] text-white/25 mt-0.5">{sf.year}</p>
                   </Link>
                 ))}
               </div>
@@ -601,7 +636,7 @@ function CatalogFilmPage({ film }: { film: FilmData }) {
 }
 
 /* ─────────────────────────────────────────────
-   Co-Producer Section (shared between DB films)
+   Co-Producer Section (DB films only — 15.7 remplacera par la liste d'attente)
    ───────────────────────────────────────────── */
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -700,7 +735,7 @@ function CoProducerSection({ film }: { film: any }) {
           <div className="space-y-6">
             <div className="grid sm:grid-cols-3 gap-4">
               {[
-                { icon: Coins, title: 'Investissez des 10\u20AC', desc: 'Tokens de co-production accessibles a tous' },
+                { icon: Coins, title: 'Investissez des 10€', desc: 'Tokens de co-production accessibles a tous' },
                 { icon: Vote, title: 'Votez', desc: 'Participez aux decisions creatives du film' },
                 { icon: Crown, title: 'Au Generique', desc: 'Votre nom credite comme co-producteur' },
               ].map((b) => (

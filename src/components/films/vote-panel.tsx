@@ -2,10 +2,11 @@
 
 import { useState, useEffect, useCallback, useTransition } from 'react'
 import Link from 'next/link'
-import { Vote as VoteIcon, CheckCircle, Loader2 } from 'lucide-react'
+import { Vote as VoteIcon, CheckCircle, Loader2, ArrowRight } from 'lucide-react'
 import { castVoteAction, getVoteStateAction } from '@/app/actions/votes'
 import { computeVoteProgress, type VoteProgress, type VoteTrack } from '@/lib/votes'
 import { VOTE_TRACKS } from '@/content/brand'
+import { SocialShare } from '@/components/social-share'
 
 interface VotePanelProps {
   filmId: string
@@ -15,6 +16,13 @@ interface VotePanelProps {
   /** Compteur réel initial (rendu serveur) — évite un flash à 0 au montage. */
   initialProgress?: VoteProgress
   compact?: boolean
+  /**
+   * URL publique de la fiche film — active le bloc post-vote "à partager"
+   * (règle 15.4 : le vote partagé EST l'acquisition). Omis en mode compact.
+   */
+  shareUrl?: string
+  /** Lien "voter pour un autre film" affiché après un vote confirmé. */
+  otherFilmsHref?: string
 }
 
 export function VotePanel({
@@ -23,6 +31,8 @@ export function VotePanel({
   track,
   initialProgress,
   compact = false,
+  shareUrl,
+  otherFilmsHref = '/films',
 }: VotePanelProps) {
   const [progress, setProgress] = useState<VoteProgress | null>(initialProgress ?? null)
   const [hasVoted, setHasVoted] = useState(false)
@@ -135,6 +145,24 @@ export function VotePanel({
               </Link>
             </div>
           )}
+
+          {/* États post-vote (15.4) : partager, voter pour un autre film. */}
+          {shareUrl && (
+            <div className="flex flex-col items-center gap-2 px-4">
+              <p className="text-xs text-white/40">Faites gagner ce film : partagez votre vote.</p>
+              <SocialShare
+                url={shareUrl}
+                title={`Je viens de voter pour ${filmTitle} sur CINEGENY`}
+                description={trackInfo.outcome}
+              />
+            </div>
+          )}
+          <Link
+            href={otherFilmsHref}
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-white/50 transition-colors hover:text-[#E8C766]"
+          >
+            Voter pour un autre film <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
       )}
 
