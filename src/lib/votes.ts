@@ -7,7 +7,7 @@
  */
 
 import { createHash } from 'crypto'
-import { VOTE } from '@/content/brand'
+import { VOTE, type FilmStatusKey } from '@/content/brand'
 
 export const VOTE_THRESHOLD = VOTE.threshold
 export const ANON_VOTE_COOKIE = 'cinegeny-anon-vote-id'
@@ -102,4 +102,17 @@ export function planVoteConfirmation(
   }
 
   return { toConfirm, toDiscard }
+}
+
+/* ── Parcours d'un film : mapping vers les 3 statuts publics (15.0 #6) ────────
+ * Le statut Prisma/legacy (`FilmStatus` : DRAFT/PRE_PRODUCTION/IN_PRODUCTION/
+ * POST_PRODUCTION/RELEASED) reste le champ administrable, mais le seul axe
+ * affiche au public est "En vote -> En production -> A regarder" (brand.ts).
+ * La progression reelle du vote (seuil 5 000 atteint) prime sur le statut
+ * legacy pour decider si un film est encore "En vote". */
+
+export function deriveFilmStatusKey(params: { legacyStatus: string; reached: boolean }): FilmStatusKey {
+  if (params.legacyStatus === 'RELEASED') return 'a-regarder'
+  if (params.reached) return 'en-production'
+  return 'en-vote'
 }

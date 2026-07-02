@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import {
   computeVoteProgress,
   decideCastVote,
+  deriveFilmStatusKey,
   hashIp,
   planVoteConfirmation,
   VOTE_THRESHOLD,
@@ -90,6 +91,24 @@ describe('planVoteConfirmation (confirmation à l\'inscription)', () => {
     )
     expect(plan.toConfirm).toEqual(['v1'])
     expect(plan.toDiscard).toEqual(['v2'])
+  })
+})
+
+describe('deriveFilmStatusKey (parcours public 15.0 #6)', () => {
+  it('is "en-vote" while the vote threshold is not reached, whatever the legacy status', () => {
+    expect(deriveFilmStatusKey({ legacyStatus: 'DRAFT', reached: false })).toBe('en-vote')
+    expect(deriveFilmStatusKey({ legacyStatus: 'PRE_PRODUCTION', reached: false })).toBe('en-vote')
+    expect(deriveFilmStatusKey({ legacyStatus: 'IN_PRODUCTION', reached: false })).toBe('en-vote')
+  })
+
+  it('becomes "en-production" once the 5 000 votes threshold is reached', () => {
+    expect(deriveFilmStatusKey({ legacyStatus: 'PRE_PRODUCTION', reached: true })).toBe('en-production')
+    expect(deriveFilmStatusKey({ legacyStatus: 'IN_PRODUCTION', reached: true })).toBe('en-production')
+  })
+
+  it('is "a-regarder" once the film is marked RELEASED, regardless of vote progress', () => {
+    expect(deriveFilmStatusKey({ legacyStatus: 'RELEASED', reached: false })).toBe('a-regarder')
+    expect(deriveFilmStatusKey({ legacyStatus: 'RELEASED', reached: true })).toBe('a-regarder')
   })
 })
 
