@@ -326,11 +326,11 @@
 /* Ken Burns — lent zoom-dérive du visuel de hero quand il n'y a pas de vidéo.
    Transform GPU uniquement ; alterné pour ne jamais « sauter ». */
 @keyframes kenBurns {
-  from { transform: scale(1.05) translate(0, 0); }
-  to { transform: scale(1.14) translate(-1.5%, -1%); }
+  from { transform: scale(1.04) translate(0, 0); }
+  to { transform: scale(1.18) translate(-2%, -1.5%); }
 }
 .kenburns {
-  animation: kenBurns 36s ease-in-out infinite alternate;
+  animation: kenBurns 28s ease-in-out infinite alternate;
   will-change: transform;
 }
 

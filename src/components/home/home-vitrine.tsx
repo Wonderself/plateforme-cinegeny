@@ -14,7 +14,7 @@
  * Conçu mobile d'abord (390px) puis étendu (règle 15.0bis #8).
  */
 
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
@@ -188,6 +188,42 @@ function VoteRail({
   )
 }
 
+/* ── Fond vidéo du hero ─────────────────────────────────────────────────────
+ * React ne sérialise pas l'attribut `muted` dans le HTML rendu : sans lui, la
+ * politique d'autoplay des navigateurs bloque la lecture. On force donc
+ * muted + play() au montage. Un jumeau `.webm` du même nom est proposé en
+ * secours de codec quand l'URL est un `.mp4` (convention : déposer les deux). */
+
+function HeroVideo({ videoUrl, posterUrl }: { videoUrl: string; posterUrl: string | null }) {
+  const ref = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const v = ref.current
+    if (!v) return
+    v.muted = true
+    v.play().catch(() => {
+      /* autoplay refusé (économie d'énergie…) : l'affiche poster reste. */
+    })
+  }, [])
+
+  return (
+    <video
+      ref={ref}
+      className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      poster={posterUrl ?? undefined}
+      aria-hidden
+    >
+      <source src={videoUrl} />
+      {videoUrl.endsWith('.mp4') && <source src={videoUrl.replace(/\.mp4$/, '.webm')} />}
+    </video>
+  )
+}
+
 /* ── Hero : un film en vote, plein écran ──────────────────────────────────── */
 
 function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
@@ -196,18 +232,7 @@ function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
       {/* Fond : extrait vidéo muet (façon Netflix) si fourni, sinon affiche
           animée en lent Ken Burns — le hero n'est jamais statique. */}
       {film.heroVideoUrl ? (
-        <video
-          className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={film.coverImageUrl ?? undefined}
-          aria-hidden
-        >
-          <source src={film.heroVideoUrl} />
-        </video>
+        <HeroVideo videoUrl={film.heroVideoUrl} posterUrl={film.coverImageUrl} />
       ) : film.coverImageUrl ? (
         <div className="absolute inset-0 overflow-hidden">
           <Image

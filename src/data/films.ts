@@ -98,6 +98,9 @@ const SLATE: Omit<FilmData, 'id' | 'slug' | 'coverImageUrl'>[] = [
     fundingPct: 70,
     track: 'B',
     isPipeline: true,
+    // DÉMO — extrait Sintel (open movie Blender, CC-BY) servi en local pour
+    // montrer le hero vidéo. À remplacer par la vraie bande-annonce du film.
+    heroVideoUrl: '/videos/demo-hero.mp4',
   },
   {
     title: 'Les souffrances du jeune Goethe',
