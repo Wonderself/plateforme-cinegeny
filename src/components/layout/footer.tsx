@@ -40,7 +40,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-12 lg:gap-14">
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 lg:col-span-4 space-y-5">
-            <Logo height={52} />
+            <Logo height={62} />
             <p className="text-[13px] text-white/30 leading-[1.8] max-w-sm">
               {BRAND.pitch}
             </p>

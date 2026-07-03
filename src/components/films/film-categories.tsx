@@ -112,7 +112,7 @@ function FilmCatalogCard({ film }: { film: CatalogFilmVM }) {
                 </div>
                 <div className="relative h-1 overflow-hidden rounded-full bg-white/[0.06]">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700 ease-out"
+                    className="progress-sheen h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700 ease-out"
                     style={{ width: `${film.progress.pct}%` }}
                   />
                 </div>
@@ -184,7 +184,7 @@ export default function FilmCategories({ model }: { model: CatalogModel }) {
         </div>
 
         {/* ── Onglets du parcours (axe de navigation unique, 15.0 #6) ── */}
-        <div className="sticky top-16 z-30 -mx-4 mb-12 border-b border-white/[0.06] bg-[#0A0A0A]/90 px-4 py-4 backdrop-blur-md sm:-mx-8 sm:px-8 md:-mx-16 md:px-16 lg:-mx-20 lg:px-20">
+        <div className="sticky top-20 z-30 -mx-4 mb-12 border-b border-white/[0.06] bg-[#0A0A0A]/90 px-4 py-4 backdrop-blur-md sm:-mx-8 sm:px-8 md:-mx-16 md:px-16 lg:-mx-20 lg:px-20">
           <div className="scrollbar-hide overflow-x-auto">
             <div className="flex min-w-max gap-1">
               {FILM_STATUS_ORDER.map((key) => {

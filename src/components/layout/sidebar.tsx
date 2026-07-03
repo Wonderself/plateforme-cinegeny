@@ -528,7 +528,7 @@ export function Sidebar() {
         {sidebarContent}
       </aside>
 
-      <aside className="hidden lg:flex w-60 shrink-0 border-r border-white/10 bg-[#0A0A0A] min-h-[calc(100vh-64px)] flex-col">
+      <aside className="hidden lg:flex w-60 shrink-0 border-r border-white/10 bg-[#0A0A0A] min-h-[calc(100vh-80px)] flex-col">
         {sidebarContent}
       </aside>
     </>

@@ -323,6 +323,24 @@
   color: rgba(232, 199, 102, 0.95);
 }
 
+/* Reflet balayant les barres de progression dorées — l'or « vit ». */
+.progress-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.progress-sheen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.45) 50%, transparent 80%);
+  animation: shimmerSweep 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-sheen::after { display: none; }
+}
+
 /* Ken Burns — lent zoom-dérive du visuel de hero quand il n'y a pas de vidéo.
    Transform GPU uniquement ; alterné pour ne jamais « sauter ». */
 @keyframes kenBurns {

@@ -33,6 +33,7 @@ import {
   Clock,
 } from 'lucide-react'
 import { VotePanel } from '@/components/films/vote-panel'
+import { Reveal } from '@/components/academy/reveal'
 import {
   BRAND,
   HOW_IT_WORKS,
@@ -66,7 +67,7 @@ function VoteMeter({ film, size = 'md' }: { film: HomeFilmVM; size?: 'md' | 'lg'
       </div>
       <div className={`overflow-hidden rounded-full bg-white/[0.08] ${big ? 'h-2' : 'h-1.5'}`}>
         <div
-          className="h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700"
+          className="progress-sheen h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700"
           style={{ width: `${pct}%` }}
         />
       </div>
@@ -316,6 +317,37 @@ function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
   )
 }
 
+/* ── Bandeau de preuve sous le hero : uniquement des chiffres RÉELS ─────────
+ * (compteurs de votes en base + taille de la slate éditoriale). */
+
+function ProofStrip({ model }: { model: HomeVitrineModel }) {
+  const filmsEnVote = model.trackA.length + model.trackB.length
+  const items: { value: string; label: string }[] = []
+
+  if (model.totalVotes > 0) {
+    items.push({ value: model.totalVotes.toLocaleString('fr-FR'), label: 'votes exprimés' })
+  }
+  items.push({ value: String(filmsEnVote), label: 'films en compétition' })
+  items.push({ value: VOTE.threshold.toLocaleString('fr-FR'), label: 'votes, et le film se fait' })
+  items.push({ value: '1', label: 'vote gratuit par film' })
+
+  return (
+    <div className="relative border-y border-white/[0.05] bg-[#080706]/80">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-4 py-5 sm:gap-x-14">
+        {items.map((it, i) => (
+          <div key={it.label} className="flex items-center gap-10 sm:gap-14">
+            {i > 0 && <span className="hidden h-8 w-px bg-gradient-to-b from-transparent via-[#C9A227]/30 to-transparent sm:block" />}
+            <div className="flex items-baseline gap-2">
+              <span className="font-playfair text-xl font-bold text-gold-brushed sm:text-2xl">{it.value}</span>
+              <span className="text-[11px] uppercase tracking-[0.14em] text-white/40">{it.label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 /* ── « Comment ça marche » (3 étapes, brand.ts) ───────────────────────────── */
 
 function HowItWorks() {
@@ -532,8 +564,10 @@ function FinalCta() {
 
 export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
   return (
-    <main className="bg-[#0A0908] text-white">
+    <main className="film-grain bg-[#0A0908] text-white">
       <Hero film={model.hero} totalVotes={model.totalVotes} />
+
+      <ProofStrip model={model} />
 
       <VoteRail
         title="Bandes-annonces en compétition"
@@ -549,12 +583,12 @@ export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
 
       <ComingSoonWall />
 
-      <HowItWorks />
-      <Parcours />
-      <AtelierBlock />
-      <FinaleBlock />
-      <AcademyBlock />
-      <FinalCta />
+      <Reveal><HowItWorks /></Reveal>
+      <Reveal><Parcours /></Reveal>
+      <Reveal><AtelierBlock /></Reveal>
+      <Reveal><FinaleBlock /></Reveal>
+      <Reveal><AcademyBlock /></Reveal>
+      <Reveal><FinalCta /></Reveal>
     </main>
   )
 }
