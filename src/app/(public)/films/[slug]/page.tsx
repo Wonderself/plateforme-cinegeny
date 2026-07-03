@@ -33,7 +33,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: `${film.title} — CINEGENY`,
         description: film.description || film.synopsis || undefined,
-        images: film.coverImageUrl ? [film.coverImageUrl] : undefined,
+        // L'image vient du fichier opengraph-image.tsx (carte de partage or) —
+        // ne pas la surcharger ici.
       },
     }
   }
