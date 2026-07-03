@@ -147,7 +147,7 @@ const mainNavSections: NavSection[] = [
       { href: '/profile', label: 'Profil', icon: User },
       { href: '/credits', label: 'Crédits IA', icon: Coins, badge: 'NEW' },
       { href: '/profile/payments', label: 'Paiements', icon: CreditCard },
-      { href: '/lumens', label: 'Mes Tokens', icon: Sun },
+      { href: '/points', label: 'Mes Points', icon: Sun },
       { href: '/tokenization', label: 'Investir', icon: Coins, exact: true },
       { href: '/tokenization/portfolio', label: 'Portfolio', icon: Wallet },
       { href: '/tokenization/governance', label: 'Gouvernance', icon: Vote },

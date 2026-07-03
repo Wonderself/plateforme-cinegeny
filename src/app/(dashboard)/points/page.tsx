@@ -11,7 +11,7 @@ import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
 
-export const metadata: Metadata = { title: 'Mes Lumens' }
+export const metadata: Metadata = { title: 'Mes Points — CINEGENY' }
 
 function getTxTypeBadge(type: string) {
   switch (type) {
@@ -30,7 +30,7 @@ function getTxTypeBadge(type: string) {
   }
 }
 
-export default async function LumensPage() {
+export default async function PointsPage() {
   const session = await auth()
   if (!session?.user) redirect('/login')
 
@@ -59,10 +59,10 @@ export default async function LumensPage() {
       {/* Page Title */}
       <div>
         <h1 className="text-3xl sm:text-4xl font-bold text-white font-playfair">
-          Mes Lumens
+          Mes Points
         </h1>
         <p className="text-white/50 mt-1">
-          Gerez votre portefeuille de Lumens — la monnaie de la plateforme.
+          Gerez vos Points CINEGENY — la monnaie de la plateforme.
         </p>
       </div>
 
@@ -76,13 +76,13 @@ export default async function LumensPage() {
           <h2
             className="text-lg font-semibold text-white/60 mb-2"
           >
-            Mes Lumens
+            Mes Points CINEGENY
           </h2>
           <div className="text-6xl md:text-7xl font-bold text-[#C9A227] mb-3 tracking-tight">
             {user.lumenBalance.toLocaleString('fr-FR')}
           </div>
           <p className="text-white/50 text-sm">
-            1 Lumen = {lumenPrice}&#8364; — Votre porte-monnaie plateforme
+            1 Point = {lumenPrice}&#8364; — Votre porte-monnaie plateforme
           </p>
         </div>
       </div>
@@ -125,7 +125,7 @@ export default async function LumensPage() {
               <h2
                 className="text-xl font-bold text-white"
               >
-                Acheter des Lumens
+                Acheter des Points
               </h2>
               <p className="text-white/50 text-sm mt-0.5">
                 Choisissez un pack — plus vous achetez, plus vous economisez.
@@ -155,7 +155,7 @@ export default async function LumensPage() {
                 Convertir en euros
               </h2>
               <p className="text-white/50 text-sm mt-0.5">
-                Vos Lumens seront convertis en euros et vires sous 14 jours ouvres. 0 frais.
+                Vos Points seront convertis en euros et vires sous 14 jours ouvres. 0 frais.
               </p>
             </div>
           </div>
@@ -188,7 +188,7 @@ export default async function LumensPage() {
               <Gift className="h-10 w-10 text-white/30 mx-auto mb-3" />
               <p className="text-white/60">Aucune transaction pour le moment.</p>
               <p className="text-white/50 text-sm mt-1">
-                Achetez vos premiers Lumens ou completez une tache pour commencer.
+                Achetez vos premiers Points ou completez une tache pour commencer.
               </p>
             </div>
           ) : (

@@ -211,14 +211,61 @@ de ce qui a change avec les URLs a verifier pour validation par le fondateur.
 > **Prerequis fondateur** : aucun (les 6 films sont « En vote », decision 15.0).
 
 ### 15.6 Monnaie unique + degraissage des pages publiques
-**Statut**: A FAIRE · **Modele**: **Sonnet**
-> Ne garder qu'une monnaie publique (Points CINEGENY) : fusionner/rediriger `/points`,
-> `/rewards`, `/credits`, `/lumens` vers une page unique « Mes Points » + page publique
-> « Recompenses ». Retirer du public : TV live (`/tv/live`), tokenisation, gouvernance,
-> et les pages redondantes (`/invest` vs `/investors`, `/produce` vs `/create`...) —
-> redirects 308 vers les pages canoniques, nav/footer/sitemap nettoyes. Rien n'est
-> supprime en base ni dans l'admin. Livrer la liste exacte des redirects pour validation.
-> **Prerequis fondateur** : valider la liste des pages retirees/fusionnees.
+**Statut**: FAIT (Juillet 2026)
+> `/points` (page publique factice) et `/lumens` (page privee reelle) fusionnees en une
+> seule page privee « Mes Points » a `/points`. `/rewards` refondue en page publique
+> « Recompenses » (les stats personnelles affichees etaient toutes inventees — XP, streak,
+> badges « debloques », code de parrainage). Retires du public avec redirect 308 :
+> `/tv/live`, `/produce` (-> `/create`), `/act` (-> `/create/casting`), `/tv/invest`
+> (-> `/invest`). CTA tokenisation retires de la fiche film / `/streaming` / `/tv` au
+> profit de `/invest`. Header public bascule sur le composant `Header` (15.1, jamais
+> branche jusque-la — les pages publiques affichaient encore l'ancien `NetflixHeader`
+> avec son mega-menu TV live/tokenisation/micro-taches). `/credits` (credits IA, outils)
+> et `/invest` vs `/investors` laisses inchanges — deja differencies par la 15.1, pas de
+> vraie redondance. Rien de supprime en base ni dans l'admin.
+>
+> **Suites decidees avec le fondateur (Juillet 2026), a traiter chacune dans sa propre
+> session — voir 15.6bis et 15.6ter ci-dessous.**
+
+### 15.6bis Refonte de l'economie des Points CINEGENY
+**Statut**: A FAIRE (a cadrer) · **Modele**: a definir selon le cadrage retenu
+> **Le probleme** : la page « Mes Points » (`/points`, ex-Lumens) a garde telle quelle la
+> mecanique financiere historique des Lumens — on peut ACHETER des Points avec de l'argent
+> reel, et les RETIRER en euros. Or la decision 15.0 #7 definit les Points CINEGENY comme
+> une monnaie qu'on GAGNE en votant, en participant et en parrainant, utilisee pour les
+> recompenses et le concours — pas une monnaie qu'on achete ni qu'on encaisse. Ce sujet a
+> ete identifie en 15.6 mais volontairement laisse de cote (a part entiere, hors routing/UI)
+> pour etre pense au calme dans sa propre session plutot que tranche a la volee.
+> **A trancher a ce moment-la** : garde-t-on l'achat/retrait en euros pour les utilisateurs
+> qui ont deja un solde Lumens (continuite), ou construit-on un vrai systeme de Points
+> non-monetaire (gagnes uniquement, jamais achetes/retires) en parallele ? Impact DB/Prisma
+> a evaluer (modele `LumenTransaction`, types `PURCHASE`/`WITHDRAWAL`).
+> **Prerequis fondateur** : decider du modele economique des Points avant de cadrer la
+> session.
+
+### 15.6ter Espace investisseurs entreprise — acces protege par mot de passe
+**Statut**: A FAIRE · **Modele**: Sonnet
+> **Le contexte, explique en detail pour quand on y arrivera** : il y a deux types de
+> personnes qui « investissent » sur CINEGENY, et ce sont deux parcours differents.
+> 1. Les gens qui investissent **sur un film en particulier** (co-production) : c'est la
+>    page publique `/invest` (« Devenir co-producteur »), en acces libre, liste d'attente
+>    email + montant d'intention — rien ne change ici.
+> 2. Les gens qui pourraient investir **dans l'entreprise CINEGENY elle-meme** (le studio,
+>    pas un film precis — typiquement un tour de table SAFE / investisseurs strategiques) :
+>    c'est la page `/investors` (« Espace investisseurs »). Cette page contient des
+>    informations sensibles (structure legale, conditions du tour de table) qui ne doivent
+>    pas etre visibles par n'importe quel visiteur du site — seulement par les personnes a
+>    qui le fondateur a donne acces.
+> **Ce qu'il faut construire** : `/investors` passe derriere un simple mot de passe
+> partage (pas un compte utilisateur complet — un mot de passe unique, comme une porte
+> fermee a clef) : un ecran de saisie avant d'afficher le contenu de la page. Ce mot de
+> passe doit etre **visible et modifiable depuis la page d'accueil de l'admin**
+> (`/admin`), sous forme d'un encart « Mot de passe Espace investisseurs » — pour que le
+> fondateur puisse le retrouver en un coup d'oeil et le communiquer aux personnes
+> concernees (ou le changer) sans avoir a chercher dans les variables d'environnement ou
+> a demander a un developpeur.
+> **Prerequis fondateur** : aucun — le mot de passe peut etre genere automatiquement au
+> premier passage puis change depuis l'admin.
 
 ### 15.7 « Comment ca marche » + co-producteurs en liste d'attente
 **Statut**: A FAIRE · **Modele**: **Sonnet**
@@ -296,6 +343,14 @@ version complete en francais** de toute la plateforme.
 > Passer toutes les pages et tout le contenu restant (pas seulement la nav) par next-intl,
 > pour garantir une bascule FR/EN complete et coherente sur l'integralite de la plateforme,
 > pas seulement les menus.
+
+### 14.4 CINEGENY TV — bilingue FR/EN (decision fondateur, Juillet 2026)
+**Statut**: A FAIRE
+> Confirme en session 15.6 : on ne retire pas la section TV du site (seul le direct/« TV
+> live » a ete retire du public, cf. 15.6). `/tv` et ses sous-pages restent 100% anglais
+> pour l'instant (heritees telles quelles) — elles seront traitees dans cette phase, en
+> anglais ET en francais via next-intl, comme le reste du site. Pas de session dediee
+> avant que 14.1/14.3 ne soient cadrees.
 
 ---
 
@@ -757,4 +812,4 @@ version complete en francais** de toute la plateforme.
 
 ---
 
-*Derniere mise a jour: 25 Juin 2026*
+*Derniere mise a jour: 3 Juillet 2026*

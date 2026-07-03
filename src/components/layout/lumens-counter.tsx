@@ -16,7 +16,7 @@ export function LumensCounter() {
 
   return (
     <Link
-      href="/lumens"
+      href="/points"
       className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-500 hover:text-[#C9A227] hover:bg-amber-50 transition-all"
     >
       <Sun className="h-4 w-4 text-[#C9A227]" />

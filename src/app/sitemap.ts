@@ -35,9 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Business
     { url: `${baseUrl}/invest`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/investors`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${baseUrl}/produce`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/work`, lastModified: now, changeFrequency: 'daily', priority: 0.7 },
-    { url: `${baseUrl}/act`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${baseUrl}/pricing`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
 
     // AI Agents
@@ -48,7 +46,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Engagement
     { url: `${baseUrl}/rewards`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
     { url: `${baseUrl}/referral`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${baseUrl}/points`, lastModified: now, changeFrequency: 'weekly', priority: 0.5 },
 
     // Content
     { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
@@ -67,14 +64,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // TV sub-pages
     { url: `${baseUrl}/tv/shows`, lastModified: now, changeFrequency: 'daily', priority: 0.7 },
-    { url: `${baseUrl}/tv/live`, lastModified: now, changeFrequency: 'daily', priority: 0.7 },
     { url: `${baseUrl}/tv/replay`, lastModified: now, changeFrequency: 'daily', priority: 0.6 },
     { url: `${baseUrl}/tv/hosts`, lastModified: now, changeFrequency: 'weekly', priority: 0.5 },
     { url: `${baseUrl}/tv/community`, lastModified: now, changeFrequency: 'daily', priority: 0.5 },
     { url: `${baseUrl}/tv/create`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${baseUrl}/tv/produce`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/tv/work`, lastModified: now, changeFrequency: 'daily', priority: 0.7 },
-    { url: `${baseUrl}/tv/invest`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/tv/act`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
 
     // Auth

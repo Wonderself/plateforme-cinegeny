@@ -35,6 +35,7 @@ import { cn, getInitials } from '@/lib/utils'
 import { AnimatePresence, MotionDiv } from '@/components/ui/motion'
 import { NotificationBell } from '@/components/layout/notification-bell'
 import { Logo } from '@/components/layout/logo'
+import { LumensCounter } from '@/components/layout/lumens-counter'
 import { PRIMARY_NAV, ACADEMY_NAV } from '@/content/brand'
 
 // Icônes de la couche présentation, associées aux entrées définies dans
@@ -117,10 +118,7 @@ export function Header() {
           {session?.user ? (
             <div className="flex items-center gap-2">
               <NotificationBell />
-              <Link href="/lumens" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-white/50 hover:text-[#C9A227] hover:bg-[#C9A227]/5 transition-all">
-                <Sun className="h-4 w-4 text-[#C9A227]" />
-                <span className="font-medium">0</span>
-              </Link>
+              <LumensCounter />
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className="flex items-center gap-2 rounded-xl px-2 py-1.5 hover:bg-white/5 transition-all outline-none" aria-label="Menu du profil">
@@ -155,8 +153,8 @@ export function Header() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/lumens" className="flex items-center gap-2 cursor-pointer">
-                      <Sun className="h-4 w-4" /> Mes Lumens
+                    <Link href="/points" className="flex items-center gap-2 cursor-pointer">
+                      <Sun className="h-4 w-4" /> Mes Points
                     </Link>
                   </DropdownMenuItem>
                   {(session.user as { role?: string }).role === 'SCREENWRITER' && (

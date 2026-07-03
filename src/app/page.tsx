@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { prisma } from '@/lib/prisma'
-import { NetflixHeader } from '@/components/netflix/netflix-header'
+import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { HomeVitrine } from '@/components/home/home-vitrine'
 import { ALL_FILMS, HERO_FILM_SLUG } from '@/data/films'
@@ -87,7 +87,7 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#0A0908] text-white">
-      <NetflixHeader />
+      <Header />
       {model && <HomeVitrine model={model} />}
       <Footer />
     </div>

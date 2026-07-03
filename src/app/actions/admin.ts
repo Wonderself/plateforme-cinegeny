@@ -462,13 +462,13 @@ export async function grantLumensAction(formData: FormData) {
   await prisma.$transaction([
     prisma.user.update({ where: { id: userId }, data: { lumenBalance: { increment: amount } } }),
     prisma.lumenTransaction.create({
-      data: { userId, amount, type: 'BONUS', description: reason || `Bonus de ${amount} Lumens attribué par un administrateur` },
+      data: { userId, amount, type: 'BONUS', description: reason || `Bonus de ${amount} Points attribué par un administrateur` },
     }),
   ])
 
-  await createNotification(userId, 'PAYMENT_RECEIVED', `${amount} Lumens reçus`, {
-    body: reason || `Un administrateur vous a attribué ${amount} Lumens bonus.`,
-    href: '/lumens',
+  await createNotification(userId, 'PAYMENT_RECEIVED', `${amount} Points reçus`, {
+    body: reason || `Un administrateur vous a attribué ${amount} Points bonus.`,
+    href: '/points',
   })
 
   revalidatePath('/admin/users')
