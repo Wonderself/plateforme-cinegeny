@@ -65,10 +65,12 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
       {/* ══ HERO ══════════════════════════════════════════════════════════ */}
       {featured ? (
         <div className="hero-vignette relative h-[72vh] min-h-[480px] overflow-hidden">
-          <div
-            className="absolute inset-0 scale-105 bg-cover bg-center"
-            style={{ backgroundImage: featured.posterUrl ? `url(${featured.posterUrl})` : 'linear-gradient(135deg, #1a1611, #0A0908)' }}
-          />
+          <div className="absolute inset-0 overflow-hidden">
+            <div
+              className="kenburns absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: featured.posterUrl ? `url(${featured.posterUrl})` : 'linear-gradient(135deg, #1a1611, #0A0908)' }}
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/45 to-[#0A0908]/15" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/85 via-[#0A0908]/35 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 z-10 p-5 sm:p-8 md:p-12 lg:p-16">

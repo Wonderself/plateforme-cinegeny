@@ -36,6 +36,8 @@ export interface HomeFilmVM {
   genre: string
   director: string
   coverImageUrl: string | null
+  /** Extrait muet joué en fond de hero (facultatif, cf. data/films.ts). */
+  heroVideoUrl: string | null
   track: FilmTrack
   /** Nom canonique de la piste (brand.ts VOTE_TRACKS). */
   trackName: string
@@ -71,6 +73,7 @@ export function buildHomeFilmVM(input: HomeFilmInput): HomeFilmVM {
     genre: film.genre,
     director: film.director,
     coverImageUrl: film.coverImageUrl,
+    heroVideoUrl: film.heroVideoUrl ?? null,
     track: film.track,
     trackName: trackInfo.name,
     trackOutcome: trackInfo.outcome,

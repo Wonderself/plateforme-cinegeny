@@ -80,36 +80,43 @@ function FilmVoteCard({ film }: { film: HomeFilmVM }) {
   return (
     <Link
       href={`/films/${film.slug}`}
-      className="group flex w-[248px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:-translate-y-1.5 hover:border-[#C9A227]/40 hover:shadow-[0_24px_60px_-16px_rgba(0,0,0,0.8),0_0_30px_rgba(201,162,39,0.07)] sm:w-[288px]"
+      className="group relative aspect-[2/3] w-[248px] shrink-0 snap-start overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02] transition-all duration-500 hover:-translate-y-2 hover:border-[#C9A227]/50 hover:shadow-[0_28px_70px_-16px_rgba(0,0,0,0.85),0_0_36px_rgba(201,162,39,0.10)] sm:w-[288px]"
     >
-      {/* Affiche */}
-      <div className="relative aspect-[2/3] shrink-0 overflow-hidden bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03]">
-        {film.coverImageUrl ? (
-          <Image
-            src={film.coverImageUrl}
-            alt={`Affiche du film ${film.title}`}
-            fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-            sizes="288px"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center">
-            <Clapperboard className="h-12 w-12 text-[#C9A227]/20" />
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-transparent to-transparent" />
-        <span className="absolute left-3 top-3 rounded-full border border-[#C9A227]/25 bg-[#0A0908]/70 px-2.5 py-0.5 text-[10px] font-medium text-[#E8C766] backdrop-blur-md">
-          En vote
-        </span>
-      </div>
+      {/* Affiche plein cadre */}
+      {film.coverImageUrl ? (
+        <Image
+          src={film.coverImageUrl}
+          alt={`Affiche du film ${film.title}`}
+          fill
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
+          sizes="288px"
+        />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03]">
+          <Clapperboard className="h-12 w-12 text-[#C9A227]/20" />
+        </div>
+      )}
 
-      {/* Corps */}
-      <div className="flex flex-1 flex-col gap-3 p-4">
-        <h3 className="line-clamp-1 text-sm font-semibold text-white transition-colors group-hover:text-[#E8C766]">
+      {/* Voile bas — renforcé au survol pour la mini-fiche */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/25 to-transparent transition-colors duration-500 group-hover:via-[#0A0908]/55" />
+
+      {/* Chips */}
+      <span className="absolute left-3 top-3 rounded-full border border-[#C9A227]/25 bg-[#0A0908]/70 px-2.5 py-0.5 text-[10px] font-semibold text-[#E8C766] backdrop-blur-md">
+        En vote
+      </span>
+      <span className="absolute right-3 top-3 rounded-full border border-white/12 bg-[#0A0908]/60 px-2.5 py-0.5 text-[10px] font-medium text-white/70 backdrop-blur-md">
+        {film.genre}
+      </span>
+
+      {/* Mini-fiche — bouton « Voter » révélé au survol (toujours visible en tactile) */}
+      <div className="absolute inset-x-0 bottom-0 p-4">
+        <h3 className="line-clamp-2 font-playfair text-lg font-bold leading-snug text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] transition-colors group-hover:text-[#F0D183]">
           {film.title}
         </h3>
-        <VoteMeter film={film} />
-        <span className="mt-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#C9A227]/25 bg-[#C9A227]/[0.08] py-2 text-xs font-semibold text-[#E8C766] transition-colors group-hover:bg-[#C9A227]/[0.16]">
+        <div className="mt-2.5">
+          <VoteMeter film={film} />
+        </div>
+        <span className="bg-gold-brushed btn-sheen mt-3 flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-xs font-bold transition-all duration-500 md:mt-0 md:max-h-0 md:translate-y-3 md:overflow-hidden md:py-0 md:opacity-0 md:group-hover:mt-3 md:group-hover:max-h-12 md:group-hover:translate-y-0 md:group-hover:py-2.5 md:group-hover:opacity-100 md:group-focus-visible:mt-3 md:group-focus-visible:max-h-12 md:group-focus-visible:py-2.5 md:group-focus-visible:opacity-100">
           <Vote className="h-3.5 w-3.5" />
           Voter
         </span>
@@ -170,7 +177,7 @@ function VoteRail({
 
       <div
         ref={railRef}
-        className="rail-fade flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:px-8 md:px-16 lg:px-20"
+        className="rail-fade flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 py-3 sm:px-8 md:px-16 lg:px-20"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
       >
         {films.map((film) => (
@@ -186,16 +193,32 @@ function VoteRail({
 function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
   return (
     <section className="hero-vignette relative flex min-h-[94vh] items-end overflow-hidden">
-      {/* Affiche de fond */}
-      {film.coverImageUrl ? (
-        <Image
-          src={film.coverImageUrl}
-          alt={`Affiche du film ${film.title}`}
-          fill
-          priority
-          sizes="100vw"
-          className="scale-105 object-cover object-center"
-        />
+      {/* Fond : extrait vidéo muet (façon Netflix) si fourni, sinon affiche
+          animée en lent Ken Burns — le hero n'est jamais statique. */}
+      {film.heroVideoUrl ? (
+        <video
+          className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={film.coverImageUrl ?? undefined}
+          aria-hidden
+        >
+          <source src={film.heroVideoUrl} />
+        </video>
+      ) : film.coverImageUrl ? (
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src={film.coverImageUrl}
+            alt={`Affiche du film ${film.title}`}
+            fill
+            priority
+            sizes="100vw"
+            className="kenburns object-cover object-center"
+          />
+        </div>
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/15 via-[#0A0908] to-[#0A0908]" />
       )}
