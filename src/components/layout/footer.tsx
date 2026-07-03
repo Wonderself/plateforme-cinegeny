@@ -21,6 +21,7 @@ const LINK_ICONS: Record<string, React.ElementType> = {
   '/leaderboard': Trophy,
   '/streaming': Play,
   '/tv': Tv,
+  '/residence': Trophy,
   '/atelier': Clapperboard,
   '/createurs': Film,
   '/create': Users,

@@ -2,7 +2,7 @@
 // CINEGENY — ATELIER BANDE-ANNONCE & FILMS (source de vérité)
 //
 // L'Atelier relie la plateforme de vote à l'outil de création de bandes-
-// annonces (dépôt séparé `wonderself/bande-annonce`, app KULTY : storyboard,
+// annonces (dépôt séparé `wonderself/bande-annonce`, app « Mini Studio » : storyboard,
 // plans, moteurs vidéo IA). Deux dépôts, deux déploiements, une seule
 // expérience : l'outil est ouvert depuis ici via `NEXT_PUBLIC_TRAILER_TOOL_URL`.
 //
@@ -48,7 +48,7 @@ export function isValidFilmDuration(seconds: number): boolean {
  */
 export const TRAILER_TOOL_URL = process.env.NEXT_PUBLIC_TRAILER_TOOL_URL || ''
 
-/** L'outil externe est-il branché ? (déploiement KULTY configuré) */
+/** L'outil externe est-il branché ? (déploiement du Mini Studio configuré) */
 export const TRAILER_TOOL_IS_EXTERNAL = TRAILER_TOOL_URL.length > 0
 
 /** Destination du bouton « Créer » de l'Atelier. */
@@ -69,13 +69,13 @@ export const ATELIER = {
   /** Les deux portes d'entrée de l'Atelier. */
   paths: {
     create: {
-      title: 'Créer avec l’Atelier',
+      title: 'Créer avec le Mini Studio',
       description:
-        'Notre outil de création vous accompagne du script au montage : ' +
-        'structure narrative, storyboard, moodboard, puis génération de ' +
-        'chaque plan avec les meilleurs moteurs vidéo IA (Veo, Kling, ' +
-        'Seedance). Vous gardez la main sur chaque image.',
-      cta: 'Ouvrir l’Atelier de création',
+        'Le Mini Studio vous accompagne du script au montage : structure ' +
+        'narrative, storyboard, moodboard, puis génération de chaque plan ' +
+        'avec les meilleurs moteurs vidéo IA (Veo, Kling, Seedance). ' +
+        'Vous gardez la main sur chaque image.',
+      cta: 'Ouvrir le Mini Studio',
     },
     insert: {
       title: 'Insérer votre création',

@@ -88,6 +88,34 @@ export default function CreateursPage() {
         </div>
       </section>
 
+      {/* ══ LA RÉSIDENCE — la voie royale ═════════════════════════════════ */}
+      <section className="px-4 pt-2 sm:px-8 md:px-16 lg:px-20">
+        <Link
+          href="/residence"
+          className="border-gold-brushed group relative mx-auto flex max-w-5xl flex-col items-start gap-5 overflow-hidden rounded-3xl bg-gradient-to-r from-[#C9A227]/[0.10] via-[#0E0D0A] to-transparent p-7 transition-all hover:-translate-y-0.5 sm:p-8 md:flex-row md:items-center"
+        >
+          <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-[#C9A227]/[0.09] blur-[70px]" />
+          <span className="bg-gold-brushed relative inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl">
+            <Trophy className="h-7 w-7" />
+          </span>
+          <div className="relative flex-1">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A227]/70">
+              La voie royale — promotion limitée
+            </p>
+            <h2 className="mt-1 font-playfair text-xl font-bold text-gold-brushed sm:text-2xl">
+              La Résidence CINEGENY
+            </h2>
+            <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-white/55">
+              Dix réalisateurs par saison, sélectionnés sur l’idée. Le Mini Studio offert,
+              l’exclusivité, la course publique — et vos votants au générique.
+            </p>
+          </div>
+          <span className="relative inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-[#E8C766] transition-transform group-hover:translate-x-0.5">
+            Découvrir <ArrowRight className="h-4 w-4" />
+          </span>
+        </Link>
+      </section>
+
       {/* ══ LES 3 ÉTAPES ══════════════════════════════════════════════════ */}
       <section className="px-4 py-14 sm:px-8 md:px-16 lg:px-20">
         <ol className="mx-auto grid max-w-5xl gap-5 sm:grid-cols-3">

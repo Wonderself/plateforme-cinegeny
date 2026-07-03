@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
 }
 
-/* ── Bouton vers l'outil de création (externe si KULTY est branché) ───────── */
+/* ── Bouton vers l'outil de création (externe si le Mini Studio est branché) ───────── */
 
 function CreateToolCta({ className }: { className: string }) {
   if (TRAILER_TOOL_IS_EXTERNAL) {
@@ -54,7 +54,7 @@ function CreateToolCta({ className }: { className: string }) {
   )
 }
 
-/* ── Les capacités de l'outil (app bande-annonce / KULTY) ─────────────────── */
+/* ── Les capacités de l'outil (app bande-annonce « Mini Studio ») ─────────────────── */
 
 const TOOL_FEATURES = [
   {
