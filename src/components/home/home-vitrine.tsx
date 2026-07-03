@@ -28,6 +28,9 @@ import {
   Trophy,
   GraduationCap,
   Sparkles,
+  Wand2,
+  Upload,
+  Clock,
 } from 'lucide-react'
 import { VotePanel } from '@/components/films/vote-panel'
 import {
@@ -39,6 +42,7 @@ import {
   VOTE,
   ACADEMY_NAV,
 } from '@/content/brand'
+import { ATELIER, FILM_DURATION } from '@/content/atelier'
 import type { HomeVitrineModel, HomeFilmVM } from '@/lib/home-vitrine'
 
 /* ── Compteur réel x/5000 + barre de progression ──────────────────────────── */
@@ -49,7 +53,7 @@ function VoteMeter({ film, size = 'md' }: { film: HomeFilmVM; size?: 'md' | 'lg'
   return (
     <div className="w-full">
       <div className={`flex items-baseline justify-between ${big ? 'mb-2' : 'mb-1.5'}`}>
-        <span className={`font-playfair font-bold text-gold-metallic ${big ? 'text-2xl sm:text-3xl' : 'text-base'}`}>
+        <span className={`font-playfair font-bold text-gold-brushed ${big ? 'text-2xl sm:text-3xl' : 'text-base'}`}>
           {count.toLocaleString('fr-FR')}
           <span className={`font-sans font-normal text-white/40 ${big ? 'text-sm' : 'text-[11px]'}`}>
             {' '}/ {threshold.toLocaleString('fr-FR')} votes
@@ -165,7 +169,7 @@ function VoteRail({
 
       <div
         ref={railRef}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:px-8 md:px-16 lg:px-20"
+        className="rail-fade flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:px-8 md:px-16 lg:px-20"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
       >
         {films.map((film) => (
@@ -210,7 +214,7 @@ function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
               {film.title}
             </h1>
 
-            <p className="mt-3 text-base font-medium text-gold-metallic">{BRAND.baseline}</p>
+            <p className="mt-3 text-base font-medium text-gold-brushed">{BRAND.baseline}</p>
 
             <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-white/60 sm:text-[15px]">
               {film.synopsis}
@@ -348,7 +352,7 @@ function FinaleBlock() {
               <Trophy className="h-6 w-6 text-[#C9A227]" />
             </span>
             <div>
-              <h2 className="font-playfair text-2xl font-bold text-gold-metallic md:text-3xl">{FINALE.name}</h2>
+              <h2 className="font-playfair text-2xl font-bold text-gold-brushed md:text-3xl">{FINALE.name}</h2>
               <p className="text-[11px] font-medium uppercase tracking-wider text-[#C9A227]/60">
                 Des prix à gagner — dont des voyages
               </p>
@@ -361,6 +365,54 @@ function FinaleBlock() {
           >
             Découvrir la Finale <ArrowRight className="h-4 w-4" />
           </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── L'Atelier : créer sa bande-annonce ou insérer son film ────────────────── */
+
+function AtelierBlock() {
+  return (
+    <section className="px-4 py-4 sm:px-8 md:px-16 lg:px-20">
+      <div className="border-gold-brushed relative mx-auto max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#C9A227]/[0.08] via-[#0E0D0A] to-transparent p-8 md:p-12">
+        <div className="pointer-events-none absolute -left-10 -bottom-10 h-64 w-64 rounded-full bg-[#C9A227]/[0.07] blur-[90px]" />
+        <div className="relative">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="bg-gold-brushed inline-flex h-12 w-12 items-center justify-center rounded-2xl">
+              <Clapperboard className="h-6 w-6" />
+            </span>
+            <div>
+              <h2 className="font-playfair text-2xl font-bold text-gold-brushed md:text-3xl">
+                {ATELIER.name} CINEGENY
+              </h2>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-[#C9A227]/60">
+                Bandes-annonces & films — par vous
+              </p>
+            </div>
+          </div>
+          <p className="max-w-2xl text-sm leading-relaxed text-white/55 md:text-[15px]">
+            {ATELIER.tagline}
+          </p>
+          <p className="mt-3 inline-flex items-center gap-1.5 text-xs text-white/45">
+            <Clock className="h-3.5 w-3.5 text-[#C9A227]/70" />
+            Format des films : {FILM_DURATION.label}
+          </p>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href={ATELIER.href}
+              className="bg-gold-brushed btn-sheen inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold transition-all"
+            >
+              <Wand2 className="h-4 w-4" /> Créer ma bande-annonce
+            </Link>
+            <Link
+              href="/streaming/submit"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#C9A227]/30 bg-[#C9A227]/[0.08] px-6 py-3 text-sm font-semibold text-[#E8C766] transition-colors hover:bg-[#C9A227]/[0.16]"
+            >
+              <Upload className="h-4 w-4" /> Insérer mon film
+            </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -382,7 +434,7 @@ function AcademyBlock() {
           </span>
           <div>
             <p className="text-base font-semibold text-white">
-              CINEGENY <span className="text-gold-metallic">{ACADEMY_NAV.label}</span>
+              CINEGENY <span className="text-gold-brushed">{ACADEMY_NAV.label}</span>
             </p>
             <p className="mt-0.5 text-sm text-white/45">{ACADEMY_NAV.tagline} — de l’idée à la projection.</p>
           </div>
@@ -411,7 +463,7 @@ function FinalCta() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/register"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#C9A227]/40 bg-[#C9A227]/[0.12] px-7 py-3.5 text-sm font-semibold text-[#E8C766] transition-colors hover:bg-[#C9A227]/[0.22] sm:w-auto"
+            className="bg-gold-brushed btn-sheen inline-flex w-full items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold transition-all sm:w-auto"
           >
             <Sparkles className="h-4 w-4" /> Créer mon compte gratuit
           </Link>
@@ -448,6 +500,7 @@ export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
 
       <HowItWorks />
       <Parcours />
+      <AtelierBlock />
       <FinaleBlock />
       <AcademyBlock />
       <FinalCta />

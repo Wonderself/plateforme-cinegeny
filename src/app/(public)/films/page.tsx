@@ -127,7 +127,7 @@ export default async function FilmsPage() {
 
           {/* Title */}
           <h1 className="mb-8 font-playfair text-4xl font-bold text-white sm:text-5xl md:text-6xl">
-            La <span className="text-gold-metallic">Slate</span>
+            La <span className="text-gold-brushed">Slate</span>
           </h1>
 
           {/* Subtitle */}

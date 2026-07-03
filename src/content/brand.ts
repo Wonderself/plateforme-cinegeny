@@ -267,6 +267,7 @@ export const FOOTER_COLUMNS: { title: string; links: NavEntry[] }[] = [
   {
     title: 'Participer',
     links: [
+      { href: '/atelier', label: 'L’Atelier — bande-annonce' },
       { href: '/create', label: 'Démarrer un film' },
       { href: '/work', label: 'Missions' },
       { href: '/academy', label: 'Academy' },

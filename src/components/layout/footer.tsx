@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import {
   Film, Play, Tv, Trophy, Users, Briefcase, GraduationCap, Coins,
-  TrendingUp, Info, MapPin,
+  TrendingUp, Info, MapPin, Clapperboard,
 } from 'lucide-react'
 import { Logo } from '@/components/layout/logo'
 import { BRAND, FOOTER_COLUMNS } from '@/content/brand'
@@ -21,6 +21,7 @@ const LINK_ICONS: Record<string, React.ElementType> = {
   '/leaderboard': Trophy,
   '/streaming': Play,
   '/tv': Tv,
+  '/atelier': Clapperboard,
   '/create': Users,
   '/work': Briefcase,
   '/academy': GraduationCap,

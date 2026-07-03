@@ -4,6 +4,7 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 import { generateFilmContract } from '@/lib/contracts'
+import { FILM_DURATION, isValidFilmDuration } from '@/content/atelier'
 
 export async function submitFilmAction(
   prevState: { error?: string; success?: boolean } | null,
@@ -18,7 +19,12 @@ export async function submitFilmAction(
   const videoUrl = formData.get('videoUrl') as string
   const trailerUrl = formData.get('trailerUrl') as string
   const thumbnailUrl = formData.get('thumbnailUrl') as string
-  const duration = parseInt(formData.get('duration') as string || '0', 10)
+  // Durée : le formulaire envoie des minutes (`durationMinutes`) ; l'ancien
+  // champ `duration` (secondes) reste accepté pour compatibilité.
+  const durationMinutesRaw = formData.get('durationMinutes') as string | null
+  const duration = durationMinutesRaw
+    ? Math.round(parseFloat(durationMinutesRaw) * 60)
+    : parseInt(formData.get('duration') as string || '0', 10)
   const language = formData.get('language') as string || 'fr'
   const year = parseInt(formData.get('year') as string || '0', 10)
   const isContest = formData.get('isContest') === 'true'
@@ -27,6 +33,14 @@ export async function submitFilmAction(
 
   if (!title || !synopsis || !videoUrl) {
     return { error: 'Titre, synopsis et URL de la vidéo sont requis' }
+  }
+  // Règle de format CINEGENY : un film dure entre 10 minutes et 1 h 00
+  // (source de vérité : src/content/atelier.ts).
+  if (!duration) {
+    return { error: `La durée du film est requise (${FILM_DURATION.label}).` }
+  }
+  if (!isValidFilmDuration(duration)) {
+    return { error: `Format non conforme : les films durent ${FILM_DURATION.label}. ${FILM_DURATION.rule}` }
   }
   if (!acceptTerms) {
     return { error: 'Vous devez accepter les conditions du contrat' }
