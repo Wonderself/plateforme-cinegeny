@@ -268,7 +268,7 @@ de ce qui a change avec les URLs a verifier pour validation par le fondateur.
 > premier passage puis change depuis l'admin.
 
 ### 15.7 « Comment ca marche » + co-producteurs en liste d'attente
-**Statut**: A FAIRE · **Modele**: **Sonnet**
+**Statut**: FAIT (Juillet 2026) · **Modele**: **Sonnet**
 > Page `/comment-ca-marche` grand public (3 etapes illustrees, FAQ courte : qui peut
 > voter, c'est gratuit ?, que gagne-t-on ?, c'est quoi un film IA ?). Page
 > `/co-produire` : promesse co-production + formulaire liste d'attente (email + montant

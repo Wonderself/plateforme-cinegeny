@@ -281,6 +281,7 @@ export const FOOTER_COLUMNS: { title: string; links: NavEntry[] }[] = [
   {
     title: 'CINEGENY',
     links: [
+      { href: '/comment-ca-marche', label: 'Comment ça marche' },
       { href: '/about', label: 'À propos' },
       { href: '/roadmap', label: 'Roadmap' },
     ],
