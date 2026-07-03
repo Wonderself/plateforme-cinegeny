@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Play, Search, Star, Eye, Clock, Film, Coins, Crown, ArrowRight, Wand2, Upload } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { ATELIER, FILM_DURATION } from '@/content/atelier'
+import { ComingSoonWall } from '@/components/films/coming-soon-wall'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
@@ -190,7 +191,7 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
             <p className="text-lg text-white/30">Aucun film trouvé</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 md:grid-cols-4 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 lg:gap-7">
             {films.map((film) => (
               <Link key={film.id} href={`/streaming/${film.slug}`} className="group">
                 <div className="overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] transition-all duration-500 hover:-translate-y-1 hover:border-[#C9A227]/35 hover:shadow-[0_16px_40px_rgba(0,0,0,0.5),0_0_30px_rgba(201,162,39,0.08)]">
@@ -236,6 +237,12 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
           </div>
         )}
 
+      </div>
+
+      {/* ══ Prochainement — mur d'affiches ══════════════════════════════════ */}
+      <ComingSoonWall />
+
+      <div className="mx-auto max-w-7xl px-6 pb-14 sm:px-10 sm:pb-16 md:px-16 lg:px-20">
         {/* ══ Devenez Producteur ════════════════════════════════════════════ */}
         <div className="relative mt-20 overflow-hidden rounded-3xl border border-[#C9A227]/20 bg-gradient-to-br from-[#C9A227]/[0.08] via-[#C9A227]/[0.03] to-transparent p-8 md:p-12 lg:p-14">
           <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-[#C9A227]/[0.06] blur-[80px]" />

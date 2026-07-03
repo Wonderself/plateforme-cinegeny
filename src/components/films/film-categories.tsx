@@ -175,18 +175,8 @@ export default function FilmCategories({ model }: { model: CatalogModel }) {
       <div className="container mx-auto max-w-7xl">
         {/* Section title */}
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Catalogue{' '}
-            <span
-              style={{
-                background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 40%, #C9A227 70%, #B8960C 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              CINEGENY
-            </span>
+          <h2 className="mb-4 font-playfair text-3xl font-bold text-white sm:text-5xl">
+            Catalogue <span className="text-gold-brushed">CINEGENY</span>
           </h2>
           <p className="mx-auto max-w-xl text-sm text-white/50">
             Le parcours d’un film sur CINEGENY : en vote, en production, puis à regarder.
@@ -225,7 +215,7 @@ export default function FilmCategories({ model }: { model: CatalogModel }) {
         {films.length > 0 ? (
           <div className="mb-16">
             <SectionHeader title={FILM_STATUSES[activeTab].label} count={films.length} />
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 xl:grid-cols-5">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:gap-7 xl:grid-cols-4">
               {films.map((film) => (
                 <FilmCatalogCard key={film.slug} film={film} />
               ))}

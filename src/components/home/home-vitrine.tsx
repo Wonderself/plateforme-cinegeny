@@ -43,6 +43,7 @@ import {
   ACADEMY_NAV,
 } from '@/content/brand'
 import { ATELIER, FILM_DURATION } from '@/content/atelier'
+import { ComingSoonWall } from '@/components/films/coming-soon-wall'
 import type { HomeVitrineModel, HomeFilmVM } from '@/lib/home-vitrine'
 
 /* ── Compteur réel x/5000 + barre de progression ──────────────────────────── */
@@ -79,7 +80,7 @@ function FilmVoteCard({ film }: { film: HomeFilmVM }) {
   return (
     <Link
       href={`/films/${film.slug}`}
-      className="group flex w-[210px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:-translate-y-1 hover:border-[#C9A227]/40 sm:w-[230px]"
+      className="group flex w-[248px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:-translate-y-1.5 hover:border-[#C9A227]/40 hover:shadow-[0_24px_60px_-16px_rgba(0,0,0,0.8),0_0_30px_rgba(201,162,39,0.07)] sm:w-[288px]"
     >
       {/* Affiche */}
       <div className="relative aspect-[2/3] shrink-0 overflow-hidden bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03]">
@@ -89,7 +90,7 @@ function FilmVoteCard({ film }: { film: HomeFilmVM }) {
             alt={`Affiche du film ${film.title}`}
             fill
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-            sizes="230px"
+            sizes="288px"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center">
@@ -145,8 +146,8 @@ function VoteRail({
               <Vote className="h-3 w-3" /> En vote
             </span>
           </div>
-          <h2 className="text-xl font-bold text-white sm:text-2xl">{title}</h2>
-          <p className="mt-1 max-w-md text-xs text-white/45 sm:text-sm">{tagline}</p>
+          <h2 className="font-playfair text-2xl font-bold text-white sm:text-3xl">{title}</h2>
+          <p className="mt-1.5 max-w-md text-xs text-white/45 sm:text-sm">{tagline}</p>
         </div>
         {/* Flèches (desktop) */}
         <div className="hidden shrink-0 gap-2 md:flex">
@@ -184,7 +185,7 @@ function VoteRail({
 
 function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
   return (
-    <section className="relative flex min-h-[92vh] items-end overflow-hidden">
+    <section className="hero-vignette relative flex min-h-[94vh] items-end overflow-hidden">
       {/* Affiche de fond */}
       {film.coverImageUrl ? (
         <Image
@@ -206,11 +207,11 @@ function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
         <div className="grid items-end gap-8 lg:grid-cols-[1.15fr_0.85fr]">
           {/* Récit */}
           <div className="max-w-xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/25 bg-[#C9A227]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#E8C766]">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/25 bg-[#0A0908]/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E8C766] backdrop-blur-md">
               <Vote className="h-3 w-3" /> En vote · {film.trackName}
             </span>
 
-            <h1 className="mt-4 font-playfair text-4xl font-bold leading-[1.05] text-white sm:text-5xl md:text-6xl">
+            <h1 className="mt-4 font-playfair text-4xl font-bold leading-[1.02] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] sm:text-6xl md:text-7xl">
               {film.title}
             </h1>
 
@@ -497,6 +498,8 @@ export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
         tagline="Des films déjà réalisés. À 5 000 votes, ils entrent en Finale CINEGENY."
         films={model.trackB}
       />
+
+      <ComingSoonWall />
 
       <HowItWorks />
       <Parcours />

@@ -323,10 +323,32 @@
   color: rgba(232, 199, 102, 0.95);
 }
 
+/* Mur d'affiches défilant — abondance du catalogue, coût GPU minimal
+   (transform uniquement, contenu dupliqué pour une boucle sans couture). */
+@keyframes posterScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.poster-marquee {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: posterScroll 70s linear infinite;
+  will-change: transform;
+}
+.poster-marquee-reverse {
+  animation-direction: reverse;
+  animation-duration: 85s;
+}
+.poster-marquee-row:hover .poster-marquee {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cine-poster img,
   .cine-poster:hover img,
   .group:hover .cine-poster img { transition: none; transform: none; }
+  .poster-marquee { animation: none; }
 }
 
 /* Premium metallic gold — wordmarks, headings, stats */
