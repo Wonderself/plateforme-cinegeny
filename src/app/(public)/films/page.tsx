@@ -2,7 +2,9 @@ import { Clapperboard, Film, CheckCircle, Users } from 'lucide-react'
 import { getCached } from '@/lib/redis'
 import FilmCategories from '@/components/films/film-categories'
 import { ALL_FILMS } from '@/data/films'
+import { ARCHIVED_FILMS } from '@/data/archived-films'
 import { prisma } from '@/lib/prisma'
+import { buildCatalogModel, type CatalogFilmInput } from '@/lib/films-catalog'
 import { MotionCard } from '@/components/ui/motion'
 import type { Metadata } from 'next'
 
@@ -36,8 +38,66 @@ async function getHeroStats() {
   )
 }
 
+/**
+ * Catalogue complet servi au client : la slate officielle + les archives
+ * (legacy) réactivées par l'admin (`/admin/films-catalog`, `CatalogActivation`
+ * en base) — même périmètre que l'ancien `useLiveCatalog`, désormais résolu
+ * côté serveur pour pouvoir brancher les compteurs de votes réels (15.5).
+ */
+async function getCatalogInputs(): Promise<CatalogFilmInput[]> {
+  let activeArchivedSlugs = new Set<string>()
+  try {
+    const rows = await prisma.catalogActivation.findMany({ where: { active: true }, select: { slug: true } })
+    activeArchivedSlugs = new Set(rows.map((r) => r.slug))
+  } catch {
+    // Base indisponible — catalogue réduit à la slate officielle.
+  }
+
+  const films = [...ALL_FILMS, ...ARCHIVED_FILMS.filter((f) => activeArchivedSlugs.has(f.slug))]
+  const slugs = films.map((f) => f.slug)
+
+  const idBySlug = new Map<string, string>()
+  const statusBySlug = new Map<string, string>()
+  const countByFilmId = new Map<string, number>()
+
+  try {
+    const dbFilms = await prisma.film.findMany({
+      where: { slug: { in: slugs } },
+      select: { id: true, slug: true, status: true },
+    })
+    for (const f of dbFilms) {
+      idBySlug.set(f.slug, f.id)
+      statusBySlug.set(f.slug, f.status)
+    }
+
+    const filmIds = dbFilms.map((f) => f.id)
+    if (filmIds.length > 0) {
+      // Compteur public = votes CONFIRMÉS uniquement (15.0 #5, cf. votes.ts).
+      const grouped = await prisma.filmVote.groupBy({
+        by: ['filmId'],
+        where: { filmId: { in: filmIds }, voteType: 'vote', confirmed: true },
+        _count: { _all: true },
+      })
+      for (const g of grouped) countByFilmId.set(g.filmId, g._count._all)
+    }
+  } catch {
+    // Base indisponible — le catalogue reste rendu, compteurs à zéro.
+  }
+
+  return films.map((film) => {
+    const filmId = idBySlug.get(film.slug) ?? null
+    return {
+      film,
+      filmId,
+      legacyStatus: filmId ? (statusBySlug.get(film.slug) ?? film.status) : film.status,
+      voteCount: filmId ? (countByFilmId.get(filmId) ?? 0) : 0,
+    }
+  })
+}
+
 export default async function FilmsPage() {
-  const heroStats = await getHeroStats()
+  const [heroStats, catalogInputs] = await Promise.all([getHeroStats(), getCatalogInputs()])
+  const catalogModel = buildCatalogModel(catalogInputs)
 
   const stats = [
     { label: 'Films', value: ALL_FILMS.length, icon: Film },
@@ -105,7 +165,7 @@ export default async function FilmsPage() {
       {/* ================================================================ */}
       {/* CATALOG (curated slate + admin-activated archives)               */}
       {/* ================================================================ */}
-      <FilmCategories />
+      <FilmCategories model={catalogModel} />
     </div>
   )
 }
