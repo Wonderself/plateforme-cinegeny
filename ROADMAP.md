@@ -284,12 +284,17 @@ de ce qui a change avec les URLs a verifier pour validation par le fondateur.
 > la page CineGeny.com a repliquer).
 
 ### 15.9 Finale CINEGENY — page concours + reglement
-**Statut**: A FAIRE · **Modele**: **Sonnet**
-> Page `/finale` : principe (les films de la piste B a 5 000 votes entrent en Finale),
-> prix de fin d'annee (voyages), compte a rebours, films qualifies (reel : vide au debut,
-> assume avec un etat « Aucun finaliste encore — votez ! »), reglement lisible.
-> **Prerequis fondateur** : nature exacte des prix, date de la Finale, conditions
-> (indispensable avant mise en ligne — obligations legales des jeux-concours FR).
+**Statut**: FAIT (Juillet 2026)
+> Page `/finale` (liee depuis l'accueil et le footer) : principe de la Finale (les films
+> piste B a 5 000 votes confirmes entrent en Finale — logique pure et testee dans
+> `src/lib/finale.ts`, `selectFinalists`), bloc prix (voyages, nature exacte annoncee plus
+> tard), etat « Date annoncee prochainement » (aucune date inventee), liste des finalistes
+> reels (vide au depart, etat assume « Aucun finaliste encore — votez ! »), reglement
+> lisible qui explique clairement que la version complete et definitive (date exacte,
+> prix precis, conditions legales) sera publiee avant l'ouverture de la Finale.
+> **Reste a fournir par le fondateur avant l'ouverture reelle** : nature exacte des prix,
+> date de la Finale, conditions legales du jeu-concours FR — la page le dit explicitement
+> tant que ce n'est pas fourni.
 
 ### 15.10 Passe francais integral des surfaces publiques
 **Statut**: A FAIRE · **Modele**: **Haiku** (passe mecanique de labels, volume eleve, zero decision)
