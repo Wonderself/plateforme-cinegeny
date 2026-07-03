@@ -87,3 +87,9 @@ export const voteLimiter = createRateLimiter({
   maxAttempts: isDev ? 100 : 20,
   windowMs: isDev ? 60 * 1000 : 10 * 60 * 1000,
 })
+
+// Liste d'attente co-producteurs (15.7) — formulaire public sans compte.
+export const coProduceWaitlistLimiter = createRateLimiter({
+  maxAttempts: isDev ? 50 : 5,
+  windowMs: isDev ? 60 * 1000 : 60 * 60 * 1000,
+})

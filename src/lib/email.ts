@@ -193,6 +193,26 @@ export async function sendScreenplayAcceptedEmail(
   return send(to, `Scénario "${screenplayTitle}" accepté — Deal proposé`, html)
 }
 
+/** Co-producer waitlist confirmation (15.7) */
+export async function sendCoProducerWaitlistEmail(to: string, intentAmount: number): Promise<boolean> {
+  const html = layout('Liste d\'attente co-producteurs', `
+    <h1 style="font-size:24px;margin:0 0 16px;color:#C9A227;">C'est note ! 🎬</h1>
+    <p style="color:#ffffffcc;line-height:1.6;margin:0 0 16px;">
+      Merci pour votre interet pour la co-production CINEGENY. Votre intention de
+      <strong style="color:#C9A227;">${intentAmount.toLocaleString('fr-FR')} €</strong> est enregistree.
+    </p>
+    <p style="color:#ffffffcc;line-height:1.6;margin:0 0 16px;">
+      Les co-productions ouvriront apres la premiere selection de films. Nous vous
+      ecrirons a cette adresse des que ce sera le cas — aucun paiement n'est demande
+      aujourd'hui.
+    </p>
+    <div style="text-align:center;">
+      ${goldButton('Voir les films en vote', `${process.env.NEXTAUTH_URL || 'https://cinegen.studio'}/films`)}
+    </div>
+  `)
+  return send(to, 'Votre place en liste d\'attente co-producteurs — CINEGENY', html)
+}
+
 /** Weekly digest (summary of activity) */
 export async function sendWeeklyDigest(
   to: string,

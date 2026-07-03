@@ -3220,3 +3220,20 @@ enum AuditStatus {
   COMPLETED
   FAILED
 }
+
+// ============================================
+// PHASE 15.7 — LISTE D'ATTENTE CO-PRODUCTEURS
+// ============================================
+// Capture d'intention avant l'ouverture des co-productions (decision 15.0 #8) :
+// aucun paiement, juste email + montant d'intention.
+
+model CoProducerWaitlistEntry {
+  id                 String    @id @default(cuid())
+  email              String    @unique
+  intentAmount       Int // montant d'intention en euros
+  ipHash             String?
+  confirmationSentAt DateTime?
+  createdAt          DateTime  @default(now())
+
+  @@index([createdAt])
+}
