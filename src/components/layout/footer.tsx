@@ -17,6 +17,7 @@ import { BRAND, FOOTER_COLUMNS } from '@/content/brand'
 // Icônes de la couche présentation, associées aux destinations de brand.ts.
 const LINK_ICONS: Record<string, React.ElementType> = {
   '/films': Film,
+  '/finale': Trophy,
   '/leaderboard': Trophy,
   '/streaming': Play,
   '/tv': Tv,

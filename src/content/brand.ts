@@ -253,6 +253,7 @@ export const FOOTER_COLUMNS: { title: string; links: NavEntry[] }[] = [
     title: 'Films',
     links: [
       { href: '/films', label: 'Films en compétition' },
+      { href: '/finale', label: 'Finale CINEGENY' },
       { href: '/leaderboard', label: 'Classement' },
     ],
   },
