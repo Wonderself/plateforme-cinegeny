@@ -38,17 +38,17 @@ export async function purchaseLumensAction(
         userId: session.user.id,
         amount: totalLumens,
         type: 'PURCHASE',
-        description: `Achat de ${amount} Lumens${bonusLumens > 0 ? ` (+${bonusLumens} bonus)` : ''} — ${totalPrice.toFixed(2)}€`,
+        description: `Achat de ${amount} Points${bonusLumens > 0 ? ` (+${bonusLumens} bonus)` : ''} — ${totalPrice.toFixed(2)}€`,
       },
     }),
   ])
 
-  await createNotification(session.user.id, 'SYSTEM', `${totalLumens} Lumens ajoutés`, {
-    body: `Votre achat de ${amount} Lumens a été crédité${bonusLumens > 0 ? ` avec ${bonusLumens} Lumens bonus` : ''}.`,
-    href: '/lumens',
+  await createNotification(session.user.id, 'SYSTEM', `${totalLumens} Points ajoutés`, {
+    body: `Votre achat de ${amount} Points a été crédité${bonusLumens > 0 ? ` avec ${bonusLumens} Points bonus` : ''}.`,
+    href: '/points',
   })
 
-  revalidatePath('/lumens')
+  revalidatePath('/points')
   revalidatePath('/dashboard')
   return { success: true }
 }
@@ -63,7 +63,7 @@ export async function withdrawLumensAction(
   const amountStr = formData.get('amount') as string
   const amount = parseInt(amountStr, 10)
 
-  if (!amount || amount < 10) return { error: 'Minimum 10 Lumens pour un retrait' }
+  if (!amount || amount < 10) return { error: 'Minimum 10 Points pour un retrait' }
 
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
@@ -84,11 +84,11 @@ export async function withdrawLumensAction(
         userId: session.user.id,
         amount: -amount,
         type: 'WITHDRAWAL',
-        description: `Retrait de ${amount} Lumens → ${amount.toFixed(2)}€ (virement sous 14 jours)`,
+        description: `Retrait de ${amount} Points → ${amount.toFixed(2)}€ (virement sous 14 jours)`,
       },
     }),
   ])
 
-  revalidatePath('/lumens')
+  revalidatePath('/points')
   return { success: true }
 }

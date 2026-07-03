@@ -56,7 +56,7 @@ export default async function CreatorDashboardPage() {
     { label: 'Votes', value: filmVotes, sub: 'Films vot\u00e9s', icon: Heart, color: 'text-pink-500', bg: 'bg-pink-500/10', border: 'border-pink-500/20', href: '/films' },
     { label: 'Conversations', value: conversations, sub: 'Chats IA', icon: MessageSquare, color: 'text-emerald-500', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', href: '/chat' },
     { label: 'Agents utilis\u00e9s', value: agentExecutions, sub: `${aiUsageToday} today`, icon: Bot, color: 'text-purple-500', bg: 'bg-purple-500/10', border: 'border-purple-500/20', href: '/agents' },
-    { label: 'Lumens', value: user?.lumenBalance ?? 0, sub: `Level: ${user?.level || 'ROOKIE'}`, icon: Star, color: 'text-yellow-500', bg: 'bg-yellow-500/10', border: 'border-yellow-500/20', href: '/lumens' },
+    { label: 'Points', value: user?.lumenBalance ?? 0, sub: `Level: ${user?.level || 'ROOKIE'}`, icon: Star, color: 'text-yellow-500', bg: 'bg-yellow-500/10', border: 'border-yellow-500/20', href: '/points' },
   ]
 
   const quickLinks = [

@@ -13,7 +13,6 @@ import {
   Tv,
   Crown,
   ArrowRight,
-  ChevronRight,
   CalendarDays,
   TrendingUp,
 } from 'lucide-react'
@@ -127,9 +126,6 @@ export default function TvReplayPage() {
             <h2 className="text-2xl font-bold text-white font-[family-name:var(--font-playfair)]">
               Just Aired
             </h2>
-            <Link href="/tv/live" className="flex items-center gap-1 text-[#2563EB] text-sm font-medium hover:underline">
-              Watch Live <ChevronRight className="h-4 w-4" />
-            </Link>
           </div>
 
           <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-thin scrollbar-thumb-white/10">

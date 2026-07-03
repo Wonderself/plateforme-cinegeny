@@ -8,7 +8,7 @@ import {
   ArrowRight, ChevronLeft, ChevronRight, Play, TrendingUp,
   Tv, Radio, Star, Clock, Flame, Laugh,
   Drama, BookOpen, Ghost, Wand2, Swords,
-  Briefcase, DollarSign, Sparkles, Eye, Signal,
+  Briefcase, DollarSign, Sparkles, Eye,
   Monitor, Rocket, Users, Heart, Film, Mic,
 } from 'lucide-react'
 import { toast } from 'sonner'
@@ -174,8 +174,6 @@ export default function TvHomePage() {
 
   /* Derived data */
   const featuredShow = ALL_TV_SHOWS.find(s => s.status === 'ongoing') || ALL_TV_SHOWS[0]
-  const lateNightShows = SHOWS_BY_GENRE['Late Night Comedy'] || []
-  const liveShow = lateNightShows[0]
 
   const trendingShows = [...ALL_TV_SHOWS]
     .sort((a, b) => (b.viewCount ?? 0) - (a.viewCount ?? 0))
@@ -190,9 +188,6 @@ export default function TvHomePage() {
     if (!comingSoonRef.current) return
     comingSoonRef.current.scrollBy({ left: dir === 'left' ? -400 : 400, behavior: 'smooth' })
   }
-
-  /* Schedule: next 3 shows after live */
-  const scheduleShows = lateNightShows.slice(1, 4)
 
   return (
     <div className="min-h-screen bg-[#050A15] text-white">
@@ -258,53 +253,6 @@ export default function TvHomePage() {
       </section>
 
       <div className="relative z-10">
-
-        {/* ═══════════════════════════════════════════
-            B. CINEGENY TV LIVE BANNER
-            ═══════════════════════════════════════════ */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1D4ED8] via-[#2563EB] to-[#1D4ED8]" />
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1920&h=200&q=60')] bg-cover bg-center opacity-[0.08]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1D4ED8]/90 via-transparent to-[#1D4ED8]/90" />
-
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 md:px-16 lg:px-20 py-4 md:py-5 gap-3 md:gap-0">
-            {/* Left: ON AIR */}
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500" />
-                </span>
-                <span className="text-[11px] font-black text-white uppercase tracking-widest">On Air</span>
-              </div>
-              <div>
-                <p className="text-sm md:text-base font-bold text-white">
-                  {liveShow ? liveShow.title : 'CINEGENY TV'} — <span className="text-white/70">Live Now</span>
-                </p>
-                <p className="text-[10px] text-white/50">{viewerCount !== null ? viewerCount.toLocaleString() : '---'} watching now</p>
-              </div>
-            </div>
-
-            {/* Center: Schedule preview */}
-            <div className="hidden lg:flex items-center gap-4">
-              {scheduleShows.map((show, i) => (
-                <div key={show.id} className="flex items-center gap-2 text-[10px] text-white/60">
-                  <Clock className="h-3 w-3 text-white/40" />
-                  <span className="font-semibold text-white/80">{`${20 + i}:00`}</span>
-                  <span className="truncate max-w-[120px]">{show.title}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Right: Watch Live button */}
-            <Link
-              href="/tv/live"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-[#1D4ED8] font-bold text-xs hover:bg-white/90 transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-black/20"
-            >
-              <Signal className="h-3.5 w-3.5" /> Watch Live
-            </Link>
-          </div>
-        </section>
 
         {/* ═══════════════════════════════════════════
             C. GENRE PILLS
@@ -690,7 +638,6 @@ export default function TvHomePage() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
               {[
                 { icon: Film, label: 'All Shows', href: '/tv/shows', color: '#2563EB' },
-                { icon: Radio, label: 'Live TV', href: '/tv/live', color: '#EF4444' },
                 { icon: Play, label: 'Replay', href: '/tv/replay', color: '#8B5CF6' },
                 { icon: Sparkles, label: 'Create a Show', href: '/tv/create', color: '#2563EB' },
                 { icon: DollarSign, label: 'Produce', href: '/tv/produce', color: '#10B981' },

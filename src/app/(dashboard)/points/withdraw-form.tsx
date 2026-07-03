@@ -32,7 +32,7 @@ export function WithdrawForm({ currentBalance }: { currentBalance: number }) {
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
             <label htmlFor="withdraw-amount" className="block text-sm font-medium text-white/60 mb-2">
-              Montant a retirer (min. 10 Lumens)
+              Montant a retirer (min. 10 Points)
             </label>
             <div className="relative">
               <input
@@ -47,7 +47,7 @@ export function WithdrawForm({ currentBalance }: { currentBalance: number }) {
                 className="w-full h-12 rounded-lg bg-white/5 border border-white/10 px-4 text-white placeholder-white/30 text-lg focus:outline-none focus:border-[#C9A227]/50 focus:ring-1 focus:ring-[#C9A227]/30 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-white/30">
-                Lumens
+                Points
               </span>
             </div>
           </div>
@@ -69,7 +69,7 @@ export function WithdrawForm({ currentBalance }: { currentBalance: number }) {
           <div className="space-y-1">
             <div className="text-xs text-white/40">Solde actuel</div>
             <div className="text-sm font-semibold text-white">
-              {currentBalance.toLocaleString('fr-FR')} Lumens
+              {currentBalance.toLocaleString('fr-FR')} Points
             </div>
           </div>
           {amount && parsedAmount > 0 && (
@@ -78,7 +78,7 @@ export function WithdrawForm({ currentBalance }: { currentBalance: number }) {
               <div className="space-y-1">
                 <div className="text-xs text-white/40">Retrait</div>
                 <div className="text-sm font-semibold text-red-400">
-                  -{parsedAmount.toLocaleString('fr-FR')} Lumens
+                  -{parsedAmount.toLocaleString('fr-FR')} Points
                 </div>
               </div>
               <div className="text-white/20 mx-4">&#8594;</div>
@@ -89,7 +89,7 @@ export function WithdrawForm({ currentBalance }: { currentBalance: number }) {
                     ? remaining.toLocaleString('fr-FR')
                     : 'Insuffisant'
                   }{' '}
-                  {remaining >= 0 && 'Lumens'}
+                  {remaining >= 0 && 'Points'}
                 </div>
               </div>
               <div className="text-white/20 mx-4">=</div>

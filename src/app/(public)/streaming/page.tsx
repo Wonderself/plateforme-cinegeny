@@ -203,11 +203,11 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
               </p>
             </div>
             <Link
-              href="/tokenization"
+              href="/invest"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold transition-colors text-lg shrink-0"
             >
               <Coins className="h-5 w-5" />
-              Investir
+              Devenir co-producteur
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>

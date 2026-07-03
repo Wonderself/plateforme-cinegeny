@@ -118,11 +118,11 @@ export async function completeReferral(userId: string) {
   })
 
   // Notify both
-  await createNotification(referral.referrerId, 'SYSTEM', `🤝 +${REFERRAL_BONUS_LUMENS} Lumens — Votre filleul a complete sa premiere tache !`, {
-    href: '/lumens',
+  await createNotification(referral.referrerId, 'SYSTEM', `🤝 +${REFERRAL_BONUS_LUMENS} Points — Votre filleul a complete sa premiere tache !`, {
+    href: '/points',
   })
-  await createNotification(userId, 'SYSTEM', `🎁 +${REFERRAL_WELCOME_LUMENS} Lumens — Bonus de bienvenue parrainage !`, {
-    href: '/lumens',
+  await createNotification(userId, 'SYSTEM', `🎁 +${REFERRAL_WELCOME_LUMENS} Points — Bonus de bienvenue parrainage !`, {
+    href: '/points',
   })
 
   // Check referral badge

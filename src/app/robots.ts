@@ -15,7 +15,7 @@ export default function robots(): MetadataRoute.Robots {
           '/profile/',
           '/api/',
           '/credits/',
-          '/lumens/',
+          '/points/',
           '/tokenization/',
           '/notifications/',
           '/documents/',

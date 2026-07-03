@@ -723,10 +723,10 @@ function CoProducerSection({ film }: { film: any }) {
               ))}
             </div>
 
-            <Link href={`/tokenization/${film.id}`}>
+            <Link href="/invest">
               <Button size="lg" className="w-full sm:w-auto group">
                 <Coins className="h-5 w-5" />
-                Investir dans ce Film
+                Devenir co-producteur
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
@@ -753,10 +753,10 @@ function CoProducerSection({ film }: { film: any }) {
                 Suivez ce film pour etre notifie des son ouverture.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <Link href="/tokenization">
+                <Link href="/invest">
                   <Button variant="outline" className="group">
                     <Bell className="h-4 w-4" />
-                    Voir les Offres Disponibles
+                    Devenir co-producteur
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>

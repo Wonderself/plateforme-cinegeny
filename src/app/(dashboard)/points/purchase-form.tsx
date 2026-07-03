@@ -14,7 +14,7 @@ const PACKS = [
     discount: null,
     badge: null,
     icon: Sparkles,
-    features: ['10 Lumens credites', 'Utilisation immediate', 'Sans engagement'],
+    features: ['10 Points credites', 'Utilisation immediate', 'Sans engagement'],
   },
   {
     amount: 25,
@@ -23,7 +23,7 @@ const PACKS = [
     discount: '-10%',
     badge: 'Populaire',
     icon: Sparkles,
-    features: ['25 + 2 Lumens bonus', 'Economisez 2,50 EUR', 'Ideal pour debuter'],
+    features: ['25 + 2 Points bonus', 'Economisez 2,50 EUR', 'Ideal pour debuter'],
   },
   {
     amount: 100,
@@ -32,7 +32,7 @@ const PACKS = [
     discount: '-20%',
     badge: 'Meilleur rapport',
     icon: Crown,
-    features: ['100 + 10 Lumens bonus', 'Economisez 20 EUR', 'Pour les contributeurs actifs'],
+    features: ['100 + 10 Points bonus', 'Economisez 20 EUR', 'Pour les contributeurs actifs'],
   },
 ]
 
@@ -44,7 +44,7 @@ export function PurchaseForm() {
       {state?.success && (
         <div className="flex items-center gap-2 p-4 rounded-lg bg-green-500/10 border border-green-500/20 text-green-600 text-sm">
           <Check className="h-4 w-4 shrink-0" />
-          <span>Lumens credites avec succes ! Votre solde a ete mis a jour.</span>
+          <span>Points credites avec succes ! Votre solde a ete mis a jour.</span>
         </div>
       )}
       {state?.error && (
@@ -97,14 +97,14 @@ export function PurchaseForm() {
                 <div className="text-center mb-5 pt-2">
                   <div className="text-3xl font-bold text-white mb-1">
                     {pack.amount}
-                    <span className="text-sm font-normal text-white/40 ml-1">Lumens</span>
+                    <span className="text-sm font-normal text-white/40 ml-1">Points</span>
                   </div>
                   <div className="text-2xl font-bold text-[#C9A227]">
                     {pack.price.toFixed(2).replace('.', ',')}&#8364;
                   </div>
                   {pack.bonus > 0 && (
                     <div className="text-xs text-purple-300 mt-1">
-                      +{pack.bonus} Lumens bonus
+                      +{pack.bonus} Points bonus
                     </div>
                   )}
                 </div>
@@ -128,7 +128,7 @@ export function PurchaseForm() {
                   variant={isPopular ? 'default' : 'outline'}
                   className="w-full"
                 >
-                  Acheter {pack.amount} Lumens
+                  Acheter {pack.amount} Points
                 </Button>
               </div>
             </form>

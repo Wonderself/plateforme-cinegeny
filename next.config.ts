@@ -55,6 +55,19 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-slider',
     ],
   },
+  // Degraissage des pages publiques (session 15.6, ROADMAP.md §15.6) : ces
+  // routes sont fusionnees/retirees du public, rien n'est supprime en base.
+  async redirects() {
+    return [
+      { source: '/lumens', destination: '/points', permanent: true },
+      { source: '/lumens/:path*', destination: '/points', permanent: true },
+      { source: '/tv/live', destination: '/tv', permanent: true },
+      { source: '/tv/live/:path*', destination: '/tv', permanent: true },
+      { source: '/produce', destination: '/create', permanent: true },
+      { source: '/act', destination: '/create/casting', permanent: true },
+      { source: '/tv/invest', destination: '/invest', permanent: true },
+    ]
+  },
 }
 
 export default withNextIntl(nextConfig)
