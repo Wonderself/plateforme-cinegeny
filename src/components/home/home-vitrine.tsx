@@ -44,8 +44,6 @@ import {
   ACADEMY_NAV,
 } from '@/content/brand'
 import { ATELIER, FILM_DURATION } from '@/content/atelier'
-import { ComingSoonWall } from '@/components/films/coming-soon-wall'
-import { COMING_SOON } from '@/data/coming-soon'
 import type { HomeVitrineModel, HomeFilmVM } from '@/lib/home-vitrine'
 
 /* ── Compteur réel x/5000 + barre de progression ──────────────────────────── */
@@ -236,35 +234,18 @@ type HeroSlide =
   | { kind: 'soon'; title: string; genre: string; posterUrl: string }
 
 function HeroCarousel({ model }: { model: HomeVitrineModel }) {
+  // Session 15.11 : uniquement de vrais films (plus de titres « à venir »), et
+  // AUCUNE auto-avance — la navigation se fait à la main via les vignettes.
   const slides: HeroSlide[] = (() => {
     const rest = [...model.trackB, ...model.trackA].filter((f) => f.slug !== model.hero.slug)
-    const films: HeroSlide[] = [model.hero, ...rest].map((film) => ({ kind: 'film', film }))
-    const soon: HeroSlide[] = COMING_SOON.slice(0, Math.max(0, 10 - films.length)).map((s) => ({
-      kind: 'soon',
-      title: s.title,
-      genre: s.genre,
-      posterUrl: s.posterUrl,
-    }))
-    return [...films, ...soon]
+    return [model.hero, ...rest].map((film) => ({ kind: 'film', film }))
   })()
 
   const [index, setIndex] = useState(0)
-  const [paused, setPaused] = useState(false)
-
-  useEffect(() => {
-    if (paused || slides.length < 2) return
-    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 8000)
-    return () => clearInterval(t)
-  }, [paused, slides.length])
-
   const active = slides[index]
 
   return (
-    <section
-      className="hero-vignette relative flex min-h-[94vh] items-end overflow-hidden"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <section className="hero-vignette relative flex min-h-[94vh] items-end overflow-hidden">
       {/* Fonds en fondu croisé */}
       {slides.map((slide, i) => {
         const cover = slide.kind === 'film' ? (slide.film.backdropUrl ?? slide.film.coverImageUrl) : slide.posterUrl
@@ -298,27 +279,9 @@ function HeroCarousel({ model }: { model: HomeVitrineModel }) {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/80 to-[#0A0908]/25" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/40 to-transparent" />
 
-      {/* Contenu de la diapositive active */}
-      {active.kind === 'film' ? (
+      {/* Contenu de la diapositive active (toujours un vrai film) */}
+      {active.kind === 'film' && (
         <HeroContent key={active.film.slug} film={active.film} totalVotes={model.totalVotes} />
-      ) : (
-        <div key={active.title} className="fade-in-up relative z-10 w-full px-4 pb-24 sm:px-8 md:px-16 md:pb-28 lg:px-20">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/25 bg-[#0A0908]/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E8C766] backdrop-blur-md">
-            <Sparkles className="h-3 w-3" /> Bientôt · {active.genre}
-          </span>
-          <h1 className="mt-4 max-w-2xl font-playfair text-4xl font-bold leading-[1.02] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] sm:text-6xl md:text-7xl">
-            {active.title}
-          </h1>
-          <p className="mt-4 max-w-xl text-sm text-white/55">
-            Prochainement en compétition — le public décidera de son destin.
-          </p>
-          <Link
-            href="/films"
-            className="bg-gold-brushed btn-sheen mt-7 inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold transition-all"
-          >
-            <Vote className="h-4 w-4" /> Voir les films en vote
-          </Link>
-        </div>
       )}
 
       {/* Vignettes de navigation */}
@@ -406,12 +369,14 @@ function HeroContent({ film, totalVotes }: { film: HomeFilmVM; totalVotes: numbe
               /* Repli : base indisponible → on renvoie vers la fiche du film */
               <div className="rounded-2xl border border-white/[0.08] bg-[#0A0908]/70 p-6 backdrop-blur-md">
                 <VoteMeter film={film} size="lg" />
-                <Link
-                  href={`/films/${film.slug}`}
-                  className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-[#C9A227]/30 bg-[#C9A227]/[0.10] py-3.5 text-sm font-semibold text-[#E8C766] transition-colors hover:bg-[#C9A227]/[0.18]"
-                >
-                  <Vote className="h-4 w-4" /> Voter
-                </Link>
+                <div className="mt-4 flex justify-center sm:mt-5 sm:block">
+                  <Link
+                    href={`/films/${film.slug}`}
+                    className="flex items-center justify-center gap-1.5 rounded-full border border-[#C9A227]/30 bg-[#C9A227]/[0.10] px-5 py-1.5 text-xs font-semibold text-[#E8C766] transition-colors hover:bg-[#C9A227]/[0.18] sm:w-full sm:rounded-xl sm:px-0 sm:py-3.5 sm:text-sm"
+                  >
+                    <Vote className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Voter
+                  </Link>
+                </div>
               </div>
             )}
             <Link
@@ -689,8 +654,6 @@ export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
         tagline="Des films déjà réalisés. À 5 000 votes, ils entrent en Finale CINEGENY."
         films={model.trackB}
       />
-
-      <ComingSoonWall />
 
       <Reveal><HowItWorks /></Reveal>
       <Reveal><Parcours /></Reveal>

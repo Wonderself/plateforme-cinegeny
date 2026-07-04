@@ -12,7 +12,7 @@ const waitlistSchema = z.object({
   intentAmount: z
     .number()
     .int('Montant entier requis')
-    .min(10, 'Minimum 10 €')
+    .min(100, 'Minimum 100 €')
     .max(1_000_000, 'Montant trop eleve'),
 })
 

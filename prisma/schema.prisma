@@ -135,6 +135,10 @@ model User {
   // V22 — Autopilot & Governance
   autopilotProposals   AutopilotProposal[]    @relation("ProposalCreator")
   autopilotApprovals   AutopilotProposal[]    @relation("ProposalApprover")
+
+  // Session 15.11 — Générique 2 rôles & matière projet Mini Studio
+  filmCredits          FilmCredit[]
+  projectFiles         ProjectFile[]
 }
 
 // ============================================
@@ -185,6 +189,9 @@ model Film {
 
   // V14 — Trailer Studio
   trailerProjects TrailerProject[]
+
+  // Session 15.11 — Générique curé (producteurs / crédits manuels)
+  filmCredits FilmCredit[]
 }
 
 model FilmPhase {
@@ -1797,6 +1804,7 @@ model TrailerProject {
   contest  TrailerContest?     @relation(fields: [contestId], references: [id])
   tasks    TrailerMicroTask[]
   choices  TrailerChoice[]
+  files    ProjectFile[]
 
   @@index([userId, status])
   @@index([contestId])
@@ -3241,4 +3249,79 @@ model CoProducerWaitlistEntry {
   createdAt          DateTime  @default(now())
 
   @@index([createdAt])
+}
+
+// ============================================
+// SESSION 15.11 — GÉNÉRIQUE À 2 RÔLES & MATIÈRE PROJET
+// ============================================
+
+/// Rôle d'une personne au générique d'un film.
+/// - ARTIST     : créateur / participant au film (crédité comme artiste)
+/// - PRODUCER   : apporteur d'argent / coproducteur (crédité comme producteur)
+/// - ARTIST_PRODUCER : a travaillé ET détient des parts (ex. travail contre
+///   parts de production) — crédité à la fois artiste et producteur.
+enum CreditRole {
+  ARTIST
+  PRODUCER
+  ARTIST_PRODUCER
+}
+
+/// Ligne de générique CURÉE manuellement (session 15.11).
+/// Le générique d'un film est d'abord dérivé automatiquement (tâches validées =
+/// artistes, auteur du scénario gagnant, parts de production). Ce modèle sert
+/// aux entrées saisies à la main par l'admin — surtout les producteurs/coprods
+/// qui ne sont pas encore représentés par une donnée système, et les noms
+/// hors-plateforme. `userId` est optionnel pour créditer un nom libre.
+model FilmCredit {
+  id         String     @id @default(cuid())
+  filmId     String
+  userId     String?    // Optionnel : rattache à un compte si la personne en a un
+  name       String     // Nom affiché au générique (libre si pas de compte)
+  role       CreditRole @default(PRODUCER)
+  roleLabel  String?    // Intitulé précis, ex. « Producteur exécutif », « Chef op »
+  amountEur  Int?       // Montant investi en € (producteurs) — pilote le palier d'affichage
+  note       String?    // Détail interne — non public
+  order      Int        @default(0) // Ordre d'affichage dans sa section
+  isPublic   Boolean    @default(true)
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+
+  film Film  @relation(fields: [filmId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([filmId, role, order])
+  @@index([userId])
+}
+
+/// Sous-dossiers de matière d'un projet Mini Studio.
+enum ProjectFolder {
+  SCRIPT     // Scénario, notes d'intention, dialogues
+  VISUALS    // Références visuelles, moodboard, storyboard
+  AUDIO      // Musiques, voix, ambiances
+  DOCS       // Documents (contrats, budget, docs de prod)
+  OTHER      // Divers
+}
+
+/// Fichier de matière/référence rattaché à un projet Mini Studio (session 15.11).
+/// Le dossier de matière vit DANS le Mini Studio, par projet, et alimente aussi
+/// bien le générateur de bande-annonce que la fabrique de documents. Quand le
+/// projet est rattaché à un film (TrailerProject.filmId), la matière suit.
+model ProjectFile {
+  id           String        @id @default(cuid())
+  projectId    String
+  uploadedById String?
+  folder       ProjectFolder @default(DOCS)
+  name         String        // Nom de fichier lisible
+  url          String        // URL de stockage (S3 / CDN)
+  fileKey      String?       // Clé de stockage (pour suppression)
+  mimeType     String?
+  sizeBytes    Int?
+  note         String?       // Annotation libre
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  project    TrailerProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  uploadedBy User?          @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+
+  @@index([projectId, folder])
 }

@@ -116,7 +116,7 @@ export async function createTrailerProjectAction(
     })
 
     revalidatePath('/dashboard')
-    revalidatePath('/trailer-studio')
+    revalidatePath('/mini-studio')
 
     return { success: true, projectId: project.id }
   } catch (err) {
@@ -237,7 +237,7 @@ export async function decomposeTrailerAction(projectId: string) {
       },
     })
 
-    revalidatePath(`/trailer-studio/${projectId}`)
+    revalidatePath(`/mini-studio/${projectId}`)
     revalidatePath('/dashboard')
 
     return { success: true, tasksCount: taskDefs.length }
@@ -303,7 +303,7 @@ export async function updateTrailerChoiceAction(
       })
     }
 
-    revalidatePath(`/trailer-studio/${choice.project.id}`)
+    revalidatePath(`/mini-studio/${choice.project.id}`)
 
     return { success: true }
   } catch (err) {
@@ -368,7 +368,7 @@ export async function startTrailerGenerationAction(projectId: string) {
       },
     })
 
-    revalidatePath(`/trailer-studio/${projectId}`)
+    revalidatePath(`/mini-studio/${projectId}`)
     revalidatePath('/dashboard')
 
     return { success: true }
@@ -538,7 +538,7 @@ export async function completeTrailerTaskAction(
       },
     })
 
-    revalidatePath(`/trailer-studio/${task.projectId}`)
+    revalidatePath(`/mini-studio/${task.projectId}`)
 
     return { success: true, progressPct, allDone }
   } catch (err) {
@@ -613,8 +613,8 @@ export async function submitTrailerToContestAction(
       },
     })
 
-    revalidatePath(`/trailer-studio/${projectId}`)
-    revalidatePath('/trailer-studio')
+    revalidatePath(`/mini-studio/${projectId}`)
+    revalidatePath('/mini-studio')
 
     return { success: true }
   } catch (err) {
@@ -736,7 +736,7 @@ export async function deleteTrailerProjectAction(projectId: string) {
       where: { id: projectId },
     })
 
-    revalidatePath('/trailer-studio')
+    revalidatePath('/mini-studio')
     revalidatePath('/dashboard')
 
     return { success: true }
@@ -805,7 +805,7 @@ export async function createTrailerChoiceAction(params: {
       },
     })
 
-    revalidatePath(`/trailer-studio/${data.projectId}`)
+    revalidatePath(`/mini-studio/${data.projectId}`)
 
     return { success: true, choiceId: choice.id }
   } catch (err) {
@@ -876,7 +876,7 @@ export async function voteOnTrailerChoiceAction(
       data: { votesData },
     })
 
-    revalidatePath(`/trailer-studio/${choice.projectId}`)
+    revalidatePath(`/mini-studio/${choice.projectId}`)
 
     return { success: true }
   } catch (err) {

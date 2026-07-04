@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Nouveau Projet — Studio Bande-Annonce',
+  title: 'Nouveau Projet — Mini Studio',
 }
 
 export default async function NewTrailerPage() {

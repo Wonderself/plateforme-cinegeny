@@ -14,7 +14,8 @@ import { FilmReviews } from '@/components/film-reviews'
 import { WatchlistButton } from '@/components/watchlist-button'
 import { FILMS_BY_SLUG, FILMS_BY_GENRE } from '@/data/films'
 import { ARCHIVED_FILMS_BY_SLUG } from '@/data/archived-films'
-import { getFilmCreditsAction } from '@/app/actions/credits'
+import { getFilmCreditsAction, getFilmGeneriqueAction, type FilmGenerique } from '@/app/actions/credits'
+import { FilmGenerique as FilmGeneriqueSection } from '@/components/films/film-generique'
 import { computeVoteProgress, deriveFilmStatusKey, type VoteProgress } from '@/lib/votes'
 import { FILM_STATUSES, VOTE_TRACKS, type FilmStatusKey } from '@/content/brand'
 import type { Metadata } from 'next'
@@ -25,7 +26,10 @@ type Props = { params: Promise<{ slug: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const film = await prisma.film.findUnique({ where: { slug } })
+  // Base indisponible (build/preview, hoquet réseau) → on retombe sur les
+  // données éditoriales plutôt que de faire échouer generateMetadata (ce qui
+  // ferait planter toute la page, contenu inclus).
+  const film = await prisma.film.findUnique({ where: { slug } }).catch(() => null)
   if (film) {
     return {
       title: `${film.title} — CINEGENY`,
@@ -84,7 +88,10 @@ export default async function FilmDetailPage({ params }: Props) {
       // Base indisponible (build/preview) — la fiche reste rendue, compteur à zéro.
     }
 
-    const { credits } = await getFilmCreditsAction(slug)
+    const [{ credits }, generique] = await Promise.all([
+      getFilmCreditsAction(slug),
+      getFilmGeneriqueAction(slug),
+    ])
     const progress = computeVoteProgress(voteCount)
     const statusKey = deriveFilmStatusKey({ legacyStatus, reached: progress.reached })
 
@@ -96,6 +103,7 @@ export default async function FilmDetailPage({ params }: Props) {
         progress={progress}
         statusKey={statusKey}
         credits={credits}
+        generique={generique}
       />
     )
   }
@@ -121,11 +129,12 @@ export default async function FilmDetailPage({ params }: Props) {
   })
 
   if (film) {
-    const [{ credits }, voteCount] = await Promise.all([
+    const [{ credits }, generique, voteCount] = await Promise.all([
       getFilmCreditsAction(slug),
+      getFilmGeneriqueAction(slug),
       prisma.filmVote.count({ where: { filmId: film.id, voteType: 'vote', confirmed: true } }),
     ])
-    return <DbFilmPage film={film} credits={credits} voteCount={voteCount} />
+    return <DbFilmPage film={film} credits={credits} generique={generique} voteCount={voteCount} />
   }
 
   notFound()
@@ -138,7 +147,7 @@ export default async function FilmDetailPage({ params }: Props) {
 type FilmCredit = Awaited<ReturnType<typeof getFilmCreditsAction>>['credits'][number]
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function DbFilmPage({ film, credits, voteCount }: { film: any; credits: FilmCredit[]; voteCount: number }) {
+function DbFilmPage({ film, credits, generique, voteCount }: { film: any; credits: FilmCredit[]; generique: FilmGenerique; voteCount: number }) {
   const availableTasks = 0 // Already counted in the main function for DB films
   const progress = computeVoteProgress(voteCount)
   const statusKey = deriveFilmStatusKey({ legacyStatus: film.status, reached: progress.reached })
@@ -255,12 +264,15 @@ function DbFilmPage({ film, credits, voteCount }: { film: any; credits: FilmCred
         {/* Le parcours de ce film : En vote -> En production -> À regarder */}
         <FilmJourney current={statusKey} />
 
-        {/* Film Credits */}
+        {/* Générique à 2 rôles — la chaise dorée (session 15.11) */}
+        <FilmGeneriqueSection artists={generique.artists} producers={generique.producers} />
+
+        {/* Contributions détaillées (par phase) */}
         {credits.length > 0 && (
           <div>
             <h2 className="text-xl font-bold font-playfair text-white mb-6 flex items-center gap-2">
               <Users className="h-5 w-5 text-[#C9A227]" />
-              Générique
+              Contributions détaillées
             </h2>
             <div className="space-y-8">
               {credits.map((group) => (
@@ -365,6 +377,7 @@ function CatalogFilmPage({
   progress,
   statusKey,
   credits,
+  generique,
 }: {
   film: FilmData
   filmId: string | null
@@ -372,6 +385,7 @@ function CatalogFilmPage({
   progress: VoteProgress
   statusKey: FilmStatusKey
   credits: FilmCredit[]
+  generique: FilmGenerique
 }) {
   const accentColor = GENRE_COLORS[film.genre] || '#C9A227'
   const trackInfo = VOTE_TRACKS[film.track]
@@ -569,6 +583,9 @@ function CatalogFilmPage({
               )}
             </section>
 
+            {/* Générique à 2 rôles — la chaise dorée (session 15.11) */}
+            <FilmGeneriqueSection artists={generique.artists} producers={generique.producers} />
+
             {/* Tags */}
             {film.tags.length > 0 && (
               <div className="flex flex-wrap items-center gap-2">
@@ -762,7 +779,7 @@ function CoProducerSection({ film }: { film: any }) {
           <div className="space-y-6">
             <div className="grid sm:grid-cols-3 gap-4">
               {[
-                { icon: Coins, title: 'Investissez des 10€', desc: 'Tokens de co-production accessibles a tous' },
+                { icon: Coins, title: 'Investissez des 100€', desc: 'Tokens de co-production accessibles a tous' },
                 { icon: Vote, title: 'Votez', desc: 'Participez aux decisions creatives du film' },
                 { icon: Crown, title: 'Au Generique', desc: 'Votre nom credite comme co-producteur' },
               ].map((b) => (

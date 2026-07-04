@@ -1,7 +1,6 @@
 import { Clapperboard, Film, CheckCircle, Users } from 'lucide-react'
 import { getCached } from '@/lib/redis'
 import FilmCategories from '@/components/films/film-categories'
-import { ComingSoonWall } from '@/components/films/coming-soon-wall'
 import { ALL_FILMS } from '@/data/films'
 import { ARCHIVED_FILMS } from '@/data/archived-films'
 import { prisma } from '@/lib/prisma'
@@ -46,15 +45,11 @@ async function getHeroStats() {
  * côté serveur pour pouvoir brancher les compteurs de votes réels (15.5).
  */
 async function getCatalogInputs(): Promise<CatalogFilmInput[]> {
-  let activeArchivedSlugs = new Set<string>()
-  try {
-    const rows = await prisma.catalogActivation.findMany({ where: { active: true }, select: { slug: true } })
-    activeArchivedSlugs = new Set(rows.map((r) => r.slug))
-  } catch {
-    // Base indisponible — catalogue réduit à la slate officielle.
-  }
-
-  const films = [...ALL_FILMS, ...ARCHIVED_FILMS.filter((f) => activeArchivedSlugs.has(f.slug))]
+  // Session 15.11 : décision fondateur — on remet TOUT le catalogue en ligne
+  // (la slate officielle + l'intégralité des archives). Le système
+  // `CatalogActivation` reste en base et pourra servir à MASQUER un titre au
+  // cas par cas, mais par défaut tous les films sont visibles.
+  const films = [...ALL_FILMS, ...ARCHIVED_FILMS]
   const slugs = films.map((f) => f.slug)
 
   const idBySlug = new Map<string, string>()
@@ -101,7 +96,7 @@ export default async function FilmsPage() {
   const catalogModel = buildCatalogModel(catalogInputs)
 
   const stats = [
-    { label: 'Films', value: ALL_FILMS.length, icon: Film },
+    { label: 'Films', value: ALL_FILMS.length + ARCHIVED_FILMS.length, icon: Film },
     { label: 'Tâches', value: heroStats.tasksCount, icon: CheckCircle },
     { label: 'Contributeurs', value: heroStats.contributorsCount, icon: Users },
   ]
@@ -164,14 +159,9 @@ export default async function FilmsPage() {
       </section>
 
       {/* ================================================================ */}
-      {/* CATALOG (curated slate + admin-activated archives)               */}
+      {/* CATALOG — tout le catalogue, rangé par catégorie façon Netflix   */}
       {/* ================================================================ */}
       <FilmCategories model={catalogModel} />
-
-      {/* ================================================================ */}
-      {/* PROCHAINEMENT — mur d'affiches (abondance du catalogue)          */}
-      {/* ================================================================ */}
-      <ComingSoonWall />
     </div>
   )
 }

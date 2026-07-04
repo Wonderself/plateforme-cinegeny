@@ -6,6 +6,117 @@
 
 ---
 
+### 2026-07-04 — Session 15.11 (suite 2) : affiches auto-hébergées, bouton vote -70%, robustesse fiche film
+
+**9. Affiches du catalogue archivé auto-hébergées (fin de la dépendance à Unsplash)**
+- Les ~108 affiches génériques du catalogue archivé pointaient vers des URLs `images.unsplash.com`
+  hotlinkées. 92 ont été téléchargées et placées dans `public/posters/generic/` ; les 16 dont la
+  photo Unsplash était introuvable (404) réutilisent une image déjà téléchargée du même genre.
+  `src/data/archived-films.ts` référence désormais uniquement des chemins locaux `/posters/generic/*.jpg`
+  — plus aucune dépendance réseau externe pour l'affichage des affiches
+- Toutes les infos de film (synopsis, réalisateur, casting, durée, année, tags) étaient déjà présentes
+  dans les données pour chaque film archivé ; aucune donnée manquante à compléter
+
+**10. Bouton « Voter » réduit d'environ 70% sur mobile**
+- `VotePanel` (mode plein) et le repli du hero (`home-vitrine.tsx`) : le bouton passe d'un bloc
+  pleine largeur (`py-3/py-4`, texte `text-sm`) à une pilule compacte centrée (`px-5 py-1.5`,
+  `text-xs`, icône réduite) sur mobile ; taille d'origine restaurée à partir de `sm:`
+
+**11. Fiche film : robustesse si la base de données est indisponible**
+- Bug découvert en vérifiant le rendu réel : `generateMetadata` et les actions `getFilmCreditsAction`
+  / `getFilmGeneriqueAction` appelaient Prisma sans filet, contrairement au reste du code de la page
+  — un hoquet de base de données faisait planter toute la fiche film (écran « Erreur inattendue »)
+  au lieu de se dégrader proprement comme les pages voisines (accueil, catalogue)
+- Corrigé : les trois points retombent désormais sur un état vide/éditorial en cas d'échec, la fiche
+  reste toujours rendue
+
+**Vérification** : rendu réel au navigateur (Chromium headless), catalogue et fiche film, avant/après.
+
+---
+
+### 2026-07-04 — Session 15.11 (suite) : paliers producteurs, catalogue complet Netflix, proportions
+
+**5. Paliers de crédit producteur par montant + minimum de coproduction**
+- Nouveau `src/content/coprod.ts` : source unique du minimum (`COPROD_MIN_EUR = 100`) et
+  des paliers du générique (`CREDIT_TIERS` : ≥ 10 000 € gros · ≥ 500 € moyen · ≥ 100 € petit)
+- Champ `amountEur` ajouté à `FilmCredit` ; `getFilmGeneriqueAction` calcule le palier et
+  trie les producteurs par montant décroissant ; `FilmGenerique` affiche 3 tailles
+- Formulaire admin : champ « Montant investi (€) » (affiché pour les rôles producteur) + rappel des paliers
+- Minimum de coproduction porté de 10 € à **100 €** (schéma `co-produce`, formulaire waitlist,
+  et mentions marketing film : streaming, fiche film, /invest)
+
+**6. Tout le catalogue remis en ligne + retrait des « films à venir »**
+- `/films` : les 109 films archivés sont tous inclus (filtre d'activation levé ; le système
+  `CatalogActivation` reste dispo pour masquer au cas par cas). Compteur « Films » = catalogue complet
+- `ComingSoonWall` (mur d'affiches « Prochainement » en marquee) retiré de `/films`,
+  `/streaming` et de l'accueil
+- Accueil : le hero n'affiche plus de titres « Bientôt » (que de vrais films) et **n'auto-avance plus**
+  (navigation manuelle par vignettes) — plus de bande en mouvement
+
+**7. Catalogue façon Netflix, rangé par catégorie (genre)**
+- `FilmCategories` réécrit : une **rangée par genre** (À la une, Action, Drame, Histoire,
+  Science-fiction, Thriller, Comédie, Documentaire, Animation, Romance, Fantastique),
+  défilement horizontal **manuel** (flèches desktop, tactile mobile), aucune auto-animation
+- Cartes affiche compactes menant à la fiche du film (le vote se fait sur la fiche) ;
+  filtre optionnel par étape du parcours (Tous / En vote / En production / À regarder)
+- Vérifié au rendu réel (Chromium) en mobile 390 px et desktop 1280 px
+
+**8. Proportions mobile**
+- Bouton « Voter » du hero (`VotePanel`) resserré sur mobile (`py-3` + icône plus petite,
+  taille pleine restaurée dès `sm:`), idem CTA de repli du hero
+- Rendus mobile de l'accueil et du catalogue vérifiés visuellement (équilibrés)
+
+---
+
+### 2026-07-04 — Session 15.11 : Mini Studio, générique à 2 rôles, matière projet
+
+**1. Renommage « Studio Bande-Annonce » → « Mini Studio »** (sans refonte de l'outil)
+- Route déplacée `git mv` : `src/app/(dashboard)/trailer-studio` → `mini-studio`
+- Redirections permanentes ajoutées dans `next.config.ts` (`/trailer-studio` et
+  `/trailer-studio/:path*` → `/mini-studio…`)
+- Tous les liens internes mis à jour (sidebar, `robots.ts`, `actions/trailer.ts`,
+  `content/atelier.ts`, pages du studio) ; libellés et métadonnées relabelisés
+- Identité graphique « Mini Studio » assortie (badge dégradé or brossé + icône Clapperboard)
+- L'insertion de bande-annonce existante est **conservée**, pas refaite
+
+**2. Retrait de « la chaise pour votant »** (5 000 votants au générique)
+- Privilège « Vos votants au générique » retiré de `/residence`, remplacé par
+  « Votre bande-annonce fait le film » — on insiste pour **faire et partager sa bande-annonce**
+- Corrigé aussi : étape 3 du parcours, paragraphe « imbattable », métadonnées de la page
+- Les autres « nom au générique » (contributeurs = artistes, coprods = producteurs) sont
+  **conservés** : ils correspondent au nouveau modèle
+
+**3. Générique à 2 rôles — « la chaise dorée »**
+- Nouveau `enum CreditRole { ARTIST, PRODUCER, ARTIST_PRODUCER }` + modèle `FilmCredit`
+  (crédit curé à la main, `userId` optionnel pour noms hors-plateforme)
+- `getFilmGeneriqueAction(slug)` (`src/app/actions/credits.ts`) : construit deux familles
+  — ARTISTES (dérivés auto des tâches validées + auteur du scénario gagnant + crédits
+  ARTIST) et PRODUCTEURS (crédits PRODUCER) — et détecte le **rôle double**
+  « Artiste & Producteur » (présent dans les deux)
+- Composant `FilmGenerique` (`src/components/films/film-generique.tsx`), affiché sur les
+  deux variantes de fiche film (catalogue éditorial + film BD)
+- Actions admin `src/app/actions/credits-admin.ts` (list / add / remove) + page
+  `/admin/generique` (sélecteur de film, formulaire, liste) + lien sidebar
+- Le générique détaillé par phase existant est conservé sous « Contributions détaillées »
+
+**4. Dossier matière / références par projet dans le Mini Studio**
+- Nouveau `enum ProjectFolder { SCRIPT, VISUALS, AUDIO, DOCS, OTHER }` + modèle `ProjectFile`
+  (rattaché à `TrailerProject`, cascade delete)
+- Actions `src/app/actions/project-files.ts` (get / add / remove, contrôle propriétaire/admin)
+- Onglet « Matière & références » sur `/mini-studio/[id]` (`project-matiere.tsx`) : upload
+  par sous-dossier via le `FileUpload` existant, liste, suppression
+- `FileUpload.onUploaded` étendu (3e arg optionnel `{ fileName, mimeType, sizeBytes }`,
+  rétro-compatible)
+
+**Schéma Prisma** : +2 modèles (`FilmCredit`, `ProjectFile`), +2 enums (`CreditRole`,
+`ProjectFolder`), relations ajoutées sur `User`, `Film`, `TrailerProject`. `prisma validate`
+OK, client régénéré (workflow `db push`).
+
+**Suite planifiée** : le modèle coprod complet (auto-crédit des producteurs depuis les
+investissements réels + `ProductionShare`) est documenté en **ROADMAP §15.13**.
+
+---
+
 ## Stack Technique
 - Next.js 16.1.6 + React 19.2.3 (standalone output)
 - NextAuth 5 beta (JWT + Credentials + Google OAuth)

@@ -120,14 +120,16 @@ export function VotePanel({
 
       {/* Vote button / confirmation */}
       {!hasVoted ? (
-        <button
-          onClick={handleVote}
-          disabled={isPending}
-          className="mb-6 flex w-full items-center justify-center gap-2 rounded-xl border border-[#C9A227]/30 bg-[#C9A227]/[0.08] py-4 text-sm font-semibold text-[#E8C766] transition-all duration-300 hover:bg-[#C9A227]/[0.16] hover:border-[#C9A227]/50 disabled:opacity-50"
-        >
-          {isPending ? <Loader2 className="h-5 w-5 animate-spin" /> : <VoteIcon className="h-5 w-5" />}
-          Voter
-        </button>
+        <div className="mb-4 flex justify-center sm:mb-6 sm:block">
+          <button
+            onClick={handleVote}
+            disabled={isPending}
+            className="flex items-center justify-center gap-1.5 rounded-full border border-[#C9A227]/30 bg-[#C9A227]/[0.08] px-5 py-1.5 text-xs font-semibold text-[#E8C766] transition-all duration-300 hover:bg-[#C9A227]/[0.16] hover:border-[#C9A227]/50 disabled:opacity-50 sm:w-full sm:rounded-xl sm:px-0 sm:py-4 sm:text-sm"
+          >
+            {isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin sm:h-5 sm:w-5" /> : <VoteIcon className="h-3.5 w-3.5 sm:h-5 sm:w-5" />}
+            Voter
+          </button>
+        </div>
       ) : (
         <div className="flex flex-col items-center gap-3 py-6 mb-6 rounded-xl border border-[#C9A227]/25 bg-[#C9A227]/[0.06]">
           <CheckCircle className="h-8 w-8 text-[#E8C766]" />

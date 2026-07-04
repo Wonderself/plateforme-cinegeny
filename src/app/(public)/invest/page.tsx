@@ -116,7 +116,7 @@ export default function InvestPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
               { step: '1', title: 'Choisissez', desc: 'Parcourez notre catalogue et selectionnez un film qui vous inspire.' },
-              { step: '2', title: 'Investissez', desc: 'A partir de 10€. Achetez des tokens de co-production.' },
+              { step: '2', title: 'Investissez', desc: 'À partir de 100€. Achetez des tokens de co-production.' },
               { step: '3', title: 'Suivez', desc: 'Accedez aux coulisses et votez sur les decisions creatives.' },
               { step: '4', title: 'Recevez', desc: 'Touchez votre part des revenus du film.' },
             ].map((s) => (
