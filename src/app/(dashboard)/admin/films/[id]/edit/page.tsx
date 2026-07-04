@@ -137,7 +137,7 @@ export default async function EditFilmPage({ params }: Props) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="coverImageUrl">URL Image de Couverture</Label>
+          <Label htmlFor="coverImageUrl">Affiche normale (portrait)</Label>
           <Input
             id="coverImageUrl"
             name="coverImageUrl"
@@ -145,12 +145,52 @@ export default async function EditFilmPage({ params }: Props) {
             placeholder="https://..."
             defaultValue={film.coverImageUrl || ''}
           />
+          <p className="text-xs text-white/40">Utilisée sur la fiche film et le catalogue.</p>
           {film.coverImageUrl && (
             <img
               src={film.coverImageUrl}
               alt="Aperçu"
               className="mt-2 h-32 w-48 object-cover rounded-lg border border-white/10"
             />
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="backdropUrl">Affiche rectangulaire (carrousel)</Label>
+          <Input
+            id="backdropUrl"
+            name="backdropUrl"
+            type="url"
+            placeholder="https://..."
+            defaultValue={film.backdropUrl || ''}
+          />
+          <p className="text-xs text-white/40">Format 16:9 façon Netflix, utilisée dans les rangées de l&apos;accueil.</p>
+          {film.backdropUrl && (
+            <img
+              src={film.backdropUrl}
+              alt="Aperçu"
+              className="mt-2 aspect-video w-48 object-cover rounded-lg border border-white/10"
+            />
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="galleryUrls">Photos (3 à 4, façon Netflix)</Label>
+          <textarea
+            id="galleryUrls"
+            name="galleryUrls"
+            rows={4}
+            defaultValue={film.galleryUrls.join('\n')}
+            placeholder={'https://...\nhttps://...\nhttps://...'}
+            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical"
+          />
+          <p className="text-xs text-white/40">Une URL par ligne — les 4 premières sont conservées.</p>
+          {film.galleryUrls.length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-2">
+              {film.galleryUrls.map((url) => (
+                <img key={url} src={url} alt="Aperçu" className="h-16 w-24 object-cover rounded-lg border border-white/10" />
+              ))}
+            </div>
           )}
         </div>
 

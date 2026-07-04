@@ -304,6 +304,9 @@ function DbFilmPage({ film, credits, voteCount }: { film: any; credits: FilmCred
           </div>
         )}
 
+        {/* Photos (3 à 4, façon Netflix) */}
+        <PhotoGallery urls={film.galleryUrls ?? []} title={film.title} />
+
         {/* Co-Producer Section */}
         <CoProducerSection film={film} />
 
@@ -334,6 +337,26 @@ const GENRE_COLORS: Record<string, string> = {
 }
 
 const DIRECT_VIDEO_EXTENSIONS = /\.(mp4|webm|mov)(\?.*)?$/i
+
+/* ── Galerie de photos (3 à 4, façon Netflix) ─────────────────────────────── */
+
+function PhotoGallery({ urls, title }: { urls: string[]; title: string }) {
+  if (urls.length === 0) return null
+  return (
+    <section>
+      <h2 className="mb-4 flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white/40">
+        <span className="h-px w-6 bg-[#C9A227]/60" /> Photos
+      </h2>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {urls.map((url) => (
+          <div key={url} className="relative aspect-video overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02]">
+            <Image src={url} alt={`Photo du film ${title}`} fill className="object-cover" sizes="(min-width: 640px) 25vw, 50vw" />
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
 
 function CatalogFilmPage({
   film,
@@ -557,6 +580,9 @@ function CatalogFilmPage({
                 ))}
               </div>
             )}
+
+            {/* Photos (3 à 4, façon Netflix) */}
+            <PhotoGallery urls={film.galleryUrls ?? []} title={film.title} />
 
             {/* Le parcours de ce film : En vote -> En production -> À regarder */}
             <FilmJourney current={statusKey} />

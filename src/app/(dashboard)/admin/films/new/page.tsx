@@ -79,13 +79,32 @@ export default async function NewFilmPage() {
 
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="coverImageUrl">URL Image de Couverture</Label>
+            <Label htmlFor="coverImageUrl">Affiche normale (portrait)</Label>
             <Input id="coverImageUrl" name="coverImageUrl" type="url" placeholder="https://..." />
+            <p className="text-xs text-white/40">Utilisée sur la fiche film et le catalogue.</p>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="estimatedBudget">Budget Estimé (€)</Label>
-            <Input id="estimatedBudget" name="estimatedBudget" type="number" placeholder="10000" />
+            <Label htmlFor="backdropUrl">Affiche rectangulaire (carrousel)</Label>
+            <Input id="backdropUrl" name="backdropUrl" type="url" placeholder="https://..." />
+            <p className="text-xs text-white/40">Format 16:9 façon Netflix, utilisée dans les rangées de l&apos;accueil.</p>
           </div>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="galleryUrls">Photos (3 à 4, façon Netflix)</Label>
+          <textarea
+            id="galleryUrls"
+            name="galleryUrls"
+            rows={4}
+            placeholder={'https://...\nhttps://...\nhttps://...'}
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 resize-vertical transition-colors duration-300"
+          />
+          <p className="text-xs text-white/40">Une URL par ligne — les 4 premières sont conservées.</p>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="estimatedBudget">Budget Estimé (€)</Label>
+          <Input id="estimatedBudget" name="estimatedBudget" type="number" placeholder="10000" />
         </div>
 
         <div className="flex items-center gap-3">

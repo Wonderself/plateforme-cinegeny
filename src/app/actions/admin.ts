@@ -31,6 +31,8 @@ const createFilmSchema = z.object({
   description: z.string().max(5000).optional(),
   synopsis: z.string().max(10000).optional(),
   coverImageUrl: z.string().url('URL invalide').max(2000).optional().or(z.literal('')),
+  backdropUrl: z.string().url('URL invalide').max(2000).optional().or(z.literal('')),
+  galleryUrls: z.string().max(4000).optional(),
   estimatedBudget: z.string().optional(),
   isPublic: z.boolean().default(false),
 })
@@ -44,9 +46,21 @@ const updateFilmSchema = z.object({
   description: z.string().max(5000).optional(),
   synopsis: z.string().max(10000).optional(),
   coverImageUrl: z.string().url('URL invalide').max(2000).optional().or(z.literal('')),
+  backdropUrl: z.string().url('URL invalide').max(2000).optional().or(z.literal('')),
+  galleryUrls: z.string().max(4000).optional(),
   estimatedBudget: z.string().optional(),
   isPublic: z.boolean().default(false),
 })
+
+/** Zone de texte « une URL par ligne » → tableau de 4 photos maximum (façon Netflix). */
+function parseGalleryUrls(raw: string | undefined): string[] {
+  if (!raw) return []
+  return raw
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0 && /^https?:\/\//.test(line))
+    .slice(0, 4)
+}
 
 const createTaskSchema = z.object({
   filmId: cuidSchema,
@@ -121,12 +135,14 @@ export async function createFilmAction(formData: FormData) {
     description: (formData.get('description') as string) || undefined,
     synopsis: (formData.get('synopsis') as string) || undefined,
     coverImageUrl: (formData.get('coverImageUrl') as string) || '',
+    backdropUrl: (formData.get('backdropUrl') as string) || '',
+    galleryUrls: (formData.get('galleryUrls') as string) || undefined,
     estimatedBudget: (formData.get('estimatedBudget') as string) || undefined,
     isPublic: formData.get('isPublic') === 'true',
   })
   if (!parsed.success) return
 
-  const { title, genre, catalog, description, synopsis, coverImageUrl, estimatedBudget, isPublic } = parsed.data
+  const { title, genre, catalog, description, synopsis, coverImageUrl, backdropUrl, galleryUrls, estimatedBudget, isPublic } = parsed.data
 
   const slug = slugify(title)
   const existingSlug = await prisma.film.findUnique({ where: { slug } })
@@ -141,6 +157,8 @@ export async function createFilmAction(formData: FormData) {
       description: description || null,
       synopsis: synopsis || null,
       coverImageUrl: coverImageUrl || null,
+      backdropUrl: backdropUrl || null,
+      galleryUrls: parseGalleryUrls(galleryUrls),
       estimatedBudget: estimatedBudget ? parseFloat(estimatedBudget) : null,
       isPublic,
       phases: {
@@ -184,12 +202,14 @@ export async function updateFilmAction(formData: FormData) {
     description: (formData.get('description') as string) || undefined,
     synopsis: (formData.get('synopsis') as string) || undefined,
     coverImageUrl: (formData.get('coverImageUrl') as string) || '',
+    backdropUrl: (formData.get('backdropUrl') as string) || '',
+    galleryUrls: (formData.get('galleryUrls') as string) || undefined,
     estimatedBudget: (formData.get('estimatedBudget') as string) || undefined,
     isPublic: formData.get('isPublic') === 'true',
   })
   if (!parsed.success) return
 
-  const { id, title, genre, catalog, status, description, synopsis, coverImageUrl, estimatedBudget, isPublic } = parsed.data
+  const { id, title, genre, catalog, status, description, synopsis, coverImageUrl, backdropUrl, galleryUrls, estimatedBudget, isPublic } = parsed.data
 
   await prisma.film.update({
     where: { id },
@@ -201,6 +221,8 @@ export async function updateFilmAction(formData: FormData) {
       description: description || null,
       synopsis: synopsis || null,
       coverImageUrl: coverImageUrl || null,
+      backdropUrl: backdropUrl || null,
+      galleryUrls: parseGalleryUrls(galleryUrls),
       estimatedBudget: estimatedBudget ? parseFloat(estimatedBudget) : null,
       isPublic,
     },
