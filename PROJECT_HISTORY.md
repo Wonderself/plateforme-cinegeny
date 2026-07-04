@@ -6,6 +6,31 @@
 
 ---
 
+### 2026-07-04 — Audit de statut ROADMAP.md (aucun changement de code)
+
+Le suivi de statut du ROADMAP.md avait pris du retard sur le code réellement livré au fil
+des sessions successives. Audit ligne par ligne de chaque session de la Phase 15 (et de la
+Phase 1.1) contre le code réel, sans aucune modification fonctionnelle :
+
+- **Passées de « A faire » à « Fait »** : 15.1 (fondations du message — `src/content/brand.ts`
+  branché dans header/footer), 15.2 (vote réel en base — `votes.ts`, plus aucun
+  `seededRandom`), 15.3 (accueil vitrine — `home-vitrine.tsx`), 15.4 (fiche film refondue),
+  Phase 1.1 (review IA Claude réelle dans `src/lib/ai-review.ts`, avec fallback mock).
+- **Passées à « Partiellement fait »** : 15.5 (catalogue — l'axe En vote/En
+  production/A regarder existe mais cohabite avec des rangées par genre ; `fundingPct`
+  fictif subsiste hors de `film-categories.tsx`), 15.10 (français — labels anglais
+  résiduels dans `/act`, `/work`, `/create/setups`, `/create/music`, `/create/casting`).
+- **Confirmées « A faire »**, texte affiné avec les fichiers concernés : 15.6bis (économie
+  des Points — `/points` garde achat/retrait en euros via `LumenTransaction`), 15.6ter
+  (mur mot de passe `/investors` — absent), 15.8 (page équipe `/about` — aucune section
+  équipe), 15.13 (auto-crédit producteurs — `getFilmGeneriqueAction` ne lit que
+  `FilmCredit`, pas encore `ProductionShare`), Phase 14 (i18n quasi nulle hors nav, Academy
+  100 % anglais, palette non harmonisée).
+
+Voir ROADMAP.md pour le détail par session.
+
+---
+
 ### 2026-07-04 — Session 15.11 (suite 2) : affiches auto-hébergées, bouton vote -70%, robustesse fiche film
 
 **9. Affiches du catalogue archivé auto-hébergées (fin de la dépendance à Unsplash)**
