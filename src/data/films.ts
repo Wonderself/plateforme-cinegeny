@@ -28,6 +28,13 @@ export interface FilmData {
   rating: string
   tags: string[]
   coverImageUrl: string | null
+  /**
+   * Affiche rectangulaire (16:9) façon Netflix, utilisée dans les carrousels
+   * de l'accueil. `null` → la carte se rabat sur `coverImageUrl` recadré.
+   */
+  backdropUrl?: string | null
+  /** 3 à 4 photos du film (making-of, plateau…), façon Netflix. */
+  galleryUrls?: string[]
   status: string
   progressPct: number
   fundingPct: number

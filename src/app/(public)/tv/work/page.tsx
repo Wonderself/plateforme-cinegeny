@@ -40,21 +40,21 @@ function getShowProgress(show: TvShowData) {
 
 /* ── Task categories for TV ── */
 const TASK_CATEGORIES = [
-  { name: 'Writing', icon: Pencil, desc: 'Script & dialogue tasks', color: '#2563EB' },
-  { name: 'Hosting', icon: Monitor, desc: 'On-screen presentation', color: '#60A5FA' },
-  { name: 'Editing', icon: Scissors, desc: 'Post-production tasks', color: '#8B5CF6' },
-  { name: 'Graphics', icon: Paintbrush, desc: 'Visual design tasks', color: '#10B981' },
-  { name: 'Sound', icon: Volume2, desc: 'Audio & music tasks', color: '#F59E0B' },
-  { name: 'Camera', icon: Video, desc: 'Filming & direction', color: '#EC4899' },
-  { name: 'Research', icon: Search, desc: 'Content research tasks', color: '#6366F1' },
+  { name: 'Écriture', icon: Pencil, desc: 'Tâches de script et dialogue', color: '#2563EB' },
+  { name: 'Animation', icon: Monitor, desc: 'Présentation à l\'écran', color: '#60A5FA' },
+  { name: 'Montage', icon: Scissors, desc: 'Tâches de post-production', color: '#8B5CF6' },
+  { name: 'Graphisme', icon: Paintbrush, desc: 'Tâches de design visuel', color: '#10B981' },
+  { name: 'Son', icon: Volume2, desc: 'Tâches audio et musique', color: '#F59E0B' },
+  { name: 'Caméra', icon: Video, desc: 'Tournage et réalisation', color: '#EC4899' },
+  { name: 'Recherche', icon: Search, desc: 'Tâches de recherche de contenu', color: '#6366F1' },
 ]
 
 /* ── Difficulty system ── */
-const DIFFICULTIES = ['Easy', 'Medium', 'Hard'] as const
+const DIFFICULTIES = ['Facile', 'Moyen', 'Difficile'] as const
 const DIFFICULTY_COLORS: Record<string, string> = {
-  Easy: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
-  Medium: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
-  Hard: 'text-red-400 bg-red-400/10 border-red-400/20',
+  Facile: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+  Moyen: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
+  Difficile: 'text-red-400 bg-red-400/10 border-red-400/20',
 }
 
 /* ── Generate 16 tasks across 7 categories ── */
@@ -75,34 +75,34 @@ function generateTasks() {
   }[] = []
 
   const taskDefs: Record<string, { name: string; desc: string }[]> = {
-    Writing: [
-      { name: 'Write cold open monologue', desc: 'Create a 90-second comedic opening for the next episode.' },
-      { name: 'Draft interview questions', desc: 'Prepare 15 questions for upcoming celebrity guest segment.' },
-      { name: 'Script transition segments', desc: 'Write 5 smooth segment transitions with humor beats.' },
+    'Écriture': [
+      { name: 'Écrire le monologue d\'ouverture', desc: 'Créez une ouverture comique de 90 secondes pour le prochain épisode.' },
+      { name: 'Rédiger les questions d\'interview', desc: 'Préparez 15 questions pour le prochain segment avec un invité célèbre.' },
+      { name: 'Scénariser les transitions', desc: 'Écrivez 5 transitions fluides entre segments avec des touches d\'humour.' },
     ],
-    Hosting: [
-      { name: 'Record teleprompter read', desc: 'Perform a clean teleprompter read of the finalized script.' },
-      { name: 'Improvise reaction takes', desc: 'Record 10 natural reaction shots for editing library.' },
+    'Animation': [
+      { name: 'Enregistrer une lecture au prompteur', desc: 'Effectuez une lecture nette au prompteur du script finalisé.' },
+      { name: 'Improviser des réactions', desc: 'Enregistrez 10 plans de réaction naturels pour la bibliothèque de montage.' },
     ],
-    Editing: [
-      { name: 'Edit highlight reel', desc: 'Cut a 3-minute highlight reel from last week episodes.' },
-      { name: 'Color grade studio footage', desc: 'Apply consistent color grading to 45 min of raw footage.' },
-      { name: 'Assemble trailer cut', desc: 'Create a 30-second promo trailer for social media.' },
+    'Montage': [
+      { name: 'Monter une bande de moments forts', desc: 'Montez une bande de 3 minutes à partir des épisodes de la semaine dernière.' },
+      { name: 'Étalonner les images du studio', desc: 'Appliquez un étalonnage cohérent sur 45 minutes de rushes.' },
+      { name: 'Monter la bande-annonce', desc: 'Créez une bande-annonce promotionnelle de 30 secondes pour les réseaux sociaux.' },
     ],
-    Graphics: [
-      { name: 'Design lower thirds', desc: 'Create animated lower-third graphics for guest introductions.' },
-      { name: 'Create episode thumbnail', desc: 'Design eye-catching thumbnail for YouTube and streaming.' },
+    'Graphisme': [
+      { name: 'Concevoir les bandeaux incrustés', desc: 'Créez des bandeaux animés pour présenter les invités.' },
+      { name: 'Créer la miniature de l\'épisode', desc: 'Concevez une miniature accrocheuse pour YouTube et le streaming.' },
     ],
-    Sound: [
-      { name: 'Mix podcast episode audio', desc: 'Balance levels, remove noise, add intro/outro music.' },
-      { name: 'Compose show bumper music', desc: 'Create a 15-second energetic bumper for segment transitions.' },
+    'Son': [
+      { name: 'Mixer l\'audio de l\'épisode', desc: 'Équilibrez les niveaux, supprimez les bruits, ajoutez une musique d\'intro/outro.' },
+      { name: 'Composer le jingle de la série', desc: 'Créez un jingle énergique de 15 secondes pour les transitions de segments.' },
     ],
-    Camera: [
-      { name: 'Film B-roll city shots', desc: 'Capture 20 establishing shots of the city for background use.' },
+    'Caméra': [
+      { name: 'Filmer des plans B-roll de la ville', desc: 'Capturez 20 plans d\'ensemble de la ville pour servir d\'arrière-plan.' },
     ],
-    Research: [
-      { name: 'Research trending topics', desc: 'Compile top 20 trending topics with audience relevance scores.' },
-      { name: 'Fact-check script claims', desc: 'Verify all factual claims in this weeks script draft.' },
+    'Recherche': [
+      { name: 'Rechercher les sujets tendance', desc: 'Compilez les 20 sujets tendance avec un score de pertinence pour l\'audience.' },
+      { name: 'Vérifier les faits du script', desc: 'Vérifiez toutes les affirmations factuelles du script de cette semaine.' },
     ],
   }
 
@@ -182,26 +182,26 @@ export default function TvWorkPage() {
             <div>
               <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[#2563EB]/15 bg-[#2563EB]/[0.06] text-[#60A5FA] text-xs sm:text-sm font-medium mb-8 backdrop-blur-sm">
                 <Zap className="h-3.5 w-3.5" />
-                Earn While You Create
+                Gagnez de l&apos;argent en créant
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight text-white">
-                TV Production{' '}
+                Tâches de production{' '}
                 <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
-                  Tasks
+                  TV
                 </span>
               </h1>
               <p className="text-lg sm:text-xl text-white/50 leading-relaxed mb-4">
-                Complete TV production tasks, get paid for every contribution.
+                Réalisez des tâches de production TV, soyez payé pour chaque contribution.
               </p>
               <p className="text-base text-white/35 leading-relaxed mb-10">
-                Pick a show, download the task kit, bring it to life and earn revenue.
-                Choose between immediate cash payment or production shares worth 2x more.
+                Choisissez une série, téléchargez le kit de tâches, donnez-lui vie et gagnez des revenus.
+                Choisissez entre un paiement en espèces immédiat ou des parts de production valant 2 fois plus.
               </p>
               <Link
                 href="/tv"
                 className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-[#2563EB] hover:bg-[#3B82F6] text-white font-semibold transition-all duration-500 shadow-lg shadow-[#2563EB]/20 hover:shadow-[#2563EB]/30 hover:scale-[1.02]"
               >
-                Start Earning Money
+                Commencer à gagner de l&apos;argent
                 <ArrowRight className="h-5 w-5" />
               </Link>
             </div>
@@ -254,9 +254,9 @@ export default function TvWorkPage() {
         <div className="container mx-auto max-w-4xl">
           <div className="grid grid-cols-3 gap-4">
             {[
-              { icon: Briefcase, label: 'Total Tasks', value: `${TOTAL_TASKS}+` },
-              { icon: DollarSign, label: 'Avg Pay', value: `$${AVG_PAY}` },
-              { icon: Users, label: 'Active Workers', value: `${ACTIVE_WORKERS}` },
+              { icon: Briefcase, label: 'Tâches au total', value: `${TOTAL_TASKS}+` },
+              { icon: DollarSign, label: 'Rémunération moyenne', value: `${AVG_PAY} $` },
+              { icon: Users, label: 'Contributeurs actifs', value: `${ACTIVE_WORKERS}` },
             ].map((stat) => (
               <div key={stat.label} className="flex items-center gap-3 justify-center p-3 rounded-xl border border-white/[0.06] bg-white/[0.02]">
                 <stat.icon className="h-4 w-4 text-[#2563EB]" />
@@ -275,20 +275,20 @@ export default function TvWorkPage() {
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-10">
             <p className="text-[#2563EB] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
-              How It Works
+              Comment ça marche
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-white">
-              Three Steps to{' '}
+              Trois étapes pour{' '}
               <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
-                Start Earning
+                commencer à gagner
               </span>
             </h2>
           </div>
           <div className="grid grid-cols-3 gap-4 md:gap-8">
             {[
-              { step: '1', title: 'Choose a Show', desc: 'Browse available TV shows and pick a project that inspires you.', icon: Play },
-              { step: '2', title: 'Download Kit', desc: 'Get the task assets, guidelines and creative brief.', icon: Download },
-              { step: '3', title: 'Get Paid', desc: 'Submit your work, get approved, receive payment instantly.', icon: DollarSign },
+              { step: '1', title: 'Choisissez une série', desc: 'Parcourez les séries TV disponibles et choisissez un projet qui vous inspire.', icon: Play },
+              { step: '2', title: 'Téléchargez le kit', desc: 'Récupérez les ressources, consignes et brief créatif de la tâche.', icon: Download },
+              { step: '3', title: 'Soyez payé', desc: 'Soumettez votre travail, obtenez l\'approbation, recevez le paiement instantanément.', icon: DollarSign },
             ].map((s, i) => (
               <div key={s.step} className="relative text-center p-5 sm:p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm">
                 {i < 2 && (
@@ -316,9 +316,9 @@ export default function TvWorkPage() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-white">
-                Available Shows
+                Séries disponibles
               </h2>
-              <p className="text-sm text-white/40 mt-2">Pick a TV show and start working on tasks</p>
+              <p className="text-sm text-white/40 mt-2">Choisissez une série TV et commencez à travailler sur des tâches</p>
             </div>
             <div className="flex gap-2">
               <button
@@ -373,7 +373,7 @@ export default function TvWorkPage() {
                             : 'bg-white/10 text-white/60 border-white/10'
                         }`}
                       >
-                        {show.status === 'ongoing' ? 'LIVE' : show.status === 'completed' ? 'DONE' : 'DEV'}
+                        {show.status === 'ongoing' ? 'EN DIRECT' : show.status === 'completed' ? 'TERMINÉ' : 'DÉV'}
                       </span>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-3">
@@ -385,7 +385,7 @@ export default function TvWorkPage() {
                           style={{ width: `${progressPct}%` }}
                         />
                       </div>
-                      <span className="text-[9px] text-white/30">{progressPct}% complete</span>
+                      <span className="text-[9px] text-white/30">{progressPct}% terminé</span>
                     </div>
                   </div>
                 </Link>
@@ -402,16 +402,16 @@ export default function TvWorkPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-14">
             <p className="text-[#2563EB] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
-              Task Marketplace
+              Marché des tâches
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Active{' '}
+              Tâches de production{' '}
               <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
-                Production Tasks
+                actives
               </span>
             </h2>
             <p className="text-white/35 max-w-2xl mx-auto mt-4">
-              Browse available tasks across all active TV productions. Pick a task, complete it, and earn.
+              Parcourez les tâches disponibles sur toutes les productions TV actives. Choisissez une tâche, réalisez-la, et gagnez.
             </p>
           </div>
 
@@ -426,7 +426,7 @@ export default function TvWorkPage() {
               }`}
             >
               <Filter className="h-4 w-4" />
-              <span className="text-xs font-medium">All ({TASKS.length})</span>
+              <span className="text-xs font-medium">Toutes ({TASKS.length})</span>
             </button>
             {TASK_CATEGORIES.map((cat) => {
               const count = TASKS.filter((t) => t.category === cat.name).length
@@ -476,7 +476,7 @@ export default function TvWorkPage() {
                 </h3>
                 <p className="text-xs text-white/35 mb-2 line-clamp-2">{task.description}</p>
                 <p className="text-xs text-white/30 mb-4">
-                  Show: <span className="text-white/50">{task.show}</span>
+                  Série : <span className="text-white/50">{task.show}</span>
                 </p>
 
                 {/* Reward + deadline */}
@@ -494,7 +494,7 @@ export default function TvWorkPage() {
 
                 {/* Apply button */}
                 <button className="mt-4 w-full py-2 rounded-xl border border-[#2563EB]/20 bg-[#2563EB]/[0.06] text-[#60A5FA] text-xs font-semibold hover:bg-[#2563EB]/15 hover:border-[#2563EB]/40 transition-all duration-300">
-                  Apply for Task
+                  Postuler à la tâche
                 </button>
               </div>
             ))}
@@ -510,16 +510,16 @@ export default function TvWorkPage() {
         <div className="container mx-auto max-w-5xl relative">
           <div className="text-center mb-14">
             <p className="text-[#2563EB] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
-              Your Choice
+              Votre choix
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Payment{' '}
+              Options de{' '}
               <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
-                Options
+                paiement
               </span>
             </h2>
             <p className="text-white/35 max-w-2xl mx-auto mt-4">
-              Choose how you want to be paid. Cash, production shares, or a mix of both.
+              Choisissez comment vous voulez être payé. Espèces, parts de production, ou un mix des deux.
             </p>
           </div>
 
@@ -529,28 +529,28 @@ export default function TvWorkPage() {
               <div className="h-14 w-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-5">
                 <DollarSign className="h-6 w-6 text-emerald-400" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Cash</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Espèces</h3>
               <p className="text-xs text-white/40 leading-relaxed mb-4">
-                Immediate payment via Stripe or Crypto. Get paid as soon as your task is approved.
+                Paiement immédiat via Stripe ou crypto. Soyez payé dès que votre tâche est approuvée.
               </p>
-              <div className="text-2xl font-bold text-emerald-400 mb-2">$5 — $50</div>
-              <p className="text-[10px] text-white/25">per task</p>
+              <div className="text-2xl font-bold text-emerald-400 mb-2">5 $ — 50 $</div>
+              <p className="text-[10px] text-white/25">par tâche</p>
             </div>
 
             {/* Shares */}
             <div className="group relative p-7 rounded-2xl border border-[#2563EB]/20 bg-[#2563EB]/[0.03] hover:border-[#2563EB]/30 transition-all duration-500 text-center">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#2563EB] text-white text-[10px] font-bold">
-                2x VALUE
+                VALEUR x2
               </div>
               <div className="h-14 w-14 rounded-2xl bg-[#2563EB]/10 border border-[#2563EB]/20 flex items-center justify-center mx-auto mb-5">
                 <TrendingUp className="h-6 w-6 text-[#2563EB]" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Production Shares</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Parts de production</h3>
               <p className="text-xs text-white/40 leading-relaxed mb-4">
-                Get 2x value in production shares. Tokens locked until show release, potential 5-10x return.
+                Obtenez 2 fois la valeur en parts de production. Tokens verrouillés jusqu&apos;à la sortie de la série, retour potentiel de 5 à 10x.
               </p>
-              <div className="text-2xl font-bold text-[#60A5FA] mb-2">$10 — $100</div>
-              <p className="text-[10px] text-white/25">in share value per task</p>
+              <div className="text-2xl font-bold text-[#60A5FA] mb-2">10 $ — 100 $</div>
+              <p className="text-[10px] text-white/25">en valeur de parts par tâche</p>
             </div>
 
             {/* Mix */}
@@ -558,12 +558,12 @@ export default function TvWorkPage() {
               <div className="h-14 w-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto mb-5">
                 <Zap className="h-6 w-6 text-amber-400" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Mix</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Mixte</h3>
               <p className="text-xs text-white/40 leading-relaxed mb-4">
-                Split your payment: 50% cash + 50% production shares. Best of both worlds.
+                Répartissez votre paiement : 50% espèces + 50% parts de production. Le meilleur des deux mondes.
               </p>
-              <div className="text-2xl font-bold text-amber-400 mb-2">Custom</div>
-              <p className="text-[10px] text-white/25">you decide the split</p>
+              <div className="text-2xl font-bold text-amber-400 mb-2">Personnalisé</div>
+              <p className="text-[10px] text-white/25">vous décidez de la répartition</p>
             </div>
           </div>
 
@@ -573,8 +573,8 @@ export default function TvWorkPage() {
               <Shield className="h-5 w-5 text-emerald-400" />
             </div>
             <p className="text-sm text-white/50 text-center sm:text-left">
-              <span className="text-emerald-400 font-semibold">Smart contract backed</span> — All payments are on Ethereum mainnet,
-              transparent, automatic, and verified on blockchain. Revenue split: 25% creators / 25% investors / 25% platform / 25% workers.
+              <span className="text-emerald-400 font-semibold">Garanti par smart contract</span> — Tous les paiements sont sur le mainnet Ethereum,
+              transparents, automatiques, et vérifiés sur la blockchain. Répartition des revenus : 25% créateurs / 25% investisseurs / 25% plateforme / 25% contributeurs.
             </p>
           </div>
         </div>

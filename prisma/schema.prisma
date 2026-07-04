@@ -151,6 +151,11 @@ model Film {
   catalog         Catalog    @default(LUMIERE)
   status          FilmStatus @default(DRAFT)
   coverImageUrl   String?
+  /// Affiche rectangulaire (16:9) utilisee dans les carrousels façon Netflix
+  /// — remplace coverImageUrl (portrait) uniquement dans les rangées d'accueil.
+  backdropUrl     String?
+  /// 3 à 4 photos du film (making-of, plateau…), façon Netflix.
+  galleryUrls     String[] @default([])
   trailerUrl      String?
   estimatedBudget Float?
   totalTasks      Int        @default(0)

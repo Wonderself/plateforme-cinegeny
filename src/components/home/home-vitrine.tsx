@@ -84,7 +84,7 @@ function FilmVoteCard({ film }: { film: HomeFilmVM }) {
       href={`/films/${film.slug}`}
       className="group relative aspect-[2/3] w-[248px] shrink-0 snap-start overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02] transition-all duration-500 hover:-translate-y-2 hover:border-[#C9A227]/50 hover:shadow-[0_28px_70px_-16px_rgba(0,0,0,0.85),0_0_36px_rgba(201,162,39,0.10)] sm:w-[288px]"
     >
-      {/* Affiche plein cadre */}
+      {/* Affiche plein cadre (portrait — normal poster) */}
       {film.coverImageUrl ? (
         <Image
           src={film.coverImageUrl}
@@ -267,7 +267,7 @@ function HeroCarousel({ model }: { model: HomeVitrineModel }) {
     >
       {/* Fonds en fondu croisé */}
       {slides.map((slide, i) => {
-        const cover = slide.kind === 'film' ? slide.film.coverImageUrl : slide.posterUrl
+        const cover = slide.kind === 'film' ? (slide.film.backdropUrl ?? slide.film.coverImageUrl) : slide.posterUrl
         const video = slide.kind === 'film' ? slide.film.heroVideoUrl : null
         const isActive = i === index
         return (

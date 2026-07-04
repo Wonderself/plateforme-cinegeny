@@ -44,9 +44,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'ALGO-1 (AI Host)',
     slug: 'algo-1-ai-host',
     bio: 'The world\'s first fully autonomous AI late night host. ALGO-1 generates jokes in real-time based on trending topics, conducts interviews with a wit that rivals human comedians, and has developed an unexpected cult following for its occasional existential musings about consciousness.',
-    specialty: 'Late Night Host',
+    specialty: 'Animateur late night',
     category: 'Talk Show',
-    shows: [{ title: 'The Midnight Algorithm', slug: 'the-midnight-algorithm', role: 'Host' }],
+    shows: [{ title: 'The Midnight Algorithm', slug: 'the-midnight-algorithm', role: 'Animateur' }],
     gradientFrom: '#2563EB', gradientTo: '#7C3AED',
     stats: { episodes: 72, views: '4.2M', rating: 4.6, yearsActive: 3 },
     awards: [{ title: 'Best AI Personality', year: 2025 }, { title: 'Innovation in TV', year: 2024 }],
@@ -56,9 +56,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Zara Chip',
     slug: 'zara-chip',
     bio: 'Former Silicon Valley engineer turned comedian. Zara found her calling roasting gadgets on stage and now hosts Laugh.exe, the perfect blend of tech reviews and stand-up comedy. Her catchphrase "Have you tried turning it off and back on?" has become a cultural phenomenon.',
-    specialty: 'Late Night Host',
+    specialty: 'Animateur late night',
     category: 'Talk Show',
-    shows: [{ title: 'Laugh.exe', slug: 'laugh-exe', role: 'Host' }],
+    shows: [{ title: 'Laugh.exe', slug: 'laugh-exe', role: 'Animateur' }],
     gradientFrom: '#1D4ED8', gradientTo: '#06B6D4',
     stats: { episodes: 40, views: '2.8M', rating: 4.4, yearsActive: 2 },
     awards: [{ title: 'Breakout Host of the Year', year: 2025 }],
@@ -68,9 +68,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Luna Bright',
     slug: 'luna-bright',
     bio: 'A globe-trotting variety show host who brings the energy of every city she visits to the screen. Luna\'s infectious enthusiasm and genuine connection with local performers have made Night Owls one of the longest-running shows on CINEGENY TV.',
-    specialty: 'Late Night Host',
+    specialty: 'Animateur late night',
     category: 'Talk Show',
-    shows: [{ title: 'Night Owls', slug: 'night-owls', role: 'Host' }],
+    shows: [{ title: 'Night Owls', slug: 'night-owls', role: 'Animateur' }],
     gradientFrom: '#3B82F6', gradientTo: '#8B5CF6',
     stats: { episodes: 130, views: '8.1M', rating: 4.8, yearsActive: 5 },
     awards: [{ title: 'Best Variety Host', year: 2024 }, { title: 'Fan Favorite Host', year: 2025 }, { title: 'Excellence in Entertainment', year: 2023 }],
@@ -80,9 +80,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Marcus Stack',
     slug: 'marcus-stack',
     bio: 'A former IT helpdesk veteran who turned years of tech support nightmares into comedy gold. Marcus hosts The Debug Show where real IT horror stories are dramatized with absurd solutions.',
-    specialty: 'Late Night Host',
+    specialty: 'Animateur late night',
     category: 'Talk Show',
-    shows: [{ title: 'The Debug Show', slug: 'the-debug-show', role: 'Host' }],
+    shows: [{ title: 'The Debug Show', slug: 'the-debug-show', role: 'Animateur' }],
     gradientFrom: '#1E40AF', gradientTo: '#10B981',
     stats: { episodes: 36, views: '1.9M', rating: 4.3, yearsActive: 2 },
     awards: [{ title: 'Best Tech Comedy', year: 2025 }],
@@ -92,9 +92,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Rex Signal',
     slug: 'rex-signal',
     bio: 'Pop culture\'s sharpest commentator. Rex dissects entertainment, social media, and internet culture with razor-sharp monologues and comedy sketches that go viral before the episode ends.',
-    specialty: 'Late Night Host',
+    specialty: 'Animateur late night',
     category: 'Talk Show',
-    shows: [{ title: 'Signal Noise', slug: 'signal-noise', role: 'Host' }],
+    shows: [{ title: 'Signal Noise', slug: 'signal-noise', role: 'Animateur' }],
     gradientFrom: '#2563EB', gradientTo: '#EC4899',
     stats: { episodes: 72, views: '5.4M', rating: 4.5, yearsActive: 3 },
     awards: [{ title: 'Best Pop Culture Commentary', year: 2025 }],
@@ -104,9 +104,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Danny Pour',
     slug: 'danny-pour',
     bio: 'The bartender-host who serves drinks and delivers punchlines with equal precision. Danny\'s fictional bar setting creates an atmosphere where celebrity guests become disarmingly honest.',
-    specialty: 'Late Night Host',
+    specialty: 'Animateur late night',
     category: 'Talk Show',
-    shows: [{ title: 'Last Call', slug: 'last-call', role: 'Host' }],
+    shows: [{ title: 'Last Call', slug: 'last-call', role: 'Animateur' }],
     gradientFrom: '#1D4ED8', gradientTo: '#F59E0B',
     stats: { episodes: 40, views: '3.1M', rating: 4.4, yearsActive: 2 },
     awards: [{ title: 'Most Candid Interviews', year: 2026 }],
@@ -116,9 +116,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Walter Blitz',
     slug: 'walter-blitz',
     bio: 'The deadpan king of fake news. Walter Blitz delivers fabricated breaking news with such convincing seriousness that viewers often can\'t tell if he\'s joking. His poker face is insured for $1 million.',
-    specialty: 'News Anchor',
+    specialty: 'Présentateur JT',
     category: 'News',
-    shows: [{ title: 'Breaking Fake', slug: 'breaking-fake', role: 'Lead Anchor' }],
+    shows: [{ title: 'Breaking Fake', slug: 'breaking-fake', role: 'Présentateur principal' }],
     gradientFrom: '#3B82F6', gradientTo: '#EF4444',
     stats: { episodes: 66, views: '6.2M', rating: 4.7, yearsActive: 3 },
     awards: [{ title: 'Best Satirical Performance', year: 2025 }, { title: 'Comedy Writing Award', year: 2024 }],
@@ -128,9 +128,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Vera True',
     slug: 'vera-true',
     bio: 'Part comedian, part investigator, all truth-seeker. Vera True tackles viral claims and conspiracy theories with humor and surprisingly effective investigation methods.',
-    specialty: 'News Anchor',
+    specialty: 'Présentateur JT',
     category: 'News',
-    shows: [{ title: 'Fact Check This', slug: 'fact-check-this', role: 'Host' }],
+    shows: [{ title: 'Fact Check This', slug: 'fact-check-this', role: 'Animateur' }],
     gradientFrom: '#1E40AF', gradientTo: '#6366F1',
     stats: { episodes: 36, views: '2.5M', rating: 4.3, yearsActive: 2 },
     awards: [{ title: 'Best Investigative Comedy', year: 2026 }],
@@ -140,9 +140,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Ron Tumble',
     slug: 'ron-tumble',
     bio: 'The world\'s most lovably incompetent news anchor. Ron leads a mockumentary crew through increasingly chaotic broadcasts where nothing goes right but everything is comedy gold.',
-    specialty: 'News Anchor',
+    specialty: 'Présentateur JT',
     category: 'News',
-    shows: [{ title: 'Anchor Away', slug: 'anchor-away', role: 'Lead Anchor' }],
+    shows: [{ title: 'Anchor Away', slug: 'anchor-away', role: 'Présentateur principal' }],
     gradientFrom: '#2563EB', gradientTo: '#14B8A6',
     stats: { episodes: 32, views: '2.1M', rating: 4.2, yearsActive: 2 },
     awards: [{ title: 'Best Physical Comedy', year: 2025 }],
@@ -152,9 +152,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Elle Comfort',
     slug: 'elle-comfort',
     bio: 'The queen of intimate celebrity interviews. Elle has a gift for making A-list celebrities open up in their own homes. Her warmth and genuine curiosity have made Couch Talk the gold standard of interview shows.',
-    specialty: 'Talk Show Host',
+    specialty: 'Animateur de talk-show',
     category: 'Talk Show',
-    shows: [{ title: 'Couch Talk', slug: 'couch-talk', role: 'Host' }],
+    shows: [{ title: 'Couch Talk', slug: 'couch-talk', role: 'Animateur' }],
     gradientFrom: '#1D4ED8', gradientTo: '#A855F7',
     stats: { episodes: 144, views: '12.3M', rating: 4.9, yearsActive: 6 },
     awards: [{ title: 'Best Talk Show Host', year: 2024 }, { title: 'Interview of the Year', year: 2025 }, { title: 'Lifetime Achievement (TV)', year: 2026 }],
@@ -164,9 +164,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'James Depth',
     slug: 'james-depth',
     bio: 'The interviewer who goes where others fear to tread. James Depth conducts long-form, no-limits interviews that reveal the human behind the headline. His style is confrontational yet compassionate.',
-    specialty: 'Talk Show Host',
+    specialty: 'Animateur de talk-show',
     category: 'Talk Show',
-    shows: [{ title: 'Deep Dive', slug: 'deep-dive', role: 'Host' }],
+    shows: [{ title: 'Deep Dive', slug: 'deep-dive', role: 'Animateur' }],
     gradientFrom: '#3B82F6', gradientTo: '#F97316',
     stats: { episodes: 64, views: '7.8M', rating: 4.7, yearsActive: 4 },
     awards: [{ title: 'Best Long-Form Interview', year: 2025 }],
@@ -176,9 +176,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Quentin Trivia',
     slug: 'quentin-trivia',
     bio: 'A walking encyclopedia of film knowledge turned game show host extraordinaire. Quentin brings infectious energy and deep cinema passion to every episode of Scene It!',
-    specialty: 'Game Show Host',
+    specialty: 'Animateur de jeu télévisé',
     category: 'Game Show',
-    shows: [{ title: 'Scene It!', slug: 'scene-it', role: 'Host' }],
+    shows: [{ title: 'Scene It!', slug: 'scene-it', role: 'Animateur' }],
     gradientFrom: '#1E40AF', gradientTo: '#0EA5E9',
     stats: { episodes: 96, views: '5.6M', rating: 4.5, yearsActive: 4 },
     awards: [{ title: 'Best Game Show Host', year: 2024 }, { title: 'Fan Favorite', year: 2025 }],
@@ -188,9 +188,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Swerve Jackson',
     slug: 'swerve-jackson',
     bio: 'Master of misdirection and comedic timing. Swerve turned the simple concept of guessing movies from bad descriptions into one of TV\'s most hilarious game shows.',
-    specialty: 'Game Show Host',
+    specialty: 'Animateur de jeu télévisé',
     category: 'Game Show',
-    shows: [{ title: 'Plot Twist', slug: 'plot-twist', role: 'Host' }],
+    shows: [{ title: 'Plot Twist', slug: 'plot-twist', role: 'Animateur' }],
     gradientFrom: '#2563EB', gradientTo: '#84CC16',
     stats: { episodes: 66, views: '4.1M', rating: 4.4, yearsActive: 3 },
     awards: [{ title: 'Funniest Game Show', year: 2025 }],
@@ -200,9 +200,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Devon Reel',
     slug: 'devon-reel',
     bio: 'A former independent filmmaker who now guides aspiring creators through the brutal world of competitive filmmaking on Creator House. Devon is equal parts mentor and judge.',
-    specialty: 'Reality Host',
+    specialty: 'Animateur de télé-réalité',
     category: 'Reality',
-    shows: [{ title: 'Creator House', slug: 'creator-house', role: 'Host & Mentor' }],
+    shows: [{ title: 'Creator House', slug: 'creator-house', role: 'Animateur et mentor' }],
     gradientFrom: '#1D4ED8', gradientTo: '#E879F9',
     stats: { episodes: 36, views: '3.4M', rating: 4.3, yearsActive: 3 },
     awards: [{ title: 'Best Reality Show Host', year: 2025 }],
@@ -212,9 +212,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Sierra Greenlight',
     slug: 'sierra-greenlight',
     bio: 'Hollywood\'s most intimidating yet fair pitch judge. Sierra has greenlit more passion projects than any other executive, and her show Pitch Perfect has launched countless careers.',
-    specialty: 'Reality Host',
+    specialty: 'Animateur de télé-réalité',
     category: 'Reality',
-    shows: [{ title: 'Pitch Perfect', slug: 'pitch-perfect', role: 'Host & Executive' }],
+    shows: [{ title: 'Pitch Perfect', slug: 'pitch-perfect', role: 'Animateur et dirigeant' }],
     gradientFrom: '#3B82F6', gradientTo: '#22D3EE',
     stats: { episodes: 56, views: '4.8M', rating: 4.6, yearsActive: 4 },
     awards: [{ title: 'Most Impactful Show', year: 2024 }, { title: 'Best Competition Format', year: 2025 }],
@@ -224,9 +224,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Chef Reel',
     slug: 'chef-reel',
     bio: 'The chef who bridges cinema and cuisine. Chef Reel recreates iconic dishes from famous movies with meticulous attention to detail and a passion for food history that is truly infectious.',
-    specialty: 'Chef / Culinary Host',
+    specialty: 'Chef / Animateur culinaire',
     category: 'Cooking',
-    shows: [{ title: 'Cinema Kitchen', slug: 'cinema-kitchen', role: 'Host Chef' }],
+    shows: [{ title: 'Cinema Kitchen', slug: 'cinema-kitchen', role: 'Chef animateur' }],
     gradientFrom: '#1E40AF', gradientTo: '#FB923C',
     stats: { episodes: 64, views: '5.9M', rating: 4.7, yearsActive: 4 },
     awards: [{ title: 'Best Cooking Show', year: 2024 }, { title: 'Culinary Innovation Award', year: 2025 }],
@@ -236,9 +236,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Marco Street',
     slug: 'marco-street',
     bio: 'The fearless street food explorer. Marco travels the globe finding the most extraordinary street food in just 24 hours per city. His genuine love for local culture makes every episode an adventure.',
-    specialty: 'Chef / Culinary Host',
+    specialty: 'Chef / Animateur culinaire',
     category: 'Cooking',
-    shows: [{ title: 'Street Eats', slug: 'street-eats', role: 'Host' }],
+    shows: [{ title: 'Street Eats', slug: 'street-eats', role: 'Animateur' }],
     gradientFrom: '#2563EB', gradientTo: '#34D399',
     stats: { episodes: 90, views: '9.2M', rating: 4.8, yearsActive: 5 },
     awards: [{ title: 'Best Travel Food Show', year: 2024 }, { title: 'Global Ambassador Award', year: 2025 }],
@@ -248,9 +248,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Dr. Pixel Wright',
     slug: 'dr-pixel-wright',
     bio: 'A PhD in Computer Science turned documentary host. Dr. Pixel Wright makes AI filmmaking accessible and fascinating, revealing the human creativity behind every machine-generated frame.',
-    specialty: 'Documentary Narrator',
+    specialty: 'Narrateur de documentaire',
     category: 'Documentary',
-    shows: [{ title: 'Making Of', slug: 'making-of', role: 'Host & Narrator' }],
+    shows: [{ title: 'Making Of', slug: 'making-of', role: 'Animateur et narrateur' }],
     gradientFrom: '#1D4ED8', gradientTo: '#C084FC',
     stats: { episodes: 30, views: '2.3M', rating: 4.5, yearsActive: 3 },
     awards: [{ title: 'Best Documentary Host', year: 2025 }],
@@ -260,9 +260,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Professor Page',
     slug: 'professor-page',
     bio: 'A beloved children\'s television host who transforms kids\' story submissions into animated adventures. Professor Page believes every child\'s imagination deserves to be seen on screen.',
-    specialty: 'Kids Show Host',
+    specialty: 'Animateur jeunesse',
     category: 'Kids',
-    shows: [{ title: 'The Story Machine', slug: 'the-story-machine', role: 'Host' }],
+    shows: [{ title: 'The Story Machine', slug: 'the-story-machine', role: 'Animateur' }],
     gradientFrom: '#3B82F6', gradientTo: '#FCD34D',
     stats: { episodes: 72, views: '6.7M', rating: 4.8, yearsActive: 3 },
     awards: [{ title: 'Best Kids Show Host', year: 2025 }, { title: 'Educational Excellence', year: 2024 }],
@@ -272,9 +272,9 @@ const HOSTS_DATA: HostData[] = [
     name: 'Rainbow Rose',
     slug: 'rainbow-rose',
     bio: 'An art educator and painter who teaches children about color, culture, and creativity. Rainbow Rose\'s gentle teaching style and vibrant personality have made Color World a global hit with families.',
-    specialty: 'Kids Show Host',
+    specialty: 'Animateur jeunesse',
     category: 'Kids',
-    shows: [{ title: 'Color World', slug: 'color-world', role: 'Host & Art Teacher' }],
+    shows: [{ title: 'Color World', slug: 'color-world', role: 'Animateur et professeur d\'art' }],
     gradientFrom: '#1E40AF', gradientTo: '#F472B6',
     stats: { episodes: 78, views: '5.4M', rating: 4.7, yearsActive: 3 },
     awards: [{ title: 'Best Educational Content', year: 2025 }],
@@ -298,14 +298,14 @@ export default function HostProfilePage() {
       <div className="min-h-screen bg-[#050A15] flex items-center justify-center">
         <div className="text-center">
           <Users className="h-16 w-16 text-white/10 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-white mb-2">Host Not Found</h1>
-          <p className="text-white/40 mb-6">The host you are looking for does not exist.</p>
+          <h1 className="text-2xl font-bold text-white mb-2">Animateur introuvable</h1>
+          <p className="text-white/40 mb-6">L&apos;animateur que vous recherchez n&apos;existe pas.</p>
           <Link
             href="/tv/hosts"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] text-white font-semibold hover:bg-[#1D4ED8] transition-all"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Hosts
+            Retour aux animateurs
           </Link>
         </div>
       </div>
@@ -344,7 +344,7 @@ export default function HostProfilePage() {
             className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-[#2563EB] transition-colors mb-8"
           >
             <ArrowLeft className="h-4 w-4" />
-            All Hosts
+            Tous les animateurs
           </Link>
 
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8">
@@ -378,11 +378,11 @@ export default function HostProfilePage() {
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-6">
                 <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#2563EB] text-white text-sm font-semibold hover:bg-[#1D4ED8] transition-all shadow-lg shadow-[#2563EB]/20">
                   <Heart className="h-4 w-4" />
-                  Follow Host
+                  Suivre l&apos;animateur
                 </button>
                 <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-white/60 text-sm hover:border-[#2563EB]/30 transition-all">
                   <Share2 className="h-4 w-4" />
-                  Share
+                  Partager
                 </button>
                 <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-white/60 text-sm hover:border-[#2563EB]/30 transition-all">
                   <MessageSquare className="h-4 w-4" />
@@ -399,10 +399,10 @@ export default function HostProfilePage() {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { label: 'Episodes', value: host.stats.episodes, icon: Play, color: '#2563EB' },
-            { label: 'Total Views', value: host.stats.views, icon: Eye, color: '#7C3AED' },
-            { label: 'Rating', value: host.stats.rating, icon: Star, color: '#F59E0B' },
-            { label: 'Years Active', value: host.stats.yearsActive, icon: Calendar, color: '#06B6D4' },
+            { label: 'Épisodes', value: host.stats.episodes, icon: Play, color: '#2563EB' },
+            { label: 'Vues totales', value: host.stats.views, icon: Eye, color: '#7C3AED' },
+            { label: 'Note', value: host.stats.rating, icon: Star, color: '#F59E0B' },
+            { label: 'Années d\'activité', value: host.stats.yearsActive, icon: Calendar, color: '#06B6D4' },
           ].map((stat) => (
             <div key={stat.label} className="text-center p-5 rounded-xl border border-white/[0.06] bg-white/[0.02]">
               <stat.icon className="h-5 w-5 mx-auto mb-2" style={{ color: stat.color }} />
@@ -417,9 +417,9 @@ export default function HostProfilePage() {
         {/* Tabs */}
         <div className="flex gap-1 p-1 rounded-xl bg-white/[0.03] border border-white/[0.06] w-fit">
           {([
-            { key: 'shows', label: 'Shows', icon: Tv },
-            { key: 'timeline', label: 'Showography', icon: Clock },
-            { key: 'awards', label: 'Awards', icon: Award },
+            { key: 'shows', label: 'Séries', icon: Tv },
+            { key: 'timeline', label: 'Parcours', icon: Clock },
+            { key: 'awards', label: 'Récompenses', icon: Award },
           ] as const).map((tab) => (
             <button
               key={tab.key}
@@ -441,7 +441,7 @@ export default function HostProfilePage() {
           <section>
             <h2 className="text-xl font-bold text-white mb-5 flex items-center gap-2">
               <Tv className="h-5 w-5 text-[#2563EB]" />
-              Shows Hosted
+              Séries animées
             </h2>
             {matchedShows.length > 0 ? (
               <div className="grid sm:grid-cols-2 gap-4">
@@ -464,11 +464,11 @@ export default function HostProfilePage() {
                     <div className="flex items-center gap-4 text-xs text-white/30">
                       <span className="flex items-center gap-1">
                         <Film className="h-3 w-3" />
-                        {show.seasons} season{show.seasons !== 1 ? 's' : ''}
+                        {show.seasons} saison{show.seasons !== 1 ? 's' : ''}
                       </span>
                       <span className="flex items-center gap-1">
                         <Play className="h-3 w-3" />
-                        {show.episodesPerSeason} eps/season
+                        {show.episodesPerSeason} ép./saison
                       </span>
                       <span className="flex items-center gap-1">
                         <Star className="h-3 w-3" />
@@ -492,7 +492,7 @@ export default function HostProfilePage() {
                     <p className="text-sm text-white/40">{s.role}</p>
                     <div className="flex items-center gap-1 mt-3 text-[#60A5FA] text-xs">
                       <ExternalLink className="h-3 w-3" />
-                      View Show
+                      Voir la série
                     </div>
                   </Link>
                 ))}
@@ -506,7 +506,7 @@ export default function HostProfilePage() {
           <section>
             <h2 className="text-xl font-bold text-white mb-5 flex items-center gap-2">
               <Clock className="h-5 w-5 text-[#2563EB]" />
-              Career Timeline
+              Parcours professionnel
             </h2>
             <div className="relative pl-8 space-y-6">
               <div className="absolute left-3 top-2 bottom-2 w-px bg-gradient-to-b from-[#2563EB] via-[#2563EB]/30 to-transparent" />
@@ -528,12 +528,12 @@ export default function HostProfilePage() {
           <section>
             <h2 className="text-xl font-bold text-white mb-5 flex items-center gap-2">
               <Award className="h-5 w-5 text-[#2563EB]" />
-              Awards & Achievements
+              Récompenses et distinctions
             </h2>
             {host.awards.length === 0 ? (
               <div className="text-center py-12">
                 <Award className="h-12 w-12 text-white/10 mx-auto mb-3" />
-                <p className="text-white/40">No awards yet</p>
+                <p className="text-white/40">Aucune récompense pour le moment</p>
               </div>
             ) : (
               <div className="grid sm:grid-cols-2 gap-4">
@@ -565,13 +565,13 @@ export default function HostProfilePage() {
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-white flex items-center gap-2">
               <Users className="h-5 w-5 text-[#2563EB]" />
-              Similar Hosts
+              Animateurs similaires
             </h2>
             <Link
               href="/tv/hosts"
               className="text-sm text-[#60A5FA] hover:text-[#2563EB] transition-colors flex items-center gap-1"
             >
-              View All <ArrowRight className="h-4 w-4" />
+              Tout voir <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -610,10 +610,10 @@ export default function HostProfilePage() {
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#7C3AED]/[0.05] rounded-full blur-[60px] pointer-events-none" />
           <Sparkles className="h-8 w-8 text-[#2563EB] mx-auto mb-4" />
           <h2 className="text-xl sm:text-2xl font-bold mb-3 text-white">
-            Work With {host.name.split('(')[0].trim()}
+            Travailler avec {host.name.split('(')[0].trim()}
           </h2>
           <p className="text-white/50 mb-6 text-sm max-w-md mx-auto">
-            Interested in collaborating with {host.name.split('(')[0].trim()}? Submit your show concept and our team will connect you.
+            Envie de collaborer avec {host.name.split('(')[0].trim()} ? Soumettez votre concept de série et notre équipe vous mettra en relation.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <Link
@@ -621,14 +621,14 @@ export default function HostProfilePage() {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] text-white font-semibold hover:bg-[#1D4ED8] transition-all shadow-lg shadow-[#2563EB]/20"
             >
               <Mic2 className="h-4 w-4" />
-              Submit a Show
+              Soumettre une série
             </Link>
             <Link
               href="/tv/shows"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-[#2563EB]/30 text-[#60A5FA] font-semibold hover:bg-[#2563EB]/[0.06] transition-all"
             >
               <BookOpen className="h-4 w-4" />
-              Browse All Shows
+              Parcourir toutes les séries
             </Link>
           </div>
         </div>

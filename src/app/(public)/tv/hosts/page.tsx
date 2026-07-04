@@ -65,16 +65,16 @@ const GRADIENT_PAIRS = [
 ]
 
 const SPECIALTY_MAP: Record<string, string> = {
-  'Late Night Comedy': 'Late Night Host',
-  'News Parody': 'News Anchor',
-  'Talk Shows': 'Talk Show Host',
-  'Reality / Competition': 'Reality Host',
-  'Game Shows': 'Game Show Host',
-  'Cooking Shows': 'Chef / Culinary Host',
-  'Documentary Series': 'Documentary Narrator',
-  'Kids & Animation': 'Kids Show Host',
-  'Sketch Comedy': 'Sketch Performer',
-  'Drama Series': 'Drama Presenter',
+  'Late Night Comedy': 'Animateur late night',
+  'News Parody': 'Présentateur JT',
+  'Talk Shows': 'Animateur de talk-show',
+  'Reality / Competition': 'Animateur de télé-réalité',
+  'Game Shows': 'Animateur de jeu télévisé',
+  'Cooking Shows': 'Chef / Animateur culinaire',
+  'Documentary Series': 'Narrateur de documentaire',
+  'Kids & Animation': 'Animateur jeunesse',
+  'Sketch Comedy': 'Interprète de sketchs',
+  'Drama Series': 'Présentateur de série dramatique',
 }
 
 const CATEGORY_MAP: Record<string, string> = {
@@ -120,7 +120,7 @@ function buildHosts(): HostCard[] {
     hosts.push({
       name,
       slug: toSlug(name),
-      specialty: SPECIALTY_MAP[data.genre] || 'TV Host',
+      specialty: SPECIALTY_MAP[data.genre] || 'Animateur TV',
       category: CATEGORY_MAP[data.genre] || 'All',
       shows: data.shows,
       showSlugs: data.showSlugs,
@@ -186,14 +186,14 @@ export default function TVHostsPage() {
             </div>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
-            TV Hosts &{' '}
+            Animateurs et{' '}
             <span className="bg-gradient-to-r from-[#2563EB] to-[#7C3AED] bg-clip-text text-transparent">
-              Presenters
+              présentateurs TV
             </span>
           </h1>
           <p className="text-base sm:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed mb-8">
-            Discover the talented hosts and presenters who bring CINEGENY TV to life.
-            From late night comedy to culinary adventures, meet the faces of our universe.
+            Découvrez les animateurs et présentateurs talentueux qui donnent vie à CINEGENY TV.
+            De la comédie de fin de soirée aux aventures culinaires, rencontrez les visages de notre univers.
           </p>
 
           {/* Search bar */}
@@ -201,7 +201,7 @@ export default function TVHostsPage() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/30" />
             <input
               type="text"
-              placeholder="Search hosts, shows, or specialties..."
+              placeholder="Rechercher des animateurs, séries ou spécialités..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder-white/30 focus:outline-none focus:border-[#2563EB]/40 focus:ring-1 focus:ring-[#2563EB]/20 transition-all duration-300"
@@ -215,9 +215,9 @@ export default function TVHostsPage() {
         {/* Stats Bar */}
         <div className="grid grid-cols-3 gap-4">
           {[
-            { label: 'Total Hosts', value: ALL_HOSTS.length, icon: Users, color: '#2563EB' },
-            { label: 'Shows Produced', value: ALL_TV_SHOWS.length, icon: Tv, color: '#7C3AED' },
-            { label: 'Episodes Aired', value: totalEpisodes.toLocaleString(), icon: Film, color: '#06B6D4' },
+            { label: 'Animateurs au total', value: ALL_HOSTS.length, icon: Users, color: '#2563EB' },
+            { label: 'Séries produites', value: ALL_TV_SHOWS.length, icon: Tv, color: '#7C3AED' },
+            { label: 'Épisodes diffusés', value: totalEpisodes.toLocaleString('fr-FR'), icon: Film, color: '#06B6D4' },
           ].map((stat) => (
             <div key={stat.label} className="text-center p-5 rounded-xl border border-white/[0.06] bg-white/[0.02]">
               <stat.icon className="h-5 w-5 mx-auto mb-2" style={{ color: stat.color }} />
@@ -254,15 +254,15 @@ export default function TVHostsPage() {
         {/* Results count */}
         <div className="flex items-center gap-2 text-sm text-white/40">
           <Filter className="h-4 w-4" />
-          <span>{filteredHosts.length} host{filteredHosts.length !== 1 ? 's' : ''} found</span>
+          <span>{filteredHosts.length} animateur{filteredHosts.length !== 1 ? 's' : ''} trouvé{filteredHosts.length !== 1 ? 's' : ''}</span>
         </div>
 
         {/* Hosts Grid */}
         {filteredHosts.length === 0 ? (
           <div className="text-center py-20">
             <Users className="h-16 w-16 text-white/10 mx-auto mb-4" />
-            <p className="text-white/40 text-lg">No hosts match your search</p>
-            <p className="text-white/25 text-sm mt-1">Try a different search term or category</p>
+            <p className="text-white/40 text-lg">Aucun animateur ne correspond à votre recherche</p>
+            <p className="text-white/25 text-sm mt-1">Essayez un autre terme de recherche ou une autre catégorie</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -291,7 +291,7 @@ export default function TVHostsPage() {
 
                 {/* Shows */}
                 <div className="mb-3">
-                  <p className="text-xs text-white/30 mb-1.5">Shows</p>
+                  <p className="text-xs text-white/30 mb-1.5">Séries</p>
                   <div className="flex flex-wrap gap-1">
                     {host.shows.slice(0, 2).map((show) => (
                       <span
@@ -317,7 +317,7 @@ export default function TVHostsPage() {
                   </div>
                   <div className="flex items-center gap-1">
                     <Play className="h-3 w-3" />
-                    <span>{host.episodes} eps</span>
+                    <span>{host.episodes} ép.</span>
                   </div>
                 </div>
 
@@ -326,7 +326,7 @@ export default function TVHostsPage() {
                   href={`/tv/hosts/${host.slug}`}
                   className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-[#2563EB]/[0.08] border border-[#2563EB]/20 text-[#60A5FA] text-sm font-medium hover:bg-[#2563EB]/20 transition-all duration-300"
                 >
-                  View Profile
+                  Voir le profil
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
@@ -341,7 +341,7 @@ export default function TVHostsPage() {
           <div className="flex items-center gap-3 mb-6">
             <TrendingUp className="h-6 w-6 text-[#2563EB]" />
             <h2 className="text-2xl font-bold text-white">
-              Trending Hosts
+              Animateurs tendance
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -386,15 +386,15 @@ export default function TVHostsPage() {
           <div className="flex items-center gap-3 mb-6">
             <Award className="h-6 w-6 text-[#2563EB]" />
             <h2 className="text-2xl font-bold text-white">
-              Host Awards 2026
+              Récompenses des animateurs 2026
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { title: 'Best Late Night Host', winner: ALL_HOSTS[0]?.name || 'TBA', icon: Mic2 },
-              { title: 'Best Game Show Host', winner: ALL_HOSTS.find(h => h.category === 'Game Show')?.name || 'TBA', icon: Gamepad2 },
-              { title: 'Best News Anchor', winner: ALL_HOSTS.find(h => h.category === 'News')?.name || 'TBA', icon: Radio },
-              { title: 'Fan Favorite', winner: ALL_HOSTS[2]?.name || 'TBA', icon: Sparkles },
+              { title: 'Meilleur animateur late night', winner: ALL_HOSTS[0]?.name || 'À venir', icon: Mic2 },
+              { title: 'Meilleur animateur de jeu télévisé', winner: ALL_HOSTS.find(h => h.category === 'Game Show')?.name || 'À venir', icon: Gamepad2 },
+              { title: 'Meilleur présentateur JT', winner: ALL_HOSTS.find(h => h.category === 'News')?.name || 'À venir', icon: Radio },
+              { title: 'Coup de cœur des fans', winner: ALL_HOSTS[2]?.name || 'À venir', icon: Sparkles },
             ].map((award) => (
               <div
                 key={award.title}
@@ -416,11 +416,11 @@ export default function TVHostsPage() {
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#7C3AED]/[0.05] rounded-full blur-[60px] pointer-events-none" />
           <Sparkles className="h-8 w-8 text-[#2563EB] mx-auto mb-4" />
           <h2 className="text-xl sm:text-2xl font-bold mb-3 text-white">
-            Become a TV Host
+            Devenez animateur TV
           </h2>
           <p className="text-white/50 mb-6 text-sm max-w-md mx-auto">
-            Have what it takes to host a CINEGENY TV show? Submit your audition
-            and join our growing roster of talented presenters.
+            Vous avez l&apos;étoffe pour animer une série CINEGENY TV ? Envoyez votre audition
+            et rejoignez notre équipe grandissante de présentateurs talentueux.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <Link
@@ -428,14 +428,14 @@ export default function TVHostsPage() {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] text-white font-semibold hover:bg-[#1D4ED8] transition-all duration-300 shadow-lg shadow-[#2563EB]/20"
             >
               <Mic2 className="h-4 w-4" />
-              Apply Now
+              Postuler maintenant
             </Link>
             <Link
               href="/tv/shows"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-[#2563EB]/30 text-[#60A5FA] font-semibold hover:bg-[#2563EB]/[0.06] transition-all duration-300"
             >
               <Tv className="h-4 w-4" />
-              Browse Shows
+              Parcourir les séries
             </Link>
           </div>
         </div>

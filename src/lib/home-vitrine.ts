@@ -36,6 +36,10 @@ export interface HomeFilmVM {
   genre: string
   director: string
   coverImageUrl: string | null
+  /** Affiche rectangulaire (16:9) pour les carrousels — repli sur coverImageUrl si absente. */
+  backdropUrl: string | null
+  /** 3 à 4 photos du film, façon Netflix. */
+  galleryUrls: string[]
   /** Extrait muet joué en fond de hero (facultatif, cf. data/films.ts). */
   heroVideoUrl: string | null
   track: FilmTrack
@@ -73,6 +77,8 @@ export function buildHomeFilmVM(input: HomeFilmInput): HomeFilmVM {
     genre: film.genre,
     director: film.director,
     coverImageUrl: film.coverImageUrl,
+    backdropUrl: film.backdropUrl ?? null,
+    galleryUrls: film.galleryUrls ?? [],
     heroVideoUrl: film.heroVideoUrl ?? null,
     track: film.track,
     trackName: trackInfo.name,
