@@ -35,6 +35,8 @@ export interface HomeFilmVM {
   synopsis: string
   genre: string
   director: string
+  /** True pour les titres du catalogue archivé (legacy) — hors slate curée. */
+  archived: boolean
   coverImageUrl: string | null
   /** Affiche rectangulaire (16:9) pour les carrousels — repli sur coverImageUrl si absente. */
   backdropUrl: string | null
@@ -53,15 +55,28 @@ export interface HomeFilmVM {
   votable: boolean
 }
 
+/** Une rangée « façon Netflix » d'un genre du catalogue complet. */
+export interface HomeGenreRail {
+  genre: string
+  films: HomeFilmVM[]
+}
+
 export interface HomeVitrineModel {
   /** Film mis en avant dans le hero. */
   hero: HomeFilmVM
-  /** Piste A — « Bandes-annonces en compétition ». */
+  /** Piste A — « Bandes-annonces en compétition » (slate curée uniquement). */
   trackA: HomeFilmVM[]
-  /** Piste B — « Films en compétition ». */
+  /** Piste B — « Films en compétition » (slate curée uniquement). */
   trackB: HomeFilmVM[]
-  /** Total des votes confirmés sur toute la slate (compteur public réel). */
+  /**
+   * Le catalogue complet rangé par genre (slate + archives) — l'abondance
+   * façon Netflix. Chaque titre reste cliquable vers sa fiche.
+   */
+  genreRails: HomeGenreRail[]
+  /** Total des votes confirmés sur tout le catalogue (compteur public réel). */
   totalVotes: number
+  /** Nombre total de films du catalogue (slate + archives). */
+  totalFilms: number
 }
 
 /* ── Construction du modèle de vue d'un film ──────────────────────────────── */
@@ -76,6 +91,7 @@ export function buildHomeFilmVM(input: HomeFilmInput): HomeFilmVM {
     synopsis: film.synopsis,
     genre: film.genre,
     director: film.director,
+    archived: film.archived ?? false,
     coverImageUrl: film.coverImageUrl,
     backdropUrl: film.backdropUrl ?? null,
     galleryUrls: film.galleryUrls ?? [],
@@ -103,6 +119,42 @@ export function sortByProgressDesc(films: HomeFilmVM[]): HomeFilmVM[] {
   return [...films].sort((a, b) => b.progress.count - a.progress.count)
 }
 
+/* ── Rangées par genre (catalogue complet, façon Netflix) ─────────────────── */
+
+/**
+ * Ordre d'affichage des rangées par genre. Les genres présents dans le
+ * catalogue mais absents de cette liste sont ajoutés à la fin (ordre stable),
+ * pour qu'AUCUN film ne soit oublié — même si un nouveau genre apparaît.
+ */
+const GENRE_RAIL_ORDER = [
+  'Pipeline 2026',
+  'Drama', 'Sci-Fi', 'Historical', 'Action', 'Thriller',
+  'Animation', 'Documentary', 'Romance', 'Comedy', 'Fantasy',
+]
+
+export function buildGenreRails(films: HomeFilmVM[]): HomeGenreRail[] {
+  const byGenre = new Map<string, HomeFilmVM[]>()
+  for (const f of films) {
+    const list = byGenre.get(f.genre)
+    if (list) list.push(f)
+    else byGenre.set(f.genre, [f])
+  }
+
+  // Ordre : les genres connus d'abord (ordre éditorial), puis le reste tel quel.
+  const ordered = [
+    ...GENRE_RAIL_ORDER.filter((g) => byGenre.has(g)),
+    ...[...byGenre.keys()].filter((g) => !GENRE_RAIL_ORDER.includes(g)),
+  ]
+
+  return ordered.map((genre) => ({
+    genre,
+    // Les plus proches du seuil d'abord, puis alphabétique (déterministe).
+    films: [...byGenre.get(genre)!].sort(
+      (a, b) => b.progress.count - a.progress.count || a.title.localeCompare(b.title),
+    ),
+  }))
+}
+
 /* ── Modèle complet de la vitrine ─────────────────────────────────────────── */
 
 export function buildHomeVitrineModel(
@@ -113,9 +165,13 @@ export function buildHomeVitrineModel(
   const hero = selectHeroFilm(vms, heroSlug)
   if (!hero) return null
 
-  const trackA = sortByProgressDesc(vms.filter((f) => f.track === 'A'))
-  const trackB = sortByProgressDesc(vms.filter((f) => f.track === 'B'))
+  // Les deux compétitions restent la slate CURÉE (hors archives) — au service
+  // du vote. L'abondance du catalogue passe par les rangées de genre.
+  const slate = vms.filter((f) => !f.archived)
+  const trackA = sortByProgressDesc(slate.filter((f) => f.track === 'A'))
+  const trackB = sortByProgressDesc(slate.filter((f) => f.track === 'B'))
+  const genreRails = buildGenreRails(vms)
   const totalVotes = vms.reduce((sum, f) => sum + f.progress.count, 0)
 
-  return { hero, trackA, trackB, totalVotes }
+  return { hero, trackA, trackB, genreRails, totalVotes, totalFilms: vms.length }
 }

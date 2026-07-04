@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { HomeVitrine } from '@/components/home/home-vitrine'
 import { ALL_FILMS, HERO_FILM_SLUG } from '@/data/films'
+import { ARCHIVED_FILMS } from '@/data/archived-films'
 import { buildHomeVitrineModel, type HomeFilmInput } from '@/lib/home-vitrine'
 import { BRAND } from '@/content/brand'
 
@@ -45,7 +46,11 @@ export const metadata: Metadata = {
  * avec des compteurs à zéro et un repli « Voter » vers la fiche du film.
  */
 async function getHomeInputs(): Promise<HomeFilmInput[]> {
-  const slugs = ALL_FILMS.map((f) => f.slug)
+  // Session 15.11 : tout le catalogue est en ligne (slate curée + archives).
+  // L'accueil montre donc l'intégralité des films (abondance façon Netflix),
+  // les compteurs de votes venant toujours de la base.
+  const catalog = [...ALL_FILMS, ...ARCHIVED_FILMS]
+  const slugs = catalog.map((f) => f.slug)
 
   const idBySlug = new Map<string, string>()
   const countByFilmId = new Map<string, number>()
@@ -71,7 +76,7 @@ async function getHomeInputs(): Promise<HomeFilmInput[]> {
     // Base indisponible (build/preview) — la vitrine reste rendue.
   }
 
-  return ALL_FILMS.map((film) => {
+  return catalog.map((film) => {
     const filmId = idBySlug.get(film.slug) ?? null
     return {
       film,
