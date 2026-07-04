@@ -317,6 +317,17 @@
   z-index: 1;
 }
 
+/* Étalonnage cinéma des affiches du catalogue — unifie des visuels très
+   hétérogènes (affiches génériques comprises) avec la matière or/noir du
+   site : saturation contenue, contraste léger, ombres réchauffées. */
+.poster-grade img {
+  filter: saturate(0.82) contrast(1.05) brightness(0.94) sepia(0.08);
+  transition: filter 0.5s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.poster-grade:hover img {
+  filter: saturate(0.92) contrast(1.05) brightness(1) sepia(0.04);
+}
+
 /* Rangée à défilement — fondu des bords, façon rail Netflix. */
 .rail-fade {
   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
