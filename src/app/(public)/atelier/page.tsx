@@ -25,10 +25,10 @@ import {
 import { BRAND, VOTE } from '@/content/brand'
 
 export const metadata: Metadata = {
-  title: 'L’Atelier — Créez votre bande-annonce, lancez votre film | CINEGENY',
+  title: 'Le Mini Studio — Créez votre bande-annonce, lancez votre film | CINEGENY',
   description: ATELIER.tagline,
   openGraph: {
-    title: 'L’Atelier CINEGENY — bande-annonce & film',
+    title: 'Le Mini Studio CINEGENY — bande-annonce & film',
     description: ATELIER.tagline,
   },
 }
@@ -247,7 +247,7 @@ export default function AtelierPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-10 text-center">
             <h2 className="font-playfair text-3xl font-bold text-white sm:text-4xl">
-              De l’Atelier à l’écran
+              Du Mini Studio à l’écran
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-sm text-white/50">{BRAND.baseline}</p>
           </div>

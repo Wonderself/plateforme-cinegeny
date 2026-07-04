@@ -188,6 +188,98 @@ function VoteRail({
   )
 }
 
+/* ── Rangée par genre — l'abondance du catalogue (slate + archives) ─────────
+ * Même carte que les compétitions, mais titrée par genre. Défilement horizontal
+ * façon Netflix. Toutes les rangées ensemble montrent TOUT le catalogue. */
+
+const GENRE_LABELS_FR: Record<string, string> = {
+  'Pipeline 2026': 'Pipeline 2026',
+  Drama: 'Drame',
+  'Sci-Fi': 'Science-fiction',
+  Historical: 'Historique',
+  Action: 'Action',
+  Thriller: 'Thriller',
+  Animation: 'Animation',
+  Documentary: 'Documentaire',
+  Romance: 'Romance',
+  Comedy: 'Comédie',
+  Fantasy: 'Fantastique',
+}
+
+function GenreRail({ genre, films }: { genre: string; films: HomeFilmVM[] }) {
+  const railRef = useRef<HTMLDivElement>(null)
+
+  if (films.length === 0) return null
+
+  const scroll = (dir: 'left' | 'right') => {
+    railRef.current?.scrollBy({ left: dir === 'left' ? -480 : 480, behavior: 'smooth' })
+  }
+
+  return (
+    <section className="relative py-6 md:py-7">
+      <div className="mb-4 flex items-end justify-between gap-4 px-4 sm:px-8 md:px-16 lg:px-20">
+        <div className="flex items-baseline gap-3">
+          <h2 className="font-playfair text-xl font-bold text-white sm:text-2xl">
+            {GENRE_LABELS_FR[genre] ?? genre}
+          </h2>
+          <span className="text-xs text-white/35">{films.length} films</span>
+        </div>
+        <div className="hidden shrink-0 gap-2 md:flex">
+          <button
+            onClick={() => scroll('left')}
+            aria-label="Défiler vers la gauche"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/60 transition-colors hover:border-[#C9A227]/40 hover:text-[#E8C766]"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            aria-label="Défiler vers la droite"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/60 transition-colors hover:border-[#C9A227]/40 hover:text-[#E8C766]"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+
+      <div
+        ref={railRef}
+        className="rail-fade flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 py-3 sm:px-8 md:px-16 lg:px-20"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+      >
+        {films.map((film) => (
+          <FilmVoteCard key={film.slug} film={film} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/* ── Section « Tout le catalogue » — l'ensemble des rangées de genre ────────── */
+
+function CatalogGenres({ rails }: { rails: HomeVitrineModel['genreRails'] }) {
+  if (rails.length === 0) return null
+  return (
+    <section className="relative border-t border-white/[0.06] pt-10">
+      <div className="mb-2 px-4 sm:px-8 md:px-16 lg:px-20">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#E8C766]">
+          <Clapperboard className="h-3 w-3" /> Tout le catalogue
+        </span>
+        <h2 className="mt-2 font-playfair text-2xl font-bold text-white sm:text-3xl">
+          Explorez tous les films
+        </h2>
+        <p className="mt-1.5 max-w-md text-xs text-white/45 sm:text-sm">
+          Parcourez l’intégralité du catalogue par genre. Chaque titre est en
+          compétition — votez pour celui que vous voulez voir se faire.
+        </p>
+      </div>
+      {rails.map((rail) => (
+        <GenreRail key={rail.genre} genre={rail.genre} films={rail.films} />
+      ))}
+    </section>
+  )
+}
+
 /* ── Fond vidéo du hero ─────────────────────────────────────────────────────
  * React ne sérialise pas l'attribut `muted` dans le HTML rendu : sans lui, la
  * politique d'autoplay des navigateurs bloque la lecture. On force donc
@@ -395,13 +487,12 @@ function HeroContent({ film, totalVotes }: { film: HomeFilmVM; totalVotes: numbe
  * (compteurs de votes en base + taille de la slate éditoriale). */
 
 function ProofStrip({ model }: { model: HomeVitrineModel }) {
-  const filmsEnVote = model.trackA.length + model.trackB.length
   const items: { value: string; label: string }[] = []
 
   if (model.totalVotes > 0) {
     items.push({ value: model.totalVotes.toLocaleString('fr-FR'), label: 'votes exprimés' })
   }
-  items.push({ value: String(filmsEnVote), label: 'films en compétition' })
+  items.push({ value: String(model.totalFilms), label: 'films en compétition' })
   items.push({ value: VOTE.threshold.toLocaleString('fr-FR'), label: 'votes, et le film se fait' })
   items.push({ value: '1', label: 'vote gratuit par film' })
 
@@ -422,72 +513,111 @@ function ProofStrip({ model }: { model: HomeVitrineModel }) {
   )
 }
 
-/* ── « Comment ça marche » (3 étapes, brand.ts) ───────────────────────────── */
+/* ── Bande fine « Créer & apprendre » — Mini Studio + Academy, HAUT de page ──
+ * 2e mise en avant du Mini Studio (plus haut, juste sous le hero) et de
+ * l'Academy, reliés l'un à l'autre : on apprend à l'Academy, on crée au Mini
+ * Studio. Volontairement slim pour ne pas voler la vedette au vote. */
 
-function HowItWorks() {
+function CreateLearnStrip() {
   return (
-    <section className="relative px-4 py-16 sm:px-8 md:px-16 md:py-20 lg:px-20">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-10 text-center">
-          <h2 className="font-playfair text-3xl font-bold text-white sm:text-4xl">Comment ça marche</h2>
-          <p className="mx-auto mt-3 max-w-lg text-sm text-white/50">
-            {VOTE.rule}
-          </p>
-        </div>
-        <ol className="grid gap-5 sm:grid-cols-3">
-          {HOW_IT_WORKS.map((step, i) => (
-            <li
-              key={step.title}
-              className="relative rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6 transition-colors hover:border-[#C9A227]/25"
-            >
-              <span className="font-playfair text-4xl font-bold text-[#C9A227]/30">{i + 1}</span>
-              <h3 className="mt-2 text-lg font-semibold text-white">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/50">{step.description}</p>
-            </li>
-          ))}
-        </ol>
+    <section className="px-4 pt-8 sm:px-8 md:px-16 lg:px-20">
+      <div className="mx-auto grid max-w-6xl gap-3 sm:grid-cols-2">
+        {/* Mini Studio — créer */}
+        <Link
+          href={ATELIER.href}
+          className="group flex items-center gap-4 rounded-2xl border border-[#C9A227]/20 bg-gradient-to-r from-[#C9A227]/[0.07] to-transparent px-5 py-4 transition-colors hover:border-[#C9A227]/40"
+        >
+          <span className="bg-gold-brushed inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
+            <Clapperboard className="h-5 w-5" />
+          </span>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold text-white">
+              {ATELIER.name} <span className="text-white/40">· Créez votre film</span>
+            </p>
+            <p className="mt-0.5 truncate text-xs text-white/45">Débutant ou exigeant — plan par plan avec l’IA.</p>
+          </div>
+          <ArrowRight className="h-4 w-4 shrink-0 text-[#C9A227] transition-transform group-hover:translate-x-0.5" />
+        </Link>
+
+        {/* Academy — apprendre, reliée au Mini Studio */}
+        <Link
+          href={ACADEMY_NAV.href}
+          className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4 transition-colors hover:border-[#C9A227]/30"
+        >
+          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#C9A227]/25 bg-[#C9A227]/10">
+            <GraduationCap className="h-5 w-5 text-[#C9A227]" />
+          </span>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold text-white">
+              CINEGENY <span className="text-gold-brushed">{ACADEMY_NAV.label}</span>
+            </p>
+            <p className="mt-0.5 truncate text-xs text-white/45">Apprenez le cinéma IA, puis créez au Mini Studio.</p>
+          </div>
+          <ArrowRight className="h-4 w-4 shrink-0 text-[#C9A227] transition-transform group-hover:translate-x-0.5" />
+        </Link>
       </div>
     </section>
   )
 }
 
-/* ── Le parcours d'un film : En vote → En production → À regarder ──────────── */
+/* ── « Comment ça marche » + parcours du film — version COMPACTE ────────────
+ * Les deux blocs (les 3 gestes du spectateur + le cycle de vie du film)
+ * tenaient chacun sur une pleine hauteur d'écran. On les fond ici en UNE bande
+ * compacte : à gauche les 3 gestes, à droite le parcours En vote → En
+ * production → À regarder en frise fine. Beaucoup moins de place, même message. */
 
 const PARCOURS_ICONS = { 'en-vote': Vote, 'en-production': Clapperboard, 'a-regarder': PlayCircle } as const
 
-function Parcours() {
+function HowItWorks() {
   return (
-    <section className="relative border-y border-white/[0.06] bg-white/[0.015] px-4 py-16 sm:px-8 md:px-16 lg:px-20">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-10 text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-white/50">
+    <section className="relative border-y border-white/[0.06] bg-white/[0.015] px-4 py-12 sm:px-8 md:px-16 lg:px-20">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+        {/* Les 3 gestes — calés sur la baseline */}
+        <div>
+          <div className="mb-5 flex items-baseline gap-3">
+            <h2 className="font-playfair text-2xl font-bold text-white sm:text-3xl">Comment ça marche</h2>
+            <span className="hidden text-xs text-white/40 sm:inline">{VOTE.rule}</span>
+          </div>
+          <ol className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+            {HOW_IT_WORKS.map((step, i) => (
+              <li key={step.title} className="flex flex-1 items-start gap-3">
+                <span className="font-playfair text-2xl font-bold leading-none text-[#C9A227]/40">{i + 1}</span>
+                <div>
+                  <h3 className="text-sm font-semibold text-white">{step.title}</h3>
+                  <p className="mt-0.5 text-xs leading-relaxed text-white/45">{step.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        {/* Le parcours d'un film — frise fine */}
+        <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 sm:p-6">
+          <span className="mb-4 inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wider text-white/45">
             <Eye className="h-3 w-3" /> Le parcours d’un film
           </span>
-          <h2 className="mt-3 font-playfair text-3xl font-bold text-white sm:text-4xl">
-            De votre vote au streaming
-          </h2>
-        </div>
-        <div className="flex flex-col items-stretch gap-4 md:flex-row md:items-center">
-          {FILM_STATUS_ORDER.map((key, i) => {
-            const status = FILM_STATUSES[key]
-            const Icon = PARCOURS_ICONS[key]
-            return (
-              <div key={key} className="flex flex-1 items-center gap-4 md:flex-col md:text-center">
-                <div className="flex flex-1 items-start gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 md:h-full md:flex-col md:items-center md:gap-3">
-                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#C9A227]/25 bg-[#C9A227]/10">
-                    <Icon className="h-5 w-5 text-[#C9A227]" />
-                  </span>
-                  <div>
-                    <h3 className="text-sm font-semibold text-white">{status.label}</h3>
-                    <p className="mt-1 text-xs leading-relaxed text-white/45">{status.description}</p>
+          <div className="flex items-stretch gap-2">
+            {FILM_STATUS_ORDER.map((key, i) => {
+              const status = FILM_STATUSES[key]
+              const Icon = PARCOURS_ICONS[key]
+              return (
+                <div key={key} className="flex flex-1 items-center gap-2">
+                  <div className="flex-1 text-center">
+                    <span className="mx-auto inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#C9A227]/25 bg-[#C9A227]/10">
+                      <Icon className="h-4 w-4 text-[#C9A227]" />
+                    </span>
+                    <p className="mt-2 text-xs font-semibold text-white">{status.label}</p>
                   </div>
+                  {i < FILM_STATUS_ORDER.length - 1 && (
+                    <ChevronRight className="h-4 w-4 shrink-0 text-[#C9A227]/40" />
+                  )}
                 </div>
-                {i < FILM_STATUS_ORDER.length - 1 && (
-                  <ChevronRight className="h-5 w-5 shrink-0 rotate-90 text-[#C9A227]/40 md:rotate-0" />
-                )}
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
+          <p className="mt-4 text-xs leading-relaxed text-white/45">
+            {FILM_STATUSES['en-vote'].description}
+          </p>
         </div>
       </div>
     </section>
@@ -526,9 +656,9 @@ function FinaleBlock() {
   )
 }
 
-/* ── L'Atelier : créer sa bande-annonce ou insérer son film ────────────────── */
+/* ── Le Mini Studio : créer sa bande-annonce ou insérer son film ───────────── */
 
-function AtelierBlock() {
+function MiniStudioBlock() {
   return (
     <section className="px-4 py-4 sm:px-8 md:px-16 lg:px-20">
       <div className="border-gold-brushed relative mx-auto max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#C9A227]/[0.08] via-[#0E0D0A] to-transparent p-8 md:p-12">
@@ -543,17 +673,25 @@ function AtelierBlock() {
                 {ATELIER.name} CINEGENY
               </h2>
               <p className="text-[11px] font-medium uppercase tracking-wider text-[#C9A227]/60">
-                Bandes-annonces & films — par vous
+                Débutant ou exigeant — votre film, plan par plan
               </p>
             </div>
           </div>
           <p className="max-w-2xl text-sm leading-relaxed text-white/55 md:text-[15px]">
             {ATELIER.tagline}
           </p>
-          <p className="mt-3 inline-flex items-center gap-1.5 text-xs text-white/45">
-            <Clock className="h-3.5 w-3.5 text-[#C9A227]/70" />
-            Format des films : {FILM_DURATION.label}
-          </p>
+          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/25 bg-[#C9A227]/[0.08] px-3 py-1 text-[11px] font-semibold text-[#E8C766]">
+              <Sparkles className="h-3 w-3" /> Débutants bienvenus
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/[0.03] px-3 py-1 text-[11px] font-medium text-white/70">
+              <Wand2 className="h-3 w-3 text-[#C9A227]/80" /> Contrôle plan par plan pour les exigeants
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-xs text-white/45">
+              <Clock className="h-3.5 w-3.5 text-[#C9A227]/70" />
+              Format des films : {FILM_DURATION.label}
+            </span>
+          </div>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link
               href={ATELIER.href}
@@ -591,7 +729,7 @@ function AcademyBlock() {
             <p className="text-base font-semibold text-white">
               CINEGENY <span className="text-gold-brushed">{ACADEMY_NAV.label}</span>
             </p>
-            <p className="mt-0.5 text-sm text-white/45">{ACADEMY_NAV.tagline} — de l’idée à la projection.</p>
+            <p className="mt-0.5 text-sm text-white/45">{ACADEMY_NAV.tagline}, puis passez à la pratique au Mini Studio.</p>
           </div>
         </div>
         <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium text-[#C9A227] transition-transform group-hover:translate-x-0.5">
@@ -643,6 +781,8 @@ export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
 
       <ProofStrip model={model} />
 
+      <CreateLearnStrip />
+
       <VoteRail
         title="Bandes-annonces en compétition"
         tagline="Des films au stade bande-annonce. À 5 000 votes, le film part en production."
@@ -655,9 +795,10 @@ export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
         films={model.trackB}
       />
 
+      <CatalogGenres rails={model.genreRails} />
+
       <Reveal><HowItWorks /></Reveal>
-      <Reveal><Parcours /></Reveal>
-      <Reveal><AtelierBlock /></Reveal>
+      <Reveal><MiniStudioBlock /></Reveal>
       <Reveal><FinaleBlock /></Reveal>
       <Reveal><AcademyBlock /></Reveal>
       <Reveal><FinalCta /></Reveal>

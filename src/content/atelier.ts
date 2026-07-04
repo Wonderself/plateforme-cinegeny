@@ -59,13 +59,16 @@ export const TRAILER_TOOL_HREF = TRAILER_TOOL_IS_EXTERNAL
 /* ── Wording de l'Atelier ─────────────────────────────────────────────────── */
 
 export const ATELIER = {
-  name: 'L’Atelier',
+  name: 'Le Mini Studio',
   href: '/atelier',
   title: 'Créez la bande-annonce. Le public lance le film.',
+  /** Une ligne : à qui s'adresse le Mini Studio. */
+  audience: 'Pensé pour les débutants comme pour les créateurs les plus exigeants.',
   tagline:
-    'Travaillez votre bande-annonce plan par plan avec nos moteurs vidéo IA, ' +
-    'ou insérez directement celle que vous avez déjà. À 5 000 votes, votre ' +
-    'film part en production.',
+    'Le Mini Studio, c’est votre studio de poche : pour les débutants comme ' +
+    'pour les plus exigeants. Travaillez votre bande-annonce plan par plan ' +
+    'avec nos moteurs vidéo IA, ou insérez directement celle que vous avez ' +
+    'déjà. À 5 000 votes, votre film part en production.',
   /** Les deux portes d'entrée de l'Atelier. */
   paths: {
     create: {

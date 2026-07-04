@@ -132,4 +132,24 @@ describe('buildHomeVitrineModel', () => {
   it('returns null when there are no films (honest empty state)', () => {
     expect(buildHomeVitrineModel([], 'hero')).toBeNull()
   })
+
+  it('keeps the curated competition rails free of archived catalog titles', () => {
+    const withArchived: HomeFilmInput[] = [
+      ...inputs,
+      input({ film: { slug: 'legacy', track: 'A', archived: true } }),
+    ]
+    const model = buildHomeVitrineModel(withArchived, 'hero')!
+    // Archived titles never leak into the curated (slate) competition rails…
+    expect(model.trackA.map((f) => f.slug)).not.toContain('legacy')
+    // …but they DO appear in the full-catalogue genre rails (abundance).
+    const allRailSlugs = model.genreRails.flatMap((r) => r.films.map((f) => f.slug))
+    expect(allRailSlugs).toContain('legacy')
+    expect(model.totalFilms).toBe(withArchived.length)
+  })
+
+  it('groups the whole catalogue into genre rails without dropping a film', () => {
+    const model = buildHomeVitrineModel(inputs, 'hero')!
+    const railCount = model.genreRails.reduce((n, r) => n + r.films.length, 0)
+    expect(railCount).toBe(inputs.length)
+  })
 })
