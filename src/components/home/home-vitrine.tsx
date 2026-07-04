@@ -14,7 +14,7 @@
  * Conçu mobile d'abord (390px) puis étendu (règle 15.0bis #8).
  */
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
@@ -45,6 +45,7 @@ import {
 } from '@/content/brand'
 import { ATELIER, FILM_DURATION } from '@/content/atelier'
 import { ComingSoonWall } from '@/components/films/coming-soon-wall'
+import { COMING_SOON } from '@/data/coming-soon'
 import type { HomeVitrineModel, HomeFilmVM } from '@/lib/home-vitrine'
 
 /* ── Compteur réel x/5000 + barre de progression ──────────────────────────── */
@@ -225,34 +226,143 @@ function HeroVideo({ videoUrl, posterUrl }: { videoUrl: string; posterUrl: strin
   )
 }
 
-/* ── Hero : un film en vote, plein écran ──────────────────────────────────── */
+/* ── Carrousel de hero : ~10 films défilent en pleine page ─────────────────
+ * Slate en vote + titres « Bientôt » pour compléter jusqu'à 10 diapositives.
+ * Auto-avance 8 s (pause au survol), fondu croisé des fonds, vignettes
+ * cliquables. Seule la diapositive active anime son Ken Burns (GPU). */
 
-function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
+type HeroSlide =
+  | { kind: 'film'; film: HomeFilmVM }
+  | { kind: 'soon'; title: string; genre: string; posterUrl: string }
+
+function HeroCarousel({ model }: { model: HomeVitrineModel }) {
+  const slides: HeroSlide[] = (() => {
+    const rest = [...model.trackB, ...model.trackA].filter((f) => f.slug !== model.hero.slug)
+    const films: HeroSlide[] = [model.hero, ...rest].map((film) => ({ kind: 'film', film }))
+    const soon: HeroSlide[] = COMING_SOON.slice(0, Math.max(0, 10 - films.length)).map((s) => ({
+      kind: 'soon',
+      title: s.title,
+      genre: s.genre,
+      posterUrl: s.posterUrl,
+    }))
+    return [...films, ...soon]
+  })()
+
+  const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  useEffect(() => {
+    if (paused || slides.length < 2) return
+    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 8000)
+    return () => clearInterval(t)
+  }, [paused, slides.length])
+
+  const active = slides[index]
+
   return (
-    <section className="hero-vignette relative flex min-h-[94vh] items-end overflow-hidden">
-      {/* Fond : extrait vidéo muet (façon Netflix) si fourni, sinon affiche
-          animée en lent Ken Burns — le hero n'est jamais statique. */}
-      {film.heroVideoUrl ? (
-        <HeroVideo videoUrl={film.heroVideoUrl} posterUrl={film.coverImageUrl} />
-      ) : film.coverImageUrl ? (
-        <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src={film.coverImageUrl}
-            alt={`Affiche du film ${film.title}`}
-            fill
-            priority
-            sizes="100vw"
-            className="kenburns object-cover object-center"
-          />
-        </div>
-      ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/15 via-[#0A0908] to-[#0A0908]" />
-      )}
-      {/* Voiles cinématographiques */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/80 to-[#0A0908]/25" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/40 to-transparent" />
+    <section
+      className="hero-vignette relative flex min-h-[94vh] items-end overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Fonds en fondu croisé */}
+      {slides.map((slide, i) => {
+        const cover = slide.kind === 'film' ? slide.film.coverImageUrl : slide.posterUrl
+        const video = slide.kind === 'film' ? slide.film.heroVideoUrl : null
+        const isActive = i === index
+        return (
+          <div
+            key={slide.kind === 'film' ? slide.film.slug : slide.title}
+            className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ${isActive ? 'opacity-100' : 'opacity-0'}`}
+            aria-hidden={!isActive}
+          >
+            {video && isActive ? (
+              <HeroVideo videoUrl={video} posterUrl={cover} />
+            ) : cover ? (
+              <Image
+                src={cover}
+                alt=""
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                className={`object-cover object-center ${isActive ? 'kenburns' : ''}`}
+              />
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/15 via-[#0A0908] to-[#0A0908]" />
+            )}
+          </div>
+        )
+      })}
 
-      <div className="relative z-10 w-full px-4 pb-12 sm:px-8 md:px-16 md:pb-16 lg:px-20">
+      {/* Voiles cinématographiques (communs à toutes les diapositives) */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/80 to-[#0A0908]/25" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/40 to-transparent" />
+
+      {/* Contenu de la diapositive active */}
+      {active.kind === 'film' ? (
+        <HeroContent key={active.film.slug} film={active.film} totalVotes={model.totalVotes} />
+      ) : (
+        <div key={active.title} className="fade-in-up relative z-10 w-full px-4 pb-24 sm:px-8 md:px-16 md:pb-28 lg:px-20">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/25 bg-[#0A0908]/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E8C766] backdrop-blur-md">
+            <Sparkles className="h-3 w-3" /> Bientôt · {active.genre}
+          </span>
+          <h1 className="mt-4 max-w-2xl font-playfair text-4xl font-bold leading-[1.02] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] sm:text-6xl md:text-7xl">
+            {active.title}
+          </h1>
+          <p className="mt-4 max-w-xl text-sm text-white/55">
+            Prochainement en compétition — le public décidera de son destin.
+          </p>
+          <Link
+            href="/films"
+            className="bg-gold-brushed btn-sheen mt-7 inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold transition-all"
+          >
+            <Vote className="h-4 w-4" /> Voir les films en vote
+          </Link>
+        </div>
+      )}
+
+      {/* Vignettes de navigation */}
+      <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-end gap-2 px-4">
+        {slides.map((slide, i) => {
+          const cover = slide.kind === 'film' ? slide.film.coverImageUrl : slide.posterUrl
+          const label = slide.kind === 'film' ? slide.film.title : slide.title
+          const isActive = i === index
+          return (
+            <button
+              key={label}
+              onClick={() => setIndex(i)}
+              aria-label={`Voir ${label}`}
+              className={`relative hidden aspect-[2/3] w-9 shrink-0 overflow-hidden rounded-md border transition-all duration-300 sm:block ${
+                isActive
+                  ? 'w-11 border-[#C9A227]/80 shadow-[0_0_16px_rgba(201,162,39,0.35)]'
+                  : 'border-white/15 opacity-55 hover:opacity-90'
+              }`}
+            >
+              {cover && <Image src={cover} alt="" fill sizes="44px" className="object-cover" />}
+            </button>
+          )
+        })}
+        {/* Points (mobile) */}
+        <div className="flex items-center gap-1.5 sm:hidden">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              aria-label={`Diapositive ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all ${i === index ? 'w-5 bg-[#E8C766]' : 'w-1.5 bg-white/25'}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── Contenu hero d'un film en vote ───────────────────────────────────────── */
+
+function HeroContent({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
+  return (
+    <div className="fade-in-up relative z-10 w-full px-4 pb-20 sm:px-8 md:px-16 md:pb-24 lg:px-20">
         <div className="grid items-end gap-8 lg:grid-cols-[1.15fr_0.85fr]">
           {/* Récit */}
           <div className="max-w-xl">
@@ -313,7 +423,6 @@ function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
           </div>
         </div>
       </div>
-    </section>
   )
 }
 
@@ -565,7 +674,7 @@ function FinalCta() {
 export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
   return (
     <main className="film-grain bg-[#0A0908] text-white">
-      <Hero film={model.hero} totalVotes={model.totalVotes} />
+      <HeroCarousel model={model} />
 
       <ProofStrip model={model} />
 
