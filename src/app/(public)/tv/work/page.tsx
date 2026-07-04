@@ -316,9 +316,9 @@ export default function TvWorkPage() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-white">
-                Available Shows
+                Séries disponibles
               </h2>
-              <p className="text-sm text-white/40 mt-2">Pick a TV show and start working on tasks</p>
+              <p className="text-sm text-white/40 mt-2">Choisissez une série TV et commencez à travailler sur des tâches</p>
             </div>
             <div className="flex gap-2">
               <button
@@ -373,7 +373,7 @@ export default function TvWorkPage() {
                             : 'bg-white/10 text-white/60 border-white/10'
                         }`}
                       >
-                        {show.status === 'ongoing' ? 'LIVE' : show.status === 'completed' ? 'DONE' : 'DEV'}
+                        {show.status === 'ongoing' ? 'EN DIRECT' : show.status === 'completed' ? 'TERMINÉ' : 'DÉV'}
                       </span>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-3">
@@ -385,7 +385,7 @@ export default function TvWorkPage() {
                           style={{ width: `${progressPct}%` }}
                         />
                       </div>
-                      <span className="text-[9px] text-white/30">{progressPct}% complete</span>
+                      <span className="text-[9px] text-white/30">{progressPct}% terminé</span>
                     </div>
                   </div>
                 </Link>
@@ -402,16 +402,16 @@ export default function TvWorkPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-14">
             <p className="text-[#2563EB] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
-              Task Marketplace
+              Marché des tâches
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Active{' '}
+              Tâches de production{' '}
               <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
-                Production Tasks
+                actives
               </span>
             </h2>
             <p className="text-white/35 max-w-2xl mx-auto mt-4">
-              Browse available tasks across all active TV productions. Pick a task, complete it, and earn.
+              Parcourez les tâches disponibles sur toutes les productions TV actives. Choisissez une tâche, réalisez-la, et gagnez.
             </p>
           </div>
 
@@ -426,7 +426,7 @@ export default function TvWorkPage() {
               }`}
             >
               <Filter className="h-4 w-4" />
-              <span className="text-xs font-medium">All ({TASKS.length})</span>
+              <span className="text-xs font-medium">Toutes ({TASKS.length})</span>
             </button>
             {TASK_CATEGORIES.map((cat) => {
               const count = TASKS.filter((t) => t.category === cat.name).length
@@ -476,7 +476,7 @@ export default function TvWorkPage() {
                 </h3>
                 <p className="text-xs text-white/35 mb-2 line-clamp-2">{task.description}</p>
                 <p className="text-xs text-white/30 mb-4">
-                  Show: <span className="text-white/50">{task.show}</span>
+                  Série : <span className="text-white/50">{task.show}</span>
                 </p>
 
                 {/* Reward + deadline */}
@@ -494,7 +494,7 @@ export default function TvWorkPage() {
 
                 {/* Apply button */}
                 <button className="mt-4 w-full py-2 rounded-xl border border-[#2563EB]/20 bg-[#2563EB]/[0.06] text-[#60A5FA] text-xs font-semibold hover:bg-[#2563EB]/15 hover:border-[#2563EB]/40 transition-all duration-300">
-                  Apply for Task
+                  Postuler à la tâche
                 </button>
               </div>
             ))}
@@ -510,16 +510,16 @@ export default function TvWorkPage() {
         <div className="container mx-auto max-w-5xl relative">
           <div className="text-center mb-14">
             <p className="text-[#2563EB] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
-              Your Choice
+              Votre choix
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Payment{' '}
+              Options de{' '}
               <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
-                Options
+                paiement
               </span>
             </h2>
             <p className="text-white/35 max-w-2xl mx-auto mt-4">
-              Choose how you want to be paid. Cash, production shares, or a mix of both.
+              Choisissez comment vous voulez être payé. Espèces, parts de production, ou un mix des deux.
             </p>
           </div>
 
@@ -529,28 +529,28 @@ export default function TvWorkPage() {
               <div className="h-14 w-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-5">
                 <DollarSign className="h-6 w-6 text-emerald-400" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Cash</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Espèces</h3>
               <p className="text-xs text-white/40 leading-relaxed mb-4">
-                Immediate payment via Stripe or Crypto. Get paid as soon as your task is approved.
+                Paiement immédiat via Stripe ou crypto. Soyez payé dès que votre tâche est approuvée.
               </p>
-              <div className="text-2xl font-bold text-emerald-400 mb-2">$5 — $50</div>
-              <p className="text-[10px] text-white/25">per task</p>
+              <div className="text-2xl font-bold text-emerald-400 mb-2">5 $ — 50 $</div>
+              <p className="text-[10px] text-white/25">par tâche</p>
             </div>
 
             {/* Shares */}
             <div className="group relative p-7 rounded-2xl border border-[#2563EB]/20 bg-[#2563EB]/[0.03] hover:border-[#2563EB]/30 transition-all duration-500 text-center">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#2563EB] text-white text-[10px] font-bold">
-                2x VALUE
+                VALEUR x2
               </div>
               <div className="h-14 w-14 rounded-2xl bg-[#2563EB]/10 border border-[#2563EB]/20 flex items-center justify-center mx-auto mb-5">
                 <TrendingUp className="h-6 w-6 text-[#2563EB]" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Production Shares</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Parts de production</h3>
               <p className="text-xs text-white/40 leading-relaxed mb-4">
-                Get 2x value in production shares. Tokens locked until show release, potential 5-10x return.
+                Obtenez 2 fois la valeur en parts de production. Tokens verrouillés jusqu&apos;à la sortie de la série, retour potentiel de 5 à 10x.
               </p>
-              <div className="text-2xl font-bold text-[#60A5FA] mb-2">$10 — $100</div>
-              <p className="text-[10px] text-white/25">in share value per task</p>
+              <div className="text-2xl font-bold text-[#60A5FA] mb-2">10 $ — 100 $</div>
+              <p className="text-[10px] text-white/25">en valeur de parts par tâche</p>
             </div>
 
             {/* Mix */}
@@ -558,12 +558,12 @@ export default function TvWorkPage() {
               <div className="h-14 w-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto mb-5">
                 <Zap className="h-6 w-6 text-amber-400" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">Mix</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Mixte</h3>
               <p className="text-xs text-white/40 leading-relaxed mb-4">
-                Split your payment: 50% cash + 50% production shares. Best of both worlds.
+                Répartissez votre paiement : 50% espèces + 50% parts de production. Le meilleur des deux mondes.
               </p>
-              <div className="text-2xl font-bold text-amber-400 mb-2">Custom</div>
-              <p className="text-[10px] text-white/25">you decide the split</p>
+              <div className="text-2xl font-bold text-amber-400 mb-2">Personnalisé</div>
+              <p className="text-[10px] text-white/25">vous décidez de la répartition</p>
             </div>
           </div>
 
@@ -573,8 +573,8 @@ export default function TvWorkPage() {
               <Shield className="h-5 w-5 text-emerald-400" />
             </div>
             <p className="text-sm text-white/50 text-center sm:text-left">
-              <span className="text-emerald-400 font-semibold">Smart contract backed</span> — All payments are on Ethereum mainnet,
-              transparent, automatic, and verified on blockchain. Revenue split: 25% creators / 25% investors / 25% platform / 25% workers.
+              <span className="text-emerald-400 font-semibold">Garanti par smart contract</span> — Tous les paiements sont sur le mainnet Ethereum,
+              transparents, automatiques, et vérifiés sur la blockchain. Répartition des revenus : 25% créateurs / 25% investisseurs / 25% plateforme / 25% contributeurs.
             </p>
           </div>
         </div>
