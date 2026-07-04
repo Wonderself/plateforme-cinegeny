@@ -587,12 +587,12 @@ export default function TvWorkPage() {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <p className="text-[#2563EB] text-xs sm:text-sm font-medium uppercase tracking-widest mb-3">
-              Comparison
+              Comparaison
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              How Payment{' '}
+              Comment fonctionne le{' '}
               <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
-                Works
+                paiement
               </span>
             </h2>
           </div>
@@ -605,16 +605,16 @@ export default function TvWorkPage() {
                   <DollarSign className="h-6 w-6 text-emerald-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-emerald-400">Cash Payment</h3>
-                  <p className="text-xs text-white/30">Immediate &amp; guaranteed</p>
+                  <h3 className="text-lg font-bold text-emerald-400">Paiement en espèces</h3>
+                  <p className="text-xs text-white/30">Immédiat et garanti</p>
                 </div>
               </div>
               <div className="space-y-3">
                 {[
-                  'Complete a task and submit',
-                  'AI + human review (24-48h)',
-                  'Payment via Stripe or Crypto',
-                  'Funds in your account instantly',
+                  'Réalisez une tâche et soumettez-la',
+                  'Revue IA + humaine (24-48h)',
+                  'Paiement via Stripe ou crypto',
+                  'Fonds sur votre compte instantanément',
                 ].map((step, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="h-6 w-6 rounded-full bg-emerald-500/15 flex items-center justify-center shrink-0">
@@ -625,7 +625,7 @@ export default function TvWorkPage() {
                 ))}
               </div>
               <div className="mt-6 p-4 rounded-xl bg-emerald-500/[0.05] border border-emerald-500/10 text-center">
-                <span className="text-xs text-emerald-400 font-medium">Receive $5 — $50 per task</span>
+                <span className="text-xs text-emerald-400 font-medium">Recevez 5 $ à 50 $ par tâche</span>
               </div>
             </div>
 
@@ -636,16 +636,16 @@ export default function TvWorkPage() {
                   <TrendingUp className="h-6 w-6 text-[#2563EB]" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#60A5FA]">Production Shares</h3>
-                  <p className="text-xs text-white/30">Higher potential return</p>
+                  <h3 className="text-lg font-bold text-[#60A5FA]">Parts de production</h3>
+                  <p className="text-xs text-white/30">Potentiel de retour plus élevé</p>
                 </div>
               </div>
               <div className="space-y-3">
                 {[
-                  'Complete a task and submit',
-                  'AI + human review (24-48h)',
-                  'Tokens minted to your wallet',
-                  'Locked until show air date',
+                  'Réalisez une tâche et soumettez-la',
+                  'Revue IA + humaine (24-48h)',
+                  'Tokens émis sur votre portefeuille',
+                  'Verrouillés jusqu\'à la diffusion de la série',
                 ].map((step, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="h-6 w-6 rounded-full bg-[#2563EB]/15 flex items-center justify-center shrink-0">
@@ -660,7 +660,7 @@ export default function TvWorkPage() {
                 ))}
               </div>
               <div className="mt-6 p-4 rounded-xl bg-[#2563EB]/[0.05] border border-[#2563EB]/10 text-center">
-                <span className="text-xs text-[#60A5FA] font-medium">Potential 5-10x return on release</span>
+                <span className="text-xs text-[#60A5FA] font-medium">Retour potentiel de 5 à 10x à la sortie</span>
               </div>
             </div>
           </div>
@@ -678,9 +678,9 @@ export default function TvWorkPage() {
                 Pipeline
               </p>
               <h2 className="text-2xl md:text-3xl font-bold text-white">
-                Next Shows Coming Soon
+                Prochaines séries bientôt disponibles
               </h2>
-              <p className="text-sm text-white/40 mt-2">More shows, more tasks, more earnings</p>
+              <p className="text-sm text-white/40 mt-2">Plus de séries, plus de tâches, plus de gains</p>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -707,7 +707,7 @@ export default function TvWorkPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                     <div className="absolute top-2 right-2">
                       <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#2563EB]/20 text-[#60A5FA] border border-[#2563EB]/20">
-                        SOON
+                        BIENTÔT
                       </span>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-3">
@@ -731,33 +731,33 @@ export default function TvWorkPage() {
         </div>
         <div className="container mx-auto max-w-3xl relative text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white">
-            Ready to{' '}
+            Prêt à{' '}
             <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
-              Start Earning
+              commencer à gagner
             </span>
             ?
           </h2>
           <p className="text-white/40 leading-relaxed mb-10 max-w-xl mx-auto">
-            Join hundreds of creators already earning from TV production tasks.
-            No experience needed — we provide everything you need to get started.
+            Rejoignez des centaines de créateurs qui gagnent déjà de l&apos;argent grâce aux tâches de production TV.
+            Aucune expérience requise — nous fournissons tout ce dont vous avez besoin pour démarrer.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/tv"
               className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-[#2563EB] hover:bg-[#3B82F6] text-white font-semibold transition-all duration-500 shadow-lg shadow-[#2563EB]/20 hover:shadow-[#2563EB]/30 hover:scale-[1.02]"
             >
-              Start Earning
+              Commencer à gagner
               <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               href="/tv/shows"
               className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all duration-300 text-sm font-medium"
             >
-              Browse All Shows
+              Parcourir toutes les séries
             </Link>
           </div>
           <p className="mt-8 text-xs text-white/20">
-            Smart contract backed &middot; Instant payments &middot; No minimum withdrawal
+            Garanti par smart contract &middot; Paiements instantanés &middot; Aucun retrait minimum
           </p>
         </div>
       </section>
