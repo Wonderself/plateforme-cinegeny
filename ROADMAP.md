@@ -277,7 +277,7 @@ de ce qui a change avec les URLs a verifier pour validation par le fondateur.
 > session.
 
 ### 15.6ter Espace investisseurs entreprise — acces protege par mot de passe
-**Statut**: A FAIRE · **Modele**: Sonnet
+**Statut**: FAIT (Juillet 2026) · **Modele**: Sonnet
 > **Le contexte, explique en detail pour quand on y arrivera** : il y a deux types de
 > personnes qui « investissent » sur CINEGENY, et ce sont deux parcours differents.
 > 1. Les gens qui investissent **sur un film en particulier** (co-production) : c'est la
@@ -299,6 +299,15 @@ de ce qui a change avec les URLs a verifier pour validation par le fondateur.
 > a demander a un developpeur.
 > **Prerequis fondateur** : aucun — le mot de passe peut etre genere automatiquement au
 > premier passage puis change depuis l'admin.
+>
+> **Implemente** : `/investors` (server component) affiche un ecran de saisie
+> (`investors-gate-form.tsx`) tant qu'un cookie signe valide n'est pas present ; le
+> contenu existant (`investors-content.tsx`) ne s'affiche qu'une fois debloque. Le mot
+> de passe vit sur `AdminSettings.investorsPassword` (genere automatiquement au premier
+> acces s'il est absent) et le cookie est derive du mot de passe courant (HMAC) — il
+> expire automatiquement des que le mot de passe change, sans table de sessions. Encart
+> « Mot de passe Espace investisseurs » ajoute sur `/admin` (afficher/copier/changer/
+> regenerer). `/invest` non touche.
 
 ### 15.7 « Comment ca marche » + co-producteurs en liste d'attente
 **Statut**: FAIT (Juillet 2026) · **Modele**: **Sonnet**

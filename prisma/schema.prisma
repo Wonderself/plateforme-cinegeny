@@ -526,6 +526,9 @@ model AdminSettings {
   lumenPrice            Float    @default(1.0)
   lumenRewardPerTask    Int      @default(10)
   notifEmailEnabled     Boolean  @default(false)
+  /// Mot de passe partage de l'Espace investisseurs entreprise (/investors).
+  /// Genere automatiquement au premier acces si absent — voir 15.6ter.
+  investorsPassword     String?
   updatedAt             DateTime @updatedAt
 }
 
