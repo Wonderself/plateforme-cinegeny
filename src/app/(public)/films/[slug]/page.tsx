@@ -26,7 +26,10 @@ type Props = { params: Promise<{ slug: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const film = await prisma.film.findUnique({ where: { slug } })
+  // Base indisponible (build/preview, hoquet réseau) → on retombe sur les
+  // données éditoriales plutôt que de faire échouer generateMetadata (ce qui
+  // ferait planter toute la page, contenu inclus).
+  const film = await prisma.film.findUnique({ where: { slug } }).catch(() => null)
   if (film) {
     return {
       title: `${film.title} — CINEGENY`,

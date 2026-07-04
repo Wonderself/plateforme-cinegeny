@@ -3,13 +3,8 @@
 import { prisma } from '@/lib/prisma'
 import { creditTierForAmount, type CreditTierId } from '@/content/coprod'
 
-/**
- * Returns all contributors who worked on a film, grouped by phase.
- * Only includes VALIDATED tasks. Also includes the scenario author if applicable.
- * Public — no auth required.
- */
-export async function getFilmCreditsAction(filmSlug: string) {
-  const film = await prisma.film.findUnique({
+function fetchFilmForCredits(filmSlug: string) {
+  return prisma.film.findUnique({
     where: { slug: filmSlug },
     select: {
       id: true,
@@ -40,11 +35,11 @@ export async function getFilmCreditsAction(filmSlug: string) {
       },
     },
   })
+}
 
-  if (!film) return { filmTitle: null, credits: [] }
-
-  const scenario = await prisma.scenarioProposal.findFirst({
-    where: { filmId: film.id, status: 'WINNER' },
+function fetchWinningScenario(filmId: string) {
+  return prisma.scenarioProposal.findFirst({
+    where: { filmId, status: 'WINNER' },
     select: {
       id: true,
       title: true,
@@ -58,6 +53,31 @@ export async function getFilmCreditsAction(filmSlug: string) {
       },
     },
   })
+}
+
+/**
+ * Returns all contributors who worked on a film, grouped by phase.
+ * Only includes VALIDATED tasks. Also includes the scenario author if applicable.
+ * Public — no auth required.
+ */
+export async function getFilmCreditsAction(filmSlug: string) {
+  // Base indisponible (build/preview, hoquet réseau) → la fiche film reste
+  // rendue sans générique plutôt que de faire planter toute la page.
+  let film: Awaited<ReturnType<typeof fetchFilmForCredits>> = null
+  try {
+    film = await fetchFilmForCredits(filmSlug)
+  } catch {
+    return { filmTitle: null, credits: [] }
+  }
+
+  if (!film) return { filmTitle: null, credits: [] }
+
+  let scenario: Awaited<ReturnType<typeof fetchWinningScenario>> = null
+  try {
+    scenario = await fetchWinningScenario(film.id)
+  } catch {
+    // Générique partiel (sans le scénario) plutôt qu'une page en erreur.
+  }
 
   const credits = film.phases
     .filter((phase) => phase.tasks.length > 0)
@@ -142,7 +162,19 @@ export interface FilmGenerique {
  * gagnant) et les crédits curés à la main (FilmCredit), puis détecte les
  * personnes présentes dans les deux familles (rôle double).
  */
+const EMPTY_GENERIQUE: FilmGenerique = { filmTitle: null, artists: [], producers: [] }
+
 export async function getFilmGeneriqueAction(filmSlug: string): Promise<FilmGenerique> {
+  try {
+    return await buildFilmGenerique(filmSlug)
+  } catch {
+    // Base indisponible (build/preview, hoquet réseau) → la fiche film reste
+    // rendue sans générique plutôt que de faire planter toute la page.
+    return EMPTY_GENERIQUE
+  }
+}
+
+async function buildFilmGenerique(filmSlug: string): Promise<FilmGenerique> {
   const film = await prisma.film.findUnique({
     where: { slug: filmSlug },
     select: {
@@ -162,7 +194,7 @@ export async function getFilmGeneriqueAction(filmSlug: string): Promise<FilmGene
     },
   })
 
-  if (!film) return { filmTitle: null, artists: [], producers: [] }
+  if (!film) return EMPTY_GENERIQUE
 
   const [scenario, curated] = await Promise.all([
     prisma.scenarioProposal.findFirst({

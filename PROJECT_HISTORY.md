@@ -6,6 +6,34 @@
 
 ---
 
+### 2026-07-04 — Session 15.11 (suite 2) : affiches auto-hébergées, bouton vote -70%, robustesse fiche film
+
+**9. Affiches du catalogue archivé auto-hébergées (fin de la dépendance à Unsplash)**
+- Les ~108 affiches génériques du catalogue archivé pointaient vers des URLs `images.unsplash.com`
+  hotlinkées. 92 ont été téléchargées et placées dans `public/posters/generic/` ; les 16 dont la
+  photo Unsplash était introuvable (404) réutilisent une image déjà téléchargée du même genre.
+  `src/data/archived-films.ts` référence désormais uniquement des chemins locaux `/posters/generic/*.jpg`
+  — plus aucune dépendance réseau externe pour l'affichage des affiches
+- Toutes les infos de film (synopsis, réalisateur, casting, durée, année, tags) étaient déjà présentes
+  dans les données pour chaque film archivé ; aucune donnée manquante à compléter
+
+**10. Bouton « Voter » réduit d'environ 70% sur mobile**
+- `VotePanel` (mode plein) et le repli du hero (`home-vitrine.tsx`) : le bouton passe d'un bloc
+  pleine largeur (`py-3/py-4`, texte `text-sm`) à une pilule compacte centrée (`px-5 py-1.5`,
+  `text-xs`, icône réduite) sur mobile ; taille d'origine restaurée à partir de `sm:`
+
+**11. Fiche film : robustesse si la base de données est indisponible**
+- Bug découvert en vérifiant le rendu réel : `generateMetadata` et les actions `getFilmCreditsAction`
+  / `getFilmGeneriqueAction` appelaient Prisma sans filet, contrairement au reste du code de la page
+  — un hoquet de base de données faisait planter toute la fiche film (écran « Erreur inattendue »)
+  au lieu de se dégrader proprement comme les pages voisines (accueil, catalogue)
+- Corrigé : les trois points retombent désormais sur un état vide/éditorial en cas d'échec, la fiche
+  reste toujours rendue
+
+**Vérification** : rendu réel au navigateur (Chromium headless), catalogue et fiche film, avant/après.
+
+---
+
 ### 2026-07-04 — Session 15.11 (suite) : paliers producteurs, catalogue complet Netflix, proportions
 
 **5. Paliers de crédit producteur par montant + minimum de coproduction**

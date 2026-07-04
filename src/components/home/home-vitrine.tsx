@@ -369,12 +369,14 @@ function HeroContent({ film, totalVotes }: { film: HomeFilmVM; totalVotes: numbe
               /* Repli : base indisponible → on renvoie vers la fiche du film */
               <div className="rounded-2xl border border-white/[0.08] bg-[#0A0908]/70 p-6 backdrop-blur-md">
                 <VoteMeter film={film} size="lg" />
-                <Link
-                  href={`/films/${film.slug}`}
-                  className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-[#C9A227]/30 bg-[#C9A227]/[0.10] py-3 text-sm font-semibold text-[#E8C766] transition-colors hover:bg-[#C9A227]/[0.18] sm:mt-5 sm:py-3.5"
-                >
-                  <Vote className="h-4 w-4" /> Voter
-                </Link>
+                <div className="mt-4 flex justify-center sm:mt-5 sm:block">
+                  <Link
+                    href={`/films/${film.slug}`}
+                    className="flex items-center justify-center gap-1.5 rounded-full border border-[#C9A227]/30 bg-[#C9A227]/[0.10] px-5 py-1.5 text-xs font-semibold text-[#E8C766] transition-colors hover:bg-[#C9A227]/[0.18] sm:w-full sm:rounded-xl sm:px-0 sm:py-3.5 sm:text-sm"
+                  >
+                    <Vote className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Voter
+                  </Link>
+                </div>
               </div>
             )}
             <Link
