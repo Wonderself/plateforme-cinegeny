@@ -46,9 +46,12 @@
       pendant `next build` (deja assuree par la CI) — evite un OOM sur le serveur de deploiement
 - [x] Domaine de production pilote par `NEXT_PUBLIC_APP_URL` (plus de domaine en dur dans le SEO/OG)
 
+### Fait — depuis (Juillet 2026)
+- [x] Integration Claude AI reelle (`src/lib/ai-review.ts`, `@anthropic-ai/sdk`, modele
+      `claude-haiku-4-5`, fallback mock si cle absente ou erreur API) — voir Phase 1.1
+
 ### En cours
-- [ ] Integration Claude AI reelle (remplacement du mock de review)
-- [ ] Invitation scenaristes (systeme d'invitation en masse)
+- [ ] Invitation scenaristes (systeme d'invitation en masse) — voir Phase 2.1
 
 ---
 
@@ -160,55 +163,47 @@ de ce qui a change avec les URLs a verifier pour validation par le fondateur.
 ### Sessions d'execution (dans l'ordre — 1 session = 1 validation fondateur)
 
 ### 15.1 Fondations du message — architecture de l'information & wording
-**Statut**: A FAIRE · **Modele**: **Opus** (travail de strategie/copywriting, faible volume de code)
-> Creer `src/content/brand.ts` : pitch officiel, baseline « Regardez. Votez. Le film se
-> fait. », vocabulaire fixe (regle 6 du prompt maitre), definition des 3 statuts du
-> parcours film, texte « Comment ca marche » en 3 etapes maximum (formule grand public a
-> proposer en 2-3 variantes au fondateur), noms officiels des deux pistes de vote et de la
-> Finale CINEGENY. Restructurer header/footer autour de 4 entrees : Films (voter),
-> Regarder, Participer, Co-produire — Academy mise en avant comme accroche. Livrable
-> soumis au fondateur AVANT toute session suivante : c'est la source de verite du wording.
-> **Prerequis fondateur** : valider les noms des pistes et la formule « Comment ca marche ».
+**Statut**: FAIT (Juillet 2026)
+> `src/content/brand.ts` livre : pitch, baseline, vocabulaire fixe (`VOCAB`), 3 statuts du
+> parcours film (`FILM_STATUSES`), texte « Comment ca marche » (`HOW_IT_WORKS`), pistes A/B
+> et Finale (`VOTE_TRACKS`, `FINALE`), navigation (`PRIMARY_NAV`, `ACADEMY_NAV`,
+> `FOOTER_COLUMNS`) — reellement branchee dans `src/components/layout/header.tsx` et
+> `footer.tsx` (4 entrees Films/Regarder/Participer/Co-produire), pas seulement ecrite.
 
 ### 15.2 Vote reel branche en base + parcours vote anonyme
-**Statut**: A FAIRE · **Modele**: **Sonnet** (implementation backend cadree)
-> Remplacer integralement le vote localStorage de `src/components/films/vote-panel.tsx`
-> par le modele Prisma `FilmVote` existant (adapte si besoin) : server actions + API de
-> vote, piste A/B par film, compteur reel, seuil 5 000 avec barre de progression,
-> vote anonyme (cookie + hash IP) confirme a l'inscription, contrainte unique
-> user+film, rate limiting (lib existante `src/lib/rate-limit.ts`), tests Vitest sur la
-> logique (double vote, confirmation, seuil). Supprimer `seededRandom` et tous les
-> compteurs inventes du front (187/47, points localStorage a 500).
-> **Prerequis fondateur** : aucun.
+**Statut**: FAIT (Juillet 2026)
+> `src/app/actions/votes.ts` + `src/lib/votes.ts` : pistes A/B, compteur reel, seuil 5 000,
+> vote anonyme (cookie + `hashIp` sha256) confirme a l'inscription, contrainte unique
+> `filmId_userId_voteType` / `filmId_anonId_voteType` (schema.prisma), `voteLimiter`
+> (`src/lib/rate-limit.ts`), tests Vitest (`src/__tests__/lib/votes.test.ts`). Plus aucun
+> `seededRandom` ni compteur invente dans `src/`.
 
 ### 15.3 Page d'accueil — vitrine Netflix au service du vote
-**Statut**: A FAIRE · **Modele**: **Opus** (page la plus strategique du site : structure, design et narration)
-> Refondre `/` : hero plein ecran sur un film en vote (affiche + baseline + CTA « Voter »
-> + compteur reel x/5000), row « En vote — Bandes-annonces », row « En vote — Films en
-> competition », bloc « Comment ca marche » (3 etapes, issu de 15.1), row « Bientot en
-> production / A regarder », bloc Finale CINEGENY (prix, date), bloc Academy (accroche
-> reseaux), CTA final inscription. Supprimer de l'accueil tout ce qui ne sert pas ces
-> blocs. Verification mobile 390px systematique.
-> **Prerequis fondateur** : choisir le film mis en avant dans le hero.
+**Statut**: FAIT (Juillet 2026)
+> `src/components/home/home-vitrine.tsx` (utilise par `src/app/page.tsx`) : hero plein
+> ecran + compteur reel, rows « En vote », bloc « Comment ca marche » (remonte juste apres
+> les deux competitions, session du 4 juillet), bloc Finale, bloc Academy, CTA inscription.
+> Design affine en continu (etalonnage affiches, hierarchie des cartes de rangee — voir
+> PROJECT_HISTORY.md).
 
 ### 15.4 Fiche film + panneau de vote refondus
-**Statut**: A FAIRE · **Modele**: **Sonnet**
-> Refondre `/films/[slug]` : au-dessus du pli = affiche/bande-annonce, piste (A ou B),
-> compteur x/5000, bouton Voter, « que se passe-t-il a 5 000 ? » en une phrase. En
-> dessous : synopsis, equipe/contributeurs reels, parcours du film (timeline En vote ->
-> En production -> A regarder), partage social (le vote partage EST l'acquisition).
-> Etats post-vote soignes : confirmation, invitation a s'inscrire (si anonyme), a
-> partager, a voter pour un autre film.
-> **Prerequis fondateur** : bandes-annonces/videos disponibles pour chaque film (ou
-> placeholder assume).
+**Statut**: FAIT (Juillet 2026)
+> `src/app/(public)/films/[slug]/page.tsx` : hero affiche/bande-annonce + `VotePanel`
+> (piste, compteur x/5000, bouton Voter), synopsis, generique/equipe reelle
+> (`FilmGeneriqueSection`), timeline du parcours, partage social. `vote-panel.tsx` gere les
+> etats post-vote (confirmation, invitation a s'inscrire, partage, autre film).
 
 ### 15.5 Catalogue /films — axe unique de progression
-**Statut**: A FAIRE · **Modele**: **Sonnet**
-> Refondre `src/components/films/film-categories.tsx` et `/films` : 3 onglets seulement
-> (« En vote » (defaut), « En production », « A regarder »), badges de piste A/B, labels
-> 100 % FR, cartes films avec compteur reel et CTA Voter direct depuis la carte.
-> Supprimer la categorisation par fundingPct et les 5 onglets anglais actuels.
-> **Prerequis fondateur** : aucun (les 6 films sont « En vote », decision 15.0).
+**Statut**: PARTIELLEMENT FAIT (Juillet 2026)
+> `film-categories.tsx` a ete refondu en 15.11 en rangees par genre façon Netflix, 100 % FR,
+> sans `fundingPct` dans ce composant, avec un filtre optionnel a 4 valeurs (Tous / En vote
+> / En production / A regarder) — donc lisible, mais l'axe de progression cohabite avec la
+> taxonomie par genre au lieu d'etre le SEUL axe (3 onglets stricts) comme specifie ici.
+> `fundingPct` fictif subsiste par ailleurs hors de ce composant (`src/components/netflix/film-row.tsx`,
+> `src/app/(public)/watch/page.tsx`).
+> **Reste a faire** : trancher si la rangee par genre reste (et alors mettre a jour cette
+> section du ROADMAP) ou si on revient a l'axe unique strict ; nettoyer `fundingPct` des
+> deux fichiers restants.
 
 ### 15.6 Monnaie unique + degraissage des pages publiques
 **Statut**: FAIT (Juillet 2026)
@@ -277,7 +272,9 @@ de ce qui a change avec les URLs a verifier pour validation par le fondateur.
 > **Prerequis fondateur** : valider le texte legal court de la liste d'attente.
 
 ### 15.8 Page equipe / A propos
-**Statut**: A FAIRE · **Modele**: **Haiku** (integration de contenu, pas de logique)
+**Statut**: A FAIRE (confirme Juillet 2026 : `src/app/(public)/about/page.tsx` couvre
+mission/mecanique/Finale/Points mais ne contient aucune section equipe, meme en
+placeholder) · **Modele**: **Haiku** (integration de contenu, pas de logique)
 > Page `/about` refondue : mission (wording 15.1), equipe reelle reprise de CineGeny.com
 > (photos, roles), la promesse de transparence (compteurs publics). Ton communautaire.
 > **Prerequis fondateur** : fournir photos + noms + roles de l'equipe (ou lien exact vers
@@ -297,10 +294,16 @@ de ce qui a change avec les URLs a verifier pour validation par le fondateur.
 > tant que ce n'est pas fourni.
 
 ### 15.10 Passe francais integral des surfaces publiques
-**Statut**: A FAIRE · **Modele**: **Haiku** (passe mecanique de labels, volume eleve, zero decision)
-> Balayer toutes les pages publiques restantes : traduire chaque label/bouton/message
-> anglais residuel en francais, appliquer le vocabulaire fixe de 15.1, verifier emails
-> transactionnels. Ne touche pas a l'admin ni a la Phase 14 (i18n complete plus tard).
+**Statut**: PARTIELLEMENT FAIT (Juillet 2026) · **Modele**: **Haiku** (passe mecanique de labels, volume eleve, zero decision)
+> Le gros du site est deja en francais. Labels anglais residuels reperes (hors `/tv`, hors
+> Phase 14) : `src/app/(public)/act/page.tsx`, `work/page.tsx`,
+> `create/setups/page.tsx`, `create/music/page.tsx`, `create/casting/page.tsx`
+> (« Watch Now », « Sign up », « Sign in », « Learn More », « Get Started », « Subscribe »,
+> « Add to »...). `/act` est cense etre retire du public avec redirect vers
+> `/create/casting` depuis la 15.6 — verifier que la regle de redirect couvre bien la page,
+> sinon supprimer le fichier orphelin plutot que le traduire.
+> **Reste a faire** : traduire les 4 fichiers ci-dessus, verifier les emails
+> transactionnels, puis repasser un grep de controle sur tout `src/app/(public)`.
 > **Prerequis fondateur** : aucun.
 
 ### 15.11 QA de lancement
@@ -862,4 +865,6 @@ version complete en francais** de toute la plateforme.
 
 ---
 
-*Derniere mise a jour: 4 Juillet 2026 (session 15.11 — Mini Studio, generique a 2 roles, matiere projet)*
+*Derniere mise a jour: 4 Juillet 2026 (audit de statut — 15.1, 15.2, 15.3, 15.4 passes de
+"A faire" a "Fait" apres verification du code reel ; 15.5 et 15.10 passes a "Partiellement
+fait" ; Integration Claude AI (Phase 1.1) confirmee faite)*
