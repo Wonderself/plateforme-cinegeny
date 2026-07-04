@@ -9,12 +9,14 @@ import { Sparkline } from '@/components/admin/charts/sparkline'
 import {
   Users, Film, Star, CreditCard, ClipboardCheck,
   ChevronRight, AlertCircle, Plus, CheckCircle, Clock, BarChart3,
-  Target, Eye, ArrowUpRight,
+  Target, Eye, ArrowUpRight, Lock,
 } from 'lucide-react'
 import { formatPrice } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { getFeaturedCreatorAction } from '@/app/actions/featured-creator'
 import { FeaturedCreatorPanel } from './featured-creator-panel'
+import { getOrCreateInvestorsPassword } from '@/lib/investors-gate'
+import { InvestorsPasswordPanel } from './investors-password-panel'
 
 export const dynamic = 'force-dynamic'
 
@@ -28,7 +30,7 @@ export default async function AdminPage() {
     usersCount, pendingUsers, filmsCount, tasksCount, availableTasks,
     totalPayments, pendingReviews, validatedTasks, submissionsTotal,
     recentSubmissions, todos, recentNotifications,
-    featuredCreatorResult,
+    featuredCreatorResult, investorsPassword,
   ] = await Promise.all([
     prisma.user.count(),
     prisma.user.count({ where: { isVerified: false } }),
@@ -50,6 +52,7 @@ export default async function AdminPage() {
     prisma.adminTodo.findMany({ orderBy: [{ completed: 'asc' }, { priority: 'desc' }, { createdAt: 'desc' }], take: 8 }),
     prisma.notification.findMany({ orderBy: { createdAt: 'desc' }, take: 10, include: { user: { select: { displayName: true } } } }),
     getFeaturedCreatorAction(),
+    getOrCreateInvestorsPassword(),
   ])
 
   const completionRate = tasksCount > 0 ? Math.round((validatedTasks / tasksCount) * 100) : 0
@@ -200,6 +203,21 @@ export default async function AdminPage() {
         </CardHeader>
         <CardContent>
           <FeaturedCreatorPanel initialCreator={featuredCreatorResult.creator ?? null} />
+        </CardContent>
+      </Card>
+
+      {/* Mot de passe Espace investisseurs */}
+      <Card>
+        <CardHeader className="pb-3">
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-base flex items-center gap-2">
+              <Lock className="h-4 w-4 text-[#C9A227]" /> Mot de passe Espace investisseurs
+            </CardTitle>
+            <Link href="/investors" className="text-xs text-[#C9A227]">Voir la page →</Link>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <InvestorsPasswordPanel initialPassword={investorsPassword} />
         </CardContent>
       </Card>
 
