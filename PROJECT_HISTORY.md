@@ -6,6 +6,40 @@
 
 ---
 
+### 2026-07-04 — Session 15.11 (suite) : paliers producteurs, catalogue complet Netflix, proportions
+
+**5. Paliers de crédit producteur par montant + minimum de coproduction**
+- Nouveau `src/content/coprod.ts` : source unique du minimum (`COPROD_MIN_EUR = 100`) et
+  des paliers du générique (`CREDIT_TIERS` : ≥ 10 000 € gros · ≥ 500 € moyen · ≥ 100 € petit)
+- Champ `amountEur` ajouté à `FilmCredit` ; `getFilmGeneriqueAction` calcule le palier et
+  trie les producteurs par montant décroissant ; `FilmGenerique` affiche 3 tailles
+- Formulaire admin : champ « Montant investi (€) » (affiché pour les rôles producteur) + rappel des paliers
+- Minimum de coproduction porté de 10 € à **100 €** (schéma `co-produce`, formulaire waitlist,
+  et mentions marketing film : streaming, fiche film, /invest)
+
+**6. Tout le catalogue remis en ligne + retrait des « films à venir »**
+- `/films` : les 109 films archivés sont tous inclus (filtre d'activation levé ; le système
+  `CatalogActivation` reste dispo pour masquer au cas par cas). Compteur « Films » = catalogue complet
+- `ComingSoonWall` (mur d'affiches « Prochainement » en marquee) retiré de `/films`,
+  `/streaming` et de l'accueil
+- Accueil : le hero n'affiche plus de titres « Bientôt » (que de vrais films) et **n'auto-avance plus**
+  (navigation manuelle par vignettes) — plus de bande en mouvement
+
+**7. Catalogue façon Netflix, rangé par catégorie (genre)**
+- `FilmCategories` réécrit : une **rangée par genre** (À la une, Action, Drame, Histoire,
+  Science-fiction, Thriller, Comédie, Documentaire, Animation, Romance, Fantastique),
+  défilement horizontal **manuel** (flèches desktop, tactile mobile), aucune auto-animation
+- Cartes affiche compactes menant à la fiche du film (le vote se fait sur la fiche) ;
+  filtre optionnel par étape du parcours (Tous / En vote / En production / À regarder)
+- Vérifié au rendu réel (Chromium) en mobile 390 px et desktop 1280 px
+
+**8. Proportions mobile**
+- Bouton « Voter » du hero (`VotePanel`) resserré sur mobile (`py-3` + icône plus petite,
+  taille pleine restaurée dès `sm:`), idem CTA de repli du hero
+- Rendus mobile de l'accueil et du catalogue vérifiés visuellement (équilibrés)
+
+---
+
 ### 2026-07-04 — Session 15.11 : Mini Studio, générique à 2 rôles, matière projet
 
 **1. Renommage « Studio Bande-Annonce » → « Mini Studio »** (sans refonte de l'outil)

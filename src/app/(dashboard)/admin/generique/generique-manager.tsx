@@ -35,7 +35,10 @@ export function GeneriqueManager({
   const [role, setRole] = useState<'ARTIST' | 'PRODUCER' | 'ARTIST_PRODUCER'>('PRODUCER')
   const [roleLabel, setRoleLabel] = useState('')
   const [userId, setUserId] = useState('')
+  const [amount, setAmount] = useState('')
   const [note, setNote] = useState('')
+
+  const showsAmount = role === 'PRODUCER' || role === 'ARTIST_PRODUCER'
 
   function refresh(id: string) {
     if (!id) return
@@ -63,6 +66,7 @@ export function GeneriqueManager({
         role,
         roleLabel: roleLabel.trim(),
         userId: userId.trim(),
+        amountEur: showsAmount && amount.trim() ? Number(amount) : undefined,
         note: note.trim(),
         order: credits.length,
       })
@@ -71,6 +75,7 @@ export function GeneriqueManager({
         setName('')
         setRoleLabel('')
         setUserId('')
+        setAmount('')
         setNote('')
         refresh(filmId)
       } else {
@@ -168,6 +173,22 @@ export function GeneriqueManager({
               className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-[#C9A227]/40 focus:outline-none"
             />
           </div>
+          {showsAmount && (
+            <div className="sm:col-span-2">
+              <label className="text-xs text-white/50">Montant investi (€) — pilote la taille au générique</label>
+              <input
+                type="number"
+                min={0}
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                placeholder="ex. 10000"
+                className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-[#C9A227]/40 focus:outline-none"
+              />
+              <p className="mt-1 text-[11px] text-white/35">
+                ≥ 10 000 € : en gros · ≥ 500 € : moyen · ≥ 100 € : en petit (minimum de coproduction : 100 €)
+              </p>
+            </div>
+          )}
           <div className="sm:col-span-2">
             <label className="text-xs text-white/50">Note interne (optionnel — non publique)</label>
             <input
@@ -217,6 +238,7 @@ export function GeneriqueManager({
                     <p className="text-xs text-white/40 truncate">
                       {cfg.label}
                       {c.roleLabel ? ` · ${c.roleLabel}` : ''}
+                      {c.amountEur ? ` · ${c.amountEur.toLocaleString('fr-FR')} €` : ''}
                       {c.note ? ` · ${c.note}` : ''}
                     </p>
                   </div>

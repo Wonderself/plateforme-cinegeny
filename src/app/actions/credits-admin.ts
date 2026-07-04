@@ -29,6 +29,7 @@ const addCreditSchema = z.object({
   name: z.string().min(1, 'Nom requis').max(200),
   role: z.enum(['ARTIST', 'PRODUCER', 'ARTIST_PRODUCER']).default('PRODUCER'),
   roleLabel: z.string().max(120).optional().or(z.literal('')),
+  amountEur: z.coerce.number().int().min(0).max(100_000_000).optional(),
   note: z.string().max(500).optional().or(z.literal('')),
   order: z.coerce.number().int().min(0).max(9999).default(0),
 })
@@ -60,6 +61,7 @@ export async function getFilmCuratedCreditsAction(filmId: string) {
       name: true,
       role: true,
       roleLabel: true,
+      amountEur: true,
       note: true,
       order: true,
       isPublic: true,
@@ -94,6 +96,7 @@ export async function addFilmCreditAction(input: unknown): Promise<CreditActionR
       name: data.name,
       role: data.role,
       roleLabel: data.roleLabel || null,
+      amountEur: data.amountEur ?? null,
       note: data.note || null,
       order: data.order,
     },

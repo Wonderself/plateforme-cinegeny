@@ -13,25 +13,46 @@ import type { GeneriqueEntry } from '@/app/actions/credits'
  * porte le badge « Artiste & Producteur » dans chaque section.
  */
 
+/**
+ * Tailles par palier (plus le producteur investit, plus son nom est grand).
+ * `grand` ≥ 10 000 € · `moyen` ≥ 500 € · `petit` ≥ 100 €. Les artistes utilisent
+ * toujours le gabarit moyen.
+ */
+const TIER_STYLE: Record<'grand' | 'moyen' | 'petit', {
+  avatar: number
+  box: string
+  name: string
+}> = {
+  grand: { avatar: 56, box: 'p-4 gap-4', name: 'text-lg font-semibold' },
+  moyen: { avatar: 40, box: 'p-3 gap-3', name: 'text-sm font-medium' },
+  petit: { avatar: 30, box: 'p-2.5 gap-2.5', name: 'text-xs font-medium' },
+}
+
 function Seat({ entry, accent }: { entry: GeneriqueEntry; accent: 'artist' | 'producer' }) {
   const FallbackIcon = accent === 'artist' ? Clapperboard : Gem
+  const tier = accent === 'producer' ? (entry.tier ?? 'petit') : 'moyen'
+  const s = TIER_STYLE[tier]
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-[#C9A227]/15 bg-gradient-to-br from-[#C9A227]/[0.06] to-transparent p-3">
+    <div className={`flex items-center rounded-xl border border-[#C9A227]/15 bg-gradient-to-br from-[#C9A227]/[0.06] to-transparent ${s.box}`}>
       {entry.avatarUrl ? (
         <Image
           src={entry.avatarUrl}
           alt={entry.name}
-          width={40}
-          height={40}
+          width={s.avatar}
+          height={s.avatar}
+          style={{ width: s.avatar, height: s.avatar }}
           className="rounded-full object-cover shrink-0 ring-1 ring-[#C9A227]/30"
         />
       ) : (
-        <div className="h-10 w-10 rounded-full bg-[#C9A227]/10 flex items-center justify-center shrink-0 ring-1 ring-[#C9A227]/20">
+        <div
+          style={{ width: s.avatar, height: s.avatar }}
+          className="rounded-full bg-[#C9A227]/10 flex items-center justify-center shrink-0 ring-1 ring-[#C9A227]/20"
+        >
           <FallbackIcon className="h-4 w-4 text-[#C9A227]/70" />
         </div>
       )}
       <div className="min-w-0">
-        <p className="text-sm font-medium text-white truncate">{entry.name}</p>
+        <p className={`text-white truncate ${s.name}`}>{entry.name}</p>
         <div className="flex items-center gap-1.5 flex-wrap">
           {entry.roleLabel && (
             <span className="text-xs text-white/45 truncate">{entry.roleLabel}</span>

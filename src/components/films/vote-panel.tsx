@@ -123,9 +123,9 @@ export function VotePanel({
         <button
           onClick={handleVote}
           disabled={isPending}
-          className="mb-6 flex w-full items-center justify-center gap-2 rounded-xl border border-[#C9A227]/30 bg-[#C9A227]/[0.08] py-4 text-sm font-semibold text-[#E8C766] transition-all duration-300 hover:bg-[#C9A227]/[0.16] hover:border-[#C9A227]/50 disabled:opacity-50"
+          className="mb-4 flex w-full items-center justify-center gap-2 rounded-xl border border-[#C9A227]/30 bg-[#C9A227]/[0.08] py-3 text-sm font-semibold text-[#E8C766] transition-all duration-300 hover:bg-[#C9A227]/[0.16] hover:border-[#C9A227]/50 disabled:opacity-50 sm:mb-6 sm:py-4"
         >
-          {isPending ? <Loader2 className="h-5 w-5 animate-spin" /> : <VoteIcon className="h-5 w-5" />}
+          {isPending ? <Loader2 className="h-4 w-4 animate-spin sm:h-5 sm:w-5" /> : <VoteIcon className="h-4 w-4 sm:h-5 sm:w-5" />}
           Voter
         </button>
       ) : (

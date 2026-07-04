@@ -776,7 +776,7 @@ function CoProducerSection({ film }: { film: any }) {
           <div className="space-y-6">
             <div className="grid sm:grid-cols-3 gap-4">
               {[
-                { icon: Coins, title: 'Investissez des 10€', desc: 'Tokens de co-production accessibles a tous' },
+                { icon: Coins, title: 'Investissez des 100€', desc: 'Tokens de co-production accessibles a tous' },
                 { icon: Vote, title: 'Votez', desc: 'Participez aux decisions creatives du film' },
                 { icon: Crown, title: 'Au Generique', desc: 'Votre nom credite comme co-producteur' },
               ].map((b) => (

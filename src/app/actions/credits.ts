@@ -1,7 +1,7 @@
 'use server'
 
-import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { creditTierForAmount, type CreditTierId } from '@/content/coprod'
 
 /**
  * Returns all contributors who worked on a film, grouped by phase.
@@ -126,6 +126,8 @@ export interface GeneriqueEntry {
   roleLabel: string | null
   /** true si la personne est à la fois artiste et productrice. */
   isDual: boolean
+  /** Palier d'affichage producteur (grand/moyen/petit) — cf. content/coprod.ts. */
+  tier?: CreditTierId
 }
 
 export interface FilmGenerique {
@@ -178,6 +180,7 @@ export async function getFilmGeneriqueAction(filmSlug: string): Promise<FilmGene
         name: true,
         role: true,
         roleLabel: true,
+        amountEur: true,
         user: { select: { id: true, displayName: true, avatarUrl: true } },
       },
     }),
@@ -212,19 +215,28 @@ export async function getFilmGeneriqueAction(filmSlug: string): Promise<FilmGene
   }
 
   // ── Crédits curés (FilmCredit) : artistes, producteurs, ou les deux ───────
-  const producerMap = new Map<string, GeneriqueEntry>()
+  const producerMap = new Map<string, GeneriqueEntry & { amount: number }>()
   const addProducer = (
     key: string,
     name: string,
     avatarUrl: string | null,
     roleLabel: string | null,
+    amountEur: number | null,
   ) => {
+    const tier = creditTierForAmount(amountEur).id
     const existing = producerMap.get(key)
     if (existing) {
       if (!existing.roleLabel && roleLabel) existing.roleLabel = roleLabel
+      // On garde le plus gros montant si crédité plusieurs fois.
+      if ((amountEur ?? 0) > existing.amount) {
+        existing.amount = amountEur ?? 0
+        existing.tier = tier
+      }
       return
     }
-    producerMap.set(key, { key, name, avatarUrl, roleLabel, isDual: false })
+    producerMap.set(key, {
+      key, name, avatarUrl, roleLabel, isDual: false, tier, amount: amountEur ?? 0,
+    })
   }
 
   for (const credit of curated) {
@@ -235,7 +247,7 @@ export async function getFilmGeneriqueAction(filmSlug: string): Promise<FilmGene
       addArtist(key, name, avatarUrl, credit.roleLabel ?? null)
     }
     if (credit.role === 'PRODUCER' || credit.role === 'ARTIST_PRODUCER') {
-      addProducer(key, name, avatarUrl, credit.roleLabel ?? null)
+      addProducer(key, name, avatarUrl, credit.roleLabel ?? null, credit.amountEur)
     }
   }
 
@@ -247,9 +259,21 @@ export async function getFilmGeneriqueAction(filmSlug: string): Promise<FilmGene
     }
   }
 
+  // Producteurs triés par montant décroissant (les gros paliers en tête).
+  const producers: GeneriqueEntry[] = [...producerMap.values()]
+    .sort((a, b) => b.amount - a.amount)
+    .map((e) => ({
+      key: e.key,
+      name: e.name,
+      avatarUrl: e.avatarUrl,
+      roleLabel: e.roleLabel,
+      isDual: e.isDual,
+      tier: e.tier,
+    }))
+
   return {
     filmTitle: film.title,
     artists: [...artistMap.values()],
-    producers: [...producerMap.values()],
+    producers,
   }
 }

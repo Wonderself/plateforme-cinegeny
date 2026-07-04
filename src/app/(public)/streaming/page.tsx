@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { Play, Search, Star, Eye, Clock, Film, Coins, Crown, ArrowRight, Wand2, Upload } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { ATELIER, FILM_DURATION } from '@/content/atelier'
-import { ComingSoonWall } from '@/components/films/coming-soon-wall'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
@@ -241,9 +240,6 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
 
       </div>
 
-      {/* ══ Prochainement — mur d'affiches ══════════════════════════════════ */}
-      <ComingSoonWall />
-
       <div className="mx-auto max-w-7xl px-6 pb-14 sm:px-10 sm:pb-16 md:px-16 lg:px-20">
         {/* ══ Devenez Producteur ════════════════════════════════════════════ */}
         <div className="relative mt-20 overflow-hidden rounded-3xl border border-[#C9A227]/20 bg-gradient-to-br from-[#C9A227]/[0.08] via-[#C9A227]/[0.03] to-transparent p-8 md:p-12 lg:p-14">
@@ -259,7 +255,7 @@ export default async function StreamingPage(props: { searchParams: Promise<{ gen
                 </h2>
               </div>
               <p className="max-w-lg leading-relaxed text-white/50">
-                Ne vous contentez pas de regarder. Co-produisez les films de demain dès 10&#8364;,
+                Ne vous contentez pas de regarder. Co-produisez les films de demain dès 100&#8364;,
                 recevez des revenus et voyez votre nom au générique.
               </p>
             </div>

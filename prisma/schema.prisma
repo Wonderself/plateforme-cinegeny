@@ -3279,7 +3279,8 @@ model FilmCredit {
   name       String     // Nom affiché au générique (libre si pas de compte)
   role       CreditRole @default(PRODUCER)
   roleLabel  String?    // Intitulé précis, ex. « Producteur exécutif », « Chef op »
-  note       String?    // Détail interne (ex. montant investi, parts) — non public
+  amountEur  Int?       // Montant investi en € (producteurs) — pilote le palier d'affichage
+  note       String?    // Détail interne — non public
   order      Int        @default(0) // Ordre d'affichage dans sa section
   isPublic   Boolean    @default(true)
   createdAt  DateTime   @default(now())

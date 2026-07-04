@@ -17,8 +17,8 @@ export function WaitlistForm() {
     setError(null)
 
     const amount = Number(intentAmount)
-    if (!Number.isInteger(amount) || amount < 10) {
-      setError('Indiquez un montant d\'intention d\'au moins 10 €')
+    if (!Number.isInteger(amount) || amount < 100) {
+      setError('Indiquez un montant d\'intention d\'au moins 100 €')
       return
     }
 
