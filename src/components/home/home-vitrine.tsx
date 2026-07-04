@@ -48,9 +48,26 @@ import type { HomeVitrineModel, HomeFilmVM } from '@/lib/home-vitrine'
 
 /* ── Compteur réel x/5000 + barre de progression ──────────────────────────── */
 
-function VoteMeter({ film, size = 'md' }: { film: HomeFilmVM; size?: 'md' | 'lg' }) {
+function VoteMeter({ film, size = 'md' }: { film: HomeFilmVM; size?: 'sm' | 'md' | 'lg' }) {
   const { count, threshold, pct } = film.progress
   const big = size === 'lg'
+  // Version compacte (cartes du catalogue) : une barre fine + le compteur en
+  // une seule ligne discrète — le chiffre reste RÉEL, la carte reste calme.
+  if (size === 'sm') {
+    return (
+      <div className="w-full">
+        <div className="h-1 overflow-hidden rounded-full bg-white/[0.10]">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700"
+            style={{ width: `${pct}%` }}
+          />
+        </div>
+        <p className="mt-1.5 text-[10px] leading-none text-white/45">
+          {count.toLocaleString('fr-FR')} / {threshold.toLocaleString('fr-FR')} votes
+        </p>
+      </div>
+    )
+  }
   return (
     <div className="w-full">
       <div className={`flex items-baseline justify-between ${big ? 'mb-2' : 'mb-1.5'}`}>
@@ -71,6 +88,48 @@ function VoteMeter({ film, size = 'md' }: { film: HomeFilmVM; size?: 'md' | 'lg'
         />
       </div>
     </div>
+  )
+}
+
+/* ── Carte compacte d'une rangée de genre (catalogue) ───────────────────────
+ * Plus petite que les cartes des deux compétitions phares : la hiérarchie de
+ * taille dit ce qui compte. Pas de chips (le genre est déjà le titre de la
+ * rangée), un compteur en une ligne, un étalonnage cinéma sur l'affiche pour
+ * unifier les visuels génériques avec la matière or/noir du site. */
+
+function FilmCompactCard({ film }: { film: HomeFilmVM }) {
+  return (
+    <Link
+      href={`/films/${film.slug}`}
+      className="poster-grade group relative aspect-[2/3] w-[164px] shrink-0 snap-start overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.02] transition-all duration-500 hover:-translate-y-1.5 hover:border-[#C9A227]/45 hover:shadow-[0_20px_50px_-14px_rgba(0,0,0,0.85),0_0_28px_rgba(201,162,39,0.08)] sm:w-[184px]"
+    >
+      {film.coverImageUrl ? (
+        <Image
+          src={film.coverImageUrl}
+          alt={`Affiche du film ${film.title}`}
+          fill
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+          sizes="184px"
+        />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03]">
+          <Clapperboard className="h-9 w-9 text-[#C9A227]/20" />
+        </div>
+      )}
+
+      {/* Voile bas — un peu plus soutenu que sur les grandes cartes pour
+          asseoir le titre sur des visuels très variés. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/40 to-[#0A0908]/5 transition-colors duration-500 group-hover:via-[#0A0908]/60" />
+
+      <div className="absolute inset-x-0 bottom-0 p-3">
+        <h3 className="line-clamp-2 font-playfair text-sm font-bold leading-snug text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-colors group-hover:text-[#F0D183]">
+          {film.title}
+        </h3>
+        <div className="mt-2">
+          <VoteMeter film={film} size="sm" />
+        </div>
+      </div>
+    </Link>
   )
 }
 
@@ -156,7 +215,8 @@ function VoteRail({
           <h2 className="font-playfair text-2xl font-bold text-white sm:text-3xl">{title}</h2>
           <p className="mt-1.5 max-w-md text-xs text-white/45 sm:text-sm">{tagline}</p>
         </div>
-        {/* Flèches (desktop) */}
+        {/* Flèches (desktop) — seulement si la rangée déborde vraiment */}
+        {films.length > 4 && (
         <div className="hidden shrink-0 gap-2 md:flex">
           <button
             onClick={() => scroll('left')}
@@ -173,11 +233,12 @@ function VoteRail({
             <ChevronRight className="h-4 w-4" />
           </button>
         </div>
+        )}
       </div>
 
       <div
         ref={railRef}
-        className="rail-fade flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 py-3 sm:px-8 md:px-16 lg:px-20"
+        className="rail-fade flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-4 px-4 py-3 sm:scroll-pl-8 sm:px-8 md:scroll-pl-16 md:px-16 lg:scroll-pl-20 lg:px-20"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
       >
         {films.map((film) => (
@@ -219,10 +280,10 @@ function GenreRail({ genre, films }: { genre: string; films: HomeFilmVM[] }) {
     <section className="relative py-6 md:py-7">
       <div className="mb-4 flex items-end justify-between gap-4 px-4 sm:px-8 md:px-16 lg:px-20">
         <div className="flex items-baseline gap-3">
-          <h2 className="font-playfair text-xl font-bold text-white sm:text-2xl">
+          <h2 className="font-playfair text-lg font-bold text-white sm:text-xl">
             {GENRE_LABELS_FR[genre] ?? genre}
           </h2>
-          <span className="text-xs text-white/35">{films.length} films</span>
+          <span className="text-[11px] text-white/35">{films.length} films</span>
         </div>
         <div className="hidden shrink-0 gap-2 md:flex">
           <button
@@ -244,11 +305,11 @@ function GenreRail({ genre, films }: { genre: string; films: HomeFilmVM[] }) {
 
       <div
         ref={railRef}
-        className="rail-fade flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 py-3 sm:px-8 md:px-16 lg:px-20"
+        className="rail-fade flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-pl-4 px-4 py-3 sm:gap-4 sm:scroll-pl-8 sm:px-8 md:scroll-pl-16 md:px-16 lg:scroll-pl-20 lg:px-20"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
       >
         {films.map((film) => (
-          <FilmVoteCard key={film.slug} film={film} />
+          <FilmCompactCard key={film.slug} film={film} />
         ))}
       </div>
     </section>
@@ -260,7 +321,9 @@ function GenreRail({ genre, films }: { genre: string; films: HomeFilmVM[] }) {
 function CatalogGenres({ rails }: { rails: HomeVitrineModel['genreRails'] }) {
   if (rails.length === 0) return null
   return (
-    <section className="relative border-t border-white/[0.06] pt-10">
+    // Pas de border-t : la bande « Comment ça marche » juste au-dessus porte
+    // déjà le filet de séparation (border-y).
+    <section className="relative pt-12">
       <div className="mb-2 px-4 sm:px-8 md:px-16 lg:px-20">
         <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/20 bg-[#C9A227]/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#E8C766]">
           <Clapperboard className="h-3 w-3" /> Tout le catalogue
@@ -574,9 +637,9 @@ function HowItWorks() {
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
         {/* Les 3 gestes — calés sur la baseline */}
         <div>
-          <div className="mb-5 flex items-baseline gap-3">
+          <div className="mb-6">
             <h2 className="font-playfair text-2xl font-bold text-white sm:text-3xl">Comment ça marche</h2>
-            <span className="hidden text-xs text-white/40 sm:inline">{VOTE.rule}</span>
+            <p className="mt-1.5 max-w-md text-xs leading-relaxed text-white/45">{VOTE.rule}</p>
           </div>
           <ol className="flex flex-col gap-3 sm:flex-row sm:gap-4">
             {HOW_IT_WORKS.map((step, i) => (
@@ -795,9 +858,12 @@ export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
         films={model.trackB}
       />
 
+      {/* La règle du jeu AVANT l'abondance du catalogue : on comprend d'abord,
+          on explore ensuite (le catalogue fait dix rangées). */}
+      <Reveal><HowItWorks /></Reveal>
+
       <CatalogGenres rails={model.genreRails} />
 
-      <Reveal><HowItWorks /></Reveal>
       <Reveal><MiniStudioBlock /></Reveal>
       <Reveal><FinaleBlock /></Reveal>
       <Reveal><AcademyBlock /></Reveal>
