@@ -79,7 +79,7 @@ export function TrailerActions({
       if (res.error) {
         setError(res.error)
       } else {
-        router.push('/trailer-studio')
+        router.push('/mini-studio')
       }
     })
   }

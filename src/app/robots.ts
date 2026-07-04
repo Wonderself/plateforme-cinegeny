@@ -20,7 +20,7 @@ export default function robots(): MetadataRoute.Robots {
           '/notifications/',
           '/documents/',
           '/screenplays/',
-          '/trailer-studio/',
+          '/mini-studio/',
           '/chat/meeting/',
           '/earnings/',
           '/playlists/',

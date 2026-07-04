@@ -10,10 +10,12 @@ import {
 } from 'lucide-react'
 import type { Metadata } from 'next'
 import { TrailerActions } from './trailer-actions'
+import { ProjectMatiere } from './project-matiere'
+import { getProjectFilesAction } from '@/app/actions/project-files'
 
 export const dynamic = 'force-dynamic'
 
-export const metadata: Metadata = { title: 'Projet Bande-Annonce' }
+export const metadata: Metadata = { title: 'Projet — Mini Studio' }
 
 const PHASE_CONFIG: Record<string, { label: string; icon: typeof Film; color: string }> = {
   CONCEPT: { label: 'Concept', icon: Sparkles, color: 'text-amber-400 bg-amber-500/10' },
@@ -54,7 +56,7 @@ export default async function TrailerProjectPage({ params }: { params: Promise<{
 
   if (!project) notFound()
   if (project.userId !== session.user.id && session.user.role !== 'ADMIN') {
-    redirect('/trailer-studio')
+    redirect('/mini-studio')
   }
 
   // Group tasks by phase (using PHASE_CONFIG key order)
@@ -67,13 +69,14 @@ export default async function TrailerProjectPage({ params }: { params: Promise<{
 
   const phases = Object.keys(PHASE_CONFIG)
   const pendingChoices = project.choices.filter(c => !c.resolvedAt)
+  const projectFiles = await getProjectFilesAction(project.id)
 
   return (
     <div className="space-y-10">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
         <div>
-          <Link href="/trailer-studio" className="inline-flex items-center gap-1.5 text-xs text-white/50 hover:text-[#C9A227] transition-colors mb-3">
+          <Link href="/mini-studio" className="inline-flex items-center gap-1.5 text-xs text-white/50 hover:text-[#C9A227] transition-colors mb-3">
             <ArrowLeft className="h-3.5 w-3.5" />
             Retour au studio
           </Link>
@@ -148,6 +151,9 @@ export default async function TrailerProjectPage({ params }: { params: Promise<{
           options: c.options as Array<{ id: string; label: string; description?: string }>,
         }))}
       />
+
+      {/* Matière & références du projet (session 15.11) */}
+      <ProjectMatiere projectId={project.id} initialFiles={projectFiles} />
 
       {/* Tasks by Phase */}
       <div className="space-y-5">

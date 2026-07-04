@@ -66,6 +66,9 @@ const nextConfig: NextConfig = {
       { source: '/produce', destination: '/create', permanent: true },
       { source: '/act', destination: '/create/casting', permanent: true },
       { source: '/tv/invest', destination: '/invest', permanent: true },
+      // Session 15.11 : l'outil « Studio Bande-Annonce » devient « Mini Studio ».
+      { source: '/trailer-studio', destination: '/mini-studio', permanent: true },
+      { source: '/trailer-studio/:path*', destination: '/mini-studio/:path*', permanent: true },
     ]
   },
 }

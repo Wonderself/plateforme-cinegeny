@@ -25,6 +25,7 @@ import {
   TrendingUp,
   Heart,
   Clapperboard,
+  Armchair,
   Wand2,
   Play,
   Shield,
@@ -121,7 +122,7 @@ const mainNavSections: NavSection[] = [
     dotColor: 'bg-[#8B5CF6]',
     links: [
       { href: '/academy', label: 'Academy', icon: GraduationCap, badge: 'GRATUIT' },
-      { href: '/trailer-studio', label: 'Studio Bande-Annonce', icon: Wand2, badge: 'NEW' },
+      { href: '/mini-studio', label: 'Mini Studio', icon: Wand2, badge: 'NEW' },
       { href: '/tasks', label: 'Micro-tâches', icon: Star },
       { href: '/films', label: 'Films', icon: Film },
       { href: '/screenplays', label: 'Scénarios', icon: FileText },
@@ -187,6 +188,7 @@ const adminNavSections: NavSection[] = [
       { href: '/admin/actors', label: 'Acteurs IA', icon: UserCircle2 },
       { href: '/admin/bonus-content', label: 'Bonus Content', icon: Clapperboard },
       { href: '/admin/contests', label: 'Concours', icon: Trophy },
+      { href: '/admin/generique', label: 'Générique', icon: Armchair },
     ],
   },
   {

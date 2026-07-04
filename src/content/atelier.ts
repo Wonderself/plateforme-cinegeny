@@ -44,7 +44,7 @@ export function isValidFilmDuration(seconds: number): boolean {
 /**
  * URL publique de l'outil de création de bandes-annonces (déploiement de
  * `wonderself/bande-annonce`). Si absente, l'Atelier retombe sur le studio
- * interne `/trailer-studio` : le parcours reste complet dans les deux cas.
+ * interne `/mini-studio` : le parcours reste complet dans les deux cas.
  */
 export const TRAILER_TOOL_URL = process.env.NEXT_PUBLIC_TRAILER_TOOL_URL || ''
 
@@ -54,7 +54,7 @@ export const TRAILER_TOOL_IS_EXTERNAL = TRAILER_TOOL_URL.length > 0
 /** Destination du bouton « Créer » de l'Atelier. */
 export const TRAILER_TOOL_HREF = TRAILER_TOOL_IS_EXTERNAL
   ? TRAILER_TOOL_URL
-  : '/trailer-studio'
+  : '/mini-studio'
 
 /* ── Wording de l'Atelier ─────────────────────────────────────────────────── */
 

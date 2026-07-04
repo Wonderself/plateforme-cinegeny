@@ -6,6 +6,55 @@
 
 ---
 
+### 2026-07-04 — Session 15.11 : Mini Studio, générique à 2 rôles, matière projet
+
+**1. Renommage « Studio Bande-Annonce » → « Mini Studio »** (sans refonte de l'outil)
+- Route déplacée `git mv` : `src/app/(dashboard)/trailer-studio` → `mini-studio`
+- Redirections permanentes ajoutées dans `next.config.ts` (`/trailer-studio` et
+  `/trailer-studio/:path*` → `/mini-studio…`)
+- Tous les liens internes mis à jour (sidebar, `robots.ts`, `actions/trailer.ts`,
+  `content/atelier.ts`, pages du studio) ; libellés et métadonnées relabelisés
+- Identité graphique « Mini Studio » assortie (badge dégradé or brossé + icône Clapperboard)
+- L'insertion de bande-annonce existante est **conservée**, pas refaite
+
+**2. Retrait de « la chaise pour votant »** (5 000 votants au générique)
+- Privilège « Vos votants au générique » retiré de `/residence`, remplacé par
+  « Votre bande-annonce fait le film » — on insiste pour **faire et partager sa bande-annonce**
+- Corrigé aussi : étape 3 du parcours, paragraphe « imbattable », métadonnées de la page
+- Les autres « nom au générique » (contributeurs = artistes, coprods = producteurs) sont
+  **conservés** : ils correspondent au nouveau modèle
+
+**3. Générique à 2 rôles — « la chaise dorée »**
+- Nouveau `enum CreditRole { ARTIST, PRODUCER, ARTIST_PRODUCER }` + modèle `FilmCredit`
+  (crédit curé à la main, `userId` optionnel pour noms hors-plateforme)
+- `getFilmGeneriqueAction(slug)` (`src/app/actions/credits.ts`) : construit deux familles
+  — ARTISTES (dérivés auto des tâches validées + auteur du scénario gagnant + crédits
+  ARTIST) et PRODUCTEURS (crédits PRODUCER) — et détecte le **rôle double**
+  « Artiste & Producteur » (présent dans les deux)
+- Composant `FilmGenerique` (`src/components/films/film-generique.tsx`), affiché sur les
+  deux variantes de fiche film (catalogue éditorial + film BD)
+- Actions admin `src/app/actions/credits-admin.ts` (list / add / remove) + page
+  `/admin/generique` (sélecteur de film, formulaire, liste) + lien sidebar
+- Le générique détaillé par phase existant est conservé sous « Contributions détaillées »
+
+**4. Dossier matière / références par projet dans le Mini Studio**
+- Nouveau `enum ProjectFolder { SCRIPT, VISUALS, AUDIO, DOCS, OTHER }` + modèle `ProjectFile`
+  (rattaché à `TrailerProject`, cascade delete)
+- Actions `src/app/actions/project-files.ts` (get / add / remove, contrôle propriétaire/admin)
+- Onglet « Matière & références » sur `/mini-studio/[id]` (`project-matiere.tsx`) : upload
+  par sous-dossier via le `FileUpload` existant, liste, suppression
+- `FileUpload.onUploaded` étendu (3e arg optionnel `{ fileName, mimeType, sizeBytes }`,
+  rétro-compatible)
+
+**Schéma Prisma** : +2 modèles (`FilmCredit`, `ProjectFile`), +2 enums (`CreditRole`,
+`ProjectFolder`), relations ajoutées sur `User`, `Film`, `TrailerProject`. `prisma validate`
+OK, client régénéré (workflow `db push`).
+
+**Suite planifiée** : le modèle coprod complet (auto-crédit des producteurs depuis les
+investissements réels + `ProductionShare`) est documenté en **ROADMAP §15.13**.
+
+---
+
 ## Stack Technique
 - Next.js 16.1.6 + React 19.2.3 (standalone output)
 - NextAuth 5 beta (JWT + Credentials + Google OAuth)

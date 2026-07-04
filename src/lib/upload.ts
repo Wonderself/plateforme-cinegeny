@@ -127,26 +127,7 @@ export async function getPresignedUploadUrl(
 }
 
 // ─── Upload metadata ────────────────────────────────────────
-
-export type UploadMeta = {
-  fileKey: string
-  publicUrl: string
-  category: UploadCategory
-  fileName: string
-  contentType: string
-  fileSize: number
-  userId: string
-}
-
-/**
- * Returns info about allowed upload types and limits.
- * Used by the client to show proper UI hints.
- */
-export function getUploadLimits() {
-  return {
-    maxFileSize: MAX_FILE_SIZE,
-    maxFileSizeMB: MAX_FILE_SIZE / 1024 / 1024,
-    allowedTypes: ALLOWED_TYPES,
-    categories: Object.keys(ALLOWED_TYPES) as UploadCategory[],
-  }
-}
+// Note (session 15.11) : un fichier « use server » ne peut exporter que des
+// fonctions asynchrones. `getUploadLimits` (synchrone, jamais utilisée) et le
+// type `UploadMeta` (inutilisé) ont été retirés car ils faisaient échouer le
+// build dès que le module entrait dans le graphe (via FileUpload).

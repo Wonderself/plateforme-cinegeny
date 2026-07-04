@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   Crown, Wand2, Vote, ArrowRight, Clock, Trophy, Users, Share2,
-  Sparkles, Film, ScrollText, Gem, Megaphone, Clapperboard,
+  Sparkles, Film, Gem, Megaphone, Clapperboard,
 } from 'lucide-react'
 import { FILM_DURATION } from '@/content/atelier'
 import { VOTE } from '@/content/brand'
@@ -10,7 +10,7 @@ import { VOTE } from '@/content/brand'
 export const metadata: Metadata = {
   title: 'La Résidence CINEGENY — 10 réalisateurs par saison, le public produit | CINEGENY',
   description:
-    'Une promotion limitée de réalisateurs IA par saison. Le Mini Studio offert, l’exclusivité, la course aux 5 000 votes — et le nom des premiers votants au générique.',
+    'Une promotion limitée de réalisateurs IA par saison. Le Mini Studio offert, l’exclusivité, et la course aux 5 000 votes que votre bande-annonce fait gagner.',
   openGraph: {
     title: 'La Résidence CINEGENY',
     description: '10 réalisateurs par saison. Le Mini Studio offert. Le public produit.',
@@ -41,9 +41,9 @@ const PRIVILEGES = [
     desc: 'Compteur en direct, cartes de partage or générées pour chaque film : chaque partage de votre communauté est une affiche de votre course.',
   },
   {
-    icon: ScrollText,
-    title: 'Vos votants au générique',
-    desc: `Les ${VOTE.threshold.toLocaleString('fr-FR')} premiers votants d’un film produit sont inscrits à son générique. Chaque fan a une raison personnelle de voter — et de le dire.`,
+    icon: Megaphone,
+    title: 'Votre bande-annonce fait le film',
+    desc: 'Votre meilleure arme, c’est votre bande-annonce. Faites-la avec le Mini Studio, puis partagez-la : c’est elle qui donne envie de voter, de suivre, de produire. Plus elle circule, plus votre film existe.',
   },
   {
     icon: Users,
@@ -55,7 +55,7 @@ const PRIVILEGES = [
 const STEPS = [
   { title: 'Candidatez', desc: 'Une idée de film, quelques lignes de synopsis — deux minutes suffisent.' },
   { title: 'Entrez en Résidence', desc: 'Sélectionné, vous produisez votre bande-annonce avec le Mini Studio, accompagné.' },
-  { title: 'Lancez la course', desc: `Votre communauté vote. À ${VOTE.threshold.toLocaleString('fr-FR')} votes, le film est produit — et vos votants entrent au générique.` },
+  { title: 'Lancez la course', desc: `Partagez votre bande-annonce, votre communauté vote. À ${VOTE.threshold.toLocaleString('fr-FR')} votes, le film est produit.` },
 ] as const
 
 export default function ResidencePage() {
@@ -146,8 +146,8 @@ export default function ResidencePage() {
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/55 md:text-[15px]">
                 Sur les réseaux, un film IA vit trois jours dans un flux. En Résidence, il a
-                une salle à son nom, un compteur qui monte, une communauté qui a son nom au
-                générique, et un studio qui le produit s’il gagne. Ce n’est pas une
+                une salle à son nom, un compteur qui monte, une bande-annonce que sa communauté
+                partage, et un studio qui le produit s’il gagne. Ce n’est pas une
                 plateforme de plus : c’est la seule où l’audience d’un créateur devient
                 littéralement son studio de production.
               </p>

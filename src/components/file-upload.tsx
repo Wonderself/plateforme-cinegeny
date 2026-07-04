@@ -5,7 +5,7 @@ import { Upload, X, CheckCircle, AlertCircle, FileVideo, FileImage, FileText, Mu
 
 type FileUploadProps = {
   category: 'video' | 'image' | 'document' | 'subtitle' | 'audio'
-  onUploaded: (url: string, fileKey: string) => void
+  onUploaded: (url: string, fileKey: string, meta?: { fileName: string; mimeType: string; sizeBytes: number }) => void
   accept?: string
   maxSizeMB?: number
   label?: string
@@ -76,7 +76,7 @@ export function FileUpload({
         const data = await res.json()
         setProgress(100)
         setUploaded(true)
-        onUploaded(data.publicUrl, fileKey)
+        onUploaded(data.publicUrl, fileKey, { fileName: file.name, mimeType: file.type, sizeBytes: file.size })
       } else {
         // Production: direct PUT to S3
         const xhr = new XMLHttpRequest()
@@ -97,7 +97,7 @@ export function FileUpload({
 
         setProgress(100)
         setUploaded(true)
-        onUploaded(publicUrl, fileKey)
+        onUploaded(publicUrl, fileKey, { fileName: file.name, mimeType: file.type, sizeBytes: file.size })
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Upload échoué')

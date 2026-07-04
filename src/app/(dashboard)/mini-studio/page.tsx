@@ -6,15 +6,15 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import {
   Plus, Film, Clock, CheckCircle2, Loader2, Sparkles,
-  ChevronRight, Wand2, Trophy, Coins, ArrowRight,
+  ChevronRight, Wand2, Trophy, Coins, ArrowRight, Clapperboard,
 } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Studio Bande-Annonce — CINEGENY',
-  description: 'Créez des bandes-annonces cinématographiques avec l\'IA',
+  title: 'Mini Studio — CINEGENY',
+  description: 'Le Mini Studio : créez vos bandes-annonces cinématographiques avec l\'IA, de A à Z',
 }
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: typeof Clock }> = {
@@ -54,15 +54,25 @@ export default async function TrailerStudioPage() {
 
   return (
     <div className="space-y-10">
-      {/* Header */}
+      {/* Header — identité Mini Studio (or brossé, assorti à la plateforme) */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-white font-[family-name:var(--font-playfair)]">
-            Studio Bande-Annonce
-          </h1>
-          <p className="text-sm text-white/50 mt-1">
-            Créez des bandes-annonces cinématographiques avec l&apos;IA, de A à Z
-          </p>
+        <div className="flex items-center gap-4">
+          <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#C9A227] to-[#E8C766] text-black shadow-[0_2px_12px_rgba(201,162,39,0.35)]">
+            <Clapperboard className="h-6 w-6" />
+          </span>
+          <div>
+            <div className="flex items-center gap-2">
+              <h1 className="text-2xl font-bold text-white font-[family-name:var(--font-playfair)]">
+                Mini Studio
+              </h1>
+              <Badge variant="outline" className="text-[10px] px-2 py-0.5 border-[#C9A227]/30 text-[#C9A227] uppercase tracking-wider">
+                Bande-annonce
+              </Badge>
+            </div>
+            <p className="text-sm text-white/50 mt-1">
+              Créez vos bandes-annonces cinématographiques avec l&apos;IA, du script au montage
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-3">
           <Link href="/credits">
@@ -71,7 +81,7 @@ export default async function TrailerStudioPage() {
               {creditBalance} crédits
             </Badge>
           </Link>
-          <Link href="/trailer-studio/new">
+          <Link href="/mini-studio/new">
             <Button className="bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
               <Plus className="h-4 w-4 mr-2" />
               Nouvelle Bande-Annonce
@@ -140,7 +150,7 @@ export default async function TrailerStudioPage() {
             ))}
           </div>
           <div className="text-center mt-8">
-            <Link href="/trailer-studio/new">
+            <Link href="/mini-studio/new">
               <Button size="lg" className="bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold shadow-md">
                 <Sparkles className="h-4 w-4 mr-2" />
                 Créer ma première bande-annonce
@@ -161,7 +171,7 @@ export default async function TrailerStudioPage() {
               return (
                 <Link
                   key={project.id}
-                  href={`/trailer-studio/${project.id}`}
+                  href={`/mini-studio/${project.id}`}
                   className="group rounded-xl border border-white/10 bg-white/5 hover:border-[#C9A227]/30 hover:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all p-6"
                 >
                   <div className="flex items-center gap-4">

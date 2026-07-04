@@ -47,7 +47,7 @@ export function NewTrailerForm() {
 
   useEffect(() => {
     if (state?.success && state?.projectId) {
-      router.push(`/trailer-studio/${state.projectId}`)
+      router.push(`/mini-studio/${state.projectId}`)
     }
   }, [state?.success, state?.projectId, router])
 

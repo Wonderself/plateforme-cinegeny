@@ -312,12 +312,57 @@ de ce qui a change avec les URLs a verifier pour validation par le fondateur.
 > clic vote -> vote confirme -> inscription). Rapport final go/no-go pour le fondateur.
 > **Prerequis fondateur** : acces au domaine de prod pour la verification finale.
 
+### 15.11 Mini Studio + Generique a 2 roles + Matiere projet ✅ FAIT (Juillet 2026)
+**Statut**: FAIT · **Modele**: **Opus**
+> Session livree. Voir PROJECT_HISTORY.md pour le detail. En resume :
+> - **Renommage** `/trailer-studio` -> `/mini-studio` (URL + redirections permanentes +
+>   identite graphique « Mini Studio » or brossé). L'insertion de bande-annonce est
+>   conservee, pas refaite.
+> - **Retrait** du privilege « 5 000 votants au generique » (la « chaise pour votant »),
+>   remplace partout par l'incitation a **faire et partager sa bande-annonce**.
+> - **Generique a 2 roles** (la « chaise doree ») : ARTISTES (createurs, derives auto) vs
+>   PRODUCTEURS (coprods, saisie admin). Role double « Artiste & Producteur » pour qui
+>   travaille contre des parts. Modeles `FilmCredit` + enum `CreditRole`, action
+>   `getFilmGeneriqueAction`, page admin `/admin/generique`.
+> - **Dossier matiere** par projet dans le Mini Studio (`ProjectFile` + `ProjectFolder` :
+>   script / visuels / sons / docs / divers), alimente le studio et la fabrique de docs.
+
 ### 15.12 (Post-lancement) Trailer Studio v2 — integration du depot « bande annonce »
 **Statut**: A FAIRE (apres lancement) · **Modele**: **Opus** (refonte from scratch d'un module complet)
 > Reconstruire de zero l'outil de creation de video assistee a partir du depot « bande
 > annonce » du fondateur, et l'integrer comme parcours « Creer une bande-annonce » qui
 > alimente directement la piste A du vote. Cadrage en debut de session avec le fondateur.
 > **Prerequis fondateur** : acces au depot « bande annonce » + demo de l'existant.
+
+### 15.13 Modele coprod complet — auto-credit des producteurs (LA SUITE du generique 15.11)
+**Statut**: A FAIRE · **Modele**: **Opus** (donnees + argent, decisions structurantes)
+> **Contexte.** En 15.11, le cote ARTISTES du generique est derive automatiquement
+> (taches validees + auteur du scenario gagnant), mais le cote PRODUCTEURS est saisi
+> **a la main** par l'admin (`FilmCredit`). Cette session automatise le cote producteurs
+> a partir des donnees d'investissement/parts reelles, pour que **tout** le generique se
+> remplisse tout seul.
+>
+> **Ce qu'il faut construire :**
+> 1. **Investissement coprod par film** (aujourd'hui il n'existe qu'une liste d'attente
+>    `CoProducerWaitlistEntry` : email + montant d'intention, sans paiement). Il faut un
+>    vrai enregistrement « qui a mis combien sur quel film », rattache a un compte, avec
+>    statut de paiement (Stripe) et horodatage.
+> 2. **Parts de production** : brancher le modele existant `ProductionShare`
+>    (`shareType` INVESTOR/CREATOR/WORKER, `acquiredVia` INVESTMENT/TASK_REWARD/…) comme
+>    source de verite. Un `acquiredVia = INVESTMENT` => credit PRODUCER ; un artiste avec
+>    des parts obtenues en echange de travail (`WORKER`/TASK_REWARD) => credit
+>    **ARTIST_PRODUCER** (double), exactement le cas « travaille gratos contre des parts ».
+> 3. **Auto-credit** : etendre `getFilmGeneriqueAction` pour fusionner
+>    `FilmCredit` (manuel, garde comme override/exceptions) + `ProductionShare` (auto).
+>    Regle de fusion : la donnee reelle prime, le manuel complete (noms hors-plateforme).
+> 4. **Reconciliation entite film** : `getFilmGeneriqueAction` cible le modele `Film`
+>    (pipeline, par slug), alors que `ProductionShare.filmId` peut pointer `CatalogFilm`
+>    ou `UserFilmProject`. Unifier la cle film (mapping ou champ commun) avant le merge.
+> 5. **Seuils de credit** : definir a partir de quel montant / quelle part un coprod
+>    apparait au generique (eviter le bruit facon « 5 000 lignes »), et l'ordre d'affichage
+>    (producteur executif, coproducteurs, etc.).
+> **Prerequis fondateur** : regles metier (seuil mini d'investissement credite, intitules
+> de roles producteurs), et Stripe en place pour les paiements coprod reels.
 
 ---
 
@@ -817,4 +862,4 @@ version complete en francais** de toute la plateforme.
 
 ---
 
-*Derniere mise a jour: 3 Juillet 2026*
+*Derniere mise a jour: 4 Juillet 2026 (session 15.11 — Mini Studio, generique a 2 roles, matiere projet)*
