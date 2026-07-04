@@ -50,12 +50,12 @@ interface AiredEpisode {
 
 function generateJustAired(): AiredEpisode[] {
   const airedLabels = [
-    'Aired 30 min ago', 'Aired 1h ago', 'Aired 2h ago', 'Aired 3h ago', 'Aired 5h ago',
-    'Aired 8h ago', 'Aired 12h ago', 'Aired yesterday', 'Aired yesterday', 'Aired 2 days ago',
+    'Diffusé il y a 30 min', 'Diffusé il y a 1h', 'Diffusé il y a 2h', 'Diffusé il y a 3h', 'Diffusé il y a 5h',
+    'Diffusé il y a 8h', 'Diffusé il y a 12h', 'Diffusé hier', 'Diffusé hier', 'Diffusé il y a 2 jours',
   ]
   return ALL_TV_SHOWS.slice(0, 10).map((show, i) => ({
     show,
-    episodeTitle: `Episode ${Math.floor(Math.random() * 40) + 1}: ${['The Beginning', 'New Horizons', 'Breaking Point', 'Full Circle', 'The Reveal', 'Hidden Truth', 'Final Stand', 'Rising Tide', 'Crossroads', 'The Return'][i]}`,
+    episodeTitle: `Épisode ${Math.floor(Math.random() * 40) + 1} : ${['Le début', 'Nouveaux horizons', 'Point de rupture', 'La boucle est bouclée', 'La révélation', 'Vérité cachée', 'Dernier combat', 'La marée monte', 'Croisée des chemins', 'Le retour'][i]}`,
     episodeNum: Math.floor(Math.random() * 40) + 1,
     airedAgo: airedLabels[i],
     duration: show.duration,
@@ -108,13 +108,13 @@ export default function TvReplayPage() {
         <div className="relative px-4 sm:px-8 md:px-16 lg:px-20 py-20 sm:py-28 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20 mb-6">
             <Tv className="h-4 w-4 text-[#2563EB]" />
-            <span className="text-[#2563EB] text-sm font-medium">CINEGENY TV Replay</span>
+            <span className="text-[#2563EB] text-sm font-medium">Replay CINEGENY TV</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 font-[family-name:var(--font-playfair)]">
-            Replay — Catch Up on CINEGENY TV
+            Replay — Rattrapez CINEGENY TV
           </h1>
           <p className="text-white/50 text-lg max-w-xl mx-auto">
-            Missed a show? Watch it here within 7 days of airing.
+            Vous avez manqué une série ? Regardez-la ici dans les 7 jours suivant sa diffusion.
           </p>
         </div>
       </div>
@@ -124,7 +124,7 @@ export default function TvReplayPage() {
         <section className="mb-16">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-white font-[family-name:var(--font-playfair)]">
-              Just Aired
+              Diffusé récemment
             </h2>
           </div>
 
@@ -171,7 +171,7 @@ export default function TvReplayPage() {
                     onClick={() => toast.info('Lecture du replay...')}
                     className="mt-3 w-full py-2 rounded-lg bg-[#2563EB]/10 border border-[#2563EB]/20 text-[#2563EB] text-sm font-medium hover:bg-[#2563EB]/20 transition-colors flex items-center justify-center gap-2"
                   >
-                    <Play className="h-3.5 w-3.5" /> Watch Replay
+                    <Play className="h-3.5 w-3.5" /> Regarder le replay
                   </button>
                 </div>
               </div>
@@ -187,13 +187,13 @@ export default function TvReplayPage() {
               <input
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search shows, hosts, genres..."
+                placeholder="Rechercher des séries, animateurs, genres..."
                 className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:border-[#2563EB]/50 focus:outline-none transition-colors"
               />
             </div>
             <div className="flex items-center gap-2 text-white/40 text-sm">
               <Filter className="h-4 w-4" />
-              <span>Filter by genre:</span>
+              <span>Filtrer par genre :</span>
             </div>
           </div>
         </section>
@@ -201,7 +201,7 @@ export default function TvReplayPage() {
         {/* ─── C. BROWSE BY GENRE ─── */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6 font-[family-name:var(--font-playfair)]">
-            Browse by Genre
+            Parcourir par genre
           </h2>
 
           {/* Genre tabs */}
@@ -214,7 +214,7 @@ export default function TvReplayPage() {
                   : 'bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70'
               }`}
             >
-              All
+              Tous
             </button>
             {TV_GENRES.map((genre) => (
               <button
@@ -235,7 +235,7 @@ export default function TvReplayPage() {
           {filteredShows.length === 0 ? (
             <div className="text-center py-16">
               <Tv className="h-14 w-14 text-white/10 mx-auto mb-3" />
-              <p className="text-white/30">No shows found matching your search.</p>
+              <p className="text-white/30">Aucune série ne correspond à votre recherche.</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5">
@@ -261,7 +261,7 @@ export default function TvReplayPage() {
                       {show.title}
                     </h3>
                     <p className="text-white/30 text-xs mt-1">
-                      {show.episodeCount} episodes available
+                      {show.episodeCount} épisodes disponibles
                     </p>
                     <div className="flex items-center gap-2 mt-2">
                       {show.rating >= 4.0 && (
@@ -286,7 +286,7 @@ export default function TvReplayPage() {
           <div className="flex items-center gap-3 mb-6">
             <TrendingUp className="h-5 w-5 text-[#2563EB]" />
             <h2 className="text-2xl font-bold text-white font-[family-name:var(--font-playfair)]">
-              Most Replayed
+              Les plus regardées en replay
             </h2>
           </div>
 
@@ -333,12 +333,12 @@ export default function TvReplayPage() {
                   <Crown className="h-5 w-5 text-[#2563EB]" />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-playfair)]">
-                  Unlock Full Replay Archive
+                  Débloquez les archives complètes du replay
                 </h2>
               </div>
               <p className="text-white/50 leading-relaxed max-w-lg">
-                Free users get access to the last 3 episodes of each show. Upgrade to Premium
-                for the complete replay archive with every episode ever aired on CINEGENY TV.
+                Les utilisateurs gratuits ont accès aux 3 derniers épisodes de chaque série. Passez à Premium
+                pour l&apos;archive complète du replay avec tous les épisodes jamais diffusés sur CINEGENY TV.
               </p>
             </div>
             <Link
@@ -346,7 +346,7 @@ export default function TvReplayPage() {
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#2563EB] hover:bg-[#3B82F6] text-white font-semibold transition-colors text-lg shrink-0"
             >
               <Crown className="h-5 w-5" />
-              Go Premium
+              Passer à Premium
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>

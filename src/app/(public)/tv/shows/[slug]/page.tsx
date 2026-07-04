@@ -19,16 +19,16 @@ import { TvVoteButton } from '@/components/tv/tv-vote-button'
 
 /* ── Episode title templates by genre ── */
 const EPISODE_TITLES: Record<string, string[]> = {
-  'Talk Show': ['Opening Monologue', 'The Hot Take', 'Guest Spotlight', 'Deep Dive', 'The Debate', 'Fan Questions', 'Expert Panel', 'The Reveal', 'Trending Now', 'Season Finale', 'Behind the Scenes', 'Viewer Mailbag'],
-  'News Parody': ['Breaking Glitch', 'The Headlines', 'AI vs Reality', 'Fake or Fact', 'The Spin Room', 'World of Tomorrow', 'Editorial Wars', 'The Correction', 'Special Report', 'Year in Review', 'Live on Location', 'Exclusive Scoop'],
-  'Sketch Comedy': ['Cold Open', 'Character Chaos', 'The Impersonation', 'Tech Gone Wrong', 'The Misunderstanding', 'Office Antics', 'The Pitch', 'Night Out', 'The Reunion', 'Bloopers Special', 'Fan Favorites', 'Rapid Fire'],
-  'Late Night Comedy': ['The Monologue', 'Desk Segment', 'Celebrity Chat', 'The Bit', 'Audience Games', 'Musical Guest', 'The Rant', 'Late Night Lab', 'The Challenge', 'Best Of', 'Unscripted', 'Viewer Requests'],
-  'Reality Competition': ['Auditions', 'First Challenge', 'Team Battle', 'Elimination Night', 'Twists & Turns', 'The Comeback', 'Semi-Finals', 'Wild Card', 'The Showdown', 'Grand Finale', 'Reunion Special', 'Behind the Scenes'],
-  'Drama Series': ['Pilot', 'The Setup', 'Revelations', 'Breaking Point', 'The Fallout', 'Turning Tide', 'Dark Secrets', 'The Alliance', 'Point of No Return', 'Season Finale', 'Aftermath', 'New Horizons'],
-  Documentary: ['Origins', 'The Discovery', 'Hidden Worlds', 'Voices', 'The Evidence', 'Unseen Forces', 'The Archive', 'Breaking Ground', 'Legacy', 'The Final Chapter', 'Epilogue', 'Director\'s Cut'],
-  'Game Show': ['Round One', 'Double or Nothing', 'The Wild Card', 'Speed Round', 'Team Challenge', 'The Gauntlet', 'Bonus Round', 'All or Nothing', 'Championship', 'Grand Prize', 'Tournament Arc', 'The Rematch'],
-  'Cooking Show': ['Mise en Place', 'The Secret Ingredient', 'Under Pressure', 'Fusion Challenge', 'Farm to Table', 'Sweet Temptation', 'The Critics', 'Street Food', 'Master Dish', 'The Feast', 'Holiday Special', 'Mystery Box'],
-  'Kids & Animation': ['A New Friend', 'The Adventure Begins', 'Hidden Powers', 'The Mystery', 'Team Up', 'The Big Race', 'Lost & Found', 'The Storm', 'Heroes Unite', 'The Celebration', 'Dream World', 'Special Mission'],
+  'Talk Show': ['Monologue d\'ouverture', 'Le coup de gueule', 'Invité à l\'honneur', 'Plongée en profondeur', 'Le débat', 'Questions des fans', 'Panel d\'experts', 'La révélation', 'Tendance du moment', 'Final de saison', 'Dans les coulisses', 'Courrier des téléspectateurs'],
+  'News Parody': ['Bug d\'actualité', 'Les gros titres', 'IA contre réalité', 'Vrai ou faux', 'La salle de com\'', 'Le monde de demain', 'Guerre éditoriale', 'Le rectificatif', 'Reportage spécial', 'Rétrospective de l\'année', 'En direct du terrain', 'Scoop exclusif'],
+  'Sketch Comedy': ['Ouverture surprise', 'Chaos de personnages', 'L\'imitation', 'La technologie qui déraille', 'Le malentendu', 'Frasques de bureau', 'Le pitch', 'Soirée entre amis', 'Les retrouvailles', 'Spécial bêtisier', 'Favoris des fans', 'Rafale de sketchs'],
+  'Late Night Comedy': ['Le monologue', 'Segment au bureau', 'Discussion avec une célébrité', 'Le sketch', 'Jeux avec le public', 'Invité musical', 'Le coup de gueule', 'Labo de fin de soirée', 'Le défi', 'Le meilleur de', 'Sans script', 'Demandes des téléspectateurs'],
+  'Reality Competition': ['Auditions', 'Premier défi', 'Bataille d\'équipes', 'Soir d\'élimination', 'Rebondissements', 'Le retour', 'Demi-finales', 'Carte surprise', 'La confrontation', 'Grande finale', 'Spécial retrouvailles', 'Dans les coulisses'],
+  'Drama Series': ['Pilote', 'La mise en place', 'Révélations', 'Point de rupture', 'Les retombées', 'Le tournant', 'Sombres secrets', 'L\'alliance', 'Point de non-retour', 'Final de saison', 'Les conséquences', 'Nouveaux horizons'],
+  Documentary: ['Origines', 'La découverte', 'Mondes cachés', 'Voix', 'Les preuves', 'Forces invisibles', 'Les archives', 'Une avancée décisive', 'L\'héritage', 'Le dernier chapitre', 'Épilogue', 'Version du réalisateur'],
+  'Game Show': ['Manche 1', 'Quitte ou double', 'La carte surprise', 'Manche rapide', 'Défi d\'équipe', 'L\'épreuve ultime', 'Manche bonus', 'Tout ou rien', 'Championnat', 'Le grand prix', 'Phase de tournoi', 'La revanche'],
+  'Cooking Show': ['Mise en place', 'L\'ingrédient secret', 'Sous pression', 'Défi fusion', 'De la ferme à l\'assiette', 'Tentation sucrée', 'Les critiques', 'Cuisine de rue', 'Le plat maître', 'Le festin', 'Spécial fêtes', 'Boîte mystère'],
+  'Kids & Animation': ['Un nouvel ami', 'L\'aventure commence', 'Pouvoirs cachés', 'Le mystère', 'Unis pour gagner', 'La grande course', 'Perdu et retrouvé', 'La tempête', 'Les héros s\'unissent', 'La grande fête', 'Le monde des rêves', 'Mission spéciale'],
 }
 
 /* ── Unsplash thumbnails for episodes ── */
@@ -67,9 +67,9 @@ function getShowPoster(show: TvShowData): string {
 
 /* ── Status display ── */
 const STATUS_MAP: Record<string, { label: string; color: string; bg: string }> = {
-  ongoing: { label: 'Airing', color: 'text-green-400', bg: 'bg-green-500/15 border-green-500/25' },
-  upcoming: { label: 'In Development', color: 'text-yellow-400', bg: 'bg-yellow-500/15 border-yellow-500/25' },
-  completed: { label: 'Completed', color: 'text-white/40', bg: 'bg-white/[0.06] border-white/10' },
+  ongoing: { label: 'En diffusion', color: 'text-green-400', bg: 'bg-green-500/15 border-green-500/25' },
+  upcoming: { label: 'En développement', color: 'text-yellow-400', bg: 'bg-yellow-500/15 border-yellow-500/25' },
+  completed: { label: 'Terminée', color: 'text-white/40', bg: 'bg-white/[0.06] border-white/10' },
 }
 
 /* ── Generate simulated episodes ── */
@@ -93,9 +93,9 @@ function generateEpisodes(show: TvShowData, season: number) {
       id: `${show.id}-s${actualSeason}e${epNum}`,
       episode: epNum,
       season: actualSeason,
-      title: `Episode ${epNum}: ${genreTitles[titleIdx]}`,
+      title: `Épisode ${epNum} : ${genreTitles[titleIdx]}`,
       duration: `${show.duration} min`,
-      airDate: airDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      airDate: airDate.toLocaleDateString('fr-FR', { month: 'short', day: 'numeric', year: 'numeric' }),
       thumbnail: EPISODE_THUMBS[(startEp + i) % EPISODE_THUMBS.length],
       isReleased,
     }
@@ -120,13 +120,13 @@ function generateReviews(show: TvShowData) {
     'Alex M.', 'Jordan K.', 'Taylor S.', 'Morgan W.', 'Casey R.',
     'Riley B.', 'Quinn T.', 'Avery L.', 'Blake N.', 'Drew P.',
   ]
-  const MONTH_POOL = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+  const MONTH_POOL = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.']
   const comments = [
-    `Absolutely hooked on ${show.title}! The writing is phenomenal.`,
-    'One of the best shows on the platform. Every episode keeps you guessing.',
-    `${show.host} brings incredible energy to this show. A must-watch.`,
-    'The production quality is insane for an AI-generated series. Highly recommend.',
-    'Started watching casually, now I can\'t stop. Season finale was mind-blowing.',
+    `Complètement accro à ${show.title} ! L'écriture est phénoménale.`,
+    'Une des meilleures séries de la plateforme. Chaque épisode nous tient en haleine.',
+    `${show.host} apporte une énergie incroyable à cette série. À voir absolument.`,
+    'La qualité de production est bluffante pour une série générée par IA. Je recommande vivement.',
+    'J\'ai commencé à regarder par curiosité, maintenant je ne peux plus m\'arrêter. Le final de saison était bluffant.',
   ]
   const base = hashCode(show.slug)
   return Array.from({ length: 5 }, (_, i) => {
@@ -214,10 +214,10 @@ export default function TvShowDetailPage() {
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#050A15' }}>
         <div className="text-center">
           <Tv className="h-16 w-16 mx-auto mb-4 text-white/20" />
-          <h1 className="text-2xl font-bold text-white mb-2">Show Not Found</h1>
-          <p className="text-white/40 mb-6">The show you are looking for does not exist.</p>
+          <h1 className="text-2xl font-bold text-white mb-2">Série introuvable</h1>
+          <p className="text-white/40 mb-6">La série que vous recherchez n&apos;existe pas.</p>
           <Link href="/tv/shows" className="px-6 py-3 rounded-xl bg-[#2563EB] hover:bg-[#3B82F6] text-white font-semibold text-sm transition-colors">
-            Browse All Shows
+            Parcourir toutes les séries
           </Link>
         </div>
       </div>
@@ -265,7 +265,7 @@ export default function TvShowDetailPage() {
         <div className="container mx-auto max-w-6xl px-6 sm:px-10 md:px-16 py-3 flex items-center gap-2 text-xs text-white/40">
           <Link href="/tv" className="hover:text-[#2563EB] transition-colors">CINEGENY TV</Link>
           <ChevronRight className="h-3 w-3" />
-          <Link href="/tv/shows" className="hover:text-[#2563EB] transition-colors">Shows</Link>
+          <Link href="/tv/shows" className="hover:text-[#2563EB] transition-colors">Séries</Link>
           <ChevronRight className="h-3 w-3" />
           <span className="text-white/60 truncate max-w-[200px]">{show.title}</span>
         </div>
@@ -306,7 +306,7 @@ export default function TvShowDetailPage() {
               </span>
               <span className="flex items-center gap-1 text-xs text-white/50 bg-white/[0.06] rounded-full px-2.5 py-1 border border-white/10">
                 <Eye className="h-3 w-3" />
-                {(show.viewCount / 1000).toFixed(0)}k views
+                {(show.viewCount / 1000).toFixed(0)}k vues
               </span>
             </div>
 
@@ -324,9 +324,9 @@ export default function TvShowDetailPage() {
             <div className="flex items-center gap-4 text-sm text-white/40 mb-6 flex-wrap">
               <span className="flex items-center gap-1.5"><Users className="h-3.5 w-3.5" /> {show.host}</span>
               <span className="flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5" /> {show.premiered}</span>
-              <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" /> {show.duration} min/ep</span>
-              <span className="flex items-center gap-1.5"><Tv className="h-3.5 w-3.5" /> {show.episodeCount} episodes</span>
-              <span className="flex items-center gap-1.5"><Film className="h-3.5 w-3.5" /> {seasonCount} season{seasonCount > 1 ? 's' : ''}</span>
+              <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" /> {show.duration} min/ép</span>
+              <span className="flex items-center gap-1.5"><Tv className="h-3.5 w-3.5" /> {show.episodeCount} épisodes</span>
+              <span className="flex items-center gap-1.5"><Film className="h-3.5 w-3.5" /> {seasonCount} saison{seasonCount > 1 ? 's' : ''}</span>
             </div>
 
             {/* Action buttons */}
@@ -336,7 +336,7 @@ export default function TvShowDetailPage() {
                 className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#2563EB] hover:bg-[#3B82F6] text-white font-bold text-sm transition-colors shadow-lg shadow-[#2563EB]/20"
               >
                 <Play className="h-4 w-4 fill-white" />
-                {showPlayer ? 'Close Player' : 'Watch Latest Episode'}
+                {showPlayer ? 'Fermer le lecteur' : 'Regarder le dernier épisode'}
               </button>
               <button
                 onClick={toggleFavorite}
@@ -347,7 +347,7 @@ export default function TvShowDetailPage() {
                 }`}
               >
                 <Heart className={`h-4 w-4 ${isFavorited ? 'fill-rose-400' : ''}`} />
-                {isFavorited ? 'Favorited' : 'Add to Favorites'}
+                {isFavorited ? 'Ajouté aux favoris' : 'Ajouter aux favoris'}
               </button>
               <SocialShare
                 url={typeof window !== 'undefined' ? window.location.href : `/tv/shows/${show.slug}`}
@@ -368,10 +368,10 @@ export default function TvShowDetailPage() {
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="text-base font-semibold text-white">
-                  Now Playing — {show.title}
+                  En lecture — {show.title}
                 </h2>
                 <p className="text-xs text-white/40 mt-0.5">
-                  Season {selectedSeason} · Latest Episode
+                  Saison {selectedSeason} · Dernier épisode
                 </p>
               </div>
               <button
@@ -379,7 +379,7 @@ export default function TvShowDetailPage() {
                 className="flex items-center gap-1.5 text-xs text-white/40 hover:text-white/80 transition-colors px-3 py-1.5 rounded-lg hover:bg-white/[0.06] border border-transparent hover:border-white/10"
               >
                 <X className="h-4 w-4" />
-                Close
+                Fermer
               </button>
             </div>
             <div className="rounded-2xl overflow-hidden border border-[#2563EB]/20 shadow-2xl shadow-[#2563EB]/10">
@@ -387,12 +387,12 @@ export default function TvShowDetailPage() {
                 filmId={show.id}
                 src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                 poster={show.coverImageUrl || undefined}
-                title={`${show.title} — Latest Episode`}
+                title={`${show.title} — Dernier épisode`}
                 className="w-full aspect-video"
               />
             </div>
             <p className="text-[11px] text-white/20 mt-3 text-center">
-              Demo player — full episode streaming available with CINEGENY subscription
+              Lecteur de démonstration — le streaming complet des épisodes est disponible avec un abonnement CINEGENY
             </p>
           </div>
         </div>
@@ -406,8 +406,8 @@ export default function TvShowDetailPage() {
         <section className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
-              <h3 className="text-lg font-semibold text-white mb-1">Rate This Show</h3>
-              <p className="text-sm text-white/40">Your vote helps shape the future of {show.title}</p>
+              <h3 className="text-lg font-semibold text-white mb-1">Notez cette série</h3>
+              <p className="text-sm text-white/40">Votre vote contribue à façonner l&apos;avenir de {show.title}</p>
             </div>
             <div className="flex items-center gap-4">
               <TvVoteButton
@@ -446,7 +446,7 @@ export default function TvShowDetailPage() {
                     : 'text-white/50 hover:text-white/80'
                 }`}
               >
-                Episodes
+                Épisodes
               </button>
               <button
                 onClick={() => setActiveEpisodesTab('bonus')}
@@ -505,7 +505,7 @@ export default function TvShowDetailPage() {
                           <Play className="h-5 w-5 text-white fill-white ml-0.5" />
                         </div>
                       ) : (
-                        <span className="text-xs font-semibold text-white/70 bg-black/50 rounded-full px-3 py-1.5">Coming Soon</span>
+                        <span className="text-xs font-semibold text-white/70 bg-black/50 rounded-full px-3 py-1.5">Bientôt disponible</span>
                       )}
                     </div>
                     {/* Duration badge */}
@@ -526,9 +526,9 @@ export default function TvShowDetailPage() {
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] text-white/30">{ep.airDate}</span>
                       {ep.isReleased ? (
-                        <span className="text-[10px] font-medium text-[#2563EB]">Watch Now</span>
+                        <span className="text-[10px] font-medium text-[#2563EB]">Regarder</span>
                       ) : (
-                        <span className="text-[10px] font-medium text-white/25">Upcoming</span>
+                        <span className="text-[10px] font-medium text-white/25">À venir</span>
                       )}
                     </div>
                   </div>
@@ -541,7 +541,7 @@ export default function TvShowDetailPage() {
           {activeEpisodesTab === 'bonus' && (
             <div className="space-y-6">
               <p className="text-sm text-white/40 -mt-2">
-                Exclusive behind-the-scenes content for {show.title} subscribers.
+                Contenu exclusif des coulisses réservé aux abonnés de {show.title}.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -565,14 +565,14 @@ export default function TvShowDetailPage() {
                   </div>
                   <div className="p-4">
                     <h3 className="text-sm font-semibold text-white mb-1 group-hover:text-[#2563EB] transition-colors">
-                      Behind the Scenes
+                      Les coulisses
                     </h3>
                     <p className="text-[11px] text-white/35 leading-relaxed">
-                      Follow the crew of {show.title} as they set up lighting, rehearse lines, and prepare for live taping. See the magic before it hits the screen.
+                      Suivez l&apos;équipe de {show.title} pendant qu&apos;elle installe les lumières, répète les répliques et se prépare pour le tournage en direct. Découvrez la magie avant qu&apos;elle n&apos;arrive à l&apos;écran.
                     </p>
                     <div className="flex items-center gap-2 mt-3">
                       <Camera className="h-3 w-3 text-[#2563EB]/60" />
-                      <span className="text-[10px] text-[#2563EB]/70 font-medium">Production Diary</span>
+                      <span className="text-[10px] text-[#2563EB]/70 font-medium">Journal de production</span>
                     </div>
                   </div>
                 </div>
@@ -596,14 +596,14 @@ export default function TvShowDetailPage() {
                   </div>
                   <div className="p-4">
                     <h3 className="text-sm font-semibold text-white mb-1 group-hover:text-[#2563EB] transition-colors">
-                      Interview with {show.host}
+                      Interview avec {show.host}
                     </h3>
                     <p className="text-[11px] text-white/35 leading-relaxed">
-                      An exclusive sit-down with {show.host} — covering the creative vision behind the show, unexpected challenges, and what fans can expect next season.
+                      Un entretien exclusif avec {show.host} — sur la vision créative de la série, les défis inattendus, et ce que les fans peuvent attendre de la saison prochaine.
                     </p>
                     <div className="flex items-center gap-2 mt-3">
                       <Mic2 className="h-3 w-3 text-[#2563EB]/60" />
-                      <span className="text-[10px] text-[#2563EB]/70 font-medium">Exclusive Interview</span>
+                      <span className="text-[10px] text-[#2563EB]/70 font-medium">Interview exclusive</span>
                     </div>
                   </div>
                 </div>
@@ -614,7 +614,7 @@ export default function TvShowDetailPage() {
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.15)_0%,transparent_70%)]" />
                     <Laugh className="h-12 w-12 text-[#2563EB]/40 group-hover:text-[#2563EB]/70 transition-colors duration-300" />
                     <div className="absolute top-2 left-2 text-[10px] font-semibold text-white/80 bg-[#2563EB]/60 rounded px-1.5 py-0.5 uppercase tracking-wider">
-                      Bloopers
+                      Bêtisier
                     </div>
                     <div className="absolute bottom-2 right-2 text-[10px] font-medium text-white/60 bg-black/50 rounded px-1.5 py-0.5">
                       11 min
@@ -627,14 +627,14 @@ export default function TvShowDetailPage() {
                   </div>
                   <div className="p-4">
                     <h3 className="text-sm font-semibold text-white mb-1 group-hover:text-[#2563EB] transition-colors">
-                      Season Bloopers
+                      Bêtisier de la saison
                     </h3>
                     <p className="text-[11px] text-white/35 leading-relaxed">
-                      The funniest outtakes, flubbed lines, and unexpected moments that never made the final cut — compiled into one hilarious reel for the true fans.
+                      Les meilleurs ratés, répliques manquées et moments inattendus qui n&apos;ont jamais été gardés au montage final — compilés dans une bobine hilarante pour les vrais fans.
                     </p>
                     <div className="flex items-center gap-2 mt-3">
                       <Laugh className="h-3 w-3 text-[#2563EB]/60" />
-                      <span className="text-[10px] text-[#2563EB]/70 font-medium">Outtakes Reel</span>
+                      <span className="text-[10px] text-[#2563EB]/70 font-medium">Bobine de bêtisier</span>
                     </div>
                   </div>
                 </div>
@@ -648,15 +648,15 @@ export default function TvShowDetailPage() {
                     <MonitorPlay className="h-5 w-5 text-[#2563EB]" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-white">Unlock all bonus content</p>
-                    <p className="text-xs text-white/35">Subscribe to CINEGENY TV for unlimited access to every show&apos;s bonus library.</p>
+                    <p className="text-sm font-semibold text-white">Débloquez tout le contenu bonus</p>
+                    <p className="text-xs text-white/35">Abonnez-vous à CINEGENY TV pour un accès illimité à la médiathèque bonus de chaque série.</p>
                   </div>
                 </div>
                 <Link
                   href="/pricing"
                   className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#2563EB] hover:bg-[#3B82F6] text-white font-semibold text-sm transition-colors shrink-0 shadow-lg shadow-[#2563EB]/20"
                 >
-                  Subscribe <ArrowRight className="h-3.5 w-3.5" />
+                  S&apos;abonner <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
             </div>
@@ -667,7 +667,7 @@ export default function TvShowDetailPage() {
             CAST & CREW
            ════════════════════════════════════════════════════════════ */}
         <section>
-          <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">Cast & Crew</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">Casting et équipe</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {/* Host card (featured) */}
             <div className="rounded-2xl border border-[#2563EB]/20 bg-[#2563EB]/[0.05] p-4 text-center col-span-1 hover:border-[#2563EB]/40 transition-colors">
@@ -675,7 +675,7 @@ export default function TvShowDetailPage() {
                 <span className="text-xl font-bold text-white">{show.host.charAt(0)}</span>
               </div>
               <p className="text-sm font-semibold text-white truncate">{show.host}</p>
-              <p className="text-[10px] text-[#2563EB] font-medium uppercase tracking-wider mt-1">Host</p>
+              <p className="text-[10px] text-[#2563EB] font-medium uppercase tracking-wider mt-1">Animateur</p>
             </div>
             {/* Cast members */}
             {(show.cast || []).filter(c => c !== show.host).slice(0, 5).map((member, i) => (
@@ -684,7 +684,7 @@ export default function TvShowDetailPage() {
                   <span className="text-xl font-bold text-white">{member.charAt(0)}</span>
                 </div>
                 <p className="text-sm font-medium text-white/70 truncate">{member}</p>
-                <p className="text-[10px] text-white/30 uppercase tracking-wider mt-1">Cast</p>
+                <p className="text-[10px] text-white/30 uppercase tracking-wider mt-1">Acteur</p>
               </div>
             ))}
           </div>
@@ -713,17 +713,17 @@ export default function TvShowDetailPage() {
 
             {/* Show details card */}
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">Show Details</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">Détails de la série</h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { label: 'Host', value: show.host },
+                  { label: 'Animateur', value: show.host },
                   { label: 'Genre', value: show.genre },
-                  { label: 'Premiered', value: show.premiered },
-                  { label: 'Status', value: statusInfo.label },
-                  { label: 'Episodes', value: `${show.episodeCount} total` },
-                  { label: 'Duration', value: `${show.duration} min/ep` },
-                  { label: 'Seasons', value: String(seasonCount) },
-                  { label: 'Year', value: String(show.year) },
+                  { label: 'Diffusion depuis', value: show.premiered },
+                  { label: 'Statut', value: statusInfo.label },
+                  { label: 'Épisodes', value: `${show.episodeCount} au total` },
+                  { label: 'Durée', value: `${show.duration} min/ép` },
+                  { label: 'Saisons', value: String(seasonCount) },
+                  { label: 'Année', value: String(show.year) },
                 ].map(item => (
                   <div key={item.label} className="flex flex-col gap-0.5">
                     <span className="text-[10px] text-white/30 uppercase tracking-wider">{item.label}</span>
@@ -735,7 +735,7 @@ export default function TvShowDetailPage() {
 
             {/* Reviews */}
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">Community Reviews</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">Avis de la communauté</h3>
               <div className="space-y-4">
                 {reviews.slice(0, 4).map((review) => (
                   <div key={review.name} className="border-b border-white/[0.04] pb-4 last:border-0 last:pb-0">
@@ -766,14 +766,14 @@ export default function TvShowDetailPage() {
           <div className="space-y-4">
             {/* Viewer stats */}
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6">
-              <h3 className="text-sm font-medium text-white/50 mb-4 uppercase tracking-wider">Show Stats</h3>
+              <h3 className="text-sm font-medium text-white/50 mb-4 uppercase tracking-wider">Statistiques de la série</h3>
               <div className="text-4xl font-bold text-[#2563EB] mb-1">
-                {show.viewCount.toLocaleString('en-US')}
+                {show.viewCount.toLocaleString('fr-FR')}
               </div>
-              <div className="text-xs text-white/30 mb-4">Total Views</div>
+              <div className="text-xs text-white/30 mb-4">Vues totales</div>
               <div className="space-y-3">
                 <div className="flex justify-between text-xs">
-                  <span className="text-white/40">Popularity</span>
+                  <span className="text-white/40">Popularité</span>
                   <span className="text-[#2563EB] font-medium">{viewersPct}%</span>
                 </div>
                 <div className="h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
@@ -786,11 +786,11 @@ export default function TvShowDetailPage() {
               <div className="grid grid-cols-2 gap-3 mt-5">
                 <div className="text-center">
                   <div className="text-lg font-bold text-white">{show.episodeCount}</div>
-                  <div className="text-[10px] text-white/30">Episodes</div>
+                  <div className="text-[10px] text-white/30">Épisodes</div>
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-bold text-white">{seasonCount}</div>
-                  <div className="text-[10px] text-white/30">Seasons</div>
+                  <div className="text-[10px] text-white/30">Saisons</div>
                 </div>
               </div>
             </div>
@@ -812,16 +812,16 @@ export default function TvShowDetailPage() {
                   />
                 ))}
               </div>
-              <p className="text-xs text-white/30">{Math.floor(show.viewCount / 50)} ratings</p>
+              <p className="text-xs text-white/30">{Math.floor(show.viewCount / 50)} avis</p>
             </div>
 
             {/* Quick links */}
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 space-y-2">
-              <h3 className="text-sm font-medium text-white/50 uppercase tracking-wider mb-3">Explore</h3>
+              <h3 className="text-sm font-medium text-white/50 uppercase tracking-wider mb-3">Découvrir</h3>
               {[
-                { href: '/tv/shows', label: 'All Shows', icon: Tv },
-                { href: '/tv/produce', label: 'Produce a Show', icon: Clapperboard },
-                { href: '/tv/work', label: 'Work With Us', icon: Briefcase },
+                { href: '/tv/shows', label: 'Toutes les séries', icon: Tv },
+                { href: '/tv/produce', label: 'Produire une série', icon: Clapperboard },
+                { href: '/tv/work', label: 'Travailler avec nous', icon: Briefcase },
               ].map(link => (
                 <Link
                   key={link.href}
@@ -843,9 +843,9 @@ export default function TvShowDetailPage() {
         {similarShows.length > 0 && (
           <section>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-xl font-bold text-[#2563EB]">Similar Shows</h2>
+              <h2 className="text-xl font-bold text-[#2563EB]">Séries similaires</h2>
               <Link href="/tv/shows" className="text-xs text-white/25 uppercase tracking-wider hover:text-[#2563EB] transition-colors flex items-center gap-1">
-                View All <ChevronRight className="h-3 w-3" />
+                Tout voir <ChevronRight className="h-3 w-3" />
               </Link>
             </div>
             <div className="relative group/row">
@@ -868,7 +868,7 @@ export default function TvShowDetailPage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end p-3">
                         <span className="text-[10px] font-medium text-white/80 uppercase tracking-wider flex items-center gap-1">
-                          <ArrowRight className="h-3 w-3" /> View
+                          <ArrowRight className="h-3 w-3" /> Voir
                         </span>
                       </div>
                       {/* Rating badge */}
@@ -878,7 +878,7 @@ export default function TvShowDetailPage() {
                       </div>
                     </div>
                     <p className="text-xs font-medium text-white/60 truncate group-hover/card:text-white transition-colors duration-200">{sf.title}</p>
-                    <p className="text-[10px] text-white/25 mt-0.5">{sf.episodeCount} eps &middot; {sf.host}</p>
+                    <p className="text-[10px] text-white/25 mt-0.5">{sf.episodeCount} ép. &middot; {sf.host}</p>
                   </Link>
                 ))}
               </div>
@@ -905,20 +905,20 @@ export default function TvShowDetailPage() {
                   </div>
                   <div>
                     <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 bg-clip-text text-transparent">
-                      Become a Co-Producer
+                      Devenir co-producteur
                     </h2>
-                    <p className="text-xs text-amber-500/50 uppercase tracking-wider font-medium mt-0.5">Fund This Show</p>
+                    <p className="text-xs text-amber-500/50 uppercase tracking-wider font-medium mt-0.5">Financer cette série</p>
                   </div>
                 </div>
 
                 <p className="text-white/50 max-w-2xl text-lg leading-relaxed">
-                  Invest in {show.title} and receive a share of the revenue. Revenue is split 25/25/25/25 between creators, investors, platform, and community.
+                  Investissez dans {show.title} et recevez une part des revenus. Les revenus sont répartis 25/25/25/25 entre créateurs, investisseurs, plateforme et communauté.
                 </p>
 
                 {/* Funding progress */}
                 <div className="rounded-xl border border-amber-500/15 bg-white/[0.02] p-5">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm text-white/40">Funding Progress</span>
+                    <span className="text-sm text-white/40">Progression du financement</span>
                     <span className="text-sm font-bold text-amber-400">{fundingPct}%</span>
                   </div>
                   <div className="h-3 bg-white/[0.06] rounded-full overflow-hidden relative">
@@ -930,17 +930,17 @@ export default function TvShowDetailPage() {
                     </div>
                   </div>
                   <div className="flex justify-between text-xs text-white/25 mt-2">
-                    <span>${fundingAmount.toLocaleString()} raised</span>
-                    <span>Goal: ${(120000).toLocaleString()}</span>
+                    <span>{fundingAmount.toLocaleString()} $ collectés</span>
+                    <span>Objectif : {(120000).toLocaleString()} $</span>
                   </div>
                 </div>
 
                 {/* Benefits */}
                 <div className="grid sm:grid-cols-3 gap-4">
                   {[
-                    { icon: Coins, title: 'Invest from $10', desc: 'Co-production tokens accessible to all' },
-                    { icon: MonitorPlay, title: 'Vote on Episodes', desc: 'Participate in creative decisions' },
-                    { icon: Crown, title: 'Credits & Revenue', desc: 'Your name in credits + revenue share' },
+                    { icon: Coins, title: 'Investissez dès 10 $', desc: 'Tokens de co-production accessibles à tous' },
+                    { icon: MonitorPlay, title: 'Votez sur les épisodes', desc: 'Participez aux décisions créatives' },
+                    { icon: Crown, title: 'Crédits et revenus', desc: 'Votre nom au générique + une part des revenus' },
                   ].map((b) => (
                     <div key={b.title} className="rounded-xl border border-amber-500/10 bg-white/[0.02] p-4 text-center hover:border-amber-500/25 transition-colors">
                       <b.icon className="h-6 w-6 text-amber-400/60 mx-auto mb-2" />
@@ -956,12 +956,12 @@ export default function TvShowDetailPage() {
                     <button className="relative group px-8 py-4 rounded-xl font-bold text-base text-black bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:via-amber-200 hover:to-amber-400 transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02] border-2 border-amber-500/40">
                       <span className="flex items-center gap-2">
                         <Coins className="h-5 w-5" />
-                        Become Co-Producer
+                        Devenir co-producteur
                         <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </span>
                     </button>
                   </Link>
-                  <p className="text-xs text-white/25">Revenue sharing: 25% creators / 25% investors / 25% platform / 25% community</p>
+                  <p className="text-xs text-white/25">Partage des revenus : 25% créateurs / 25% investisseurs / 25% plateforme / 25% communauté</p>
                 </div>
               </div>
             </div>
@@ -978,9 +978,9 @@ export default function TvShowDetailPage() {
                 <Shield className="h-5 w-5 text-emerald-400" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-emerald-400 mb-2">Smart Contract Secured</h3>
+                <h3 className="text-base font-bold text-emerald-400 mb-2">Sécurisé par smart contract</h3>
                 <p className="text-sm text-white/50 leading-relaxed">
-                  All show tokens are deployed on Ethereum. These are utility tokens that grant voting rights and revenue sharing access. Tokens are non-transferable and tied to your CINEGENY account.
+                  Tous les tokens de série sont déployés sur Ethereum. Ce sont des utility tokens qui confèrent des droits de vote et un accès au partage des revenus. Les tokens sont non transférables et liés à votre compte CINEGENY.
                 </p>
               </div>
             </div>
@@ -1000,8 +1000,8 @@ export default function TvShowDetailPage() {
                 <Tv className="h-5 w-5 text-[#2563EB]" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white group-hover/nav:text-[#2563EB] transition-colors">Browse Shows</h4>
-                <p className="text-[10px] text-white/30">Explore all {ALL_TV_SHOWS.length} shows</p>
+                <h4 className="text-sm font-semibold text-white group-hover/nav:text-[#2563EB] transition-colors">Parcourir les séries</h4>
+                <p className="text-[10px] text-white/30">Découvrez les {ALL_TV_SHOWS.length} séries</p>
               </div>
               <ChevronRight className="h-4 w-4 text-white/20 ml-auto group-hover/nav:text-[#2563EB] transition-colors" />
             </div>
@@ -1015,8 +1015,8 @@ export default function TvShowDetailPage() {
                 <Clapperboard className="h-5 w-5 text-amber-400" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white group-hover/nav:text-amber-400 transition-colors">Produce</h4>
-                <p className="text-[10px] text-white/30">Create your own show</p>
+                <h4 className="text-sm font-semibold text-white group-hover/nav:text-amber-400 transition-colors">Produire</h4>
+                <p className="text-[10px] text-white/30">Créez votre propre série</p>
               </div>
               <ChevronRight className="h-4 w-4 text-white/20 ml-auto group-hover/nav:text-amber-400 transition-colors" />
             </div>
@@ -1030,8 +1030,8 @@ export default function TvShowDetailPage() {
                 <Briefcase className="h-5 w-5 text-emerald-400" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white group-hover/nav:text-emerald-400 transition-colors">Work</h4>
-                <p className="text-[10px] text-white/30">Join the CINEGENY team</p>
+                <h4 className="text-sm font-semibold text-white group-hover/nav:text-emerald-400 transition-colors">Travailler</h4>
+                <p className="text-[10px] text-white/30">Rejoignez l&apos;équipe CINEGENY</p>
               </div>
               <ChevronRight className="h-4 w-4 text-white/20 ml-auto group-hover/nav:text-emerald-400 transition-colors" />
             </div>

@@ -92,7 +92,7 @@ function ShowCard({ show, index }: { show: TvShowData; index?: number }) {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
             </span>
-            <span className="text-[8px] font-bold text-white uppercase">Live</span>
+            <span className="text-[8px] font-bold text-white uppercase">En direct</span>
           </div>
         )}
 
@@ -100,7 +100,7 @@ function ShowCard({ show, index }: { show: TvShowData; index?: number }) {
         <div className="absolute bottom-0 left-0 right-0 p-2 opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-2 group-hover/card:translate-y-0">
           <p className="text-[10px] text-white/70 line-clamp-2 leading-relaxed">{show.synopsis}</p>
           <div className="flex items-center gap-1 mt-1">
-            <span className="text-[8px] text-[#2563EB] font-semibold">{show.episodeCount} eps</span>
+            <span className="text-[8px] text-[#2563EB] font-semibold">{show.episodeCount} ép.</span>
             <span className="text-[8px] text-white/30">|</span>
             <span className="text-[8px] text-white/40">{show.duration}min</span>
           </div>
@@ -216,7 +216,7 @@ export default function TvHomePage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
               </span>
-              <span className="text-[11px] font-bold text-red-400 uppercase tracking-wider">Live Now</span>
+              <span className="text-[11px] font-bold text-red-400 uppercase tracking-wider">En direct</span>
             </div>
           )}
 
@@ -232,19 +232,19 @@ export default function TvHomePage() {
               href={`/tv/shows/${featuredShow.slug}`}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#2563EB] hover:bg-[#3B82F6] text-white font-bold text-sm transition-all duration-300 shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/40 hover:-translate-y-0.5"
             >
-              <Play className="h-4 w-4" fill="white" /> Watch Now
+              <Play className="h-4 w-4" fill="white" /> Regarder
             </Link>
             <button
               onClick={() => toast.success(`"${featuredShow.title}" ajouté à votre liste`)}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/10 hover:bg-white/15 text-white font-semibold text-sm border border-white/[0.08] transition-all duration-300 hover:-translate-y-0.5"
             >
-              + Add to List
+              + Ajouter à ma liste
             </button>
           </div>
 
           {/* Metadata */}
           <div className="flex items-center gap-4 mt-4 text-[11px] text-white/30">
-            <span className="flex items-center gap-1"><Tv className="h-3 w-3" /> {featuredShow.episodeCount} Episodes</span>
+            <span className="flex items-center gap-1"><Tv className="h-3 w-3" /> {featuredShow.episodeCount} épisodes</span>
             <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {featuredShow.duration}min</span>
             <span className="flex items-center gap-1"><Star className="h-3 w-3 text-amber-400/60" /> {featuredShow.rating}</span>
             <span className="px-1.5 py-0.5 rounded border border-[#2563EB]/20 bg-[#2563EB]/10 text-[#60A5FA] font-semibold">{featuredShow.genre}</span>
@@ -265,11 +265,11 @@ export default function TvHomePage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2563EB] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2563EB]" />
               </span>
-              <span className="text-[10px] text-white/30 font-medium">{viewerCount !== null ? viewerCount.toLocaleString() : '---'} viewers</span>
+              <span className="text-[10px] text-white/30 font-medium">{viewerCount !== null ? viewerCount.toLocaleString() : '---'} spectateurs</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Monitor className="h-3 w-3 text-[#2563EB]/60" />
-              <span className="text-[10px] text-white/30 font-medium">{showCount !== null ? showCount.toLocaleString() : '---'} shows streaming</span>
+              <span className="text-[10px] text-white/30 font-medium">{showCount !== null ? showCount.toLocaleString() : '---'} séries en streaming</span>
             </div>
           </div>
 
@@ -378,34 +378,34 @@ export default function TvHomePage() {
               </div>
 
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-3 tracking-tight leading-[1.1]">
-                Your Show Awaits
+                Votre série vous attend
               </h2>
               <p className="text-sm md:text-base text-white/40 max-w-lg mb-8 leading-relaxed">
-                Build the next great series. Create original content, fund productions, or contribute your talents to shows being made right now.
+                Créez la prochaine grande série. Imaginez du contenu original, financez des productions, ou mettez vos talents au service de séries en cours de fabrication.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
                 {[
                   {
                     icon: Sparkles,
-                    title: 'CREATE',
-                    desc: 'Write, direct, and produce your own original series on CINEGENY TV.',
+                    title: 'CRÉER',
+                    desc: 'Écrivez, réalisez et produisez votre propre série originale sur CINEGENY TV.',
                     href: '/tv/create',
                     accent: '#2563EB',
                     image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=400&h=500&q=80',
                   },
                   {
                     icon: DollarSign,
-                    title: 'PRODUCE',
-                    desc: 'Crowdfund your show. Rally the community to back your vision.',
+                    title: 'PRODUIRE',
+                    desc: 'Financez votre série grâce au crowdfunding. Ralliez la communauté autour de votre vision.',
                     href: '/tv/produce',
                     accent: '#10B981',
                     image: 'https://images.unsplash.com/photo-1504711434969-e33886168d9c?auto=format&fit=crop&w=400&h=500&q=80',
                   },
                   {
                     icon: Briefcase,
-                    title: 'WORK',
-                    desc: 'Contribute scripts, music, VFX, and more. Earn for every task.',
+                    title: 'TRAVAILLER',
+                    desc: 'Contribuez aux scripts, à la musique, aux effets visuels et plus encore. Gagnez de l\'argent pour chaque tâche.',
                     href: '/tv/work',
                     accent: '#F59E0B',
                     image: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=400&h=500&q=80',
@@ -439,7 +439,7 @@ export default function TvHomePage() {
                       <h3 className="text-lg md:text-xl font-black text-white tracking-wide mb-1">{card.title}</h3>
                       <p className="text-[11px] md:text-[12px] text-white/40 leading-relaxed group-hover:text-white/60 transition-colors line-clamp-2">{card.desc}</p>
                       <div className="flex items-center gap-1.5 mt-2.5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                        <span className="text-[11px] font-semibold" style={{ color: card.accent }}>Explore</span>
+                        <span className="text-[11px] font-semibold" style={{ color: card.accent }}>Découvrir</span>
                         <ArrowRight className="h-3 w-3" style={{ color: card.accent }} />
                       </div>
                     </div>
@@ -469,13 +469,13 @@ export default function TvHomePage() {
             <div className="flex items-center gap-2 mb-1">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/10 text-[10px] font-bold text-[#2563EB] uppercase tracking-wider">
                 <TrendingUp className="h-3 w-3" />
-                Trending
+                Tendances
               </span>
             </div>
             <h2 className="text-base md:text-lg lg:text-xl font-black text-white/90 tracking-tight">
-              Trending on CINEGENY TV
+              Tendances sur CINEGENY TV
             </h2>
-            <p className="text-[11px] text-white/30 mt-1">The most-watched shows right now</p>
+            <p className="text-[11px] text-white/30 mt-1">Les séries les plus regardées en ce moment</p>
           </div>
 
           <div
@@ -534,13 +534,13 @@ export default function TvHomePage() {
             <div className="flex items-center gap-2 mb-1">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/10 text-[10px] font-bold text-[#2563EB] uppercase tracking-wider">
                 <Rocket className="h-3 w-3" />
-                Coming Soon
+                Bientôt disponible
               </span>
             </div>
             <h2 className="text-base md:text-lg lg:text-xl font-black text-white/90 tracking-tight">
-              In Development
+              En développement
             </h2>
-            <p className="text-[11px] text-white/30 mt-1 mb-4">Shows in early stages — vote, invest, or volunteer to work on them</p>
+            <p className="text-[11px] text-white/30 mt-1 mb-4">Séries en développement — votez, investissez ou participez bénévolement</p>
           </div>
 
           <div className="relative group/dev">
@@ -595,7 +595,7 @@ export default function TvHomePage() {
                       {/* Status badge */}
                       <div className="absolute top-3 left-3">
                         <span className="px-2 py-0.5 rounded text-[9px] font-bold bg-[#2563EB]/80 text-white backdrop-blur-sm">
-                          Coming Soon
+                          Bientôt disponible
                         </span>
                       </div>
                       {/* Bottom overlay */}
@@ -608,16 +608,16 @@ export default function TvHomePage() {
                     <div className="p-3 space-y-2">
                       <p className="text-[10px] text-white/40 line-clamp-2 leading-relaxed">{show.synopsis}</p>
                       <div className="flex items-center gap-1.5">
-                        <Link href="/community" className="px-2 py-0.5 rounded text-[9px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/25 transition-colors">Vote</Link>
-                        <Link href="/invest" className="px-2 py-0.5 rounded text-[9px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/20 hover:bg-amber-500/25 transition-colors">Invest</Link>
-                        <Link href="/work" className="px-2 py-0.5 rounded text-[9px] font-bold bg-[#2563EB]/15 text-[#60A5FA] border border-[#2563EB]/20 hover:bg-[#2563EB]/25 transition-colors">Work</Link>
+                        <Link href="/community" className="px-2 py-0.5 rounded text-[9px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/25 transition-colors">Voter</Link>
+                        <Link href="/invest" className="px-2 py-0.5 rounded text-[9px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/20 hover:bg-amber-500/25 transition-colors">Investir</Link>
+                        <Link href="/work" className="px-2 py-0.5 rounded text-[9px] font-bold bg-[#2563EB]/15 text-[#60A5FA] border border-[#2563EB]/20 hover:bg-[#2563EB]/25 transition-colors">Travailler</Link>
                         <button onClick={() => toast.success(`"${show.title}" ajouté à votre liste`)} className="px-2 py-0.5 rounded text-[9px] font-bold bg-white/10 text-white/50 border border-white/10 hover:bg-white/20 transition-colors">+ Liste</button>
                       </div>
                       {/* Funding bar */}
                       <div className="h-1 rounded-full bg-white/[0.06] overflow-hidden">
                         <div className="h-full rounded-full bg-[#2563EB]" style={{ width: `${fundingPct}%` }} />
                       </div>
-                      <p className="text-[10px] text-white/25">${raised.toLocaleString()} raised of ${goal.toLocaleString()}</p>
+                      <p className="text-[10px] text-white/25">{raised.toLocaleString()} $ collectés sur {goal.toLocaleString()} $</p>
                     </div>
                   </div>
                 )
@@ -633,19 +633,19 @@ export default function TvHomePage() {
           <div className="h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
           <div className="px-4 sm:px-8 md:px-16 lg:px-20 mt-8">
             <h2 className="text-base md:text-lg font-black text-white/90 tracking-tight mb-6">
-              Explore CINEGENY TV
+              Découvrir CINEGENY TV
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
               {[
-                { icon: Film, label: 'All Shows', href: '/tv/shows', color: '#2563EB' },
+                { icon: Film, label: 'Toutes les séries', href: '/tv/shows', color: '#2563EB' },
                 { icon: Play, label: 'Replay', href: '/tv/replay', color: '#8B5CF6' },
-                { icon: Sparkles, label: 'Create a Show', href: '/tv/create', color: '#2563EB' },
-                { icon: DollarSign, label: 'Produce', href: '/tv/produce', color: '#10B981' },
-                { icon: Briefcase, label: 'Work on Shows', href: '/tv/work', color: '#F59E0B' },
-                { icon: TrendingUp, label: 'Invest', href: '/tv/invest', color: '#6366F1' },
-                { icon: Mic, label: 'Act in Shows', href: '/tv/act', color: '#EC4899' },
-                { icon: Users, label: 'TV Hosts', href: '/tv/hosts', color: '#0EA5E9' },
-                { icon: Heart, label: 'Community', href: '/tv/community', color: '#F97316' },
+                { icon: Sparkles, label: 'Créer une série', href: '/tv/create', color: '#2563EB' },
+                { icon: DollarSign, label: 'Produire', href: '/tv/produce', color: '#10B981' },
+                { icon: Briefcase, label: 'Travailler sur des séries', href: '/tv/work', color: '#F59E0B' },
+                { icon: TrendingUp, label: 'Investir', href: '/tv/invest', color: '#6366F1' },
+                { icon: Mic, label: 'Jouer dans des séries', href: '/tv/act', color: '#EC4899' },
+                { icon: Users, label: 'Animateurs TV', href: '/tv/hosts', color: '#0EA5E9' },
+                { icon: Heart, label: 'Communauté', href: '/tv/community', color: '#F97316' },
               ].map((item) => (
                 <Link
                   key={item.href}

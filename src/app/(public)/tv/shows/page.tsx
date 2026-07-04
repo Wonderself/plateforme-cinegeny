@@ -9,16 +9,16 @@ import type { TvShowData } from '@/data/tv-shows'
 
 /* ── Status mapping ── */
 const STATUS_MAP: Record<string, { label: string; color: string; bg: string }> = {
-  ongoing: { label: 'Airing', color: 'text-green-400', bg: 'bg-green-500/15 border-green-500/25' },
-  upcoming: { label: 'In Development', color: 'text-yellow-400', bg: 'bg-yellow-500/15 border-yellow-500/25' },
-  completed: { label: 'Completed', color: 'text-white/40', bg: 'bg-white/[0.06] border-white/10' },
+  ongoing: { label: 'En diffusion', color: 'text-green-400', bg: 'bg-green-500/15 border-green-500/25' },
+  upcoming: { label: 'En développement', color: 'text-yellow-400', bg: 'bg-yellow-500/15 border-yellow-500/25' },
+  completed: { label: 'Terminée', color: 'text-white/40', bg: 'bg-white/[0.06] border-white/10' },
 }
 
 /* ── Sort options ── */
 type SortKey = 'popular' | 'newest' | 'az'
 const SORT_OPTIONS: { value: SortKey; label: string }[] = [
-  { value: 'popular', label: 'Popular' },
-  { value: 'newest', label: 'Newest' },
+  { value: 'popular', label: 'Popularité' },
+  { value: 'newest', label: 'Plus récentes' },
   { value: 'az', label: 'A-Z' },
 ]
 
@@ -115,12 +115,12 @@ export default function TvShowsCatalogPage() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20 text-[#2563EB] text-sm mb-8">
             <MonitorPlay className="h-4 w-4" />
-            <span className="font-medium">CINEGENY TV Shows</span>
+            <span className="font-medium">Séries CINEGENY TV</span>
           </div>
 
           {/* Title */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 text-white">
-            TV Shows &{' '}
+            Catalogue des{' '}
             <span
               style={{
                 background: 'linear-gradient(135deg, #2563EB 0%, #60A5FA 40%, #2563EB 70%, #1D4ED8 100%)',
@@ -129,20 +129,20 @@ export default function TvShowsCatalogPage() {
                 backgroundClip: 'text',
               }}
             >
-              Series
+              séries TV
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-white/50 text-lg max-w-2xl mx-auto mb-14 leading-relaxed">
-            Browse our complete catalog of AI-powered TV shows, from gripping dramas to hilarious comedies and cutting-edge documentaries.
+            Parcourez notre catalogue complet de séries TV propulsées par l&apos;IA, des drames captivants aux comédies hilarantes en passant par des documentaires à la pointe.
           </p>
 
           {/* Stats row */}
           <div className="grid grid-cols-3 gap-6 sm:gap-10 max-w-2xl mx-auto">
             {[
-              { label: 'Shows', value: totalShows, icon: Tv },
-              { label: 'Episodes', value: totalEpisodes, icon: Layers },
+              { label: 'Séries', value: totalShows, icon: Tv },
+              { label: 'Épisodes', value: totalEpisodes, icon: Layers },
               { label: 'Genres', value: totalGenres, icon: Film },
             ].map((stat) => (
               <div
@@ -153,7 +153,7 @@ export default function TvShowsCatalogPage() {
                   <stat.icon className="h-4 w-4 text-[#2563EB]" />
                 </div>
                 <div className="text-2xl sm:text-3xl font-bold text-[#2563EB]">
-                  {stat.value > 0 ? stat.value.toLocaleString('en-US') : '--'}
+                  {stat.value > 0 ? stat.value.toLocaleString('fr-FR') : '--'}
                 </div>
                 <div className="text-[10px] sm:text-xs text-white/40 uppercase tracking-wider font-medium mt-1">
                   {stat.label}
@@ -187,7 +187,7 @@ export default function TvShowsCatalogPage() {
                       : 'bg-white/[0.06] border-white/10 text-white/60 hover:bg-white/10'
                   }`}
                 >
-                  {g === 'All' ? 'All Genres' : g}
+                  {g === 'All' ? 'Tous les genres' : g}
                 </button>
               ))}
             </div>
@@ -202,10 +202,10 @@ export default function TvShowsCatalogPage() {
                 onChange={(e) => { setStatusFilter(e.target.value); setVisibleCount(PAGE_SIZE) }}
                 className="appearance-none bg-white/[0.06] border border-white/10 text-white/70 text-sm rounded-xl px-4 py-2.5 pr-9 focus:outline-none focus:border-[#2563EB]/50 transition-colors"
               >
-                <option value="All">All Status</option>
-                <option value="Airing">Airing</option>
-                <option value="In Development">In Development</option>
-                <option value="Completed">Completed</option>
+                <option value="All">Tous les statuts</option>
+                <option value="Airing">En diffusion</option>
+                <option value="In Development">En développement</option>
+                <option value="Completed">Terminée</option>
               </select>
               <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-white/30 pointer-events-none" />
             </div>
@@ -215,7 +215,7 @@ export default function TvShowsCatalogPage() {
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/30" />
               <input
                 type="text"
-                placeholder="Search shows..."
+                placeholder="Rechercher des séries..."
                 value={search}
                 onChange={(e) => { setSearch(e.target.value); setVisibleCount(PAGE_SIZE) }}
                 className="w-full bg-white/[0.06] border border-white/10 text-white text-sm rounded-xl pl-10 pr-4 py-2.5 placeholder:text-white/25 focus:outline-none focus:border-[#2563EB]/50 transition-colors"
@@ -243,8 +243,8 @@ export default function TvShowsCatalogPage() {
           {visible.length === 0 ? (
             <div className="text-center py-24 text-white/40">
               <Tv className="h-16 w-16 mx-auto mb-4 opacity-30" />
-              <p className="text-xl text-white/50">No shows found</p>
-              <p className="text-sm mt-2 text-white/40">Try adjusting your filters or search query.</p>
+              <p className="text-xl text-white/50">Aucune série trouvée</p>
+              <p className="text-sm mt-2 text-white/40">Essayez d&apos;ajuster vos filtres ou votre recherche.</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 sm:gap-6">
@@ -297,13 +297,13 @@ export default function TvShowsCatalogPage() {
 
                         {/* Episodes */}
                         <p className="text-[10px] text-white/30 mb-3">
-                          {show.episodeCount} episodes &middot; {show.duration} min
+                          {show.episodeCount} épisodes &middot; {show.duration} min
                         </p>
 
                         {/* Viewers progress bar */}
                         <div className="space-y-1.5 mt-auto">
                           <div className="flex justify-between text-[10px]">
-                            <span className="text-white/30">Viewers</span>
+                            <span className="text-white/30">Spectateurs</span>
                             <span className="text-[#2563EB] font-medium">{viewersPct}%</span>
                           </div>
                           <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
@@ -330,7 +330,7 @@ export default function TvShowsCatalogPage() {
                 onClick={() => setVisibleCount(prev => prev + PAGE_SIZE)}
                 className="px-8 py-3 rounded-xl bg-[#2563EB] hover:bg-[#3B82F6] text-white font-semibold text-sm transition-colors duration-300"
               >
-                Load More ({filtered.length - visibleCount} remaining)
+                Charger plus ({filtered.length - visibleCount} restantes)
               </button>
             </div>
           )}
@@ -338,7 +338,7 @@ export default function TvShowsCatalogPage() {
           {/* Result count */}
           <div className="text-center mt-6">
             <p className="text-xs text-white/25">
-              Showing {visible.length} of {filtered.length} shows
+              {visible.length} série{visible.length > 1 ? 's' : ''} sur {filtered.length} affichée{visible.length > 1 ? 's' : ''}
             </p>
           </div>
         </div>

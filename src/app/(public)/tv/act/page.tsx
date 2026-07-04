@@ -52,48 +52,48 @@ const ROLES: {
   icon: React.ElementType
   description: string
 }[] = [
-  { id: 'host', label: 'Host', icon: MonitorPlay, description: 'Lead the entire show' },
-  { id: 'cohost', label: 'Co-Host', icon: Users, description: 'Share the spotlight' },
-  { id: 'correspondent', label: 'Correspondent', icon: Radio, description: 'Report from the field' },
-  { id: 'guest', label: 'Guest Star', icon: Star, description: 'Special episode appearance' },
-  { id: 'voice', label: 'Voice Actor', icon: Mic, description: 'Lend your voice to characters' },
-  { id: 'narrator', label: 'Narrator', icon: BookOpen, description: 'Tell the story in your voice' },
+  { id: 'host', label: 'Animateur', icon: MonitorPlay, description: 'Menez toute la série' },
+  { id: 'cohost', label: 'Co-animateur', icon: Users, description: 'Partagez la vedette' },
+  { id: 'correspondent', label: 'Correspondant', icon: Radio, description: 'Reportez depuis le terrain' },
+  { id: 'guest', label: 'Invité vedette', icon: Star, description: 'Apparition dans un épisode spécial' },
+  { id: 'voice', label: 'Comédien voix', icon: Mic, description: 'Prêtez votre voix aux personnages' },
+  { id: 'narrator', label: 'Narrateur', icon: BookOpen, description: 'Racontez l\'histoire de votre voix' },
 ]
 
 /* ── AI Avatar gallery ── */
 
 const AI_AVATARS = [
-  { name: 'Maya Chen', specialty: 'News Anchor', style: 'Professional, authoritative' },
-  { name: 'Alex Rivera', specialty: 'Late Night Host', style: 'Witty, charming' },
-  { name: 'Sam Taylor', specialty: 'Documentary Narrator', style: 'Warm, informative' },
-  { name: 'Jordan Blake', specialty: 'Game Show Host', style: 'Energetic, fun' },
-  { name: 'Riley Morgan', specialty: 'Talk Show Host', style: 'Empathetic, engaging' },
-  { name: 'Casey Wren', specialty: 'Sports Commentator', style: 'Dynamic, passionate' },
-  { name: 'Drew Palmer', specialty: 'Cooking Show Host', style: 'Friendly, instructive' },
-  { name: 'Quinn Fox', specialty: 'Kids Show Presenter', style: 'Playful, educational' },
-  { name: 'Reese Nova', specialty: 'Sci-Fi Narrator', style: 'Mysterious, deep' },
-  { name: 'Avery Storm', specialty: 'Reality TV Host', style: 'Bold, dramatic' },
-  { name: 'Harper Voss', specialty: 'Interview Specialist', style: 'Thoughtful, probing' },
-  { name: 'Skyler Faye', specialty: 'Music Show VJ', style: 'Trendy, upbeat' },
+  { name: 'Maya Chen', specialty: 'Présentatrice JT', style: 'Professionnelle, sérieuse' },
+  { name: 'Alex Rivera', specialty: 'Animateur late night', style: 'Spirituel, charmant' },
+  { name: 'Sam Taylor', specialty: 'Narrateur de documentaire', style: 'Chaleureux, informatif' },
+  { name: 'Jordan Blake', specialty: 'Animateur de jeu télévisé', style: 'Énergique, fun' },
+  { name: 'Riley Morgan', specialty: 'Animateur de talk-show', style: 'Empathique, captivant' },
+  { name: 'Casey Wren', specialty: 'Commentateur sportif', style: 'Dynamique, passionné' },
+  { name: 'Drew Palmer', specialty: 'Animateur culinaire', style: 'Amical, pédagogue' },
+  { name: 'Quinn Fox', specialty: 'Présentateur jeunesse', style: 'Ludique, éducatif' },
+  { name: 'Reese Nova', specialty: 'Narrateur de science-fiction', style: 'Mystérieux, profond' },
+  { name: 'Avery Storm', specialty: 'Animateur de télé-réalité', style: 'Audacieux, théâtral' },
+  { name: 'Harper Voss', specialty: 'Spécialiste des interviews', style: 'Réfléchi, incisif' },
+  { name: 'Skyler Faye', specialty: 'VJ musical', style: 'Tendance, entraînant' },
 ]
 
 /* ── Portfolio placeholders ── */
 
 const PORTFOLIO_PLACEHOLDERS = [
-  { title: 'The Midnight Algorithm', role: 'Host', character: 'Lead AI Host' },
-  { title: 'Cinema Kitchen', role: 'Co-Host', character: 'Sous Chef Presenter' },
-  { title: 'The Daily Glitch', role: 'Correspondent', character: 'Field Reporter' },
-  { title: 'Pixel Pals', role: 'Voice', character: 'Character Voice' },
+  { title: 'The Midnight Algorithm', role: 'Animateur', character: 'Animateur IA principal' },
+  { title: 'Cinema Kitchen', role: 'Co-animateur', character: 'Présentateur sous-chef' },
+  { title: 'The Daily Glitch', role: 'Correspondant', character: 'Reporter de terrain' },
+  { title: 'Pixel Pals', role: 'Voix', character: 'Voix de personnage' },
 ]
 
 const SAMPLE_TEXT =
-  'Good evening, and welcome to the show. Tonight, we have a truly extraordinary story that will change the way you see the world...'
+  'Bonsoir, et bienvenue dans l\'émission. Ce soir, nous avons une histoire vraiment extraordinaire qui va changer votre vision du monde...'
 
 const EXPORT_OPTIONS: { id: ExportFormat; label: string; detail: string; icon: React.ElementType }[] = [
-  { id: 'mp4-1080', label: 'MP4 (1080p)', detail: 'Standard HD export', icon: FileVideo },
-  { id: 'mp4-4k', label: 'MP4 (4K)', detail: 'Ultra HD broadcast quality', icon: FileVideo },
-  { id: 'gif', label: 'GIF', detail: 'Animated preview clip', icon: ImageIcon },
-  { id: 'share', label: 'Share Link', detail: 'Shareable public URL', icon: Share2 },
+  { id: 'mp4-1080', label: 'MP4 (1080p)', detail: 'Export HD standard', icon: FileVideo },
+  { id: 'mp4-4k', label: 'MP4 (4K)', detail: 'Qualité broadcast Ultra HD', icon: FileVideo },
+  { id: 'gif', label: 'GIF', detail: 'Clip d\'aperçu animé', icon: ImageIcon },
+  { id: 'share', label: 'Lien de partage', detail: 'URL publique partageable', icon: Share2 },
 ]
 
 /* ── Helper ── */
@@ -110,9 +110,9 @@ export default function TvActPage() {
   const [isDragging, setIsDragging] = useState(false)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [analysisSteps, setAnalysisSteps] = useState<AnalysisStep[]>([
-    { label: 'Face detected', done: false },
-    { label: 'Features mapped', done: false },
-    { label: 'Ready for generation', done: false },
+    { label: 'Visage détecté', done: false },
+    { label: 'Traits cartographiés', done: false },
+    { label: 'Prêt pour la génération', done: false },
   ])
   const [generated, setGenerated] = useState(false)
 
@@ -265,19 +265,18 @@ export default function TvActPage() {
         <div className="relative container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-20 sm:pb-28 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/10 text-[#60A5FA] text-xs sm:text-sm mb-6">
             <Star className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-            <span>AI Actor Studio</span>
+            <span>Studio d&apos;acteurs IA</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight">
-            Act In Your{' '}
+            Jouez dans votre{' '}
             <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
-              TV Show
+              série TV
             </span>
           </h1>
 
           <p className="text-white/60 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Step into the spotlight. Use AI to place yourself in any TV show — as a host, a guest
-            star, or a narrator.
+            Entrez sous les projecteurs. Utilisez l&apos;IA pour vous incruster dans n&apos;importe quelle série TV — en tant qu&apos;animateur, invité vedette, ou narrateur.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -286,7 +285,7 @@ export default function TvActPage() {
               className="group flex items-center gap-2 px-8 py-3.5 rounded-lg bg-[#2563EB] hover:bg-[#3B82F6] text-white font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.3)]"
             >
               <Camera className="h-5 w-5" />
-              Generate My Character
+              Générer mon personnage
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
             <button
@@ -294,7 +293,7 @@ export default function TvActPage() {
               className="flex items-center gap-2 px-8 py-3.5 rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] text-white font-semibold transition-all duration-300"
             >
               <UserCircle className="h-5 w-5" />
-              Submit My Profile
+              Soumettre mon profil
             </button>
           </div>
         </div>
@@ -304,9 +303,9 @@ export default function TvActPage() {
       <section className="py-20 sm:py-28">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">How It Works</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Comment ça marche</h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              Three simple steps to see yourself on screen.
+              Trois étapes simples pour vous voir à l&apos;écran.
             </p>
           </div>
 
@@ -314,22 +313,22 @@ export default function TvActPage() {
             {[
               {
                 icon: Upload,
-                title: 'Upload Your Photo',
-                desc: 'Upload a clear headshot. Our AI maps your facial features for realistic rendering.',
+                title: 'Téléchargez votre photo',
+                desc: 'Téléchargez un portrait net. Notre IA cartographie vos traits pour un rendu réaliste.',
                 step: '01',
                 color: 'from-[#2563EB] to-blue-600',
               },
               {
                 icon: Tv,
-                title: 'Choose Your Show',
-                desc: 'Browse our catalog and select the TV show you want to appear in.',
+                title: 'Choisissez votre série',
+                desc: 'Parcourez notre catalogue et sélectionnez la série TV dans laquelle vous voulez apparaître.',
                 step: '02',
                 color: 'from-[#60A5FA] to-blue-500',
               },
               {
                 icon: Star,
-                title: 'Play Your Role',
-                desc: 'AI generates scenes with you as the character in your chosen show.',
+                title: 'Jouez votre rôle',
+                desc: 'L\'IA génère des scènes avec vous dans le rôle du personnage dans la série choisie.',
                 step: '03',
                 color: 'from-purple-500 to-purple-700',
               },
@@ -368,11 +367,11 @@ export default function TvActPage() {
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/10 text-[#60A5FA] text-xs sm:text-sm mb-4">
               <Sparkles className="h-3.5 w-3.5" />
-              <span>AI Avatar Gallery</span>
+              <span>Galerie d&apos;avatars IA</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Meet Our AI Hosts</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Découvrez nos animateurs IA</h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              Choose from our library of AI-generated personas, or create your own custom avatar.
+              Choisissez parmi notre bibliothèque de personnages générés par IA, ou créez votre propre avatar personnalisé.
             </p>
           </div>
 
@@ -400,11 +399,11 @@ export default function TvActPage() {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/10 text-[#60A5FA] text-xs sm:text-sm mb-4">
               <Upload className="h-3.5 w-3.5" />
-              <span>Insert Yourself</span>
+              <span>Incrustez-vous</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Upload Your Photo &amp; Export</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Téléchargez votre photo et exportez</h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              Upload a headshot, choose your role, and download your TV appearance.
+              Téléchargez un portrait, choisissez votre rôle, et téléchargez votre apparition TV.
             </p>
           </div>
 
@@ -413,7 +412,7 @@ export default function TvActPage() {
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 sm:p-10 flex flex-col items-center">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/10 text-[#60A5FA] text-xs sm:text-sm mb-6">
                 <Upload className="h-3.5 w-3.5" />
-                <span>Upload Your Photo</span>
+                <span>Téléchargez votre photo</span>
               </div>
 
               {/* Animated ring + upload icon */}
@@ -447,13 +446,13 @@ export default function TvActPage() {
                 )}
               </div>
 
-              <p className="text-white/40 text-sm mb-4">JPG, PNG or HEIC &mdash; Max 20MB</p>
+              <p className="text-white/40 text-sm mb-4">JPG, PNG ou HEIC &mdash; 20 Mo max</p>
 
               <button
                 onClick={() => fileInputRef.current?.click()}
                 className="px-8 py-3 rounded-xl bg-[#2563EB] hover:bg-[#3B82F6] text-white font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.25)]"
               >
-                Browse Files
+                Parcourir les fichiers
               </button>
 
               <div
@@ -468,7 +467,7 @@ export default function TvActPage() {
                 )}
                 onClick={() => fileInputRef.current?.click()}
               >
-                <p className="text-white/30 text-sm">or drag & drop your headshot here</p>
+                <p className="text-white/30 text-sm">ou glissez-déposez votre photo ici</p>
               </div>
 
               <input ref={fileInputRef} type="file" accept="image/*,.heic" className="hidden" onChange={handleFileChange} />
@@ -478,7 +477,7 @@ export default function TvActPage() {
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 sm:p-10 flex flex-col items-center">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#60A5FA]/20 bg-[#60A5FA]/10 text-[#60A5FA] text-xs sm:text-sm mb-6">
                 <Download className="h-3.5 w-3.5" />
-                <span>Export Your Appearance</span>
+                <span>Exportez votre apparition</span>
               </div>
 
               <div className="relative w-40 h-40 mb-6 flex items-center justify-center">
@@ -545,7 +544,7 @@ export default function TvActPage() {
                 )}
               >
                 <Download className="h-5 w-5" />
-                Export Clip
+                Exporter le clip
               </button>
             </div>
           </div>
@@ -558,11 +557,11 @@ export default function TvActPage() {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#60A5FA]/20 bg-[#60A5FA]/10 text-[#60A5FA] text-xs sm:text-sm mb-4">
               <Tv className="h-3.5 w-3.5" />
-              <span>Show Catalog</span>
+              <span>Catalogue des séries</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Choose Your Show</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Choisissez votre série</h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              Browse our catalog and select the TV show you want to appear in.
+              Parcourez notre catalogue et sélectionnez la série TV dans laquelle vous voulez apparaître.
             </p>
           </div>
 
@@ -573,7 +572,7 @@ export default function TvActPage() {
               type="text"
               value={showSearch}
               onChange={(e) => setShowSearch(e.target.value)}
-              placeholder="Search shows by title, genre, or host..."
+              placeholder="Rechercher une série par titre, genre ou animateur..."
               className="w-full pl-12 pr-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.03] text-white placeholder:text-white/30 focus:outline-none focus:border-[#2563EB]/40 focus:bg-white/[0.05] transition-all"
             />
           </div>
@@ -589,7 +588,7 @@ export default function TvActPage() {
                   : 'bg-white/[0.04] text-white/50 hover:bg-white/[0.08] hover:text-white/70 border border-white/[0.06]'
               )}
             >
-              All
+              Tous
             </button>
             {TV_GENRES.map((genre) => (
               <button
@@ -659,7 +658,7 @@ export default function TvActPage() {
           {filteredShows.length === 0 && (
             <div className="text-center py-16">
               <Tv className="h-12 w-12 text-white/10 mx-auto mb-3" />
-              <p className="text-white/30">No shows found matching your search.</p>
+              <p className="text-white/30">Aucune série ne correspond à votre recherche.</p>
             </div>
           )}
         </div>
@@ -671,11 +670,11 @@ export default function TvActPage() {
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/10 text-[#60A5FA] text-xs sm:text-sm mb-4">
               <Camera className="h-3.5 w-3.5" />
-              <span>Face Scan</span>
+              <span>Scan du visage</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Generate Your AI Character</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Générez votre personnage IA</h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              Upload a clear headshot and our AI will create a broadcast-ready version of you.
+              Téléchargez un portrait net et notre IA créera une version de vous prête pour la diffusion.
             </p>
           </div>
 
@@ -701,7 +700,7 @@ export default function TvActPage() {
                       <div className="absolute inset-0 bg-[#050A15]/60 rounded-xl flex items-center justify-center">
                         <div className="flex flex-col items-center gap-3">
                           <div className="h-10 w-10 rounded-full border-2 border-[#2563EB] border-t-transparent animate-spin" />
-                          <span className="text-sm text-white/70">Analyzing face...</span>
+                          <span className="text-sm text-white/70">Analyse du visage en cours...</span>
                         </div>
                       </div>
                     )}
@@ -711,8 +710,8 @@ export default function TvActPage() {
                     <div className="mb-4 h-16 w-16 rounded-2xl bg-white/[0.04] flex items-center justify-center">
                       <Upload className="h-7 w-7 text-white/40" />
                     </div>
-                    <p className="text-white/60 font-medium mb-1">Drag & drop your headshot here</p>
-                    <p className="text-white/30 text-sm">or click to browse</p>
+                    <p className="text-white/60 font-medium mb-1">Glissez-déposez votre photo ici</p>
+                    <p className="text-white/30 text-sm">ou cliquez pour parcourir</p>
                   </>
                 )}
               </div>
@@ -753,7 +752,7 @@ export default function TvActPage() {
                 )}
               >
                 <Sparkles className="h-5 w-5" />
-                Generate AI Version
+                Générer la version IA
               </button>
             </div>
 
@@ -761,7 +760,7 @@ export default function TvActPage() {
             <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 flex flex-col items-center justify-center min-h-[480px]">
               {generated ? (
                 <div className="w-full space-y-6">
-                  <h3 className="text-lg font-semibold text-center mb-4">Before & After</h3>
+                  <h3 className="text-lg font-semibold text-center mb-4">Avant &amp; Après</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="relative aspect-[3/4] rounded-xl overflow-hidden border border-white/[0.06]">
                       <Image src={uploadedPhoto!} alt="Original" fill className="object-cover" />
@@ -770,19 +769,19 @@ export default function TvActPage() {
                       </div>
                     </div>
                     <div className="relative aspect-[3/4] rounded-xl overflow-hidden border border-[#2563EB]/20">
-                      <Image src={uploadedPhoto!} alt="AI Generated" fill className="object-cover" style={{ filter: 'saturate(1.3) contrast(1.15) brightness(0.95)' }} />
+                      <Image src={uploadedPhoto!} alt="Généré par IA" fill className="object-cover" style={{ filter: 'saturate(1.3) contrast(1.15) brightness(0.95)' }} />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#2563EB]/20 via-transparent to-[#2563EB]/[0.05]" />
                       <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-2">
-                        <span className="text-xs font-medium text-[#60A5FA]">AI Generated</span>
+                        <span className="text-xs font-medium text-[#60A5FA]">Généré par IA</span>
                       </div>
                     </div>
                   </div>
                   <div className="flex gap-3">
                     <button className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.06] text-sm font-medium transition-all">
-                      <Download className="h-4 w-4" /> Download
+                      <Download className="h-4 w-4" /> Télécharger
                     </button>
                     <button className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.06] text-sm font-medium transition-all">
-                      <Share2 className="h-4 w-4" /> Share
+                      <Share2 className="h-4 w-4" /> Partager
                     </button>
                   </div>
                 </div>
@@ -791,8 +790,8 @@ export default function TvActPage() {
                   <div className="mb-4 h-20 w-20 mx-auto rounded-2xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center">
                     <UserCircle className="h-10 w-10 text-white/20" />
                   </div>
-                  <p className="text-white/30 text-sm mb-1">Your AI character will appear here</p>
-                  <p className="text-white/20 text-xs">Upload a photo and click generate</p>
+                  <p className="text-white/30 text-sm mb-1">Votre personnage IA apparaîtra ici</p>
+                  <p className="text-white/20 text-xs">Téléchargez une photo et cliquez sur générer</p>
                 </div>
               )}
             </div>
@@ -806,11 +805,11 @@ export default function TvActPage() {
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-400 text-xs sm:text-sm mb-4">
               <DollarSign className="h-3.5 w-3.5" />
-              <span>Pricing</span>
+              <span>Tarifs</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Des tarifs simples et transparents</h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              Choose the level of integration that fits your vision.
+              Choisissez le niveau d&apos;intégration qui correspond à votre vision.
             </p>
           </div>
 
@@ -818,16 +817,16 @@ export default function TvActPage() {
             {/* Basic */}
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#2563EB]/[0.03] rounded-full blur-[60px]" />
-              <p className="text-xs text-white/30 uppercase tracking-wider font-semibold mb-2">Basic Insertion</p>
+              <p className="text-xs text-white/30 uppercase tracking-wider font-semibold mb-2">Insertion basique</p>
               <div className="flex items-baseline gap-1 mb-4">
-                <span className="text-4xl font-bold text-white">$9</span>
-                <span className="text-white/40 text-sm">per scene</span>
+                <span className="text-4xl font-bold text-white">9 $</span>
+                <span className="text-white/40 text-sm">par scène</span>
               </div>
               <p className="text-white/50 text-sm mb-6 leading-relaxed">
-                Standard AI face swap into any TV show scene. Included free with an active subscription.
+                Incrustation IA standard dans n&apos;importe quelle scène de série TV. Inclus gratuitement avec un abonnement actif.
               </p>
               <ul className="space-y-3 mb-8">
-                {['Basic face insertion', 'Standard lighting match', '1080p export', 'Included with subscription'].map((item) => (
+                {['Insertion de visage basique', 'Correspondance d\'éclairage standard', 'Export 1080p', 'Inclus avec l\'abonnement'].map((item) => (
                   <li key={item} className="flex items-center gap-2.5 text-sm text-white/60">
                     <Check className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                     {item}
@@ -835,7 +834,7 @@ export default function TvActPage() {
                 ))}
               </ul>
               <button className="w-full py-3 rounded-xl border border-white/[0.1] bg-white/[0.04] hover:bg-white/[0.08] text-white font-semibold transition-all">
-                Get Started
+                Commencer
               </button>
             </div>
 
@@ -843,24 +842,24 @@ export default function TvActPage() {
             <div className="rounded-2xl border border-[#2563EB]/30 bg-gradient-to-b from-[#2563EB]/[0.06] to-white/[0.02] p-8 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-40 h-40 bg-[#2563EB]/[0.06] rounded-full blur-[80px]" />
               <div className="absolute top-4 right-4">
-                <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-[#2563EB] text-white uppercase tracking-wider">Popular</span>
+                <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-[#2563EB] text-white uppercase tracking-wider">Populaire</span>
               </div>
-              <p className="text-xs text-[#60A5FA] uppercase tracking-wider font-semibold mb-2">Featured Role</p>
+              <p className="text-xs text-[#60A5FA] uppercase tracking-wider font-semibold mb-2">Rôle vedette</p>
               <div className="flex items-baseline gap-1 mb-4">
-                <span className="text-4xl font-bold text-white">$29</span>
-                <span className="text-white/40 text-sm">per scene</span>
+                <span className="text-4xl font-bold text-white">29 $</span>
+                <span className="text-white/40 text-sm">par scène</span>
               </div>
               <p className="text-white/50 text-sm mb-6 leading-relaxed">
-                Full scene integration with advanced AI. Your character blends seamlessly into every frame.
+                Intégration complète de la scène avec IA avancée. Votre personnage se fond parfaitement dans chaque image.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  'Full scene integration',
-                  'Advanced lighting & shadows',
-                  '4K broadcast export',
-                  'Expression matching',
-                  'Multi-angle compositing',
-                  'Priority rendering',
+                  'Intégration complète de la scène',
+                  'Éclairage et ombres avancés',
+                  'Export broadcast 4K',
+                  'Correspondance des expressions',
+                  'Composition multi-angles',
+                  'Rendu prioritaire',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2.5 text-sm text-white/60">
                     <Check className="h-4 w-4 text-[#2563EB] flex-shrink-0" />
@@ -869,7 +868,7 @@ export default function TvActPage() {
                 ))}
               </ul>
               <button className="w-full py-3 rounded-xl bg-[#2563EB] hover:bg-[#3B82F6] text-white font-semibold transition-all hover:shadow-[0_0_30px_rgba(37,99,235,0.25)]">
-                Go Premium
+                Passer à Premium
               </button>
             </div>
           </div>
@@ -880,9 +879,9 @@ export default function TvActPage() {
       <section className="py-20 sm:py-28 border-t border-white/[0.04]">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Choose Your Role</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Choisissez votre rôle</h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              What kind of presence do you want in the show?
+              Quel type de présence voulez-vous avoir dans la série ?
             </p>
           </div>
 
@@ -935,17 +934,17 @@ export default function TvActPage() {
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/10 text-purple-400 text-xs sm:text-sm mb-4">
               <Mic className="h-3.5 w-3.5" />
-              <span>Voice Capture</span>
+              <span>Capture vocale</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Record Your Voice</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Enregistrez votre voix</h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              Read the sample line below so our AI can capture your tone and style.
+              Lisez la réplique d&apos;exemple ci-dessous pour que notre IA capture votre ton et votre style.
             </p>
           </div>
 
           <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 sm:p-10 space-y-8">
             <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-6">
-              <p className="text-xs text-white/30 uppercase tracking-wider mb-2 font-medium">Sample Line</p>
+              <p className="text-xs text-white/30 uppercase tracking-wider mb-2 font-medium">Réplique d&apos;exemple</p>
               <p className="text-white/80 italic leading-relaxed text-lg">&ldquo;{SAMPLE_TEXT}&rdquo;</p>
             </div>
 
@@ -981,7 +980,7 @@ export default function TvActPage() {
                 )}
               >
                 <Mic className="h-5 w-5" />
-                {isRecording ? 'Stop Recording' : 'Record Your Voice'}
+                {isRecording ? 'Arrêter l\'enregistrement' : 'Enregistrer votre voix'}
               </button>
               {hasRecording && (
                 <button
@@ -989,7 +988,7 @@ export default function TvActPage() {
                   className="flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.06] transition-all"
                 >
                   {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
-                  {isPlaying ? 'Pause' : 'Play Back'}
+                  {isPlaying ? 'Pause' : 'Réécouter'}
                 </button>
               )}
             </div>
@@ -1005,11 +1004,11 @@ export default function TvActPage() {
               <Lock className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="font-semibold text-emerald-300 mb-1">On-Chain Likeness Record</h3>
+              <h3 className="font-semibold text-emerald-300 mb-1">Enregistrement on-chain de votre image</h3>
               <p className="text-white/50 text-sm leading-relaxed">
-                Your appearance in this show is recorded on-chain via smart contract. You retain full rights to your
-                likeness. Revenue sharing is automatic: 25% creators / 25% investors / 25% platform / 25% workers.
-                Every AI-generated scene is cryptographically signed and traceable.
+                Votre apparition dans cette série est enregistrée on-chain via smart contract. Vous conservez tous les droits sur votre
+                image. Le partage des revenus est automatique : 25% créateurs / 25% investisseurs / 25% plateforme / 25% contributeurs.
+                Chaque scène générée par IA est signée cryptographiquement et traçable.
               </p>
             </div>
           </div>
@@ -1029,8 +1028,8 @@ export default function TvActPage() {
                   <Shield className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">Rights & Consent</h3>
-                  <p className="text-white/40 text-sm">AI likeness usage and your rights</p>
+                  <h3 className="font-semibold text-lg">Droits et consentement</h3>
+                  <p className="text-white/40 text-sm">Utilisation de votre image par l&apos;IA et vos droits</p>
                 </div>
               </div>
               <ChevronDown className={cn('h-5 w-5 text-white/30 transition-transform duration-300', rightsOpen && 'rotate-180')} />
@@ -1040,15 +1039,15 @@ export default function TvActPage() {
               <div className="px-8 pb-8 space-y-6 border-t border-white/[0.06] pt-6">
                 <div className="space-y-4 text-sm text-white/50 leading-relaxed">
                   <p>
-                    When you upload your photo or voice recording to CINEGENY TV, our AI processes your
-                    likeness to generate a digital character. Here is what you should know:
+                    Lorsque vous téléchargez votre photo ou un enregistrement vocal sur CINEGENY TV, notre IA traite votre
+                    image pour générer un personnage numérique. Voici ce que vous devez savoir :
                   </p>
                   <ul className="list-disc list-inside space-y-2 pl-2">
-                    <li>Your original photos and recordings are encrypted and stored securely.</li>
-                    <li>AI-generated likenesses are used only within shows you authorize.</li>
-                    <li>You retain the right to request deletion of your data at any time.</li>
-                    <li>Generated characters cannot be used by other users without your explicit permission.</li>
-                    <li>You may revoke consent at any time through your account settings.</li>
+                    <li>Vos photos et enregistrements originaux sont chiffrés et stockés en toute sécurité.</li>
+                    <li>Les images générées par IA ne sont utilisées que dans les séries que vous autorisez.</li>
+                    <li>Vous conservez le droit de demander la suppression de vos données à tout moment.</li>
+                    <li>Les personnages générés ne peuvent pas être utilisés par d&apos;autres utilisateurs sans votre autorisation explicite.</li>
+                    <li>Vous pouvez révoquer votre consentement à tout moment depuis les paramètres de votre compte.</li>
                   </ul>
                 </div>
 
@@ -1065,8 +1064,8 @@ export default function TvActPage() {
                     {consentChecked && <Check className="h-3 w-3 text-white" />}
                   </button>
                   <span className="text-sm text-white/60 leading-relaxed">
-                    I consent to AI generation of my likeness for CINEGENY TV productions. I understand
-                    that I may revoke this consent at any time.
+                    Je consens à la génération par IA de mon image pour les productions CINEGENY TV. Je comprends
+                    que je peux révoquer ce consentement à tout moment.
                   </span>
                 </label>
 
@@ -1074,7 +1073,7 @@ export default function TvActPage() {
                   href="/legal/terms"
                   className="inline-flex items-center gap-1.5 text-sm text-[#60A5FA] hover:text-[#3B82F6] transition-colors"
                 >
-                  Read full Terms & Conditions
+                  Lire les conditions générales complètes
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
