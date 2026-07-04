@@ -160,6 +160,44 @@ vote. Termine chaque session par : npx tsc --noEmit && npx vitest run, et un rec
 de ce qui a change avec les URLs a verifier pour validation par le fondateur.
 ```
 
+### 15.0ter Sessions restantes a lancer (ordre recommande, Juillet 2026)
+
+> Snapshot apres l'audit de statut du 4 juillet 2026 (15.1-15.4 et 15.9 sont FAIT, 15.5 et
+> 15.10 sont PARTIEL — voir chaque section pour le detail). Liste des sessions qui restent
+> a lancer, dans l'ordre conseille : d'abord ce qui est launchable immediatement (aucun
+> prerequis fondateur bloquant), puis ce qui attend une decision ou une ressource du
+> fondateur.
+
+**Peuvent demarrer maintenant (aucun prerequis bloquant)**
+
+| # | Session | Modele | Pourquoi maintenant |
+|---|---------|--------|----------------------|
+| 1 | **15.10** — Finir la passe francais (5 fichiers restants : `act`, `work`, `create/setups`, `create/music`, `create/casting`) | **Haiku** | Mecanique, zero decision, deja circonscrit par l'audit |
+| 2 | **15.6ter** — Mur mot de passe sur `/investors` + encart admin | **Sonnet** | Aucun prerequis fondateur (mot de passe auto-genere puis modifiable) |
+| 3 | **15.5** — Nettoyer `fundingPct` fictif restant (`film-row.tsx`, `/watch`) et trancher l'axe catalogue (genre vs 3 onglets stricts) | **Sonnet** | Le gros du travail est fait ; reste un arbitrage rapide + nettoyage |
+| 4 | **15.11** — QA de lancement (parcours complet, SEO/OG, perf, analytics) | **Sonnet** | A lancer en dernier de ce groupe, une fois 1-3 livres ; necessite l'acces domaine prod |
+
+**Attendent une decision ou une ressource du fondateur avant cadrage**
+
+| # | Session | Modele | Bloque par |
+|---|---------|--------|-------------|
+| 5 | **15.8** — Page equipe / A propos | **Haiku** | Photos + noms + roles de l'equipe (ou lien CineGeny.com a repliquer) |
+| 6 | **15.6bis** — Refonte de l'economie des Points CINEGENY | **Opus** pour trancher le modele economique avec le fondateur, puis **Sonnet** pour l'implementation | Decision : garde-t-on achat/retrait euros (continuite Lumens) ou vrai systeme non-monetaire ? |
+| 7 | **2.1** (hors Phase 15) — Invitation scenaristes en masse | **Sonnet** | Compte Resend + domaine verifie + `RESEND_API_KEY` |
+| 8 | **15.13** — Auto-credit producteurs (fusion `FilmCredit` + `ProductionShare`) | **Opus** | Regles metier (seuils de credit) + Stripe branche pour les paiements coprod reels |
+
+**Post-lancement (apres 15.11, decisions deja actees)**
+
+| # | Session | Modele | Bloque par |
+|---|---------|--------|-------------|
+| 9 | **15.12** — Trailer Studio v2 (refonte depuis le depot « bande annonce ») | **Opus** | Acces au depot « bande annonce » du fondateur + demo |
+| 10 | **14.1** — Audit du melange FR/EN | **Sonnet** | Aucun — mais sequence deliberement apres le lancement (decision 15.0 #11) |
+| 11 | **14.2** — Academy : traduction FR + harmonisation palette | **Haiku** | Depend de 14.1 |
+| 12 | **14.3** — Couverture i18n complete du reste du site | **Sonnet** | Depend de 14.1 |
+| 13 | **14.4** — CINEGENY TV bilingue | a definir (probablement **Sonnet**) | Depend de 14.1 + 14.3 |
+
+---
+
 ### Sessions d'execution (dans l'ordre — 1 session = 1 validation fondateur)
 
 ### 15.1 Fondations du message — architecture de l'information & wording
@@ -377,14 +415,14 @@ du site en #0A0908/#C9A227), construire **une vraie version complete en anglais 
 version complete en francais** de toute la plateforme.
 
 ### 14.1 Audit du melange FR/EN actuel
-**Statut**: A FAIRE
+**Statut**: A FAIRE · **Modele**: **Sonnet** (analyse transversale du code, cadrage de 14.3)
 > Reperer toutes les pages/contenus qui ne suivent pas la locale active : Academy (100%
 > anglais, non traduit), quelques pages historiques en anglais (ex: certaines pages
 > publiques legacy), vs le gros du site qui est en francais avec un systeme i18n (next-intl)
 > deja en place (`messages/fr.json`, `messages/en.json`) mais partiellement utilise.
 
 ### 14.2 Academy — traduction + harmonisation theme
-**Statut**: A FAIRE
+**Statut**: A FAIRE · **Modele**: **Haiku** (traduction + swap palette, volume eleve, zero decision)
 > Traduire integralement le contenu de `src/content/academy.ts` (3 niveaux, 29 lecons, 87
 > prompts) en francais, et proposer les deux langues via le systeme de locale existant
 > (next-intl). Harmoniser la palette avec le theme noir & or du site (#0A0908/#C9A227,
@@ -392,13 +430,13 @@ version complete en francais** de toute la plateforme.
 > (#E50914) et de l'or divergent (#D4AF37) actuellement utilises.
 
 ### 14.3 Couverture i18n complete du reste du site
-**Statut**: A FAIRE
+**Statut**: A FAIRE · **Modele**: **Sonnet** (implementation structurante)
 > Passer toutes les pages et tout le contenu restant (pas seulement la nav) par next-intl,
 > pour garantir une bascule FR/EN complete et coherente sur l'integralite de la plateforme,
 > pas seulement les menus.
 
 ### 14.4 CINEGENY TV — bilingue FR/EN (decision fondateur, Juillet 2026)
-**Statut**: A FAIRE
+**Statut**: A FAIRE · **Modele**: a definir apres cadrage 14.1/14.3 (probablement Sonnet)
 > Confirme en session 15.6 : on ne retire pas la section TV du site (seul le direct/« TV
 > live » a ete retire du public, cf. 15.6). `/tv` et ses sous-pages restent 100% anglais
 > pour l'instant (heritees telles quelles) — elles seront traitees dans cette phase, en
@@ -463,7 +501,7 @@ version complete en francais** de toute la plateforme.
 ## PHASE 2 — INVITATION SCENARISTES (Semaines 2-3)
 
 ### 2.1 Systeme d'invitation par email
-**Statut**: A FAIRE
+**Statut**: A FAIRE · **Modele**: **Sonnet** (implementation backend cadree)
 **Prerequis fondateur**:
 - Compte Resend.com (service email) — gratuit 100 emails/jour
 - Domaine verifie sur Resend (lumiere.film ou autre)
@@ -867,4 +905,5 @@ version complete en francais** de toute la plateforme.
 
 *Derniere mise a jour: 4 Juillet 2026 (audit de statut — 15.1, 15.2, 15.3, 15.4 passes de
 "A faire" a "Fait" apres verification du code reel ; 15.5 et 15.10 passes a "Partiellement
-fait" ; Integration Claude AI (Phase 1.1) confirmee faite)*
+fait" ; Integration Claude AI (Phase 1.1) confirmee faite ; ajout de la section 15.0ter —
+liste ordonnee des sessions restantes a lancer avec modele assigne)*
