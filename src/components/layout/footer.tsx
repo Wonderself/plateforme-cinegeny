@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import {
   Film, Play, Tv, Trophy, Users, Briefcase, GraduationCap, Coins,
-  TrendingUp, Info, MapPin,
+  TrendingUp, Info, MapPin, Clapperboard,
 } from 'lucide-react'
 import { Logo } from '@/components/layout/logo'
 import { BRAND, FOOTER_COLUMNS } from '@/content/brand'
@@ -21,6 +21,9 @@ const LINK_ICONS: Record<string, React.ElementType> = {
   '/leaderboard': Trophy,
   '/streaming': Play,
   '/tv': Tv,
+  '/residence': Trophy,
+  '/atelier': Clapperboard,
+  '/createurs': Film,
   '/create': Users,
   '/work': Briefcase,
   '/academy': GraduationCap,
@@ -39,7 +42,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-12 lg:gap-14">
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 lg:col-span-4 space-y-5">
-            <Logo height={52} />
+            <Logo height={62} />
             <p className="text-[13px] text-white/30 leading-[1.8] max-w-sm">
               {BRAND.pitch}
             </p>

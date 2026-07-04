@@ -14,7 +14,7 @@
  * Conçu mobile d'abord (390px) puis étendu (règle 15.0bis #8).
  */
 
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
@@ -28,8 +28,12 @@ import {
   Trophy,
   GraduationCap,
   Sparkles,
+  Wand2,
+  Upload,
+  Clock,
 } from 'lucide-react'
 import { VotePanel } from '@/components/films/vote-panel'
+import { Reveal } from '@/components/academy/reveal'
 import {
   BRAND,
   HOW_IT_WORKS,
@@ -39,6 +43,9 @@ import {
   VOTE,
   ACADEMY_NAV,
 } from '@/content/brand'
+import { ATELIER, FILM_DURATION } from '@/content/atelier'
+import { ComingSoonWall } from '@/components/films/coming-soon-wall'
+import { COMING_SOON } from '@/data/coming-soon'
 import type { HomeVitrineModel, HomeFilmVM } from '@/lib/home-vitrine'
 
 /* ── Compteur réel x/5000 + barre de progression ──────────────────────────── */
@@ -49,7 +56,7 @@ function VoteMeter({ film, size = 'md' }: { film: HomeFilmVM; size?: 'md' | 'lg'
   return (
     <div className="w-full">
       <div className={`flex items-baseline justify-between ${big ? 'mb-2' : 'mb-1.5'}`}>
-        <span className={`font-playfair font-bold text-gold-metallic ${big ? 'text-2xl sm:text-3xl' : 'text-base'}`}>
+        <span className={`font-playfair font-bold text-gold-brushed ${big ? 'text-2xl sm:text-3xl' : 'text-base'}`}>
           {count.toLocaleString('fr-FR')}
           <span className={`font-sans font-normal text-white/40 ${big ? 'text-sm' : 'text-[11px]'}`}>
             {' '}/ {threshold.toLocaleString('fr-FR')} votes
@@ -61,7 +68,7 @@ function VoteMeter({ film, size = 'md' }: { film: HomeFilmVM; size?: 'md' | 'lg'
       </div>
       <div className={`overflow-hidden rounded-full bg-white/[0.08] ${big ? 'h-2' : 'h-1.5'}`}>
         <div
-          className="h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700"
+          className="progress-sheen h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700"
           style={{ width: `${pct}%` }}
         />
       </div>
@@ -75,36 +82,43 @@ function FilmVoteCard({ film }: { film: HomeFilmVM }) {
   return (
     <Link
       href={`/films/${film.slug}`}
-      className="group flex w-[210px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:-translate-y-1 hover:border-[#C9A227]/40 sm:w-[230px]"
+      className="group relative aspect-[2/3] w-[248px] shrink-0 snap-start overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02] transition-all duration-500 hover:-translate-y-2 hover:border-[#C9A227]/50 hover:shadow-[0_28px_70px_-16px_rgba(0,0,0,0.85),0_0_36px_rgba(201,162,39,0.10)] sm:w-[288px]"
     >
-      {/* Affiche */}
-      <div className="relative aspect-[2/3] shrink-0 overflow-hidden bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03]">
-        {film.coverImageUrl ? (
-          <Image
-            src={film.coverImageUrl}
-            alt={`Affiche du film ${film.title}`}
-            fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-            sizes="230px"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center">
-            <Clapperboard className="h-12 w-12 text-[#C9A227]/20" />
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-transparent to-transparent" />
-        <span className="absolute left-3 top-3 rounded-full border border-[#C9A227]/25 bg-[#0A0908]/70 px-2.5 py-0.5 text-[10px] font-medium text-[#E8C766] backdrop-blur-md">
-          En vote
-        </span>
-      </div>
+      {/* Affiche plein cadre */}
+      {film.coverImageUrl ? (
+        <Image
+          src={film.coverImageUrl}
+          alt={`Affiche du film ${film.title}`}
+          fill
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
+          sizes="288px"
+        />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#C9A227]/[0.06] to-white/[0.03]">
+          <Clapperboard className="h-12 w-12 text-[#C9A227]/20" />
+        </div>
+      )}
 
-      {/* Corps */}
-      <div className="flex flex-1 flex-col gap-3 p-4">
-        <h3 className="line-clamp-1 text-sm font-semibold text-white transition-colors group-hover:text-[#E8C766]">
+      {/* Voile bas — renforcé au survol pour la mini-fiche */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/25 to-transparent transition-colors duration-500 group-hover:via-[#0A0908]/55" />
+
+      {/* Chips */}
+      <span className="absolute left-3 top-3 rounded-full border border-[#C9A227]/25 bg-[#0A0908]/70 px-2.5 py-0.5 text-[10px] font-semibold text-[#E8C766] backdrop-blur-md">
+        En vote
+      </span>
+      <span className="absolute right-3 top-3 rounded-full border border-white/12 bg-[#0A0908]/60 px-2.5 py-0.5 text-[10px] font-medium text-white/70 backdrop-blur-md">
+        {film.genre}
+      </span>
+
+      {/* Mini-fiche — bouton « Voter » révélé au survol (toujours visible en tactile) */}
+      <div className="absolute inset-x-0 bottom-0 p-4">
+        <h3 className="line-clamp-2 font-playfair text-lg font-bold leading-snug text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] transition-colors group-hover:text-[#F0D183]">
           {film.title}
         </h3>
-        <VoteMeter film={film} />
-        <span className="mt-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#C9A227]/25 bg-[#C9A227]/[0.08] py-2 text-xs font-semibold text-[#E8C766] transition-colors group-hover:bg-[#C9A227]/[0.16]">
+        <div className="mt-2.5">
+          <VoteMeter film={film} />
+        </div>
+        <span className="bg-gold-brushed btn-sheen mt-3 flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-xs font-bold transition-all duration-500 md:mt-0 md:max-h-0 md:translate-y-3 md:overflow-hidden md:py-0 md:opacity-0 md:group-hover:mt-3 md:group-hover:max-h-12 md:group-hover:translate-y-0 md:group-hover:py-2.5 md:group-hover:opacity-100 md:group-focus-visible:mt-3 md:group-focus-visible:max-h-12 md:group-focus-visible:py-2.5 md:group-focus-visible:opacity-100">
           <Vote className="h-3.5 w-3.5" />
           Voter
         </span>
@@ -141,8 +155,8 @@ function VoteRail({
               <Vote className="h-3 w-3" /> En vote
             </span>
           </div>
-          <h2 className="text-xl font-bold text-white sm:text-2xl">{title}</h2>
-          <p className="mt-1 max-w-md text-xs text-white/45 sm:text-sm">{tagline}</p>
+          <h2 className="font-playfair text-2xl font-bold text-white sm:text-3xl">{title}</h2>
+          <p className="mt-1.5 max-w-md text-xs text-white/45 sm:text-sm">{tagline}</p>
         </div>
         {/* Flèches (desktop) */}
         <div className="hidden shrink-0 gap-2 md:flex">
@@ -165,7 +179,7 @@ function VoteRail({
 
       <div
         ref={railRef}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:px-8 md:px-16 lg:px-20"
+        className="rail-fade flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 py-3 sm:px-8 md:px-16 lg:px-20"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
       >
         {films.map((film) => (
@@ -176,41 +190,191 @@ function VoteRail({
   )
 }
 
-/* ── Hero : un film en vote, plein écran ──────────────────────────────────── */
+/* ── Fond vidéo du hero ─────────────────────────────────────────────────────
+ * React ne sérialise pas l'attribut `muted` dans le HTML rendu : sans lui, la
+ * politique d'autoplay des navigateurs bloque la lecture. On force donc
+ * muted + play() au montage. Un jumeau `.webm` du même nom est proposé en
+ * secours de codec quand l'URL est un `.mp4` (convention : déposer les deux). */
 
-function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
+function HeroVideo({ videoUrl, posterUrl }: { videoUrl: string; posterUrl: string | null }) {
+  const ref = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const v = ref.current
+    if (!v) return
+    v.muted = true
+    v.play().catch(() => {
+      /* autoplay refusé (économie d'énergie…) : l'affiche poster reste. */
+    })
+  }, [])
+
   return (
-    <section className="relative flex min-h-[92vh] items-end overflow-hidden">
-      {/* Affiche de fond */}
-      {film.coverImageUrl ? (
-        <Image
-          src={film.coverImageUrl}
-          alt={`Affiche du film ${film.title}`}
-          fill
-          priority
-          sizes="100vw"
-          className="scale-105 object-cover object-center"
-        />
-      ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/15 via-[#0A0908] to-[#0A0908]" />
-      )}
-      {/* Voiles cinématographiques */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/80 to-[#0A0908]/25" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/40 to-transparent" />
+    <video
+      ref={ref}
+      className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      poster={posterUrl ?? undefined}
+      aria-hidden
+    >
+      <source src={videoUrl} />
+      {videoUrl.endsWith('.mp4') && <source src={videoUrl.replace(/\.mp4$/, '.webm')} />}
+    </video>
+  )
+}
 
-      <div className="relative z-10 w-full px-4 pb-12 sm:px-8 md:px-16 md:pb-16 lg:px-20">
+/* ── Carrousel de hero : ~10 films défilent en pleine page ─────────────────
+ * Slate en vote + titres « Bientôt » pour compléter jusqu'à 10 diapositives.
+ * Auto-avance 8 s (pause au survol), fondu croisé des fonds, vignettes
+ * cliquables. Seule la diapositive active anime son Ken Burns (GPU). */
+
+type HeroSlide =
+  | { kind: 'film'; film: HomeFilmVM }
+  | { kind: 'soon'; title: string; genre: string; posterUrl: string }
+
+function HeroCarousel({ model }: { model: HomeVitrineModel }) {
+  const slides: HeroSlide[] = (() => {
+    const rest = [...model.trackB, ...model.trackA].filter((f) => f.slug !== model.hero.slug)
+    const films: HeroSlide[] = [model.hero, ...rest].map((film) => ({ kind: 'film', film }))
+    const soon: HeroSlide[] = COMING_SOON.slice(0, Math.max(0, 10 - films.length)).map((s) => ({
+      kind: 'soon',
+      title: s.title,
+      genre: s.genre,
+      posterUrl: s.posterUrl,
+    }))
+    return [...films, ...soon]
+  })()
+
+  const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  useEffect(() => {
+    if (paused || slides.length < 2) return
+    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 8000)
+    return () => clearInterval(t)
+  }, [paused, slides.length])
+
+  const active = slides[index]
+
+  return (
+    <section
+      className="hero-vignette relative flex min-h-[94vh] items-end overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Fonds en fondu croisé */}
+      {slides.map((slide, i) => {
+        const cover = slide.kind === 'film' ? slide.film.coverImageUrl : slide.posterUrl
+        const video = slide.kind === 'film' ? slide.film.heroVideoUrl : null
+        const isActive = i === index
+        return (
+          <div
+            key={slide.kind === 'film' ? slide.film.slug : slide.title}
+            className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ${isActive ? 'opacity-100' : 'opacity-0'}`}
+            aria-hidden={!isActive}
+          >
+            {video && isActive ? (
+              <HeroVideo videoUrl={video} posterUrl={cover} />
+            ) : cover ? (
+              <Image
+                src={cover}
+                alt=""
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                className={`object-cover object-center ${isActive ? 'kenburns' : ''}`}
+              />
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/15 via-[#0A0908] to-[#0A0908]" />
+            )}
+          </div>
+        )
+      })}
+
+      {/* Voiles cinématographiques (communs à toutes les diapositives) */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/80 to-[#0A0908]/25" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/40 to-transparent" />
+
+      {/* Contenu de la diapositive active */}
+      {active.kind === 'film' ? (
+        <HeroContent key={active.film.slug} film={active.film} totalVotes={model.totalVotes} />
+      ) : (
+        <div key={active.title} className="fade-in-up relative z-10 w-full px-4 pb-24 sm:px-8 md:px-16 md:pb-28 lg:px-20">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/25 bg-[#0A0908]/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E8C766] backdrop-blur-md">
+            <Sparkles className="h-3 w-3" /> Bientôt · {active.genre}
+          </span>
+          <h1 className="mt-4 max-w-2xl font-playfair text-4xl font-bold leading-[1.02] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] sm:text-6xl md:text-7xl">
+            {active.title}
+          </h1>
+          <p className="mt-4 max-w-xl text-sm text-white/55">
+            Prochainement en compétition — le public décidera de son destin.
+          </p>
+          <Link
+            href="/films"
+            className="bg-gold-brushed btn-sheen mt-7 inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold transition-all"
+          >
+            <Vote className="h-4 w-4" /> Voir les films en vote
+          </Link>
+        </div>
+      )}
+
+      {/* Vignettes de navigation */}
+      <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-end gap-2 px-4">
+        {slides.map((slide, i) => {
+          const cover = slide.kind === 'film' ? slide.film.coverImageUrl : slide.posterUrl
+          const label = slide.kind === 'film' ? slide.film.title : slide.title
+          const isActive = i === index
+          return (
+            <button
+              key={label}
+              onClick={() => setIndex(i)}
+              aria-label={`Voir ${label}`}
+              className={`relative hidden aspect-[2/3] w-9 shrink-0 overflow-hidden rounded-md border transition-all duration-300 sm:block ${
+                isActive
+                  ? 'w-11 border-[#C9A227]/80 shadow-[0_0_16px_rgba(201,162,39,0.35)]'
+                  : 'border-white/15 opacity-55 hover:opacity-90'
+              }`}
+            >
+              {cover && <Image src={cover} alt="" fill sizes="44px" className="object-cover" />}
+            </button>
+          )
+        })}
+        {/* Points (mobile) */}
+        <div className="flex items-center gap-1.5 sm:hidden">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              aria-label={`Diapositive ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all ${i === index ? 'w-5 bg-[#E8C766]' : 'w-1.5 bg-white/25'}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── Contenu hero d'un film en vote ───────────────────────────────────────── */
+
+function HeroContent({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
+  return (
+    <div className="fade-in-up relative z-10 w-full px-4 pb-20 sm:px-8 md:px-16 md:pb-24 lg:px-20">
         <div className="grid items-end gap-8 lg:grid-cols-[1.15fr_0.85fr]">
           {/* Récit */}
           <div className="max-w-xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/25 bg-[#C9A227]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#E8C766]">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/25 bg-[#0A0908]/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#E8C766] backdrop-blur-md">
               <Vote className="h-3 w-3" /> En vote · {film.trackName}
             </span>
 
-            <h1 className="mt-4 font-playfair text-4xl font-bold leading-[1.05] text-white sm:text-5xl md:text-6xl">
+            <h1 className="mt-4 font-playfair text-4xl font-bold leading-[1.02] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] sm:text-6xl md:text-7xl">
               {film.title}
             </h1>
 
-            <p className="mt-3 text-base font-medium text-gold-metallic">{BRAND.baseline}</p>
+            <p className="mt-3 text-base font-medium text-gold-brushed">{BRAND.baseline}</p>
 
             <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-white/60 sm:text-[15px]">
               {film.synopsis}
@@ -259,7 +423,37 @@ function Hero({ film, totalVotes }: { film: HomeFilmVM; totalVotes: number }) {
           </div>
         </div>
       </div>
-    </section>
+  )
+}
+
+/* ── Bandeau de preuve sous le hero : uniquement des chiffres RÉELS ─────────
+ * (compteurs de votes en base + taille de la slate éditoriale). */
+
+function ProofStrip({ model }: { model: HomeVitrineModel }) {
+  const filmsEnVote = model.trackA.length + model.trackB.length
+  const items: { value: string; label: string }[] = []
+
+  if (model.totalVotes > 0) {
+    items.push({ value: model.totalVotes.toLocaleString('fr-FR'), label: 'votes exprimés' })
+  }
+  items.push({ value: String(filmsEnVote), label: 'films en compétition' })
+  items.push({ value: VOTE.threshold.toLocaleString('fr-FR'), label: 'votes, et le film se fait' })
+  items.push({ value: '1', label: 'vote gratuit par film' })
+
+  return (
+    <div className="relative border-y border-white/[0.05] bg-[#080706]/80">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-4 py-5 sm:gap-x-14">
+        {items.map((it, i) => (
+          <div key={it.label} className="flex items-center gap-10 sm:gap-14">
+            {i > 0 && <span className="hidden h-8 w-px bg-gradient-to-b from-transparent via-[#C9A227]/30 to-transparent sm:block" />}
+            <div className="flex items-baseline gap-2">
+              <span className="font-playfair text-xl font-bold text-gold-brushed sm:text-2xl">{it.value}</span>
+              <span className="text-[11px] uppercase tracking-[0.14em] text-white/40">{it.label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -348,7 +542,7 @@ function FinaleBlock() {
               <Trophy className="h-6 w-6 text-[#C9A227]" />
             </span>
             <div>
-              <h2 className="font-playfair text-2xl font-bold text-gold-metallic md:text-3xl">{FINALE.name}</h2>
+              <h2 className="font-playfair text-2xl font-bold text-gold-brushed md:text-3xl">{FINALE.name}</h2>
               <p className="text-[11px] font-medium uppercase tracking-wider text-[#C9A227]/60">
                 Des prix à gagner — dont des voyages
               </p>
@@ -361,6 +555,54 @@ function FinaleBlock() {
           >
             Découvrir la Finale <ArrowRight className="h-4 w-4" />
           </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── L'Atelier : créer sa bande-annonce ou insérer son film ────────────────── */
+
+function AtelierBlock() {
+  return (
+    <section className="px-4 py-4 sm:px-8 md:px-16 lg:px-20">
+      <div className="border-gold-brushed relative mx-auto max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#C9A227]/[0.08] via-[#0E0D0A] to-transparent p-8 md:p-12">
+        <div className="pointer-events-none absolute -left-10 -bottom-10 h-64 w-64 rounded-full bg-[#C9A227]/[0.07] blur-[90px]" />
+        <div className="relative">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="bg-gold-brushed inline-flex h-12 w-12 items-center justify-center rounded-2xl">
+              <Clapperboard className="h-6 w-6" />
+            </span>
+            <div>
+              <h2 className="font-playfair text-2xl font-bold text-gold-brushed md:text-3xl">
+                {ATELIER.name} CINEGENY
+              </h2>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-[#C9A227]/60">
+                Bandes-annonces & films — par vous
+              </p>
+            </div>
+          </div>
+          <p className="max-w-2xl text-sm leading-relaxed text-white/55 md:text-[15px]">
+            {ATELIER.tagline}
+          </p>
+          <p className="mt-3 inline-flex items-center gap-1.5 text-xs text-white/45">
+            <Clock className="h-3.5 w-3.5 text-[#C9A227]/70" />
+            Format des films : {FILM_DURATION.label}
+          </p>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href={ATELIER.href}
+              className="bg-gold-brushed btn-sheen inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold transition-all"
+            >
+              <Wand2 className="h-4 w-4" /> Créer ma bande-annonce
+            </Link>
+            <Link
+              href="/streaming/submit"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#C9A227]/30 bg-[#C9A227]/[0.08] px-6 py-3 text-sm font-semibold text-[#E8C766] transition-colors hover:bg-[#C9A227]/[0.16]"
+            >
+              <Upload className="h-4 w-4" /> Insérer mon film
+            </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -382,7 +624,7 @@ function AcademyBlock() {
           </span>
           <div>
             <p className="text-base font-semibold text-white">
-              CINEGENY <span className="text-gold-metallic">{ACADEMY_NAV.label}</span>
+              CINEGENY <span className="text-gold-brushed">{ACADEMY_NAV.label}</span>
             </p>
             <p className="mt-0.5 text-sm text-white/45">{ACADEMY_NAV.tagline} — de l’idée à la projection.</p>
           </div>
@@ -411,7 +653,7 @@ function FinalCta() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/register"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#C9A227]/40 bg-[#C9A227]/[0.12] px-7 py-3.5 text-sm font-semibold text-[#E8C766] transition-colors hover:bg-[#C9A227]/[0.22] sm:w-auto"
+            className="bg-gold-brushed btn-sheen inline-flex w-full items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold transition-all sm:w-auto"
           >
             <Sparkles className="h-4 w-4" /> Créer mon compte gratuit
           </Link>
@@ -431,8 +673,10 @@ function FinalCta() {
 
 export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
   return (
-    <main className="bg-[#0A0908] text-white">
-      <Hero film={model.hero} totalVotes={model.totalVotes} />
+    <main className="film-grain bg-[#0A0908] text-white">
+      <HeroCarousel model={model} />
+
+      <ProofStrip model={model} />
 
       <VoteRail
         title="Bandes-annonces en compétition"
@@ -446,11 +690,14 @@ export function HomeVitrine({ model }: { model: HomeVitrineModel }) {
         films={model.trackB}
       />
 
-      <HowItWorks />
-      <Parcours />
-      <FinaleBlock />
-      <AcademyBlock />
-      <FinalCta />
+      <ComingSoonWall />
+
+      <Reveal><HowItWorks /></Reveal>
+      <Reveal><Parcours /></Reveal>
+      <Reveal><AtelierBlock /></Reveal>
+      <Reveal><FinaleBlock /></Reveal>
+      <Reveal><AcademyBlock /></Reveal>
+      <Reveal><FinalCta /></Reveal>
     </main>
   )
 }

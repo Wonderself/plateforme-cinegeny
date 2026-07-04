@@ -30,7 +30,9 @@ export function RegisterForm() {
 
   useEffect(() => {
     if (state.success) {
-      setTimeout(() => router.push('/login?registered=1'), 2000)
+      // Après connexion, le nouvel inscrit arrive sur /bienvenue (onboarding :
+      // proposition de film facultative — affiche, bande-annonce, film).
+      setTimeout(() => router.push(`/login?registered=1&callbackUrl=${encodeURIComponent('/bienvenue')}`), 2000)
     }
   }, [state.success, router])
 

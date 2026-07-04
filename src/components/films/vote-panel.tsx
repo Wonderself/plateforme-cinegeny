@@ -131,7 +131,18 @@ export function VotePanel({
       ) : (
         <div className="flex flex-col items-center gap-3 py-6 mb-6 rounded-xl border border-[#C9A227]/25 bg-[#C9A227]/[0.06]">
           <CheckCircle className="h-8 w-8 text-[#E8C766]" />
-          <p className="text-sm font-medium text-white/80">Vous avez voté pour ce film</p>
+          {/* Le Fauteuil numéroté — l'artefact que l'on partage : votre place
+              réelle dans l'histoire de ce film (compteur en base). */}
+          <p className="font-playfair text-2xl font-bold text-gold-brushed">
+            Fauteuil n° {displayProgress.count.toLocaleString('fr-FR')}
+          </p>
+          <p className="text-sm font-medium text-white/80 text-center px-4">
+            Votre place dans l’histoire de ce film est réservée.
+            <br />
+            <span className="text-xs text-white/45">
+              Les {displayProgress.threshold.toLocaleString('fr-FR')} premiers fauteuils entrent au générique quand le film se fait.
+            </span>
+          </p>
           {pendingConfirmation && (
             <div className="text-center px-4">
               <p className="text-xs text-white/40 mb-2">
@@ -152,7 +163,7 @@ export function VotePanel({
               <p className="text-xs text-white/40">Faites gagner ce film : partagez votre vote.</p>
               <SocialShare
                 url={shareUrl}
-                title={`Je viens de voter pour ${filmTitle} sur CINEGENY`}
+                title={`Fauteuil n° ${displayProgress.count.toLocaleString('fr-FR')} — je viens de voter pour ${filmTitle} sur CINEGENY`}
                 description={trackInfo.outcome}
               />
             </div>

@@ -1,6 +1,7 @@
 import { Clapperboard, Film, CheckCircle, Users } from 'lucide-react'
 import { getCached } from '@/lib/redis'
 import FilmCategories from '@/components/films/film-categories'
+import { ComingSoonWall } from '@/components/films/coming-soon-wall'
 import { ALL_FILMS } from '@/data/films'
 import { ARCHIVED_FILMS } from '@/data/archived-films'
 import { prisma } from '@/lib/prisma'
@@ -127,7 +128,7 @@ export default async function FilmsPage() {
 
           {/* Title */}
           <h1 className="mb-8 font-playfair text-4xl font-bold text-white sm:text-5xl md:text-6xl">
-            La <span className="text-gold-metallic">Slate</span>
+            La <span className="text-gold-brushed">Slate</span>
           </h1>
 
           {/* Subtitle */}
@@ -166,6 +167,11 @@ export default async function FilmsPage() {
       {/* CATALOG (curated slate + admin-activated archives)               */}
       {/* ================================================================ */}
       <FilmCategories model={catalogModel} />
+
+      {/* ================================================================ */}
+      {/* PROCHAINEMENT — mur d'affiches (abondance du catalogue)          */}
+      {/* ================================================================ */}
+      <ComingSoonWall />
     </div>
   )
 }

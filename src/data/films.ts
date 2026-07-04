@@ -41,6 +41,13 @@ export interface FilmData {
   isPipeline?: boolean
   /** True when the film belongs to the archived (legacy) catalog */
   archived?: boolean
+  /**
+   * Extrait vidéo muet joué en fond du hero (façon Netflix) quand le film est
+   * mis en avant. URL directe MP4/WebM. Absent/`null` → l'affiche s'anime en
+   * lent zoom Ken Burns à la place. Le fondateur peut brancher la bande-annonce
+   * d'un film en une ligne ici.
+   */
+  heroVideoUrl?: string | null
 }
 
 /**
@@ -91,6 +98,9 @@ const SLATE: Omit<FilmData, 'id' | 'slug' | 'coverImageUrl'>[] = [
     fundingPct: 70,
     track: 'B',
     isPipeline: true,
+    // DÉMO — extrait Sintel (open movie Blender, CC-BY) servi en local pour
+    // montrer le hero vidéo. À remplacer par la vraie bande-annonce du film.
+    heroVideoUrl: '/videos/demo-hero.mp4',
   },
   {
     title: 'Les souffrances du jeune Goethe',

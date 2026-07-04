@@ -490,6 +490,32 @@ export default function CreatePage() {
         </div>
       </section>
 
+      {/* ── L'Atelier bande-annonce ── */}
+      <section className="px-4 sm:px-8 lg:px-16 pb-16">
+        <div className="max-w-7xl mx-auto">
+          <Link
+            href="/atelier"
+            className="border-gold-brushed group relative flex flex-col gap-5 overflow-hidden rounded-3xl bg-gradient-to-r from-[#C9A227]/[0.09] via-[#0E0D0A] to-transparent p-7 sm:p-8 md:flex-row md:items-center"
+          >
+            <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-[#C9A227]/[0.08] blur-[70px]" />
+            <div className="relative flex-1">
+              <h2 className="font-playfair text-xl font-bold text-white sm:text-2xl">
+                Commencez par la <span className="text-gold-brushed">bande-annonce</span>
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/50">
+                L&apos;Atelier CINEGENY vous accompagne du script au montage — storyboard, moodboard,
+                moteurs vidéo IA (Veo, Kling, Seedance). À 5 000 votes, votre film part en production.
+                Format des films : 10 minutes minimum — 1 h 00 maximum.
+              </p>
+            </div>
+            <span className="bg-gold-brushed btn-sheen relative inline-flex shrink-0 items-center gap-2 self-start rounded-xl px-6 py-3 text-sm font-bold transition-all md:self-center">
+              Ouvrir l&apos;Atelier
+              <ArrowRight className="h-4 w-4" />
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* ── Estimated Times ── */}
       <section className="px-4 sm:px-8 lg:px-16 pb-16">
         <div className="max-w-7xl mx-auto">

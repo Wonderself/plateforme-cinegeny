@@ -6,7 +6,7 @@ import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
 import {
   Film, CheckCircle, XCircle, Eye, Star, Pause,
-  Play, Search, Clock, TrendingUp,
+  Play, Search, Clock, Pencil,
 } from 'lucide-react'
 import type { Metadata } from 'next'
 
@@ -303,6 +303,15 @@ export default async function AdminCatalogPage(
                             </button>
                           </form>
                         )}
+
+                        {/* Edit */}
+                        <Link
+                          href={`/admin/catalog/${film.id}`}
+                          className="p-1.5 rounded-lg text-[#C9A227]/70 hover:text-[#C9A227] hover:bg-[#C9A227]/10 transition-colors"
+                          title="Modifier / supprimer"
+                        >
+                          <Pencil className="h-4 w-4" />
+                        </Link>
 
                         {/* View */}
                         <Link

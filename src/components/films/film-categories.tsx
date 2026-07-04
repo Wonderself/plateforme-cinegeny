@@ -112,7 +112,7 @@ function FilmCatalogCard({ film }: { film: CatalogFilmVM }) {
                 </div>
                 <div className="relative h-1 overflow-hidden rounded-full bg-white/[0.06]">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700 ease-out"
+                    className="progress-sheen h-full rounded-full bg-gradient-to-r from-[#8A6A12] via-[#C9A227] to-[#F5D77A] transition-all duration-700 ease-out"
                     style={{ width: `${film.progress.pct}%` }}
                   />
                 </div>
@@ -175,18 +175,8 @@ export default function FilmCategories({ model }: { model: CatalogModel }) {
       <div className="container mx-auto max-w-7xl">
         {/* Section title */}
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Catalogue{' '}
-            <span
-              style={{
-                background: 'linear-gradient(135deg, #C9A227 0%, #E8C766 40%, #C9A227 70%, #B8960C 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              CINEGENY
-            </span>
+          <h2 className="mb-4 font-playfair text-3xl font-bold text-white sm:text-5xl">
+            Catalogue <span className="text-gold-brushed">CINEGENY</span>
           </h2>
           <p className="mx-auto max-w-xl text-sm text-white/50">
             Le parcours d’un film sur CINEGENY : en vote, en production, puis à regarder.
@@ -194,7 +184,7 @@ export default function FilmCategories({ model }: { model: CatalogModel }) {
         </div>
 
         {/* ── Onglets du parcours (axe de navigation unique, 15.0 #6) ── */}
-        <div className="sticky top-16 z-30 -mx-4 mb-12 border-b border-white/[0.06] bg-[#0A0A0A]/90 px-4 py-4 backdrop-blur-md sm:-mx-8 sm:px-8 md:-mx-16 md:px-16 lg:-mx-20 lg:px-20">
+        <div className="sticky top-20 z-30 -mx-4 mb-12 border-b border-white/[0.06] bg-[#0A0A0A]/90 px-4 py-4 backdrop-blur-md sm:-mx-8 sm:px-8 md:-mx-16 md:px-16 lg:-mx-20 lg:px-20">
           <div className="scrollbar-hide overflow-x-auto">
             <div className="flex min-w-max gap-1">
               {FILM_STATUS_ORDER.map((key) => {
@@ -225,7 +215,7 @@ export default function FilmCategories({ model }: { model: CatalogModel }) {
         {films.length > 0 ? (
           <div className="mb-16">
             <SectionHeader title={FILM_STATUSES[activeTab].label} count={films.length} />
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 xl:grid-cols-5">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:gap-7 xl:grid-cols-4">
               {films.map((film) => (
                 <FilmCatalogCard key={film.slug} film={film} />
               ))}

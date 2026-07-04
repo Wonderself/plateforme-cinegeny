@@ -267,6 +267,9 @@ export const FOOTER_COLUMNS: { title: string; links: NavEntry[] }[] = [
   {
     title: 'Participer',
     links: [
+      { href: '/residence', label: 'La Résidence' },
+      { href: '/atelier', label: 'L’Atelier — Mini Studio' },
+      { href: '/createurs', label: 'Réalisateurs & créateurs IA' },
       { href: '/create', label: 'Démarrer un film' },
       { href: '/work', label: 'Missions' },
       { href: '/academy', label: 'Academy' },

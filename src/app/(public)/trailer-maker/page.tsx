@@ -1,11 +1,12 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { toast } from 'sonner'
 import { TRAILER_STYLES, FILM_GENRES } from '@/data/studio-agents'
 import {
   Film, Play, Loader2, Wand2, Camera, User, Star,
-  ChevronRight, Download, Share2, Sparkles, Shield,
+  ChevronRight, Download, Share2, Sparkles, Shield, ArrowRight,
 } from 'lucide-react'
 
 interface TrailerResult {
@@ -75,6 +76,17 @@ export default function TrailerMakerPage() {
             Inventez un film, choisissez le style, et l&apos;IA génère la bande-annonce complète.
             Ajoutez votre visage pour devenir le héros !
           </p>
+
+          {/* Vers l'Atelier — l'outil de création complet */}
+          <Link
+            href="/atelier"
+            className="group mt-6 inline-flex items-center gap-2.5 rounded-2xl border border-[#C9A227]/25 bg-[#C9A227]/[0.06] px-5 py-3 text-sm text-white/60 transition-colors hover:border-[#C9A227]/45 hover:text-white"
+          >
+            <Wand2 className="h-4 w-4 text-[#C9A227]" />
+            Pour une vraie bande-annonce plan par plan (Veo, Kling, Seedance) :{' '}
+            <span className="font-semibold text-[#E8C766]">ouvrez l&apos;Atelier</span>
+            <ArrowRight className="h-4 w-4 text-[#C9A227] transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </div>
 
         {step === 'setup' && (
@@ -130,7 +142,7 @@ export default function TrailerMakerPage() {
               )}
             </div>
 
-            <button onClick={generateTrailers} disabled={!filmTitle.trim() || !genre || !synopsis.trim() || selectedStyles.length === 0} className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#C9A227] hover:bg-[#E8C766] text-white font-semibold rounded-2xl disabled:opacity-40 transition-colors text-lg">
+            <button onClick={generateTrailers} disabled={!filmTitle.trim() || !genre || !synopsis.trim() || selectedStyles.length === 0} className="bg-gold-brushed btn-sheen w-full flex items-center justify-center gap-2 px-6 py-4 font-bold rounded-2xl disabled:opacity-40 transition-all text-lg">
               <Wand2 className="h-6 w-6" />
               Générer {selectedStyles.length} bande{selectedStyles.length > 1 ? 's' : ''}-annonce{selectedStyles.length > 1 ? 's' : ''}
             </button>

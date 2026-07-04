@@ -61,10 +61,12 @@ export function Header() {
   const userName = session?.user?.name || session?.user?.email || ''
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200/20 bg-[#0A0A0A]/80 backdrop-blur-2xl">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        {/* Logo */}
-        <Logo height={40} priority />
+    <header className="sticky top-0 z-50 bg-[#0A0908]/80 backdrop-blur-2xl">
+      {/* Hairline or brossé sous le header — signature de la marque */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/35 to-transparent" />
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+        {/* Logo — grand, c'est la signature du site */}
+        <Logo height={54} priority />
 
         {/* Desktop Nav — 4 piliers (source : src/content/brand.ts) */}
         <nav className="hidden lg:flex items-center gap-0.5">
